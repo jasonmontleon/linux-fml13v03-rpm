@@ -1,0 +1,82 @@
+From f9aa36354c6506fb4d735c9d936c3fa5b1ca385a Mon Sep 17 00:00:00 2001
+From: hehuan1 <hehuan1@eswincomputing.com>
+Date: Wed, 20 Aug 2025 13:45:11 +0800
+Subject: [PATCH 464/533] fix: hide process vol file node
+
+    Changelogs:
+    hide process vol file node
+
+Signed-off-by: hehuan1 <hehuan1@eswincomputing.com>
+---
+ drivers/hwmon/eswin_dummy_pvt.c | 20 ++++++++++++++++----
+ 1 file changed, 16 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/hwmon/eswin_dummy_pvt.c b/drivers/hwmon/eswin_dummy_pvt.c
+index 8e548b273a61..bfc725adb498 100644
+--- a/drivers/hwmon/eswin_dummy_pvt.c
++++ b/drivers/hwmon/eswin_dummy_pvt.c
+@@ -274,9 +274,6 @@ static const struct hwmon_channel_info *pvt_channel_info[] = {
+ 			   HWMON_T_INPUT | HWMON_T_TYPE | HWMON_T_LABEL |
+ 			   HWMON_T_OFFSET),
+ 	HWMON_CHANNEL_INFO(in,
+-			   HWMON_I_INPUT | HWMON_I_LABEL,
+-			   HWMON_I_INPUT | HWMON_I_LABEL,
+-			   HWMON_I_INPUT | HWMON_I_LABEL,
+ 			   HWMON_I_INPUT | HWMON_I_LABEL),
+ 	NULL
+ };
+@@ -290,7 +287,7 @@ static inline bool eswin_pvt_hwmon_channel_is_valid(enum hwmon_sensor_types type
+ 			return false;
+ 		break;
+ 	case hwmon_in:
+-		if (ch < 0 || ch >= PVT_VOLT_CHS)
++		if (ch < 0 || ch >= 1)// Only ch=0 is valid
+ 			return false;
+ 		break;
+ 	default:
+@@ -332,6 +329,10 @@ static umode_t eswin_pvt_hwmon_is_visible(const void *data,
+ 		}
+ 		break;
+ 	case hwmon_in:
++		// Only make attributes for channel 0 visible
++		if (ch != 0) {
++			return 0; // Channels 1, 2, 3 are not visible
++		}
+ 		switch (attr) {
+ 		case hwmon_in_input:
+ 		case hwmon_in_label:
+@@ -480,6 +481,10 @@ static int eswin_pvt_hwmon_read(struct device *dev, enum hwmon_sensor_types type
+ 		}
+ 		break;
+ 	case hwmon_in:
++		// Only handle channel 0 for 'in'
++		if (ch != 0) {
++			return -EINVAL; // Channels 1, 2, 3 are not handled
++		}
+ 		switch (attr) {
+ 		case hwmon_in_input:
+ 			return eswin_pvt_read_data(pvt, PVT_VOLT + ch, val);
+@@ -525,6 +530,10 @@ static int eswin_pvt_hwmon_read_string(struct device *dev,
+ 		}
+ 		break;
+ 	case hwmon_in:
++		// Only handle channel 0 for 'in' label
++		if (ch != 0) {
++			return -EINVAL;
++		}
+ 		switch (attr) {
+ 		case hwmon_in_label:
+ 			*str = pvt_info[PVT_VOLT + ch].label;
+@@ -564,6 +573,9 @@ static int eswin_pvt_hwmon_write(struct device *dev, enum hwmon_sensor_types typ
+ 		}
+ 		break;
+ 	case hwmon_in:
++		if (ch != 0) {
++			return -EINVAL;
++		}
+ 		switch (attr) {
+ 		case hwmon_in_min:
+ 			return eswin_pvt_write_limit(pvt, PVT_VOLT + ch, true, val);
+-- 
+2.51.1
+

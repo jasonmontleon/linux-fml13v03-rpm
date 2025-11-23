@@ -1,0 +1,31 @@
+From 681916ee602035ababe6ecfe23325eca9b9f6e10 Mon Sep 17 00:00:00 2001
+From: zhuxuefei <zhuxuefei@eswincomputing.com>
+Date: Mon, 22 Sep 2025 14:50:48 +0800
+Subject: [PATCH 520/533] feat:add npu rate 1.18G.
+
+Changelogs:
+1.add npu rate 1.18G.
+Signed-off-by: zhuxuefei <zhuxuefei@eswincomputing.com>
+(cherry picked from commit d0e21316c72c254a25fd306d16cdcced15df7138)
+---
+ arch/riscv/boot/dts/eswin/eic7700-opptable.dtsi | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/arch/riscv/boot/dts/eswin/eic7700-opptable.dtsi b/arch/riscv/boot/dts/eswin/eic7700-opptable.dtsi
+index 86210ec8a2c9..d505e359e378 100644
+--- a/arch/riscv/boot/dts/eswin/eic7700-opptable.dtsi
++++ b/arch/riscv/boot/dts/eswin/eic7700-opptable.dtsi
+@@ -146,6 +146,10 @@ opp@1040000000 {
+ 			opp-hz = /bits/ 64 <1040000000>;
+ 			opp-microvolt = <900000>;
+ 		};
++		opp@1188000000 {
++			opp-hz = /bits/ 64 <1188000000>;
++			opp-microvolt = <1000000>;
++		};
+ 		opp@1500000000 {
+ 			opp-hz = /bits/ 64 <1500000000>;
+ 			opp-microvolt = <1050000>;
+-- 
+2.51.1
+

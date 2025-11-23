@@ -1,0 +1,27 @@
+From b2836bc1b8de72a5d42145ed4642c8ba2935a5e0 Mon Sep 17 00:00:00 2001
+From: "yang.wang" <yang.wang@deepcomputing.io>
+Date: Fri, 16 May 2025 14:02:04 +0800
+Subject: [PATCH 290/533] power: cros-sbs-battery: Fix driver registration
+ failure with CONFIG_PM_SLEEP
+
+Signed-off-by: yang.wang <yang.wang@deepcomputing.io>
+---
+ drivers/power/supply/cros-sbs-battery.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/power/supply/cros-sbs-battery.c b/drivers/power/supply/cros-sbs-battery.c
+index 5189abddf99a..c4dbd60ece8b 100644
+--- a/drivers/power/supply/cros-sbs-battery.c
++++ b/drivers/power/supply/cros-sbs-battery.c
+@@ -1138,7 +1138,7 @@ static int cros_sbs_probe(struct platform_device *pdev)
+ 	if (rc)
+ 		return rc;
+ 
+-	chip->power_supply = devm_power_supply_register(chip->dev, cros_sbs_desc,
++	chip->power_supply = devm_power_supply_register_no_ws(chip->dev, cros_sbs_desc,
+ 						   &psy_cfg);
+ 	if (IS_ERR(chip->power_supply))
+ 		return dev_err_probe(dev, PTR_ERR(chip->power_supply),
+-- 
+2.51.1
+

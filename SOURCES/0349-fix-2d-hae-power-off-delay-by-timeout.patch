@@ -1,0 +1,106 @@
+From 609863695dff595f6c684c59a27e7c486353e1ed Mon Sep 17 00:00:00 2001
+From: lei zhilin <leizhilin@eswincomputing.com>
+Date: Thu, 3 Apr 2025 00:18:27 +0800
+Subject: [PATCH 349/533] <fix>(2d):hae power off delay by timeout
+
+Changelogs:
+
+1.revert commit http://10.10.130.10:8080/c/win2030/linux-6.6/+/20772;
+2.solution:
+	1)use gcvPOWER_OFF_TIMEOUT only to avoid hardware report isr after power off;
+	2)use delay 1000ms to timer, if any gcvPOWER_ON comes, clear nextPowerState;
+        3)when power off, wait 1ms wait pm flush cache interrupt come;
+
+Signed-off-by: lei zhilin <leizhilin@eswincomputing.com>
+---
+ .../hal/kernel/arch/gc_hal_kernel_hardware.c  | 31 +++++++++++++------
+ .../os/linux/kernel/gc_hal_kernel_device.c    |  3 +-
+ .../os/linux/kernel/gc_hal_kernel_parameter.h |  2 +-
+ 3 files changed, 25 insertions(+), 11 deletions(-)
+
+diff --git a/drivers/staging/media/eswin/hae/hal/kernel/arch/gc_hal_kernel_hardware.c b/drivers/staging/media/eswin/hae/hal/kernel/arch/gc_hal_kernel_hardware.c
+index 0cd8c0ab4dae..1eaf7e4ebdf3 100644
+--- a/drivers/staging/media/eswin/hae/hal/kernel/arch/gc_hal_kernel_hardware.c
++++ b/drivers/staging/media/eswin/hae/hal/kernel/arch/gc_hal_kernel_hardware.c
+@@ -5139,6 +5139,19 @@ gckHARDWARE_PowerControlClusters(gckHARDWARE Hardware,
+ 
+     command = Hardware->kernel->command;
+ 
++    do {
++        gckOS_Udelay(Hardware->os, 1000);
++
++        gcmkONERROR(gckOS_ReadRegisterEx(Hardware->os, Hardware->kernel,
++                                            0x00004, &idle));
++
++        timer++;
++        if (timer >= 10) {
++            hae_print("wait register idl: 0x%x timeout!", idle);
++            break;
++        }
++    } while (!_IsHWIdle(idle, Hardware));
++
+ #if !gcdFPGA_BUILD
+     if (Hardware->identity.customerID != 0x85 || !Hardware->mcFE ||
+         Hardware->options.enableNNClusters == (gctUINT32)~0UL ||
+@@ -6122,6 +6135,15 @@ gckHARDWARE_SetPowerState(gckHARDWARE Hardware, gceCHIPPOWERSTATE State)
+     }
+ 
+ #if gcdPOWEROFF_TIMEOUT
++    if (state == gcvPOWER_ON) {
++        Hardware->nextPowerState = gcvPOWER_INVALID;
++    }
++
++    if (!timeout && state == gcvPOWER_OFF) {
++        status = gcvSTATUS_OK;
++        goto OnError;
++    }
++
+     if (timeout && Hardware->nextPowerState == gcvPOWER_INVALID) {
+         /* Delayed power state change is canceled. */
+         status = gcvSTATUS_OK;
+@@ -6275,15 +6297,6 @@ gckHARDWARE_SetPowerState(gckHARDWARE Hardware, gceCHIPPOWERSTATE State)
+ #endif
+ 
+ #if gcdPOWEROFF_TIMEOUT
+-    if (!broadcast) {
+-        /*
+-         * Cancel delayed power state change.
+-         * Stop timer is not as good as set as no state change. Timer may run
+-         * into this function already when try to stop the timer.
+-         */
+-        Hardware->nextPowerState = gcvPOWER_INVALID;
+-    }
+-
+     if (Hardware->powerOffTimeout &&
+         (state == gcvPOWER_IDLE || state == gcvPOWER_SUSPEND)) {
+         /* Delayed power off. */
+diff --git a/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_device.c b/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_device.c
+index 9699a7b40d14..af46c7629dc8 100644
+--- a/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_device.c
++++ b/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_device.c
+@@ -2268,7 +2268,8 @@ isrRoutine(int irq, void *ctxt)
+     }
+ 
+     if(status == gcvSTATUS_GENERIC_IO){
+-        pr_info("[%s] hae isr meet clock close...\n", __func__);
++        hae_print("irq: %d, hw: %p, addr: %llx clock close.\n",
++            irq, kernel->hardware, kernel->hardware->lastExecuteAddress);
+     }
+ 
+     return IRQ_NONE;
+diff --git a/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_parameter.h b/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_parameter.h
+index dcc6b0558a33..22f6ebe226a6 100644
+--- a/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_parameter.h
++++ b/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_parameter.h
+@@ -305,7 +305,7 @@ static int compression = -1;
+ module_param(compression, int, 0644);
+ MODULE_PARM_DESC(compression, "Disable compression if set it to 0, enabled by default");
+ 
+-static int powerManagement = 0;
++static int powerManagement = 1;
+ module_param(powerManagement, int, 0644);
+ MODULE_PARM_DESC(powerManagement, "Disable auto power saving if set it to 0, enabled by default");
+ 
+-- 
+2.51.1
+

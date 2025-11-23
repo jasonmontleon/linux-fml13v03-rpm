@@ -1,0 +1,234 @@
+From 7d3b9dfe86dea12ef50d0811eba9134c330c0ddb Mon Sep 17 00:00:00 2001
+From: Sandie Cao <sandie.cao@deepcomputing.io>
+Date: Fri, 4 Jul 2025 18:30:34 +0800
+Subject: [PATCH 412/533] driver: eswin: remove warnning
+
+Signed-off-by: Sandie Cao <sandie.cao@deepcomputing.io>
+---
+ .../img-volcanic/services/system/eswin_cpu/sysconfig.c    | 7 +++----
+ drivers/soc/eswin/ai_driver/dsp/dsp_ioctl.c               | 8 ++++----
+ drivers/soc/eswin/ai_driver/dsp/dsp_main.c                | 1 +
+ drivers/soc/eswin/ai_driver/dsp/dsp_platform.c            | 1 +
+ drivers/soc/eswin/ai_driver/dsp/dsp_platform.h            | 4 ++++
+ drivers/soc/eswin/ai_driver/dsp/dsp_proc.c                | 1 +
+ drivers/soc/eswin/ai_driver/dsp/mloader/xt_mld_loader.c   | 4 ++--
+ drivers/soc/eswin/d2d.c                                   | 2 ++
+ drivers/spi/spi-dw-mmio.c                                 | 2 +-
+ drivers/staging/media/eswin/vdec/hantro_dec.c             | 7 -------
+ drivers/staging/media/eswin/venc/vc8000_vcmd_driver.c     | 1 -
+ 11 files changed, 19 insertions(+), 19 deletions(-)
+
+diff --git a/drivers/gpu/drm/img/img-volcanic/services/system/eswin_cpu/sysconfig.c b/drivers/gpu/drm/img/img-volcanic/services/system/eswin_cpu/sysconfig.c
+index 6dd85240ea67..91fb2c7fc957 100644
+--- a/drivers/gpu/drm/img/img-volcanic/services/system/eswin_cpu/sysconfig.c
++++ b/drivers/gpu/drm/img/img-volcanic/services/system/eswin_cpu/sysconfig.c
+@@ -351,9 +351,8 @@ void riscv_flush_cache_range(IMG_HANDLE hSysData,
+ PVRSRV_DEVICE_CONFIG *IGPUGetDevConfigByDevNum(IMG_UINT32 ui32DevNum)
+ {
+ 	PVRSRV_DATA *psPVRSRVData = PVRSRVGetPVRSRVData();
+-	PVRSRV_DRIVER_MODE eRetMode = DRIVER_MODE_NATIVE;
+ 	PVRSRV_DEVICE_NODE *psDevNode;
+-    PVRSRV_DEVICE_CONFIG *psDevConfig = NULL;
++	PVRSRV_DEVICE_CONFIG *psDevConfig = NULL;
+ 
+ 	OSWRLockAcquireRead(psPVRSRVData->hDeviceNodeListLock);
+ 
+@@ -439,7 +438,7 @@ static PVRSRV_ERROR DeviceConfigCreate(void *pvOSDevice, PVRSRV_DEVICE_CONFIG **
+ 
+ 	psRGXData = (RGX_DATA *)((IMG_CHAR *)psDevConfig + sizeof(*psDevConfig));
+ 	psRGXTimingInfo = (RGX_TIMING_INFORMATION *)((IMG_CHAR *)psRGXData + sizeof(*psRGXData));
+-    psDevConfig->eDriverMode = DRIVER_MODE_NATIVE;
++	psDevConfig->eDriverMode = DRIVER_MODE_NATIVE;
+ 	eError = PhysHeapsCreate(&pasPhysHeaps, &uiPhysHeapCount, psDevConfig);
+ 	if (eError)
+ 	{
+@@ -602,7 +601,7 @@ static PVRSRV_ERROR DeviceConfigCreate(void *pvOSDevice, PVRSRV_DEVICE_CONFIG **
+ 	psDevConfig->pvOSDevice				= pvOSDevice;
+ 	psDevConfig->pszVersion             = NULL;
+ #ifndef NO_HARDWARE
+-	psDevConfig->pszName = pdev->name;
++	psDevConfig->pszName = (IMG_CHAR *)pdev->name;
+ 	printk(KERN_ALERT "%s: --------------->dev_name=%s\n", __func__, psDevConfig->pszName);
+ 
+ 	if (of_address_to_resource(np, 0, &res))
+diff --git a/drivers/soc/eswin/ai_driver/dsp/dsp_ioctl.c b/drivers/soc/eswin/ai_driver/dsp/dsp_ioctl.c
+index 11e592b54da0..7b665cb502b2 100644
+--- a/drivers/soc/eswin/ai_driver/dsp/dsp_ioctl.c
++++ b/drivers/soc/eswin/ai_driver/dsp/dsp_ioctl.c
+@@ -509,8 +509,8 @@ static struct dsp_user_req_async *dsp_set_task_info(struct dsp_file *dsp_file,
+ 	user_req->dma_entry = dma_entry;
+ 	user_req->dma_buf_count = buffer_count;
+ 	user_req->dsp_file = dsp_file;
+-	user_req->callback = task->task.callback;
+-	user_req->cbarg = task->task.cbArg;
++	user_req->callback = (u64)task->task.callback;
++	user_req->cbarg = (u64)task->task.cbArg;
+ 	INIT_LIST_HEAD(&user_req->async_ll);
+ 
+ 	dsp_debug("%s, user_req=0x%px.\n", __func__, user_req);
+@@ -1169,7 +1169,7 @@ static long dsp_ioctl(struct file *flip, unsigned int cmd, unsigned long arg)
+ 		retval = dsp_ioctl_load_op(flip, (dsp_ioctl_load_s *)arg);
+ 		break;
+ 	case DSP_IOCTL_UNLOAD_OP:
+-		retval = dsp_ioctl_unload_op(flip, arg);
++		retval = dsp_ioctl_unload_op(flip, (void *)arg);
+ 		break;
+ 	case DSP_IOCTL_SUBMIT_TSK_ASYNC:
+ 		retval = dsp_ioctl_submit_tsk_async(
+@@ -1261,7 +1261,7 @@ static int dsp_open(struct inode *inode, struct file *flip)
+ 	if (ret != 0) {
+ 		dsp_err("%s, init kernel handle error.\n", __func__);
+ 		kfree(dsp_file);
+-		es_dsp_pm_put_sync(dsp->dev);
++		es_dsp_pm_put_sync(dsp);
+ 		return ret;
+ 	}
+ 	INIT_LIST_HEAD(&dsp_file->async_ll_complete);
+diff --git a/drivers/soc/eswin/ai_driver/dsp/dsp_main.c b/drivers/soc/eswin/ai_driver/dsp/dsp_main.c
+index e93d4b14ee5f..d731ecac5210 100644
+--- a/drivers/soc/eswin/ai_driver/dsp/dsp_main.c
++++ b/drivers/soc/eswin/ai_driver/dsp/dsp_main.c
+@@ -60,6 +60,7 @@
+ #include <linux/dma-mapping.h>
+ #include <linux/devfreq.h>
+ #include <linux/pm_opp.h>
++#include <linux/eswin-win2030-sid-cfg.h>
+ 
+ #include "eswin-khandle.h"
+ 
+diff --git a/drivers/soc/eswin/ai_driver/dsp/dsp_platform.c b/drivers/soc/eswin/ai_driver/dsp/dsp_platform.c
+index 79f65176471b..61009112362c 100644
+--- a/drivers/soc/eswin/ai_driver/dsp/dsp_platform.c
++++ b/drivers/soc/eswin/ai_driver/dsp/dsp_platform.c
+@@ -19,6 +19,7 @@
+  * Authors: Lu XiangFeng <luxiangfeng@eswincomputing.com>
+  */
+ 
++#include <linux/clk.h>
+ #include <linux/interrupt.h>
+ #include <linux/io.h>
+ #include <linux/module.h>
+diff --git a/drivers/soc/eswin/ai_driver/dsp/dsp_platform.h b/drivers/soc/eswin/ai_driver/dsp/dsp_platform.h
+index 40740cdfe21e..6f7a13705ef7 100644
+--- a/drivers/soc/eswin/ai_driver/dsp/dsp_platform.h
++++ b/drivers/soc/eswin/ai_driver/dsp/dsp_platform.h
+@@ -30,6 +30,7 @@ int es_dsp_send_irq(struct es_dsp_hw *, dsp_request_t *);
+ int es_dsp_reboot_core(struct es_dsp_hw *);
+ int es_dsp_enable(struct es_dsp_hw *);
+ void es_dsp_disable(struct es_dsp_hw *);
++int es_dsp_get_rate(struct es_dsp_hw *hw);
+ int es_dsp_set_rate(struct es_dsp_hw *, unsigned long *rate);
+ void es_dsp_reset(struct es_dsp_hw *);
+ void es_dsp_halt(struct es_dsp_hw *);
+@@ -62,7 +63,10 @@ int es_dsp_core_clk_disable(struct es_dsp *dsp);
+ 
+ int dsp_get_resource(struct platform_device *pdev, struct es_dsp *dsp);
+ int dsp_put_resource(struct es_dsp *dsp);
++int es_dsp_map_resource(struct es_dsp *dsp);
++int es_dsp_unmap_resource(struct es_dsp *dsp);
+ 
++void es_dsp_put_subsys(struct es_dsp *dsp);
+ int es_dsp_get_subsys(struct platform_device *pdev, struct es_dsp *dsp);
+ void dsp_free_hw(struct es_dsp *dsp);
+ int dsp_alloc_hw(struct platform_device *pdev, struct es_dsp *dsp);
+diff --git a/drivers/soc/eswin/ai_driver/dsp/dsp_proc.c b/drivers/soc/eswin/ai_driver/dsp/dsp_proc.c
+index 6797e819176f..68796939f0e9 100644
+--- a/drivers/soc/eswin/ai_driver/dsp/dsp_proc.c
++++ b/drivers/soc/eswin/ai_driver/dsp/dsp_proc.c
+@@ -26,6 +26,7 @@
+ #include <linux/seq_file.h>
+ #include <linux/iommu.h>
+ #include "dsp_main.h"
++#include "dsp_platform.h"
+ 
+ static struct proc_dir_entry *proc_es_dsp;
+ extern int dsp_log_level;
+diff --git a/drivers/soc/eswin/ai_driver/dsp/mloader/xt_mld_loader.c b/drivers/soc/eswin/ai_driver/dsp/mloader/xt_mld_loader.c
+index e5967e94da47..f77995d442a2 100644
+--- a/drivers/soc/eswin/ai_driver/dsp/mloader/xt_mld_loader.c
++++ b/drivers/soc/eswin/ai_driver/dsp/mloader/xt_mld_loader.c
+@@ -212,9 +212,9 @@ static xtmld_ptr align_ptr(xtmld_ptr ptr, uint32_t t_align, uint32_t t_paddr)
+ 	// To align an address to the boundary, the starting address needs some
+ 	// adjustment before it can be aligned to the desired boundary.
+ 	uint32_t align_adj = align - offset - 1;
+-	xtmld_ptr ret = ((((uint32_t)ptr + align_adj) & ~(align - 1)) + offset);
++	xtmld_ptr ret = (xtmld_ptr)((((uint32_t)ptr + align_adj) & ~(align - 1)) + offset);
+ #ifndef __XTENSA__
+-	xtmld_ptr ret_hi = (uint64_t)ptr & ADDR64_HI;
++	xtmld_ptr ret_hi = (xtmld_ptr)((uint64_t)ptr & ADDR64_HI);
+ 	ret = (xtmld_ptr)((uint64_t)ret_hi | (uint64_t)ret);
+ #endif
+ 	return ret;
+diff --git a/drivers/soc/eswin/d2d.c b/drivers/soc/eswin/d2d.c
+index b9a58bd146da..d182826b88c7 100644
+--- a/drivers/soc/eswin/d2d.c
++++ b/drivers/soc/eswin/d2d.c
+@@ -121,6 +121,7 @@ static irqreturn_t d2d_irqhandle(int irq, void *dev_id)
+ 	return IRQ_HANDLED;
+ }
+ 
++#if 0
+ static void adaptation_delay_work_fn(struct work_struct *work)
+ {
+ 	struct d2d_device *d2d_dev = container_of(to_delayed_work(work), struct d2d_device, delay_work);
+@@ -135,6 +136,7 @@ static void adaptation_delay_work_fn(struct work_struct *work)
+ 	}
+ 	schedule_delayed_work(&d2d_dev->delay_work, msecs_to_jiffies(2 * MSEC_PER_SEC));
+ }
++#endif
+ 
+ static const struct of_device_id eic7x_d2d_error_of_match[] = {
+ 	{.compatible = "eswin,eic7x-d2d", },
+diff --git a/drivers/spi/spi-dw-mmio.c b/drivers/spi/spi-dw-mmio.c
+index 8877c1234188..4ffde137c2b0 100644
+--- a/drivers/spi/spi-dw-mmio.c
++++ b/drivers/spi/spi-dw-mmio.c
+@@ -525,7 +525,7 @@ static const struct of_device_id dw_spi_mmio_of_match[] = {
+ 	{ .compatible = "microchip,sparx5-spi", dw_spi_mscc_sparx5_init},
+ 	{ .compatible = "canaan,k210-spi", dw_spi_canaan_k210_init},
+ 	{ .compatible = "amd,pensando-elba-spi", .data = dw_spi_elba_init},
+-	{ .compatible = "snps,eic770x-spi",},
++	{ .compatible = "snps,eic770x-spi", .data = dw_spi_eswin_init},
+ 	{ /* end of table */}
+ };
+ MODULE_DEVICE_TABLE(of, dw_spi_mmio_of_match);
+diff --git a/drivers/staging/media/eswin/vdec/hantro_dec.c b/drivers/staging/media/eswin/vdec/hantro_dec.c
+index 8c3c98de4ed4..30825672b7ef 100644
+--- a/drivers/staging/media/eswin/vdec/hantro_dec.c
++++ b/drivers/staging/media/eswin/vdec/hantro_dec.c
+@@ -2437,7 +2437,6 @@ static long hantrodec_ioctl(struct file *filp, unsigned int cmd,
+ 		return 0;
+ 	}
+ 	case HANTRODEC_IOC_DMA_HEAP_PUT_IOVA: {
+-		struct dmabuf_cfg dbcfg;
+ 		struct heap_mem *hmem, *hmem_d1;
+ 		unsigned int dmabuf_fd;
+ 		struct filp_priv *fp_priv = (struct filp_priv *)filp->private_data;
+@@ -2634,12 +2633,6 @@ static int hantrodec_release(struct inode *inode,
+ 	int n;
+ 	hantrodec_t *dev = &hantrodec_data;
+ 	struct filp_priv *fp_priv = (struct filp_priv *)filp->private_data;
+-#ifdef SUPPORT_DMA_HEAP
+-	struct heap_mem *h, *tmp;
+-	dma_addr_t iova;
+-	size_t buf_size = 0;
+-	struct heap_root *root = &fp_priv->root;
+-#endif
+ 
+ 	LOG_DBG("closing ...\n");
+ 
+diff --git a/drivers/staging/media/eswin/venc/vc8000_vcmd_driver.c b/drivers/staging/media/eswin/venc/vc8000_vcmd_driver.c
+index 71aca911ea49..0d2f769c89dd 100644
+--- a/drivers/staging/media/eswin/venc/vc8000_vcmd_driver.c
++++ b/drivers/staging/media/eswin/venc/vc8000_vcmd_driver.c
+@@ -2147,7 +2147,6 @@ static long hantrovcmd_ioctl(struct file *filp, unsigned int cmd,
+ 		return 0;
+ 	}
+ 	case HANTRO_IOCH_DMA_HEAP_PUT_IOVA: {
+-		struct dmabuf_cfg dbcfg;
+ 		struct heap_mem *hmem, *hmem_d1;
+ 		unsigned int dmabuf_fd;
+ 		struct filp_priv *fp_priv = (struct filp_priv *)filp->private_data;
+-- 
+2.51.1
+

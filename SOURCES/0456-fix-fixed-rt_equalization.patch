@@ -1,0 +1,165 @@
+From 1718232e558d3bbcf2ef2a3240859a472513a18c Mon Sep 17 00:00:00 2001
+From: Senchuan Zhang <zhangsenchuan@eswincomputing.com>
+Date: Mon, 4 Aug 2025 13:44:03 +0800
+Subject: [PATCH 456/533] fix:fixed rt_equalization
+
+Changelogs:
+1.support rx equalization
+
+Signed-off-by: Senchuan Zhang <zhangsenchuan@eswincomputing.com>
+---
+ arch/riscv/boot/dts/eswin/eic7700-ce1.dtsi    |  2 +
+ arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dtsi |  2 +
+ .../dts/eswin/eic7702-som560-interleave.dtsi  |  4 ++
+ drivers/usb/dwc3/dwc3-eswin.c                 | 51 +++++++++++++++++++
+ 4 files changed, 59 insertions(+)
+
+diff --git a/arch/riscv/boot/dts/eswin/eic7700-ce1.dtsi b/arch/riscv/boot/dts/eswin/eic7700-ce1.dtsi
+index 79900c55804f..44c162469dd0 100644
+--- a/arch/riscv/boot/dts/eswin/eic7700-ce1.dtsi
++++ b/arch/riscv/boot/dts/eswin/eic7700-ce1.dtsi
+@@ -542,6 +542,7 @@ &d0_sata {
+ 
+ &d0_usbdrd3_0 {
+ 	status = "okay";
++	rt_equalization;
+ };
+ 
+ &d0_usbdrd_dwc3_0 {
+@@ -552,6 +553,7 @@ &d0_usbdrd_dwc3_0 {
+ 
+ &d0_usbdrd3_1 {
+ 	status = "okay";
++	rt_equalization;
+ };
+ 
+ &d0_usbdrd_dwc3_1 {
+diff --git a/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dtsi b/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dtsi
+index 8b95d02deda8..3fd5e460e67c 100755
+--- a/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dtsi
++++ b/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dtsi
+@@ -471,6 +471,7 @@ &d0_sata {
+ 
+ &d0_usbdrd3_0 {
+ 	status = "okay";
++	rt_equalization;
+ };
+ 
+ &d0_usbdrd_dwc3_0 {
+@@ -484,6 +485,7 @@ &d0_usbdrd3_1 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&pinctrl_gpio23_default>;
+ 	hub-rst-gpios = <&porta 23 GPIO_ACTIVE_HIGH>;
++	rt_equalization;
+ };
+ 
+ &d0_usbdrd_dwc3_1 {
+diff --git a/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi b/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
+index bb340db8ea50..4d4ab2c6b750 100644
+--- a/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
++++ b/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
+@@ -874,9 +874,11 @@ &d1_sata {
+ 
+ &d0_usbdrd3_0 {
+ 	status = "okay";
++	rt_equalization;
+ };
+ &d1_usbdrd3_0 {
+ 	status = "okay";
++	rt_equalization;
+ };
+ 
+ &d0_usbdrd_dwc3_0 {
+@@ -893,10 +895,12 @@ &d1_usbdrd_dwc3_0 {
+ 
+ &d0_usbdrd3_1 {
+ 	status = "okay";
++	rt_equalization;
+ };
+ 
+ &d1_usbdrd3_1 {
+ 	status = "okay";
++	rt_equalization;
+ };
+ 
+ &d0_usbdrd_dwc3_1 {
+diff --git a/drivers/usb/dwc3/dwc3-eswin.c b/drivers/usb/dwc3/dwc3-eswin.c
+index d5870860c317..58e5bdb66ed7 100755
+--- a/drivers/usb/dwc3/dwc3-eswin.c
++++ b/drivers/usb/dwc3/dwc3-eswin.c
+@@ -68,6 +68,12 @@
+ #define HSP_USB_AXI_LP_XM_CSYSREQ (0x1 << 0)
+ #define HSP_USB_AXI_LP_XS_CSYSREQ (0x1 << 16)
+ 
++#define RX_REG_OFFSET 0x4018
++#define RX_EQ_EN (1 << 6)
++#define RX_EQ_EN_OVRD (1 << 7)
++#define RX_EQ (1 << 9)
++#define RX_EQ_OVRD (1 << 11)
++
+ struct dwc3_eswin {
+ 	int num_clocks;
+ 	bool connected;
+@@ -285,6 +291,49 @@ static int dwc3_eswin_assert(struct dwc3_eswin *eswin)
+ 	return 0;
+ }
+ 
++static int dwc3_rx_equalization_init(struct device *dev)
++{
++
++	struct device_node *rx = dev->of_node;
++	void __iomem *phy_base;
++	void __iomem *phy_base_reg;
++	int ret;
++	u32 phy_reg[4];
++	u16 reg_val;
++
++	if (device_property_read_bool(dev, "rt_equalization")) {
++
++		ret = of_property_read_u32_array(rx, "phy_reg", phy_reg, ARRAY_SIZE(phy_reg));
++		if (ret)
++			return ret;
++
++		phy_base = devm_ioremap(dev, phy_reg[1], phy_reg[3]);
++		if (!phy_base) {
++			pr_err("Failed to ioremap phy_reg\n");
++			return -ENOMEM;
++		}
++
++		/* Get rx register */
++		phy_base_reg =  phy_base + RX_REG_OFFSET;
++		reg_val = readw(phy_base_reg);
++
++		reg_val &= ~RX_EQ_EN;
++		writew(reg_val, phy_base_reg);
++
++		reg_val |= RX_EQ_EN_OVRD;
++		writew(reg_val, phy_base_reg);
++
++		reg_val &= ~(0x7 << 8);
++		reg_val |= RX_EQ;
++		writew(reg_val, phy_base_reg);
++
++		reg_val |= RX_EQ_OVRD;
++		writew(reg_val, phy_base_reg);
++	}
++
++	return 0;
++}
++
+ static int dwc_usb_clk_init(struct device *dev)
+ {
+ 	struct regmap *regmap;
+@@ -498,7 +547,9 @@ static int dwc3_eswin_probe(struct platform_device *pdev)
+ 	}
+ 
+ 	dwc3_eswin_deassert(eswin);
++
+ 	dwc_usb_clk_init(dev);
++	dwc3_rx_equalization_init(dev);
+ 	pm_runtime_set_active(dev);
+ 	pm_runtime_enable(dev);
+ 	ret = pm_runtime_get_sync(dev);
+-- 
+2.51.1
+

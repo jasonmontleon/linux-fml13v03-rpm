@@ -1,0 +1,29 @@
+From 43d643d6a2d230d937c793c6cf42998f63188830 Mon Sep 17 00:00:00 2001
+From: yufangxian <yufangxian@eswincomputing.com>
+Date: Fri, 8 Aug 2025 17:45:30 +0800
+Subject: [PATCH 450/533] fix: cannot recogonize the third imx586 sensor
+
+Changelogs:
+1. fix the clk name in imx586 dts
+
+Signed-off-by: yufangxian <yufangxian@eswincomputing.com>
+---
+ arch/riscv/boot/dts/eswin/eic7700-evb-fccsp-camera-imx586.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/riscv/boot/dts/eswin/eic7700-evb-fccsp-camera-imx586.dtsi b/arch/riscv/boot/dts/eswin/eic7700-evb-fccsp-camera-imx586.dtsi
+index d6187d70df94..2f341156dc9b 100644
+--- a/arch/riscv/boot/dts/eswin/eic7700-evb-fccsp-camera-imx586.dtsi
++++ b/arch/riscv/boot/dts/eswin/eic7700-evb-fccsp-camera-imx586.dtsi
+@@ -184,7 +184,7 @@ imx586_4: imx586@1a {
+ 		clocks = <&d0_clock EIC7700_CLK_VI_SHUTTER_0>;
+ 		assigned-clocks = <&d0_clock EIC7700_CLK_VI_SHUTTER_0>;
+ 		assigned-clock-rates = <24000000>;
+-		clock-names = "inck";
++		clock-names = "xvclk";
+ 		mclk-gpios = <&portc 8 GPIO_ACTIVE_HIGH>;
+ 
+ 		port {
+-- 
+2.51.1
+

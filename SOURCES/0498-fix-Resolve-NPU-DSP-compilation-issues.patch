@@ -1,0 +1,51 @@
+From c568f5318c41bbd767b74e03891b20f162d62ae6 Mon Sep 17 00:00:00 2001
+From: denglei <denglei@eswincomputing.com>
+Date: Mon, 25 Aug 2025 16:02:05 +0800
+Subject: [PATCH 498/533] fix:Resolve NPU/DSP compilation issues.
+
+Changelogs:
+	Upgrade gcc version to 14.2.0
+
+Signed-off-by: denglei <denglei@eswincomputing.com>
+---
+ drivers/soc/eswin/ai_driver/dsp/dsp_main.c     | 3 +--
+ drivers/soc/eswin/ai_driver/dsp/dsp_platform.c | 2 +-
+ 2 files changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/soc/eswin/ai_driver/dsp/dsp_main.c b/drivers/soc/eswin/ai_driver/dsp/dsp_main.c
+index 71229ec3fab0..e93d4b14ee5f 100644
+--- a/drivers/soc/eswin/ai_driver/dsp/dsp_main.c
++++ b/drivers/soc/eswin/ai_driver/dsp/dsp_main.c
+@@ -767,7 +767,6 @@ int __maybe_unused dsp_resume(struct device *dev)
+ 		dev_err(dev, "dsp resume mbox clock err.\n");
+ 		return ret;
+ 	}
+-
+ 	ret = es_dsp_clk_enable(dsp);
+ 	if (ret < 0) {
+ 		dev_err(dev, "couldn't enable DSP\n");
+@@ -1114,7 +1113,7 @@ static int es_dsp_hw_remove(struct platform_device *pdev)
+ 
+ static const struct dev_pm_ops es_dsp_hw_pm_ops = { SYSTEM_SLEEP_PM_OPS(
+ 	dsp_suspend, dsp_resume) SET_RUNTIME_PM_OPS(dsp_runtime_suspend,
+-								dsp_runtime_resume, NULL) };
++						    dsp_runtime_resume, NULL) };
+ 
+ static struct platform_driver es_dsp_hw_driver = {
+ 	.probe   = es_dsp_hw_probe,
+diff --git a/drivers/soc/eswin/ai_driver/dsp/dsp_platform.c b/drivers/soc/eswin/ai_driver/dsp/dsp_platform.c
+index 38ef05eda2f6..f5dac966ab67 100644
+--- a/drivers/soc/eswin/ai_driver/dsp/dsp_platform.c
++++ b/drivers/soc/eswin/ai_driver/dsp/dsp_platform.c
+@@ -1261,7 +1261,7 @@ int es_dsp_hw_init(struct es_dsp *dsp)
+ 
+ 	hw->pts_iova = DSP_PTS_IOVA;
+ 	hw->pts_iova_size = DSP_PTS_IOVA_SIZE;
+-	hw->pts_phys_base = 0x51840000 + dsp->numa_id * DIE_BASE_INTERVAL;
++	hw->pts_phys_base = TIMER3_BASE_ADDR + dsp->numa_id * DIE_BASE_INTERVAL;
+ 	ret = iommu_map_rsv_iova_with_phys(dsp->dev, (dma_addr_t)DSP_PTS_IOVA,
+ 					   DSP_PTS_IOVA_SIZE, hw->pts_phys_base,
+ 					   IOMMU_MMIO);
+-- 
+2.51.1
+

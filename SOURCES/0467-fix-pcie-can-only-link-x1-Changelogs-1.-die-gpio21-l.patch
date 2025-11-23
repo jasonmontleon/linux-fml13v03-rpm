@@ -1,0 +1,59 @@
+From f644606baaf7e21b827afb6b82db48c7ce94083b Mon Sep 17 00:00:00 2001
+From: ouyanghui <ouyanghui@eswincomputing.com>
+Date: Fri, 1 Aug 2025 10:45:09 +0800
+Subject: [PATCH 467/533] fix:pcie can only link x1 Changelogs: 1. die gpio21
+ low-enbale pcie driver signal
+
+Signed-off-by: ouyanghui <ouyanghui@eswincomputing.com>
+---
+ arch/riscv/boot/dts/eswin/eic7702-d560-interleave.dts | 11 +++++++++++
+ arch/riscv/boot/dts/eswin/eic7702-d560.dts            | 11 +++++++++++
+ 2 files changed, 22 insertions(+)
+
+diff --git a/arch/riscv/boot/dts/eswin/eic7702-d560-interleave.dts b/arch/riscv/boot/dts/eswin/eic7702-d560-interleave.dts
+index 663f157a57ae..18897dc8d6c3 100644
+--- a/arch/riscv/boot/dts/eswin/eic7702-d560-interleave.dts
++++ b/arch/riscv/boot/dts/eswin/eic7702-d560-interleave.dts
+@@ -306,6 +306,17 @@ &d1_timer1 {
+ 	status = "disabled";
+ };
+ 
++&pcie {
++	status = "okay";
++	pinctrl-names = "default";
++	pinctrl-0 = <&pinctrl_die1_gpio21_default>;
++	pci-socket-gpios = <&d1_porta 21 GPIO_ACTIVE_HIGH>;
++};
++
++&d1_pcie {
++	status = "okay";
++};
++
+ &pinctrl {
+ 	status = "okay";
+ 	pinctrl-names = "default";
+diff --git a/arch/riscv/boot/dts/eswin/eic7702-d560.dts b/arch/riscv/boot/dts/eswin/eic7702-d560.dts
+index 2025ce58d4f1..5f06d6743016 100644
+--- a/arch/riscv/boot/dts/eswin/eic7702-d560.dts
++++ b/arch/riscv/boot/dts/eswin/eic7702-d560.dts
+@@ -318,6 +318,17 @@ &pwm0 {
+ 	status = "okay";
+ };
+ 
++&pcie {
++	status = "okay";
++	pinctrl-names = "default";
++	pinctrl-0 = <&pinctrl_die1_gpio21_default>;
++	pci-socket-gpios = <&d1_porta 21 GPIO_ACTIVE_HIGH>;
++};
++
++&d1_pcie {
++	status = "okay";
++};
++
+ &pinctrl {
+ 	status = "okay";
+ 	pinctrl-names = "default";
+-- 
+2.51.1
+

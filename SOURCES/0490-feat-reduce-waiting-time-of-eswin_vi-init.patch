@@ -1,0 +1,108 @@
+From bc783a69ee6b4e84df5bd28a3cfd2fb8593e419c Mon Sep 17 00:00:00 2001
+From: yufangxian <yufangxian@eswincomputing.com>
+Date: Fri, 29 Aug 2025 12:24:33 +0800
+Subject: [PATCH 490/533] feat: reduce waiting time of eswin_vi init
+
+Changelogs:
+1. reduce waiting time after release vi rst and clk en
+
+Signed-off-by: yufangxian <yufangxian@eswincomputing.com>
+---
+ .../dts/eswin/eic7700-vela-camera-imx415.dtsi |  2 +-
+ .../media/platform/eswin/vi_top/eswin_vi.c    | 28 +++++--------------
+ 2 files changed, 8 insertions(+), 22 deletions(-)
+
+diff --git a/arch/riscv/boot/dts/eswin/eic7700-vela-camera-imx415.dtsi b/arch/riscv/boot/dts/eswin/eic7700-vela-camera-imx415.dtsi
+index a53342ed816a..9a0f6e7b69e3 100644
+--- a/arch/riscv/boot/dts/eswin/eic7700-vela-camera-imx415.dtsi
++++ b/arch/riscv/boot/dts/eswin/eic7700-vela-camera-imx415.dtsi
+@@ -304,7 +304,7 @@ imx415_out1: endpoint {
+ &d0_i2c1 {
+ 	/* mipi csi0/csi1 */
+ 	status = "okay";
+-	imx415_0: imx415_0@10 {
++	imx415_0: imx415_0@37 {
+ 			compatible = "sony,imx415";
+ 			status = "okay";
+ 			address-cells = <1>;
+diff --git a/drivers/media/platform/eswin/vi_top/eswin_vi.c b/drivers/media/platform/eswin/vi_top/eswin_vi.c
+index 846788dff748..52b474759f38 100644
+--- a/drivers/media/platform/eswin/vi_top/eswin_vi.c
++++ b/drivers/media/platform/eswin/vi_top/eswin_vi.c
+@@ -71,14 +71,10 @@ static int major_number;
+ static int viscu_cfg(struct eswin_vi_device *es_vi_dev)
+ {
+ 	struct regmap *regmap = es_vi_dev->syscrg_regmap;
+-    
++
+ 	regmap_write(regmap, VI_SUBSYSTEM_SCU_ISP_RESET, 0x0);///isp reset(sys_crg)
+-	pr_debug("SCU: ISP Reset ...\n");
+ 	regmap_write(regmap, VI_SUBSYSTEM_SCU_ISP_RESET, 0x1);
+ 
+-	// CSI controller 0 HDR mode
+-	pr_debug("SCU: HDR Disabled ...\n");
+-    // regmap_write(regmap, VI_SUBSYSTEM_SCU_SONY_HDR_MODE, 0x0);///i2c_rst_ctl(sys_crg)
+ 	return 0;
+ }
+ 
+@@ -167,18 +163,12 @@ static int eic770x_vi_init(struct eswin_vi_device *es_vi_dev)
+     struct eswin_vi_device *regmap = es_vi_dev;
+     unsigned int reg_value;
+ 
+-    syscrg_register_write(regmap, 0x200, 0xffffffff);///lsp_clk_en0 enable(sys_crg)
+-    syscrg_register_write(regmap, 0x424, 0x3ff);///i2c_rst_ctl(sys_crg)
+-    
+-    udelay(1000);
+-
+-
+     syscrg_register_write(regmap, 0x470, 0x7);///vi_rst_ctl
+     syscrg_register_write(regmap, 0x474, 0x1);///dvp_rst_ctl
+     syscrg_register_write(regmap, 0x478, 0x1);///isp0_rst_ctl
+     syscrg_register_write(regmap, 0x47c, 0x1);///isp1_rst_ctl
+     syscrg_register_write(regmap, 0x480, 0x1);///shutter_rst_ctl
+-    udelay(20000);
++    udelay(1000);
+ 
+     syscrg_register_write(regmap, 0x184, 0x80000020);///vi_dwclk_ctl
+     syscrg_register_write(regmap, 0x188, 0xc0000020);///vi_aclk_ctl
+@@ -197,14 +187,11 @@ static int eic770x_vi_init(struct eswin_vi_device *es_vi_dev)
+     vi_top_register_write(es_vi_dev, VI_TOP_CLOCK_ENABLE, 0xffffffff);
+     reg_value = vi_top_register_read(es_vi_dev, VI_TOP_CLOCK_ENABLE);
+     pr_debug("ISP_TOP_CLOCK_EN[0x51030040] = %x\n", reg_value);
+-    
+-    udelay(200000);
+ 
+-	viscu_cfg(es_vi_dev);///isp_rst(sys_crg)
++    udelay(1000);
+ 
++    viscu_cfg(es_vi_dev);///isp_rst(sys_crg)
+     vitop_intf_cfg(es_vi_dev);///(vi_top_cfg)
+-   
+-    
+     return 0;
+ }
+ 
+@@ -373,7 +360,6 @@ long eswin_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
+     struct eswin_vi_device *es_vi_dev = file->private_data;
+     struct soc_control_context soc_ctrl;
+     struct isp_control_HxV isp_control_h_v;
+-    pr_debug(DRIVER_NAME ": IOCTL In\n");
+ 
+     switch (cmd) {
+         case VI_IOCTL_RESET:
+@@ -583,9 +569,9 @@ static int eswin_remove(struct platform_device *pdev)
+ }
+ 
+ static const struct of_device_id eswin_id_table[] = {
+-    { 
+-        .compatible = "esw,vi_subsys", 
+-        .data = 0 
++    {
++        .compatible = "esw,vi_subsys",
++        .data = 0
+     },
+     { }
+ };
+-- 
+2.51.1
+

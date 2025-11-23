@@ -1,0 +1,26 @@
+From be0cbe35b8442db1c20822da151b0266035d2bbf Mon Sep 17 00:00:00 2001
+From: cheney <11722200@qq.com>
+Date: Thu, 13 Mar 2025 14:00:38 +0800
+Subject: [PATCH 227/533] Fix: touchpad recognition issue by changing interrupt
+ to low-level trigger.
+
+---
+ arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
+index 3b3a82b942bb..a25ba793e2d7 100644
+--- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
++++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
+@@ -1266,7 +1266,7 @@ d0_touchpad: hid@2c {
+ 		hid-descr-addr = <0x0020>;
+ 		post-power-on-delay-ms = <200>;
+ 		interrupt-parent = <&porta>;
+-		interrupts = <20 IRQ_TYPE_EDGE_FALLING>;
++		interrupts = <20 IRQ_TYPE_LEVEL_LOW>;
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&pinctrl_die0_gpio20_default>;
+ 		irq-gpios = <&porta 20 GPIO_ACTIVE_LOW>;
+-- 
+2.51.1
+

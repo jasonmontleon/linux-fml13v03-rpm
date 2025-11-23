@@ -1,0 +1,26 @@
+From 4e4dc9d6836fac515dbd9ee521bdb7bac3deb6cb Mon Sep 17 00:00:00 2001
+From: "yang.wang" <yang.wang@deepcomputing.io>
+Date: Thu, 13 Mar 2025 18:10:47 +0800
+Subject: [PATCH 231/533] Kconfig: fix compilation warnings.
+ drivers/soc/eswin/ai_driver/Kconfig:21:warning: no new line at end of file
+
+Signed-off-by: yang.wang <yang.wang@deepcomputing.io>
+---
+ drivers/soc/eswin/ai_driver/Kconfig | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/soc/eswin/ai_driver/Kconfig b/drivers/soc/eswin/ai_driver/Kconfig
+index 0044a4be10e5..e2d60db9a5e2 100644
+--- a/drivers/soc/eswin/ai_driver/Kconfig
++++ b/drivers/soc/eswin/ai_driver/Kconfig
+@@ -18,4 +18,5 @@ config ESWIN_NPU
+ config NPU_PERF
+     bool "NPU PERF"
+     default n
+-    depends on ESWIN_NPU
+\ No newline at end of file
++    depends on ESWIN_NPU
++
+-- 
+2.51.1
+

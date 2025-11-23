@@ -1,0 +1,44 @@
+From 6b6b3d27accfb53ff2051aced9f50264a109c107 Mon Sep 17 00:00:00 2001
+From: luoshanggui <luoshanggui@eswincomputing.com>
+Date: Fri, 22 Aug 2025 09:04:24 +0800
+Subject: [PATCH 473/533] fix : fix relocate error for dsp operator Changelogs:
+
+Signed-off-by: luoshanggui <luoshanggui@eswincomputing.com>
+---
+ drivers/soc/eswin/ai_driver/dsp/mloader/xt_mld_relocate.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/soc/eswin/ai_driver/dsp/mloader/xt_mld_relocate.c b/drivers/soc/eswin/ai_driver/dsp/mloader/xt_mld_relocate.c
+index 75e18557c879..4861af639471 100644
+--- a/drivers/soc/eswin/ai_driver/dsp/mloader/xt_mld_relocate.c
++++ b/drivers/soc/eswin/ai_driver/dsp/mloader/xt_mld_relocate.c
+@@ -344,7 +344,7 @@ static xtmld_result_code_t relocate_relative(xtmld_state_t *lib_info,
+ 	// unaligned relocations
+ 	if (a_ofs == 0) {
+ 		xtmld_ptr raddr;
+-		status = reloc_addr(lib_info, load_32(addr) + rela->r_addend,
++		status = reloc_addr_value(lib_info, load_32(addr) + rela->r_addend,
+ 				    &raddr);
+ 		if (status != xtmld_success)
+ 			return status;
+@@ -355,7 +355,7 @@ static xtmld_result_code_t relocate_relative(xtmld_state_t *lib_info,
+ 		lo = load_32(a_ptr);
+ 		hi = load_32((uint32_t *)a_ptr + 1);
+ 		val = extract(lo, hi, a_ofs);
+-		status = reloc_addr(lib_info, val + rela->r_addend,
++		status = reloc_addr_value(lib_info, val + rela->r_addend,
+ 				    ((xtmld_ptr *)&val));
+ 		if (status != xtmld_success)
+ 			return status;
+@@ -380,7 +380,7 @@ static xtmld_result_code_t relocate_32_pcrel(xtmld_state_t *lib_info,
+ 	Elf32_Word a_ofs = (Elf32_Word)addr % 4;
+ 	// r_addend is the location of target in PIL
+ 	// get loaded address of target
+-	status = reloc_addr(lib_info, rela->r_addend, &raddr);
++	status = reloc_addr_value(lib_info, rela->r_addend, &raddr);
+ 	if (status != xtmld_success)
+ 		return status;
+ 	// check if it's 4 byte aligned, C++ exception tables may have
+-- 
+2.51.1
+

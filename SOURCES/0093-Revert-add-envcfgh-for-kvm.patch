@@ -1,0 +1,60 @@
+From c12c71319775e5f2b87e99f216c42a967ad66447 Mon Sep 17 00:00:00 2001
+From: Han Gao <gaohan@iscas.ac.cn>
+Date: Tue, 16 Jul 2024 11:58:36 +0800
+Subject: [PATCH 093/533] Revert: add envcfgh for kvm
+
+Revert commitid: 6bb2e00ea304ffc0446f345c46fe22713ce43cbf
+
+EIC770X is not support it.
+
+Signed-off-by: Han Gao <gaohan@iscas.ac.cn>
+Signed-off-by: Han Gao <rabenda.cn@gmail.com>
+---
+ arch/riscv/kvm/vcpu.c | 24 ------------------------
+ 1 file changed, 24 deletions(-)
+
+diff --git a/arch/riscv/kvm/vcpu.c b/arch/riscv/kvm/vcpu.c
+index 9584d62c96ee..7f6c072f3e2f 100644
+--- a/arch/riscv/kvm/vcpu.c
++++ b/arch/riscv/kvm/vcpu.c
+@@ -493,28 +493,6 @@ int kvm_arch_vcpu_ioctl_set_guest_debug(struct kvm_vcpu *vcpu,
+ 	return -EINVAL;
+ }
+ 
+-static void kvm_riscv_vcpu_update_config(const unsigned long *isa)
+-{
+-	u64 henvcfg = 0;
+-
+-	if (riscv_isa_extension_available(isa, SVPBMT))
+-		henvcfg |= ENVCFG_PBMTE;
+-
+-	if (riscv_isa_extension_available(isa, SSTC))
+-		henvcfg |= ENVCFG_STCE;
+-
+-	if (riscv_isa_extension_available(isa, ZICBOM))
+-		henvcfg |= (ENVCFG_CBIE | ENVCFG_CBCFE);
+-
+-	if (riscv_isa_extension_available(isa, ZICBOZ))
+-		henvcfg |= ENVCFG_CBZE;
+-
+-	csr_write(CSR_HENVCFG, henvcfg);
+-#ifdef CONFIG_32BIT
+-	csr_write(CSR_HENVCFGH, henvcfg >> 32);
+-#endif
+-}
+-
+ void kvm_arch_vcpu_load(struct kvm_vcpu *vcpu, int cpu)
+ {
+ 	struct kvm_vcpu_csr *csr = &vcpu->arch.guest_csr;
+@@ -529,8 +507,6 @@ void kvm_arch_vcpu_load(struct kvm_vcpu *vcpu, int cpu)
+ 	csr_write(CSR_HVIP, csr->hvip);
+ 	csr_write(CSR_VSATP, csr->vsatp);
+ 
+-	kvm_riscv_vcpu_update_config(vcpu->arch.isa);
+-
+ 	kvm_riscv_gstage_update_hgatp(vcpu);
+ 
+ 	kvm_riscv_vcpu_timer_restore(vcpu);
+-- 
+2.51.1
+

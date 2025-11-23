@@ -1,0 +1,53 @@
+From 61f25655125301c30339379570922ad907347231 Mon Sep 17 00:00:00 2001
+From: "yang.wang" <yang.wang@deepcomputing.io>
+Date: Thu, 5 Jun 2025 10:05:55 +0800
+Subject: [PATCH 304/533] riscv: dts: eswin: eic7702-fml13v03: Configure DIE0
+ GPIO62 (PC30) as power-status-gpios for EC.
+
+Signed-off-by: yang.wang <yang.wang@deepcomputing.io>
+---
+ .../eswin/eic7702-deepcomputing-fml13v03.dts  | 20 ++++++++++++++++++-
+ 1 file changed, 19 insertions(+), 1 deletion(-)
+
+diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
+index 708658ae5fdb..8bac0f0c8f27 100644
+--- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
++++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
+@@ -555,6 +555,21 @@ conf {
+ 	};
+ };
+ 
++&pinctrl_die0_gpio62_default {
++	mux {
++		groups = "gpio62_group";
++		function = "gpio62_func";
++	};
++	conf {
++		groups = "gpio62_group";
++		drive-strength = <2>;
++		output-high;
++		input-enable = <0>;
++		bias-pull-up = <0>;
++		bias-pull-down = <0>;
++	};
++};
++
+ &pinctrl_die1_gpio16_default {
+ 	mux {
+ 		groups = "gpio16_group";
+@@ -1185,8 +1200,11 @@ fwos_ec: ec@0 {
+ 		interrupt-parent = <&porta>;
+ 		interrupts = <25 IRQ_TYPE_LEVEL_LOW>;
+ 
++		power-status-gpios = <&portc 30 GPIO_ACTIVE_HIGH>;
++
+ 		pinctrl-names = "default";
+-		pinctrl-0 = <&pinctrl_die0_gpio25_default>;
++		pinctrl-0 = <&pinctrl_die0_gpio25_default
++					 &pinctrl_die0_gpio62_default>;
+ 	};
+ };
+ 
+-- 
+2.51.1
+

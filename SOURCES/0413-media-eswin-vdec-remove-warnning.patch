@@ -1,0 +1,56 @@
+From 734dc96ca31dd0b4f3e3e995284fff4ea735ed59 Mon Sep 17 00:00:00 2001
+From: Sandie Cao <sandie.cao@deepcomputing.io>
+Date: Tue, 8 Jul 2025 09:24:06 +0800
+Subject: [PATCH 413/533] media: eswin: vdec: remove warnning
+
+Signed-off-by: Sandie Cao <sandie.cao@deepcomputing.io>
+---
+ drivers/staging/media/eswin/vdec/hantro_dec.c  | 2 ++
+ drivers/staging/media/eswin/vdec/hantro_vcmd.c | 4 ----
+ 2 files changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/staging/media/eswin/vdec/hantro_dec.c b/drivers/staging/media/eswin/vdec/hantro_dec.c
+index 30825672b7ef..5e31435f79d7 100644
+--- a/drivers/staging/media/eswin/vdec/hantro_dec.c
++++ b/drivers/staging/media/eswin/vdec/hantro_dec.c
+@@ -487,6 +487,7 @@ static core_cfg config;
+ 
+ #define CORE_TYPE_STR_CASE(ct) case (ct): return(#ct + 3)
+ 
++#if (OUTPUT_LOG_LEVEL & VC_LOG_LEVEL_DBG)
+ static char *CoreTypeStr(enum CoreType ct)
+ {
+ 	switch (ct) {
+@@ -505,6 +506,7 @@ static char *CoreTypeStr(enum CoreType ct)
+ 		return "Invalid core type";
+ 	}
+ }
++#endif
+ 
+ #ifdef HANTRODEC_DEBUG
+ 
+diff --git a/drivers/staging/media/eswin/vdec/hantro_vcmd.c b/drivers/staging/media/eswin/vdec/hantro_vcmd.c
+index 36880d6c67c9..4a1c6ead7219 100644
+--- a/drivers/staging/media/eswin/vdec/hantro_vcmd.c
++++ b/drivers/staging/media/eswin/vdec/hantro_vcmd.c
+@@ -2689,8 +2689,6 @@ int hantrovcmd_release(struct inode *inode, struct file *filp)
+ 
+ 	if (dev->hw_version_id >= HW_ID_1_2_1) {
+ 		for (core_id = 0; core_id < total_vcmd_core_num; core_id++) {
+-			if (!(&dev[core_id]))
+-				continue;
+ 
+ 			if (down_interruptible(&vcmd_reserve_cmdbuf_sem[dev[core_id].vcmd_core_cfg.sub_module_type]))
+ 				return -ERESTARTSYS;
+@@ -2966,8 +2964,6 @@ int hantrovcmd_release(struct inode *inode, struct file *filp)
+ 		}
+ 	} else {
+ 		for (core_id = 0; core_id < total_vcmd_core_num; core_id++) {
+-			if ((&dev[core_id]) == NULL)
+-				continue;
+ 
+ 			if (down_interruptible(&vcmd_reserve_cmdbuf_sem[dev[core_id].vcmd_core_cfg.sub_module_type]))
+ 				return -ERESTARTSYS;
+-- 
+2.51.1
+

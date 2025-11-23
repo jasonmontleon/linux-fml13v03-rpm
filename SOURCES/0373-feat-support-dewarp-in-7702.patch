@@ -1,0 +1,29 @@
+From 87a2931cede29818559ebda443defb06fd97cecc Mon Sep 17 00:00:00 2001
+From: congyuyang <congyuyang@eswincomputing.com>
+Date: Thu, 29 May 2025 10:30:27 +0800
+Subject: [PATCH 373/533] feat:support dewarp in 7702
+
+Changelogs:
+1. support dewarp in 7702
+
+Signed-off-by: congyuyang <congyuyang@eswincomputing.com>
+---
+ arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi b/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
+index e74479b92029..d835fd640338 100644
+--- a/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
++++ b/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
+@@ -1413,7 +1413,7 @@ pvt1: pvt@0x52360000 {
+ 
+ 		fan_control: fan_control@50b50000 {
+ 			compatible = "eswin-fan-control";
+-			reg = <0x0 0x50b50000 0x0 0x10000>, <0x0 0x51810668 0x0 0x10>;
++			reg = <0x0 0x50b50000 0x0 0x10000>;
+ 			clocks = <&d0_clock EIC7700_CLK_LSP_FAN_PCLK>;
+ 			clock-names = "pclk";
+ 			resets = <&d0_reset FAN_RST_CTRL SW_FAN_RST_N>;
+-- 
+2.51.1
+

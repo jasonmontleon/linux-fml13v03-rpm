@@ -1,0 +1,80 @@
+From 778970654ab3525f918945aab71516f8e08a3338 Mon Sep 17 00:00:00 2001
+From: wangguosheng <wangguosheng@eswincomputing.com>
+Date: Tue, 28 Oct 2025 15:49:43 +0800
+Subject: [PATCH 528/533] fix: pwm adds shutdown function
+
+Changelogs:
+1. When the system shuts down, it is necessary to lower or raise the pwm pin to turn off the fan.
+2. In addition, if the fan-vcc pin is connected to gpio, it should also be pulled down or up synchronously.
+
+Signed-off-by: wangguosheng <wangguosheng@eswincomputing.com>
+---
+ .../eic7702-deepcomputing-fml13v03-evt.dts    | 20 +++++++------------
+ 1 file changed, 7 insertions(+), 13 deletions(-)
+
+diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03-evt.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03-evt.dts
+index e51e7d7f4fdc..7e8270a8393f 100755
+--- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03-evt.dts
++++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03-evt.dts
+@@ -119,7 +119,7 @@ ramoops@fff00000 {
+ 			no-map;
+ 		};
+ 
+-		lpcpu_reserved: g2d_8GB_boundary_reserved_4k { // 32M reserved for lpcpu
++		g2d_8GB_boundary_reserved_4k { // 32M for npu0 runtime
+ 			no-map;
+ 			reg = <0x1 0xfe000000 0x0 0x2000000>;
+ 		};
+@@ -145,7 +145,7 @@ d1_g2d_4GB_boundary_reserved_4k {
+ 			reg = <0x20 0xfffff000 0x0 0x1000>;
+ 		};
+ 
+-		d1_lpcpu_reserved: d1_g2d_8GB_boundary_reserved_4k { // 32M reserved for lpcpu
++		d1_g2d_8GB_boundary_reserved_4k { // 32M for npu1 runtime
+ 			no-map;
+ 			reg = <0x21 0xfe000000 0x0 0x2000000>;
+ 		};
+@@ -504,19 +504,14 @@ &d1_ipc_scpu {
+ 
+ &d0_lpcpu {
+ 	status = "okay";
+-	memory-region = <&lpcpu_reserved>;
+ 	pinctrl-names = "default";
+-	pinctrl-0 = <&pinctrl_die0_gpio0_default>;
+-	irq-gpios = <&porta 0 GPIO_ACTIVE_HIGH>;
++	pinctrl-0 = <&pinctrl_die0_gpio0_default &pinctrl_die1_gpio7_on_default>;
++	irq-gpios = <&porta 0 GPIO_ACTIVE_HIGH>, <&d1_porta 7 IRQ_TYPE_EDGE_BOTH>;
++	vddctrl = <104 0 1>;
+ };
+ 
+ &d1_lpcpu {
+-	status = "okay";
+-	memory-region = <&d1_lpcpu_reserved>;
+-	pinctrl-names = "default";
+-	pinctrl-0 = <&pinctrl_die1_gpio7_on_default>;
+-	control-gpio-names = "socvdd";
+-	control-gpio-ports = <104 GPIO_ACTIVE_HIGH>;
++	status = "disabled";
+ };
+ 
+ &pinctrl_die0_gpio25_default {
+@@ -974,7 +969,6 @@ &d1_sata {
+ &d0_usbdrd3_0 {
+ 	status = "okay";
+ };
+-
+ &d1_usbdrd3_0 {
+ 	status = "okay";
+ };
+@@ -1148,7 +1142,7 @@ &ssi1 {
+ 	cs-gpios = <&portc 24 GPIO_ACTIVE_LOW>;
+ 	num-cs = <1>;
+ 
+-	fwos_ec: ec@0 {
++	fwos_ec: spi@0 {
+ 		compatible = "google,cros-ec-spi";
+ 		reg = <0>;
+ 		status = "okay";
+-- 
+2.51.1
+

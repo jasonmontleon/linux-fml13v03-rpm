@@ -1,0 +1,45 @@
+From ab2616ffcfa85971a4980c8f4cd20b1e3c443c3f Mon Sep 17 00:00:00 2001
+From: Sandie Cao <sandie.cao@deepcomputing.io>
+Date: Mon, 31 Mar 2025 10:12:58 +0800
+Subject: [PATCH 265/533] riscv: dts: eswin: fml13v03: disable d1_pmu,
+ d1_lpcpu, d1_dmac0
+
+Signed-off-by: Sandie Cao <sandie.cao@deepcomputing.io>
+---
+ .../riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
+index 1ced9cfcd2af..4b5f5ea51330 100644
+--- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
++++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
+@@ -299,7 +299,7 @@ &d0_pmu {
+ 	status = "okay";
+ };
+ &d1_pmu {
+-	status = "okay";
++	status = "disabled";
+ };
+ 
+ &ddr0 {
+@@ -488,7 +488,7 @@ &d0_lpcpu {
+ 	status = "okay";
+ };
+ &d1_lpcpu {
+-	status = "okay";
++	status = "disabled";
+ };
+ 
+ &pinctrl_die0_gpio27_default {
+@@ -993,7 +993,7 @@ &d0_dmac0 {
+ };
+ 
+ &d1_dmac0 {
+-	status = "okay";
++	status = "disabled";
+ };
+ 
+ &d0_aon_dmac {
+-- 
+2.51.1
+

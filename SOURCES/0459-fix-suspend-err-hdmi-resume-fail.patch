@@ -1,0 +1,42 @@
+From 158b6a4274cf2de37f4beed7dbf2bd820ab204ba Mon Sep 17 00:00:00 2001
+From: fanxiaping <fanxiaping@eswincomputing.com>
+Date: Fri, 25 Jul 2025 18:00:40 +0800
+Subject: [PATCH 459/533] fix:suspend err, hdmi resume fail
+
+Changelogs: add clk enable check
+Signed-off-by: fanxiaping <fanxiaping@eswincomputing.com>
+---
+ drivers/gpu/drm/eswin/dw-hdmi.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/drivers/gpu/drm/eswin/dw-hdmi.c b/drivers/gpu/drm/eswin/dw-hdmi.c
+index 58bb53434f7b..926bfffe5335 100644
+--- a/drivers/gpu/drm/eswin/dw-hdmi.c
++++ b/drivers/gpu/drm/eswin/dw-hdmi.c
+@@ -37,6 +37,7 @@
+ #include <linux/regmap.h>
+ #include <linux/dma-mapping.h>
+ #include <linux/spinlock.h>
++#include <linux/clk-provider.h>
+ 
+ #include <media/cec-notifier.h>
+ 
+@@ -4623,6 +4624,15 @@ EXPORT_SYMBOL_GPL(dw_hdmi_suspend);
+ void dw_hdmi_resume(struct dw_hdmi *hdmi)
+ {
+ 	dev_dbg(hdmi->dev, "%s", __func__);
++	if (!__clk_is_enabled(hdmi->cec_clk)) {
++		clk_enable(hdmi->cec_clk);
++	}
++	if (!__clk_is_enabled(hdmi->iahb_clk)) {
++		clk_enable(hdmi->iahb_clk);
++	}
++	if (!__clk_is_enabled(hdmi->isfr_clk)) {
++		clk_enable(hdmi->isfr_clk);
++	}
+ 	dw_hdmi_init_hw(hdmi);
+ }
+ EXPORT_SYMBOL_GPL(dw_hdmi_resume);
+-- 
+2.51.1
+

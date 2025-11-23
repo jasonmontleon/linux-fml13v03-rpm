@@ -1,0 +1,26 @@
+From 477d09f7659a95086018e39c8237349509b1293f Mon Sep 17 00:00:00 2001
+From: cheney <11722200@qq.com>
+Date: Tue, 1 Jul 2025 15:42:46 +0800
+Subject: [PATCH 406/533] Make PVR driver builtin to fix 20s CPU stall during
+ boot
+
+---
+ arch/riscv/configs/fml13v03_defconfig | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/riscv/configs/fml13v03_defconfig b/arch/riscv/configs/fml13v03_defconfig
+index 01e5dd571fad..1c6fb350f565 100755
+--- a/arch/riscv/configs/fml13v03_defconfig
++++ b/arch/riscv/configs/fml13v03_defconfig
+@@ -2792,7 +2792,7 @@ CONFIG_ESWIN_MMU=y
+ CONFIG_ESWIN_DW_HDMI=y
+ CONFIG_DW_HDMI_I2S_AUDIO=y
+ CONFIG_DW_HDMI_CEC=y
+-CONFIG_DRM_IMG_VOLCANIC=m
++CONFIG_DRM_IMG_VOLCANIC=y
+ CONFIG_DRM_LEGACY=y
+ CONFIG_FB=y
+ CONFIG_FB_EFI=y
+-- 
+2.51.1
+

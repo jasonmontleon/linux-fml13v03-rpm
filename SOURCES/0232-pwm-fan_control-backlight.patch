@@ -1,0 +1,151 @@
+From 8d086472b793e1822e3688549dee693c2e200e0f Mon Sep 17 00:00:00 2001
+From: "yang.wang" <yang.wang@deepcomputing.io>
+Date: Mon, 17 Mar 2025 17:54:27 +0800
+Subject: [PATCH 232/533] pwm: fan_control & backlight .
+
+Signed-off-by: yang.wang <yang.wang@deepcomputing.io>
+---
+ .../eswin/eic7702-deepcomputing-fml13v03.dts  | 66 +++++++++++++++----
+ arch/riscv/configs/fml13v03_defconfig         |  2 +
+ drivers/pwm/pwm-dwc-eswin.c                   |  8 ++-
+ 3 files changed, 61 insertions(+), 15 deletions(-)
+
+diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
+index 9588c5c64b4a..7be25ad21838 100644
+--- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
++++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
+@@ -159,19 +159,47 @@ distance-map {
+ 				<1 1 10>;
+ 	};
+ 
+-	/* die1 gpio68 system led */
+-	leds {
+-		compatible = "gpio-leds";
+-		pinctrl-names = "default";
+-		pinctrl-0 = <&pinctrl_die1_gpio68_default>;
++    backlight_regulator: regulator-backlight {
++        compatible = "regulator-fixed";
++        regulator-name = "backlight-power";
++        regulator-min-microvolt = <1800000>;  /* 1.8V */
++        regulator-max-microvolt = <1800000>;  /* 1.8V */
++        regulator-always-on;
++    };
+ 
+-		gpio-68 {
+-			gpios = <&d1_portc 4 GPIO_ACTIVE_LOW>;
+-			label = "heartbeat";
+-			linux,default-trigger = "heartbeat";
+-		};
++	backlight: backlight {
++        compatible = "pwm-backlight";
++        pwms = <&d1_pwm0 0 200000 1>;
++        power-supply = <&backlight_regulator>;
++        status = "okay";
++        brightness-levels = <
++            255 254 253 252 251 250 249 248 247 246
++            245 244 243 242 241 240 239 238 237 236
++            235 234 233 232 231 230 229 228 227 226
++            225 224 223 222 221 220 219 218 217 216
++            215 214 213 212 211 210 209 208 207 206
++            205 204 203 202 201 200 199 198 197 196
++            195 194 193 192 191 190 189 188 187 186
++            185 184 183 182 181 180 179 178 177 176
++            175 174 173 172 171 170 169 168 167 166
++            165 164 163 162 161 160 159 158 157 156
++            155 154 153 152 151 150 149 148 147 146
++            145 144 143 142 141 140 139 138 137 136
++            135 134 133 132 131 130 129 128 127 126
++            125 124 123 122 121 120 119 118 117 116
++            115 114 113 112 111 110 109 108 107 106
++            105 104 103 102 101 100 99  98  97  96
++            95  94  93  92  91  90  89  88  87  86
++            85  84  83  82  81  80  79  78  77  76
++            75  74  73  72  71  70  69  68  67  66
++            65  64  63  62  61  60  59  58  57  56
++            55  54  53  52  51  50  49  48  47  46
++            45  44  43  42  41  40  39  38  37  36
++            35  34  33  32  31  30  29  28  27  26
++            25  24  23  22  21  20  19  18  17  16
++            15  14  13  12  11  10 >;
++        default-brightness-level = <128>;
+ 	};
+-
+ };
+ 
+ &D1CACHE {
+@@ -1435,7 +1463,21 @@ &pwm0 {
+ 	status = "okay";
+ };
+ &d1_pwm0 {
+-	status = "disabled";
++    status = "okay";
++    #pwm-cells = <3>;
++    clock-names = "pclk";
++    clocks = <&d1_clock WIN2030_CLK_LSP_TIMER_PCLK>;
++    pinctrl-names = "default";
++    pinctrl-0 = <&d1_pinctrl_pwm0_default>;
++};
++
++&fan_control {
++    status = "okay";
++    eswin,pwm_inverted;
++};
++
++&d1_fan_control {
++    pwms = <&d1_pwm0 0 100000 0>;
+ };
+ 
+ &pvt0 {
+diff --git a/arch/riscv/configs/fml13v03_defconfig b/arch/riscv/configs/fml13v03_defconfig
+index 97e92b1a81a0..323ba31752ba 100755
+--- a/arch/riscv/configs/fml13v03_defconfig
++++ b/arch/riscv/configs/fml13v03_defconfig
+@@ -470,6 +470,7 @@ CONFIG_SENSORS_PAC1934=y
+ CONFIG_WATCHDOG=y
+ CONFIG_DW_WATCHDOG=y
+ CONFIG_REGULATOR=y
++CONFIG_REGULATOR_FIXED_VOLTAGE=y
+ CONFIG_REGULATOR_TPS549D22=y
+ CONFIG_REGULATOR_PCA9450=y
+ CONFIG_MEDIA_SUPPORT=y
+@@ -645,6 +646,7 @@ CONFIG_DRM_LEGACY=y
+ CONFIG_FB=y
+ CONFIG_FB_RADEON=m
+ CONFIG_FB_SIMPLE=m
++CONFIG_BACKLIGHT_PWM=y
+ CONFIG_SOUND=y
+ CONFIG_SND=y
+ CONFIG_SND_HDA_INTEL=m
+diff --git a/drivers/pwm/pwm-dwc-eswin.c b/drivers/pwm/pwm-dwc-eswin.c
+index 1873b8351b0c..71841d8a012a 100644
+--- a/drivers/pwm/pwm-dwc-eswin.c
++++ b/drivers/pwm/pwm-dwc-eswin.c
+@@ -104,7 +104,7 @@ static int __dwc_pwm_configure_timer(struct dwc_pwm *dwc,
+ 				     struct pwm_device *pwm,
+ 				     const struct pwm_state *state)
+ {
+-	u64 tmp;
++	u64 tmp, duty = state->duty_cycle;
+ 	u32 ctrl;
+ 	u32 high;
+ 	u32 low;
+@@ -114,12 +114,14 @@ static int __dwc_pwm_configure_timer(struct dwc_pwm *dwc,
+ 	 * periods and check are the result within HW limits between 1 and
+ 	 * 2^32 periods.
+ 	 */
+-	tmp = DIV_ROUND_CLOSEST_ULL(state->duty_cycle, DWC_CLK_PERIOD_NS);
++	if (duty == 0 && state->enabled)
++		duty = state->period / 2;
++	tmp = DIV_ROUND_CLOSEST_ULL(duty, DWC_CLK_PERIOD_NS);
+ 	if (tmp < 1 || tmp > (1ULL << 32))
+ 		return -ERANGE;
+ 	low = tmp - 1;
+ 
+-	tmp = DIV_ROUND_CLOSEST_ULL(state->period - state->duty_cycle,
++	tmp = DIV_ROUND_CLOSEST_ULL(state->period - duty,
+ 				    DWC_CLK_PERIOD_NS);
+ 	if (tmp < 1 || tmp > (1ULL << 32))
+ 		return -ERANGE;
+-- 
+2.51.1
+

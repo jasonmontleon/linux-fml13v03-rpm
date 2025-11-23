@@ -1,0 +1,81 @@
+From 4efeefa71b2fceeac8d9d241faa46fa2c60a7b25 Mon Sep 17 00:00:00 2001
+From: chenzhanzhan <chenzhanzhan@eswincomputing.com>
+Date: Tue, 10 Jun 2025 16:02:54 +0800
+Subject: [PATCH 392/533] feature: Enable pstore feature
+
+Changelogs:
+1. Enable pstore feature
+
+Signed-off-by: chenzhanzhan <chenzhanzhan@eswincomputing.com>
+---
+ arch/riscv/boot/dts/eswin/eic7700-evb-a2.dts | 9 +++++++--
+ arch/riscv/boot/dts/eswin/eic7700-evb.dts    | 9 +++++++--
+ arch/riscv/boot/dts/eswin/eic7702-evb-a1.dts | 9 +++++++--
+ 3 files changed, 21 insertions(+), 6 deletions(-)
+
+diff --git a/arch/riscv/boot/dts/eswin/eic7700-evb-a2.dts b/arch/riscv/boot/dts/eswin/eic7700-evb-a2.dts
+index 5606df9f9db0..86a72f4f4021 100644
+--- a/arch/riscv/boot/dts/eswin/eic7700-evb-a2.dts
++++ b/arch/riscv/boot/dts/eswin/eic7700-evb-a2.dts
+@@ -97,9 +97,14 @@ npu0_reserved: sprammemory@59000000 {
+ 			reg = <0x0 0x59000000 0x0 0x400000>;
+ 		};
+ 
+-		g2d_4GB_boundary_reserved_4k {
++		ramoops@fff00000 {
++			compatible = "ramoops";
++			reg = <0x0 0xfff00000 0x0 0x100000>;
++			console-size = <0x40000>;
++			record-size = <0x40000>;
++			ftrace-size = <0x40000>;
++			pmsg-size = <0x40000>;
+ 			no-map;
+-			reg = <0x0 0xfffff000 0x0 0x1000>;
+ 		};
+ 
+ 		g2d_8GB_boundary_reserved_4k {
+diff --git a/arch/riscv/boot/dts/eswin/eic7700-evb.dts b/arch/riscv/boot/dts/eswin/eic7700-evb.dts
+index c4dd174eec1e..8b07c8de854a 100644
+--- a/arch/riscv/boot/dts/eswin/eic7700-evb.dts
++++ b/arch/riscv/boot/dts/eswin/eic7700-evb.dts
+@@ -93,9 +93,14 @@ npu0_reserved: sprammemory@59000000 {
+ 			reg = <0x0 0x59000000 0x0 0x400000>;
+ 		};
+ 
+-		g2d_4GB_boundary_reserved_4k {
++		ramoops@fff00000 {
++			compatible = "ramoops";
++			reg = <0x0 0xfff00000 0x0 0x100000>;
++			console-size = <0x40000>;
++			record-size = <0x40000>;
++			ftrace-size = <0x40000>;
++			pmsg-size = <0x40000>;
+ 			no-map;
+-			reg = <0x0 0xfffff000 0x0 0x1000>;
+ 		};
+ 
+ 		g2d_8GB_boundary_reserved_4k {
+diff --git a/arch/riscv/boot/dts/eswin/eic7702-evb-a1.dts b/arch/riscv/boot/dts/eswin/eic7702-evb-a1.dts
+index fe05cc53ef2f..7ca4524ce672 100644
+--- a/arch/riscv/boot/dts/eswin/eic7702-evb-a1.dts
++++ b/arch/riscv/boot/dts/eswin/eic7702-evb-a1.dts
+@@ -112,9 +112,14 @@ npu1_reserved: sprammemory@79000000 {
+ 			reg = <0x0 0x79000000 0x0 0x400000>;
+ 		};
+ 
+-		g2d_4GB_boundary_reserved_4k {
++		ramoops@fff00000 {
++			compatible = "ramoops";
++			reg = <0x0 0xfff00000 0x0 0x100000>;
++			console-size = <0x40000>;
++			record-size = <0x40000>;
++			ftrace-size = <0x40000>;
++			pmsg-size = <0x40000>;
+ 			no-map;
+-			reg = <0x0 0xfffff000 0x0 0x1000>;
+ 		};
+ 
+ 		g2d_8GB_boundary_reserved_4k {
+-- 
+2.51.1
+

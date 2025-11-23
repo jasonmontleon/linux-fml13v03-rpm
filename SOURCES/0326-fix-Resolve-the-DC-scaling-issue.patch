@@ -1,0 +1,38 @@
+From 638169c8143716ed9033556ced9814ff2be7b732 Mon Sep 17 00:00:00 2001
+From: denglei <denglei@eswincomputing.com>
+Date: Mon, 7 Apr 2025 19:31:32 +0800
+Subject: [PATCH 326/533] fix:Resolve the DC scaling issue.
+
+Changelogs:
+	Resolve the DC scaling issue.
+
+Signed-off-by: denglei <denglei@eswincomputing.com>
+---
+ drivers/gpu/drm/eswin/es_plane.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/drivers/gpu/drm/eswin/es_plane.c b/drivers/gpu/drm/eswin/es_plane.c
+index 93b97db5cb73..13718c3f4493 100644
+--- a/drivers/gpu/drm/eswin/es_plane.c
++++ b/drivers/gpu/drm/eswin/es_plane.c
+@@ -252,10 +252,17 @@ static int es_plane_atomic_check(struct drm_plane *plane,
+ 	struct drm_framebuffer *fb = new_plane_state->fb;
+ 	struct drm_crtc *crtc = new_plane_state->crtc;
+ 	struct es_crtc *es_crtc = to_es_crtc(crtc);
++	struct drm_device *dev = plane->dev;
++	struct es_drm_private *priv = dev->dev_private;
+ 
+ 	if (!crtc || !fb)
+ 		return 0;
+ 
++	/* Reject FB with misaligned pitches, which seem to crash the DC */
++	if (fb->format->num_planes == 1 &&
++		fb->pitches[0] & (priv->pitch_alignment - 1))
++		return -EINVAL;
++
+ 	return es_plane->funcs->check(es_crtc->dev, es_plane, new_plane_state);
+ }
+ 
+-- 
+2.51.1
+
