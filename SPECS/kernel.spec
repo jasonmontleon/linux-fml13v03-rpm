@@ -159,7 +159,7 @@ Summary: The Linux kernel
 #  to build the base kernel using the debug configuration. (Specifying
 #  the --with-release option overrides this setting.)
 %define debugbuildsenabled 1
-%define buildid .eswin7702
+%define buildid .fml13v03
 %define specrpmversion 6.6.116
 %define specversion 6.6.116
 %define patchversion 6.6
