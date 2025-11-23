@@ -1,4 +1,4 @@
-From 459e4b53244f9296f826f9fa063c892443f37ae3 Mon Sep 17 00:00:00 2001
+From 5bf4cec2f9297168eb82bcbe3ca7fd9b74c39060 Mon Sep 17 00:00:00 2001
 From: zhangqianqian1 <zhangqianqian1@eswincomputing.com>
 Date: Mon, 1 Sep 2025 10:04:43 +0800
 Subject: [PATCH 488/533] feat:Remove usb test driver probe.

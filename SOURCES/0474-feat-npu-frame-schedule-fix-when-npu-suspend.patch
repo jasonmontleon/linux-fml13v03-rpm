@@ -1,4 +1,4 @@
-From 635018060bbc5da04b6680815ce667411b00a698 Mon Sep 17 00:00:00 2001
+From 4917bf2d3133ef9ed11f7ce650575b716486e76c Mon Sep 17 00:00:00 2001
 From: zhuxuefei <zhuxuefei@eswincomputing.com>
 Date: Tue, 12 Aug 2025 14:33:41 +0800
 Subject: [PATCH 474/533] feat:npu frame schedule fix when npu suspend.

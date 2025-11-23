@@ -1,4 +1,4 @@
-From 04fd15c6e7e20e4ca674188ad9c1a155e8e5a684 Mon Sep 17 00:00:00 2001
+From 8fbbe66d33cc9273d23e820f4d06978cb8902c90 Mon Sep 17 00:00:00 2001
 From: zhangqianqian1 <zhangqianqian1@eswincomputing.com>
 Date: Wed, 24 Sep 2025 17:01:00 +0800
 Subject: [PATCH 515/533] feat:Remove usb_test and kernel dynamic log.

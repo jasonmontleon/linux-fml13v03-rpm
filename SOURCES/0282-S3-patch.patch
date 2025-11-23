@@ -1,4 +1,4 @@
-From cca6a253d2942e0363ec9d71c778f2d7a3303bea Mon Sep 17 00:00:00 2001
+From 1bafce3acfba6aa4dbb5d2d9ddab3a2c31cb2db6 Mon Sep 17 00:00:00 2001
 From: Sandie Cao <sandie.cao@deepcomputing.io>
 Date: Wed, 23 Apr 2025 11:53:19 +0800
 Subject: [PATCH 282/533] S3 patch
@@ -410,7 +410,7 @@ Subject: [PATCH 282/533] S3 patch
  tools/testing/selftests/kvm/Makefile          |   285 -
  tools/testing/selftests/kvm/config            |     5 -
  tools/testing/selftests/kvm/settings          |     1 -
- 408 files changed, 441552 insertions(+), 1364 deletions(-)
+ 406 files changed, 441552 insertions(+), 1355 deletions(-)
  create mode 100644 arch/riscv/boot/dts/eswin/eic7700-osm.dts
  create mode 100644 arch/riscv/boot/dts/eswin/eic7700-vpu7702.dts
  create mode 100644 arch/riscv/boot/dts/eswin/eic7702-d560.dts
@@ -689,11 +689,9 @@ Subject: [PATCH 282/533] S3 patch
  create mode 100644 sound/soc/codecs/eswin/tlv320aic3x-i2c.c
  create mode 100644 sound/soc/codecs/eswin/tlv320aic3x.c
  create mode 100644 sound/soc/codecs/eswin/tlv320aic3x.h
- delete mode 100644 tools/testing/selftests/arm64/tags/.gitignore
  delete mode 100644 tools/testing/selftests/arm64/tags/Makefile
  delete mode 100755 tools/testing/selftests/arm64/tags/run_tags_test.sh
  delete mode 100644 tools/testing/selftests/arm64/tags/tags_test.c
- delete mode 100644 tools/testing/selftests/kvm/.gitignore
  delete mode 100644 tools/testing/selftests/kvm/Makefile
  delete mode 100644 tools/testing/selftests/kvm/config
  delete mode 100644 tools/testing/selftests/kvm/settings

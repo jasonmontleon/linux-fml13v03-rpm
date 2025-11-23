@@ -1,4 +1,4 @@
-From 44b567882de346d978365a09d2ba4c40f422a1f4 Mon Sep 17 00:00:00 2001
+From f687842e7ffaec25bc630ac94b51fe49d542d7f3 Mon Sep 17 00:00:00 2001
 From: donghuawei <donghuawei@eswincomputing.com>
 Date: Fri, 9 May 2025 16:05:25 +0800
 Subject: [PATCH 366/533] fix: vpu7702 streamid problem

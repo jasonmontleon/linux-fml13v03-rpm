@@ -1,4 +1,4 @@
-From 06f950b4f881701e7c5ba1a9a7cfe2d770cc4ee8 Mon Sep 17 00:00:00 2001
+From b1cb0e39edc9e49412a452053f0d127070da1983 Mon Sep 17 00:00:00 2001
 From: ouyanghui <ouyanghui@eswincomputing.com>
 Date: Fri, 29 Aug 2025 11:16:06 +0800
 Subject: [PATCH 510/533] fix:cpu frequency switching cause d2d protocol error

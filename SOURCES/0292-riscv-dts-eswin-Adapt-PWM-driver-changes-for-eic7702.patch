@@ -1,4 +1,4 @@
-From 47ed3116e064faf4b639d230a28a17eee7442d66 Mon Sep 17 00:00:00 2001
+From f8622987d9c2c9a4a731fb5a2800f3707b9ca1f2 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Fri, 16 May 2025 15:34:36 +0800
 Subject: [PATCH 292/533] riscv: dts: eswin: Adapt PWM driver changes for

@@ -1,10 +1,9 @@
-From 95108d6a7332f48e772c01347a6a5581905a9ef6 Mon Sep 17 00:00:00 2001
+From f2e12dfa72e2fa83ab7044e39875c5db8f02223e Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Thu, 4 Sep 2025 13:38:50 +0800
 Subject: [PATCH 432/533] lpcpu: gpio usb lowpower
 
 ---
- .gitignore                                    |   3 +
  .../eswin/eic7702-deepcomputing-fml13v03.dts  |  33 +-
  .../boot/dts/eswin/eic7x-die0-pinctrl.dtsi    |   8 +-
  arch/riscv/configs/eic7702_dbg_defconfig      |   3 +
@@ -13,7 +12,7 @@ Subject: [PATCH 432/533] lpcpu: gpio usb lowpower
  drivers/usb/dwc3/dwc3-eswin.c                 |  68 +++-
  .../firmware/eic7702_lpcpu_npu_fw_die0.bin    | Bin 0 -> 54000 bytes
  .../firmware/eic7702_lpcpu_npu_fw_die1.bin    | Bin 0 -> 54000 bytes
- 9 files changed, 346 insertions(+), 188 deletions(-)
+ 8 files changed, 343 insertions(+), 188 deletions(-)
  create mode 100644 vendor/eswin/firmware/eic7702_lpcpu_npu_fw_die0.bin
  create mode 100644 vendor/eswin/firmware/eic7702_lpcpu_npu_fw_die1.bin
 
