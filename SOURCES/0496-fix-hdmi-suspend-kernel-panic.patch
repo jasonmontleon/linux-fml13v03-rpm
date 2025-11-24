@@ -1,4 +1,4 @@
-From 37d28a19cac2dc438eadd1cf8db8591ff1c99e91 Mon Sep 17 00:00:00 2001
+From c7ba86d492da3482d35ca433b8021a385cc6d6fa Mon Sep 17 00:00:00 2001
 From: fanxiaping <fanxiaping@eswincomputing.com>
 Date: Mon, 8 Sep 2025 09:25:01 +0800
 Subject: [PATCH 496/533] fix: hdmi suspend kernel panic
@@ -262,5 +262,5 @@ index dafb70b022ee..598692cd7ddc 100644
      },
  };
 -- 
-2.51.1
+2.52.0
 

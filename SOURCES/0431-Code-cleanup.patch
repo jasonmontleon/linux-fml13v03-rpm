@@ -1,4 +1,4 @@
-From c5cf1e769de0fbbdfd7d401e65f15364f7b026a2 Mon Sep 17 00:00:00 2001
+From 126b77defa93099eeeb85559485bf72ebaaee0f1 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Tue, 2 Sep 2025 19:03:12 +0800
 Subject: [PATCH 431/533] Code cleanup
@@ -48,5 +48,5 @@ index a735c67f7515..5386b67db4bb 100644
  		timebase-frequency = <RTCCLK_FREQ>;
  	};
 -- 
-2.51.1
+2.52.0
 

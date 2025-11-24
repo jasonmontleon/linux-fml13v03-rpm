@@ -1,4 +1,4 @@
-From 94ac06c96249345d284cf700b889e34b63853863 Mon Sep 17 00:00:00 2001
+From 281540d4a7bdb1d2f82970479e19794a23da4f88 Mon Sep 17 00:00:00 2001
 From: linmin <linmin@eswincomputing.com>
 Date: Mon, 2 Dec 2024 13:18:49 +0800
 Subject: [PATCH 216/533] release-1130
@@ -277368,5 +277368,5 @@ index 5774a03a270b..931143f8c7cb 100755
 +MODULE_DESCRIPTION("I2S driver");
 +MODULE_LICENSE("GPL");
 -- 
-2.51.1
+2.52.0
 

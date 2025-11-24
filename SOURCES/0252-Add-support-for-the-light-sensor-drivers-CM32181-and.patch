@@ -1,4 +1,4 @@
-From 680d710e0a2a225870e94bc1ac0efac5496aebd6 Mon Sep 17 00:00:00 2001
+From 17e7f66f0bbea863a30b52a1f3ac328203f0c53d Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Wed, 19 Mar 2025 15:37:56 +0800
 Subject: [PATCH 252/533] Add support for the light sensor drivers CM32181 and
@@ -146,5 +146,5 @@ index 9df85b3999fa..f9d0a79bd561 100644
  MODULE_DEVICE_TABLE(of, cm32181_of_match);
  
 -- 
-2.51.1
+2.52.0
 

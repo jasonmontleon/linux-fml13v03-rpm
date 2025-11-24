@@ -1,4 +1,4 @@
-From 5be12705df455d53f683f457beee38a667ab7b6c Mon Sep 17 00:00:00 2001
+From 1c1a823e1157328ef1a88c3daabade05e56dbd3c Mon Sep 17 00:00:00 2001
 From: linmin <linmin@eswincomputing.com>
 Date: Fri, 27 Dec 2024 16:54:16 +0800
 Subject: [PATCH 217/533] release-1230
@@ -13021,5 +13021,5 @@ index 000000000000..41cb55ba8d71
 +MODULE_LICENSE("GPL");
 +MODULE_ALIAS("platform:eswin dsp driver");
 -- 
-2.51.1
+2.52.0
 

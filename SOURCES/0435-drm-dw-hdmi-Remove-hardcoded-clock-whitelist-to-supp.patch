@@ -1,4 +1,4 @@
-From c79a87be9065cdec580056d4cbb7a3d513490445 Mon Sep 17 00:00:00 2001
+From d027522fff00dafd30470b22a7dae3f16bfe3369 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Fri, 29 Aug 2025 14:37:17 +0800
 Subject: [PATCH 435/533] drm/dw-hdmi: Remove hardcoded clock whitelist to
@@ -52,5 +52,5 @@ index bfe63f043274..dafb70b022ee 100644
  	},
  	{
 -- 
-2.51.1
+2.52.0
 

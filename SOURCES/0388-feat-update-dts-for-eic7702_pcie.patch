@@ -1,4 +1,4 @@
-From 1eb18b6a780aa1fc4f957e876036d2534f9ca5b3 Mon Sep 17 00:00:00 2001
+From 10ed98e4380ecbb3342dd5389b112bd87a1acd2d Mon Sep 17 00:00:00 2001
 From: tanshanshan <tanshanshan@eswincomputing.com>
 Date: Thu, 5 Jun 2025 15:54:35 +0800
 Subject: [PATCH 388/533] feat:update dts for eic7702_pcie
@@ -287,5 +287,5 @@ index 3cbfe77eeac1..2e6733f627cf 100644
 +	status = "disabled";
  };
 -- 
-2.51.1
+2.52.0
 

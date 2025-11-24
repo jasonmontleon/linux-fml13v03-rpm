@@ -1,4 +1,4 @@
-From 386db5de7da01148ee3a61289de40baba40a68b1 Mon Sep 17 00:00:00 2001
+From 760283ec247092cb4e86f10a9e7b3f303293b16e Mon Sep 17 00:00:00 2001
 From: ningyu <ningyu@eswincomputing.com>
 Date: Tue, 22 Apr 2025 16:24:55 +0800
 Subject: [PATCH 334/533] fix:add disable-wp in sdio
@@ -24,5 +24,5 @@ index bdedf4253327..33926ca40729 100644
  	no-mmc;
  };
 -- 
-2.51.1
+2.52.0
 

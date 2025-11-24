@@ -1,4 +1,4 @@
-From 895d5f1e5cc7e80802abe31c33e2c6d83d298798 Mon Sep 17 00:00:00 2001
+From 9aea4e194cbbfae4a82bdbfb8947d571825bc100 Mon Sep 17 00:00:00 2001
 From: hujiamiao <hujiamiao@eswincomputing.com>
 Date: Wed, 24 Sep 2025 14:03:50 +0800
 Subject: [PATCH 518/533] feat:pm merges dev macro controls
@@ -2146,5 +2146,5 @@ index 58e5bdb66ed7..f2a6f3b51e13 100755
  	},
  };
 -- 
-2.51.1
+2.52.0
 

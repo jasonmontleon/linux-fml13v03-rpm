@@ -1,4 +1,4 @@
-From 1fab0d51f116449ff910998819f844778113e70d Mon Sep 17 00:00:00 2001
+From e568504f9769e0312d57a1b4242d0e8ea883f87c Mon Sep 17 00:00:00 2001
 From: hehuan1 <hehuan1@eswincomputing.com>
 Date: Tue, 10 Jun 2025 21:51:57 +0800
 Subject: [PATCH 307/533] WIN2030-18074:feat: implement cpu read data from
@@ -839,5 +839,5 @@ index aaf7c55171e9..fe30569f4897 100644
  
  /*
 -- 
-2.51.1
+2.52.0
 

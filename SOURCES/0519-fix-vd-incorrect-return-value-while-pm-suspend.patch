@@ -1,4 +1,4 @@
-From 3a13a5dfe75ffb86cb1e7ea1143e3571a4e9434b Mon Sep 17 00:00:00 2001
+From 5452bae9e03331b58597200ee26d253ccfc76b0b Mon Sep 17 00:00:00 2001
 From: zouxiaojun <zouxiaojun@eswincomputing.com>
 Date: Fri, 10 Oct 2025 17:18:08 +0800
 Subject: [PATCH 519/533] fix(vd):incorrect return value while pm suspend
@@ -228,5 +228,5 @@ index db69a6a5f004..9aaa99c9c2d7 100644
  #ifdef SUPPORT_DMA_HEAP
  	case HANTRO_IOCH_DMA_HEAP_GET_IOVA: {
 -- 
-2.51.1
+2.52.0
 

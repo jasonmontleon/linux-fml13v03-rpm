@@ -1,4 +1,4 @@
-From 1b59c360a7146691b8a703d53e36ea21ab43cb33 Mon Sep 17 00:00:00 2001
+From 55f6936d8c0ab66efa2b8d3cd9218ce91e1713c2 Mon Sep 17 00:00:00 2001
 From: ningyu <ningyu@eswincomputing.com>
 Date: Fri, 18 Apr 2025 11:04:35 +0800
 Subject: [PATCH 330/533] feat:support eic7702 d560
@@ -725,5 +725,5 @@ index d82f2b5b4044..c09e33c2180a 100644
 +};
 +
 -- 
-2.51.1
+2.52.0
 

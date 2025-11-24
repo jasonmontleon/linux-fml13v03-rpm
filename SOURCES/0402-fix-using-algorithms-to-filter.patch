@@ -1,4 +1,4 @@
-From 62537b6f31cc2c5421b7dc04cb52d3720c020099 Mon Sep 17 00:00:00 2001
+From 6eea1211c59a37e5d1d670f2e1828d8d06c59693 Mon Sep 17 00:00:00 2001
 From: wangguosheng <wangguosheng@eswincomputing.com>
 Date: Wed, 11 Jun 2025 13:31:47 +0800
 Subject: [PATCH 402/533] fix:using algorithms to filter
@@ -1036,5 +1036,5 @@ index b678e2d0d4d9..581159b7ec80 100644
  	},
  	.probe = eswin_fan_control_probe,
 -- 
-2.51.1
+2.52.0
 

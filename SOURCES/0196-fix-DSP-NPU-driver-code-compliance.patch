@@ -1,4 +1,4 @@
-From 1857bd9e2d5cec4692774f90bc21c95f7789d47a Mon Sep 17 00:00:00 2001
+From c3a52df825030ce51f058609addf1839ff353b67 Mon Sep 17 00:00:00 2001
 From: denglei <denglei@eswincomputing.com>
 Date: Tue, 22 Oct 2024 11:22:48 +0800
 Subject: [PATCH 196/533] fix:DSP & NPU driver code compliance.
@@ -3360,5 +3360,5 @@ index b32f9484d98d..bef308e8dccb 100644
  #include <linux/kernel.h>
  #include <linux/slab.h>
 -- 
-2.51.1
+2.52.0
 

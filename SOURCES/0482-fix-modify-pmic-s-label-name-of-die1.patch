@@ -1,4 +1,4 @@
-From 2ec21e473d6ca43adca001677d8d30e97b8f50b5 Mon Sep 17 00:00:00 2001
+From f7f03591d126663393ad04ab7099063a52368912 Mon Sep 17 00:00:00 2001
 From: ningyu <ningyu@eswincomputing.com>
 Date: Thu, 28 Aug 2025 19:08:22 +0800
 Subject: [PATCH 482/533] fix:modify pmic's label name of die1
@@ -25,5 +25,5 @@ index b5af295df905..d189592c2771 100644
  			d1_npu_vcc:npu_svcc{
  				regulator-name="NPU_SVCC_D1";
 -- 
-2.51.1
+2.52.0
 

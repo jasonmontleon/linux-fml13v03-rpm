@@ -1,4 +1,4 @@
-From c3e977d60a6e552694ee087c5f0db0f9cdc2d8b3 Mon Sep 17 00:00:00 2001
+From 9bae62a069e293193b8fe3eff237a42b4e1eb381 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Wed, 21 May 2025 10:30:40 +0800
 Subject: [PATCH 294/533] dt-bindings: riscv: eswin: Add GPIO25 pinctrl and EC
@@ -43,5 +43,5 @@ index a93bdb2b01dc..39cb7f66eb2f 100644
  	gpio28  : head phone plug/unplug detection1(I)
  	gpio68  : fan pwm(O)
 -- 
-2.51.1
+2.52.0
 

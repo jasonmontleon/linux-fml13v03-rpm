@@ -1,4 +1,4 @@
-From db980bd31dcebe475cdb62bc8f46692add1cb9ac Mon Sep 17 00:00:00 2001
+From 96d2e61efa2a133d2914890cdf96b8a26bbad69d Mon Sep 17 00:00:00 2001
 From: liangshuang <liangshuang@eswincomputing.com>
 Date: Thu, 13 Jun 2024 14:55:45 +0800
 Subject: [PATCH 053/533] fix:optimize SDHCI driver tuning.
@@ -374,5 +374,5 @@ index badbee00b39e..d5ae6a5694f6 100644
  	ret = mmc_of_parse(host->mmc);
  	if (ret) {
 -- 
-2.51.1
+2.52.0
 

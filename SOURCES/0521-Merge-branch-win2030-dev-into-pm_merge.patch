@@ -1,4 +1,4 @@
-From a0b289de6a4d5a2710d1da4be7f81dd507bf8383 Mon Sep 17 00:00:00 2001
+From 1732d8a08fa0136dc5ed1b3803f4b807323b8276 Mon Sep 17 00:00:00 2001
 From: ouyanghui <ouyanghui@eswincomputing.com>
 Date: Wed, 15 Oct 2025 17:52:57 +0800
 Subject: [PATCH 521/533] Merge branch 'win2030-dev' into pm_merge
@@ -13534,7 +13534,7 @@ index 9a4fc6be113c..8e1fc296499a 100644
  
  #define pgd_ERROR(e) \
 diff --git a/arch/riscv/mm/ptdump.c b/arch/riscv/mm/ptdump.c
-index e9090b38f811..028bacba270e 100644
+index 52cc3d9380c0..4dae02b0a2ed 100644
 --- a/arch/riscv/mm/ptdump.c
 +++ b/arch/riscv/mm/ptdump.c
 @@ -265,9 +265,12 @@ static void note_page(struct ptdump_state *pt_st, unsigned long addr,
@@ -14024,7 +14024,7 @@ index 2506c78590af..489a0a29b642 100644
  	/*
  	 * Mark that we are not ready with data until the first
 diff --git a/drivers/media/i2c/Kconfig b/drivers/media/i2c/Kconfig
-index bf0554fae0de..7db895262a1b 100644
+index c752d65e0b36..9cdc7c2d78f9 100644
 --- a/drivers/media/i2c/Kconfig
 +++ b/drivers/media/i2c/Kconfig
 @@ -233,6 +233,25 @@ config VIDEO_IMX586
@@ -44152,5 +44152,5 @@ index 42ab9af0fa2b..a157e3756c94 100755
  };
  
 -- 
-2.51.1
+2.52.0
 

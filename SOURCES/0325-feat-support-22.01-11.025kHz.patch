@@ -1,4 +1,4 @@
-From 070e3b00728b7423c8e2e5b27185ec7bda04bb84 Mon Sep 17 00:00:00 2001
+From 787be8e91cf1ac69401203d68aa8b1a6a88a4c9a Mon Sep 17 00:00:00 2001
 From: zhouliang2 <zhouliang2@eswincomputing.com>
 Date: Wed, 2 Apr 2025 14:47:04 +0800
 Subject: [PATCH 325/533] feat:support 22.01/11.025kHz
@@ -91,5 +91,5 @@ index 94feb9486fbc..42ab9af0fa2b 100755
  };
  
 -- 
-2.51.1
+2.52.0
 

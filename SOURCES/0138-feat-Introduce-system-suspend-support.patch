@@ -1,4 +1,4 @@
-From 0342d23c2be86100a9baeb9389612f085619e829 Mon Sep 17 00:00:00 2001
+From b4631db2b9c4a672c95c552269e976650327b919 Mon Sep 17 00:00:00 2001
 From: huangyifeng <huangyifeng@eswincomputing.com>
 Date: Thu, 1 Aug 2024 16:47:31 +0800
 Subject: [PATCH 138/533] feat:Introduce system suspend support
@@ -226,5 +226,5 @@ index 000000000000..ac5aa4928b6c
 +
 +arch_initcall(eic770x_system_suspend_init);
 -- 
-2.51.1
+2.52.0
 

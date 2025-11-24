@@ -1,4 +1,4 @@
-From 771e92f525a3938d5eb9547e4f94659512687fe7 Mon Sep 17 00:00:00 2001
+From 4e84b4ec6ca1f2bdf1f345864b5a0cd76fd481b5 Mon Sep 17 00:00:00 2001
 From: denglei <denglei@eswincomputing.com>
 Date: Mon, 25 Aug 2025 16:02:05 +0800
 Subject: [PATCH 472/533] fix:Resolve NPU/DSP compilation issues.
@@ -95,5 +95,5 @@ index e5967e94da47..f77995d442a2 100644
  #endif
  	return ret;
 -- 
-2.51.1
+2.52.0
 

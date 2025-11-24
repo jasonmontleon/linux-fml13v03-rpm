@@ -1,4 +1,4 @@
-From 35f6f0b8d86bf2eaa5a7fdaf1e6c334e2f02faa0 Mon Sep 17 00:00:00 2001
+From b1e8db0ef5e270e1cdf852247f2a32716a5d9c60 Mon Sep 17 00:00:00 2001
 From: Icenowy Zheng <uwu@icenowy.me>
 Date: Fri, 24 Feb 2023 17:23:17 +0800
 Subject: [PATCH 079/533] ttm: disallow cached mapping
@@ -110,5 +110,5 @@ index bf9601351fa3..af3ab03200c0 100644
  
  int ttm_tt_init(struct ttm_tt *ttm, struct ttm_buffer_object *bo,
 -- 
-2.51.1
+2.52.0
 

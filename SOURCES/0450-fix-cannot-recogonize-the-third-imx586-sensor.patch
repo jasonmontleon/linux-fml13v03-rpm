@@ -1,4 +1,4 @@
-From a3fbfca36563dec911bd40ff7be9661f46c2a6d7 Mon Sep 17 00:00:00 2001
+From dfb23c6858c9b70f61a35c530aa0ffcc0037426a Mon Sep 17 00:00:00 2001
 From: yufangxian <yufangxian@eswincomputing.com>
 Date: Fri, 8 Aug 2025 17:45:30 +0800
 Subject: [PATCH 450/533] fix: cannot recogonize the third imx586 sensor
@@ -25,5 +25,5 @@ index d6187d70df94..2f341156dc9b 100644
  
  		port {
 -- 
-2.51.1
+2.52.0
 

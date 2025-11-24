@@ -1,4 +1,4 @@
-From 3a2e83f20c1f4f3df8995be7bd79447ab25b7768 Mon Sep 17 00:00:00 2001
+From f8640db2831e4e438a57aece9344ebe5360f73c0 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Thu, 27 Mar 2025 14:16:16 +0800
 Subject: [PATCH 262/533] NPU: fix NPU startup hang issue.
@@ -63,5 +63,5 @@ index dd0052525c36..93684d917863 100644
  								 TPS549D22_MASK_OPERATION_ENABLE,
  								 TPS549D22_MASK_OPERATION_ENABLE);
 -- 
-2.51.1
+2.52.0
 

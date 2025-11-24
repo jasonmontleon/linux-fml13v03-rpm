@@ -1,4 +1,4 @@
-From 7ea1acf9cc6153470d61966f5085916b84dcbd76 Mon Sep 17 00:00:00 2001
+From 8292fb2091addb88b9755e7f409f89791396df5e Mon Sep 17 00:00:00 2001
 From: congyuyang <congyuyang@eswincomputing.com>
 Date: Thu, 8 Aug 2024 15:04:33 +0800
 Subject: [PATCH 145/533] feat:remove nonret cpu idle state
@@ -157,5 +157,5 @@ index f20e1064ea7c..3f2582159f83 100644
  				#interrupt-cells = <1>;
  				compatible = "riscv,cpu-intc";
 -- 
-2.51.1
+2.52.0
 

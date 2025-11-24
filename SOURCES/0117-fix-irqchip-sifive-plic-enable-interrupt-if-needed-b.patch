@@ -1,4 +1,4 @@
-From ce6a9092b0c6fcc72c459f26e81740226feb1a40 Mon Sep 17 00:00:00 2001
+From 6ad3675c262144daa64ea3943bad2d8470b3469f Mon Sep 17 00:00:00 2001
 From: huangyifeng <huangyifeng@eswincomputing.com>
 Date: Wed, 24 Jul 2024 15:10:18 +0800
 Subject: [PATCH 117/533] fix(irqchip/sifive-plic): enable interrupt if needed
@@ -19,7 +19,7 @@ Signed-off-by: huangyifeng <huangyifeng@eswincomputing.com>
  1 file changed, 8 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/irqchip/irq-sifive-plic.c b/drivers/irqchip/irq-sifive-plic.c
-index 2d20cf9d84ce..66d3a5d8f104 100644
+index a8f5cfad16f7..a0ee67cb06b1 100644
 --- a/drivers/irqchip/irq-sifive-plic.c
 +++ b/drivers/irqchip/irq-sifive-plic.c
 @@ -136,6 +136,10 @@ static void plic_irq_mask(struct irq_data *d)
@@ -59,8 +59,8 @@ index 2d20cf9d84ce..66d3a5d8f104 100644
  		return -EINVAL;
 +	}
  
- 	plic_irq_disable(d);
- 
+ 	/* Invalidate the original routing entry */
+ 	plic_irq_toggle(irq_data_get_effective_affinity_mask(d), d, 0);
 -- 
-2.51.1
+2.52.0
 

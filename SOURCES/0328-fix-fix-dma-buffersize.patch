@@ -1,4 +1,4 @@
-From 46da35a1468d9745e3f5bd4d2335d575e374c54d Mon Sep 17 00:00:00 2001
+From af6cc59b7a54f0ae7f95073d4c57132f925bb94e Mon Sep 17 00:00:00 2001
 From: zhouliang2 <zhouliang2@eswincomputing.com>
 Date: Tue, 8 Apr 2025 15:14:28 +0800
 Subject: [PATCH 328/533] fix:fix dma buffersize
@@ -68,5 +68,5 @@ index d2f0c79e0fe2..53708f8dae1b 100644
  }
 \ No newline at end of file
 -- 
-2.51.1
+2.52.0
 

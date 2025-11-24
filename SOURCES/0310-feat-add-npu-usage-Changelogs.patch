@@ -1,4 +1,4 @@
-From 8781c8816b8a51939dd0f1aaba0ce24659976af0 Mon Sep 17 00:00:00 2001
+From b3cbf7e7610f9fc1d7264f9cb34c7f6ed2025585 Mon Sep 17 00:00:00 2001
 From: luoshanggui <luoshanggui@eswincomputing.com>
 Date: Mon, 30 Dec 2024 11:09:41 +0800
 Subject: [PATCH 310/533] feat: add npu usage Changelogs:
@@ -226,5 +226,5 @@ index 4bbbb3942e1b..5ae2aea36b84 100644
  	remove_proc_entry("perf", proc_esnpu);
  	remove_proc_entry("conf", proc_esnpu);
 -- 
-2.51.1
+2.52.0
 

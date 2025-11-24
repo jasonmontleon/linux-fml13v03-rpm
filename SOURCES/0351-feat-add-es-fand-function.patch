@@ -1,4 +1,4 @@
-From c89483b1a99f6cf93f689f44bf0f5ad992744eae Mon Sep 17 00:00:00 2001
+From 356045901a84d6cc6489c1a6d58f6052fb3c23e2 Mon Sep 17 00:00:00 2001
 From: wangguosheng <wangguosheng@eswincomputing.com>
 Date: Wed, 7 May 2025 11:17:25 +0800
 Subject: [PATCH 351/533] feat:add es-fand function
@@ -150,5 +150,5 @@ index 60357c800b1a..f1a21a007e4e 100644
  	if (IS_ERR(ctl->clk)) {
  		dev_err(&pdev->dev, "Couldn't get the clock for fan-controller\n");
 -- 
-2.51.1
+2.52.0
 

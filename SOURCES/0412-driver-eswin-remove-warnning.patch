@@ -1,4 +1,4 @@
-From 71d65df12f5b09ff05110522300e5f3a5548ee5a Mon Sep 17 00:00:00 2001
+From 7aa721d5fb7667b510d89d29ed7cfa5705135f47 Mon Sep 17 00:00:00 2001
 From: Sandie Cao <sandie.cao@deepcomputing.io>
 Date: Fri, 4 Jul 2025 18:30:34 +0800
 Subject: [PATCH 412/533] driver: eswin: remove warnning
@@ -230,5 +230,5 @@ index 71aca911ea49..0d2f769c89dd 100644
  		unsigned int dmabuf_fd;
  		struct filp_priv *fp_priv = (struct filp_priv *)filp->private_data;
 -- 
-2.51.1
+2.52.0
 

@@ -1,4 +1,4 @@
-From 485ad13a88c7858b8e6828b263150aa237df1002 Mon Sep 17 00:00:00 2001
+From 412a2331e10b81d8a0542bd06d037fce4c840bd6 Mon Sep 17 00:00:00 2001
 From: linmin <linmin@eswincomputing.com>
 Date: Wed, 19 Jun 2024 16:23:06 +0800
 Subject: [PATCH 102/533] refactor(MMZ vb and heap):MMZ code moved in kernel
@@ -5932,5 +5932,5 @@ index 000000000000..49ebac96f6e1
 +
 +#endif
 -- 
-2.51.1
+2.52.0
 

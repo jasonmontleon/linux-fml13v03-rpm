@@ -1,4 +1,4 @@
-From d2ed65a96d861acb23a6bcf8bd04fee6f9b8d200 Mon Sep 17 00:00:00 2001
+From 490808cfbe9399defb6411d379291cd831fe2d11 Mon Sep 17 00:00:00 2001
 From: denglei <denglei@eswincomputing.com>
 Date: Mon, 25 Aug 2025 16:02:05 +0800
 Subject: [PATCH 498/533] fix:Resolve NPU/DSP compilation issues.
@@ -47,5 +47,5 @@ index 38ef05eda2f6..f5dac966ab67 100644
  					   DSP_PTS_IOVA_SIZE, hw->pts_phys_base,
  					   IOMMU_MMIO);
 -- 
-2.51.1
+2.52.0
 

@@ -1,4 +1,4 @@
-From a04d311dfa53c025d19c598c841d2c9615be8490 Mon Sep 17 00:00:00 2001
+From d498b8545bca46bfa8f61f879bc9734a3e277f21 Mon Sep 17 00:00:00 2001
 From: donghuawei <donghuawei@eswincomputing.com>
 Date: Tue, 18 Feb 2025 16:40:28 +0800
 Subject: [PATCH 242/533] feat: modify npu dts voltage
@@ -123,5 +123,5 @@ index 1b226c3dfe17..edf3959e8d64 100644
  #define NPU_CORE_CLK_1P5G_RATE	1500000000  //npu and e31
  #define NPU_E31_CLK_RATE	1040000000  //llc
 -- 
-2.51.1
+2.52.0
 

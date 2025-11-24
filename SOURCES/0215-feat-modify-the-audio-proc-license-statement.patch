@@ -1,4 +1,4 @@
-From fd5c26f67bc0d221192e36d8a6bd56bf52315218 Mon Sep 17 00:00:00 2001
+From caf28cd4357be57ff66bd20b2e997c466d0b72b0 Mon Sep 17 00:00:00 2001
 From: yangqiang <yangqiang1@eswincomputing.com>
 Date: Tue, 12 Nov 2024 10:49:47 +0800
 Subject: [PATCH 215/533] feat:modify the audio proc license statement.
@@ -89,5 +89,5 @@ index 1fd3f377671d..c08c377493ba 100644
  int audio_proc_module_init(void);
  void audio_proc_module_exit(void);
 -- 
-2.51.1
+2.52.0
 

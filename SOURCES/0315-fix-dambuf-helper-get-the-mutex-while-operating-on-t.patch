@@ -1,4 +1,4 @@
-From 8cc77ff42cbf6c5c0db8075318ae6856e5e410c9 Mon Sep 17 00:00:00 2001
+From 77dde56a36faa07ae096afca1ed5fd6db24b6bca Mon Sep 17 00:00:00 2001
 From: linmin <linmin@eswincomputing.com>
 Date: Thu, 27 Feb 2025 14:14:58 +0800
 Subject: [PATCH 315/533] fix(dambuf helper):get the mutex while operating on
@@ -54,5 +54,5 @@ index f0d67b27ae4b..fa0297c4e606 100644
  EXPORT_SYMBOL(common_dmabuf_heap_rsv_iova_unmap);
  
 -- 
-2.51.1
+2.52.0
 

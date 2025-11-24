@@ -1,4 +1,4 @@
-From ef4dcd2c95b6d064ce5d0706939cde849d608116 Mon Sep 17 00:00:00 2001
+From 93e7dc7d83edd4fb3a8e2ed61cb85db37882cfc7 Mon Sep 17 00:00:00 2001
 From: denglei <denglei@eswincomputing.com>
 Date: Tue, 21 Oct 2025 16:34:45 +0800
 Subject: [PATCH 523/533] fix:merge npu code from dev to pm branch.
@@ -214,5 +214,5 @@ index 44aaaa16c5ff..e1963b3bda59 100644
  	if (ret < 0) {
  		dla_error("%s, %d, pm get sync err, ret=%d.\n", __func__,
 -- 
-2.51.1
+2.52.0
 

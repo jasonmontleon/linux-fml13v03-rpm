@@ -1,4 +1,4 @@
-From d221040d10cbe335810790d41bd5686573e49775 Mon Sep 17 00:00:00 2001
+From 93ed624d0bb4ea2845262a6b9743047410f3e377 Mon Sep 17 00:00:00 2001
 From: denglei <denglei@eswincomputing.com>
 Date: Tue, 3 Sep 2024 13:40:45 +0800
 Subject: [PATCH 165/533] feat:Open the NPU & DSP driver module.
@@ -193,5 +193,5 @@ index 3ccaec7130fd..70665817d93d 100644
  // TODO(yuzaiqiang) The header files dla_interface.h and llc_spram.h both define the same
  // macro CACHE_LINE_SIZE, resulting in a riscv compilation error.
 -- 
-2.51.1
+2.52.0
 

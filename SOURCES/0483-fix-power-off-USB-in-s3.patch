@@ -1,4 +1,4 @@
-From 44efd8a964b55b897fa16f3844efb4d24693cf59 Mon Sep 17 00:00:00 2001
+From 31ceaaa45a9d220ed4f60c494f6b79b205dd1688 Mon Sep 17 00:00:00 2001
 From: Wu Zhangben <wuzhangben@eswincomputing.com>
 Date: Tue, 26 Aug 2025 12:48:47 +0800
 Subject: [PATCH 483/533] fix:power off USB in s3
@@ -54,5 +54,5 @@ index e19d0ad973a6..26df2a59cca8 100644
  	status = "okay";
  	rt_equalization;
 -- 
-2.51.1
+2.52.0
 

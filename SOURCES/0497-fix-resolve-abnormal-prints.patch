@@ -1,4 +1,4 @@
-From 3bf9fd66fb7ef95990ec5563ae30f0c1a045ddc2 Mon Sep 17 00:00:00 2001
+From c1d6d5f37974157e05702b11a472be5013bfa97c Mon Sep 17 00:00:00 2001
 From: hehuan1 <hehuan1@eswincomputing.com>
 Date: Wed, 20 Aug 2025 16:07:48 +0800
 Subject: [PATCH 497/533] fix: resolve abnormal prints
@@ -103,5 +103,5 @@ index c1f39c940df5..7d78c4f37d63 100644
  };
  module_platform_driver(pvt_driver);
 -- 
-2.51.1
+2.52.0
 

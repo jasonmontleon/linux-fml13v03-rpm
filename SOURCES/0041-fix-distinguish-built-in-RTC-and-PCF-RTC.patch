@@ -1,4 +1,4 @@
-From f8400bdf65b80a1aada39193c923655252456605 Mon Sep 17 00:00:00 2001
+From 8574ad8f658b51b634298050f0ca5f7376b08c6d Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?=E2=80=9Chuangyifeng=E2=80=9D?=
  <huangyifeng@eswincomputing.com>
 Date: Fri, 31 May 2024 08:52:35 +0800
@@ -57,5 +57,5 @@ index 4d9aeafa93f7..2aebb21a51a0 100644
  		reg = <0x51>;
  	};
 -- 
-2.51.1
+2.52.0
 

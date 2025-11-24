@@ -1,4 +1,4 @@
-From a1ee685d357bff061613d98c1142c65b46c2fd69 Mon Sep 17 00:00:00 2001
+From dbcc8a6611d0a4a2cd01d7df98ea1d2a48cbb5f3 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Fri, 16 May 2025 14:02:04 +0800
 Subject: [PATCH 290/533] power: cros-sbs-battery: Fix driver registration
@@ -23,5 +23,5 @@ index 5189abddf99a..c4dbd60ece8b 100644
  	if (IS_ERR(chip->power_supply))
  		return dev_err_probe(dev, PTR_ERR(chip->power_supply),
 -- 
-2.51.1
+2.52.0
 

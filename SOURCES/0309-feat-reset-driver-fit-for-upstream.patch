@@ -1,4 +1,4 @@
-From c0a3c619d8e24e9e4c902bfadf1279f739b8a0d3 Mon Sep 17 00:00:00 2001
+From d8878ffe1c80f077610e7b39e93d748ae33532eb Mon Sep 17 00:00:00 2001
 From: huangyifeng <huangyifeng@eswincomputing.com>
 Date: Mon, 27 Jan 2025 10:54:04 +0800
 Subject: [PATCH 309/533] feat:reset driver fit for upstream
@@ -3043,5 +3043,5 @@ index 000000000000..e544fa4da748
 +
 +#endif /*endif __DT_ESWIN_EIC770X_RESET_H__*/
 -- 
-2.51.1
+2.52.0
 

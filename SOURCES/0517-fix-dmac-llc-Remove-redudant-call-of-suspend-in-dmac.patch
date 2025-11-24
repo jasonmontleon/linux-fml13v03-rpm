@@ -1,4 +1,4 @@
-From 43ff04d1e06cf73871b3147861ce9d38bb3c9f13 Mon Sep 17 00:00:00 2001
+From 93e15546e1149b200dd09f7769f4f79497f196bd Mon Sep 17 00:00:00 2001
 From: Min Lin <linmin@eswincomputing.com>
 Date: Tue, 30 Sep 2025 14:08:15 +0800
 Subject: [PATCH 517/533] fix(dmac,llc):Remove redudant call of suspend in dmac
@@ -30,5 +30,5 @@ index 385373165764..0322ab4e76fc 100644
  	dw_axi_dma_register_debugfs(chip);
  
 -- 
-2.51.1
+2.52.0
 

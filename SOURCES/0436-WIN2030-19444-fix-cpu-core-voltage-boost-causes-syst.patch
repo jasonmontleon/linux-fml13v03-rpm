@@ -1,4 +1,4 @@
-From 9193d72a883879eb63a44fbcbd0a970e2242ba6b Mon Sep 17 00:00:00 2001
+From 2c0a9fe22594ef363c8effd441ef6f3022f11b18 Mon Sep 17 00:00:00 2001
 From: ouyanghui <ouyanghui@eswincomputing.com>
 Date: Wed, 17 Sep 2025 14:19:02 +0800
 Subject: [PATCH 436/533] WIN2030-19444:fix:cpu core voltage boost causes
@@ -225,5 +225,5 @@ index 48c793ed9c38..9fbe327eb56e 100644
  	int numa_id;
  	void __iomem *ctrl_reg0;
 -- 
-2.51.1
+2.52.0
 

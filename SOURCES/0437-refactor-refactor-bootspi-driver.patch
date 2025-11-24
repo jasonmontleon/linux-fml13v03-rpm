@@ -1,4 +1,4 @@
-From 7729e89043b21ae1f3afd1c1d28792d8bae8a0cf Mon Sep 17 00:00:00 2001
+From c132b06489efad90508bd85d9612fe44e38b5e4a Mon Sep 17 00:00:00 2001
 From: Xiang Xu <xuxiang@eswincomputing.com>
 Date: Thu, 18 Sep 2025 17:03:35 +0800
 Subject: [PATCH 437/533] refactor:refactor bootspi driver
@@ -2547,5 +2547,5 @@ index 000000000000..9ae1ea538e51
 +
 +#endif /* __SPI_ESWIN_H__ */
 -- 
-2.51.1
+2.52.0
 

@@ -1,4 +1,4 @@
-From 465f4566ac1993e1a8047e8caa57e78dc57c3fe1 Mon Sep 17 00:00:00 2001
+From 041e885db08b8f695a2d73c14bc271d5dd40a752 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Tue, 26 Aug 2025 11:42:51 +0800
 Subject: [PATCH 428/533] chore(config): enable CPU frequency scaling option
@@ -62,5 +62,5 @@ index 8f88220860ee..a735c67f7515 100644
  	/delete-node/ opp-1300000000;
  };
 -- 
-2.51.1
+2.52.0
 

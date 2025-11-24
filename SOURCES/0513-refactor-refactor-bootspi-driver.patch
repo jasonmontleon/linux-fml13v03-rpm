@@ -1,4 +1,4 @@
-From c3a8a3bc35d7dc8c20e8be7eb573f08666053a67 Mon Sep 17 00:00:00 2001
+From e048c9f3f8f5039f350cb68f1ae266c6df16e4da Mon Sep 17 00:00:00 2001
 From: Xiang Xu <xuxiang@eswincomputing.com>
 Date: Fri, 12 Sep 2025 17:04:41 +0800
 Subject: [PATCH 513/533] refactor:refactor bootspi driver
@@ -49,5 +49,5 @@ index d025773aa21d..68477151be26 100644
  		compatible = "winbond,w25q64jw",
  					"jedec,spi-nor";
 -- 
-2.51.1
+2.52.0
 

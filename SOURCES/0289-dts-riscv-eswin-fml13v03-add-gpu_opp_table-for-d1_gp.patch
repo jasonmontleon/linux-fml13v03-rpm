@@ -1,4 +1,4 @@
-From d13589d3d9c1ccfeb50cd4f2e596b508f55f2b73 Mon Sep 17 00:00:00 2001
+From 00ece2607a559c0747da60f679dcb3a92a74433d Mon Sep 17 00:00:00 2001
 From: Sandie Cao <sandie.cao@deepcomputing.io>
 Date: Thu, 15 May 2025 14:17:17 +0800
 Subject: [PATCH 289/533] dts: riscv: eswin: fml13v03: add gpu_opp_table for
@@ -25,5 +25,5 @@ index 49f3179454ed..71868819a401 100644
  
  		d1_sata: sata@0x70420000 {
 -- 
-2.51.1
+2.52.0
 

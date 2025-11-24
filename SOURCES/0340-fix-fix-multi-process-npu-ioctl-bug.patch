@@ -1,4 +1,4 @@
-From 179e448da519646c8880e9a8393d9dddf2f73ba0 Mon Sep 17 00:00:00 2001
+From dcab1d22e3c2b67fbb19d6ce45b3997a851e7441 Mon Sep 17 00:00:00 2001
 From: chenyangxi <chenyangxi@eswincomputing.com>
 Date: Fri, 25 Apr 2025 16:03:12 +0800
 Subject: [PATCH 340/533] fix:fix multi-process npu ioctl bug
@@ -26,5 +26,5 @@ index e45522a24df4..b360c0311903 100644
  		ret = npu_hetero_cmd(npu_cdev->nvdla_dev, &win_arg);
  		break;
 -- 
-2.51.1
+2.52.0
 

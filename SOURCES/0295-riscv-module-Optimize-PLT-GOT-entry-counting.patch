@@ -1,4 +1,4 @@
-From 093b966ab2469901e546249e565abb68c90aab37 Mon Sep 17 00:00:00 2001
+From f2a18ceed0c9200a8a8bc3144a6f63935ea548b8 Mon Sep 17 00:00:00 2001
 From: Sandie Cao <sandie.cao@deepcomputing.io>
 Date: Thu, 22 May 2025 10:42:53 +0800
 Subject: [PATCH 295/533] riscv: module: Optimize PLT/GOT entry counting perf
@@ -137,5 +137,5 @@ index e264e59e596e..12ef6ef3773b 100644
  	mod->arch.plt.shdr->sh_flags = SHF_EXECINSTR | SHF_ALLOC;
  	mod->arch.plt.shdr->sh_addralign = L1_CACHE_BYTES;
 -- 
-2.51.1
+2.52.0
 

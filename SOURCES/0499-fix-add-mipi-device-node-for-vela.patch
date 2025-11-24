@@ -1,4 +1,4 @@
-From 308fc4a24ce87bf47ad9258f451ad8936022fe28 Mon Sep 17 00:00:00 2001
+From 62e6953f6899d31c5c4d5d2c0e0d0f6cd8df843c Mon Sep 17 00:00:00 2001
 From: guozeyang <guozeyang@eswincomputing.com>
 Date: Tue, 26 Aug 2025 15:41:35 +0800
 Subject: [PATCH 499/533] fix:add mipi device node for vela
@@ -69,5 +69,5 @@ index 5d022417d45f..25642bd8dd88 100644
  	dly-param-100m = <0x10101010 0x3C102810 0x10101010>;
  	dly-param-10m = <0 0 0>;
 -- 
-2.51.1
+2.52.0
 

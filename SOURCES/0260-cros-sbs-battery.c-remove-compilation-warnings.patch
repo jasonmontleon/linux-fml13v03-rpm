@@ -1,4 +1,4 @@
-From 7aee62486268db8c7d36d7e901a9c2c1fd9ddfef Mon Sep 17 00:00:00 2001
+From 6a110904a55500657640de7c54b1ea2179adc5ff Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Wed, 26 Mar 2025 15:04:00 +0800
 Subject: [PATCH 260/533] cros-sbs-battery.c: remove compilation warnings.
@@ -23,5 +23,5 @@ index edabfab5a6d0..5189abddf99a 100644
  }
  
 -- 
-2.51.1
+2.52.0
 

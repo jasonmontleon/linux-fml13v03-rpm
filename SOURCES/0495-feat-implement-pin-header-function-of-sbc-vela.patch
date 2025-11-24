@@ -1,4 +1,4 @@
-From 55faa56fa8f01b471a46e7e9783e07d18d387e22 Mon Sep 17 00:00:00 2001
+From 85ad64b3bb395cadac669a2f1e6028ca2dac7492 Mon Sep 17 00:00:00 2001
 From: Xiang Xu <xuxiang@eswincomputing.com>
 Date: Mon, 25 Aug 2025 10:11:09 +0800
 Subject: [PATCH 495/533] feat:implement pin header function of sbc/vela
@@ -216,5 +216,5 @@ index bf612bdc2dde..f6d399c8a87f 100644
  	gpio0   : touch int(I)
  	gpio5   : 5g wake on host(I)
 -- 
-2.51.1
+2.52.0
 

@@ -1,4 +1,4 @@
-From eddc6cbb9a3c9d837fb730151b78ccdc81e27cda Mon Sep 17 00:00:00 2001
+From eb50c82eba57954e772c8b791c8ee3fb4da038e4 Mon Sep 17 00:00:00 2001
 From: wangguosheng <wangguosheng@eswincomputing.com>
 Date: Tue, 26 Aug 2025 18:37:00 +0800
 Subject: [PATCH 475/533] fix: fix gpio error for pm
@@ -41,5 +41,5 @@ index 783745d195ad..cf97e2daabab 100644
  
  &pvt0 {
 -- 
-2.51.1
+2.52.0
 

@@ -1,4 +1,4 @@
-From 7cb8dcfdc0f6e36b63dfb11b9bf8fbbaab5d40d5 Mon Sep 17 00:00:00 2001
+From a1a7d8faea652d0231881d7e570cf2c07258be40 Mon Sep 17 00:00:00 2001
 From: Sandie Cao <sandie.cao@deepcomputing.io>
 Date: Tue, 6 May 2025 13:40:24 +0800
 Subject: [PATCH 285/533] configs: riscv: fml13v03: sync ubuntu generic kernel
@@ -4232,5 +4232,5 @@ index 86b9e6931cec..bc94f4ba64c9 100755
  CONFIG_BCMDHD=m
  CONFIG_BCMDHD_SDIO_IRQ=y
 -- 
-2.51.1
+2.52.0
 

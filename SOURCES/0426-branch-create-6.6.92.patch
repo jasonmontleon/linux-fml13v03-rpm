@@ -1,4 +1,4 @@
-From 49e5ea5be85d3931565e6585056ea3379a1b62e3 Mon Sep 17 00:00:00 2001
+From 2ad910c58b09bc689cc2fdf8fe5ee37e6ba2c640 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Tue, 19 Aug 2025 17:25:40 +0800
 Subject: [PATCH 426/533] branch: create 6.6.92
@@ -379,7 +379,7 @@ index 7a3a08d81f11..974beccd671f 100644
  Low level entry and exit
  ========================
 diff --git a/Makefile b/Makefile
-index f28f1f9f5f4e..1244f1498046 100644
+index a849399cebf8..f088dca117d8 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -980,6 +980,11 @@ KBUILD_CFLAGS	+= $(CC_FLAGS_CFI)
@@ -21515,7 +21515,7 @@ index d97f3215d5de..60c577d99f8e 100644
  		if (0 == win2030_get_tbu_priv(nid, tbu_id, &tbu_priv_p)) {
  			tbu_client_p = tbu_priv_p->tbu_client_p;
 diff --git a/drivers/media/i2c/Kconfig b/drivers/media/i2c/Kconfig
-index a0205c8368a1..0465f00af257 100644
+index 7f9d123cd151..4f2da9fc8b11 100644
 --- a/drivers/media/i2c/Kconfig
 +++ b/drivers/media/i2c/Kconfig
 @@ -223,6 +223,16 @@ config VIDEO_IMX415
@@ -64526,5 +64526,5 @@ index f21e269af657..276356c57e8d 100644
  	}
  
 -- 
-2.51.1
+2.52.0
 

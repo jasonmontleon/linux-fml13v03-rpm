@@ -1,4 +1,4 @@
-From a64491462426e07c7e22a1730a40920392f150cf Mon Sep 17 00:00:00 2001
+From cadfb0156de03a04e1555352f5ee675fa5bc91f0 Mon Sep 17 00:00:00 2001
 From: ouyanghui <ouyanghui@eswincomputing.com>
 Date: Tue, 30 Sep 2025 16:53:49 +0800
 Subject: [PATCH 441/533] WIN2030-19677:fix:rtcwake test causes cpu crash
@@ -132,5 +132,5 @@ index dc4e945f7fce..13ba2453401a 100644
  	if (numa_id < 0)
  		sprintf(name, "%s", "clk_cpu_ext_src_core_clk_0");
 -- 
-2.51.1
+2.52.0
 

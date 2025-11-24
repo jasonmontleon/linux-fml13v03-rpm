@@ -1,4 +1,4 @@
-From a9fa925ff9a4d8e495454e43198867464749a8e3 Mon Sep 17 00:00:00 2001
+From 0c4df7b0d38c4272a995cc587c849ed91f4b2ca7 Mon Sep 17 00:00:00 2001
 From: denglei <denglei@eswincomputing.com>
 Date: Wed, 10 Sep 2025 14:15:40 +0800
 Subject: [PATCH 512/533] Merge branch 'feature-eccl' into win2030-dev
@@ -417,5 +417,5 @@ index dc4a2a6de0c8..2cb30760bd42 100644
  		dla_error("err:import shm fd failed!\n");
  		return -EFAULT;
 -- 
-2.51.1
+2.52.0
 

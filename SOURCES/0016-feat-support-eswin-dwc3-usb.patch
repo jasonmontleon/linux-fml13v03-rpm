@@ -1,4 +1,4 @@
-From 07b15076ff984474df183731ae21c3b438744a4a Mon Sep 17 00:00:00 2001
+From cf736df770aa1b55a9191b008a177f5cd0aa4c1b Mon Sep 17 00:00:00 2001
 From: yangwei1 <yangwei1@eswincomputing.com>
 Date: Wed, 22 May 2024 20:20:01 +0800
 Subject: [PATCH 016/533] feat:support eswin dwc3 usb
@@ -721,5 +721,5 @@ index 000000000000..1769d9a7ff5f
 +MODULE_LICENSE("GPL v2");
 +MODULE_DESCRIPTION("DesignWare USB3 ESWIN Glue Layer");
 -- 
-2.51.1
+2.52.0
 

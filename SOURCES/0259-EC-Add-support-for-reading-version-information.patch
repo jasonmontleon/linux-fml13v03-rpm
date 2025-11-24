@@ -1,4 +1,4 @@
-From f4cdf9417b9a02a5c226891112e13d7674078643 Mon Sep 17 00:00:00 2001
+From 6246d9487b185bb059825cbd50f9d6aea8fcae56 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Wed, 26 Mar 2025 14:57:22 +0800
 Subject: [PATCH 259/533] EC: Add support for reading version information.
@@ -115,5 +115,5 @@ index ab721cf13a98..3b422b0de468 100644
  /*****************************************************************************/
  /* PWM commands */
 -- 
-2.51.1
+2.52.0
 

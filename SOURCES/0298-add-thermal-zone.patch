@@ -1,4 +1,4 @@
-From 65cd877097fe793735717532d8e1729d1c48e049 Mon Sep 17 00:00:00 2001
+From 06de0fe7d3b4f7c918869e00dc7725dac082e360 Mon Sep 17 00:00:00 2001
 From: ningyu <ningyu@eswincomputing.com>
 Date: Thu, 22 May 2025 20:04:39 +0800
 Subject: [PATCH 298/533] add thermal zone
@@ -116,5 +116,5 @@ index 71868819a401..9196d44fe899 100644
  			label = "d1_pvt1";
  			numa-node-id = <1>;
 -- 
-2.51.1
+2.52.0
 

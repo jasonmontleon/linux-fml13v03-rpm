@@ -1,4 +1,4 @@
-From 714ee2e10ca519abc1edfde49af8a5514f5df3a5 Mon Sep 17 00:00:00 2001
+From a25fb3c6dd4f481f3698d986ff1e356e00614949 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Wed, 6 Aug 2025 09:53:39 +0800
 Subject: [PATCH 425/533] Changelogs: 1. cpufreq control delete boost_1_6ghz
@@ -244,5 +244,5 @@ index d80b13427f7e..2341d4013ab6 100644
  #define CLK_FREQ_900M 900000000
  #define CLK_FREQ_800M 800000000
 -- 
-2.51.1
+2.52.0
 

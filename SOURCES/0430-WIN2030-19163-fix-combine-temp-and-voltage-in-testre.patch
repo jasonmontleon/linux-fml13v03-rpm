@@ -1,4 +1,4 @@
-From 93955f19f9714650f98b7fef8984c0bf5e487746 Mon Sep 17 00:00:00 2001
+From 3a719050784d646b2895d196217481ed3a0d7860 Mon Sep 17 00:00:00 2001
 From: ningyu <ningyu@eswincomputing.com>
 Date: Thu, 21 Aug 2025 20:28:35 +0800
 Subject: [PATCH 430/533] WIN2030-19163:fix:combine temp and voltage in
@@ -67,5 +67,5 @@ index fe30569f4897..c0baaf92ab6d 100644
  /*
   * enum pvt_sensor_type - ESWIN PVT sensor types (correspond to each PVT
 -- 
-2.51.1
+2.52.0
 

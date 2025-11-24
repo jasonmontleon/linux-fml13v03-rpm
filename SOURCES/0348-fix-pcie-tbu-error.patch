@@ -1,4 +1,4 @@
-From 1b5462735470fb8e703ce349a5de2d48ca3acc2f Mon Sep 17 00:00:00 2001
+From 0b8727e5e2817ac58f0e9974ed1c5f1a78384974 Mon Sep 17 00:00:00 2001
 From: Xiang Xu <xuxiang@eswincomputing.com>
 Date: Wed, 7 May 2025 17:33:03 +0800
 Subject: [PATCH 348/533] fix: pcie tbu error
@@ -24,5 +24,5 @@ index 4b24fb9b1bd4..ca08847d7c04 100644
  		eswin_pcie_clk_disable(pcie);
  		return -ENODEV;
 -- 
-2.51.1
+2.52.0
 

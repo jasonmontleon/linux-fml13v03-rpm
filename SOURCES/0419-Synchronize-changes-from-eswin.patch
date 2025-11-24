@@ -1,4 +1,4 @@
-From 3c79d0b0e0fb872d9d14bb6f03789a7d4a5b427e Mon Sep 17 00:00:00 2001
+From a74dc6c0e9bcb817c5d72b9f4402a9a2d98f9587 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Mon, 21 Jul 2025 10:52:52 +0800
 Subject: [PATCH 419/533] Synchronize changes from eswin
@@ -73,5 +73,5 @@ index 13d48a90815e..e90c0f3cbfcc 100644
 -	gpio111 : lcd touch resetn(O)
 -*/
 -- 
-2.51.1
+2.52.0
 

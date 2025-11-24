@@ -1,4 +1,4 @@
-From 3f5998df6aa021c4e91dd30a763edaea420fb48f Mon Sep 17 00:00:00 2001
+From 947ffac92f41b3295d62b8880a2e56e061a6e239 Mon Sep 17 00:00:00 2001
 From: yangwei1 <yangwei1@eswincomputing.com>
 Date: Thu, 23 May 2024 20:30:07 +0800
 Subject: [PATCH 026/533] fix:modify ina226 addr and hold time
@@ -118,5 +118,5 @@ index c627133f179c..a1e0766efd04 100644
  		};
  };
 -- 
-2.51.1
+2.52.0
 

@@ -1,4 +1,4 @@
-From 8fc3859cf0d2a93bfa7575cacbca47257b0af306 Mon Sep 17 00:00:00 2001
+From 711cfbda4b096a2200633fc96bd2d98ebf072b79 Mon Sep 17 00:00:00 2001
 From: ningyu <ningyu@eswincomputing.com>
 Date: Thu, 7 Aug 2025 14:56:04 +0800
 Subject: [PATCH 448/533] fix:multi define gpio cause d314 boot fail
@@ -26,5 +26,5 @@ index 0c05768360f4..07331a6867cb 100644
      /* pin header default function for GPIO
         SPI1 (CS0,SCLK,MOSI,MISO,D2,D3): GPIO 35,36,37,38,39,40
 -- 
-2.51.1
+2.52.0
 

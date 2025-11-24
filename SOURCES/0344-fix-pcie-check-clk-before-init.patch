@@ -1,4 +1,4 @@
-From e7e4f6d2cde6ae36b44b8aa85a2b94a81a35bb7f Mon Sep 17 00:00:00 2001
+From 7368b04e7fdb0825409109d70ba53abf7484b59c Mon Sep 17 00:00:00 2001
 From: Xiang Xu <xuxiang@eswincomputing.com>
 Date: Wed, 30 Apr 2025 10:53:23 +0800
 Subject: [PATCH 344/533] fix:pcie-check-clk-before-init
@@ -38,5 +38,5 @@ index 58741c0f670b..4b24fb9b1bd4 100644
  
  	/* config eswin vendor id and win2030 device id */
 -- 
-2.51.1
+2.52.0
 

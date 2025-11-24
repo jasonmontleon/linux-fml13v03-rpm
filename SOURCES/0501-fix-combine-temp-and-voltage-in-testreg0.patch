@@ -1,4 +1,4 @@
-From 98acdfb005290f2e0905fb0ad2550012551c19f0 Mon Sep 17 00:00:00 2001
+From 96120a32329595737e74299b0c64bd0e5170af84 Mon Sep 17 00:00:00 2001
 From: ningyu <ningyu@eswincomputing.com>
 Date: Thu, 21 Aug 2025 20:28:35 +0800
 Subject: [PATCH 501/533] fix:combine temp and voltage in testreg0
@@ -97,5 +97,5 @@ index 45314085a08e..79343ea5ce9a 100644
  #endif /* __HWMON_ESWIN_PVT_H__ */
  
 -- 
-2.51.1
+2.52.0
 

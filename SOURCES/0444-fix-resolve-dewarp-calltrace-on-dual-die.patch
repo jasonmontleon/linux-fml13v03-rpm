@@ -1,4 +1,4 @@
-From ca3394b9272bab96042cbd7f8efa917b6cd818be Mon Sep 17 00:00:00 2001
+From 1f386032230b8d543e60fbb38bdaa4cd055ae497 Mon Sep 17 00:00:00 2001
 From: Yulin Lu <luyulin@eswincomputing.com>
 Date: Thu, 31 Jul 2025 17:49:10 +0800
 Subject: [PATCH 444/533] fix:resolve dewarp calltrace on dual die
@@ -206,5 +206,5 @@ index d494b262bfd7..ffc124a2f632 100644
  	es_remove_proc_entry(PROC_ENTRY_DEWARP, NULL);
  
 -- 
-2.51.1
+2.52.0
 

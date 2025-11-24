@@ -1,4 +1,4 @@
-From 5d6d32e003e23b4bd1600362c4d9c1338f38f243 Mon Sep 17 00:00:00 2001
+From 7a47d58e116787cd7d517a85f9d371d286e50b4d Mon Sep 17 00:00:00 2001
 From: yufangxian <yufangxian@eswincomputing.com>
 Date: Tue, 27 May 2025 15:10:15 +0800
 Subject: [PATCH 375/533] feat: d314 vi support
@@ -300,5 +300,5 @@ index 1a17bcafdc9b..8074d90da084 100644
 +};
 \ No newline at end of file
 -- 
-2.51.1
+2.52.0
 

@@ -1,4 +1,4 @@
-From 9050a449a354a3885c741e7ddde248f922dab98d Mon Sep 17 00:00:00 2001
+From 6a9dbffb3b75476cd7c7c0e88fc1e69585328641 Mon Sep 17 00:00:00 2001
 From: denglei <denglei@eswincomputing.com>
 Date: Fri, 24 Oct 2025 10:33:17 +0800
 Subject: [PATCH 526/533] fix:LLC dts node add TBU number.
@@ -78,5 +78,5 @@ index a157e3756c94..42ab9af0fa2b 100755
  };
  
 -- 
-2.51.1
+2.52.0
 

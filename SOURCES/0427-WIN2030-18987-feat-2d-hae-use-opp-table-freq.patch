@@ -1,4 +1,4 @@
-From 3f7892db18dad7dc0eafc2f147f42721a6d47e76 Mon Sep 17 00:00:00 2001
+From 6d11e6cf33dd2ce57c1b723cbe2c3dcbec4a710f Mon Sep 17 00:00:00 2001
 From: lei zhilin <leizhilin@eswincomputing.com>
 Date: Mon, 11 Aug 2025 15:29:25 +0800
 Subject: [PATCH 427/533] WIN2030-18987:feat(2d):hae use opp table freq
@@ -55,5 +55,5 @@ index 62e1294174ce..3e5b54563185 100644
  static gcmkINLINE gckKERNEL
  _GetValidKernel(gckGALDEVICE Device)
 -- 
-2.51.1
+2.52.0
 

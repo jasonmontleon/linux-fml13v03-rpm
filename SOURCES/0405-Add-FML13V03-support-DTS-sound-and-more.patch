@@ -1,4 +1,4 @@
-From ee11c0d7e991d131d2eb7e8d096792451b799f28 Mon Sep 17 00:00:00 2001
+From b99aff2f2424525f1f8faf52368b29418913f08c Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Tue, 1 Jul 2025 15:26:22 +0800
 Subject: [PATCH 405/533] Add FML13V03 support: DTS, sound, and more
@@ -46,5 +46,5 @@ index f785a5367bbb..01e5dd571fad 100755
 +CONFIG_VIDEO_ESWIN_DVP2AXI=y
 +
 -- 
-2.51.1
+2.52.0
 

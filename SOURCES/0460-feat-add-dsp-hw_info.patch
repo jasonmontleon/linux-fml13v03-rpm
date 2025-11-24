@@ -1,4 +1,4 @@
-From 98ce1eec2f1a603369267bd849b14e6aafcaef79 Mon Sep 17 00:00:00 2001
+From f7ed381839c7b021ff9eb858331ed67b2b69b209 Mon Sep 17 00:00:00 2001
 From: zhuxuefei <zhuxuefei@eswincomputing.com>
 Date: Mon, 18 Aug 2025 15:15:20 +0800
 Subject: [PATCH 460/533] feat:add dsp hw_info.
@@ -134,5 +134,5 @@ index 6797e819176f..bb38678c17b2 100644
  		dsp_err("error create proc dsp stat file.\n");
  		goto err;
 -- 
-2.51.1
+2.52.0
 

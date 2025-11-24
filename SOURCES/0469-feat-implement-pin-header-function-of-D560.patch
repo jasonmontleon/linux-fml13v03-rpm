@@ -1,4 +1,4 @@
-From f8b80f59de452fbaf333859a7fa62af2dbcd16e1 Mon Sep 17 00:00:00 2001
+From 86d0de1ae30013dfcc119cefc96bb39b0f65e647 Mon Sep 17 00:00:00 2001
 From: ningyu <ningyu@eswincomputing.com>
 Date: Thu, 7 Aug 2025 21:20:20 +0800
 Subject: [PATCH 469/533] feat:implement pin header function of D560
@@ -236,5 +236,5 @@ index 5f06d6743016..a58f5817d75d 100644
  /* die0 GPIO Function Description
  
 -- 
-2.51.1
+2.52.0
 

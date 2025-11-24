@@ -1,4 +1,4 @@
-From 1c4a065dc6bd2edbaebecfee060d8e00b2699922 Mon Sep 17 00:00:00 2001
+From 054b4bdfb00327ac2ac84cbe6489e87b78ed6f3b Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Tue, 18 Mar 2025 10:35:43 +0800
 Subject: [PATCH 234/533] defconfig: fml13v03_defconfig: Fix compilation
@@ -55,5 +55,5 @@ index 2e69a9e8adc3..87f975b2cdce 100755
 -CONFIG_EFI_COCO_SECRET=y
 -CONFIG_EFI_STUB=y
 -- 
-2.51.1
+2.52.0
 

@@ -1,4 +1,4 @@
-From d4f04acd3e35e2334f89698e20ef7479bde6c42e Mon Sep 17 00:00:00 2001
+From a69647e69d17d9b11fed8a70e4ba20dee28fcb97 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Mon, 31 Mar 2025 14:27:42 +0800
 Subject: [PATCH 267/533] PWM: initialize the fan speed to 50%.
@@ -28,5 +28,5 @@ index cc931a861159..b921b72b9546 100644
  		{
  			state.duty_cycle = 1;
 -- 
-2.51.1
+2.52.0
 

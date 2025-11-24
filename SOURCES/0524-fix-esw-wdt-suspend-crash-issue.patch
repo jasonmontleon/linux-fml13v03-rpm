@@ -1,4 +1,4 @@
-From c0ce7f6dfa973d7c3e71c158a1896556f8e2e818 Mon Sep 17 00:00:00 2001
+From e598c7bde3bc416b52642da08bc27f51efe61007 Mon Sep 17 00:00:00 2001
 From: chenzhanzhan <chenzhanzhan@eswincomputing.com>
 Date: Tue, 21 Oct 2025 20:08:57 +0800
 Subject: [PATCH 524/533] fix:esw-wdt suspend crash issue
@@ -69,5 +69,5 @@ index 34f6d4422588..f560656af749 100644
  
      esw_wdt_start(&wdt->wdd);
 -- 
-2.51.1
+2.52.0
 

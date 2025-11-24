@@ -1,4 +1,4 @@
-From c161ee9335a6996131278cc64ea32d56ea61e78a Mon Sep 17 00:00:00 2001
+From 3f326182d2d26651c2cbc344ddebcce294e27cc9 Mon Sep 17 00:00:00 2001
 From: congyuyang <congyuyang@eswincomputing.com>
 Date: Fri, 11 Apr 2025 21:29:00 +0800
 Subject: [PATCH 338/533] feat:Merge branch 'feature-vi' into win2030-dev
@@ -2127,7 +2127,7 @@ index e5f4d9647c38..3079e3c346b5 100644
  &d1_i2c8 {
  	status = "disabled";
 diff --git a/drivers/media/i2c/Kconfig b/drivers/media/i2c/Kconfig
-index 53b443be5a59..a0205c8368a1 100644
+index d4082a86fced..7f9d123cd151 100644
 --- a/drivers/media/i2c/Kconfig
 +++ b/drivers/media/i2c/Kconfig
 @@ -99,7 +99,7 @@ config VIDEO_IMX214
@@ -131293,5 +131293,5 @@ index 000000000000..2559001dbbb2
 +#endif /* _ESWIN_VI_H_ */
 \ No newline at end of file
 -- 
-2.51.1
+2.52.0
 

@@ -1,4 +1,4 @@
-From be0cbe35b8442db1c20822da151b0266035d2bbf Mon Sep 17 00:00:00 2001
+From e4b157c7a663cbc011104194fa1789123d3fd251 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Thu, 13 Mar 2025 14:00:38 +0800
 Subject: [PATCH 227/533] Fix: touchpad recognition issue by changing interrupt
@@ -22,5 +22,5 @@ index 3b3a82b942bb..a25ba793e2d7 100644
  		pinctrl-0 = <&pinctrl_die0_gpio20_default>;
  		irq-gpios = <&porta 20 GPIO_ACTIVE_LOW>;
 -- 
-2.51.1
+2.52.0
 

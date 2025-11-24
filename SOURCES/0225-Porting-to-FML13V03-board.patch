@@ -1,4 +1,4 @@
-From 14aad1ed9df32e38d83de7597d3ea62d7f3421f7 Mon Sep 17 00:00:00 2001
+From 70c2fdab6a85d235b45e60cfacb74494ff783bcc Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Tue, 11 Mar 2025 17:11:12 +0800
 Subject: [PATCH 225/533] Porting to FML13V03 board.
@@ -986,5 +986,5 @@ index 7d82a0946e1c..d53ef21c1ba7 100644
  	  If you say Y here you get support for the ChromeOS Embedded
  	  Controller (EC) providing keyboard, battery and power services.
 -- 
-2.51.1
+2.52.0
 

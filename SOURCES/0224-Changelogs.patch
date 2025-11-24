@@ -1,4 +1,4 @@
-From b96067c2681f325d37ebd05b09f5bb227093f5b4 Mon Sep 17 00:00:00 2001
+From d149d6c5076bc6f477931a54116a7b7ff02d15a7 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Fri, 7 Mar 2025 14:05:14 +0800
 Subject: [PATCH 224/533] Changelogs: Add the configuration for the motherboard
@@ -2544,5 +2544,5 @@ index 000000000000..4a8403715cd9
 +CONFIG_I2C_HID_OF=y
 \ No newline at end of file
 -- 
-2.51.1
+2.52.0
 

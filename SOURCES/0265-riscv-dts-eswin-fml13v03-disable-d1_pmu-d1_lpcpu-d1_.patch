@@ -1,4 +1,4 @@
-From ab2616ffcfa85971a4980c8f4cd20b1e3c443c3f Mon Sep 17 00:00:00 2001
+From 661b002472480ad5eee63c915e65be9364d71f78 Mon Sep 17 00:00:00 2001
 From: Sandie Cao <sandie.cao@deepcomputing.io>
 Date: Mon, 31 Mar 2025 10:12:58 +0800
 Subject: [PATCH 265/533] riscv: dts: eswin: fml13v03: disable d1_pmu,
@@ -41,5 +41,5 @@ index 1ced9cfcd2af..4b5f5ea51330 100644
  
  &d0_aon_dmac {
 -- 
-2.51.1
+2.52.0
 

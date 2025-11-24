@@ -1,4 +1,4 @@
-From b73dc50c452384e8d0ec825b6cb1e1594a779524 Mon Sep 17 00:00:00 2001
+From cf3db5297050284c15b9207c28e712fe40f8d209 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Wed, 26 Mar 2025 17:36:14 +0800
 Subject: [PATCH 261/533] EC: add support for special function keys: KEY_MEDIA
@@ -82,5 +82,5 @@ index 3b422b0de468..00ac1d572b22 100644
  /* Switches */
  #define EC_MKBP_LID_OPEN	0
 -- 
-2.51.1
+2.52.0
 

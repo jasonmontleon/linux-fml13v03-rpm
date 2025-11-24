@@ -1,4 +1,4 @@
-From 720124dba80cc28f2ed4e0de2f9f1e20fde1d7b4 Mon Sep 17 00:00:00 2001
+From 54193aa8d100f006b6de786cce22c1521a9d8dad Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Tue, 6 May 2025 10:55:08 +0800
 Subject: [PATCH 287/533] sound/soc/codecs/es8326: Optimize speaker control to
@@ -91,5 +91,5 @@ index 2a751e266ad6..a2f649d778a7 100644
  	if (es8326->spk_ctl_gpio < 0) {
  		dev_info(&i2c->dev, "Can not read property spk_ctl_gpio\n");
 -- 
-2.51.1
+2.52.0
 

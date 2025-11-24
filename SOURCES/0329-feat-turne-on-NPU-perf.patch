@@ -1,4 +1,4 @@
-From abb901a31b83364ac9a51e54c4afbd6337c031d0 Mon Sep 17 00:00:00 2001
+From 55e0cc82f617d33561a64f700529287d72c3a9a5 Mon Sep 17 00:00:00 2001
 From: chenyangxi <chenyangxi@eswincomputing.com>
 Date: Tue, 8 Apr 2025 19:04:09 +0800
 Subject: [PATCH 329/533] feat:turne on NPU perf
@@ -21,5 +21,5 @@ index 8dcf4e6b23a0..745e9491be08 100644
      select ESWIN_RSVMEM_HEAP
 -
 -- 
-2.51.1
+2.52.0
 

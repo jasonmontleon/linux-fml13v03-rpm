@@ -1,4 +1,4 @@
-From 0529dab2120a9ca804922f7bafd0c2748dc7bfa4 Mon Sep 17 00:00:00 2001
+From bb2d1d7d8f797028c566598d3d45ac16ce4e56bf Mon Sep 17 00:00:00 2001
 From: fanxiaping <fanxiaping@eswincomputing.com>
 Date: Fri, 25 Jul 2025 18:00:40 +0800
 Subject: [PATCH 459/533] fix:suspend err, hdmi resume fail
@@ -38,5 +38,5 @@ index 58bb53434f7b..926bfffe5335 100644
  }
  EXPORT_SYMBOL_GPL(dw_hdmi_resume);
 -- 
-2.51.1
+2.52.0
 

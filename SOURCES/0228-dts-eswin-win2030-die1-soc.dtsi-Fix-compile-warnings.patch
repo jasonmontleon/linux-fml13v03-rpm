@@ -1,4 +1,4 @@
-From dc1d87f229c149b306035450c57837a3a75a74dd Mon Sep 17 00:00:00 2001
+From b55da1dade588b6a4e0e7a3d48af56f2d5bf994a Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Thu, 13 Mar 2025 17:31:32 +0800
 Subject: [PATCH 228/533] dts: eswin-win2030-die1-soc.dtsi: Fix compile
@@ -40,5 +40,5 @@ index 309c9ee991d2..cedb2490af55 100644
  			#address-cells = <1>;
  			#size-cells = <0>;
 -- 
-2.51.1
+2.52.0
 

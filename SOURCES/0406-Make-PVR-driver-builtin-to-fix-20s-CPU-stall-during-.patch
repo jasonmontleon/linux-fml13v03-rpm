@@ -1,4 +1,4 @@
-From 8b23315540bab7893647a71d84d074d4dba354cb Mon Sep 17 00:00:00 2001
+From fba3df3a66f20eaceccdf7307587e9e54b368181 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Tue, 1 Jul 2025 15:42:46 +0800
 Subject: [PATCH 406/533] Make PVR driver builtin to fix 20s CPU stall during
@@ -22,5 +22,5 @@ index 01e5dd571fad..1c6fb350f565 100755
  CONFIG_FB=y
  CONFIG_FB_EFI=y
 -- 
-2.51.1
+2.52.0
 

@@ -1,4 +1,4 @@
-From e13a691e3d9142432f09c367062d199c1541bbca Mon Sep 17 00:00:00 2001
+From 6351ceabc9717ebb9fe4b4e4ee619f0d4e837259 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Tue, 18 Mar 2025 17:56:59 +0800
 Subject: [PATCH 250/533] Changelogs: Merge the latest TAG(EIC7X-2025.02) code,
@@ -87,5 +87,5 @@ index 87f975b2cdce..1c3e14d9a251 100755
  CONFIG_EXT4_FS=y
  CONFIG_EXT4_FS_POSIX_ACL=y
 -- 
-2.51.1
+2.52.0
 

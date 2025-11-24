@@ -1,4 +1,4 @@
-From dc14e4c9cc8e76f4414cbfa9e9cc201ea0c02cce Mon Sep 17 00:00:00 2001
+From 82908dcfba52cf70deb269bfaff6e00056c3a118 Mon Sep 17 00:00:00 2001
 From: zouxiaojun <zouxiaojun@eswincomputing.com>
 Date: Mon, 29 Jul 2024 17:05:54 +0800
 Subject: [PATCH 158/533] fix(enc):fix hang issue of ve roi
@@ -1579,5 +1579,5 @@ index 5ed832b39132..97743c8172cd 100644
  	LOG_DBG("runtime suspend\n");
  	return venc_dev_close(dev);
 -- 
-2.51.1
+2.52.0
 

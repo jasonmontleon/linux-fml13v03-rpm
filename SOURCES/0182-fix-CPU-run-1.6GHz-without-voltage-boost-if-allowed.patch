@@ -1,4 +1,4 @@
-From 29de3ff08cfed00cf8fc47c6e89489e00303dbc7 Mon Sep 17 00:00:00 2001
+From 2f0838ceb0b0b451ef88e932c05455f1bab797c2 Mon Sep 17 00:00:00 2001
 From: huangyifeng <huangyifeng@eswincomputing.com>
 Date: Mon, 30 Sep 2024 13:26:53 +0800
 Subject: [PATCH 182/533] fix:CPU run 1.6GHz without voltage boost if allowed
@@ -103,5 +103,5 @@ index b944a5e6ec44..c035da206e7b 100755
  		if (IS_ERR(clk)) {
  			devm_kfree(dev, p_clk);
 -- 
-2.51.1
+2.52.0
 

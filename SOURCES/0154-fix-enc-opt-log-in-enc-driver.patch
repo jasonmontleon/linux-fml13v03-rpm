@@ -1,4 +1,4 @@
-From e9267679c727904275b4358bf75479e30dc8f98a Mon Sep 17 00:00:00 2001
+From 6a346c7eb3caaca9d67e850ff269a5791eecb2ea Mon Sep 17 00:00:00 2001
 From: zouxiaojun <zouxiaojun@eswincomputing.com>
 Date: Thu, 15 Aug 2024 10:02:04 +0800
 Subject: [PATCH 154/533] fix(enc):opt log in enc driver
@@ -147,5 +147,5 @@ index 008166eeb8cc..5ed832b39132 100644
  	}
  	return venc_dev_open(dev);
 -- 
-2.51.1
+2.52.0
 

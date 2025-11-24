@@ -1,4 +1,4 @@
-From db14f316465392e62dd8ac29dfd781b56a3bf8bf Mon Sep 17 00:00:00 2001
+From 7f4463da411f2ee1446bfd4566ef87b78b2bba86 Mon Sep 17 00:00:00 2001
 From: hehuan1 <hehuan1@eswincomputing.com>
 Date: Wed, 20 Aug 2025 16:07:48 +0800
 Subject: [PATCH 471/533] fix: resolve abnormal prints
@@ -54,5 +54,5 @@ index 19ad0c2a548c..c1f39c940df5 100644
  	if (type == PVT_TEMP)
  		*val = eswin_pvt_calc_poly(&poly_N_to_temp, data);
 -- 
-2.51.1
+2.52.0
 

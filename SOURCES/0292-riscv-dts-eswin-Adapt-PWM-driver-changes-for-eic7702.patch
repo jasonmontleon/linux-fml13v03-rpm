@@ -1,4 +1,4 @@
-From f8622987d9c2c9a4a731fb5a2800f3707b9ca1f2 Mon Sep 17 00:00:00 2001
+From a6ae9e1756692d8403f16044c0f2d3d874713e6d Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Fri, 16 May 2025 15:34:36 +0800
 Subject: [PATCH 292/533] riscv: dts: eswin: Adapt PWM driver changes for
@@ -23,5 +23,5 @@ index c5153c0d6b9f..92f1b84af5d4 100644
  
  &fan_control {
 -- 
-2.51.1
+2.52.0
 

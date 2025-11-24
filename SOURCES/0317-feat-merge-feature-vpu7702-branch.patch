@@ -1,4 +1,4 @@
-From ae7211b2fbf63a5d9638ca3d852ce9a46b949002 Mon Sep 17 00:00:00 2001
+From 2b1bf6a85ce0a6d60b63771de51ccaf82a6378e4 Mon Sep 17 00:00:00 2001
 From: zhouliang1 <zhouliang1@eswincomputing.com>
 Date: Fri, 14 Feb 2025 16:48:39 +0800
 Subject: [PATCH 317/533] feat:merge feature-vpu7702 branch
@@ -287,5 +287,5 @@ index c10dc4bc3e65..22e302081b7b 100644
  
  /*
 -- 
-2.51.1
+2.52.0
 

@@ -1,4 +1,4 @@
-From 6cb9c857fcc1c1d427b634e97e7dfc37508197d8 Mon Sep 17 00:00:00 2001
+From 1f5745394e17368da5d3c4b8440a2bcc4dc9befb Mon Sep 17 00:00:00 2001
 From: yangwei1 <yangwei1@eswincomputing.com>
 Date: Mon, 27 May 2024 14:44:34 +0800
 Subject: [PATCH 035/533] fix:add sysfs in pac1934 to set update interval
@@ -138,5 +138,5 @@ index ebad3bde611e..ae2735139729 100644
  
  static struct hwmon_chip_info pac193x_chip_info = {
 -- 
-2.51.1
+2.52.0
 
