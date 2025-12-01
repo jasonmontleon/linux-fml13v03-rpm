@@ -1,4 +1,4 @@
-From 948b8d78aac76cbedfbbac0cf6119dada68a3ab3 Mon Sep 17 00:00:00 2001
+From b7f904d1004ae5af53699c2e2f2ab2b535f6f534 Mon Sep 17 00:00:00 2001
 From: linmin <linmin@eswincomputing.com>
 Date: Tue, 2 Jul 2024 15:08:43 +0800
 Subject: [PATCH 060/533] feat(dts):add apply_npu_high_freq in dts

@@ -1,4 +1,4 @@
-From 62dbe5dbb0794f5f03dd731cbe20dc6fa86649a6 Mon Sep 17 00:00:00 2001
+From 3c4ea4ead81d831d7be2c0bdc57f47db9bcb92ce Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Fri, 16 May 2025 13:58:38 +0800
 Subject: [PATCH 291/533] Changelogs: 1. Enable LPCPU debug print on die1. 2.

@@ -1,4 +1,4 @@
-From f3e853f006a71a6088046794462dffe75131a237 Mon Sep 17 00:00:00 2001
+From ceddb71b2a5d5fc76081fce990505b35c8a0f124 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Thu, 17 Apr 2025 10:00:04 +0800
 Subject: [PATCH 277/533] gpu: hdmi: Limit die0 to 2.2K and 2.8K resolutions to

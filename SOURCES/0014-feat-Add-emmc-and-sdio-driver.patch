@@ -1,4 +1,4 @@
-From 2036333b69f5c60728966cd65bdcc58415380a1e Mon Sep 17 00:00:00 2001
+From 11189d34981af6484d0a12cf7f4795fc73763523 Mon Sep 17 00:00:00 2001
 From: liangshuang <liangshuang@eswincomputing.com>
 Date: Wed, 22 May 2024 17:27:11 +0800
 Subject: [PATCH 014/533] feat:Add emmc and sdio driver.

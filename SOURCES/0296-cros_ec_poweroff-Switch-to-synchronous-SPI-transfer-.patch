@@ -1,4 +1,4 @@
-From 4d488d169e5c469fe100940ab8ece8be3487bb96 Mon Sep 17 00:00:00 2001
+From b8116fe158a2df5a6efc2340ee1b6fa879949840 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Fri, 23 May 2025 18:20:18 +0800
 Subject: [PATCH 296/533] cros_ec_poweroff: Switch to synchronous SPI transfer

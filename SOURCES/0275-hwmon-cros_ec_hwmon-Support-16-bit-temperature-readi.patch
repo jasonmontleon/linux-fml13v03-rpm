@@ -1,4 +1,4 @@
-From 030c8c236110f3b031ff0de22c22d995b52efd9b Mon Sep 17 00:00:00 2001
+From def986af9603f3eaaa71f145d30d6c7514a6c4d6 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Tue, 15 Apr 2025 14:39:44 +0800
 Subject: [PATCH 275/533] hwmon: cros_ec_hwmon: Support 16-bit temperature

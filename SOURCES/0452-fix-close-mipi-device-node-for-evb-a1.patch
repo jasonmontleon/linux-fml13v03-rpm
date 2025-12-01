@@ -1,4 +1,4 @@
-From 0736282daf21791f1da2f527421dd29e6406f4fb Mon Sep 17 00:00:00 2001
+From a95ada975541fe0732e0edd15710ca00a281738e Mon Sep 17 00:00:00 2001
 From: guozeyang <guozeyang@eswincomputing.com>
 Date: Mon, 28 Jul 2025 09:47:46 +0800
 Subject: [PATCH 452/533] fix:close mipi device node for evb a1

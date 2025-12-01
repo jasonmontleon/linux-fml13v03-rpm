@@ -1,4 +1,4 @@
-From e9352129dec7c27851b19107b2cd33dab9443c05 Mon Sep 17 00:00:00 2001
+From 5bef88fe64182a06d05cf2a6c01e965ce6d37ae1 Mon Sep 17 00:00:00 2001
 From: fanglifei <fanglifei@eswincomputing.com>
 Date: Mon, 22 Apr 2024 16:15:37 +0800
 Subject: [PATCH 008/533] feat: Add support for ethernet driver

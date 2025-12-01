@@ -1,4 +1,4 @@
-From c82989be2489e6eb57fef3086b0156f6173fee0f Mon Sep 17 00:00:00 2001
+From 2129e00a1c2791cc1943596835d21862f6ece55a Mon Sep 17 00:00:00 2001
 From: Wu Zhangben <wuzhangben@eswincomputing.com>
 Date: Wed, 13 Aug 2025 14:46:30 +0800
 Subject: [PATCH 477/533] feat:lpcpu config distribute by linux driver

@@ -1,4 +1,4 @@
-From b8d0c464084c1aad36c832ff79cd8d5ff0702a38 Mon Sep 17 00:00:00 2001
+From d3b3aa9edf9b7ccbe8d58fad2bcd08562fc611fd Mon Sep 17 00:00:00 2001
 From: ouyanghui <ouyanghui@eswincomputing.com>
 Date: Fri, 22 Aug 2025 13:50:12 +0800
 Subject: [PATCH 503/533] fix:RX550 driver stuck when system reboot Changelogs:

@@ -1,4 +1,4 @@
-From 6d3f3a1fec8c5f54b8ba7a386904da1a32d6e9f5 Mon Sep 17 00:00:00 2001
+From 43ca5c5160c658667861f3a4639a0ba624d916ec Mon Sep 17 00:00:00 2001
 From: donghuawei <donghuawei@eswincomputing.com>
 Date: Tue, 16 Jul 2024 10:15:29 +0800
 Subject: [PATCH 099/533] feat: npu drv support low power

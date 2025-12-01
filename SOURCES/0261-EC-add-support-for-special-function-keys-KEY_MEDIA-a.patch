@@ -1,4 +1,4 @@
-From cf3db5297050284c15b9207c28e712fe40f8d209 Mon Sep 17 00:00:00 2001
+From 0fc3568c656588de21a4c0d6f32c7136867840d6 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Wed, 26 Mar 2025 17:36:14 +0800
 Subject: [PATCH 261/533] EC: add support for special function keys: KEY_MEDIA
@@ -48,7 +48,7 @@ index e0bbfa825341..cd4d8cee38bf 100755
  CONFIG_SERIAL_8250=y
  CONFIG_SERIAL_8250_CONSOLE=y
 diff --git a/drivers/input/keyboard/cros_ec_keyb.c b/drivers/input/keyboard/cros_ec_keyb.c
-index e7ecfca838df..23c330f59b35 100644
+index 76fcf90ea7c7..b2d13d09a56f 100644
 --- a/drivers/input/keyboard/cros_ec_keyb.c
 +++ b/drivers/input/keyboard/cros_ec_keyb.c
 @@ -115,6 +115,16 @@ static const struct cros_ec_bs_map cros_ec_keyb_bs[] = {

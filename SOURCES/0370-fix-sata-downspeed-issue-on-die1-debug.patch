@@ -1,4 +1,4 @@
-From 1a2933dfd1cec6bc7140f6a1a13d724ae8bb13d5 Mon Sep 17 00:00:00 2001
+From d91181ed95e3780ad8aa4191e42fbb8b47fd96db Mon Sep 17 00:00:00 2001
 From: ouyanghui <ouyanghui@eswincomputing.com>
 Date: Fri, 23 May 2025 10:53:12 +0800
 Subject: [PATCH 370/533] fix:sata downspeed issue on die1 debug

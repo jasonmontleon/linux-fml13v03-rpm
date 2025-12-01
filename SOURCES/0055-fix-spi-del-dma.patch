@@ -1,4 +1,4 @@
-From a53ac02b3baf1e08a7ca6029d8d3985e5e57226b Mon Sep 17 00:00:00 2001
+From 419656e3545d4f821fe5db1c21be5943b509f50f Mon Sep 17 00:00:00 2001
 From: xuxiang <xuxiang@eswincomputing.com>
 Date: Fri, 14 Jun 2024 14:54:27 +0800
 Subject: [PATCH 055/533] fix:spi del dma

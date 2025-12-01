@@ -1,4 +1,4 @@
-From 4dbb579dd5216da50b35a9e7d36ce8b5c19b0354 Mon Sep 17 00:00:00 2001
+From b124b2d8b813b9d03e947818e2ec57cb1e90dcc5 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Mon, 28 Jul 2025 11:44:02 +0800
 Subject: [PATCH 423/533] Sync ESWIN codebase; merge LCD power-off issue fix

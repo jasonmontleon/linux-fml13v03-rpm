@@ -1,4 +1,4 @@
-From f2ccc6dba2223c73876618c0acb99825e7099308 Mon Sep 17 00:00:00 2001
+From d0d35bdd2e23c2bb78311e9c5260103a995c2a5e Mon Sep 17 00:00:00 2001
 From: huangyifeng <huangyifeng@eswincomputing.com>
 Date: Fri, 14 Feb 2025 15:15:18 +0800
 Subject: [PATCH 312/533] feat:clk driver fit for upstream
