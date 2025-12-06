@@ -1,4 +1,4 @@
-From 5e40e1ed70479f514aabf0e9e188fcc9aaee3d31 Mon Sep 17 00:00:00 2001
+From 3c6a61c302e7b86b27b99b326cedf66fdd867994 Mon Sep 17 00:00:00 2001
 From: huangyifeng <huangyifeng@eswincomputing.com>
 Date: Mon, 11 Mar 2024 18:50:41 +0800
 Subject: [PATCH 002/533] Added clk & reset driver

@@ -1,4 +1,4 @@
-From f5363472ef0cbaa56892beb8fee25d6296578181 Mon Sep 17 00:00:00 2001
+From 27d9c9b387ee9f6ec8bc12b98278f5c41f48008a Mon Sep 17 00:00:00 2001
 From: donghuawei <donghuawei@eswincomputing.com>
 Date: Thu, 26 Sep 2024 11:27:58 +0800
 Subject: [PATCH 178/533] fix: dsp driver need cancel scheduled work

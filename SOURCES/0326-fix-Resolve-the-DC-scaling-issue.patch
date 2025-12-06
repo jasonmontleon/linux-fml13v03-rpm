@@ -1,4 +1,4 @@
-From 6810350eea8c037352752849dcba5b44ffcdb18a Mon Sep 17 00:00:00 2001
+From e0e321c85f9d64b48f586ae93d841d779ad224d7 Mon Sep 17 00:00:00 2001
 From: denglei <denglei@eswincomputing.com>
 Date: Mon, 7 Apr 2025 19:31:32 +0800
 Subject: [PATCH 326/533] fix:Resolve the DC scaling issue.

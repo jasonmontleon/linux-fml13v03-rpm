@@ -1,4 +1,4 @@
-From 15ab1b6e979e9781c23b01fa8544d4108f2a9864 Mon Sep 17 00:00:00 2001
+From cff40c9bea3d3ba96d6207b5807f333e57a5363a Mon Sep 17 00:00:00 2001
 From: ningyu <ningyu@eswincomputing.com>
 Date: Thu, 1 Aug 2024 17:32:12 +0800
 Subject: [PATCH 135/533] refactor:modify evb1 dts

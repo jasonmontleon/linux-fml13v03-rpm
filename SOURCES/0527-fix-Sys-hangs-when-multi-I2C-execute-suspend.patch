@@ -1,4 +1,4 @@
-From c45083a820e08f5d322dda17b0e446ceba8bda69 Mon Sep 17 00:00:00 2001
+From 4c4adf22215fb87fb5246d2ba5d50ea5cfedc7d4 Mon Sep 17 00:00:00 2001
 From: gengzonglin <gengzonglin@eswincomputing.com>
 Date: Wed, 29 Oct 2025 09:58:36 +0800
 Subject: [PATCH 527/533] fix: Sys hangs when multi I2C execute suspend.

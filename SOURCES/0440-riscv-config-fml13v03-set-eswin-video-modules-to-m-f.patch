@@ -1,4 +1,4 @@
-From 6e8b6eb5ed985f7dca55a290f3ec0b29d7c9ffa1 Mon Sep 17 00:00:00 2001
+From 5db91ecd1d63ff12bc01ba3b542f147ee75ce936 Mon Sep 17 00:00:00 2001
 From: sandiecao <sandie.cao@deepcomputing.io>
 Date: Mon, 29 Sep 2025 15:50:45 +0800
 Subject: [PATCH 440/533] riscv: config: fml13v03: set eswin video modules to m

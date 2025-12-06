@@ -1,4 +1,4 @@
-From 9cfe5da1f7f7ddf9bc1db654197f0b375c9db806 Mon Sep 17 00:00:00 2001
+From d1f4f83e27277825784b770b3ce80d299c7da6ba Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Mon, 31 Mar 2025 14:27:42 +0800
 Subject: [PATCH 267/533] PWM: initialize the fan speed to 50%.

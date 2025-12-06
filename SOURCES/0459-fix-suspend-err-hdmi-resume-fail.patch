@@ -1,4 +1,4 @@
-From f7096913ac3417f156b227099c139084a6d81d1c Mon Sep 17 00:00:00 2001
+From 1d8b1e2bf4c657e0e0ee91c96bf05ea642e467de Mon Sep 17 00:00:00 2001
 From: fanxiaping <fanxiaping@eswincomputing.com>
 Date: Fri, 25 Jul 2025 18:00:40 +0800
 Subject: [PATCH 459/533] fix:suspend err, hdmi resume fail

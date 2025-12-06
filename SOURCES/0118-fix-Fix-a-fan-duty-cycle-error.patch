@@ -1,4 +1,4 @@
-From 1d706a90eb6fc0e624e5b43a822926ecac50bae5 Mon Sep 17 00:00:00 2001
+From 9ba39148fa7a476f67ab997fbed5f227a81ecd6d Mon Sep 17 00:00:00 2001
 From: yangwei1 <yangwei1@eswincomputing.com>
 Date: Wed, 24 Jul 2024 16:21:05 +0800
 Subject: [PATCH 118/533] fix:Fix a fan duty cycle error

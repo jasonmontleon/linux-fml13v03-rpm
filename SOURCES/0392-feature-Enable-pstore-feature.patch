@@ -1,4 +1,4 @@
-From 7dca43985e13afee9efe2d9f2b197485850ab1db Mon Sep 17 00:00:00 2001
+From 8b7e1b34badf7cab5bbddf353c669626e050e481 Mon Sep 17 00:00:00 2001
 From: chenzhanzhan <chenzhanzhan@eswincomputing.com>
 Date: Tue, 10 Jun 2025 16:02:54 +0800
 Subject: [PATCH 392/533] feature: Enable pstore feature

@@ -1,4 +1,4 @@
-From 563a86f2183243f680c4030e95804d612047b8f3 Mon Sep 17 00:00:00 2001
+From 1b4c160476bff95e71070b0e8efb8e93b9f805af Mon Sep 17 00:00:00 2001
 From: hujiamiao <hujiamiao@eswincomputing.com>
 Date: Wed, 24 Sep 2025 14:03:50 +0800
 Subject: [PATCH 518/533] feat:pm merges dev macro controls
@@ -2120,10 +2120,10 @@ index 4ffde137c2b0..9184af73fdba 100644
  };
  module_platform_driver(dw_spi_mmio_driver);
 diff --git a/drivers/usb/dwc3/core.c b/drivers/usb/dwc3/core.c
-index b7eaad099309..0bbbb3bbb425 100644
+index 22975a4b19a4..c86ab704bbeb 100644
 --- a/drivers/usb/dwc3/core.c
 +++ b/drivers/usb/dwc3/core.c
-@@ -2438,7 +2438,7 @@ static struct platform_driver dwc3_driver = {
+@@ -2439,7 +2439,7 @@ static struct platform_driver dwc3_driver = {
  		.name	= "dwc3",
  		.of_match_table	= of_match_ptr(of_dwc3_match),
  		.acpi_match_table = ACPI_PTR(dwc3_acpi_match),

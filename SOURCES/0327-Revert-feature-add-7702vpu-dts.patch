@@ -1,4 +1,4 @@
-From 502fef0c9279c10d0cf1c999a548091ac1afd2ad Mon Sep 17 00:00:00 2001
+From 9bb4fe96eb28686b680a96ab38ed0be73e1d6702 Mon Sep 17 00:00:00 2001
 From: zhang dongdong <zhangdongdong@eswincomputing.com>
 Date: Wed, 2 Apr 2025 11:21:03 +0800
 Subject: [PATCH 327/533] Revert "feature:add 7702vpu dts"
