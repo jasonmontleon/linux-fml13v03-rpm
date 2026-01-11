@@ -1,4 +1,4 @@
-From f31c5f80f256ae608652c103c7a1576336fc411a Mon Sep 17 00:00:00 2001
+From c79324f4511483dbda696d3226647c43061181c1 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Thu, 4 Sep 2025 13:38:50 +0800
 Subject: [PATCH 432/533] lpcpu: gpio usb lowpower

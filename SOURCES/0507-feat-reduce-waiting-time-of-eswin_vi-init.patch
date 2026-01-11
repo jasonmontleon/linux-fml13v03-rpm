@@ -1,4 +1,4 @@
-From 1397010d14c2cc9faccf04d27f8c67a8d8bb6837 Mon Sep 17 00:00:00 2001
+From b5b94f62f4e86964b79df4917bce9cb877811cae Mon Sep 17 00:00:00 2001
 From: yufangxian <yufangxian@eswincomputing.com>
 Date: Fri, 29 Aug 2025 12:24:33 +0800
 Subject: [PATCH 507/533] feat: reduce waiting time of eswin_vi init

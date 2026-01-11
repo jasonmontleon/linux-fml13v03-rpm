@@ -1,4 +1,4 @@
-From 4cb090d842074a378972b9afab843cad1dcff306 Mon Sep 17 00:00:00 2001
+From 49e0a47772bd818b2318e85257f9f1efa62c3217 Mon Sep 17 00:00:00 2001
 From: yangwei1 <yangwei1@eswincomputing.com>
 Date: Mon, 3 Jun 2024 19:06:17 +0800
 Subject: [PATCH 045/533] feat:add dirver for fsub303 to support type-c

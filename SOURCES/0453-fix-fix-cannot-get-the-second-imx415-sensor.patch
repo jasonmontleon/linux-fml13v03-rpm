@@ -1,4 +1,4 @@
-From ce810ba35dd72b6889b7687e90a0e87bf4424955 Mon Sep 17 00:00:00 2001
+From 0212c547070237a8b880bf76a6ee202cd0bdd47c Mon Sep 17 00:00:00 2001
 From: yufangxian <yufangxian@eswincomputing.com>
 Date: Mon, 11 Aug 2025 15:42:15 +0800
 Subject: [PATCH 453/533] fix: fix cannot get the second imx415 sensor

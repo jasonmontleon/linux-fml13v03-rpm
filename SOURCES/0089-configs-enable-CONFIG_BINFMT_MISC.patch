@@ -1,4 +1,4 @@
-From 2cabf626d27954e1ce3d9a33edf7f089ffd015bf Mon Sep 17 00:00:00 2001
+From cd2a06eff3ceaf041c95870cfe25c0b2f7e080cc Mon Sep 17 00:00:00 2001
 From: Han Gao <gaohan@iscas.ac.cn>
 Date: Fri, 14 Jun 2024 13:05:45 +0800
 Subject: [PATCH 089/533] configs: enable CONFIG_BINFMT_MISC

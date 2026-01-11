@@ -1,4 +1,4 @@
-From 6193081172b6c2816f39151ae30f6206abb8f51b Mon Sep 17 00:00:00 2001
+From 3c554fd5b5f5d3f307f21ff7f3709fb9f35e4485 Mon Sep 17 00:00:00 2001
 From: zhuxuefei <zhuxuefei@eswincomputing.com>
 Date: Mon, 22 Sep 2025 13:48:26 +0800
 Subject: [PATCH 516/533] feat:npu suspend if npu status is free.

@@ -1,4 +1,4 @@
-From d31b265f9d50814c0252e493f6555e07513ddc3c Mon Sep 17 00:00:00 2001
+From bae861d01b29eaaa6614047b5736aa8df1f909f5 Mon Sep 17 00:00:00 2001
 From: donghuawei <donghuawei@eswincomputing.com>
 Date: Wed, 4 Sep 2024 15:53:40 +0800
 Subject: [PATCH 166/533] feat:npu drv need add autoload

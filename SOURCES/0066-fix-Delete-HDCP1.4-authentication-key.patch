@@ -1,4 +1,4 @@
-From cf0c1a2cd711bbd07a45eeb83ea05630e7c9a3ac Mon Sep 17 00:00:00 2001
+From a6521aac9e315d517ab86d0406e8feca7a1c23d4 Mon Sep 17 00:00:00 2001
 From: denglei <denglei@eswincomputing.com>
 Date: Mon, 8 Jul 2024 19:56:12 +0800
 Subject: [PATCH 066/533] fix:Delete HDCP1.4 authentication key.

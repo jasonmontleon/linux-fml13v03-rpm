@@ -1,4 +1,4 @@
-From d7e0bb8ffe0d132656c4031b67a43a6fc5980d62 Mon Sep 17 00:00:00 2001
+From b291eb4f354aab95322f7c900600734e7281955b Mon Sep 17 00:00:00 2001
 From: linmin <linmin@eswincomputing.com>
 Date: Mon, 10 Feb 2025 17:05:23 +0800
 Subject: [PATCH 220/533] release-2025.0130
@@ -5493,10 +5493,10 @@ index 20d2dd4d9b40..52f6494d4d07 100644
  
  	pr_notice("Kernel command line: %s\n", saved_command_line);
 diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-index 5f0b82502b2c..2593c05d02c3 100644
+index cd52a64a65ff..f385097f2b6e 100644
 --- a/kernel/sched/core.c
 +++ b/kernel/sched/core.c
-@@ -8430,6 +8430,7 @@ long sched_setaffinity(pid_t pid, const struct cpumask *in_mask)
+@@ -8431,6 +8431,7 @@ long sched_setaffinity(pid_t pid, const struct cpumask *in_mask)
  	put_task_struct(p);
  	return retval;
  }

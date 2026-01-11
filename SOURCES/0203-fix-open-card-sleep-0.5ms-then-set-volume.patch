@@ -1,4 +1,4 @@
-From 6e00259f74a161b0052ec5228e63680b25ff0165 Mon Sep 17 00:00:00 2001
+From 44710d44148530d93c6fcb7567322a28699cfbdd Mon Sep 17 00:00:00 2001
 From: zhouliang2 <zhouliang2@eswincomputing.com>
 Date: Wed, 30 Oct 2024 10:50:24 +0800
 Subject: [PATCH 203/533] fix:open card sleep 0.5ms then set volume

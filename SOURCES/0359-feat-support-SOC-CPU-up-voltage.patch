@@ -1,4 +1,4 @@
-From a2a7794998a767d2c785bc3080cccda81f388889 Mon Sep 17 00:00:00 2001
+From a54fdb5a10be981a50aa77ac68b3d911f1f73c1f Mon Sep 17 00:00:00 2001
 From: lihuihui <lihuihui@eswincomputing.com>
 Date: Tue, 13 May 2025 14:35:50 +0800
 Subject: [PATCH 359/533] feat:support SOC/CPU up voltage

@@ -1,4 +1,4 @@
-From d9586a3ba018dd6128444d48f2e7f2d7310cd430 Mon Sep 17 00:00:00 2001
+From 233e681e9e09303c728ec8046b1f0aa647035ef8 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Fri, 21 Mar 2025 11:08:32 +0800
 Subject: [PATCH 255/533] dts: eic7702-deepcomputing-fml13v03.dts: update
