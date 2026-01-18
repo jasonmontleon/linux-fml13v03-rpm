@@ -1,4 +1,4 @@
-From 0fd8a11b521871fa2f9a6e10ef03bbb191fcdd55 Mon Sep 17 00:00:00 2001
+From dd4ed77dad7a91603091f2b576d3fa5cc5706e1f Mon Sep 17 00:00:00 2001
 From: Xiang Xu <xuxiang@eswincomputing.com>
 Date: Mon, 30 Jun 2025 19:20:30 +0800
 Subject: [PATCH 407/533] perf: Optimize CPU voltage and cpufreq control

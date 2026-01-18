@@ -1,4 +1,4 @@
-From 80d12695b587114e7c133bb47c5382f053b3c7c6 Mon Sep 17 00:00:00 2001
+From 0cdab4fe3ffdd2919365e59ecf3b2d70ae4b32ab Mon Sep 17 00:00:00 2001
 From: huangyifeng <huangyifeng@eswincomputing.com>
 Date: Fri, 19 Jul 2024 10:11:52 +0800
 Subject: [PATCH 112/533] fix(cpu pll): enable cpu low power clk when use it.

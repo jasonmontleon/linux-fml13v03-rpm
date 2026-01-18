@@ -1,4 +1,4 @@
-From 20f4ad277267b88a629057f2433bbe3e2d1ed826 Mon Sep 17 00:00:00 2001
+From 7026b927905fca5c2c14c9ee66aaaea25baaba45 Mon Sep 17 00:00:00 2001
 From: fanxiaping <fanxiaping@eswincomputing.com>
 Date: Sat, 11 Oct 2025 15:28:58 +0800
 Subject: [PATCH 442/533] WIN2030-19767:fix:resolve map memory fail

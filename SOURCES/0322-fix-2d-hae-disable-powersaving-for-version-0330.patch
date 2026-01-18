@@ -1,4 +1,4 @@
-From 591a9bb989810c7231f1950541a42d40256c3c7a Mon Sep 17 00:00:00 2001
+From c5b2168cd2d2104c14f595437e2dc49ff67fc06d Mon Sep 17 00:00:00 2001
 From: lei zhilin <leizhilin@eswincomputing.com>
 Date: Mon, 31 Mar 2025 10:40:28 +0800
 Subject: [PATCH 322/533] <fix>(2d):hae disable powersaving for version 0330

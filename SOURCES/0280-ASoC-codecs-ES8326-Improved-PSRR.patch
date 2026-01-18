@@ -1,4 +1,4 @@
-From bbca83c164584d780d7fefc54725511d1fb6871d Mon Sep 17 00:00:00 2001
+From dd149b745a745d7c1a2dbb5a05e476c723d5709d Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Thu, 24 Apr 2025 10:40:35 +0800
 Subject: [PATCH 280/533] ASoC: codecs: ES8326: Improved PSRR

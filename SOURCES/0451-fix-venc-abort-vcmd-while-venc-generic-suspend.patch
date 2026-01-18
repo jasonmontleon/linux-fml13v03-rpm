@@ -1,4 +1,4 @@
-From a346d45053e5ffd3d7e925aeaff96e0846beb915 Mon Sep 17 00:00:00 2001
+From 6212141fa612a967aa18e13c9a663daf3b0a3b11 Mon Sep 17 00:00:00 2001
 From: zouxiaojun <zouxiaojun@eswincomputing.com>
 Date: Mon, 28 Jul 2025 17:14:40 +0800
 Subject: [PATCH 451/533] fix(venc):abort vcmd while venc generic suspend

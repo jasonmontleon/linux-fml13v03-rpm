@@ -1,4 +1,4 @@
-From 05193f695e99aa3febfcc7f3af13786f07ac6413 Mon Sep 17 00:00:00 2001
+From deda09f4914b139ea29bee249d4a6a2a53fca1ff Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Wed, 2 Jul 2025 10:43:05 +0800
 Subject: [PATCH 408/533] Fix the issue where the backlight does not turn on.

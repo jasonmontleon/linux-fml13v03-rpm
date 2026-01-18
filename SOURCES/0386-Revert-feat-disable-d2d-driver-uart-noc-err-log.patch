@@ -1,4 +1,4 @@
-From f60a16f7847117dce56ca8092ed1951e90ddcb91 Mon Sep 17 00:00:00 2001
+From bbf5daa856a072cb1961fc315d833387f5c3d8d0 Mon Sep 17 00:00:00 2001
 From: huang yifeng <huangyifeng@eswincomputing.com>
 Date: Mon, 9 Jun 2025 10:32:49 +0800
 Subject: [PATCH 386/533] Revert "feat:disable d2d driver && uart noc err log"

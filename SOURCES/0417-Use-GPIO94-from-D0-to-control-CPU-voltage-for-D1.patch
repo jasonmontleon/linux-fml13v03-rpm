@@ -1,4 +1,4 @@
-From 99e05a2e440a93f8c87355ae0d08ed2b468acdea Mon Sep 17 00:00:00 2001
+From 2162828b40b6844cc00d49fb4fbe2b79af4ba2d0 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Mon, 14 Jul 2025 18:05:02 +0800
 Subject: [PATCH 417/533] Use GPIO94 from D0 to control CPU voltage for D1.

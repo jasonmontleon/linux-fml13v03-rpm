@@ -1,4 +1,4 @@
-From 27ec0996610b75e9d8e4b59ece956474821bd933 Mon Sep 17 00:00:00 2001
+From ffb013c4391bee8cc2ac8439bf739d36c17e7871 Mon Sep 17 00:00:00 2001
 From: chenyangxi <chenyangxi@eswincomputing.com>
 Date: Fri, 13 Jun 2025 14:41:23 +0800
 Subject: [PATCH 403/533] feat:npu driver print valt and rate

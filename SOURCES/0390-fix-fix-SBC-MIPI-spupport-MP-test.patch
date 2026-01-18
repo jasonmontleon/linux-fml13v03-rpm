@@ -1,4 +1,4 @@
-From 92ad77e4aee9088cf6b529cc5aedd33d6d96e9a7 Mon Sep 17 00:00:00 2001
+From 9925686889df44deb677d8468f7f67fef7f93cfe Mon Sep 17 00:00:00 2001
 From: fanxiaping <fanxiaping@eswincomputing.com>
 Date: Thu, 29 May 2025 14:12:18 +0800
 Subject: [PATCH 390/533] fix:fix SBC MIPI spupport MP test

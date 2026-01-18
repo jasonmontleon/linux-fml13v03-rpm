@@ -1,4 +1,4 @@
-From f32b316ce4484f29b3cf54974e9b01bde7fe075b Mon Sep 17 00:00:00 2001
+From b1ee66ba92665e82a8d63ddbb211df89fb30498a Mon Sep 17 00:00:00 2001
 From: zhouliang1 <zhouliang1@eswincomputing.com>
 Date: Wed, 30 Apr 2025 19:55:01 +0800
 Subject: [PATCH 346/533] feat:to support both evb and televpu

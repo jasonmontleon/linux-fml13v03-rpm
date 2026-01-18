@@ -1,4 +1,4 @@
-From a32d7afde7fc380cd1effdcf30c0cf10e3ebb02c Mon Sep 17 00:00:00 2001
+From ce99e6e1e38a262a4fb949a4462038c51afb41d8 Mon Sep 17 00:00:00 2001
 From: linmin <linmin@eswincomputing.com>
 Date: Wed, 4 Sep 2024 15:13:10 +0800
 Subject: [PATCH 167/533] feat:Support mmz partition resize

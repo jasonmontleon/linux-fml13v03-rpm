@@ -1,4 +1,4 @@
-From f23247c2951c05f238f96dca335dab0f7b1e6a8d Mon Sep 17 00:00:00 2001
+From 18932383f1ad4684745bca826a91c891ff93b5f2 Mon Sep 17 00:00:00 2001
 From: zouxiaojun <zouxiaojun@eswincomputing.com>
 Date: Thu, 15 Aug 2024 10:02:04 +0800
 Subject: [PATCH 154/533] fix(enc):opt log in enc driver

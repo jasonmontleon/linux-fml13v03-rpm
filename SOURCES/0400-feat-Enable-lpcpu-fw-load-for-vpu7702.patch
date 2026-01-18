@@ -1,4 +1,4 @@
-From 74f30715322a732062fbb1f6d657d28027e2081e Mon Sep 17 00:00:00 2001
+From 19c071ce9643306e66c8c03ede0ceb4106c54b6b Mon Sep 17 00:00:00 2001
 From: taohaitao <taohaitao@eswincomputing.com>
 Date: Thu, 5 Jun 2025 18:26:54 +0800
 Subject: [PATCH 400/533] feat:Enable lpcpu fw load for vpu7702

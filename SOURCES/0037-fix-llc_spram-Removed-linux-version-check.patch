@@ -1,4 +1,4 @@
-From 5193a25ba625daedf67c4960b290ca5ac3031e6d Mon Sep 17 00:00:00 2001
+From 912e8c00c40761bd7e3b2af1bd1b054946ebee7b Mon Sep 17 00:00:00 2001
 From: linmin <linmin@eswincomputing.com>
 Date: Tue, 28 May 2024 13:14:44 +0800
 Subject: [PATCH 037/533] fix(llc_spram):Removed linux version check

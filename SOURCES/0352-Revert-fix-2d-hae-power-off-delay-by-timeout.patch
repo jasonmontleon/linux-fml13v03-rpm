@@ -1,4 +1,4 @@
-From eaee7c215adaded69de6b45469285941bfb253db Mon Sep 17 00:00:00 2001
+From e742d9536bf5892091212cc0a8733053cd6fe3f1 Mon Sep 17 00:00:00 2001
 From: lei zhilin <leizhilin@eswincomputing.com>
 Date: Tue, 13 May 2025 14:37:57 +0800
 Subject: [PATCH 352/533] Revert "<fix>(2d):hae power off delay by timeout"

@@ -1,4 +1,4 @@
-From 8e0c4b8c06ec88c4669593472be3e07325e9319d Mon Sep 17 00:00:00 2001
+From ac546fab39d848133b774adee121b456dc2fd426 Mon Sep 17 00:00:00 2001
 From: ningyu <ningyu@eswincomputing.com>
 Date: Thu, 7 Aug 2025 14:56:04 +0800
 Subject: [PATCH 448/533] fix:multi define gpio cause d314 boot fail

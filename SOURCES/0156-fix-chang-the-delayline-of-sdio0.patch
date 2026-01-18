@@ -1,4 +1,4 @@
-From b64dbbf3a92c337d7bd36376dd353e6ab12c13b3 Mon Sep 17 00:00:00 2001
+From a8567d30e4cb6b3509e0aa32ce3c85547468957b Mon Sep 17 00:00:00 2001
 From: liangshuang <liangshuang@eswincomputing.com>
 Date: Wed, 14 Aug 2024 10:50:26 +0800
 Subject: [PATCH 156/533] fix:chang the delayline of sdio0.

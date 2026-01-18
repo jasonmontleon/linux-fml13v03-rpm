@@ -1,4 +1,4 @@
-From 83996294f18c1cccd33e531d3ec22da46d826361 Mon Sep 17 00:00:00 2001
+From 8be774e5f2640c6502aa0ffc42f0d533833e8078 Mon Sep 17 00:00:00 2001
 From: ningyu <ningyu@eswincomputing.com>
 Date: Sun, 4 Aug 2024 16:09:29 +0800
 Subject: [PATCH 141/533] feat:add single die of 7702 dts

@@ -1,4 +1,4 @@
-From 2638e7ea74d5064c424ae6e455356d8dac4038a9 Mon Sep 17 00:00:00 2001
+From 5bd011e1247db311c2cc21185bf8805fa71b19d3 Mon Sep 17 00:00:00 2001
 From: denglei <denglei@eswincomputing.com>
 Date: Thu, 18 Jul 2024 16:38:30 +0800
 Subject: [PATCH 113/533] feat:HDMI support low power.

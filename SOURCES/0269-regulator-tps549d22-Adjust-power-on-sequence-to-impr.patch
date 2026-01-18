@@ -1,4 +1,4 @@
-From 6bdb95df91bed6a075a3661677e8deb31cb7cfaf Mon Sep 17 00:00:00 2001
+From a829e84db1034d0fa134eb1bd5552e7eb177d96c Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Wed, 2 Apr 2025 14:38:04 +0800
 Subject: [PATCH 269/533] regulator: tps549d22: Adjust power-on sequence to
