@@ -1,4 +1,4 @@
-From 44d0503e2165a356459e2ee7d501721583a3af9d Mon Sep 17 00:00:00 2001
+From de3a074917cf4c9e85e391312bef4a70367d1244 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Wed, 26 Mar 2025 12:50:44 +0800
 Subject: [PATCH 257/533] Fixed Touchpad Freeze Issue: Increased I2C clock

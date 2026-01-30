@@ -1,4 +1,4 @@
-From f7fe15d195d3ca908be27570aced9189ffb8a8c7 Mon Sep 17 00:00:00 2001
+From 2038935b96f9a2ae93bcc6a89e387293b2c4aa53 Mon Sep 17 00:00:00 2001
 From: denglei <denglei@eswincomputing.com>
 Date: Tue, 5 Nov 2024 15:51:38 +0800
 Subject: [PATCH 207/533] fix:DSP driver add license claim.

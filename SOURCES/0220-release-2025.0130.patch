@@ -1,4 +1,4 @@
-From 22ca019886edd37dcbe8d06953e1dadc36431109 Mon Sep 17 00:00:00 2001
+From 67210ded16d120e4cafa49396a809b627d3857d9 Mon Sep 17 00:00:00 2001
 From: linmin <linmin@eswincomputing.com>
 Date: Mon, 10 Feb 2025 17:05:23 +0800
 Subject: [PATCH 220/533] release-2025.0130
@@ -3170,10 +3170,10 @@ index d3dec65f39c9..9102b4ec61ae 100644
  	case PVRSRV_CACHE_OP_CLEAN:
  		riscv_flush_addr(bStart, (bEnd - bStart), IMG_FALSE);
 diff --git a/drivers/gpu/drm/panel/panel-simple.c b/drivers/gpu/drm/panel/panel-simple.c
-index 0d69098eddd9..9a35ee8d5810 100644
+index 8a94eee57d94..b1d17786b47c 100644
 --- a/drivers/gpu/drm/panel/panel-simple.c
 +++ b/drivers/gpu/drm/panel/panel-simple.c
-@@ -3377,6 +3377,31 @@ static const struct panel_desc rocktech_rk043fn48h = {
+@@ -3378,6 +3378,31 @@ static const struct panel_desc rocktech_rk043fn48h = {
  	.connector_type = DRM_MODE_CONNECTOR_DPI,
  };
  
@@ -3205,7 +3205,7 @@ index 0d69098eddd9..9a35ee8d5810 100644
  static const struct display_timing rocktech_rk070er9427_timing = {
  	.pixelclock = { 26400000, 33300000, 46800000 },
  	.hactive = { 800, 800, 800 },
-@@ -4452,6 +4477,9 @@ static const struct of_device_id platform_of_match[] = {
+@@ -4453,6 +4478,9 @@ static const struct of_device_id platform_of_match[] = {
  	}, {
  		.compatible = "rocktech,rk043fn48h",
  		.data = &rocktech_rk043fn48h,

@@ -1,4 +1,4 @@
-From 952a645adef07239717d66566cdef5bdc97b1b7d Mon Sep 17 00:00:00 2001
+From c19165d92f197b2f92ecadf34e275b80d061faf9 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Wed, 12 Mar 2025 11:23:29 +0800
 Subject: [PATCH 226/533] defconfig: fml13v03_defconfig: Add support for Intel

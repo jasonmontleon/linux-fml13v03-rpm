@@ -1,4 +1,4 @@
-From ee0358b2e4068ec483261d9542c773449a90f2b8 Mon Sep 17 00:00:00 2001
+From 086d08b27e09ec54ecf3edeef09b3ef6c4a6f726 Mon Sep 17 00:00:00 2001
 From: denglei <denglei@eswincomputing.com>
 Date: Tue, 21 Oct 2025 16:34:45 +0800
 Subject: [PATCH 523/533] fix:merge npu code from dev to pm branch.

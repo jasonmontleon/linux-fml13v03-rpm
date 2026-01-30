@@ -1,4 +1,4 @@
-From eeb0b71e00bbdf58584b173966d94ac0dfc0751e Mon Sep 17 00:00:00 2001
+From 8d3d6a9b39406ad08dbd1a515ffc488e34c4ee2c Mon Sep 17 00:00:00 2001
 From: huangyifeng <huangyifeng@eswincomputing.com>
 Date: Wed, 5 Feb 2025 16:51:09 +0800
 Subject: [PATCH 237/533] feature:Add eic770x OTP driver

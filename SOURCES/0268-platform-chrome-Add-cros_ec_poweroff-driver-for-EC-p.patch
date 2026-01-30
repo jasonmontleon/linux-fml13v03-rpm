@@ -1,4 +1,4 @@
-From a937bda077965c2d90edb3ba2266c8392ddc8cfa Mon Sep 17 00:00:00 2001
+From 891fa2a1803d7352822ab6a6418d36ac8b0ea1da Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Tue, 1 Apr 2025 17:24:40 +0800
 Subject: [PATCH 268/533] platform/chrome: Add cros_ec_poweroff driver for EC

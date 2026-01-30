@@ -1,4 +1,4 @@
-From 0f1af6608855f2e96a90c1bc2c4eed9f11fa61f2 Mon Sep 17 00:00:00 2001
+From 017d5ed4677e32059f7087129dadf48a656ffb17 Mon Sep 17 00:00:00 2001
 From: Yulin Lu <luyulin@eswincomputing.com>
 Date: Mon, 18 Aug 2025 15:05:26 +0800
 Subject: [PATCH 463/533] fix:Delete lt6911uxe driver for z530

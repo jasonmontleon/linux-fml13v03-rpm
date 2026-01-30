@@ -1,4 +1,4 @@
-From 933edd10a5ca6b127686963bc2bb2fcbef8f47fe Mon Sep 17 00:00:00 2001
+From 2e34fcb9ce20ba8c8f972154b8754dcdd2957ff2 Mon Sep 17 00:00:00 2001
 From: lilijun <lilijun@eswincomputing.com>
 Date: Wed, 19 Jun 2024 15:53:32 +0800
 Subject: [PATCH 056/533] fix(vo): Fix cursor layer resolution

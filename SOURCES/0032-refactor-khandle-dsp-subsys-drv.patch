@@ -1,4 +1,4 @@
-From baa8c16fa0c587f4e9b57d96c04c3530cd0bc82b Mon Sep 17 00:00:00 2001
+From efbeee9e24b7efef0dd895b3846e8f662fee1629 Mon Sep 17 00:00:00 2001
 From: donghuawei <donghuawei@eswincomputing.com>
 Date: Fri, 24 May 2024 13:59:55 +0800
 Subject: [PATCH 032/533] refactor:khandle, dsp subsys drv

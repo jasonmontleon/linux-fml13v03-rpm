@@ -1,4 +1,4 @@
-From 013fdf95d8e227ec0ad3fe34edc25c442e9c40c8 Mon Sep 17 00:00:00 2001
+From 271a9e145c403e745881ed3b2361f7f569b252e5 Mon Sep 17 00:00:00 2001
 From: yangwei1 <yangwei1@eswincomputing.com>
 Date: Tue, 11 Mar 2025 11:08:49 +0800
 Subject: [PATCH 323/533] fix:npu,dsp,cpu,gpu support IPA

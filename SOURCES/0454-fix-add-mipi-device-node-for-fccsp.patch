@@ -1,4 +1,4 @@
-From 0ecf5be77dcd63f9d38a410379223039124fe19c Mon Sep 17 00:00:00 2001
+From 4a5ecad7837185f96a2d4fe3eef1ebc6e0a0099b Mon Sep 17 00:00:00 2001
 From: guozeyang <guozeyang@eswincomputing.com>
 Date: Mon, 11 Aug 2025 15:20:26 +0800
 Subject: [PATCH 454/533] fix:add mipi device node for fccsp

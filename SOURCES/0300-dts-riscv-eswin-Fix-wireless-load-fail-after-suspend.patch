@@ -1,4 +1,4 @@
-From 37b27be2563af7982e4c6a9a6ef19044799b1a74 Mon Sep 17 00:00:00 2001
+From 19c6d6036bee5fb9463f6841bdc6c381a90b8fcb Mon Sep 17 00:00:00 2001
 From: Sandie Cao <sandie.cao@deepcomputing.io>
 Date: Wed, 28 May 2025 13:59:27 +0800
 Subject: [PATCH 300/533] dts: riscv: eswin: Fix wireless load fail after

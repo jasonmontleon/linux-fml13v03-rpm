@@ -1,4 +1,4 @@
-From 37cdc2fc34af09d27e61c5f2adedf3d28f6ee3ee Mon Sep 17 00:00:00 2001
+From abe797ebb2b5caf87670a7268401a597933b6b6d Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Fri, 13 Jun 2025 09:28:16 +0800
 Subject: [PATCH 306/533] Changelogs: 1. add dts thermal configuration for d1

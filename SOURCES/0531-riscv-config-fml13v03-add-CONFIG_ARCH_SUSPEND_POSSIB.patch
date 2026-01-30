@@ -1,4 +1,4 @@
-From f621cfe2ddf4905af51823e77a399c191227fed0 Mon Sep 17 00:00:00 2001
+From 75506208a593fac96e9a8b81b88cd76b3512aea1 Mon Sep 17 00:00:00 2001
 From: sandiecao <sandie.cao@deepcomputing.io>
 Date: Tue, 4 Nov 2025 16:11:59 +0800
 Subject: [PATCH 531/533] riscv: config: fml13v03: add

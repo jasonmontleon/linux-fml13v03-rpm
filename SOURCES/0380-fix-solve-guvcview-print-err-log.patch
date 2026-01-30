@@ -1,4 +1,4 @@
-From 8785abe0d92e9cea7cc2fdf64f2c3d8405ad5b37 Mon Sep 17 00:00:00 2001
+From 981a9509f582c8f1712b6d2404076f9bebc9ea2b Mon Sep 17 00:00:00 2001
 From: luoxianke <luoxianke@eswincomputing.com>
 Date: Wed, 28 May 2025 14:29:45 +0800
 Subject: [PATCH 380/533] fix:solve guvcview print err log
