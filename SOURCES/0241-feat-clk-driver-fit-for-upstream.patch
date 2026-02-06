@@ -1,4 +1,4 @@
-From 987ffc071169d2af994084fdef2d728e88d94a28 Mon Sep 17 00:00:00 2001
+From d1a0281013e913181233b9cd728460b53fd7192c Mon Sep 17 00:00:00 2001
 From: huangyifeng <huangyifeng@eswincomputing.com>
 Date: Fri, 14 Feb 2025 15:15:18 +0800
 Subject: [PATCH 241/533] feat:clk driver fit for upstream
@@ -12167,5 +12167,5 @@ index e544fa4da748..000000000000
 -
 -#endif /*endif __DT_ESWIN_EIC770X_RESET_H__*/
 -- 
-2.52.0
+2.53.0
 

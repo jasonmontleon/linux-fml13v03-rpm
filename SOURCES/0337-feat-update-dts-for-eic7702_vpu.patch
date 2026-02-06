@@ -1,4 +1,4 @@
-From cb27848e87cb0a9b6491751697ecb16b93f4cfae Mon Sep 17 00:00:00 2001
+From ae48d2fc19cabfb00775958c89d02799fd15400b Mon Sep 17 00:00:00 2001
 From: tanshanshan <tanshanshan@eswincomputing.com>
 Date: Sat, 12 Apr 2025 19:36:18 +0800
 Subject: [PATCH 337/533] feat:update dts for eic7702_vpu
@@ -294,5 +294,5 @@ index ca6a63a49950..5744fd7d1796 100644
 +CONFIG_REGULATOR_TPS549D22=y
 +CONFIG_TI_ADS1015=y
 -- 
-2.52.0
+2.53.0
 

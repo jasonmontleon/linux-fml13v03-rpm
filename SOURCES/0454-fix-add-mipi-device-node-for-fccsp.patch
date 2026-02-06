@@ -1,4 +1,4 @@
-From 4a5ecad7837185f96a2d4fe3eef1ebc6e0a0099b Mon Sep 17 00:00:00 2001
+From ff02c245d2a8d7c35d8faff23da05d2ede8fab0f Mon Sep 17 00:00:00 2001
 From: guozeyang <guozeyang@eswincomputing.com>
 Date: Mon, 11 Aug 2025 15:20:26 +0800
 Subject: [PATCH 454/533] fix:add mipi device node for fccsp
@@ -1960,5 +1960,5 @@ index cf3b74eb0479..74c5c6842002 100644
  	dsi_priv->plat_data.base = dsi_priv->dphy_base;
  
 -- 
-2.52.0
+2.53.0
 

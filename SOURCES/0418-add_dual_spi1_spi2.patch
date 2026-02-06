@@ -1,4 +1,4 @@
-From fd0e61d86d0799645eb4db168883fe184c22777b Mon Sep 17 00:00:00 2001
+From 229d3bbcd09591844bc078ffa0adf18421b6102d Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Mon, 14 Jul 2025 18:14:49 +0800
 Subject: [PATCH 418/533] add_dual_spi1_spi2
@@ -316,5 +316,5 @@ index 3183b0dc424a..b1c84f2e4ef0 100644
  	ESWIN_PINMUX_FUNCTION(emmc_led_control, 1, ESWIN_PINMUX_MASK),
  	ESWIN_PINMUX_FUNCTION(sd0_led_control, 1, ESWIN_PINMUX_MASK),
 -- 
-2.52.0
+2.53.0
 

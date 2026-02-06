@@ -1,4 +1,4 @@
-From 7e8c9a3f21d533691e6137ce4078f718ed390121 Mon Sep 17 00:00:00 2001
+From 9115591cc5b461d1dacdc0a2d118e942d1e9e498 Mon Sep 17 00:00:00 2001
 From: denglei <denglei@eswincomputing.com>
 Date: Fri, 29 Aug 2025 09:00:39 +0800
 Subject: [PATCH 504/533] fix:Resolve NPU driver bugs.
@@ -41,5 +41,5 @@ index 8604acd5e545..9a709fd9df48 100644
  
  		consumer = task->common_desc[i].fused_parent.index;
 -- 
-2.52.0
+2.53.0
 

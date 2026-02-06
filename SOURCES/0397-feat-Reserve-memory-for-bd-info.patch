@@ -1,4 +1,4 @@
-From 387449d1882971b4a6c4c3e6fadaf3eade11a48c Mon Sep 17 00:00:00 2001
+From bfd16a7891797551140287809842a9e542b744fb Mon Sep 17 00:00:00 2001
 From: Dongdong Zhang <zhangdongdong@eswincomputing.com>
 Date: Fri, 13 Jun 2025 14:34:45 +0800
 Subject: [PATCH 397/533] feat:Reserve memory for bd info
@@ -58,5 +58,5 @@ index 0b21ee68c452..40a64648d88f 100644
  
  	soc {
 -- 
-2.52.0
+2.53.0
 

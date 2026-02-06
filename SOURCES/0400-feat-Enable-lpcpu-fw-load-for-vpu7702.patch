@@ -1,4 +1,4 @@
-From 369d2594cbee4c10d7da0b94d1e8e7ded299137d Mon Sep 17 00:00:00 2001
+From bd87798c5107bce8f2589be19eb2b6f0285ee335 Mon Sep 17 00:00:00 2001
 From: taohaitao <taohaitao@eswincomputing.com>
 Date: Thu, 5 Jun 2025 18:26:54 +0800
 Subject: [PATCH 400/533] feat:Enable lpcpu fw load for vpu7702
@@ -93,5 +93,5 @@ index 81d0576394f3..22a63047b779 100644
  	adc@48 {
  		compatible = "ti,ads1115";
 -- 
-2.52.0
+2.53.0
 

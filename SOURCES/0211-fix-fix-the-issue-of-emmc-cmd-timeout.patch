@@ -1,4 +1,4 @@
-From 3b3fee85ef21dbac6c076bd61726374ee4798b20 Mon Sep 17 00:00:00 2001
+From 65152d2a9b3561f03b8dd077fadd6e617fa53b50 Mon Sep 17 00:00:00 2001
 From: liangshuang <liangshuang@eswincomputing.com>
 Date: Thu, 7 Nov 2024 17:53:24 +0800
 Subject: [PATCH 211/533] fix:fix the issue of emmc cmd timeout.
@@ -26,5 +26,5 @@ index 585d30259cdd..b9881798fc4e 100644
  #if defined(__DISABLE_HS200)
  		SDHCI_QUIRK2_BROKEN_HS200 |
 -- 
-2.52.0
+2.53.0
 

@@ -1,4 +1,4 @@
-From 357233f4de90dfd0956f6db95fcc2d7cda12ae24 Mon Sep 17 00:00:00 2001
+From 5f85d05e5896d8e336102515562e87f594e78597 Mon Sep 17 00:00:00 2001
 From: Wu Zhangben <wuzhangben@eswincomputing.com>
 Date: Wed, 3 Sep 2025 17:25:38 +0800
 Subject: [PATCH 491/533] fix:remove irq-gpios in d1_lpcpu
@@ -25,5 +25,5 @@ index e7558437cc9e..e51e7d7f4fdc 100755
  	control-gpio-ports = <104 GPIO_ACTIVE_HIGH>;
  };
 -- 
-2.52.0
+2.53.0
 

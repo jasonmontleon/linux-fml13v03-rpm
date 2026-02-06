@@ -1,4 +1,4 @@
-From 98550339b10b64a4063a80054f68b142b00756a0 Mon Sep 17 00:00:00 2001
+From 649b6ea726765726fb2e80530bc261ea6c59cc3e Mon Sep 17 00:00:00 2001
 From: yufangxian <yufangxian@eswincomputing.com>
 Date: Fri, 29 Aug 2025 12:24:33 +0800
 Subject: [PATCH 507/533] feat: reduce waiting time of eswin_vi init
@@ -756,5 +756,5 @@ index 52b474759f38..5f78bb276d50 100644
 +MODULE_VERSION("0.1");
 \ No newline at end of file
 -- 
-2.52.0
+2.53.0
 

@@ -1,4 +1,4 @@
-From 55399a78b5fcb448c64cf4592c0af6e0ca9f0874 Mon Sep 17 00:00:00 2001
+From b74e57a1519b28ab0e4a9d6764055a98c846f4be Mon Sep 17 00:00:00 2001
 From: zouxiaojun <zouxiaojun@eswincomputing.com>
 Date: Mon, 1 Sep 2025 15:58:44 +0800
 Subject: [PATCH 487/533] to(vdec):vdec log opt
@@ -30,5 +30,5 @@ index 908010e2b6f7..32ffc7ff33ed 100644
  
  	return 0;
 -- 
-2.52.0
+2.53.0
 

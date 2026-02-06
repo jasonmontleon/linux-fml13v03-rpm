@@ -1,4 +1,4 @@
-From adf597fcaa2589606eb9db25e14b7d9e9786abcb Mon Sep 17 00:00:00 2001
+From f2745c66251fd119bab05d6ba974bad9b3bf5064 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Thu, 3 Jul 2025 16:32:58 +0800
 Subject: [PATCH 409/533] drm/eswin: Add support for 1920x1200 and 2560x1600
@@ -57,5 +57,5 @@ index a58a0094bc86..aa8b7ed373fc 100644
  		297000000,
  		{ 0x3041, 0x3182, 0x3100 },
 -- 
-2.52.0
+2.53.0
 

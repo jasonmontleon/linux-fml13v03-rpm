@@ -1,4 +1,4 @@
-From a39024d52699911e510e04c2fb64c51b1a14488b Mon Sep 17 00:00:00 2001
+From 7d4de66b07be4a4416cdca9b80e25fcf4dfe9618 Mon Sep 17 00:00:00 2001
 From: yangwei1 <yangwei1@eswincomputing.com>
 Date: Mon, 24 Feb 2025 19:33:47 +0800
 Subject: [PATCH 244/533] fix:Solve no power of tp549d22 when cold boot
@@ -70,5 +70,5 @@ index 1f247c14a50b..dd0052525c36 100644
  }
  
 -- 
-2.52.0
+2.53.0
 

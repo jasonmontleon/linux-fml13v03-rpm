@@ -1,4 +1,4 @@
-From 2f8f18484be6542b833a69d01d5d37f1462e833d Mon Sep 17 00:00:00 2001
+From e5cf269221e43c475bb4a74f8f8f49f394a86f52 Mon Sep 17 00:00:00 2001
 From: ouyanghui <ouyanghui@eswincomputing.com>
 Date: Fri, 23 May 2025 10:53:12 +0800
 Subject: [PATCH 370/533] fix:sata downspeed issue on die1 debug
@@ -217,5 +217,5 @@ index 76f803828053..d07a2b1b99ed 100644
  };
  module_platform_driver(ahci_driver);
 -- 
-2.52.0
+2.53.0
 

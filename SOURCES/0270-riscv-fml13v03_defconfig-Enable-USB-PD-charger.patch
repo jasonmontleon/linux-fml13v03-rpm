@@ -1,4 +1,4 @@
-From d56592eb818e3783b1213eda412bba770258080b Mon Sep 17 00:00:00 2001
+From 16938fab234a432e1f144b02ab728d0fec77dfec Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Wed, 2 Apr 2025 17:37:28 +0800
 Subject: [PATCH 270/533] riscv: fml13v03_defconfig: Enable USB PD charger
@@ -29,5 +29,5 @@ index 98b2e2871be4..38396e7abdbf 100755
  CONFIG_COMMON_CLK_EIC7700=y
  CONFIG_TIMER_ESWIN=y
 -- 
-2.52.0
+2.53.0
 

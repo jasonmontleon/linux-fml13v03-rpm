@@ -1,4 +1,4 @@
-From b509213ba07af269b32e48a7171e809bb095e93c Mon Sep 17 00:00:00 2001
+From c14c2a732058899b249989ba6468d4b226cf784e Mon Sep 17 00:00:00 2001
 From: Sandie Cao <sandie.cao@deepcomputing.io>
 Date: Fri, 6 Jun 2025 10:32:16 +0800
 Subject: [PATCH 305/533] Revert "dts: riscv: eswin: Fix wireless load fail
@@ -37,5 +37,5 @@ index 76b59bc65d54..6bf51152c5c3 100644
  							<0x0 0x0 0x0 0x2 &plic1 180>,
  							<0x0 0x0 0x0 0x3 &plic1 181>,
 -- 
-2.52.0
+2.53.0
 

@@ -1,4 +1,4 @@
-From a68914e77bfeaa2467b4a121114fd5cbd30b739e Mon Sep 17 00:00:00 2001
+From 47bd2806f250ff69df13248af5c0e59eb9332360 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Fri, 25 Jul 2025 18:01:58 +0800
 Subject: [PATCH 422/533] =?UTF-8?q?Changelogs:=201.=20Set=20CPU=20frequenc?=
@@ -323,5 +323,5 @@ index b56b859b1dcd..2769087ca8e9 100644
  		goto err_mmio;
  	}
 -- 
-2.52.0
+2.53.0
 

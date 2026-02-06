@@ -1,4 +1,4 @@
-From 43deba428bcc3b93be246f6df190e79b077ebdcd Mon Sep 17 00:00:00 2001
+From f4e21626f131765b428988088893dc9032a65494 Mon Sep 17 00:00:00 2001
 From: huangyifeng <huangyifeng@eswincomputing.com>
 Date: Tue, 18 Mar 2025 15:17:45 +0800
 Subject: [PATCH 320/533] fix:Fix cnoc npu timeout problem.
@@ -49,5 +49,5 @@ index a2bfd04af41b..01c9b3ac79a9 100644
  	dev_dbg(&rdev->dev, "%s.%d\n", __FUNCTION__, __LINE__);
  	return mpq8785_enable(&rdev->dev,data,  MPQ8785_MASK_OPERATION_ENABLE);
 -- 
-2.52.0
+2.53.0
 

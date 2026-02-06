@@ -1,4 +1,4 @@
-From dfd809790db03d87a1a8e25bd92e6c24049e09da Mon Sep 17 00:00:00 2001
+From 008e3cf4418c6fe108d78fcc1344687afe452438 Mon Sep 17 00:00:00 2001
 From: wangjinlong <wangjinlong@eswincomputing.com>
 Date: Thu, 31 Jul 2025 10:30:40 +0800
 Subject: [PATCH 447/533] fix: Fix BT enable fail
@@ -108,5 +108,5 @@ index ae2044be6a42..3131e050c568 100644
  				PKTFREE_CTRLBUF(dhdp->osh, pktbuf, FALSE);
  				continue;
 -- 
-2.52.0
+2.53.0
 

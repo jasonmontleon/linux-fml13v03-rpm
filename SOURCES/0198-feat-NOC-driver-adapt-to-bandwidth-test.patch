@@ -1,4 +1,4 @@
-From d72d3b3891b68a5a889f6eb5b3c44c6f6a23e5d2 Mon Sep 17 00:00:00 2001
+From 5c646334a5fa75b5f46be46483aa999f03dff018 Mon Sep 17 00:00:00 2001
 From: huangyifeng <huangyifeng@eswincomputing.com>
 Date: Thu, 24 Oct 2024 10:36:41 +0800
 Subject: [PATCH 198/533] feat:NOC driver adapt to bandwidth test.
@@ -113,5 +113,5 @@ index 37cbf964169a..92a86788b0d0 100644
  #define WIN2030_NOC_BIN_CNT	4
  #define SIZE_BIG_BUF	4096
 -- 
-2.52.0
+2.53.0
 

@@ -1,4 +1,4 @@
-From 27a5cb282335f493bd989e62dd9d067dcaeeb5d2 Mon Sep 17 00:00:00 2001
+From 8aa2a5c0a4d7561c81b8c47d4adc844b85b6f1d2 Mon Sep 17 00:00:00 2001
 From: zouxiaojun <zouxiaojun@eswincomputing.com>
 Date: Mon, 28 Jul 2025 17:14:40 +0800
 Subject: [PATCH 451/533] fix(venc):abort vcmd while venc generic suspend
@@ -431,5 +431,5 @@ index f394179604f0..1d699a821f7f 100644
  #define VCMD_REGISTER_INT_STATUS_OFFSET         0X44
  #define VCMD_REGISTER_INT_CTL_OFFSET            0X48
 -- 
-2.52.0
+2.53.0
 

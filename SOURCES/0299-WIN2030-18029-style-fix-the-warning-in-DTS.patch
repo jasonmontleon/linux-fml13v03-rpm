@@ -1,4 +1,4 @@
-From fffc7740d6b660bbf2b9a3a610865a4889ff4f1f Mon Sep 17 00:00:00 2001
+From 95c31fd5317be263efa929e25a1bc4b16899826f Mon Sep 17 00:00:00 2001
 From: wangguosheng <wangguosheng@eswincomputing.com>
 Date: Tue, 27 May 2025 16:07:07 +0800
 Subject: [PATCH 299/533] WIN2030-18029:style:fix the warning in DTS
@@ -143,5 +143,5 @@ index 8d9e0e76c350..165d68f6334c 100644
  			reg = <2>;
  			hdmi_in_i2s: endpoint@1 {
 -- 
-2.52.0
+2.53.0
 

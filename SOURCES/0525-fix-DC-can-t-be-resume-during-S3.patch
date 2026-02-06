@@ -1,4 +1,4 @@
-From d9ec86fbe43fac9f386589d03c382c16b8ea8832 Mon Sep 17 00:00:00 2001
+From 519195cc71aa8a1c2d1aeb526a0943cfbe9c67a6 Mon Sep 17 00:00:00 2001
 From: gengzonglin <gengzonglin@eswincomputing.com>
 Date: Tue, 21 Oct 2025 16:29:40 +0800
 Subject: [PATCH 525/533] fix:DC can't be resume during S3.
@@ -25,5 +25,5 @@ index 83998a9495c0..222792da9e68 100644
  
  	if (drm_dev->unique) {
 -- 
-2.52.0
+2.53.0
 

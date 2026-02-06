@@ -1,4 +1,4 @@
-From 93ccc668193a2176e7fe1269a76a8499b64fd35f Mon Sep 17 00:00:00 2001
+From f46d24221df3c634bb7abcd6f98d1cea1b342358 Mon Sep 17 00:00:00 2001
 From: zhangqianqian1 <zhangqianqian1@eswincomputing.com>
 Date: Mon, 1 Sep 2025 10:04:43 +0800
 Subject: [PATCH 505/533] feat:Remove usb test driver probe.
@@ -64,5 +64,5 @@ index 70fae6f85473..c6186d15072e 100644
  CONFIG_SND_SOC_SOF_TOPLEVEL=y
  CONFIG_SND_SOC_SOF_OF=y
 -- 
-2.52.0
+2.53.0
 

@@ -1,4 +1,4 @@
-From a9196a775ee7cd6e0de6f1d91e64994fa110a18e Mon Sep 17 00:00:00 2001
+From 8a764bd988706b8ef0478af0b3f4b5cd56210ae6 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Tue, 20 May 2025 16:02:05 +0800
 Subject: [PATCH 293/533] riscv: dts: eswin: Add Wi-Fi and Bluetooth rfkill
@@ -89,5 +89,5 @@ index 92f1b84af5d4..a93bdb2b01dc 100644
  	gpio20  : head phone plug/unplug detection2(I)
  	gpio21  : mipi dsi resetn(O)
 -- 
-2.52.0
+2.53.0
 

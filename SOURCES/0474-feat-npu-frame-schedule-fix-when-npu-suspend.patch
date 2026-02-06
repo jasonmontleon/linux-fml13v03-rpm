@@ -1,4 +1,4 @@
-From 98a6fa7e4510ccbb75ff50ede0a337562e3acbff Mon Sep 17 00:00:00 2001
+From 3e63b9d76fc55fefd542eb39327b218f0e662ddf Mon Sep 17 00:00:00 2001
 From: zhuxuefei <zhuxuefei@eswincomputing.com>
 Date: Tue, 12 Aug 2025 14:33:41 +0800
 Subject: [PATCH 474/533] feat:npu frame schedule fix when npu suspend.
@@ -208,5 +208,5 @@ index 436b20387ee1..b9eaf57a708a 100644
  	spin_lock_irqsave(&engine->executor_lock, flags);
  	engine->tiktok_frame[f->tiktok] = NULL;
 -- 
-2.52.0
+2.53.0
 

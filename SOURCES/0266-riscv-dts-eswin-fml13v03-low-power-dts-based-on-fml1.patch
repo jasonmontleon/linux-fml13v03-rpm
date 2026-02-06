@@ -1,4 +1,4 @@
-From 56d9634ced6d4807b15bcbf98e03e6112dc86614 Mon Sep 17 00:00:00 2001
+From 5482f35211c60a8c6de304917fa2bac90a64f08e Mon Sep 17 00:00:00 2001
 From: Sandie Cao <sandie.cao@deepcomputing.io>
 Date: Fri, 28 Mar 2025 09:36:37 +0800
 Subject: [PATCH 266/533] riscv: dts: eswin: fml13v03: low power dts based on
@@ -1659,5 +1659,5 @@ index 1a84eb01d4a7..bb25d24dd2f1 100644
 -	gpio111 : lcd touch resetn(O)
 -*/
 -- 
-2.52.0
+2.53.0
 

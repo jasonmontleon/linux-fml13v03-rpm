@@ -1,4 +1,4 @@
-From 83c1aa3b951ab64e95300a0a09d6489bb3aabe55 Mon Sep 17 00:00:00 2001
+From 3c0ce7d9cba66632ab04c256b89ab58f17418a65 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Fri, 23 May 2025 18:20:18 +0800
 Subject: [PATCH 296/533] cros_ec_poweroff: Switch to synchronous SPI transfer
@@ -132,5 +132,5 @@ index 655bff8b6100..6ccbbf9e333d 100644
  		dev_err(ec_dev->dev,
  			"EC power off failed, falling back to original\n");
 -- 
-2.52.0
+2.53.0
 

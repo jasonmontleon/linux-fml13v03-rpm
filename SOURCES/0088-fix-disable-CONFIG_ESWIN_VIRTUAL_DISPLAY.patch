@@ -1,4 +1,4 @@
-From 654c89e31e81a2b52f4ae9eb10afcef73230ee5e Mon Sep 17 00:00:00 2001
+From 9bb7d99c5a76e10881482842ff7e2f6ef0b8f3ee Mon Sep 17 00:00:00 2001
 From: Han Gao <gaohan@iscas.ac.cn>
 Date: Thu, 13 Jun 2024 23:08:12 +0800
 Subject: [PATCH 088/533] fix: disable CONFIG_ESWIN_VIRTUAL_DISPLAY
@@ -21,5 +21,5 @@ index f0c03fda4b3b..9a186bcd4be7 100644
  CONFIG_ESWIN_DW_HDMI=y
  CONFIG_DW_HDMI_I2S_AUDIO=y
 -- 
-2.52.0
+2.53.0
 

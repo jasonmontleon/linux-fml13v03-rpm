@@ -1,4 +1,4 @@
-From 816a62d5b42824a3774c82eef3aa84efcbbc999e Mon Sep 17 00:00:00 2001
+From 762c14937aa99931502915c7c0a9674beb68ced1 Mon Sep 17 00:00:00 2001
 From: Jason Montleon <jason@montleon.com>
 Date: Wed, 19 Nov 2025 05:24:37 +0000
 Subject: [PATCH 533/533] fixes/workarounds to be parsed out later
@@ -664,5 +664,5 @@ index 27a5f0a94352..5e808bba0e49 100644
  
  #define MMZ_VB_IOC_MAGIC 		'M'
 -- 
-2.52.0
+2.53.0
 

@@ -1,4 +1,4 @@
-From ea8cf550cd280efe31f00898b04da94ff50240ee Mon Sep 17 00:00:00 2001
+From d2cd4dee4e9b367afaad20391959cc6c54e5cd65 Mon Sep 17 00:00:00 2001
 From: fanglifei <fanglifei@eswincomputing.com>
 Date: Fri, 26 Jul 2024 10:41:37 +0800
 Subject: [PATCH 122/533] fix(eth): Add tbu power down when clk off
@@ -37,5 +37,5 @@ index 5a83b55357fb..e80061c95639 100644
  		clk_disable_unprepare(dwc_priv->clk_csr);
  		clk_disable_unprepare(dwc_priv->clk_app);
 -- 
-2.52.0
+2.53.0
 

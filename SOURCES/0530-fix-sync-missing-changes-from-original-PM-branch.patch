@@ -1,4 +1,4 @@
-From 264adc831e827a7aa78d4f4cc1e7e0d82fc377bf Mon Sep 17 00:00:00 2001
+From cd29cc6ac0907627a6a402d273754a0c48abe2a6 Mon Sep 17 00:00:00 2001
 From: Min Lin <linmin@eswincomputing.com>
 Date: Fri, 31 Oct 2025 13:48:29 +0800
 Subject: [PATCH 530/533] fix: sync missing changes from original PM branch
@@ -248,5 +248,5 @@ index f2a6f3b51e13..16276b2f0f1c 100755
  	pm_runtime_enable(dev);
  	ret = pm_runtime_get_sync(dev);
 -- 
-2.52.0
+2.53.0
 

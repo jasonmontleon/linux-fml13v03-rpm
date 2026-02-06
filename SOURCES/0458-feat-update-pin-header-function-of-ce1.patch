@@ -1,4 +1,4 @@
-From 4b6a82d8b1187f7d32d6d9df7362bf84f3274158 Mon Sep 17 00:00:00 2001
+From afa2f2b2d779272ff490dfe617de7149e3b50075 Mon Sep 17 00:00:00 2001
 From: Xiang Xu <xuxiang@eswincomputing.com>
 Date: Wed, 13 Aug 2025 14:11:23 +0800
 Subject: [PATCH 458/533] feat:update pin header function of ce1
@@ -39,5 +39,5 @@ index 91c9ca2f7145..d025773aa21d 100644
        28 : I2C4 SCL
        29 : GPIO80
 -- 
-2.52.0
+2.53.0
 

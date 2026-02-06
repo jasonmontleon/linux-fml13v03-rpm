@@ -1,4 +1,4 @@
-From 7bc89111467d8e54162b6cf9b7bd917de61f414a Mon Sep 17 00:00:00 2001
+From 5adc81c3aae7845d6dc4ffb22f26836e6d6b41e1 Mon Sep 17 00:00:00 2001
 From: lilijun <lilijun@eswincomputing.com>
 Date: Wed, 19 Jun 2024 08:59:46 +0800
 Subject: [PATCH 103/533] feat(Video): Integrate Video driver into linux6.6
@@ -166900,5 +166900,5 @@ index 000000000000..f394179604f0
 +#endif /* VCMD_SWHWREGISTERS_H */
 \ No newline at end of file
 -- 
-2.52.0
+2.53.0
 

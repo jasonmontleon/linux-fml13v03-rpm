@@ -1,4 +1,4 @@
-From 341238039e07950b06fefadd2467d990b7917893 Mon Sep 17 00:00:00 2001
+From 32252c85e5893297965e50638c4d1728a4d27ade Mon Sep 17 00:00:00 2001
 From: Han Gao <gaohan@iscas.ac.cn>
 Date: Thu, 30 May 2024 20:43:13 +0800
 Subject: [PATCH 083/533] configs: enable amd gpu driver
@@ -37,5 +37,5 @@ index d32dd5f08021..60ae1c7268e6 100644
  CONFIG_SND=y
  CONFIG_SND_SOC=y
 -- 
-2.52.0
+2.53.0
 

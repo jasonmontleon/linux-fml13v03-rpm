@@ -1,4 +1,4 @@
-From 75506208a593fac96e9a8b81b88cd76b3512aea1 Mon Sep 17 00:00:00 2001
+From 727132ab1bfaf696b34bf3216c273d13cf499316 Mon Sep 17 00:00:00 2001
 From: sandiecao <sandie.cao@deepcomputing.io>
 Date: Tue, 4 Nov 2025 16:11:59 +0800
 Subject: [PATCH 531/533] riscv: config: fml13v03: add
@@ -25,5 +25,5 @@ index f0428afebddd..8d98e892bbfb 100755
  CONFIG_MAGIC_SYSRQ=y
  CONFIG_DEBUG_FS=y
 -- 
-2.52.0
+2.53.0
 

@@ -1,4 +1,4 @@
-From b63f2a6e267c353d37c19ab902c735c69b47dbed Mon Sep 17 00:00:00 2001
+From 57527f5a8324c7aaa170124516b06c00d3f31ac6 Mon Sep 17 00:00:00 2001
 From: hehuan1 <hehuan1@eswincomputing.com>
 Date: Wed, 20 Aug 2025 13:45:11 +0800
 Subject: [PATCH 464/533] fix: hide process vol file node
@@ -78,5 +78,5 @@ index 8e548b273a61..bfc725adb498 100644
  		case hwmon_in_min:
  			return eswin_pvt_write_limit(pvt, PVT_VOLT + ch, true, val);
 -- 
-2.52.0
+2.53.0
 

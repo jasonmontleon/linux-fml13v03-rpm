@@ -1,4 +1,4 @@
-From 30c73610a8c392ba41980f1dd7a4fd8fb6e658ac Mon Sep 17 00:00:00 2001
+From 27906b76120e64be272c791f5e2e99eda0b2cef6 Mon Sep 17 00:00:00 2001
 From: chenzhanzhan <chenzhanzhan@eswincomputing.com>
 Date: Tue, 10 Jun 2025 16:02:54 +0800
 Subject: [PATCH 392/533] feature: Enable pstore feature
@@ -77,5 +77,5 @@ index fe05cc53ef2f..7ca4524ce672 100644
  
  		g2d_8GB_boundary_reserved_4k {
 -- 
-2.52.0
+2.53.0
 

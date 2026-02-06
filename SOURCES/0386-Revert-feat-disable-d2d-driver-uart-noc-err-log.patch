@@ -1,4 +1,4 @@
-From 5594412e4be9b94c9bc14a9004ba68f400199671 Mon Sep 17 00:00:00 2001
+From 4c1e4c15db088617c2fad1fb2050c8a1de7c6bae Mon Sep 17 00:00:00 2001
 From: huang yifeng <huangyifeng@eswincomputing.com>
 Date: Mon, 9 Jun 2025 10:32:49 +0800
 Subject: [PATCH 386/533] Revert "feat:disable d2d driver && uart noc err log"
@@ -198,5 +198,5 @@ index c6d44719db36..cc232396f842 100644
  {
  	struct win2030_noc_device *noc_device = dev;
 -- 
-2.52.0
+2.53.0
 

@@ -1,4 +1,4 @@
-From 23990d4d096cda165e17e5e4230c8a1cf3418f2c Mon Sep 17 00:00:00 2001
+From d91664329522914763ba8ee6f7f73870f7db6320 Mon Sep 17 00:00:00 2001
 From: Sandie Cao <sandie.cao@deepcomputing.io>
 Date: Mon, 17 Mar 2025 18:32:27 +0800
 Subject: [PATCH 233/533] riscv: eswin: fml13v03: support grub
@@ -94,5 +94,5 @@ index 323ba31752ba..2e69a9e8adc3 100755
 +CONFIG_EFI_COCO_SECRET=y
 +CONFIG_EFI_STUB=y
 -- 
-2.52.0
+2.53.0
 

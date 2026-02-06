@@ -1,4 +1,4 @@
-From 57ad01486b8c01d39bf111e6ba39e76edaa6830b Mon Sep 17 00:00:00 2001
+From 5202c7b12396cbcc894228ae876cd5f2605ee540 Mon Sep 17 00:00:00 2001
 From: linmin <linmin@eswincomputing.com>
 Date: Fri, 9 Aug 2024 16:16:21 +0800
 Subject: [PATCH 147/533] feat:Deselect CONFIG_CPU_IDLE
@@ -392,5 +392,5 @@ index 1472511bd299..585d21eb8e08 100644
 -CONFIG_VIDEO_ESWIN_VDEC=y
 -CONFIG_VIDEO_ESWIN_MEDIA_EXT_DRIVER=y
 -- 
-2.52.0
+2.53.0
 

@@ -1,4 +1,4 @@
-From a2cc779d48005f8d99a94c01fe68286cbc4c1a43 Mon Sep 17 00:00:00 2001
+From b0a1848aa96b2a468fc21d6d3b7c5bc1beb089f5 Mon Sep 17 00:00:00 2001
 From: Han Gao <gaohan@iscas.ac.cn>
 Date: Thu, 30 May 2024 20:44:53 +0800
 Subject: [PATCH 084/533] configs: enable kvm
@@ -22,5 +22,5 @@ index 60ae1c7268e6..2b7beb5b3495 100644
  CONFIG_MODULES=y
  CONFIG_MODULE_UNLOAD=y
 -- 
-2.52.0
+2.53.0
 

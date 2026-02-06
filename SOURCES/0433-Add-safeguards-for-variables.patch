@@ -1,4 +1,4 @@
-From b2a41ed2979c052d008468839f81e679007828fd Mon Sep 17 00:00:00 2001
+From d3d775f89bfae973cd5e651858a95e2cb7427b18 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Thu, 4 Sep 2025 14:37:03 +0800
 Subject: [PATCH 433/533] Add safeguards for variables
@@ -48,5 +48,5 @@ index de19e1156454..bfe63f043274 100644
  		return -ENODEV;
  	}
 -- 
-2.52.0
+2.53.0
 

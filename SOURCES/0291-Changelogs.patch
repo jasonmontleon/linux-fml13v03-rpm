@@ -1,4 +1,4 @@
-From 2e59e1c0a0baa3b3342670dec7e2896bbba2bd98 Mon Sep 17 00:00:00 2001
+From 8a30b5cd3dee25026e83fdd95347824dd0b72c44 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Fri, 16 May 2025 13:58:38 +0800
 Subject: [PATCH 291/533] Changelogs: 1. Enable LPCPU debug print on die1. 2.
@@ -70,5 +70,5 @@ index 905410ed89ab..62b6feba70f2 100644
  	lpcpu->mdev.name = "lpcpu";
  	lpcpu->mdev.fops = &eswin_lpcpu_ops;
 -- 
-2.52.0
+2.53.0
 

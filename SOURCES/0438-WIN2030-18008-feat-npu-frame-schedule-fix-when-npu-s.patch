@@ -1,4 +1,4 @@
-From 0ecb3eb03386f35ed329dedf75d1784bf44861ac Mon Sep 17 00:00:00 2001
+From 467e078f72348b4f93361d7b643f07e723b04b93 Mon Sep 17 00:00:00 2001
 From: sandiecao <sandie.cao@deepcomputing.io>
 Date: Mon, 29 Sep 2025 14:25:24 +0800
 Subject: [PATCH 438/533] WIN2030-18008:feat:npu frame schedule fix when npu
@@ -91,5 +91,5 @@ index bb4f0931fd06..e0b4d20db85f 100644
  		if (f == NULL) {
  			spin_unlock_irqrestore(&engine->executor_lock, flags);
 -- 
-2.52.0
+2.53.0
 

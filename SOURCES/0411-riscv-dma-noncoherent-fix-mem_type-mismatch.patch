@@ -1,4 +1,4 @@
-From a094ea60b6d18e86dc8d0fabeba7578e7d014429 Mon Sep 17 00:00:00 2001
+From 87a6c6e27c726566b927fcf0a80284b6b410039f Mon Sep 17 00:00:00 2001
 From: Sandie Cao <sandie.cao@deepcomputing.io>
 Date: Fri, 4 Jul 2025 16:07:22 +0800
 Subject: [PATCH 411/533] riscv: dma-noncoherent: fix mem_type mismatch
@@ -29,5 +29,5 @@ index 5ecf95370a69..88e672ade14f 100644
 \ No newline at end of file
 +#endif
 -- 
-2.52.0
+2.53.0
 

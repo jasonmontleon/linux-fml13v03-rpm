@@ -1,4 +1,4 @@
-From 5c383a377229e839829a33b1b927184efd716f00 Mon Sep 17 00:00:00 2001
+From e8eb4cceb7edb6ad13bb0f68bb2b95444163331b Mon Sep 17 00:00:00 2001
 From: denglei <denglei@eswincomputing.com>
 Date: Thu, 15 Aug 2024 10:30:29 +0800
 Subject: [PATCH 153/533] fix:set i2s0 io func to GPIO.
@@ -80,5 +80,5 @@ index 02c05b85dfab..fb032ebd085e 100755
  
  	dev_set_drvdata(&pdev->dev, i2s_drvdata);
 -- 
-2.52.0
+2.53.0
 

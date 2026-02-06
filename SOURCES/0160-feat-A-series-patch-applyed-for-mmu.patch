@@ -1,4 +1,4 @@
-From 8e8fa3e6d22381135d4814e9c8ff04bb96c1b016 Mon Sep 17 00:00:00 2001
+From da9c26a8fc23c703561ea1cd92a4d68f9dfdefb0 Mon Sep 17 00:00:00 2001
 From: fanglifei <fanglifei@eswincomputing.com>
 Date: Tue, 27 Aug 2024 17:29:07 +0800
 Subject: [PATCH 160/533] feat: A series patch applyed for mmu
@@ -424,5 +424,5 @@ index 4e715b9b278e..809194cd779f 100644
  	 */
  	smp_mb();	/* exit from system call is not a mb */
 -- 
-2.52.0
+2.53.0
 

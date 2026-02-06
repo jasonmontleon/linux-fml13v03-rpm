@@ -1,4 +1,4 @@
-From 66105497491cb753ee85eaa94a469545e0676ebc Mon Sep 17 00:00:00 2001
+From d01e3ff2a9ff8ad598751c65221624600496fa8d Mon Sep 17 00:00:00 2001
 From: chenzhanzhan <chenzhanzhan@eswincomputing.com>
 Date: Wed, 10 Sep 2025 10:26:21 +0800
 Subject: [PATCH 522/533] feature: Add eswin watchdog driver
@@ -496,5 +496,5 @@ index 000000000000..34f6d4422588
 +MODULE_DESCRIPTION("Eswin WIN2030 Watchdog Driver");
 +MODULE_LICENSE("GPL v2");
 -- 
-2.52.0
+2.53.0
 

@@ -1,4 +1,4 @@
-From fdcdacb91ef1d6e83c40126c0d174d6f1ab017af Mon Sep 17 00:00:00 2001
+From 10ababb5b97fa29bd122e91288fdc1c70df9d630 Mon Sep 17 00:00:00 2001
 From: denglei <denglei@eswincomputing.com>
 Date: Fri, 9 Aug 2024 17:43:51 +0800
 Subject: [PATCH 151/533] fix:AO case failed.
@@ -165,5 +165,5 @@ index acf232996815..02c05b85dfab 100755
  err_probe:
  	clk_disable_unprepare(i2s_drvdata->clk);
 -- 
-2.52.0
+2.53.0
 

@@ -1,4 +1,4 @@
-From c19165d92f197b2f92ecadf34e275b80d061faf9 Mon Sep 17 00:00:00 2001
+From c6edc6f5233000c7ec2f6e8c6cd723597d3956a6 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Wed, 12 Mar 2025 11:23:29 +0800
 Subject: [PATCH 226/533] defconfig: fml13v03_defconfig: Add support for Intel
@@ -24,5 +24,5 @@ index 420935eaa6c6..c1d5d90c241d 100755
  # CONFIG_WLAN_VENDOR_MARVELL is not set
  CONFIG_MT7921E=m
 -- 
-2.52.0
+2.53.0
 

@@ -1,4 +1,4 @@
-From 39df913c6eac4762f16933b832e8ed09daa1f628 Mon Sep 17 00:00:00 2001
+From e22bf6e6366e0783ffce723884214b51107335f0 Mon Sep 17 00:00:00 2001
 From: yangqiang <yangqiang1@eswincomputing.com>
 Date: Thu, 26 Sep 2024 13:07:50 +0800
 Subject: [PATCH 184/533] feat:NPU & DSP drivers shouldn't load on failure.
@@ -80,5 +80,5 @@ index d045a32b5b59..6830563337cc 100644
  	if (err) {
  		dla_error("npu platform init err, err=%d.\n", err);
 -- 
-2.52.0
+2.53.0
 

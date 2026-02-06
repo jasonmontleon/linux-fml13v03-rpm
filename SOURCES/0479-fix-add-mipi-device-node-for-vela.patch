@@ -1,4 +1,4 @@
-From 191ada2410e2b234ca3b1ebee200c6781d4c5e8c Mon Sep 17 00:00:00 2001
+From a1cbc78f96eff737313905b75be310e5a076a6c4 Mon Sep 17 00:00:00 2001
 From: guozeyang <guozeyang@eswincomputing.com>
 Date: Tue, 26 Aug 2025 15:41:35 +0800
 Subject: [PATCH 479/533] fix:add mipi device node for vela
@@ -498,5 +498,5 @@ index 74c5c6842002..86b7c770c1f0 100644
  
  	dsi_priv->plat_data.phy_ops = &dphy_ops;
 -- 
-2.52.0
+2.53.0
 

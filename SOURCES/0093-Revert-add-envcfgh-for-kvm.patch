@@ -1,4 +1,4 @@
-From 7e6260d17b8be10ce46c6e5e6785c7280f24e17f Mon Sep 17 00:00:00 2001
+From a32d0d4e754c5367f614d59563e34a291ce30d91 Mon Sep 17 00:00:00 2001
 From: Han Gao <gaohan@iscas.ac.cn>
 Date: Tue, 16 Jul 2024 11:58:36 +0800
 Subject: [PATCH 093/533] Revert: add envcfgh for kvm
@@ -56,5 +56,5 @@ index 9584d62c96ee..7f6c072f3e2f 100644
  
  	kvm_riscv_vcpu_timer_restore(vcpu);
 -- 
-2.52.0
+2.53.0
 

@@ -1,4 +1,4 @@
-From c3434862367c45fc97f5a8161ca8bb7f31c5adbd Mon Sep 17 00:00:00 2001
+From e5b03082447a5fcf27dcf439506773dc3f3ab824 Mon Sep 17 00:00:00 2001
 From: yangwei1 <yangwei1@eswincomputing.com>
 Date: Fri, 24 May 2024 19:55:33 +0800
 Subject: [PATCH 033/533] fix:modify fan control and read fan speed
@@ -153,5 +153,5 @@ index 9c8ab39dee30..f7ca5c29520b 100644
  
  	ctl->irq = platform_get_irq(pdev, 0);
 -- 
-2.52.0
+2.53.0
 

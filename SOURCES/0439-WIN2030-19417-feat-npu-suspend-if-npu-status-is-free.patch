@@ -1,4 +1,4 @@
-From dcf42175ae6e739611fcad4edfe3b407565ae18b Mon Sep 17 00:00:00 2001
+From c4d79c126e28654af0744b6223c9ff6534a896d9 Mon Sep 17 00:00:00 2001
 From: sandiecao <sandie.cao@deepcomputing.io>
 Date: Mon, 29 Sep 2025 14:29:22 +0800
 Subject: [PATCH 439/533] WIN2030-19417:feat:npu suspend if npu status is free.
@@ -42,5 +42,5 @@ index e0b4d20db85f..6e14b3d978cc 100644
  	spin_unlock_irqrestore(&engine->executor_lock, flags);
  	npu_frame_done_process(f);
 -- 
-2.52.0
+2.53.0
 

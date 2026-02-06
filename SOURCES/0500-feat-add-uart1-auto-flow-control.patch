@@ -1,4 +1,4 @@
-From ae619a1395eff1d93cc26ae85d4b01a36a951a6e Mon Sep 17 00:00:00 2001
+From e3fd4a4501559d67de830231deb3ac63c823b405 Mon Sep 17 00:00:00 2001
 From: Xiang Xu <xuxiang@eswincomputing.com>
 Date: Tue, 26 Aug 2025 19:12:37 +0800
 Subject: [PATCH 500/533] feat:add uart1 auto-flow-control
@@ -25,5 +25,5 @@ index b4735f208b33..3c9dcd8959c8 100644
  		.acpi_match_table = dw8250_acpi_match,
  	},
 -- 
-2.52.0
+2.53.0
 

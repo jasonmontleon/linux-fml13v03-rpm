@@ -1,4 +1,4 @@
-From 558167d34179047d81c2026199f4ea553eb39382 Mon Sep 17 00:00:00 2001
+From d014b9c0e290364147490eb9cf3d24bd79c28681 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Tue, 18 Mar 2025 15:07:53 +0800
 Subject: [PATCH 235/533] PWM: Add support for setting the polarity parameter
@@ -196,5 +196,5 @@ index 71841d8a012a..39fa3fb81661 100644
  	/*
  	 * Specification says timer usage flow is to disable timer, then
 -- 
-2.52.0
+2.53.0
 

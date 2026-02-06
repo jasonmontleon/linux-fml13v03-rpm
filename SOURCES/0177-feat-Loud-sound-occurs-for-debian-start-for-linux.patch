@@ -1,4 +1,4 @@
-From 08e3f3461a5685b492b4b4eeda7421fd67fab6cf Mon Sep 17 00:00:00 2001
+From e570889010a3831aa1da8dd275ac379249b51de7 Mon Sep 17 00:00:00 2001
 From: zhouliang2 <zhouliang2@eswincomputing.com>
 Date: Mon, 23 Sep 2024 15:07:31 +0800
 Subject: [PATCH 177/533] feat:Loud sound occurs for debian start for linux
@@ -29,5 +29,5 @@ index 2c7a4031fa44..3c01c33f2737 100644
  	snd_soc_component_write(component, ES8328_ADCCONTROL1, 0x88);
  
 -- 
-2.52.0
+2.53.0
 

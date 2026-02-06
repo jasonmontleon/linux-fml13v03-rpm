@@ -1,4 +1,4 @@
-From 66f1424094d3aece76d6606202408a7accda6ec6 Mon Sep 17 00:00:00 2001
+From d0c6d3da5871e23a5e90a6be34345bf01175b617 Mon Sep 17 00:00:00 2001
 From: yangwei1 <yangwei1@eswincomputing.com>
 Date: Mon, 24 Feb 2025 19:33:47 +0800
 Subject: [PATCH 314/533] fix:Solve no power of tp549d22 when cold boot
@@ -672,5 +672,5 @@ index 42de6234b289..fd4f62bec900 100644
  static struct i2c_driver tps549d22_driver = {
  	.class = I2C_CLASS_HWMON,
 -- 
-2.52.0
+2.53.0
 

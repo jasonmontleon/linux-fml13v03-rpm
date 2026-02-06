@@ -1,4 +1,4 @@
-From 0618a54192d369abb0a9b22f002ba6cec6a79261 Mon Sep 17 00:00:00 2001
+From 18b9f872e58bfb82c66a56d70cc95e5f001e0c3b Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Wed, 21 May 2025 16:02:27 +0800
 Subject: [PATCH 297/533] Changelogs: fan-gpios -> enable-gpios in pwm
@@ -292,5 +292,5 @@ index 3cf2dabe257f..eea93e48e5b7 100644
  	if (ret) {
  		dev_err(dev, "failed to select default state: %d\n", ret);
 -- 
-2.52.0
+2.53.0
 

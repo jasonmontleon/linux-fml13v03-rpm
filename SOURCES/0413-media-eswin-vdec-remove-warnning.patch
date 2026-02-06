@@ -1,4 +1,4 @@
-From 39644305b62b61507563e672c5325a525623fbbd Mon Sep 17 00:00:00 2001
+From 4fed5f7519dc583c196a5f0676fed800922bfe2b Mon Sep 17 00:00:00 2001
 From: Sandie Cao <sandie.cao@deepcomputing.io>
 Date: Tue, 8 Jul 2025 09:24:06 +0800
 Subject: [PATCH 413/533] media: eswin: vdec: remove warnning
@@ -52,5 +52,5 @@ index 36880d6c67c9..4a1c6ead7219 100644
  			if (down_interruptible(&vcmd_reserve_cmdbuf_sem[dev[core_id].vcmd_core_cfg.sub_module_type]))
  				return -ERESTARTSYS;
 -- 
-2.52.0
+2.53.0
 

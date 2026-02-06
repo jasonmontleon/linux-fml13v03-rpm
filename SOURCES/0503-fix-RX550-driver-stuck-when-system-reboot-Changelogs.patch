@@ -1,4 +1,4 @@
-From f57ab71cb4daf12c0cba4047b3950c693352e358 Mon Sep 17 00:00:00 2001
+From b527933195b5c92242688141b6e220f624549604 Mon Sep 17 00:00:00 2001
 From: ouyanghui <ouyanghui@eswincomputing.com>
 Date: Fri, 22 Aug 2025 13:50:12 +0800
 Subject: [PATCH 503/533] fix:RX550 driver stuck when system reboot Changelogs:
@@ -23,5 +23,5 @@ index f00b5909b85f..56d623f949b2 100644
  	.probe = eswin_pcie_probe,
  	.remove = __exit_p(eswin_pcie_remove),
 -- 
-2.52.0
+2.53.0
 

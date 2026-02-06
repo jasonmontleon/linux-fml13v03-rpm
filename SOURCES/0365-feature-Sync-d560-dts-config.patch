@@ -1,4 +1,4 @@
-From 7fd99105941fc3549ab792b9cc88080bfb47b134 Mon Sep 17 00:00:00 2001
+From 9787a9f882382112cc12fbf050a42f5b154544f4 Mon Sep 17 00:00:00 2001
 From: chenzhanzhan <chenzhanzhan@eswincomputing.com>
 Date: Mon, 19 May 2025 17:12:58 +0800
 Subject: [PATCH 365/533] feature: Sync d560 dts config
@@ -99,5 +99,5 @@ index 41ea1b44401b..7e65b902c779 100644
  	status = "okay";
  };
 -- 
-2.52.0
+2.53.0
 

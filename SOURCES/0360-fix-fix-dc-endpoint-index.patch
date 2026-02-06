@@ -1,4 +1,4 @@
-From 800342f6a7b860603128071bcf1e3c1960e5502f Mon Sep 17 00:00:00 2001
+From eb3b379c3a97e9c80afd7b52ba5aae37c38eecbf Mon Sep 17 00:00:00 2001
 From: yufangxian <yufangxian@eswincomputing.com>
 Date: Wed, 14 May 2025 18:21:01 +0800
 Subject: [PATCH 360/533] fix: fix dc endpoint index
@@ -33,5 +33,5 @@ index 8d2ad1b263c7..2b22b12ab389 100644
  		};
  	};
 -- 
-2.52.0
+2.53.0
 

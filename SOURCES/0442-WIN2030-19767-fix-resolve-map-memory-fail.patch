@@ -1,4 +1,4 @@
-From f7e967c1fb6d2d50550228347f8a1ae0f66a6e82 Mon Sep 17 00:00:00 2001
+From 9a1bbb1f660460c506fa131774913806bf9144e8 Mon Sep 17 00:00:00 2001
 From: fanxiaping <fanxiaping@eswincomputing.com>
 Date: Sat, 11 Oct 2025 15:28:58 +0800
 Subject: [PATCH 442/533] WIN2030-19767:fix:resolve map memory fail
@@ -565,5 +565,5 @@ index 4dc902406052..4534d2a3f287 100644
  
  static inline struct es_gem_object *to_es_gem_object(struct drm_gem_object *obj)
 -- 
-2.52.0
+2.53.0
 

@@ -1,4 +1,4 @@
-From 1101baec7afde5fb4ca6c137fced480cb163ff77 Mon Sep 17 00:00:00 2001
+From 0cb633747ad29bcade3f3f0a6715a25473fa0390 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Thu, 20 Mar 2025 14:22:25 +0800
 Subject: [PATCH 256/533] Change: Rework the previous DTS changes related to
@@ -109,5 +109,5 @@ index 8a1c568c104e..fcb3d855c105 100644
  			};
              pinctrl_die1_gpio19_default: gpio19-default{
 -- 
-2.52.0
+2.53.0
 

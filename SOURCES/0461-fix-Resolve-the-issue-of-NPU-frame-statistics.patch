@@ -1,4 +1,4 @@
-From 5dd1ad813b8e58ddecc19fcbd5fef4911c8192d1 Mon Sep 17 00:00:00 2001
+From 3e34a07ec9f3240af4acbe87f4a6999911a2ade4 Mon Sep 17 00:00:00 2001
 From: denglei <denglei@eswincomputing.com>
 Date: Mon, 18 Aug 2025 17:04:03 +0800
 Subject: [PATCH 461/533] fix:Resolve the issue of NPU frame statistics.
@@ -151,5 +151,5 @@ index 15f59c4a400d..dc4a2a6de0c8 100644
  	model = npu_get_model_by_id(uctx, idx);
  	if (model == NULL) {
 -- 
-2.52.0
+2.53.0
 

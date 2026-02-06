@@ -1,4 +1,4 @@
-From 1c25e06d66b17ed758ab9521d9bfecb297021f21 Mon Sep 17 00:00:00 2001
+From 0cb4bbb05b89324022dc2c35df963bf5a5b7d2b9 Mon Sep 17 00:00:00 2001
 From: liangshuang <liangshuang@eswincomputing.com>
 Date: Thu, 30 May 2024 09:50:56 +0800
 Subject: [PATCH 040/533] refactor:remove useless code in emmc/sd driver.
@@ -197,5 +197,5 @@ index 591315f48cbc..41aa80f8dbe3 100644
  	ret = eswin_sdhci_add_host(eswin_sdhci);
  	if (ret)
 -- 
-2.52.0
+2.53.0
 

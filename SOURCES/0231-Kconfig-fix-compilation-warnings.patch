@@ -1,4 +1,4 @@
-From c6bc3bd2bf9d9066ce56c0de504b64f075828e41 Mon Sep 17 00:00:00 2001
+From f74b56329ef9df5840321f7c8e8506b7e19a1ef5 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Thu, 13 Mar 2025 18:10:47 +0800
 Subject: [PATCH 231/533] Kconfig: fix compilation warnings.
@@ -22,5 +22,5 @@ index 0044a4be10e5..e2d60db9a5e2 100644
 +    depends on ESWIN_NPU
 +
 -- 
-2.52.0
+2.53.0
 

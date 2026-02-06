@@ -1,4 +1,4 @@
-From 635c1c02c156ad2c3dc420a2bc64b40b67d9e61b Mon Sep 17 00:00:00 2001
+From a0e1067708c644308b9469d419fb92ed4fc444f3 Mon Sep 17 00:00:00 2001
 From: zhouliang1 <zhouliang1@eswincomputing.com>
 Date: Fri, 22 Aug 2025 18:47:34 +0800
 Subject: [PATCH 481/533] feat:create files for d560 EP
@@ -2678,5 +2678,5 @@ index 000000000000..43d6b8c66a4d
 +CONFIG_VIDEO_ESWIN_VI_TOP=y
 +CONFIG_VIDEO_ESWIN_DVP2AXI=y
 -- 
-2.52.0
+2.53.0
 

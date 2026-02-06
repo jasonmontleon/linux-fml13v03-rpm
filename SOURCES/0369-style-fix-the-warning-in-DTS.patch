@@ -1,4 +1,4 @@
-From 5f8c0eff36194701ba27ec3c7b3d7e94b17a79e3 Mon Sep 17 00:00:00 2001
+From 062dff6d0546fd85faafa0457f07ae6fb436861b Mon Sep 17 00:00:00 2001
 From: wangguosheng <wangguosheng@eswincomputing.com>
 Date: Tue, 27 May 2025 10:17:42 +0800
 Subject: [PATCH 369/533] style:fix the warning in DTS
@@ -325,5 +325,5 @@ index c041cbebc527..d753fbba823f 100644
  	gpio0   : touch int(I)
  	gpio5   : 5g wake on host(I)
 -- 
-2.52.0
+2.53.0
 

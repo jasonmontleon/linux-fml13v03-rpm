@@ -1,4 +1,4 @@
-From bfb92bece80deb5e1bffeb32cae60e270b110f01 Mon Sep 17 00:00:00 2001
+From cb24d1b2f0acba4a008c18e37039fde211035651 Mon Sep 17 00:00:00 2001
 From: Jiean He <hejiean@eswincomputing.com>
 Date: Fri, 8 Aug 2025 20:34:28 +0800
 Subject: [PATCH 443/533] Applied patches from local PM branch
@@ -1776,5 +1776,5 @@ index 3e5b54563185..e4e82fdace9a 100644
  _GetValidKernel(gckGALDEVICE Device)
  {
 -- 
-2.52.0
+2.53.0
 

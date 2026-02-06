@@ -1,4 +1,4 @@
-From b881e55d001fe45761436a5a1a625bcf22c80d35 Mon Sep 17 00:00:00 2001
+From 07adffe1b725079c5cf0aabe4229f4e95f68fb9a Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Wed, 9 Apr 2025 16:51:03 +0800
 Subject: [PATCH 273/533] riscv: Enable CONFIG_CROS_EC_CHARDEV in
@@ -22,5 +22,5 @@ index 67f46496fbb9..a0311d75cad2 100755
  # CONFIG_CROS_EC_VBC is not set
  # CONFIG_CROS_EC_DEBUGFS is not set
 -- 
-2.52.0
+2.53.0
 

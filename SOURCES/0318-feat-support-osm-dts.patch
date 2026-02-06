@@ -1,4 +1,4 @@
-From 30f49797bb296510c70c947a7c133d2b1d3f0bd8 Mon Sep 17 00:00:00 2001
+From 43f4e59d7122af61cf9145aee327c26785fbe00b Mon Sep 17 00:00:00 2001
 From: ningyu <ningyu@eswincomputing.com>
 Date: Fri, 21 Feb 2025 17:35:41 +0800
 Subject: [PATCH 318/533] feat:support osm dts
@@ -570,5 +570,5 @@ index f90fd076f227..964166f6fdee 100644
 +CONFIG_BCMDHD_NVRAM_PATH="/lib/firmware/nvram_ap6256.txt"
 +CONFIG_BCMDHD_CLM_PATH="/lib/firmware/clm_bcm43752a2_ag.blob"
 -- 
-2.52.0
+2.53.0
 

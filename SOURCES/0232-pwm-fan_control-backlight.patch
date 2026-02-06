@@ -1,4 +1,4 @@
-From 0a9d67db47ce2b3f33e367c8e3f4ccc9fe6a51ca Mon Sep 17 00:00:00 2001
+From 96284021f0bd1219305fd7338f4b6c2b7b466296 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Mon, 17 Mar 2025 17:54:27 +0800
 Subject: [PATCH 232/533] pwm: fan_control & backlight .
@@ -147,5 +147,5 @@ index 1873b8351b0c..71841d8a012a 100644
  	if (tmp < 1 || tmp > (1ULL << 32))
  		return -ERANGE;
 -- 
-2.52.0
+2.53.0
 

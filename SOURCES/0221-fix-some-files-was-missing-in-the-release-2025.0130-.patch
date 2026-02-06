@@ -1,4 +1,4 @@
-From fceae115d18ddefe9b7b3d6468f09635121bcea0 Mon Sep 17 00:00:00 2001
+From 7078669393592e6e944acb45b6e52b7161a28ae1 Mon Sep 17 00:00:00 2001
 From: linmin <linmin@eswincomputing.com>
 Date: Thu, 13 Feb 2025 17:11:15 +0800
 Subject: [PATCH 221/533] fix:some files was missing in the release-2025.0130
@@ -3614,5 +3614,5 @@ index 000000000000..1f247c14a50b
 +MODULE_DESCRIPTION("tps549d22 driver");
 +MODULE_LICENSE("GPL");
 -- 
-2.52.0
+2.53.0
 

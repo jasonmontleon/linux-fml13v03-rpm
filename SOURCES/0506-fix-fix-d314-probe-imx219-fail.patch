@@ -1,4 +1,4 @@
-From 539064ba65ea2b51cc15517fc3444a4173de1beb Mon Sep 17 00:00:00 2001
+From dcd0c2b6a9116e649e1178f6fe00bce1f060bb2a Mon Sep 17 00:00:00 2001
 From: yufangxian <yufangxian@eswincomputing.com>
 Date: Mon, 1 Sep 2025 13:42:37 +0800
 Subject: [PATCH 506/533] fix: fix d314 probe imx219 fail
@@ -816,5 +816,5 @@ index 038eb3a8d466..b5cbb95ffa8f 100644
  MODULE_AUTHOR("luyulin@eswincomputing.com");
  MODULE_DESCRIPTION("Eswin dphy platform driver");
 -- 
-2.52.0
+2.53.0
 

@@ -1,4 +1,4 @@
-From 90f02c7942ecfef0abc3da581cd4e658b5117930 Mon Sep 17 00:00:00 2001
+From 7a977367ec21afefb7a3544a9a122d2e783dca02 Mon Sep 17 00:00:00 2001
 From: ningyu <ningyu@eswincomputing.com>
 Date: Tue, 12 Aug 2025 21:03:20 +0800
 Subject: [PATCH 457/533] fix:unified description of compatible
@@ -173,5 +173,5 @@ index 03a0fadb9cbe..28e305db08c7 100644
  	aliases {
  		serial0 = &d0_uart0;
 -- 
-2.52.0
+2.53.0
 

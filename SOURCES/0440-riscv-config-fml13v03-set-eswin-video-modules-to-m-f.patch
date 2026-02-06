@@ -1,4 +1,4 @@
-From 9e6ec21ef750495470194530f21ffec84814d425 Mon Sep 17 00:00:00 2001
+From e9b8bf989453bcc3b7d185a537bcbe0124c2e809 Mon Sep 17 00:00:00 2001
 From: sandiecao <sandie.cao@deepcomputing.io>
 Date: Mon, 29 Sep 2025 15:50:45 +0800
 Subject: [PATCH 440/533] riscv: config: fml13v03: set eswin video modules to m
@@ -31,5 +31,5 @@ index 1c6fb350f565..d91e28ec1c26 100755
  CONFIG_FB_TFT=m
  CONFIG_FB_TFT_AGM1264K_FL=m
 -- 
-2.52.0
+2.53.0
 

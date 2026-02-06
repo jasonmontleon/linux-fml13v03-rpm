@@ -1,4 +1,4 @@
-From 4085c337de7da5f32e8b7812c6dd2543d2646902 Mon Sep 17 00:00:00 2001
+From 2580ed9e36ec31e60ac276d2092eeea651d405f6 Mon Sep 17 00:00:00 2001
 From: yufangxian <yufangxian@eswincomputing.com>
 Date: Thu, 7 Aug 2025 13:31:09 +0800
 Subject: [PATCH 449/533] fix: switch dvp2axi and isp
@@ -1279,5 +1279,5 @@ index 661e78dbb5d8..467fdf8e72ad 100644
  }
  
 -- 
-2.52.0
+2.53.0
 

@@ -1,4 +1,4 @@
-From 60ec5d87e064744a92bece089ce80d17498e238a Mon Sep 17 00:00:00 2001
+From a9517afdcf8d3b77deecd8afb889b5f8ffdf4c7d Mon Sep 17 00:00:00 2001
 From: ningyu <ningyu@eswincomputing.com>
 Date: Thu, 7 Aug 2025 10:41:23 +0800
 Subject: [PATCH 468/533] feat:support S560A
@@ -103,5 +103,5 @@ index 000000000000..b5af295df905
 +};
 \ No newline at end of file
 -- 
-2.52.0
+2.53.0
 

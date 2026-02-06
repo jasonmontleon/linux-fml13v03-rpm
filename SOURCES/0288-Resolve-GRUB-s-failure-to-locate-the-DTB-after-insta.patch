@@ -1,4 +1,4 @@
-From 48168a5cd5f5f50b5edaceddadb905fb40036b87 Mon Sep 17 00:00:00 2001
+From 7de1dfe26899b3e6d54d5cf431653c7bd9e976ee Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Wed, 14 May 2025 09:29:50 +0800
 Subject: [PATCH 288/533] Resolve GRUB's failure to locate the DTB after
@@ -22,5 +22,5 @@ index cbcf14820fb9..d7dd0d04c70c 100755
  
  	${MAKE} -f ${srctree}/Makefile INSTALL_MOD_PATH="${pdir}" modules_install
 -- 
-2.52.0
+2.53.0
 

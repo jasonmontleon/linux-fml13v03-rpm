@@ -1,4 +1,4 @@
-From 809f09b2fa442a29f1aab4db710ed0590554a96f Mon Sep 17 00:00:00 2001
+From 16b81440c35edc8670264881231ebd22b2d40ce6 Mon Sep 17 00:00:00 2001
 From: Wu Zhangben <wuzhangben@eswincomputing.com>
 Date: Wed, 13 Aug 2025 14:46:30 +0800
 Subject: [PATCH 477/533] feat:lpcpu config distribute by linux driver
@@ -121,5 +121,5 @@ index cf97e2daabab..893401ea8268 100644
  
  &pcie {
 -- 
-2.52.0
+2.53.0
 

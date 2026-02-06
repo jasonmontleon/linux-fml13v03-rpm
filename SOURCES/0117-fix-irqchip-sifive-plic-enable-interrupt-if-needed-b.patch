@@ -1,4 +1,4 @@
-From 2d04869097580ba001ec1b81a9059e97feb3b331 Mon Sep 17 00:00:00 2001
+From 8fda9d4d89ffd98883717170f67beec2bba0f777 Mon Sep 17 00:00:00 2001
 From: huangyifeng <huangyifeng@eswincomputing.com>
 Date: Wed, 24 Jul 2024 15:10:18 +0800
 Subject: [PATCH 117/533] fix(irqchip/sifive-plic): enable interrupt if needed
@@ -62,5 +62,5 @@ index a8f5cfad16f7..a0ee67cb06b1 100644
  	/* Invalidate the original routing entry */
  	plic_irq_toggle(irq_data_get_effective_affinity_mask(d), d, 0);
 -- 
-2.52.0
+2.53.0
 

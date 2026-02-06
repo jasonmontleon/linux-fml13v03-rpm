@@ -1,4 +1,4 @@
-From 911ba39f50c726c5e13540df584216c23472df4c Mon Sep 17 00:00:00 2001
+From d3c3e1b8d2ff696353604ccaeb33b4147ccecd4e Mon Sep 17 00:00:00 2001
 From: lei zhilin <leizhilin@eswincomputing.com>
 Date: Thu, 13 Feb 2025 11:10:23 +0800
 Subject: [PATCH 311/533] fix(2d):kernel stack warning after reboot
@@ -250,5 +250,5 @@ index d0bdc1a449e7..103fa3eceae0 100644
      ret = gpu_parse_dt(Platform->device, Args);
      if(gcmIS_SUCCESS(ret)){
 -- 
-2.52.0
+2.53.0
 

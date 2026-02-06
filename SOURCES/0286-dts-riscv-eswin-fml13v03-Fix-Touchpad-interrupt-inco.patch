@@ -1,4 +1,4 @@
-From 82d79f91604b13a1070c26ed630f9a1389682dc9 Mon Sep 17 00:00:00 2001
+From 432e85bbf91c02f504452d5a6b364058180b31d1 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Tue, 13 May 2025 15:16:42 +0800
 Subject: [PATCH 286/533] =?UTF-8?q?dts:=20riscv:=20eswin:=20fml13v03:=20Fi?=
@@ -31,5 +31,5 @@ index 785dfbec0287..b2fc8303abda 100644
  	};
  
 -- 
-2.52.0
+2.53.0
 

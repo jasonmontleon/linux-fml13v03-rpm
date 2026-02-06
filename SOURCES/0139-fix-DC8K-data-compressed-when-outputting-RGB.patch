@@ -1,4 +1,4 @@
-From a0cf4f12bb577a6f8df83e4b1688388546c34f4b Mon Sep 17 00:00:00 2001
+From 7754a474ad6432465f357ab339a55fe6d80d0ddf Mon Sep 17 00:00:00 2001
 From: lilijun <lilijun@eswincomputing.com>
 Date: Wed, 31 Jul 2024 16:23:32 +0800
 Subject: [PATCH 139/533] fix(DC8K):data compressed when outputting RGB
@@ -31,5 +31,5 @@ index 30bcfb6b759c..440fd1645694 100644
  				if (i == PRIMARY_PLANE)
  					dc_set_clear(hw,
 -- 
-2.52.0
+2.53.0
 

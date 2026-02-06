@@ -1,4 +1,4 @@
-From 88cd574a77e81d9625025e73905fc0c192ebe375 Mon Sep 17 00:00:00 2001
+From 15aa26ae67c0ca17c1f3bf1f7a86296968a34310 Mon Sep 17 00:00:00 2001
 From: huangyifeng <huangyifeng@eswincomputing.com>
 Date: Mon, 12 Aug 2024 16:04:58 +0800
 Subject: [PATCH 149/533] feat:KASAN warnning & bootspi region protection
@@ -340,5 +340,5 @@ index ee28701ab1b8..0cf0d34ea315 100644
  	pm_runtime_put_autosuspend(dev);
  
 -- 
-2.52.0
+2.53.0
 

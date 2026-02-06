@@ -1,4 +1,4 @@
-From e3fa7791ca1cbcdf3b7038cec9d29fa14244eae1 Mon Sep 17 00:00:00 2001
+From 40237d254382eb329db05227ee364751390467c8 Mon Sep 17 00:00:00 2001
 From: Senchuan Zhang <zhangsenchuan@eswincomputing.com>
 Date: Mon, 4 Aug 2025 13:44:03 +0800
 Subject: [PATCH 456/533] fix:fixed rt_equalization
@@ -161,5 +161,5 @@ index d5870860c317..58e5bdb66ed7 100755
  	pm_runtime_enable(dev);
  	ret = pm_runtime_get_sync(dev);
 -- 
-2.52.0
+2.53.0
 

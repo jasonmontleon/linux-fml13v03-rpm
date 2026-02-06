@@ -1,4 +1,4 @@
-From 18855a66aa631df36bee36d5de313e6d1c2ec49a Mon Sep 17 00:00:00 2001
+From 4082cccc558d427819d9f462b005dde2bb7dafac Mon Sep 17 00:00:00 2001
 From: lei zhilin <leizhilin@eswincomputing.com>
 Date: Thu, 3 Apr 2025 00:18:27 +0800
 Subject: [PATCH 349/533] <fix>(2d):hae power off delay by timeout
@@ -102,5 +102,5 @@ index dcc6b0558a33..22f6ebe226a6 100644
  MODULE_PARM_DESC(powerManagement, "Disable auto power saving if set it to 0, enabled by default");
  
 -- 
-2.52.0
+2.53.0
 

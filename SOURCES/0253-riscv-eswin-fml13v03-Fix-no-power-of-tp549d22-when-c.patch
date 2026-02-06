@@ -1,4 +1,4 @@
-From 8e45c8da02effc32007502a906d5af4407a6aaf2 Mon Sep 17 00:00:00 2001
+From 067cc57186bfc3a13e634261ab6c225e425c7809 Mon Sep 17 00:00:00 2001
 From: Sandie Cao <sandie.cao@deepcomputing.io>
 Date: Wed, 19 Mar 2025 17:01:19 +0800
 Subject: [PATCH 253/533] riscv: eswin: fml13v03: Fix no power of tp549d22 when
@@ -960,5 +960,5 @@ index 3299476557c4..2161add2de9b 100644
  
  /* die0 GPIO Function Description
 -- 
-2.52.0
+2.53.0
 

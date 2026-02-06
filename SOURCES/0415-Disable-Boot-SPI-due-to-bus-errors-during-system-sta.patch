@@ -1,4 +1,4 @@
-From e95325d1a57f162787f428a3fc5a3ce708024f01 Mon Sep 17 00:00:00 2001
+From 9450207b482f1f349da76fe8a05bcea731a6a42f Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Mon, 14 Jul 2025 16:52:33 +0800
 Subject: [PATCH 415/533] Disable Boot SPI due to bus errors during system
@@ -22,5 +22,5 @@ index a5af0129bc7f..ba0a9cea46bd 100644
  	cs-gpios = <&portd 0 GPIO_ACTIVE_LOW>;
  	wp-gpios = <&portd 4 GPIO_ACTIVE_LOW>;
 -- 
-2.52.0
+2.53.0
 

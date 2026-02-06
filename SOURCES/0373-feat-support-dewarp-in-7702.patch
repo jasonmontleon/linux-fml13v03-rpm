@@ -1,4 +1,4 @@
-From 5c7a718c9379e356a60faf8ad2b8074cbe42c8e8 Mon Sep 17 00:00:00 2001
+From 7e6722c92684b00292dfc02bd56914565e8fd224 Mon Sep 17 00:00:00 2001
 From: congyuyang <congyuyang@eswincomputing.com>
 Date: Thu, 29 May 2025 10:30:27 +0800
 Subject: [PATCH 373/533] feat:support dewarp in 7702
@@ -25,5 +25,5 @@ index e74479b92029..d835fd640338 100644
  			clock-names = "pclk";
  			resets = <&d0_reset FAN_RST_CTRL SW_FAN_RST_N>;
 -- 
-2.52.0
+2.53.0
 

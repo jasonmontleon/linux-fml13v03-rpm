@@ -1,4 +1,4 @@
-From 6d82714d65332a4711f28dde98f9bdf2c81eef1a Mon Sep 17 00:00:00 2001
+From ce0e5f3951b3e6d469361df743715f52a24ef240 Mon Sep 17 00:00:00 2001
 From: wangguosheng <wangguosheng@eswincomputing.com>
 Date: Tue, 28 Oct 2025 15:49:43 +0800
 Subject: [PATCH 528/533] fix: pwm adds shutdown function
@@ -76,5 +76,5 @@ index e51e7d7f4fdc..7e8270a8393f 100755
  		reg = <0>;
  		status = "okay";
 -- 
-2.52.0
+2.53.0
 

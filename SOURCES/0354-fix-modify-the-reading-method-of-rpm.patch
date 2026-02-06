@@ -1,4 +1,4 @@
-From 8ba65ab08a4e8201e26f05489d8765f8e0170fbb Mon Sep 17 00:00:00 2001
+From 30160cea84b2c62c7020dc5cd65cbdc88b32ff90 Mon Sep 17 00:00:00 2001
 From: wangguosheng <wangguosheng@eswincomputing.com>
 Date: Tue, 13 May 2025 13:47:57 +0800
 Subject: [PATCH 354/533] fix:modify the reading method of rpm
@@ -79,5 +79,5 @@ index f1a21a007e4e..0a5c080980f4 100644
  	default:
  		return -ENOTSUPP;
 -- 
-2.52.0
+2.53.0
 

@@ -1,4 +1,4 @@
-From 8970d8159f3378a6dadcdfea2298c12cbfbe35e2 Mon Sep 17 00:00:00 2001
+From a2929700d50ff1c22c194e3c74a9a651d4bc70f0 Mon Sep 17 00:00:00 2001
 From: Jiean He <hejiean@eswincomputing.com>
 Date: Mon, 1 Sep 2025 10:13:10 +0800
 Subject: [PATCH 486/533] fix: fix memory leak in eswin_heap
@@ -189,5 +189,5 @@ index 067f30627a46..cb076bb50b51 100644
  		unregister_chrdev_region(eswin_heap_devt, NUM_HEAP_MINORS);
  		return PTR_ERR(eswin_heap_class);
 -- 
-2.52.0
+2.53.0
 

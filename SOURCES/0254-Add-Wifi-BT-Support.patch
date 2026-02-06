@@ -1,4 +1,4 @@
-From a79f7fd879399bb74def4b9bf68c09d9a3cde0c5 Mon Sep 17 00:00:00 2001
+From b5596dd2c0c9739fd9feaff1e1376b9843565d63 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Wed, 19 Mar 2025 18:07:48 +0800
 Subject: [PATCH 254/533] Add Wifi/BT Support.
@@ -89,5 +89,5 @@ index 9d0e62125f2b..0fbd77c040e2 100755
  CONFIG_CFG80211=y
  CONFIG_CFG80211_WEXT=y
 -- 
-2.52.0
+2.53.0
 

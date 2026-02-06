@@ -1,4 +1,4 @@
-From 0411b5a2e682dedb06a3611cadf08dbac908459f Mon Sep 17 00:00:00 2001
+From e21c59693aec881bddbae9a5e6826e93ab646240 Mon Sep 17 00:00:00 2001
 From: wangjinlong <wangjinlong@eswincomputing.com>
 Date: Thu, 31 Jul 2025 15:19:35 +0800
 Subject: [PATCH 445/533] feat:support ap6256 wifi
@@ -50,5 +50,5 @@ index a4249273f201..9e89b4ecdaeb 100644
  
  &d0_gmac0 {
 -- 
-2.52.0
+2.53.0
 

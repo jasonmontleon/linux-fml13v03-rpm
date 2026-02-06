@@ -1,4 +1,4 @@
-From 606b61c916defe7fbcd718b2e8834485454c8bd4 Mon Sep 17 00:00:00 2001
+From 89425e64043730c0707edcd821f09ea4b2663d53 Mon Sep 17 00:00:00 2001
 From: ningyu <ningyu@eswincomputing.com>
 Date: Thu, 28 Aug 2025 19:08:22 +0800
 Subject: [PATCH 502/533] fix:modify pmic's label name of die1
@@ -73,5 +73,5 @@ index d189592c2771..3adfef6dabb1 100644
  };
 \ No newline at end of file
 -- 
-2.52.0
+2.53.0
 

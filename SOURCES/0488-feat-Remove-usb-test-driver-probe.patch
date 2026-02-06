@@ -1,4 +1,4 @@
-From ebab06c74c7fa0d5bbcf2441ea4d63f71f7170a7 Mon Sep 17 00:00:00 2001
+From 992dbd79488ff48c04b8663d54ae68960ddcd6ac Mon Sep 17 00:00:00 2001
 From: zhangqianqian1 <zhangqianqian1@eswincomputing.com>
 Date: Mon, 1 Sep 2025 10:04:43 +0800
 Subject: [PATCH 488/533] feat:Remove usb test driver probe.
@@ -81,5 +81,5 @@ index 78601701cd89..70fae6f85473 100644
  CONFIG_USB_GADGET_DEBUG_FILES=y
  CONFIG_USB_GADGET_VBUS_DRAW=500
 -- 
-2.52.0
+2.53.0
 

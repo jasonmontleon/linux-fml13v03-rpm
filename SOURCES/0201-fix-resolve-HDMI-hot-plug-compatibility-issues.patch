@@ -1,4 +1,4 @@
-From d5314532cd4953e5f91ef3023b0d11438147c106 Mon Sep 17 00:00:00 2001
+From 32556ffcaca90c6c6b91c11807b80840c7183dd7 Mon Sep 17 00:00:00 2001
 From: denglei <denglei@eswincomputing.com>
 Date: Fri, 25 Oct 2024 10:36:46 +0800
 Subject: [PATCH 201/533] fix:resolve HDMI hot plug compatibility issues.
@@ -36,5 +36,5 @@ index ba5aae273162..669447d03681 100644
  			i2c->is_segment = true;
  			hdmi_writeb(hdmi, DDC_SEGMENT_ADDR, HDMI_I2CM_SEGADDR);
 -- 
-2.52.0
+2.53.0
 

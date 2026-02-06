@@ -1,4 +1,4 @@
-From e23cf97c75d3a2b17801b4f6dede13fb4f566507 Mon Sep 17 00:00:00 2001
+From 5e1a58271dcab38e5ce92dc4168d9d744ccfe990 Mon Sep 17 00:00:00 2001
 From: liangshuang <liangshuang@eswincomputing.com>
 Date: Wed, 18 Sep 2024 11:10:06 +0800
 Subject: [PATCH 174/533] feat:support bluetooth.
@@ -71,5 +71,5 @@ index 57b27f9ea1f0..a88488dc29ee 100644
  
  static const struct dw8250_platform_data dw8250_octeon_3860_data = {
 -- 
-2.52.0
+2.53.0
 

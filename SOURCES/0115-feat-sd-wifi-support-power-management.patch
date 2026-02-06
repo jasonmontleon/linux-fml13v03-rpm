@@ -1,4 +1,4 @@
-From b4595202f78aab131b3058e78a5253c384d2d7b1 Mon Sep 17 00:00:00 2001
+From 1c1f4323ee5d8a45dc3dd14b0ffc547427332ebb Mon Sep 17 00:00:00 2001
 From: liangshuang <liangshuang@eswincomputing.com>
 Date: Thu, 18 Jul 2024 11:27:17 +0800
 Subject: [PATCH 115/533] feat:sd/wifi support power management.
@@ -75,5 +75,5 @@ index f9090ece0f65..a828298e0e02 100644
  	win2030_tbu_power(&pdev->dev, false);
  
 -- 
-2.52.0
+2.53.0
 

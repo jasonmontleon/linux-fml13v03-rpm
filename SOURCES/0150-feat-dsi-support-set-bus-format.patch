@@ -1,4 +1,4 @@
-From fe32e81085bc90bc60891ba008beb9bc26a0fe87 Mon Sep 17 00:00:00 2001
+From 857ca3639a10c6947d55196d6cbb3e2d0d12a20a Mon Sep 17 00:00:00 2001
 From: lilijun <lilijun@eswincomputing.com>
 Date: Wed, 14 Aug 2024 14:54:12 +0800
 Subject: [PATCH 150/533] feat:dsi support set bus-format
@@ -257,5 +257,5 @@ index 7c2bd90393e2..7342ab287c70 100644
  	drm_panel_add(&ctx->panel);
  
 -- 
-2.52.0
+2.53.0
 

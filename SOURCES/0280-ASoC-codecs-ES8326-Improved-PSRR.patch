@@ -1,4 +1,4 @@
-From 6a0f4ac45ce6318564e5f66d15036892c89303a0 Mon Sep 17 00:00:00 2001
+From f1269f29709269bf054cfbcd7945539c2ea4db8f Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Thu, 24 Apr 2025 10:40:35 +0800
 Subject: [PATCH 280/533] ASoC: codecs: ES8326: Improved PSRR
@@ -1217,5 +1217,5 @@ index 1c661374a021..62765ad774a0 100644
  #define ES8326_CTIA_OMTP_STA	0xF8
  #define ES8326_PULLUP_CTL	0xF9
 -- 
-2.52.0
+2.53.0
 

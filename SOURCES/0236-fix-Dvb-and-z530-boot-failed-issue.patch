@@ -1,4 +1,4 @@
-From 2ebb2e78e14c94e67b2db6c0a7b35d650ed7ba45 Mon Sep 17 00:00:00 2001
+From 29a82b48bf8d544f048c7c63e7706fdcc2e17f3c Mon Sep 17 00:00:00 2001
 From: lilijun <lilijun@eswincomputing.com>
 Date: Fri, 7 Feb 2025 17:46:07 +0800
 Subject: [PATCH 236/533] fix:Dvb and z530 boot failed issue
@@ -58,5 +58,5 @@ index 2875ce48c1a8..dfa297dfc44f 100644
  		#address-cells = <1>;
  		#size-cells = <0>;
 -- 
-2.52.0
+2.53.0
 

@@ -1,4 +1,4 @@
-From 5835229318c4db9d7c85920a167a1921fca378a7 Mon Sep 17 00:00:00 2001
+From d6959f24840c7a7af2c49992b495c7921d27edc3 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Tue, 22 Jul 2025 16:26:51 +0800
 Subject: [PATCH 420/533] Changelogs: 1. Limited the maximum CPU frequency to
@@ -257,5 +257,5 @@ index 27c2d0d76cf0..b56b859b1dcd 100644
  
  static int __init lpcpu_modules_init(void)
 -- 
-2.52.0
+2.53.0
 

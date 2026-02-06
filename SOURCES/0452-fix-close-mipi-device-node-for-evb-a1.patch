@@ -1,4 +1,4 @@
-From c88baac6ac1d0d8225c1e849b6ae0f5beeee81dc Mon Sep 17 00:00:00 2001
+From 80103ecad2484c5a29f756c0d044c24896971837 Mon Sep 17 00:00:00 2001
 From: guozeyang <guozeyang@eswincomputing.com>
 Date: Mon, 28 Jul 2025 09:47:46 +0800
 Subject: [PATCH 452/533] fix:close mipi device node for evb a1
@@ -213,5 +213,5 @@ index 05e714b45854..d1778d379bab 100644
  	status = "okay";
  	ports {
 -- 
-2.52.0
+2.53.0
 

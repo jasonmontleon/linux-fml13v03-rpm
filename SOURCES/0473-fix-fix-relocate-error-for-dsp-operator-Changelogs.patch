@@ -1,4 +1,4 @@
-From cdf77d24e3cc78aa07d21e2dca13be3826a02aa9 Mon Sep 17 00:00:00 2001
+From bb8c6c15c242f5c62366ee1fb47e3bb42f529b2b Mon Sep 17 00:00:00 2001
 From: luoshanggui <luoshanggui@eswincomputing.com>
 Date: Fri, 22 Aug 2025 09:04:24 +0800
 Subject: [PATCH 473/533] fix : fix relocate error for dsp operator Changelogs:
@@ -40,5 +40,5 @@ index 75e18557c879..4861af639471 100644
  		return status;
  	// check if it's 4 byte aligned, C++ exception tables may have
 -- 
-2.52.0
+2.53.0
 

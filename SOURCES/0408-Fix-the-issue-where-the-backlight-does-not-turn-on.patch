@@ -1,4 +1,4 @@
-From e03ec649756192d133c10527a05100f00b5b03c7 Mon Sep 17 00:00:00 2001
+From b136a78fedbe39fe243d75242e549079e29d279d Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Wed, 2 Jul 2025 10:43:05 +0800
 Subject: [PATCH 408/533] Fix the issue where the backlight does not turn on.
@@ -39,5 +39,5 @@ index 8143b899cdad..d69372bd5e0a 100644
  	 * Calculate width of low and high period in terms of input clock
  	 * periods and check are the result within HW limits between 0 and
 -- 
-2.52.0
+2.53.0
 

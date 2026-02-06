@@ -1,4 +1,4 @@
-From 8440cc0e13c3bcf87b8301fc05ec541e193150fd Mon Sep 17 00:00:00 2001
+From 737fa221d68fb6a90df9306c554a3345a9e6a04d Mon Sep 17 00:00:00 2001
 From: Xiang Xu <xuxiang@eswincomputing.com>
 Date: Mon, 25 Aug 2025 10:11:09 +0800
 Subject: [PATCH 511/533] feat:implement pin header function of sbc/vela
@@ -109,5 +109,5 @@ index b42aaeda5da3..7b72bbe2cc5d 100755
  	status = "okay";
  	pinctrl-names = "default";
 -- 
-2.52.0
+2.53.0
 

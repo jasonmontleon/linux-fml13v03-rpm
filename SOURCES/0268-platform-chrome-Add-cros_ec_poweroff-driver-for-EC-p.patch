@@ -1,4 +1,4 @@
-From 891fa2a1803d7352822ab6a6418d36ac8b0ea1da Mon Sep 17 00:00:00 2001
+From 79f9b2246b517484aa36b90bda99ff7c16e7a10f Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Tue, 1 Apr 2025 17:24:40 +0800
 Subject: [PATCH 268/533] platform/chrome: Add cros_ec_poweroff driver for EC
@@ -259,5 +259,5 @@ index 000000000000..31f25f805f3a
 +MODULE_LICENSE("GPL");
 +MODULE_ALIAS("platform:" DRV_NAME);
 -- 
-2.52.0
+2.53.0
 

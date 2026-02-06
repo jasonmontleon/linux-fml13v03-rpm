@@ -1,4 +1,4 @@
-From 593be0ff1a97647b4a14bcf7e75002fb79a5367e Mon Sep 17 00:00:00 2001
+From 655fe19ba985e7d638fb0f8c2e86596926174380 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Thu, 27 Mar 2025 14:34:40 +0800
 Subject: [PATCH 263/533] cros: add support for reading temperature sensor.
@@ -486,5 +486,5 @@ index 4f9f756bc17c..9af4631b8a88 100644
   * cros_ec_get_time_ns() - Return time in ns.
   *
 -- 
-2.52.0
+2.53.0
 

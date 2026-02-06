@@ -1,4 +1,4 @@
-From c554007c39104632ed640ee771685b9d88e72c90 Mon Sep 17 00:00:00 2001
+From 3d4b0c690b220ae64a2da5039e6a4bd9fe0d8391 Mon Sep 17 00:00:00 2001
 From: wangguosheng <wangguosheng@eswincomputing.com>
 Date: Tue, 27 May 2025 14:05:17 +0800
 Subject: [PATCH 368/533] fix:delete warning log
@@ -24,5 +24,5 @@ index 0a5c080980f4..b678e2d0d4d9 100644
  				retry++;
  				continue;
 -- 
-2.52.0
+2.53.0
 

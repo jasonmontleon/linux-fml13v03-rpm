@@ -1,4 +1,4 @@
-From abf3ac12d50d217e92aa81f1113f9cbb6450580a Mon Sep 17 00:00:00 2001
+From d89881dda47dc7f06febe5cde1a1cf37e80bf664 Mon Sep 17 00:00:00 2001
 From: ouyanghui <ouyanghui@eswincomputing.com>
 Date: Fri, 1 Aug 2025 10:45:09 +0800
 Subject: [PATCH 467/533] fix:pcie can only link x1 Changelogs: 1. die gpio21
@@ -55,5 +55,5 @@ index 2025ce58d4f1..5f06d6743016 100644
  	status = "okay";
  	pinctrl-names = "default";
 -- 
-2.52.0
+2.53.0
 

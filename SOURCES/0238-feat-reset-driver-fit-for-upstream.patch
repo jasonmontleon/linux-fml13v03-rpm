@@ -1,4 +1,4 @@
-From 6f34f231b872b8852ebe024183f512ccdaf9aa52 Mon Sep 17 00:00:00 2001
+From 9f82507befd95d15c2150b0e206f28ddd6a77b9e Mon Sep 17 00:00:00 2001
 From: huangyifeng <huangyifeng@eswincomputing.com>
 Date: Mon, 27 Jan 2025 10:54:04 +0800
 Subject: [PATCH 238/533] feat:reset driver fit for upstream
@@ -1714,5 +1714,5 @@ index 3c27a51c18ae..000000000000
 -
 -#endif /*endif __DT_ESWIN_WIN2030_SYSCRG_H__*/
 -- 
-2.52.0
+2.53.0
 

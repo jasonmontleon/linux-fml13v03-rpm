@@ -1,4 +1,4 @@
-From b2f5285c4d3ab3cbdb72f99a33cba41641272e13 Mon Sep 17 00:00:00 2001
+From cc358c83209a25b57174b80354e37118c752df7f Mon Sep 17 00:00:00 2001
 From: Min Lin <linmin@eswincomputing.com>
 Date: Tue, 17 Jun 2025 13:51:06 +0800
 Subject: [PATCH 404/533] Applied power management patches for EIC770X
@@ -4818,5 +4818,5 @@ index dcc6b0558a33..22f6ebe226a6 100644
  MODULE_PARM_DESC(powerManagement, "Disable auto power saving if set it to 0, enabled by default");
  
 -- 
-2.52.0
+2.53.0
 
