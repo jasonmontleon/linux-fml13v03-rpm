@@ -1,0 +1,185 @@
+From a9f42d8801984aa91eaac86893b3ddda23f3794c Mon Sep 17 00:00:00 2001
+From: huangyifeng <huangyifeng@eswincomputing.com>
+Date: Wed, 28 May 2025 15:09:52 +0800
+Subject: [PATCH 385/534] feat:disable d2d driver && uart noc err log
+
+Changelogs:
+   1.disable linux d2d driver, let lpcpu do the check
+   2.use dev_dbg to print the uart noc err log
+
+Signed-off-by: huangyifeng <huangyifeng@eswincomputing.com>
+---
+ .../dts/eswin/eic7702-evb-a1-interleave.dts   |  4 +-
+ arch/riscv/boot/dts/eswin/eic7702-evb-a1.dts  |  4 +-
+ .../dts/eswin/eic7702-som560-interleave.dtsi  |  4 +-
+ arch/riscv/boot/dts/eswin/eic7702-tb.dts      |  4 +-
+ drivers/interconnect/eswin/noc.c              | 56 +++++++++++++++++--
+ 5 files changed, 58 insertions(+), 14 deletions(-)
+
+diff --git a/arch/riscv/boot/dts/eswin/eic7702-evb-a1-interleave.dts b/arch/riscv/boot/dts/eswin/eic7702-evb-a1-interleave.dts
+index b535e6e6ca54..6d128b250445 100644
+--- a/arch/riscv/boot/dts/eswin/eic7702-evb-a1-interleave.dts
++++ b/arch/riscv/boot/dts/eswin/eic7702-evb-a1-interleave.dts
+@@ -1641,11 +1641,11 @@ &d1_llc_dev{
+ };
+ 
+ &d2d {
+-	status = "okay";
++	status = "disabled";
+ };
+ 
+ &d1_d2d {
+-	status = "okay";
++	status = "disabled";
+ };
+ 
+ /* die0 GPIO Function Description
+diff --git a/arch/riscv/boot/dts/eswin/eic7702-evb-a1.dts b/arch/riscv/boot/dts/eswin/eic7702-evb-a1.dts
+index fe05cc53ef2f..665b89606a83 100644
+--- a/arch/riscv/boot/dts/eswin/eic7702-evb-a1.dts
++++ b/arch/riscv/boot/dts/eswin/eic7702-evb-a1.dts
+@@ -1607,11 +1607,11 @@ &d1_llc_dev{
+ };
+ 
+ &d2d {
+-	status = "okay";
++	status = "disabled";
+ };
+ 
+ &d1_d2d {
+-	status = "okay";
++	status = "disabled";
+ };
+ 
+ /* die0 GPIO Function Description
+diff --git a/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi b/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
+index 2e55ba76ad50..65eddea2d49f 100644
+--- a/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
++++ b/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
+@@ -1470,9 +1470,9 @@ &d1_llc_dev{
+ };
+ 
+ &d2d {
+-	status = "okay";
++	status = "disabled";
+ };
+ 
+ &d1_d2d {
+-	status = "okay";
++	status = "disabled";
+ };
+diff --git a/arch/riscv/boot/dts/eswin/eic7702-tb.dts b/arch/riscv/boot/dts/eswin/eic7702-tb.dts
+index 59357fbd94a9..148b3240c7a1 100644
+--- a/arch/riscv/boot/dts/eswin/eic7702-tb.dts
++++ b/arch/riscv/boot/dts/eswin/eic7702-tb.dts
+@@ -1625,11 +1625,11 @@ &d1_llc_dev{
+ };
+ 
+ &d2d {
+-	status = "okay";
++	status = "disabled";
+ };
+ 
+ &d1_d2d {
+-	status = "okay";
++	status = "disabled";
+ };
+ 
+ /* die0 GPIO Function Description
+diff --git a/drivers/interconnect/eswin/noc.c b/drivers/interconnect/eswin/noc.c
+index cc232396f842..c6d44719db36 100644
+--- a/drivers/interconnect/eswin/noc.c
++++ b/drivers/interconnect/eswin/noc.c
+@@ -509,6 +509,24 @@ void stack_dump(void)
+ 		show_stack(task_list, NULL, KERN_EMERG);
+ 	}
+ }
++/**
++ * win2030_noc_get_error - Handle NoC (Network-on-Chip) error interrupts
++ * @noc_device: Pointer to the NoC device structure
++ *
++ * This function is triggered by a NoC error interrupt. It reads all the
++ * error log registers, stores them in an error record, and appends the
++ * record to the device's internal error queue.
++ *
++ * Due to a hardware design limitation with the UART module, when both
++ * LPCPU and MCPU access the UART concurrently, the NoC may report a
++ * spurious error interrupt. These errors are benign and do not lead to
++ * hardware malfunction. To reduce unnecessary alarm during normal
++ * operation, such specific error cases are logged using dev_dbg().
++ *
++ * Other errors are logged with dev_err().
++ *
++ * Return: 0 on success, negative errno on failure (e.g., -ENOMEM)
++ */
+ static int win2030_noc_get_error(struct win2030_noc_device *noc_device)
+ {
+ 	void __iomem *base = noc_device->hw_base;
+@@ -516,32 +534,58 @@ static int win2030_noc_get_error(struct win2030_noc_device *noc_device)
+ 	unsigned long flags;
+ 	int i;
+ 	char buf[2048] = {'\0'};
+-
+ 	struct device *mydev = noc_device->dev;
++	bool use_dbg = false;
+ 
+ 	noc_err = kzalloc(sizeof(struct win2030_noc_error), GFP_ATOMIC);
+ 	if (!noc_err)
+ 		return -ENOMEM;
+ 
+ 	noc_err->timestamp = get_jiffies_64();
+-	dev_err(mydev, "Error interrupt happen!\n");
++
++	// Read all error log registers first but do not print
+ 	for (i = 0; i < noc_device->error_logger_cnt; i++) {
+ 		noc_err->err[noc_device->err_log_lut[i]] = ioread32(ERRLOG_0_ERRLOG0(base) +
+ 					noc_device->err_log_lut[i] * sizeof(u32));
+-		dev_err(mydev, "ErrLog%d 0x%08x", noc_device->err_log_lut[i],
+-			noc_err->err[noc_device->err_log_lut[i]]);
+ 	}
++
++	// Check if the high 24 bits of ErrLog1 equal 0x000028**, it means uart noc err report
++	if (noc_err->err[1] >> 8 == 0x28)  // Check if upper 24 bits equal 0x000028
++		use_dbg = true;
++
++	// Select printing function based on the flag
++	if (use_dbg) {
++		dev_dbg(mydev, "Error interrupt happen!\n");
++		for (i = 0; i < noc_device->error_logger_cnt; i++) {
++			dev_dbg(mydev, "ErrLog%d 0x%08x", noc_device->err_log_lut[i],
++				noc_err->err[noc_device->err_log_lut[i]]);
++		}
++	} else {
++		dev_err(mydev, "Error interrupt happen!\n");
++		for (i = 0; i < noc_device->error_logger_cnt; i++) {
++			dev_err(mydev, "ErrLog%d 0x%08x", noc_device->err_log_lut[i],
++				noc_err->err[noc_device->err_log_lut[i]]);
++		}
++	}
++
+ 	spin_lock_irqsave(&noc_device->lock, flags);
+ 	list_add_tail(&noc_err->link, &noc_device->err_queue);
+ 	spin_unlock_irqrestore(&noc_device->lock, flags);
+ 
+ 	noc_error_dump(buf, noc_device, noc_err);
+-	dev_err(mydev, "%s\n", buf);
+-	//stack_dump();
++
++	// Select print level for final error dump based on the flag
++	if (use_dbg)
++		dev_dbg(mydev, "%s\n", buf);
++	else
++		dev_err(mydev, "%s\n", buf);
++
++	// stack_dump();
+ 	iowrite32(1, ERRLOG_0_ERRCLR(base));
+ 	return 0;
+ }
+ 
++
+ static irqreturn_t win2030_noc_error_irq(int irq, void *dev)
+ {
+ 	struct win2030_noc_device *noc_device = dev;
+-- 
+2.53.0
+

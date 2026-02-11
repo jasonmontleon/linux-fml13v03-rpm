@@ -1,0 +1,668 @@
+From 505d9aba24657ecba96c8d181e6fefdf0ff51428 Mon Sep 17 00:00:00 2001
+From: Jason Montleon <jason@montleon.com>
+Date: Wed, 19 Nov 2025 05:24:37 +0000
+Subject: [PATCH 534/534] fixes/workarounds to be parsed out later
+
+---
+ arch/riscv/include/asm/pgtable.h         |   2 -
+ drivers/media/i2c/Makefile               |   2 -
+ drivers/memory/eswin/Makefile            |   2 -
+ drivers/memory/eswin/es_dev_buf/Makefile |   4 -
+ drivers/phy/eswin/es-camera-module.h     |   4 +-
+ drivers/phy/eswin/es-dvp2axi-config.h    |   4 +-
+ drivers/phy/eswin/es-video-format.h      |   2 +-
+ drivers/spi/spi-eswin.c                  |  11 +-
+ include/linux/buddy.h                    | 217 +++++++++++++++++++++++
+ include/linux/dsp_dma_buf.h              |  44 +++++
+ include/linux/eswin_memblock.h           |  20 +++
+ include/uapi/linux/dma_memcp.h           |   3 +
+ include/uapi/linux/es-camera-module.h    |   6 +-
+ include/uapi/linux/es-dvp2axi-config.h   |   2 +-
+ include/uapi/linux/es-video-format.h     |   2 +-
+ include/uapi/linux/es_vb_user.h          |   2 +-
+ include/uapi/linux/eswin-ipc-scpu.h      |   5 +-
+ include/uapi/linux/malloc_dmabuf.h       |   4 +-
+ include/uapi/linux/mmz_vb.h              |  45 ++---
+ 19 files changed, 336 insertions(+), 45 deletions(-)
+ create mode 100644 include/linux/buddy.h
+ create mode 100644 include/linux/dsp_dma_buf.h
+ create mode 100644 include/linux/eswin_memblock.h
+
+diff --git a/arch/riscv/include/asm/pgtable.h b/arch/riscv/include/asm/pgtable.h
+index 8e1fc296499a..dc1724837136 100644
+--- a/arch/riscv/include/asm/pgtable.h
++++ b/arch/riscv/include/asm/pgtable.h
+@@ -647,8 +647,6 @@ static inline pgprot_t pgprot_writecombine(pgprot_t _prot)
+ }
+ #endif
+ 
+-#define pgprot_dmacoherent pgprot_writecombine
+-
+ /*
+  * THP functions
+  */
+diff --git a/drivers/media/i2c/Makefile b/drivers/media/i2c/Makefile
+index 64624c43150a..e344b7495e67 100644
+--- a/drivers/media/i2c/Makefile
++++ b/drivers/media/i2c/Makefile
+@@ -24,7 +24,6 @@ obj-$(CONFIG_VIDEO_BT819) += bt819.o
+ obj-$(CONFIG_VIDEO_BT856) += bt856.o
+ obj-$(CONFIG_VIDEO_BT866) += bt866.o
+ obj-$(CONFIG_VIDEO_CCS) += ccs/
+-obj-$(CONFIG_VIDEO_RK628) += rk628/
+ obj-$(CONFIG_VIDEO_CCS_PLL) += ccs-pll.o
+ obj-$(CONFIG_VIDEO_CS3308) += cs3308.o
+ obj-$(CONFIG_VIDEO_CS5345) += cs5345.o
+@@ -151,4 +150,3 @@ obj-$(CONFIG_VIDEO_VP27SMPX) += vp27smpx.o
+ obj-$(CONFIG_VIDEO_VPX3220) += vpx3220.o
+ obj-$(CONFIG_VIDEO_WM8739) += wm8739.o
+ obj-$(CONFIG_VIDEO_WM8775) += wm8775.o
+-obj-$(CONFIG_VIDEO_IMX327) += imx327.o
+diff --git a/drivers/memory/eswin/Makefile b/drivers/memory/eswin/Makefile
+index 9f256dc64dad..d036f957cb67 100644
+--- a/drivers/memory/eswin/Makefile
++++ b/drivers/memory/eswin/Makefile
+@@ -12,5 +12,3 @@ obj-$(CONFIG_ESWIN_DMA_MEMCP)           += es_dma_memcp/
+ obj-$(CONFIG_ESWIN_MALLOC_DMABUF)       += es_malloc_dmabuf/
+ 
+ ES_MEM_HEADER := drivers/memory/eswin/
+-
+-COPY_HEADERS := $(shell cp $(ES_MEM_HEADER)/*.h include/linux)
+diff --git a/drivers/memory/eswin/es_dev_buf/Makefile b/drivers/memory/eswin/es_dev_buf/Makefile
+index 3ba183ff62bd..391af838aada 100644
+--- a/drivers/memory/eswin/es_dev_buf/Makefile
++++ b/drivers/memory/eswin/es_dev_buf/Makefile
+@@ -1,5 +1 @@
+ obj-$(CONFIG_ESWIN_DEV_DMA_BUF) += es_dev_buf.o
+-
+-ES_DEV_DMA_BUF_HEADER := drivers/memory/eswin/es_dev_buf/include/linux
+-COPY_HEADERS:=$(shell cp $(ES_DEV_DMA_BUF_HEADER)/*.h include/linux)
+-
+diff --git a/drivers/phy/eswin/es-camera-module.h b/drivers/phy/eswin/es-camera-module.h
+index eb3f8bb351fd..f862edea89c0 100644
+--- a/drivers/phy/eswin/es-camera-module.h
++++ b/drivers/phy/eswin/es-camera-module.h
+@@ -1,4 +1,4 @@
+-// SPDX-License-Identifier: GPL-2.0
++/* SPDX-License-Identifier: GPL-2.0 */
+ /*
+  * ESWIN phy camera-module driver
+  *
+@@ -829,4 +829,4 @@
+  };
+  
+  #endif /* _UAPI_ESMODULE_CAMERA_H */
+- 
+\ No newline at end of file
++ 
+diff --git a/drivers/phy/eswin/es-dvp2axi-config.h b/drivers/phy/eswin/es-dvp2axi-config.h
+index 8382f76f6ac2..9ac4e301e8b5 100644
+--- a/drivers/phy/eswin/es-dvp2axi-config.h
++++ b/drivers/phy/eswin/es-dvp2axi-config.h
+@@ -1,4 +1,4 @@
+-// SPDX-License-Identifier: GPL-2.0
++/* SPDX-License-Identifier: GPL-2.0 */
+ /*
+  * ESWIN DVP2AXI config driver
+  *
+@@ -105,4 +105,4 @@
+  };
+  
+  #endif
+- 
+\ No newline at end of file
++ 
+diff --git a/drivers/phy/eswin/es-video-format.h b/drivers/phy/eswin/es-video-format.h
+index 88d5c4c80128..2ad529a37634 100644
+--- a/drivers/phy/eswin/es-video-format.h
++++ b/drivers/phy/eswin/es-video-format.h
+@@ -1,4 +1,4 @@
+-// SPDX-License-Identifier: GPL-2.0
++/* SPDX-License-Identifier: GPL-2.0 */
+ /*
+  * ESWIN phy video-format driver
+  *
+diff --git a/drivers/spi/spi-eswin.c b/drivers/spi/spi-eswin.c
+index 0e0652e93906..4e2b43bbca4e 100644
+--- a/drivers/spi/spi-eswin.c
++++ b/drivers/spi/spi-eswin.c
+@@ -1130,6 +1130,13 @@ static const struct of_device_id eswin_spi_mmio_of_match[] = {
+ };
+ MODULE_DEVICE_TABLE(of, eswin_spi_mmio_of_match);
+ 
++#ifdef CONFIG_ACPI
++static const struct acpi_device_id eswin_spi_mmio_acpi_match[] = {
++	{"eswin,bootspi", 0},
++	{}
++};
++MODULE_DEVICE_TABLE(acpi, eswin_spi_mmio_acpi_match);
++#endif
+ 
+ static struct platform_driver eswin_spi_mmio_driver = {
+ 	.probe		= eswin_spi_mmio_probe,
+@@ -1137,7 +1144,9 @@ static struct platform_driver eswin_spi_mmio_driver = {
+ 	.driver		= {
+ 		.name	= DRIVER_NAME,
+ 		.of_match_table = eswin_spi_mmio_of_match,
++#ifdef CONFIG_ACPI
+ 		.acpi_match_table = ACPI_PTR(eswin_spi_mmio_acpi_match),
++#endif
+ 	},
+ };
+ static int __init eswin_spi_init(void)
+@@ -1152,4 +1161,4 @@ static void __exit eswin_spi_exit(void)
+ }
+ module_exit(eswin_spi_exit);
+ 
+-MODULE_LICENSE("GPL v2");
+\ No newline at end of file
++MODULE_LICENSE("GPL v2");
+diff --git a/include/linux/buddy.h b/include/linux/buddy.h
+new file mode 100644
+index 000000000000..ff47325f2d27
+--- /dev/null
++++ b/include/linux/buddy.h
+@@ -0,0 +1,217 @@
++// SPDX-License-Identifier: GPL-2.0-only
++/*
++ * Header file of ESWIN internal buddy allocator
++ *
++ * Copyright 2024 Beijing ESWIN Computing Technology Co., Ltd.
++ *   Authors:
++ *    LinMin<linmin@eswincomputing.com>
++ *
++ */
++
++#ifndef __BUDDY_H__
++#define __BUDDY_H__
++
++#define RUN_IN_KERNEL 1
++
++#ifdef RUN_IN_KERNEL
++#include <linux/mm.h>
++#include <linux/mm_types.h>
++#include <linux/bug.h>
++#include <linux/list.h>
++#include <linux/string.h>
++#include <linux/spinlock.h>
++
++// #define buddy_print(fmt...) printk(fmt)
++#define buddy_print(fmt...)
++#define BUDDY_BUG_ON(condition) WARN_ON(condition)
++
++#define es_spin_lock_init(esLock)	spin_lock_init(esLock)
++#define es_spin_lock(esLock)		spin_lock(esLock)
++#define es_spin_unlock(esLock)		spin_unlock(esLock)
++#define buddy_spin_lock_init(lock)
++#define buddy_spin_lock(lock)
++#define buddy_spin_unlock(lock)
++#else
++#include "list.h"
++#include <stdio.h>  //printf
++#include <string.h> //memset
++#include <assert.h> //assert
++
++#define buddy_print(fmt...) printf(fmt)
++#define BUDDY_BUG_ON(condition) assert(condition)
++
++#define buddy_spin_lock_init(lock)	do {}while(0)
++#define buddy_spin_lock(lock)		do {}while(0)
++#define buddy_spin_unlock(lock)		do {}while(0)
++
++#define es_spin_lock_init(esLock)
++#define es_spin_lock(esLock)
++#define es_spin_unlock(esLock)
++#endif
++
++enum esPageflags_e{
++	enPG_head,
++	enPG_tail,
++	enPG_buddy,
++};
++
++#define BUDDY_PAGE_SHIFT    PAGE_SHIFT//(12UL)
++#define BUDDY_PAGE_SIZE     (1UL << BUDDY_PAGE_SHIFT)
++#define BUDDY_MAX_ORDER     MAX_ORDER // (10UL)//(9UL)
++
++struct esPage_s
++{
++	// spin_lock        lock;
++	struct list_head    lru;
++	unsigned long       flags;
++	union {
++		unsigned long   order;
++		struct esPage_s     *first_page;
++	};
++};
++
++struct es_free_area_s
++{
++	struct list_head    free_list;
++	unsigned long       nr_free;
++};
++
++struct mem_zone
++{
++#ifdef RUN_IN_KERNEL
++	spinlock_t          lock;
++#endif
++	unsigned long       page_num;
++	unsigned long       page_size;
++	struct esPage_s     *first_page;
++	unsigned long       start_addr;
++	unsigned long       end_addr;
++	struct es_free_area_s    free_area[BUDDY_MAX_ORDER];
++};
++
++#ifdef RUN_IN_KERNEL
++#define BLOCK_MAX_NAME 64
++struct mem_block {
++#ifdef RUN_IN_KERNEL
++	spinlock_t		esLock;
++#endif
++	struct mem_zone		zone;
++	unsigned long		page_num;
++	struct esPage_s		*esPagesStart;
++	struct page		*kPageStart;
++	char name[BLOCK_MAX_NAME];
++};
++#else
++struct mem_block {
++	struct mem_zone     zone;
++	struct esPage_s        *pages;
++};
++#endif
++
++void         buddy_system_init(struct mem_block *memblock,
++							   struct esPage_s *start_page,
++							   unsigned long start_addr,
++							   unsigned long page_num);
++struct esPage_s *buddy_get_pages(struct mem_zone *zone,
++							 unsigned long order);
++void         buddy_free_pages(struct mem_zone *zone,
++							  struct esPage_s *page);
++unsigned long buddy_num_free_page(struct mem_zone *zone);
++
++
++static inline void __esSetPageHead(struct esPage_s *page)
++{
++	page->flags |= (1UL<<enPG_head);
++}
++
++static inline void __SetPageTail(struct esPage_s *page)
++{
++	page->flags |= (1UL<<enPG_tail);
++}
++
++static inline void __esSetPageBuddy(struct esPage_s *page)
++{
++	page->flags |= (1UL<<enPG_buddy);
++}
++/**/
++static inline void __esClearPageHead(struct esPage_s *page)
++{
++	page->flags &= ~(1UL<<enPG_head);
++}
++
++static inline void __ClearPageTail(struct esPage_s *page)
++{
++	page->flags &= ~(1UL<<enPG_tail);
++}
++
++static inline void __esClearPageBuddy(struct esPage_s *page)
++{
++	page->flags &= ~(1UL<<enPG_buddy);
++}
++/**/
++static inline int esPageHead(struct esPage_s *page)
++{
++	return (page->flags & (1UL<<enPG_head));
++}
++
++static inline int esPageTail(struct esPage_s *page)
++{
++	return (page->flags & (1UL<<enPG_tail));
++}
++
++static inline int esPageBuddy(struct esPage_s *page)
++{
++	return (page->flags & (1UL<<enPG_buddy));
++}
++
++
++static inline void set_page_order_buddy(struct esPage_s *page, unsigned long order)
++{
++	page->order = order;
++	__esSetPageBuddy(page);
++}
++
++static inline void rmv_page_order_buddy(struct esPage_s *page)
++{
++	page->order = 0;
++	__esClearPageBuddy(page);
++}
++
++
++static inline unsigned long
++__find_buddy_index(unsigned long page_idx, unsigned int order)
++{
++	return (page_idx ^ (1 << order));
++}
++
++static inline unsigned long
++__find_combined_index(unsigned long page_idx, unsigned int order)
++{
++	return (page_idx & ~(1 << order));
++}
++
++
++static inline unsigned long esCompound_order(struct esPage_s *page)
++{
++	if (!esPageHead(page))
++		return 0;
++
++	return page->order;
++}
++
++static inline void esSet_compound_order(struct esPage_s *page, unsigned long order)
++{
++	page->order = order;
++}
++
++static inline void BUDDY_BUG(const char *f, int line)
++{
++	buddy_print("BUDDY_BUG in %s, %d.\n", f, line);
++	BUDDY_BUG_ON(1);
++}
++
++// print buddy system status
++void dump_print(struct mem_zone *zone);
++void dump_print_dot(struct mem_zone *zone);
++
++#endif
+diff --git a/include/linux/dsp_dma_buf.h b/include/linux/dsp_dma_buf.h
+new file mode 100644
+index 000000000000..ab6962ad1ccf
+--- /dev/null
++++ b/include/linux/dsp_dma_buf.h
+@@ -0,0 +1,44 @@
++// Copyright © 2023 ESWIN. All rights reserved.
++//
++// Beijing ESWIN Computing Technology Co., Ltd and its affiliated companies ("ESWIN") retain
++// all intellectual property and proprietary rights in and to this software. Except as expressly
++// authorized by ESWIN, no part of the software may be released, copied, distributed, reproduced,
++// modified, adapted, translated, or created derivative work of, in whole or in part.
++
++#ifndef __DSP_DMA_BUF_H_
++#define __DSP_DMA_BUF_H_
++#include <linux/dma-buf.h>
++
++struct dev_buffer_desc {
++	struct dma_buf *buf;
++	u32 offset;
++	u32 len;
++};
++
++enum es_malloc_policy {
++	ES_MEM_ALLOC_RSV,
++	ES_MEM_ALLOC_NORMAL,
++	ES_MEM_ALLOC_NORMAL_COHERENT,
++	ES_MEM_ALLOC_CMA,
++	ES_MEM_ALLOC_CMA_COHERENT,
++	ES_MEM_ALLOC_CMA_LLC,
++	ES_MEM_ALLOC_SPRAM_DIE0,
++	ES_MEM_ALLOC_SPRAM_DIE1,
++};
++
++int dev_mem_alloc(size_t size, enum es_malloc_policy policy,
++		   struct dma_buf **buf);
++int dev_mem_free(struct dma_buf *buf);
++
++int dev_mem_alloc_pool(size_t size, enum es_malloc_policy policy, char *mmb,
++		       char *zone, struct dma_buf **buf);
++
++dma_addr_t dev_mem_attach(struct dma_buf *buf, struct device *dev,
++			  enum dma_data_direction direc,
++			  struct dma_buf_attachment **attachment);
++int dev_mem_detach(struct dma_buf_attachment *attach,
++		   enum dma_data_direction direction);
++void *dev_mem_vmap(struct dev_buffer_desc *dev_buffer);
++void dev_mem_vunmap(struct dev_buffer_desc *dev_buf, void *vaddr);
++
++#endif
+diff --git a/include/linux/eswin_memblock.h b/include/linux/eswin_memblock.h
+new file mode 100644
+index 000000000000..23e7b0831b8f
+--- /dev/null
++++ b/include/linux/eswin_memblock.h
+@@ -0,0 +1,20 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++#ifndef __ESWIN_RSVMEM_H__
++#define __ESWIN_RSVMEM_H__
++
++#include <linux/init.h>
++#include <linux/types.h>
++#include <linux/numa.h>
++#include "buddy.h"
++
++// #define QEMU_DEBUG 1
++
++#define MAX_ESWIN_RSVMEM_AREAS	(64)
++
++struct mem_block *eswin_rsvmem_get_memblock(const char *memBlkName);
++int eswin_rsvmem_for_each_block(int (*it)(struct mem_block *rsvmem_block, void *data), void *data);
++const char *eswin_rsvmem_get_name(const struct mem_block *memblock);
++
++#define PCI_PHYS_MEM_PREFIX "pci_phys_mem"
++
++#endif
+diff --git a/include/uapi/linux/dma_memcp.h b/include/uapi/linux/dma_memcp.h
+index 30ca7423a39c..aec2723fc4c8 100644
+--- a/include/uapi/linux/dma_memcp.h
++++ b/include/uapi/linux/dma_memcp.h
+@@ -21,6 +21,9 @@
+  *          Yuyang Cong <congyuyang@eswincomputing.com>
+  */
+ 
++typedef long unsigned int    __kernel_size_t;
++typedef __kernel_size_t         size_t;
++
+ #ifndef ES_DMA_MEMCP_H
+ #define ES_DMA_MEMCP_H
+ 
+diff --git a/include/uapi/linux/es-camera-module.h b/include/uapi/linux/es-camera-module.h
+index a6b70b66cbd1..6acef59f1fa7 100644
+--- a/include/uapi/linux/es-camera-module.h
++++ b/include/uapi/linux/es-camera-module.h
+@@ -1,4 +1,4 @@
+-// SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note
++/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
+ /*
+  * ESWIN camera-module driver
+  *
+@@ -501,8 +501,8 @@ struct esmodule_hdr_esp {
+ 
+ struct esmodule_hdr_cfg {
+     __u32 hdr_mode;
+-//  struct esmodule_hdr_esp esp;
+-//  struct esmodule_hdr_compr compr;
++/*  struct esmodule_hdr_esp esp; */
++/*  struct esmodule_hdr_compr compr; */
+ } __attribute__ ((packed));
+ 
+ /* sensor lvds sync code
+diff --git a/include/uapi/linux/es-dvp2axi-config.h b/include/uapi/linux/es-dvp2axi-config.h
+index 5f51c5b1fe9b..c71c92e7fbb2 100644
+--- a/include/uapi/linux/es-dvp2axi-config.h
++++ b/include/uapi/linux/es-dvp2axi-config.h
+@@ -1,4 +1,4 @@
+-// SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note
++/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
+ /*
+  * ESWIN DVP2AXI config driver
+  *
+diff --git a/include/uapi/linux/es-video-format.h b/include/uapi/linux/es-video-format.h
+index 0366e9c95431..2f7f4a612fa8 100644
+--- a/include/uapi/linux/es-video-format.h
++++ b/include/uapi/linux/es-video-format.h
+@@ -1,4 +1,4 @@
+-// SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note
++/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
+ /*
+  * ESWIN video format driver
+  *
+diff --git a/include/uapi/linux/es_vb_user.h b/include/uapi/linux/es_vb_user.h
+index d296ad3021c3..fe36df02a747 100644
+--- a/include/uapi/linux/es_vb_user.h
++++ b/include/uapi/linux/es_vb_user.h
+@@ -1,4 +1,4 @@
+-// SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note
++/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
+ /*
+  * ESWIN MMZ VB user state api header.
+  *
+diff --git a/include/uapi/linux/eswin-ipc-scpu.h b/include/uapi/linux/eswin-ipc-scpu.h
+index 9227a9351488..64c377727d41 100644
+--- a/include/uapi/linux/eswin-ipc-scpu.h
++++ b/include/uapi/linux/eswin-ipc-scpu.h
+@@ -47,6 +47,9 @@
+      IPC_RES_STATUS_SIZE + IPC_RES_SERVICE_STATUS_SIZE+IPC_RES_LEN_SIZE+ \
+      IPC_RES_XOR_SIZE)
+ 
++typedef unsigned char	    u_int8_t;
++typedef unsigned int	   u_int32_t;
++
+ typedef enum
+ {
+     OTP_KEY = 0,
+@@ -683,7 +686,7 @@ typedef struct {
+ }cipher_get_nid_req_t;
+ 
+ typedef struct {
+-	__u32 id; // globally unique id for this mem info in kernel, ipc driver use it to find this mem info
++	__u32 id; /* globally unique id for this mem info in kernel, ipc driver use it to find this mem info */
+ 	struct dma_allocation_data dma_alloc_info;
+ }khandle_dma_allocation_data_t;
+ 
+diff --git a/include/uapi/linux/malloc_dmabuf.h b/include/uapi/linux/malloc_dmabuf.h
+index bf66ff0230ea..1c5832b43bfd 100644
+--- a/include/uapi/linux/malloc_dmabuf.h
++++ b/include/uapi/linux/malloc_dmabuf.h
+@@ -21,6 +21,8 @@
+  *
+  */
+ 
++typedef _Bool bool;
++
+ #ifndef ES_DMA_MALLOC_DMABUF_H
+ #define ES_DMA_MALLOC_DMABUF_H
+ 
+@@ -50,4 +52,4 @@ struct esw_userptr {
+ #define ESW_CONVERT_USERPTR_TO_DMABUF       _IOWR(ESW_MALLOC_DMABUF_MAGIC, 1, struct esw_userptr)
+ #define ESW_GET_DMABUF_INFO                 _IOWR(ESW_MALLOC_DMABUF_MAGIC, 2, struct esw_userptr)
+ 
+-#endif
+\ No newline at end of file
++#endif
+diff --git a/include/uapi/linux/mmz_vb.h b/include/uapi/linux/mmz_vb.h
+index 27a5f0a94352..5e808bba0e49 100644
+--- a/include/uapi/linux/mmz_vb.h
++++ b/include/uapi/linux/mmz_vb.h
+@@ -2,6 +2,9 @@
+ #define _MMZ_VB_UAPI_H_
+ 
+ #include <linux/types.h>
++#include <linux/es_vb_user.h>
++
++typedef ES_U32 VB_POOL;
+ 
+ /*vb cfg flag*/
+ #define MMZ_VB_CFG_FLAG_INIT	(1 << 0)
+@@ -96,36 +99,36 @@ typedef struct esVB_GET_BLOCK_CMD_S
+ 	struct esVB_GET_BLOCK_RESP_S getBlkResp;
+ }VB_GET_BLOCK_CMD_S;
+ 
+-//corresponding to MMZ_VB_IOCTL_POOL_SIZE
++/* corresponding to MMZ_VB_IOCTL_POOL_SIZE */
+ typedef struct esVB_GET_POOLSIZE_CMD_S
+ {
+ 	VB_POOL poolId;
+ 	__u64 poolSize;
+ }VB_GET_POOLSIZE_CMD_S;
+ 
+-//corresponding to MMZ_VB_IOCTL_FLUSH_POOL
++/* corresponding to MMZ_VB_IOCTL_FLUSH_POOL */
+ typedef struct esVB_FLUSH_POOL_CMD_S
+ {
+ 	VB_POOL poolId;
+-	__u64 offset; // offset addr in the pool
+-	__u64 size; // size to be flushed
++	__u64 offset; /* offset addr in the pool */
++	__u64 size; /* size to be flushed */
+ }VB_FLUSH_POOL_CMD_S;
+ 
+-//corresponding to MMZ_VB_IOCTL_BLOCK_TO_POOL
++/* corresponding to MMZ_VB_IOCTL_BLOCK_TO_POOL */
+ typedef struct esVB_BLOCK_TO_POOL_CMD_S
+ {
+-	int fd;	// Input: The dmabuf_fd of the block
+-	VB_POOL poolId; //Output: The pool which the block belongs to;
++	int fd;	/* Input: The dmabuf_fd of the block */
++	VB_POOL poolId; /* Output: The pool which the block belongs to; */
+ }VB_BLOCK_TO_POOL_CMD_S;
+ 
+-//corresponding to MMZ_VB_IOCTL_GET_BLOCK_OFFSET
++/* corresponding to MMZ_VB_IOCTL_GET_BLOCK_OFFSET */
+ typedef struct esVB_GET_BLOCKOFFSET_CMD_S
+ {
+-	int fd;	// Input: The dmabuf_fd, it might be the real block or the splittedBlock
+-	__u64 offset; // Output: The offset in pool
++	int fd;	/* Input: The dmabuf_fd, it might be the real block or the splittedBlock */
++	__u64 offset; /* Output: The offset in pool */
+ }VB_GET_BLOCKOFFSET_CMD_S;
+ 
+-//corresponding to MMZ_VB_IOCTL_SPLIT_DMABUF
++/* corresponding to MMZ_VB_IOCTL_SPLIT_DMABUF */
+ typedef struct esVB_SPLIT_DMABUF_CMD_S {
+ 	int fd; /* Input: The original dmabuf fd to be splitted */
+ 	int slice_fd; /* Outpu: splitted dmabuf fd */
+@@ -133,26 +136,26 @@ typedef struct esVB_SPLIT_DMABUF_CMD_S {
+ 	__u64 len; /* size of the buffer to be splitted */
+ }VB_BLOCK_SPLIT_CMD_S;
+ 
+-//corresponding to MMZ_VB_IOCTL_DMABUF_REFCOUNT
++/* corresponding to MMZ_VB_IOCTL_DMABUF_REFCOUNT */
+ typedef struct esVB_DMABUF_REFCOUNT_CMD_S
+ {
+-	int fd;	// Input: The dmabuf_fd
+-	__u64 refCnt; // Output: The file_count of the dmabuf
++	int fd;	/* Input: The dmabuf_fd */
++	__u64 refCnt; /* Output: The file_count of the dmabuf */
+ }VB_DMABUF_REFCOUNT_CMD_S;
+ 
+-//corresponding to MMZ_VB_IOCTL_RETRIEVE_MEM_NODE
++/* corresponding to MMZ_VB_IOCTL_RETRIEVE_MEM_NODE */
+ typedef struct esVB_RETRIEVE_MEM_NODE_CMD_S
+ {
+-	int fd;	// Input: The dmabuf_fd
+-	void *cpu_vaddr; // Input: The virtual addr of cpu in user space
+-	EIC770X_LOGICAL_MEM_NODE_E numa_node; // Ouput: return the logic code of NUMA node id of the memory
++	int fd;	/* Input: The dmabuf_fd */
++	void *cpu_vaddr; /* Input: The virtual addr of cpu in user space */
++	EIC770X_LOGICAL_MEM_NODE_E numa_node; /* Ouput: return the logic code of NUMA node id of the memory */
+ }VB_RETRIEVE_MEM_NODE_CMD_S;
+ 
+-//corresponding to MMZ_VB_IOCTL_DMABUF_SIZE
++/* corresponding to MMZ_VB_IOCTL_DMABUF_SIZE */
+ typedef struct esVB_DMABUF_SIZE_CMD_S
+ {
+-	int fd;	// Input: The dmabuf_fd
+-	__u64 size; // Output: The size of the dmabuf
++	int fd;	/* Input: The dmabuf_fd */
++	__u64 size; /* Output: The size of the dmabuf */
+ }VB_DMABUF_SIZE_CMD_S;
+ 
+ #define MMZ_VB_IOC_MAGIC 		'M'
+-- 
+2.53.0
+

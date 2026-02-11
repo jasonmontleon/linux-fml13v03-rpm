@@ -1,0 +1,3047 @@
+From 4b04ddfbca93bb59c9ad770c2a5e79614c2babe3 Mon Sep 17 00:00:00 2001
+From: huangyifeng <huangyifeng@eswincomputing.com>
+Date: Mon, 27 Jan 2025 10:54:04 +0800
+Subject: [PATCH 310/534] feat:reset driver fit for upstream
+
+Changelogs:
+1.Adapt the code style and naming conventions to meet upstream
+requirements.
+  2.Add documentation related to the reset driver.
+
+Signed-off-by: huangyifeng <huangyifeng@eswincomputing.com>
+---
+ .../bindings/reset/eswin,eic770x-reset.yaml   |  51 +
+ .../dts/eswin/eswin-win2030-die0-soc.dtsi     | 869 +++++++++++-------
+ .../dts/eswin/eswin-win2030-die1-soc.dtsi     | 839 ++++++++++-------
+ drivers/clk/eswin/clk_eic770x.h               | 204 ++++
+ .../dt-bindings/reset/eswin,eic770x-reset.h   | 473 ++++++++++
+ 5 files changed, 1744 insertions(+), 692 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/reset/eswin,eic770x-reset.yaml
+ create mode 100644 drivers/clk/eswin/clk_eic770x.h
+ create mode 100755 include/dt-bindings/reset/eswin,eic770x-reset.h
+
+diff --git a/Documentation/devicetree/bindings/reset/eswin,eic770x-reset.yaml b/Documentation/devicetree/bindings/reset/eswin,eic770x-reset.yaml
+new file mode 100644
+index 000000000000..8b0b3b867011
+--- /dev/null
++++ b/Documentation/devicetree/bindings/reset/eswin,eic770x-reset.yaml
+@@ -0,0 +1,51 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/reset/eswin,eic770x-reset.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Eswin EIC770X SOC Reset Controller
++
++maintainers:
++  - HuangYiFeng <huangyifeng@eswincomputing.com>
++
++description: |
++  Please also refer to reset.txt in this directory for common reset
++  controller binding usage.
++  The reset controller registers are part of the syscrg block on
++  eic770x SoCs.
++
++properties:
++  compatible:
++    oneOf:
++      - items:
++          - const: eswin,eic770x-reset
++
++  '#reset-cells':
++    description: |
++      Specifies the number of cells needed to encode a reset source.
++      Cell #1 : module id of the reset consumer
++      Cell #2 : bit position of the reset in each reset consumer module
++    const: 2
++
++required:
++  - compatible
++  - '#reset-cells':
++
++additionalProperties: false
++
++examples:
++  - |
++	#include <dt-bindings/reset/eswin,eic770x-reset.h>
++
++	d0_sys_crg: sys-crg@51828000 {
++		compatible = "eswin,win2030-sys-crg", "syscon", "simple-mfd";
++		reg = <0x000000 0x51828000 0x000000 0x80000>;
++		numa-node-id = <0>;
++		d0_reset: reset-controller {
++			compatible = "eswin,eic770x-reset";
++			#reset-cells = <2>;
++		};
++	};
++...
++
+diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi b/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
+index 9ef5cb260e41..d835fd640338 100644
+--- a/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
++++ b/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
+@@ -1,4 +1,4 @@
+-﻿// SPDX-License-Identifier: GPL-2.0
++// SPDX-License-Identifier: GPL-2.0
+ /*
+  * Device Tree Include file for Die0 System peripherals of Eswin EIC770x family SoC.
+  *
+@@ -30,70 +30,84 @@
+ #include <dt-bindings/power/eswin,eic770x-pmu.h>
+ #include <dt-bindings/thermal/thermal.h>
+ #include <dt-bindings/pwm/pwm.h>
++#include <dt-bindings/gpio/gpio.h>
+ / {
+-    compatible = "sifive,hifive-unmatched-a00", "sifive,fu740-c000","sifive,fu740";
+-
++	compatible = "eswin,eic7x";
+ 	thermal-zones {
+-		thermal0 {
+-			polling-delay-passive = <100>; /*ms*/
++		d0_thermal: d0_thermal0 {
++			polling-delay-passive = <500>; /*ms*/
+ 			polling-delay = <1000>; /*ms*/
+ 			sustainable-power = <30000>; /*mW*/
+ 			thermal-sensors = <&pvt0>;
+ 
+ 			trips {
+-
+-				threshold: trip-point0 {
+-					temperature = <50000>;
++				d0_trip_threshold: trip-point0 {
++					temperature = <65000>;
+ 					hysteresis = <1000>;
+ 					type = "passive";
+ 				};
+-				target: trip-point1 {
+-					temperature = <60000>;
++				d0_trip_target: trip-point1 {
++					temperature = <75000>;
+ 					hysteresis = <1000>;
+ 					type = "passive";
+ 				};
+-
+-				crit: trip-point2 {
+-					temperature     = <80000>;
+-					hysteresis      = <0>;
+-					type            = "critical";
++				d0_trip_crit: trip-point2 {
++					temperature = <105000>;
++					hysteresis = <0>;
++					type = "critical";
+ 				};
+ 			};
+ 
+ 			cooling-maps {
+-				map0 {
+-					trip = <&target>;
++				d0_map_cpu: map0 {
++					trip = <&d0_trip_target>;
+ 					contribution = <1024>;
+ 					cooling-device =
+-						<&cpu_0 0 10>,
+-						<&cpu_1 0 10>,
+-						<&cpu_2 0 10>,
+-						<&cpu_3 0 10>;
++						<&cpu_0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
++						<&cpu_1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
++						<&cpu_2 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
++						<&cpu_3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+ 				};
+-				map1 {
+-					trip = <&target>;
++				d0_map_npu: map1 {
++					trip = <&d0_trip_target>;
+ 					contribution = <4096>;
+ 					cooling-device = <&d0_npu THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+ 				};
+-				map2 {
+-					trip = <&target>;
+-					contribution = <1024>;
++				d0_map_dsp: map2 {
++					trip = <&d0_trip_target>;
++					contribution = <2048>;
+ 					cooling-device = <&d0_dsp0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+ 									<&d0_dsp1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+ 									<&d0_dsp2 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+ 									<&d0_dsp3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+ 				};
+-				map3 {
+-					trip = <&target>;
++				d0_map_gpu: map3 {
++					trip = <&d0_trip_target>;
+ 					contribution = <1024>;
+ 					cooling-device = <&gpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+ 				};
++				d0_map_venc: map4 {
++					trip = <&d0_trip_target>;
++					contribution = <1024>;
++					cooling-device = <&venc0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
++				};
++				d0_map_vdec: map5 {
++					trip = <&d0_trip_target>;
++					contribution = <1024>;
++					cooling-device = <&vdec0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
++				};
++				d0_map_hae: map6 {
++					trip = <&d0_trip_target>;
++					contribution = <1024>;
++					cooling-device = <&gc820 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
++				};
+ 			};
+ 		};
+ 	};
+ };
+ 
+ &SOC {
++	dma-noncoherent;
+ 		d0_uart0: serial@0x50900000 {
+ 			compatible = "snps,dw-apb-uart";
+ 			reg = <0x0 0x50900000 0x0 0x10000>;
+@@ -109,7 +123,7 @@ d0_uart0: serial@0x50900000 {
+ 		};
+ 
+ 		d0_uart1: serial@0x50910000 {
+-			compatible = "snps,dw-apb-uart";
++			compatible = "eswin,dw-apb-uart";
+ 			reg = <0x0 0x50910000 0x0 0x10000>;
+ 			clock-frequency = <LSPCLK_FREQ>;
+ 			clocks = <&d0_clock EIC7700_CLK_LSP_UART1_PCLK>;
+@@ -202,6 +216,8 @@ d0_clock: clock-controller {
+ 				compatible = "eswin,eic7700-clock";
+ 				#clock-cells = <1>;
+ 				numa-node-id = <0>;
++				cpu-default-frequency = <CLK_FREQ_1400M>;
++				operating-points-v2 = <&d0_cpu_opp_table>;
+ 			};
+ 		};
+ 
+@@ -231,18 +247,6 @@ smmu0: iommu@50c00000 {
+ 				<358>;
+ 			interrupt-names = "eventq", "gerror", "priq", "cmdq-sync";
+ 			#iommu-cells = <1>;
+-			resets = <&d0_reset TCU_RST_CTRL SW_TCU_AXI_RSTN>,
+-				<&d0_reset TCU_RST_CTRL SW_TCU_CFG_RSTN>,
+-				<&d0_reset TCU_RST_CTRL TBU_RSTN_0>,
+-				<&d0_reset TCU_RST_CTRL TBU_RSTN_1>,
+-				<&d0_reset TCU_RST_CTRL TBU_RSTN_2>,
+-				<&d0_reset TCU_RST_CTRL TBU_RSTN_3>,
+-				<&d0_reset TCU_RST_CTRL TBU_RSTN_4>,
+-				<&d0_reset TCU_RST_CTRL TBU_RSTN_5>,
+-				<&d0_reset TCU_RST_CTRL TBU_RSTN_6>,
+-				<&d0_reset TCU_RST_CTRL TBU_RSTN_7>;
+-			reset-names = "axi_rst", "cfg_rst", "tbu0_rst", "tbu1_rst", "tbu2_rst", "tbu3_rst",
+-				"tbu4_rst", "tbu5_rst", "tbu6_rst", "tbu7_rst";
+ 			status = "disabled";
+ 			numa-node-id = <0>;
+ 			dma-noncoherent;
+@@ -376,33 +380,81 @@ d0_pmu_npu: win2030-pmu-controller-port@1b4 {
+ 			};
+ 		};
+ 
+-		d0_aon_dmac: dma-controller-aon@0x518c0000 {
+-			compatible = "eswin,eic770x-axi-dma";
+-			reg = <0x0 0x518c0000 0x0 0x10000>;
+-			interrupt-parent = <&plic0>;
+-			interrupts = <289>;
+-			#dma-cells = <3>; // dma-cells <request channel id, handshake number, dma sel bit>;
+-			clocks = <&d0_clock EIC7700_CLK_AONDMA_ACLK>,
+-				 <&d0_clock EIC7700_CLK_AONDMA_CFG>;
+-			clock-names = "core-clk", "cfgr-clk";
+-			resets = <&d0_reset DMA1_RST_CTRL SW_DMA1_ARSTN>,
+-				<&d0_reset DMA1_RST_CTRL SW_DMA1_HRSTN>;
+-			reset-names = "arst", "prst";
+-			dma-channels = <16>;
+-			snps,dma-masters = <2>;
+-			snps,priority = <0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15>;
+-			snps,data-width = <3>;
+-			snps,block-size = <0x80000 0x80000 0x80000 0x80000 0x80000 0x80000 0x80000 0x80000 0x80000 0x80000 0x80000 0x80000 0x80000 0x80000 0x80000 0x80000>;
+-			snps,axi-max-burst-len = <32>;
+-			snps,max-msize = <64>;
++		do_aon_subsys_bus: aon-subsys-bus@0{
++			compatible = "eswin,eic7700-aon-subsys-bus","simple-bus";
++			dma-ranges = <0x0 0x80000000 0x0 0x80000000 0x3FF 0x80000000>;
+ 			#size-cells = <2>;
+ 			#address-cells = <2>;
+-			dma-ranges = <0x0 0x80000000 0x0 0x80000000 0x100 0x0>;
+-			iommus = <&smmu0 WIN2030_SID_DMA1>;
+-			tbus = <WIN2030_TBUID_DMA1>;
+-			eswin,syscfg = <&d0_sys_con DMA1_SID_REG_OFFSET 0x370>;
+-			numa-node-id = <0>;
+-			dma-noncoherent;
++			ranges;
++			d0_aon_dmac: dma-controller-aon@0x518c0000 {
++				compatible = "eswin,eic770x-axi-dma";
++				reg = <0x0 0x518c0000 0x0 0x10000>;
++				interrupt-parent = <&plic0>;
++				interrupts = <289>;
++				#dma-cells = <3>; // dma-cells <request channel id, handshake number, dma sel bit>;
++				clocks = <&d0_clock EIC7700_CLK_AONDMA_ACLK>,
++					<&d0_clock EIC7700_CLK_AONDMA_CFG>;
++				clock-names = "core-clk", "cfgr-clk";
++				resets = <&d0_reset DMA1_RST_CTRL SW_DMA1_ARSTN>,
++					<&d0_reset DMA1_RST_CTRL SW_DMA1_HRSTN>;
++				reset-names = "arst", "prst";
++				dma-channels = <16>;
++				snps,dma-masters = <2>;
++				snps,priority = <0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15>;
++				snps,data-width = <3>;
++				snps,block-size = <0x80000 0x80000 0x80000 0x80000 0x80000 0x80000 0x80000 0x80000 0x80000 0x80000 0x80000 0x80000 0x80000 0x80000 0x80000 0x80000>;
++				snps,axi-max-burst-len = <64>;
++				snps,max-msize = <64>;
++				#size-cells = <2>;
++				#address-cells = <2>;
++				iommus = <&smmu0 WIN2030_SID_DMA1>;
++				tbus = <WIN2030_TBUID_DMA1>;
++				eswin,syscfg = <&d0_sys_con DMA1_SID_REG_OFFSET 0x370>;
++				numa-node-id = <0>;
++				dma-noncoherent;
++			};
++
++			d0_ipc_scpu:ipc@0 {
++				compatible = "eswin,win2030-ipc", "simple-bus";
++				#address-cells = <1>;
++				#size-cells = <0>;
++				iommus = <&smmu0 WIN2030_SID_SCPU>, <&smmu0 WIN2030_SID_CRYPT>;
++				tbus = <WIN2030_TBUID_SCPU>;
++				eswin,syscfg = <&d0_sys_con SCPU_SID_REG_OFFSET 0>,
++					<&d0_sys_con CRYPT_SID_REG_OFFSET 0>;
++				mboxes = <&d0_mbox0 0>;
++				mbox-names = "u84_scpu";
++				numa-node-id = <0>;
++				dma-noncoherent;
++				d0_trng@0 {
++					compatible = "eswin,ex77xx-trng";
++					reg = <0>;
++					status = "okay";
++				};
++			};
++
++			d0_lpcpu:lpcpu@0 {
++				compatible = "eswin,win2030-lpcpu";
++				/* fw-region = <&lpcpu0_reserved>; */
++				clocks = <&d0_clock EIC7700_CLK_CLK_LPCPU_CORE>,
++						<&d0_clock EIC7700_CLK_CLK_LPCPU_BUS>;
++				clock-names = "core_clk", "bus_clk";
++
++				reset-names = "core_rst", "bus_rst", "dbg_rst";
++				resets = <&d0_reset LPCPU_RST_CTRL SW_LPCPU_CORE_RSTN>,
++						<&d0_reset LPCPU_RST_CTRL SW_LPCPU_BUS_RSTN>,
++						<&d0_reset LPCPU_RST_CTRL SW_LPCPU_DBG_RSTN>;
++				#size-cells = <2>;
++
++				iommus = <&smmu0 WIN2030_SID_LCPU>;
++				eswin,syscfg = <&d0_sys_con LCPU_SID_REG_OFFSET 0>;
++				tbus = <WIN2030_TBUID_LPCPU>;
++				mboxes = <&d0_mbox1 0>;
++				mbox-names = "u84_lpcpu";
++				numa-node-id = <0>;
++				status = "disabled";
++				dma-noncoherent;
++			};
+ 		};
+ 
+ 		d0_dmac0: dma-controller-hsp@0x50430000 {
+@@ -439,7 +491,6 @@ d0_gmac0: ethernet@50400000 {
+ 			interrupt-parent = <&plic0>;
+ 			interrupt-names = "macirq";
+ 			interrupts = <61>;
+-			phy-mode = "rgmii-txid";
+ 			numa-node-id = <0>;
+ 			id = <0>;
+ 			status = "disabled";
+@@ -473,7 +524,6 @@ d0_gmac1: ethernet@50410000 {
+ 			interrupt-parent = <&plic0>;
+ 			interrupt-names = "macirq";
+ 			interrupts = <70>;
+-			phy-mode = "rgmii-txid";
+ 			numa-node-id = <0>;
+ 			id = <1>;
+ 			status = "disabled";
+@@ -509,44 +559,51 @@ noc {
+ 			#include "eswin-win2030-die0-noc.dtsi"
+ 		};
+ 
+-		d0_npu: eswin-npu@51c00000 {
+-			compatible = "eswin,npu";
+-			reg = <0x0 0x51c00000 0x0 0x400000>;
+-			interrupt-parent = <&plic0>;
+-			interrupts = <387 16>;
+-			/*spram-region = <&npu0_reserved>;*/
++		d0_npu_subsys_bus: npu-subsys-bus@0{
++			compatible = "eswin,eic7700-npu-subsys-bus","simple-bus";
++			dma-ranges = <0x1 0x0 0x0 0xc0000000 0x100 0x0>;
++			#address-cells = <2>;
+ 			#size-cells = <2>;
+-			dma-ranges = <0x1 0x0 0x0 0xc0000000 0x1ff 0x0>;
+-			iommus = <&smmu0 WIN2030_SID_NPU_DMA>;
+-			tbus = <WIN2030_TBUID_NPU>;
+-			dsp-avail-num = <1>;
+-			spram-size = <0x400000>;
+-			npu_mbox = <&d0_mbox2>;
+-			clocks = <&d0_clock EIC7700_CLK_NPU_ACLK>,
+-					<&d0_clock EIC7700_CLK_NPU_CFG_CLK>,
+-					<&d0_clock EIC7700_CLK_NPU_CLK>,
+-					<&d0_clock EIC7700_CLK_NPU_LLC_ACLK>,
+-					<&d0_clock EIC7700_CLK_NPU_E31_CLK>,
+-					<&d0_clock EIC7700_MUX_U_NPU_CORE_3MUX1_GFREE>,
+-					<&d0_clock EIC7700_MUX_U_NPU_LLCLK_3MUX1_GFREE>,
+-					<&d0_clock EIC7700_SPLL2_FOUT2>,
+-					<&d0_clock EIC7700_SPLL1_FOUT1>,
+-					<&d0_clock EIC7700_CLK_CLK_NPU_LLC_SRC0>,
+-					<&d0_clock EIC7700_VPLL_FOUT1>;
+-
+-			clock-names = 	"aclk", "cfg_clk", "core_clk", "clk_npu_llc_aclk", "e31_core_clk",
+-					"mux_u_npu_core_3mux1_gfree", "mux_u_npu_llclk_3mux1_gfree",
+-					"fixed_rate_clk_spll2_fout2", "fixed_rate_clk_spll1_fout1", "clk_clk_npu_llc_src0",
+-					"fixed_rate_clk_vpll_fout1";
+-
+-			resets = <&d0_reset NPU_RST_CTRL SW_NPU_E31CORE_RSTN>;
+-			reset-names = "e31_core";
+-			operating-points-v2 = <&npu_opp_table>;
+-			#cooling-cells = <2>;
+-			dynamic-power-coefficient = <16000>; /*TBD*/
+-			numa-node-id = <0>;
+-			firmware-name = "eic7700_die0_e31_fw";
+-			dma-noncoherent;
++			ranges;
++			d0_npu: eswin-npu@51c00000 {
++				compatible = "eswin,npu";
++				reg = <0x0 0x51c00000 0x0 0x400000>;
++				interrupt-parent = <&plic0>;
++				interrupts = <387 16>;
++				/*spram-region = <&npu0_reserved>;*/
++				#size-cells = <2>;
++				iommus = <&smmu0 WIN2030_SID_NPU_DMA>;
++				tbus = <WIN2030_TBUID_NPU>;
++				dsp-avail-num = <1>;
++				spram-size = <0x400000>;
++				npu_mbox = <&d0_mbox2>;
++				clocks = <&d0_clock EIC7700_CLK_NPU_ACLK>,
++						<&d0_clock EIC7700_CLK_NPU_CFG_CLK>,
++						<&d0_clock EIC7700_CLK_NPU_CLK>,
++						<&d0_clock EIC7700_CLK_NPU_LLC_ACLK>,
++						<&d0_clock EIC7700_CLK_NPU_E31_CLK>,
++						<&d0_clock EIC7700_MUX_U_NPU_CORE_3MUX1_GFREE>,
++						<&d0_clock EIC7700_MUX_U_NPU_LLCLK_3MUX1_GFREE>,
++						<&d0_clock EIC7700_SPLL2_FOUT2>,
++						<&d0_clock EIC7700_SPLL1_FOUT1>,
++						<&d0_clock EIC7700_CLK_CLK_NPU_LLC_SRC0>,
++						<&d0_clock EIC7700_CLK_CLK_NPU_LLC_SRC1>,
++						<&d0_clock EIC7700_VPLL_FOUT1>;
++
++				clock-names = 	"aclk", "cfg_clk", "core_clk", "clk_npu_llc_aclk", "e31_core_clk",
++						"mux_u_npu_core_3mux1_gfree", "mux_u_npu_llclk_3mux1_gfree",
++						"fixed_rate_clk_spll2_fout2", "fixed_rate_clk_spll1_fout1", "clk_clk_npu_llc_src0",
++						"clk_clk_npu_llc_src1", "fixed_rate_clk_vpll_fout1";
++
++				resets = <&d0_reset NPU_RST_CTRL SW_NPU_E31CORE_RSTN>;
++				reset-names = "e31_core";
++				operating-points-v2 = <&npu_opp_table>;
++				#cooling-cells = <2>;
++				dynamic-power-coefficient = <16000>; /*TBD*/
++				numa-node-id = <0>;
++				firmware-name = "eic7700_die0_e31_fw";
++				dma-noncoherent;
++			};
+ 		};
+ 
+ 		dev_llc_d0: llc@51c00000 {
+@@ -557,13 +614,8 @@ dev_llc_d0: llc@51c00000 {
+ 			clocks = <&d0_clock EIC7700_CLK_NPU_ACLK>,
+ 				 <&d0_clock EIC7700_CLK_NPU_CFG_CLK>,
+ 				 <&d0_clock EIC7700_CLK_NPU_LLC_ACLK>,
+-				 <&d0_clock EIC7700_CLK_NPU_CLK>,
+-				 <&d0_clock EIC7700_MUX_U_NPU_CORE_3MUX1_GFREE>,
+-				 <&d0_clock EIC7700_SPLL2_FOUT2>,
+-				 <&d0_clock EIC7700_SPLL1_FOUT1>;
+-			clock-names = "aclk", "cfg_clk", "llc_clk", "core_clk",
+-					"mux_u_npu_core_3mux1_gfree", "fixed_rate_clk_spll2_fout2",
+-					"fixed_rate_clk_spll1_fout1";
++				 <&d0_clock EIC7700_CLK_NPU_CLK>;
++			clock-names = "aclk", "cfg_clk", "llc_clk", "core_clk";
+ 			resets = <&d0_reset NPU_RST_CTRL SW_NPU_AXI_RSTN>,
+ 				<&d0_reset NPU_RST_CTRL SW_NPU_CFG_RSTN>,
+ 				<&d0_reset NPU_RST_CTRL SW_NPU_CORE_RSTN>,
+@@ -918,7 +970,6 @@ ssi1: spi@50814000 {
+ 		bootspi: spi@51800000 {
+ 			compatible = "eswin,bootspi";
+ 			reg = <0x0 0x51800000 0x0 0x8000>,
+-				<0x0 0x51828000 0x0 0x8000>,
+ 				<0x0 0x5c000000 0x0 0x8000>;
+ 			#address-cells = <1>;
+ 			#size-cells = <0>;
+@@ -927,10 +978,13 @@ bootspi: spi@51800000 {
+ 			clock-names = "cfg_clk", "clk";
+ 			resets = <&d0_reset BOOTSPI_RST_CTRL SW_BOOTSPI_RSTN>;
+ 			reset-names = "rst";
+-			spi-max-frequency = <4800000>;
++			dma-names = "rx", "tx";
++			dmas = <&d0_aon_dmac 12 40 0xff>, <&d0_aon_dmac 13 40 0xff>;
++			spi-max-frequency = <30000000>;
+ 			reg-io-width = <4>;
+ 			numa-node-id = <0>;
+ 			status = "disabled";
++			dma-noncoherent;
+ 		};
+ 		sdhci_emmc: mmc@50450000 {
+ 			compatible = "eswin,emmc-sdhci-5.1";
+@@ -1082,6 +1136,8 @@ vdec0: video-decoder0@50100000 {
+ 			numa-node-id = <0>;
+ 			tbus = <WIN2030_TBUID_VDEC>, <WIN2030_TBUID_JDEC>;
+ 			dma-noncoherent;
++			vdec-core-frequency = <800000000>;
++			jdec-core-frequency = <800000000>;
+ 
+ 			vdec_0: vdec0@50100000 {
+ 				core-name = "video-dec0";
+@@ -1132,6 +1188,8 @@ venc0: video-encoder@50110000 {
+ 			vccsr-reg = <0x0 0x501c0000 0x0 0x1000>;
+ 			numa-node-id = <0>;
+ 			dma-noncoherent;
++			venc-core-frequency = <800000000>;
++			jenc-core-frequency = <800000000>;
+ 
+ 			venc_0: venc0@50110000 {
+ 				core-name = "video-enc0";
+@@ -1309,41 +1367,14 @@ d0_mbox7: mbox@50ae0000 {
+ 			dma-noncoherent;
+ 		};
+ 
+-		d0_ipc_scpu:ipc@0 {
+-			compatible = "eswin,win2030-ipc";
+-			#size-cells = <2>;
+-			dma-ranges = <0x0 0x80000000 0x0 0xc0000000 0x0 0x80000000>;
+-			iommus = <&smmu0 WIN2030_SID_SCPU>, <&smmu0 WIN2030_SID_CRYPT>;
+-			tbus = <WIN2030_TBUID_SCPU>;
+-			eswin,syscfg = <&d0_sys_con SCPU_SID_REG_OFFSET 0>,
+-			               <&d0_sys_con CRYPT_SID_REG_OFFSET 0>;
+-			mboxes = <&d0_mbox0 0>;
+-			mbox-names = "u84_scpu";
+-			numa-node-id = <0>;
+-			dma-noncoherent;
+-		};
+-
+-		d0_lpcpu:lpcpu@0 {
+-			compatible = "eswin,win2030-lpcpu";
+-			/* fw-region = <&lpcpu0_reserved>; */
+-			clocks = <&d0_clock EIC7700_CLK_CLK_LPCPU_CORE>,
+-					<&d0_clock EIC7700_CLK_CLK_LPCPU_BUS>;
+-			clock-names = "core_clk", "bus_clk";
+-
+-			reset-names = "core_rst", "bus_rst", "dbg_rst";
+-			resets = <&d0_reset LPCPU_RST_CTRL SW_LPCPU_CORE_RSTN>,
+-					<&d0_reset LPCPU_RST_CTRL SW_LPCPU_BUS_RSTN>,
+-					<&d0_reset LPCPU_RST_CTRL SW_LPCPU_DBG_RSTN>;
+-			#size-cells = <2>;
++		d0_watchdog:watchdog@0 {
++			compatible = "eswin,win2030-wdt";
+ 
+-			dma-ranges = <0x0 0xb0000000 0x0 0xc0000000 0x0 0x50000000>;
+-			iommus = <&smmu0 WIN2030_SID_LCPU>;
+-			eswin,syscfg = <&d0_sys_con LCPU_SID_REG_OFFSET 0>;
+-			tbus = <WIN2030_TBUID_LPCPU>;
++			max-timeout-sec = <60>;
+ 			mboxes = <&d0_mbox1 0>;
+ 			mbox-names = "u84_lpcpu";
+ 			numa-node-id = <0>;
+-			status = "disabled";
++			status = "okay";
+ 			dma-noncoherent;
+ 		};
+ 
+@@ -1728,9 +1759,11 @@ timer0: timer@0x51840000 {
+ 				<&d0_reset TIMER0_RST_CTRL SW_TIMER0_RSTN_7>,
+ 				<&d0_reset TIMER0_RST_CTRL SW_TIMER0_PRSTN>;
+ 			reset-names = "trst0","trst1","trst2","trst3","trst4","trst5","trst6","trst7","prst";
++			status = "disabled";
+ 		};
+ 
+ 		timer1: timer@0x51848000 {
++			/* used by lpcpu */
+ 			compatible = "eswin,eswin-timer";
+ 			#address-cells = <2>;
+ 			#size-cells = <2>;
+@@ -1751,9 +1784,11 @@ timer1: timer@0x51848000 {
+ 				<&d0_reset TIMER1_RST_CTRL SW_TIMER1_RSTN_7>,
+ 				<&d0_reset TIMER1_RST_CTRL SW_TIMER1_PRSTN>;
+ 			reset-names = "trst0","trst1","trst2","trst3","trst4","trst5","trst6","trst7","prst";
++			status = "disabled";
+ 		};
+ 
+ 		timer2: timer@0x51850000 {
++			/* used by lpcpu */
+ 			compatible = "eswin,eswin-timer";
+ 			#address-cells = <2>;
+ 			#size-cells = <2>;
+@@ -1774,6 +1809,7 @@ timer2: timer@0x51850000 {
+ 			   <&d0_reset TIMER2_RST_CTRL SW_TIMER2_RSTN_7>,
+ 			   <&d0_reset TIMER2_RST_CTRL SW_TIMER2_PRSTN>;
+ 			reset-names = "trst0","trst1","trst2","trst3","trst4","trst5","trst6","trst7","prst";
++			status = "disabled";
+ 		};
+ 
+ 		timer3: timer@0x51858000 {
+@@ -1781,9 +1817,12 @@ timer3: timer@0x51858000 {
+ 			#address-cells = <2>;
+ 			#size-cells = <2>;
+ 			reg = <0x0 0x51858000 0x0 0x8000>;
++			perf_count = <7>;
+ 			numa-node-id = <0>;
++			/* disable interrupt because timer's interrupt is routed to lpcpu
+ 			interrupt-parent = <&plic0>;
+ 			interrupts = <348>;
++			*/
+ 			clock-names = "pclk","timer_aclk","timer3_clk8";
+ 			clocks = <&d0_clock EIC7700_CLK_TIMER_PCLK_3>,
+ 					 <&d0_clock EIC7700_CLK_TIMER_CLK_3>,
+@@ -1798,6 +1837,7 @@ timer3: timer@0x51858000 {
+ 				<&d0_reset TIMER3_RST_CTRL SW_TIMER3_RSTN_7>,
+ 				<&d0_reset TIMER3_RST_CTRL SW_TIMER3_PRSTN>;
+ 			reset-names = "trst0","trst1","trst2","trst3","trst4","trst5","trst6","trst7","prst";
++			status = "okay";
+ 		};
+ 
+ 		die0_rtc: rtc@51818000 {
+@@ -1814,6 +1854,7 @@ die0_rtc: rtc@51818000 {
+ 			reset-names = "rtcrst";
+ 			status = "disabled";
+ 			numa-node-id = <0>;
++			wakeup-source;
+ 		};
+ 
+ 		d0_i2s0: i2s0@50200000 {
+@@ -2013,6 +2054,7 @@ dw_hdmi_hdcp2: hdmi-hdcp2@50290000 {
+ 
+ 		d0_usbdrd3_0: usb0@50480000 {
+ 			compatible = "eswin,win2030-dwc3";
++			phy_reg = <0x0 0x504a0000 0x0 0x10000>;
+ 			#address-cells = <2>;
+ 			#size-cells = <2>;
+ 			clocks = <&d0_clock EIC7700_CLK_HSP_ACLK>,
+@@ -2021,6 +2063,10 @@ d0_usbdrd3_0: usb0@50480000 {
+ 			eswin,hsp_sp_csr = <&d0_hsp_sp_csr 0x800 0x808 0x83c 0x840>;
+ 			resets = <&d0_reset HSPDMA_RST_CTRL SW_USB0_VAUX_RSTN>;
+ 			reset-names = "vaux";
++			pinctrl-names = "default", "sleep";
++			pinctrl-0 = <&pinctrl_usb0_pwren_default>;
++			pinctrl-1 = <&pinctrl_gpio42_default>;
++			power-gpios = <&portb 10 GPIO_ACTIVE_LOW>;
+ 			ranges;
+ 			wakeup-source;
+ 			numa-node-id = <0>;
+@@ -2053,6 +2099,7 @@ d0_usbdrd_dwc3_0: dwc3@50480000 {
+ 
+ 		d0_usbdrd3_1: usb1@50490000  {
+ 			compatible = "eswin,win2030-dwc3";
++			phy_reg = <0x0 0x504b0000 0x0 0x10000>;
+ 			#address-cells = <2>;
+ 			#size-cells = <2>;
+ 			clocks = <&d0_clock EIC7700_CLK_HSP_ACLK>,
+@@ -2061,6 +2108,10 @@ d0_usbdrd3_1: usb1@50490000  {
+ 			eswin,hsp_sp_csr = <&d0_hsp_sp_csr 0x900 0x908 0x93c 0x940>;
+ 			resets = <&d0_reset HSPDMA_RST_CTRL SW_USB1_VAUX_RSTN>;
+ 			reset-names = "vaux";
++			pinctrl-names = "default", "sleep";
++			pinctrl-0 = <&pinctrl_usb1_pwren_default>;
++			pinctrl-1 = <&pinctrl_gpio43_default>;
++			power-gpios = <&portb 11 GPIO_ACTIVE_LOW>;
+ 			ranges;
+ 			wakeup-source;
+ 			numa-node-id = <0>;
+@@ -2091,250 +2142,358 @@ d0_usbdrd_dwc3_1: dwc3@50490000 {
+ 			};
+ 		};
+ 
+-		vi_top_csr: vi_common_top_csr@0x51030000 {
+-			compatible = "esw,vi-common-csr", "syscon";
++		vi_subsys: vi-subsys@51000000 {
++			#address-cells = <2>;
++			#size-cells = <2>;
++			compatible = "esw,vi_subsys";
++			reg = <0x0 0x51000000 0x0 0x200000>, <0x0 0x51030000 0x0 0x2000>;
++			eswin,syscrg_csr = <&d0_sys_crg>;
++			eswin,vitop_csr = <&vi_top_csr>;
+ 			clocks = <&d0_clock EIC7700_CLK_VI_ACLK>,
+-			         <&d0_clock EIC7700_CLK_VI_CFG_CLK>,
+-			         <&d0_clock EIC7700_CLK_VI_DIG_ISP_CLK>,
+-			         <&d0_clock EIC7700_CLK_VI_DVP_CLK>,
+-			         <&d0_clock EIC7700_CLK_VI_PHY_CFG>,
+-			         <&d0_clock EIC7700_CLK_VI_PHY_TXCLKESC>,
+-			         <&d0_clock EIC7700_CLK_VI_SHUTTER_0>,
+-			         <&d0_clock EIC7700_CLK_VI_SHUTTER_1>,
+-			         <&d0_clock EIC7700_CLK_VI_SHUTTER_2>,
+-			         <&d0_clock EIC7700_CLK_VI_SHUTTER_3>,
+-			         <&d0_clock EIC7700_CLK_VI_SHUTTER_4>,
+-			         <&d0_clock EIC7700_CLK_VI_SHUTTER_5>,
+-			         <&d0_clock EIC7700_MUX_U_VI_ACLK_ROOT_2MUX1_GFREE>,
+-			         <&d0_clock EIC7700_MUX_U_VI_DVP_ROOT_2MUX1_GFREE>,
+-			         <&d0_clock EIC7700_MUX_U_VI_DIG_ISP_ROOT_2MUX1_GFREE>,
+-			         <&d0_clock EIC7700_SPLL0_FOUT1>,
+-			         <&d0_clock EIC7700_VPLL_FOUT1>;
++						<&d0_clock EIC7700_CLK_VI_CFG_CLK>,
++						<&d0_clock EIC7700_CLK_VI_DIG_ISP_CLK>,
++						<&d0_clock EIC7700_CLK_VI_DVP_CLK>,
++						<&d0_clock EIC7700_CLK_VI_PHY_CFG>,
++						<&d0_clock EIC7700_CLK_VI_PHY_TXCLKESC>,
++						<&d0_clock EIC7700_CLK_VI_SHUTTER_0>,
++						<&d0_clock EIC7700_CLK_VI_SHUTTER_1>,
++						<&d0_clock EIC7700_CLK_VI_SHUTTER_2>,
++						<&d0_clock EIC7700_CLK_VI_SHUTTER_3>,
++						<&d0_clock EIC7700_CLK_VI_SHUTTER_4>,
++						<&d0_clock EIC7700_CLK_VI_SHUTTER_5>,
++						<&d0_clock EIC7700_MUX_U_VI_ACLK_ROOT_2MUX1_GFREE>,
++						<&d0_clock EIC7700_MUX_U_VI_DVP_ROOT_2MUX1_GFREE>,
++						<&d0_clock EIC7700_MUX_U_VI_DIG_ISP_ROOT_2MUX1_GFREE>,
++						<&d0_clock EIC7700_SPLL0_FOUT1>,
++						<&d0_clock EIC7700_VPLL_FOUT1>;
+ 			clock-names = "aclk", "cfg_clk", "isp_aclk", "dvp_clk", "phy_cfg",
+-			              "phy_escclk", "sht0", "sht1", "sht2", "sht3", "sht4",
+-			              "sht5", "aclk_mux", "dvp_mux", "isp_mux", "spll0_fout1", "vpll_fout1";
++							"phy_escclk", "sht0", "sht1", "sht2", "sht3", "sht4",
++							"sht5", "aclk_mux", "dvp_mux", "isp_mux", "spll0_fout1", "vpll_fout1";
+ 			resets = <&d0_reset VI_RST_CTRL SW_VI_AXI_RSTN>,
+-			         <&d0_reset VI_RST_CTRL SW_VI_CFG_RSTN>,
+-			         <&d0_reset ISP0_RST_CTRL SW_VI_ISP0_RSTN>,
+-			         <&d0_reset ISP1_RST_CTRL SW_VI_ISP1_RSTN>,
+-			         <&d0_reset DVP_RST_CTRL SW_VI_DVP_RSTN>,
+-			         <&d0_reset SHUTTER_RST_CTRL SW_VI_SHUTTER_RSTN_0>,
+-			         <&d0_reset SHUTTER_RST_CTRL SW_VI_SHUTTER_RSTN_1>,
+-			         <&d0_reset SHUTTER_RST_CTRL SW_VI_SHUTTER_RSTN_2>,
+-			         <&d0_reset SHUTTER_RST_CTRL SW_VI_SHUTTER_RSTN_3>,
+-			         <&d0_reset SHUTTER_RST_CTRL SW_VI_SHUTTER_RSTN_4>,
+-			         <&d0_reset SHUTTER_RST_CTRL SW_VI_SHUTTER_RSTN_5>;
++						<&d0_reset VI_RST_CTRL SW_VI_CFG_RSTN>,
++						<&d0_reset ISP0_RST_CTRL SW_VI_ISP0_RSTN>,
++						<&d0_reset ISP1_RST_CTRL SW_VI_ISP1_RSTN>,
++						<&d0_reset DVP_RST_CTRL SW_VI_DVP_RSTN>,
++						<&d0_reset SHUTTER_RST_CTRL SW_VI_SHUTTER_RSTN_0>,
++						<&d0_reset SHUTTER_RST_CTRL SW_VI_SHUTTER_RSTN_1>,
++						<&d0_reset SHUTTER_RST_CTRL SW_VI_SHUTTER_RSTN_2>,
++						<&d0_reset SHUTTER_RST_CTRL SW_VI_SHUTTER_RSTN_3>,
++						<&d0_reset SHUTTER_RST_CTRL SW_VI_SHUTTER_RSTN_4>,
++						<&d0_reset SHUTTER_RST_CTRL SW_VI_SHUTTER_RSTN_5>;
+ 			reset-names = "axi", "cfg", "isp0", "isp1", "dvp", "sht0", "sht1", "sht2", "sht3", "sht4", "sht5";
+-			interrupt-parent = <&plic0>;
+-			interrupts = <368 369 370 371 372 373 374 375>;
+-			id = <0>;
+-			#size-cells = <2>;
+-			reg = <0x0 0x51030000 0x0 0x10000>;
++			tbus = <WIN2030_TBUID_DW>;
+ 			numa-node-id = <0>;
+-			tbus = <WIN2030_TBUID_ISP>;
+-		};
++			ranges;
++			status = "disabled";
+ 
++			vi_top_csr: vi_common_top_csr@51030000 {
++				compatible ="syscon", "esw,vi-common-csr";
++				#size-cells = <2>;
++				reg = <0x0 0x51030000 0x0 0x2000>;
++				numa-node-id = <0>;
++			};
+ 
+-		isp_0: isp@0x51000000 {
+-			compatible = "esw,win2030-isp";
++			isp_0: isp@51000000 {
++				compatible = "esw,win2030-isp";
++				reg = <0x0 0x51000000 0x0 0x10000>;
++				interrupts = <21 19 20>;
++				interrupt-parent = <&plic0>;
++				id = <0>;
++				#size-cells = <2>;
++				dma-ranges = <0x0 0x20000000 0x0 0x80000000 0x0 0x40000000>;
++				iommus = <&smmu0 WIN2030_SID_ISP0>;
++				tbus = <WIN2030_TBUID_ISP>;
++				eswin,vi_top_csr = <&vi_top_csr 0x1000>;
++				numa-node-id = <0>;
++				dma-noncoherent;
++			};
+ 
+-			reg = <0x0 0x51000000 0x0 0x10000>;
+-			interrupts = <21 19 20>;
+-			interrupt-parent = <&plic0>;
+-			id = <0>;
+-			#size-cells = <2>;
+-			dma-ranges = <0x0 0x20000000 0x0 0x80000000 0x0 0x40000000>;
+-			iommus = <&smmu0 WIN2030_SID_ISP0>;
+-			tbus = <WIN2030_TBUID_ISP>;
+-			eswin,vi_top_csr = <&vi_top_csr 0x1000>;
+-			numa-node-id = <0>;
+-			dma-noncoherent;
+-		};
++			isp_1: isp@51010000 {
++				compatible = "esw,win2030-isp";
++				reg = <0x0 0x51010000 0x0 0x10000>;
++				interrupts = <24 22 23>;
++				interrupt-parent = <&plic0>;
++				id = <1>;
++				#size-cells = <2>;
++				dma-ranges = <0x0 0x20000000 0x0 0x80000000 0x0 0x40000000>;
++				iommus = <&smmu0 WIN2030_SID_ISP1>;
++				tbus = <WIN2030_TBUID_ISP>;
++				eswin,vi_top_csr = <&vi_top_csr 0x1004>;
++				numa-node-id = <0>;
++				dma-noncoherent;
++			};
+ 
+-		isp_1: isp@0x51010000 {
+-			compatible = "esw,win2030-isp";
++			dewarp: dewarp@51020000 {
++				compatible = "eswin,dewarp";
++				clocks = <&d0_clock EIC7700_CLK_VI_ACLK>,
++						<&d0_clock EIC7700_CLK_VI_CFG_CLK>,
++						<&d0_clock EIC7700_CLK_VI_DIG_DW_CLK>,
++						<&d0_clock EIC7700_MUX_U_VI_ACLK_ROOT_2MUX1_GFREE>,
++						<&d0_clock EIC7700_MUX_U_VI_DW_ROOT_2MUX1>,
++						<&d0_clock EIC7700_SPLL0_FOUT1>,
++						<&d0_clock EIC7700_VPLL_FOUT1>;
++				clock-names = "aclk", "cfg_clk", "dw_aclk", "aclk_mux", "dw_mux", "spll0_fout1", "vpll_fout1";
++				resets = <&d0_reset VI_RST_CTRL SW_VI_AXI_RSTN>,
++						<&d0_reset VI_RST_CTRL SW_VI_CFG_RSTN>,
++						<&d0_reset VI_RST_CTRL SW_VI_DWE_RSTN>;
++				reset-names = "axi", "cfg", "dwe";
++
++				operating-points-v2 = <&vi_opp_table>;
++				#cooling-cells = <2>;
++				dynamic-power-coefficient = <1000>; /*TBD*/
++				interrupt-parent = <&plic0>;
++				interrupts = <26 25>;
++				#size-cells = <2>;
++				dma-ranges = <0x0 0x20000000 0x0 0x80000000 0x0 0x40000000>;
++				iommus = <&smmu0 WIN2030_SID_DW>;
++				tbus = <WIN2030_TBUID_DW>;
++				eswin,vi_top_csr = <&vi_top_csr 0x1008>;
++				reg = <0x0 0x51020000 0x0 0xc00>, <0x0 0x51020c00 0x0 0x120>;
++				numa-node-id = <0>;
++				dma-noncoherent;
++			};
+ 
+-			reg = <0x0 0x51010000 0x0 0x10000>;
+-			interrupts = <24 22 23>;
+-			interrupt-parent = <&plic0>;
+-			id = <1>;
+-			#size-cells = <2>;
+-			dma-ranges = <0x0 0x20000000 0x0 0x80000000 0x0 0x40000000>;
+-			iommus = <&smmu0 WIN2030_SID_ISP1>;
+-			tbus = <WIN2030_TBUID_ISP>;
+-			eswin,vi_top_csr = <&vi_top_csr 0x1004>;
+-			numa-node-id = <0>;
+-			dma-noncoherent;
+-		};
++			dvp2axi: dvp2axi@51034000 {
++				compatible = "eswin,dvp2axi";
++				reg = <0x0 0x51034000 0x0 0x8000>;
++				reg-names = "dvp2axi_regs";
++				interrupt-parent = <&plic0>;
++				eswin,syscrg_csr = <&d0_sys_crg>;
++				eswin,vi_top_csr = <&vi_top_csr 0x100c>;
++				interrupts = <368 369 370 371 372 373 374 375>;
++				interrupt-names = "dvp0_frame_int", "dvp1_frame_int", "dvp2_frame_int",
++									"dvp3_frame_int", "dvp4_frame_int", "dvp5_frame_int",
++									"dvp2axi_error_int","dvp2axi_afull_int";
++				dma-noncoherent;
++				numa-node-id = <0>;
++				#size-cells = <2>;
++				dma-ranges = <0x0 0x20000000 0x0 0x80000000 0x0 0x40000000>;
++				iommus = <&smmu0 WIN2030_SID_DVP>;
++				status = "disabled";
++			};
+ 
+-		dewarp: dewarp@51020000 {
+-			compatible = "eswin,dewarp";
+-			clocks = <&d0_clock EIC7700_CLK_VI_ACLK>,
+-			         <&d0_clock EIC7700_CLK_VI_CFG_CLK>,
+-			         <&d0_clock EIC7700_CLK_VI_DIG_DW_CLK>,
+-			         <&d0_clock EIC7700_MUX_U_VI_ACLK_ROOT_2MUX1_GFREE>,
+-			         <&d0_clock EIC7700_MUX_U_VI_DW_ROOT_2MUX1>,
+-			         <&d0_clock EIC7700_SPLL0_FOUT1>,
+-			         <&d0_clock EIC7700_VPLL_FOUT1>;
+-			clock-names = "aclk", "cfg_clk", "dw_aclk", "aclk_mux", "dw_mux", "spll0_fout1", "vpll_fout1";
+-			resets = <&d0_reset VI_RST_CTRL SW_VI_AXI_RSTN>,
+-			         <&d0_reset VI_RST_CTRL SW_VI_CFG_RSTN>,
+-			         <&d0_reset VI_RST_CTRL SW_VI_DWE_RSTN>;
+-			reset-names = "axi", "cfg", "dwe";
++			dvp2axi_mipi_lvds0: dvp2axi_mipi_lvds0 {
++				compatible = "eswin,dvp2axi-mipi-lvds";
++				eswin,hw = <&dvp2axi>;
++				status = "disabled";
++			};
+ 
+-			power-domains = <&d0_pmu EIC770X_PD_VI>;
+-			operating-points-v2 = <&vi_opp_table>;
+-			#cooling-cells = <2>;
+-			dynamic-power-coefficient = <1000>; /*TBD*/
+-			interrupt-parent = <&plic0>;
+-			interrupts = <26 25>;
+-			#size-cells = <2>;
+-			dma-ranges = <0x0 0x20000000 0x0 0x80000000 0x0 0x40000000>;
+-			iommus = <&smmu0 WIN2030_SID_DW>;
+-			tbus = <WIN2030_TBUID_DW>;
+-			eswin,vi_top_csr = <&vi_top_csr 0x1008>;
+-			reg = <0x0 0x51020000 0x0 0xc00>, <0x0 0x51020c00 0x0 0x120>;
+-			numa-node-id = <0>;
+-			dma-noncoherent;
+-		};
++			dvp2axi_mipi_lvds1: dvp2axi_mipi_lvds1 {
++				compatible = "eswin,dvp2axi-mipi-lvds";
++				eswin,hw = <&dvp2axi>;
++				status = "disabled";
++			};
+ 
+-		mipi_dphy_rx: dphy@510c0000 {
+-			compatible = "snps,dw-dphy-rx";
+-			#phy-cells = <1>;
+-			bus-width = <8>;
+-			snps,dphy-frequency = <300000>;
+-			snps,phy_type = <8>;
+-			reg = <0x0 0x510c0000 0x0 0x20000>;
+-			numa-node-id = <0>;
+-		};
++			dvp2axi_mipi_lvds2: dvp2axi_mipi_lvds2 {
++				compatible = "eswin,dvp2axi-mipi-lvds";
++				eswin,hw = <&dvp2axi>;
++				status = "disabled";
++			};
+ 
+-		csi_dma0: csidma@0x52048000 {
+-			compatible = "eswin,csi-video";
+-			interrupt-parent = <&plic0>;
+-			interrupts = <29>;
+-			reg = <0x0 0x52048000 0x0 0x1000>;
+-			numa-node-id = <0>;
++			dvp2axi_mipi_lvds3: dvp2axi_mipi_lvds3 {
++				compatible = "eswin,dvp2axi-mipi-lvds";
++				eswin,hw = <&dvp2axi>;
++				status = "disabled";
++			};
+ 
+-			port {
+-				#address-cells = <1>;
+-				#size-cells = <0>;
++			dvp2axi_mipi_lvds4: dvp2axi_mipi_lvds4 {
++				compatible = "eswin,dvp2axi-mipi-lvds";
++				eswin,hw = <&dvp2axi>;
++				status = "disabled";
++			};
+ 
+-				csi_dmar_0: endpoint@0 {
+-					reg = <0>;
+-					bus-type = <4>;
+-					remote-endpoint = <&csi2_dma_0_3>;
+-				};
++			dvp2axi_mipi_lvds5: dvp2axi_mipi_lvds5 {
++				compatible = "eswin,dvp2axi-mipi-lvds";
++				eswin,hw = <&dvp2axi>;
++				status = "disabled";
+ 			};
+-		};
+ 
+-		csi_dma1: csidma@0x52058000 {
+-			compatible = "eswin,csi-video";
+-			interrupt-parent = <&plic0>;
+-			interrupts = <30>;
+-			reg = <0x0 0x52058000 0x0 0x1000>;
+-			numa-node-id = <0>;
++			mipi_csi2_0: mipi-csi2-0@51050000 {
++				#address-cells = <2>;
++				#size-cells = <2>;
++				compatible = "eswin,eic770x-mipi-csi2";
++				reg = <0x0 0x51050000 0x0 0x10000>;
++				reg-names = "csihost_regs";
++				eswin,syscrg_csr = <&d0_sys_crg>;
++				eswin,vi_top_csr = <&vi_top_csr>;
++				interrupt-parent = <&plic0>;
++				interrupts = <29>;
++				interrupt-names = "csi-intr1";
++				index = <0>;
++
++				ipi2_en = <0>;/* for virtual channel */
++				ipi2_vcid = <0>;/* virtual channel id */
++				ipi3_en = <0>;
++				ipi3_vcid = <0>;
++				status = "disabled";
++			};
+ 
+-			port {
+-				#address-cells = <1>;
+-				#size-cells = <0>;
++			mipi_csi2_1: mipi-csi2-1@51060000 {
++				#address-cells = <2>;
++				#size-cells = <2>;
++				compatible = "eswin,eic770x-mipi-csi2";
++				reg = <0x0 0x51060000 0x0 0x10000>;
++				reg-names = "csihost_regs";
++				eswin,syscrg_csr = <&d0_sys_crg>;
++				eswin,vi_top_csr = <&vi_top_csr>;
++				interrupt-parent = <&plic0>;
++				interrupts = <30>;
++				interrupt-names = "csi-intr1";
++				index = <1>;
++				status = "disabled";
++			};
+ 
+-				csi_dmar_1: endpoint@0 {
+-					reg = <0>;
+-					bus-type = <4>;
+-					remote-endpoint = <&csi2_dma_1_3>;
+-				};
++			mipi_csi2_2: mipi-csi2-2@51070000 {
++				#address-cells = <2>;
++				#size-cells = <2>;
++				compatible = "eswin,eic770x-mipi-csi2";
++				reg = <0x0 0x51070000 0x0 0x10000>;
++				reg-names = "csihost_regs";
++				eswin,syscrg_csr = <&d0_sys_crg>;
++				eswin,vi_top_csr = <&vi_top_csr>;
++				interrupt-parent = <&plic0>;
++				interrupts = <31>;
++				interrupt-names = "csi-intr1";
++				index = <2>;
++				status = "disabled";
+ 			};
+-		};
+ 
+-		csi2_0: csi2@51050000 {
+-			compatible = "snps,dw-csi";
+-			#address-cells = <1>;
+-			#size-cells = <0>;
+-			interrupt-parent = <&plic0>;
+-			interrupts = <29>;
+-			snps,output-type = <0>;
+-			reg = <0x0 0x51050000 0x0 0x1000>;
+-			/*phys = <&mipi_dphy_rx 1>;*/
+-			numa-node-id = <0>;
++			mipi_csi2_3: mipi-csi2-3@51080000 {
++				#address-cells = <2>;
++				#size-cells = <2>;
++				compatible = "eswin,eic770x-mipi-csi2";
++				reg = <0x0 0x51080000 0x0 0x10000>;
++				reg-names = "csihost_regs";
++				eswin,syscrg_csr = <&d0_sys_crg>;
++				eswin,vi_top_csr = <&vi_top_csr>;
++				interrupt-parent = <&plic0>;
++				interrupts = <32>;
++				interrupt-names = "csi-intr1";
++				index = <3>;
++				status = "disabled";
++			};
+ 
+-			/* MIPI CONFIG */
+-			snps,en-ppi-width = <0>;/* 0: ppi8, 1: ppi16 */
+-			snps,en-phy-mode = <0>;/* 0: D-PHY, 1: C-PHY */
++			mipi_csi2_4: mipi-csi2-4@51090000 {
++				#address-cells = <2>;
++				#size-cells = <2>;
++				compatible = "eswin,eic770x-mipi-csi2";
++				reg = <0x0 0x51090000 0x0 0x10000>;
++				reg-names = "csihost_regs";
++				eswin,syscrg_csr = <&d0_sys_crg>;
++				eswin,vi_top_csr = <&vi_top_csr>;
++				interrupt-parent = <&plic0>;
++				interrupts = <33>;
++				interrupt-names = "csi-intr1";
++				index = <4>;
++				status = "disabled";
++			};
+ 
+-			ipi2_en = <0>;/* for virtual channel */
+-			ipi2_vcid = <0>;/* virtual channel id */
+-			ipi3_en = <0>;
+-			ipi3_vcid = <0>;
++			mipi_csi2_5: mipi-csi2-5@510a0000 {
++				#address-cells = <2>;
++				#size-cells = <2>;
++				compatible = "eswin,eic770x-mipi-csi2";
++				reg = <0x0 0x510a0000 0x0 0x10000>;
++				reg-names = "csihost_regs";
++				eswin,syscrg_csr = <&d0_sys_crg>;
++				eswin,vi_top_csr = <&vi_top_csr>;
++				interrupt-parent = <&plic0>;
++				interrupts = <34>;
++				interrupt-names = "csi-intr1";
++				index = <5>;
++				status = "disabled";
++			};
+ 
+-			#ifdef MIPI_CSI2_IMX290_ENBALE
+-			port@1 {
+-				reg = <1>;
+-				csi2_0_1: endpoint {
+-					bus-type = <4>;
+-					clock-lanes = <0>;
+-					#ifdef MIPI_CSI2_2LINE_ENABLE
+-					data-lanes = <1 2>;
+-					#else
+-					data-lanes = <1 2 3 4>;
+-					#endif
+-					//remote-endpoint = <&imx290_csi2>;
+-				};
++			csi2_dphy_hw0: csi2-dphy-hw@510c0000 {
++				compatible = "eswin,eic770x-csi2-dphy-hw";
++				reg = <0x0 0x510c0000 0x0 0x20000>;
++				phy_cfg = <0x510d8000>;
++				csi_base = <0x51050000>;
++				combine_phy = <0x510e0000>;
++				status = "disabled";
+ 			};
+-			#endif
+ 
+-			port@2 {
+-				reg = <2>;
+-				csi2_dma_0_3: endpoint {
+-					bus-type = <4>;
+-					clock-lanes = <0>;
+-                                        data-lanes = <1 2>;
+-					remote-endpoint = <&csi_dmar_0>;
+-				};
++			csi2_dphy_hw1: csi2-dphy-hw1@510e0000 {
++				compatible = "eswin,eic770x-csi2-dphy-hw";
++				reg = <0x0 0x510e0000 0x0 0x20000>;
++				phy_cfg = <0x510f8000>;
++				csi_base = <0x51060000>;
++				status = "disabled";
+ 			};
+-		};
+ 
+-		csi2_1: csi2@51060000 {
+-			compatible = "snps,dw-csi";
+-			#address-cells = <1>;
+-			#size-cells = <0>;
+-			interrupt-parent = <&plic0>;
+-			interrupts = <30>;
+-			snps,output-type = <0>;
+-			reg = <0x0 0x51060000 0x0 0x1000>;
+-			/*phys = <&mipi_dphy_rx 1>;*/
+-			numa-node-id = <0>;
++			csi2_dphy_hw2: csi2-dphy-hw2@51100000 {
++				compatible = "eswin,eic770x-csi2-dphy-hw";
++				reg = <0x0 0x51100000 0x0 0x20000>;
++				phy_cfg = <0x51118000>;
++				csi_base = <0x51070000>;
++				combine_phy = <0x51120000>;
++				status = "disabled";
++			};
+ 
+-			/* MIPI CONFIG */
+-			snps,en-ppi-width = <0>;/* 0: ppi8, 1: ppi16 */
+-			snps,en-phy-mode = <0>;/* 0: D-PHY, 1: C-PHY */
++			csi2_dphy_hw3: csi2-dphy-hw3@51120000 {
++				compatible = "eswin,eic770x-csi2-dphy-hw";
++				reg = <0x0 0x51120000 0x0 0x20000>;
++				phy_cfg = <0x51138000>;
++				csi_base = <0x51080000>;
++				status = "disabled";
++			};
+ 
+-			ipi2_en = <0>;/* for virtual channel */
+-			ipi2_vcid = <0>;/* virtual channel id */
+-			ipi3_en = <0>;
+-			ipi3_vcid = <0>;
++			csi2_dphy_hw4: csi2-dphy-hw4@51140000 {
++				compatible = "eswin,eic770x-csi2-dphy-hw";
++				reg = <0x0 0x51140000 0x0 0x20000>;
++				phy_cfg = <0x51158000>;
++				csi_base = <0x51090000>;
++				combine_phy = <0x51160000>;
++				status = "disabled";
++			};
+ 
+-			#ifdef MIPI_CSI2_IMX290_ENBALE
+-			port@1 {
+-				reg = <1>;
+-				csi2_1_1: endpoint {
+-					bus-type = <4>;
+-					clock-lanes = <0>;
+-					#ifdef MIPI_CSI2_2LINE_ENABLE
+-					data-lanes = <1 2>;
+-					#else
+-					data-lanes = <1 2 3 4>;
+-					#endif
+-					//remote-endpoint = <&imx290_csi2>;
+-				};
++			csi2_dphy_hw5: csi2-dphy-hw5@51160000 {
++				compatible = "eswin,eic770x-csi2-dphy-hw";
++				reg = <0x0 0x51160000 0x0 0x20000>;
++				phy_cfg = <0x51178000>;
++				csi_base = <0x510a0000>;
++				status = "disabled";
+ 			};
+-			#endif
+ 
+-			port@2 {
+-				reg = <2>;
+-				csi2_dma_1_3: endpoint {
+-					bus-type = <4>;
+-					remote-endpoint = <&csi_dmar_1>;
+-				};
++			csi2_dphy0: csi2-dphy0 {
++				compatible = "eswin,eic770x-csi2-dphy";
++				eswin,hw = <&csi2_dphy_hw0>;
++				index = <0>;
++				status = "disabled";
++			};
++
++			csi2_dphy1: csi2-dphy1 {
++				compatible = "eswin,eic770x-csi2-dphy";
++				eswin,hw = <&csi2_dphy_hw1>;
++				index = <1>;
++				status = "disabled";
++			};
++
++			csi2_dphy2: csi2-dphy2 {
++				compatible = "eswin,eic770x-csi2-dphy";
++				eswin,hw = <&csi2_dphy_hw2>;
++				index = <2>;
++				status = "disabled";
++			};
++
++			csi2_dphy3: csi2-dphy3 {
++				compatible = "eswin,eic770x-csi2-dphy";
++				eswin,hw = <&csi2_dphy_hw3>;
++				index = <3>;
++				status = "disabled";
++			};
++
++			csi2_dphy4: csi2-dphy4 {
++				compatible = "eswin,eic770x-csi2-dphy";
++				eswin,hw = <&csi2_dphy_hw4>;
++				index = <4>;
++				status = "disabled";
++			};
++
++			csi2_dphy5: csi2-dphy5 {
++				compatible = "eswin,eic770x-csi2-dphy";
++				eswin,hw = <&csi2_dphy_hw5>;
++				index = <5>;
++				status = "disabled";
+ 			};
+ 		};
+ 
+diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi b/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi
+index 6927177ce2c8..1995499e7aab 100644
+--- a/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi
++++ b/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi
+@@ -30,54 +30,76 @@
+ #include <dt-bindings/power/eswin,eic770x-pmu.h>
+ #include <dt-bindings/thermal/thermal.h>
+ #include <dt-bindings/pwm/pwm.h>
++#include <dt-bindings/gpio/gpio.h>
+ / {
+ 	thermal-zones {
+-		d1_thermal0 {
+-			polling-delay-passive = <100>; /*ms*/
++		d1_thermal: d1_thermal0 {
++			polling-delay-passive = <500>; /*ms*/
+ 			polling-delay = <1000>; /*ms*/
+ 			sustainable-power = <30000>; /*mW*/
+ 			thermal-sensors = <&d1_pvt0>;
+ 
+ 			trips {
+-				d1_threshold: trip-point0 {
+-					temperature = <50000>;
++				d1_trip_threshold: trip-point0 {
++					temperature = <65000>;
+ 					hysteresis = <1000>;
+ 					type = "passive";
+ 				};
+-				d1_target: trip-point1 {
+-					temperature = <60000>;
++				d1_trip_target: trip-point1 {
++					temperature = <75000>;
+ 					hysteresis = <1000>;
+ 					type = "passive";
+ 				};
+-				d1_crit: trip-point2 {
+-					temperature     = <80000>;
+-					hysteresis      = <0>;
+-					type            = "critical";
++				d1_trip_crit: trip-point2 {
++					temperature = <105000>;
++					hysteresis = <0>;
++					type = "critical";
+ 				};
+ 			};
+ 
+ 			cooling-maps {
+-				map0 {
+-					trip = <&d1_target>;
++				d1_map_cpu: map0 {
++					trip = <&d1_trip_target>;
+ 					contribution = <1024>;
+ 					cooling-device =
+-						<&cpu_4 0 10>,
+-						<&cpu_5 0 10>,
+-						<&cpu_6 0 10>,
+-						<&cpu_7 0 10>;
++						<&cpu_4 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
++						<&cpu_5 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
++						<&cpu_6 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
++						<&cpu_7 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+ 				};
+-				map1 {
+-					trip = <&d1_target>;
+-					contribution = <1024>;
++				d1_map_npu: map1 {
++					trip = <&d1_trip_target>;
++					contribution = <4096>;
+ 					cooling-device = <&d1_npu THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+ 				};
+-				/*
+-				map2 {
+-					trip = <&d1_target>;
++				d1_map_dsp: map2 {
++					trip = <&d1_trip_target>;
++					contribution = <2048>;
++					cooling-device = <&d1_dsp0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
++									<&d1_dsp1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
++									<&d1_dsp2 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
++									<&d1_dsp3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
++				};
++				d1_map_gpu: map3 {
++					trip = <&d1_trip_target>;
+ 					contribution = <1024>;
+ 					cooling-device = <&d1_gpu THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+ 				};
+-				*/
++				d1_map_venc: map4 {
++					trip = <&d1_trip_target>;
++					contribution = <1024>;
++					cooling-device = <&venc1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
++				};
++				d1_map_vdec: map5 {
++					trip = <&d1_trip_target>;
++					contribution = <1024>;
++					cooling-device = <&vdec1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
++				};
++				d1_map_hae: map6 {
++					trip = <&d1_trip_target>;
++					contribution = <1024>;
++					cooling-device = <&d1_gc820 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
++				};
+ 			};
+ 		};
+ 	};
+@@ -99,7 +121,7 @@ d1_uart0: serial@0x70900000 {
+ 		};
+ 
+ 		d1_uart1: serial@0x70910000 {
+-			compatible = "snps,dw-apb-uart";
++			compatible = "eswin,dw-apb-uart";
+ 			reg = <0x0 0x70910000 0x0 0x10000>;
+ 			clock-frequency = <LSPCLK_FREQ>;
+ 			clocks = <&d1_clock EIC7700_CLK_LSP_UART1_PCLK>;
+@@ -183,6 +205,8 @@ d1_clock: clock-controller {
+ 				compatible = "eswin,eic7700-clock";
+ 				#clock-cells = <1>;
+ 				numa-node-id = <1>;
++				cpu-default-frequency = <CLK_FREQ_1400M>;
++				operating-points-v2 = <&d1_cpu_opp_table>;
+ 			};
+ 		};
+ 
+@@ -204,18 +228,6 @@ smmu1: iommu@70c00000 {
+ 				<358>;
+ 			interrupt-names = "eventq", "gerror", "priq", "cmdq-sync";
+ 			#iommu-cells = <1>;
+-			resets = <&d1_reset TCU_RST_CTRL SW_TCU_AXI_RSTN>,
+-				<&d1_reset TCU_RST_CTRL SW_TCU_CFG_RSTN>,
+-				<&d1_reset TCU_RST_CTRL TBU_RSTN_0>,
+-				<&d1_reset TCU_RST_CTRL TBU_RSTN_1>,
+-				<&d1_reset TCU_RST_CTRL TBU_RSTN_2>,
+-				<&d1_reset TCU_RST_CTRL TBU_RSTN_3>,
+-				<&d1_reset TCU_RST_CTRL TBU_RSTN_4>,
+-				<&d1_reset TCU_RST_CTRL TBU_RSTN_5>,
+-				<&d1_reset TCU_RST_CTRL TBU_RSTN_6>,
+-				<&d1_reset TCU_RST_CTRL TBU_RSTN_7>;
+-			reset-names = "axi_rst", "cfg_rst", "tbu0_rst", "tbu1_rst", "tbu2_rst", "tbu3_rst",
+-				"tbu4_rst", "tbu5_rst", "tbu6_rst", "tbu7_rst";
+ 			status = "disabled";
+ 			numa-node-id = <1>;
+ 			dma-noncoherent;
+@@ -343,32 +355,81 @@ d1_pmu_npu: win2030-pmu-controller-port@1b4 {
+ 			};
+ 		};
+ 
+-		d1_aon_dmac: dma-controller-aon@0x718c0000 {
+-			compatible = "eswin,eic770x-axi-dma";
+-			reg = <0x0 0x718c0000 0x0 0x10000>;
+-			interrupt-parent = <&plic1>;
+-			interrupts = <289>;
+-			#dma-cells = <3>; // dma-cells <request channel id, handshake number, dma sel bit>;
+-			clocks = <&d1_clock EIC7700_CLK_AONDMA_ACLK>,
+-				 <&d1_clock EIC7700_CLK_AONDMA_CFG>;
+-			clock-names = "core-clk", "cfgr-clk";
+-			resets = <&d1_reset DMA1_RST_CTRL SW_DMA1_ARSTN>,
+-				<&d1_reset DMA1_RST_CTRL SW_DMA1_HRSTN>;
+-			reset-names = "arst", "prst";
+-			dma-channels = <16>;
+-			snps,dma-masters = <2>;
+-			snps,priority = <0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15>;
+-			snps,data-width = <3>;
+-			snps,block-size = <0x80000 0x80000 0x80000 0x80000 0x80000 0x80000 0x80000 0x80000 0x80000 0x80000 0x80000 0x80000 0x80000 0x80000 0x80000 0x80000>;
+-			snps,axi-max-burst-len = <32>;
++		d1_aon_subsys_bus: aon-subsys-bus@1{
++			compatible = "eswin,eic7700-aon-subsys-bus","simple-bus";
++			dma-ranges = <0x0 0x80000000 0x0 0x80000000 0x3FF 0x80000000>;
+ 			#size-cells = <2>;
+ 			#address-cells = <2>;
+-			dma-ranges = <0x0 0x80000000 0x0 0x80000000 0x100 0x0>;
+-			iommus = <&smmu1 WIN2030_SID_DMA1>;
+-			tbus = <WIN2030_TBUID_DMA1>;
+-			eswin,syscfg = <&d1_sys_con DMA1_SID_REG_OFFSET 0x370>;
+-			numa-node-id = <1>;
+-			dma-noncoherent;
++			ranges;
++			d1_aon_dmac: dma-controller-aon@0x718c0000 {
++				compatible = "eswin,eic770x-axi-dma";
++				reg = <0x0 0x718c0000 0x0 0x10000>;
++				interrupt-parent = <&plic1>;
++				interrupts = <289>;
++				#dma-cells = <3>; // dma-cells <request channel id, handshake number, dma sel bit>;
++				clocks = <&d1_clock EIC7700_CLK_AONDMA_ACLK>,
++					<&d1_clock EIC7700_CLK_AONDMA_CFG>;
++				clock-names = "core-clk", "cfgr-clk";
++				resets = <&d1_reset DMA1_RST_CTRL SW_DMA1_ARSTN>,
++					<&d1_reset DMA1_RST_CTRL SW_DMA1_HRSTN>;
++				reset-names = "arst", "prst";
++				dma-channels = <16>;
++				snps,dma-masters = <2>;
++				snps,priority = <0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15>;
++				snps,data-width = <3>;
++				snps,block-size = <0x80000 0x80000 0x80000 0x80000 0x80000 0x80000 0x80000 0x80000 0x80000 0x80000 0x80000 0x80000 0x80000 0x80000 0x80000 0x80000>;
++				snps,axi-max-burst-len = <64>;
++				snps,max-msize = <64>;
++				#size-cells = <2>;
++				#address-cells = <2>;
++				iommus = <&smmu1 WIN2030_SID_DMA1>;
++				tbus = <WIN2030_TBUID_DMA1>;
++				eswin,syscfg = <&d1_sys_con DMA1_SID_REG_OFFSET 0x370>;
++				numa-node-id = <1>;
++				dma-noncoherent;
++			};
++
++			d1_ipc_scpu:ipc@1 {
++				compatible = "eswin,win2030-ipc", "simple-bus";
++				#address-cells = <1>;
++				#size-cells = <0>;
++				iommus = <&smmu1 WIN2030_SID_SCPU>, <&smmu1 WIN2030_SID_CRYPT>;
++				tbus = <WIN2030_TBUID_SCPU>;
++				eswin,syscfg = <&d1_sys_con SCPU_SID_REG_OFFSET 0>,
++					<&d1_sys_con CRYPT_SID_REG_OFFSET 0>;
++				mboxes = <&d1_mbox0 0>;
++				mbox-names = "u84_scpu";
++				numa-node-id = <1>;
++				dma-noncoherent;
++				d1_trng@1 {
++					compatible = "eswin,ex77xx-trng";
++					reg = <1>;
++					status = "okay";
++				};
++			};
++
++			d1_lpcpu:lpcpu@1 {
++				compatible = "eswin,win2030-lpcpu";
++				/* fw-region = <&lpcpu1_reserved>; */
++				clocks = <&d1_clock EIC7700_CLK_CLK_LPCPU_CORE>,
++						<&d1_clock EIC7700_CLK_CLK_LPCPU_BUS>;
++				clock-names = "core_clk", "bus_clk";
++
++				reset-names = "core_rst", "bus_rst", "dbg_rst";
++				resets = <&d1_reset LPCPU_RST_CTRL SW_LPCPU_CORE_RSTN>,
++						<&d1_reset LPCPU_RST_CTRL SW_LPCPU_BUS_RSTN>,
++						<&d1_reset LPCPU_RST_CTRL SW_LPCPU_DBG_RSTN>;
++				#size-cells = <2>;
++
++				iommus = <&smmu1 WIN2030_SID_LCPU>;
++				eswin,syscfg = <&d1_sys_con LCPU_SID_REG_OFFSET 0>;
++				tbus = <WIN2030_TBUID_LPCPU>;
++				mboxes = <&d1_mbox1 0>;
++				mbox-names = "u84_lpcpu";
++				numa-node-id = <1>;
++				status = "disabled";
++				dma-noncoherent;
++			};
+ 		};
+ 
+ 		d1_dmac0: dma-controller-hsp@0x70430000 {
+@@ -444,6 +505,8 @@ vdec1: video-decoder1@70100000 {
+ 			numa-node-id = <1>;
+ 			tbus = <WIN2030_TBUID_VDEC>, <WIN2030_TBUID_JDEC>;
+ 			dma-noncoherent;
++			vdec-core-frequency = <800000000>;
++			jdec-core-frequency = <800000000>;
+ 
+ 			vdec_1: vdec1@70100000 {
+ 				core-name = "video-dec0";
+@@ -494,6 +557,8 @@ venc1: video-encoder@70110000 {
+ 			vccsr-reg = <0x0 0x701c0000 0x0 0x1000>;
+ 			numa-node-id = <1>;
+ 			dma-noncoherent;
++			venc-core-frequency = <800000000>;
++			jenc-core-frequency = <800000000>;
+ 
+ 			venc_1: venc0@70110000 {
+ 				core-name = "video-enc0";
+@@ -669,37 +734,10 @@ d1_mbox7: mbox@70ae0000 {
+ 			numa-node-id = <1>;
+ 		};
+ 
+-		d1_ipc_scpu:ipc@1 {
+-			compatible = "eswin,win2030-ipc";
+-			#size-cells = <2>;
+-			dma-ranges = <0x0 0x80000000 0x0 0xc0000000 0x0 0x80000000>;
+-			iommus = <&smmu1 WIN2030_SID_SCPU>, <&smmu1 WIN2030_SID_CRYPT>;
+-			tbus = <WIN2030_TBUID_SCPU>;
+-			eswin,syscfg = <&d1_sys_con SCPU_SID_REG_OFFSET 0>,
+-			               <&d1_sys_con CRYPT_SID_REG_OFFSET 0>;
+-			mboxes = <&d1_mbox0 0>;
+-			mbox-names = "u84_scpu";
+-			numa-node-id = <1>;
+-			dma-noncoherent;
+-		};
+-
+-		d1_lpcpu:lpcpu@1 {
+-			compatible = "eswin,win2030-lpcpu";
+-			/* fw-region = <&lpcpu1_reserved>; */
+-			clocks = <&d1_clock EIC7700_CLK_CLK_LPCPU_CORE>,
+-					<&d1_clock EIC7700_CLK_CLK_LPCPU_BUS>;
+-			clock-names = "core_clk", "bus_clk";
+-
+-			reset-names = "core_rst", "bus_rst", "dbg_rst";
+-			resets = <&d1_reset LPCPU_RST_CTRL SW_LPCPU_CORE_RSTN>,
+-					<&d1_reset LPCPU_RST_CTRL SW_LPCPU_BUS_RSTN>,
+-					<&d1_reset LPCPU_RST_CTRL SW_LPCPU_DBG_RSTN>;
+-			#size-cells = <2>;
++		d1_watchdog:watchdog@1 {
++			compatible = "eswin,win2030-wdt";
+ 
+-			dma-ranges = <0x0 0xb0000000 0x0 0xc0000000 0x0 0x50000000>;
+-			iommus = <&smmu1 WIN2030_SID_LCPU>;
+-			eswin,syscfg = <&d1_sys_con LCPU_SID_REG_OFFSET 0>;
+-			tbus = <WIN2030_TBUID_LPCPU>;
++			max-timeout-sec = <60>;
+ 			mboxes = <&d1_mbox1 0>;
+ 			mbox-names = "u84_lpcpu";
+ 			numa-node-id = <1>;
+@@ -750,9 +788,11 @@ d1_fan_control: fan_control@70b50000 {
+ 			interrupt-parent = <&plic1>;
+ 			interrupt-names = "fanirq";
+ 			interrupts = <354>;
+-			pulses-per-revolution = <1>;
++			pulses-per-revolution = <2>;
+ 			pwm-minimum-period = <1000>;
+ 			pwms = <&d1_pwm0 0 100000 0>;
++			pinctrl-names = "default";
++			pinctrl-0 = <&pinctrl_die1_fan_tach_default>;
+ 			status = "disabled";
+ 			label = "d1_fan_control";
+ 			numa-node-id = <1>;
+@@ -771,15 +811,6 @@ d1_i2c0: i2c@70950000 {
+ 				interrupts = <105>;
+ 				interrupt-parent = <&plic1>;
+ 				status = "disabled";
+-				eswin,i2c_dma = <&d1_aon_dmac>;
+-				dma-names = "rx", "tx";
+-				/*
+-				* dmas : DMA specifiers
+-				* &d1_aon_dmac : dma controller
+-				* 24 : i2c0  aon dma handshake number
+-				* 6 : i2c0 dma controller sel bit in sys_son dma_cfg reg(offset 0x370)
+-				*/
+-				dmas = <&d1_aon_dmac 10 24 6>, <&d1_aon_dmac 11 25 6>;
+ 				numa-node-id = <1>;
+ 		};
+ 		d1_i2c1: i2c@70960000 {
+@@ -938,7 +969,7 @@ d1_aon_i2c0: i2c@71830000 {
+ 				* 41 : i2c0 aon dma handshake number
+ 				* 0xff : no need to select to dma controller
+ 				*/
+-				dmas = <&d1_aon_dmac 12 41 0xff>, <&d1_aon_dmac 13 42 0xff>;
++				dmas = <&d1_aon_dmac 10 41 0xff>, <&d1_aon_dmac 11 42 0xff>;
+ 				numa-node-id = <1>;
+ 		};
+ 		d1_aon_i2c1: i2c@71838000 {
+@@ -956,48 +987,55 @@ d1_aon_i2c1: i2c@71838000 {
+ 				numa-node-id = <1>;
+ 		};
+ 
+-		d1_npu: eswin-npu@71c00000 {
+-			compatible = "eswin,npu";
+-			reg = <0x0 0x71c00000 0x0 0x400000>;
+-			interrupt-parent = <&plic1>;
+-			interrupts = <387 16>;
+-			/* spram-region = <&npu1_reserved>;*/
++		d1_npu_subsys_bus: npu-subsys-bus@0{
++			compatible = "eswin,eic7700-npu-subsys-bus","simple-bus";
++			dma-ranges = <0x1 0x0 0x0 0xc0000000 0x100 0x0>;
++			#address-cells = <2>;
+ 			#size-cells = <2>;
+-			dma-ranges = <0x1 0x0 0x0 0xc0000000 0x1ff 0x0>;
+-			iommus = <&smmu1 WIN2030_SID_NPU_DMA>;
+-			tbus = <WIN2030_TBUID_NPU>;
+-			dsp-avail-num = <1>;
+-			spram-size = <0x400000>;
+-			npu_mbox = <&d1_mbox2>;
+-			clocks = <&d1_clock EIC7700_CLK_NPU_ACLK>,
+-					<&d1_clock EIC7700_CLK_NPU_CFG_CLK>,
+-					<&d1_clock EIC7700_CLK_NPU_CLK>,
+-					<&d1_clock EIC7700_CLK_NPU_LLC_ACLK>,
+-					<&d1_clock EIC7700_CLK_NPU_E31_CLK>,
+-					<&d1_clock EIC7700_MUX_U_NPU_CORE_3MUX1_GFREE>,
+-					<&d1_clock EIC7700_MUX_U_NPU_LLCLK_3MUX1_GFREE>,
+-					<&d1_clock EIC7700_SPLL2_FOUT2>,
+-					<&d1_clock EIC7700_SPLL1_FOUT1>,
+-					<&d1_clock EIC7700_CLK_CLK_NPU_LLC_SRC0>,
+-					<&d1_clock EIC7700_VPLL_FOUT1>;
+-
+-
+-			clock-names = "aclk", "cfg_clk", "core_clk", "clk_npu_llc_aclk", "e31_core_clk",
+-					"mux_u_npu_core_3mux1_gfree", "mux_u_npu_llclk_3mux1_gfree",
+-					"fixed_rate_clk_spll2_fout2", "fixed_rate_clk_spll1_fout1", "clk_clk_npu_llc_src0",
+-					"fixed_rate_clk_vpll_fout1";
+-
+-
+-			resets = <&d1_reset NPU_RST_CTRL SW_NPU_E31CORE_RSTN>;
+-			reset-names = "e31_core";
++			ranges;
++			d1_npu: eswin-npu@71c00000 {
++				compatible = "eswin,npu";
++				reg = <0x0 0x71c00000 0x0 0x400000>;
++				interrupt-parent = <&plic1>;
++				interrupts = <387 16>;
++				/* spram-region = <&npu1_reserved>;*/
++				#size-cells = <2>;
++				iommus = <&smmu1 WIN2030_SID_NPU_DMA>;
++				tbus = <WIN2030_TBUID_NPU>;
++				dsp-avail-num = <1>;
++				spram-size = <0x400000>;
++				npu_mbox = <&d1_mbox2>;
++				clocks = <&d1_clock EIC7700_CLK_NPU_ACLK>,
++						<&d1_clock EIC7700_CLK_NPU_CFG_CLK>,
++						<&d1_clock EIC7700_CLK_NPU_CLK>,
++						<&d1_clock EIC7700_CLK_NPU_LLC_ACLK>,
++						<&d1_clock EIC7700_CLK_NPU_E31_CLK>,
++						<&d1_clock EIC7700_MUX_U_NPU_CORE_3MUX1_GFREE>,
++						<&d1_clock EIC7700_MUX_U_NPU_LLCLK_3MUX1_GFREE>,
++						<&d1_clock EIC7700_SPLL2_FOUT2>,
++						<&d1_clock EIC7700_SPLL1_FOUT1>,
++						<&d1_clock EIC7700_CLK_CLK_NPU_LLC_SRC0>,
++						<&d1_clock EIC7700_CLK_CLK_NPU_LLC_SRC1>,
++						<&d1_clock EIC7700_VPLL_FOUT1>;
++
++
++				clock-names = "aclk", "cfg_clk", "core_clk", "clk_npu_llc_aclk", "e31_core_clk",
++						"mux_u_npu_core_3mux1_gfree", "mux_u_npu_llclk_3mux1_gfree",
++						"fixed_rate_clk_spll2_fout2", "fixed_rate_clk_spll1_fout1", "clk_clk_npu_llc_src0",
++						"clk_clk_npu_llc_src1", "fixed_rate_clk_vpll_fout1";
++
++
++				resets = <&d1_reset NPU_RST_CTRL SW_NPU_E31CORE_RSTN>;
++				reset-names = "e31_core";
+ 
+-			numa-node-id = <1>;
+-			firmware-name = "eic7700_die1_e31_fw";
+-			dma-noncoherent;
++				numa-node-id = <1>;
++				firmware-name = "eic7700_die1_e31_fw";
++				dma-noncoherent;
+ 
+-			operating-points-v2 = <&npu_opp_table>;
+-			#cooling-cells = <2>;
+-			dynamic-power-coefficient = <16000>; /*TBD*/
++				operating-points-v2 = <&npu_opp_table>;
++				#cooling-cells = <2>;
++				dynamic-power-coefficient = <16000>; /*TBD*/
++			};
+ 		};
+ 
+ 		d1_llc_dev: llc@71c00000 {
+@@ -1008,13 +1046,8 @@ d1_llc_dev: llc@71c00000 {
+ 			clocks = <&d1_clock EIC7700_CLK_NPU_ACLK>,
+ 				 <&d1_clock EIC7700_CLK_NPU_CFG_CLK>,
+ 				 <&d1_clock EIC7700_CLK_NPU_LLC_ACLK>,
+-				 <&d1_clock EIC7700_CLK_NPU_CLK>,
+-				 <&d1_clock EIC7700_MUX_U_NPU_CORE_3MUX1_GFREE>,
+-				 <&d1_clock EIC7700_SPLL2_FOUT2>,
+-				 <&d1_clock EIC7700_SPLL1_FOUT1>;
+-			clock-names = "aclk", "cfg_clk", "llc_clk", "core_clk",
+-					"mux_u_npu_core_3mux1_gfree", "fixed_rate_clk_spll2_fout2",
+-					"fixed_rate_clk_spll1_fout1";
++				 <&d1_clock EIC7700_CLK_NPU_CLK>;
++			clock-names = "aclk", "cfg_clk", "llc_clk", "core_clk";
+ 			resets = <&d1_reset NPU_RST_CTRL SW_NPU_AXI_RSTN>,
+ 				 <&d1_reset NPU_RST_CTRL SW_NPU_CFG_RSTN>,
+ 				 <&d1_reset NPU_RST_CTRL SW_NPU_CORE_RSTN>,
+@@ -1057,8 +1090,8 @@ d1_sata: sata@0x70420000 {
+ 				interrupt-names = "intrq", "msi", "pme";
+ 				interrupts = <58>, <59>, <60>;
+ 				ports-implemented = <0x1>;
+-				clocks = <&d0_clock EIC7700_CLK_HSP_ACLK>,
+-						 <&d0_clock EIC7700_CLK_HSP_CFG_CLK>;
++				clocks = <&d1_clock EIC7700_CLK_HSP_ACLK>,
++						 <&d1_clock EIC7700_CLK_HSP_CFG_CLK>;
+ 				clock-names = "aclk", "cfg_clk";
+ 				resets = <&d1_reset HSPDMA_RST_CTRL SW_HSP_SATA_ARSTN>;
+ 				reset-names = "apb";
+@@ -1182,9 +1215,11 @@ d1_timer0: timer@0x71840000 {
+ 				<&d1_reset TIMER0_RST_CTRL SW_TIMER0_RSTN_7>,
+ 				<&d1_reset TIMER0_RST_CTRL SW_TIMER0_PRSTN>;
+ 			reset-names = "trst0","trst1","trst2","trst3","trst4","trst5","trst6","trst7","prst";
++			status = "disabled";
+ 		};
+ 
+ 		d1_timer1: timer@0x71848000 {
++			/* used by lpcpu */
+ 			compatible = "eswin,eswin-timer";
+ 			#address-cells = <2>;
+ 			#size-cells = <2>;
+@@ -1205,10 +1240,12 @@ d1_timer1: timer@0x71848000 {
+ 				<&d1_reset TIMER1_RST_CTRL SW_TIMER1_RSTN_7>,
+ 				<&d1_reset TIMER1_RST_CTRL SW_TIMER1_PRSTN>;
+ 			reset-names = "trst0","trst1","trst2","trst3","trst4","trst5","trst6","trst7","prst";
++			status = "disabled";
+ 		};
+ 
+ 
+ 		d1_timer2: timer@0x71850000 {
++			/* used by lpcpu */
+ 			compatible = "eswin,eswin-timer";
+ 			#address-cells = <2>;
+ 			#size-cells = <2>;
+@@ -1229,6 +1266,7 @@ d1_timer2: timer@0x71850000 {
+ 				<&d1_reset TIMER2_RST_CTRL SW_TIMER2_RSTN_7>,
+ 				<&d1_reset TIMER2_RST_CTRL SW_TIMER2_PRSTN>;
+ 			reset-names = "trst0","trst1","trst2","trst3","trst4","trst5","trst6","trst7","prst";
++			status = "disabled";
+ 		};
+ 
+ 		d1_timer3: timer@0x71858000 {
+@@ -1236,9 +1274,12 @@ d1_timer3: timer@0x71858000 {
+ 			#address-cells = <2>;
+ 			#size-cells = <2>;
+ 			reg = <0x0 0x71858000 0x0 0x8000>;
++			perf_count = <7>;
+ 			numa-node-id = <1>;
++			/* disable interrupt because timer's interrupt is routed to lpcpu
+ 			interrupt-parent = <&plic1>;
+ 			interrupts = <348>;
++			*/
+ 			clock-names = "pclk","timer_aclk","timer3_clk8";
+ 			clocks = <&d1_clock EIC7700_CLK_TIMER_PCLK_3>,
+ 					 <&d1_clock EIC7700_CLK_TIMER_CLK_3>,
+@@ -1253,19 +1294,18 @@ d1_timer3: timer@0x71858000 {
+ 				<&d1_reset TIMER3_RST_CTRL SW_TIMER3_RSTN_7>,
+ 				<&d1_reset TIMER3_RST_CTRL SW_TIMER3_PRSTN>;
+ 			reset-names = "trst0","trst1","trst2","trst3","trst4","trst5","trst6","trst7","prst";
++			status = "okay";
+ 		};
+ 
+ 		d1_pwm0: pwm@0x70818000 {
+ 			compatible = "eswin,pwm-eswin";
++			#pwm-cells = <3>;
+ 			reg = <0x0 0x70818000 0x0 0x4000>;
+-			clock-names = "pwm","pclk";
++			clock-names = "pclk";
+ 			clocks = <&d1_clock EIC7700_CLK_LSP_TIMER_PCLK>;
+ 			clock-frequency = <200000000>;
+ 			resets = <&d1_reset TIMER_RST_CTRL SW_TIMER_RST_N>;
+-			reset-names = "pwmrst";
+-			#pwm-cells = <3>;
+-			pinctrl-names = "default";
+-			pinctrl-0 = <&d1_pinctrl_pwm0_default &d1_pinctrl_pwm1_default &d1_pinctrl_pwm2_default>;
++			reset-names = "rst";
+ 			status = "disabled";
+ 			numa-node-id = <1>;
+ 		};
+@@ -1569,7 +1609,6 @@ d1_gmac0: ethernet@70400000 {
+ 			interrupt-parent = <&plic1>;
+ 			interrupt-names = "macirq";
+ 			interrupts = <61>;
+-			phy-mode = "rgmii-txid";
+ 			numa-node-id = <1>;
+ 			id = <2>;
+ 			status = "disabled";
+@@ -1603,7 +1642,6 @@ d1_gmac1: ethernet@70410000 {
+ 			interrupt-parent = <&plic1>;
+ 			interrupt-names = "macirq";
+ 			interrupts = <70>;
+-			phy-mode = "rgmii-txid";
+ 			numa-node-id = <1>;
+ 			id = <3>;
+ 			status = "disabled";
+@@ -1780,7 +1818,6 @@ d1_ssi1: spi@70814000 {
+ 		d1_bootspi: spi@71800000 {
+ 			compatible = "eswin,bootspi";
+ 			reg = <0x0 0x71800000 0x0 0x8000>,
+-				<0x0 0x71828000 0x0 0x8000>,
+ 				<0x0 0x7c000000 0x0 0x8000>;
+ 			#address-cells = <1>;
+ 			#size-cells = <0>;
+@@ -1789,10 +1826,13 @@ d1_bootspi: spi@71800000 {
+ 			clock-names = "cfg_clk", "clk";
+ 			resets = <&d1_reset BOOTSPI_RST_CTRL SW_BOOTSPI_RSTN>;
+ 			reset-names = "rst";
+-			spi-max-frequency = <4800000>;
++			dma-names = "rx", "tx";
++			dmas = <&d1_aon_dmac 12 40 0xff>, <&d1_aon_dmac 13 40 0xff>;
++			spi-max-frequency = <30000000>;
+ 			reg-io-width = <4>;
+-			status = "disabled";
+ 			numa-node-id = <1>;
++			status = "disabled";
++			dma-noncoherent;
+ 		};
+ 
+ 		d1_video_output: display-subsystem@1 {
+@@ -2033,6 +2073,7 @@ d1_graphcard: graphcard {
+ 
+ 		d1_usbdrd3_0: usb0@70480000 {
+ 			compatible = "eswin,win2030-dwc3";
++			phy_reg = <0x0 0x704a0000 0x0 0x10000>;
+ 			#address-cells = <2>;
+ 			#size-cells = <2>;
+ 			clocks = <&d1_clock EIC7700_CLK_HSP_ACLK>,
+@@ -2041,6 +2082,10 @@ d1_usbdrd3_0: usb0@70480000 {
+ 			eswin,hsp_sp_csr = <&d1_hsp_sp_csr 0x800 0x808 0x83c 0x840>;
+ 			resets = <&d1_reset HSPDMA_RST_CTRL SW_USB0_VAUX_RSTN>;
+ 			reset-names = "vaux";
++			pinctrl-names = "default", "sleep";
++			pinctrl-0 = <&pinctrl_die1_usb0_pwren_default>;
++			pinctrl-1 = <&pinctrl_die1_gpio42_default>;
++			power-gpios = <&d1_portb 10 GPIO_ACTIVE_LOW>;
+ 			ranges;
+ 			wakeup-source;
+ 			status = "disabled";
+@@ -2073,6 +2118,7 @@ d1_usbdrd_dwc3_0: dwc3@70480000 {
+ 
+ 		d1_usbdrd3_1: usb1@70490000 {
+ 			compatible = "eswin,win2030-dwc3";
++			phy_reg = <0x0 0x704b0000 0x0 0x10000>;
+ 			#address-cells = <2>;
+ 			#size-cells = <2>;
+ 			clocks = <&d1_clock EIC7700_CLK_HSP_ACLK>,
+@@ -2081,6 +2127,10 @@ d1_usbdrd3_1: usb1@70490000 {
+ 			eswin,hsp_sp_csr = <&d1_hsp_sp_csr 0x900 0x908 0x93c 0x940>;
+ 			resets = <&d1_reset HSPDMA_RST_CTRL SW_USB1_VAUX_RSTN>;
+ 			reset-names = "vaux";
++			pinctrl-names = "default", "sleep";
++			pinctrl-0 = <&pinctrl_die1_usb1_pwren_default>;
++			pinctrl-1 = <&pinctrl_die1_gpio43_default>;
++			power-gpios = <&d1_portb 11 GPIO_ACTIVE_LOW>;
+ 			ranges;
+ 			wakeup-source;
+ 			status = "disabled";
+@@ -2110,9 +2160,13 @@ d1_usbdrd_dwc3_1: dwc3@70490000 {
+ 				dma-noncoherent;
+ 			};
+ 		};
+-
+-		d1_vi_top_csr: vi_common_top_csr@0x71030000 {
+-			compatible = "esw,vi-common-csr", "syscon";
++		d1_vi_subsys: d1-vi-subsys@71000000 {
++			#address-cells = <2>;
++			#size-cells = <2>;
++			compatible = "esw,vi_subsys";
++			reg = <0x0 0x71000000 0x0 0x200000>, <0x0 0x71030000 0x0 0x2000>;
++			eswin,syscrg_csr = <&d1_sys_crg>;
++			eswin,vitop_csr = <&d1_vi_top_csr>;
+ 			clocks = <&d1_clock EIC7700_CLK_VI_ACLK>,
+ 					 <&d1_clock EIC7700_CLK_VI_CFG_CLK>,
+ 					 <&d1_clock EIC7700_CLK_VI_DIG_ISP_CLK>,
+@@ -2131,8 +2185,8 @@ d1_vi_top_csr: vi_common_top_csr@0x71030000 {
+ 					 <&d1_clock EIC7700_SPLL0_FOUT1>,
+ 					 <&d1_clock EIC7700_VPLL_FOUT1>;
+ 			clock-names = "aclk", "cfg_clk", "isp_aclk", "dvp_clk", "phy_cfg",
+-						  "phy_escclk", "sht0", "sht1", "sht2", "sht3", "sht4",
+-						  "sht5", "aclk_mux", "dvp_mux", "isp_mux", "spll0_fout1", "vpll_fout1";
++							"phy_escclk", "sht0", "sht1", "sht2", "sht3", "sht4",
++							"sht5", "aclk_mux", "dvp_mux", "isp_mux", "spll0_fout1", "vpll_fout1";
+ 			resets = <&d1_reset VI_RST_CTRL SW_VI_AXI_RSTN>,
+ 					 <&d1_reset VI_RST_CTRL SW_VI_CFG_RSTN>,
+ 					 <&d1_reset ISP0_RST_CTRL SW_VI_ISP0_RSTN>,
+@@ -2145,207 +2199,318 @@ d1_vi_top_csr: vi_common_top_csr@0x71030000 {
+ 					 <&d1_reset SHUTTER_RST_CTRL SW_VI_SHUTTER_RSTN_4>,
+ 					 <&d1_reset SHUTTER_RST_CTRL SW_VI_SHUTTER_RSTN_5>;
+ 			reset-names = "axi", "cfg", "isp0", "isp1", "dvp", "sht0", "sht1", "sht2", "sht3", "sht4", "sht5";
+-
+-			id = <0>;
+-			#size-cells = <2>;
+-			reg = <0x0 0x71030000 0x0 0x10000>;
++			tbus = <WIN2030_TBUID_DW>;
+ 			numa-node-id = <1>;
+-		};
++			ranges;
++			status = "disabled";
+ 
+-		d1_isp_0: isp@0x71000000 {
+-			compatible = "esw,win2030-isp";
+-			reg = <0x0 0x71000000 0x0 0x10000>;
+-			interrupts = <21 19 20>;
+-			interrupt-parent = <&plic1>;
+-			id = <0>;
+-			#size-cells = <2>;
+-			dma-ranges = <0x0 0x20000000 0x0 0x80000000 0x0 0x40000000>;
+-			iommus = <&smmu1 WIN2030_SID_ISP0>;
+-			eswin,vi_top_csr = <&d1_vi_top_csr 0x1000>;
+-			numa-node-id = <1>;
+-			dma-noncoherent;
+-		};
++			d1_vi_top_csr: vi_common_top_csr@71030000 {
++				compatible = "esw,vi-common-csr", "syscon";
++				#size-cells = <2>;
++				reg = <0x0 0x71030000 0x0 0x10000>;
++				numa-node-id = <1>;
++			};
+ 
+-		d1_isp_1: isp@0x71010000 {
+-			compatible = "esw,win2030-isp";
+-			reg = <0x0 0x71010000 0x0 0x10000>;
+-			interrupts = <24 22 23>;
+-			interrupt-parent = <&plic1>;
+-			id = <1>;
+-			#size-cells = <2>;
+-			dma-ranges = <0x0 0x20000000 0x0 0x80000000 0x0 0x40000000>;
+-			iommus = <&smmu1 WIN2030_SID_ISP1>;
+-			eswin,vi_top_csr = <&d1_vi_top_csr 0x1004>;
+-			numa-node-id = <1>;
+-			dma-noncoherent;
+-		};
++			d1_isp_0: isp@71000000 {
++				compatible = "esw,win2030-isp";
++				reg = <0x0 0x71000000 0x0 0x10000>;
++				interrupts = <21 19 20>;
++				interrupt-parent = <&plic1>;
++				id = <0>;
++				#size-cells = <2>;
++				dma-ranges = <0x0 0x20000000 0x0 0x80000000 0x0 0x40000000>;
++				iommus = <&smmu1 WIN2030_SID_ISP0>;
++				eswin,vi_top_csr = <&d1_vi_top_csr 0x1000>;
++				numa-node-id = <1>;
++				dma-noncoherent;
++			};
+ 
+-		d1_dewarp: dewarp@71020000 {
+-			compatible = "eswin,dewarp";
+-			clocks = <&d1_clock EIC7700_CLK_VI_ACLK>,
+-					 <&d1_clock EIC7700_CLK_VI_CFG_CLK>,
+-					 <&d1_clock EIC7700_CLK_VI_DIG_DW_CLK>,
+-					 <&d1_clock EIC7700_MUX_U_VI_ACLK_ROOT_2MUX1_GFREE>,
+-					 <&d1_clock EIC7700_MUX_U_VI_DW_ROOT_2MUX1>,
+-					 <&d1_clock EIC7700_SPLL0_FOUT1>,
+-					 <&d1_clock EIC7700_VPLL_FOUT1>;
+-			clock-names = "aclk", "cfg_clk", "dw_aclk", "aclk_mux", "dw_mux", "spll0_fout1", "vpll_fout1";
+-			resets = <&d1_reset VI_RST_CTRL SW_VI_AXI_RSTN>,
+-					 <&d1_reset VI_RST_CTRL SW_VI_CFG_RSTN>,
+-					 <&d1_reset VI_RST_CTRL SW_VI_DWE_RSTN>;
+-			reset-names = "axi", "cfg", "dwe";
++			d1_isp_1: isp@71010000 {
++				compatible = "esw,win2030-isp";
++				reg = <0x0 0x71010000 0x0 0x10000>;
++				interrupts = <24 22 23>;
++				interrupt-parent = <&plic1>;
++				id = <1>;
++				#size-cells = <2>;
++				dma-ranges = <0x0 0x20000000 0x0 0x80000000 0x0 0x40000000>;
++				iommus = <&smmu1 WIN2030_SID_ISP1>;
++				eswin,vi_top_csr = <&d1_vi_top_csr 0x1004>;
++				numa-node-id = <1>;
++				dma-noncoherent;
++			};
+ 
+-			operating-points-v2 = <&vi_opp_table>;
+-			#cooling-cells = <2>;
+-			dynamic-power-coefficient = <1000>; /*TBD*/
+-			power-domains = <&d1_pmu EIC770X_PD_VI>;
+-			interrupt-parent = <&plic1>;
+-			interrupts = <26 25>;
+-			#size-cells = <2>;
+-			dma-ranges = <0x0 0x20000000 0x0 0x80000000 0x0 0x40000000>;
+-			iommus = <&smmu1 WIN2030_SID_DW>;
+-			tbus = <WIN2030_TBUID_DW>;
+-			eswin,vi_top_csr = <&d1_vi_top_csr 0x1008>;
+-			reg = <0x0 0x71020000 0x0 0xc00>, <0x0 0x71020c00 0x0 0x120>;
+-			numa-node-id = <1>;
+-			dma-noncoherent;
++			d1_dewarp: dewarp@71020000 {
++				compatible = "eswin,dewarp";
++				clocks = <&d1_clock EIC7700_CLK_VI_ACLK>,
++						<&d1_clock EIC7700_CLK_VI_CFG_CLK>,
++						<&d1_clock EIC7700_CLK_VI_DIG_DW_CLK>,
++						<&d1_clock EIC7700_MUX_U_VI_ACLK_ROOT_2MUX1_GFREE>,
++						<&d1_clock EIC7700_MUX_U_VI_DW_ROOT_2MUX1>,
++						<&d1_clock EIC7700_SPLL0_FOUT1>,
++						<&d1_clock EIC7700_VPLL_FOUT1>;
++				clock-names = "aclk", "cfg_clk", "dw_aclk", "aclk_mux", "dw_mux", "spll0_fout1", "vpll_fout1";
++				resets = <&d1_reset VI_RST_CTRL SW_VI_AXI_RSTN>,
++						 <&d1_reset VI_RST_CTRL SW_VI_CFG_RSTN>,
++						 <&d1_reset VI_RST_CTRL SW_VI_DWE_RSTN>;
++				reset-names = "axi", "cfg", "dwe";
++				operating-points-v2 = <&vi_opp_table>;
++				#cooling-cells = <2>;
++				dynamic-power-coefficient = <1000>; /*TBD*/
++				power-domains = <&d1_pmu EIC770X_PD_VI>;
++				interrupt-parent = <&plic1>;
++				interrupts = <26 25>;
++				#size-cells = <2>;
++				dma-ranges = <0x0 0x20000000 0x0 0x80000000 0x0 0x40000000>;
++				iommus = <&smmu1 WIN2030_SID_DW>;
++				tbus = <WIN2030_TBUID_DW>;
++				eswin,vi_top_csr = <&d1_vi_top_csr 0x1008>;
++				reg = <0x0 0x71020000 0x0 0xc00>, <0x0 0x71020c00 0x0 0x120>;
++				numa-node-id = <1>;
++				dma-noncoherent;
+ 		};
+ 
+-		d1_mipi_dphy_rx: dphy@710c0000 {
+-			compatible = "snps,dw-dphy-rx";
+-			#phy-cells = <1>;
+-			bus-width = <8>;
+-			snps,dphy-frequency = <300000>;
+-			snps,phy_type = <8>;
+-			reg = <0x0 0x710c0000 0x0 0x20000>;
+-			numa-node-id = <1>;
+-		};
++			d1_dvp2axi: d1-dvp2axi@71034000 {
++				compatible = "eswin,dvp2axi";
++				reg = <0x0 0x71034000 0x0 0x8000>;
++				reg-names = "dvp2axi_regs";
++				interrupt-parent = <&plic1>;
++				eswin,syscrg_csr = <&d1_sys_crg>;
++				eswin,vi_top_csr = <&d1_vi_top_csr 0x100c>;
++				interrupts = <368 369 370 371 372 373 374 375>;
++				interrupt-names = "dvp0_frame_int", "dvp1_frame_int", "dvp2_frame_int",
++									"dvp3_frame_int", "dvp4_frame_int", "dvp5_frame_int",
++									"dvp2axi_error_int","dvp2axi_afull_int";
++				dma-noncoherent;
++				numa-node-id = <1>;
++				#size-cells = <2>;
++				dma-ranges = <0x0 0x20000000 0x0 0x80000000 0x0 0x40000000>;
++				iommus = <&smmu1 WIN2030_SID_DVP>;
++				tbus = <WIN2030_TBUID_DW>;
++				status = "disabled";
++			};
+ 
+-		d1_csi_dma0: csidma@0x72048000 {
+-			compatible = "eswin,csi-video";
+-			interrupt-parent = <&plic1>;
+-			interrupts = <29>;
+-			reg = <0x0 0x72048000 0x0 0x1000>;
+-			numa-node-id = <1>;
++			d1_dvp2axi_mipi_lvds0: d1-dvp2axi_mipi_lvds0 {
++				compatible = "eswin,dvp2axi-mipi-lvds_d1";
++				eswin,hw = <&d1_dvp2axi>;
++				status = "disabled";
++			};
+ 
+-			port {
+-				#address-cells = <1>;
+-				#size-cells = <0>;
++			d1_dvp2axi_mipi_lvds1: d1-dvp2axi_mipi_lvds1 {
++				compatible = "eswin,dvp2axi-mipi-lvds_d1";
++				eswin,hw = <&d1_dvp2axi>;
++				status = "disabled";
++			};
+ 
+-				d1_csi_dmar_0: endpoint@0 {
+-					reg = <0>;
+-					bus-type = <4>;
+-					remote-endpoint = <&d1_csi2_dma_0_3>;
+-				};
++			d1_dvp2axi_mipi_lvds2: d1-dvp2axi_mipi_lvds2 {
++				compatible = "eswin,dvp2axi-mipi-lvds_d1";
++				eswin,hw = <&d1_dvp2axi>;
++				status = "disabled";
+ 			};
+-		};
+ 
+-		d1_csi_dma1: csidma@0x72058000 {
+-			compatible = "eswin,csi-video";
+-			interrupt-parent = <&plic1>;
+-			interrupts = <30>;
+-			reg = <0x0 0x72058000 0x0 0x1000>;
+-			numa-node-id = <1>;
++			d1_dvp2axi_mipi_lvds3: d1-dvp2axi_mipi_lvds3 {
++				compatible = "eswin,dvp2axi-mipi-lvds_d1";
++				eswin,hw = <&d1_dvp2axi>;
++				status = "disabled";
++			};
+ 
+-			port {
+-				#address-cells = <1>;
+-				#size-cells = <0>;
++			d1_dvp2axi_mipi_lvds4: d1-dvp2axi_mipi_lvds4 {
++				compatible = "eswin,dvp2axi-mipi-lvds_d1";
++				eswin,hw = <&d1_dvp2axi>;
++				status = "disabled";
++			};
+ 
+-				d1_csi_dmar_1: endpoint@0 {
+-					reg = <0>;
+-					bus-type = <4>;
+-					remote-endpoint = <&d1_csi2_dma_1_3>;
+-				};
++			d1_dvp2axi_mipi_lvds5: d1-dvp2axi_mipi_lvds5 {
++				compatible = "eswin,dvp2axi-mipi-lvds_d1";
++				eswin,hw = <&d1_dvp2axi>;
++				status = "disabled";
+ 			};
+-		};
+ 
+-		d1_csi2_0: csi2@71050000 {
+-			compatible = "snps,dw-csi";
+-			#address-cells = <1>;
+-			#size-cells = <0>;
+-			interrupt-parent = <&plic1>;
+-			interrupts = <29>;
+-			snps,output-type = <0>;
+-			reg = <0x0 0x71050000 0x0 0x1000>;
+-			/*phys = <&mipi_dphy_rx 1>;*/
+-			numa-node-id = <1>;
++			d1_mipi_csi2_0: d1-mipi-csi2-0@71050000 {
++				#address-cells = <2>;
++				#size-cells = <2>;
++				compatible = "eswin,eic770x-mipi-csi2";
++				reg = <0x0 0x71050000 0x0 0x10000>;
++				reg-names = "csihost_regs";
++				eswin,syscrg_csr = <&d1_sys_crg>;
++				eswin,vi_top_csr = <&d1_vi_top_csr>;
++				interrupt-parent = <&plic1>;
++				interrupts = <29>;
++				interrupt-names = "csi-intr1";
++				index = <0>;
++
++				ipi2_en = <0>;/* for virtual channel */
++				ipi2_vcid = <0>;/* virtual channel id */
++				ipi3_en = <0>;
++				ipi3_vcid = <0>;
++				status = "disabled";
++			};
+ 
+-			/* MIPI CONFIG */
+-			snps,en-ppi-width = <0>;/* 0: ppi8, 1: ppi16 */
+-			snps,en-phy-mode = <0>;/* 0: D-PHY, 1: C-PHY */
++			d1_mipi_csi2_1: d1-mipi-csi2-1@71060000 {
++				#address-cells = <2>;
++				#size-cells = <2>;
++				compatible = "eswin,eic770x-mipi-csi2";
++				reg = <0x0 0x71060000 0x0 0x10000>;
++				reg-names = "csihost_regs";
++				eswin,syscrg_csr = <&d1_sys_crg>;
++				eswin,vi_top_csr = <&d1_vi_top_csr>;
++				interrupt-parent = <&plic1>;
++				interrupts = <30>;
++				interrupt-names = "csi-intr1";
++				index = <1>;
++				status = "disabled";
++			};
+ 
+-			ipi2_en = <0>;/* for virtual channel */
+-			ipi2_vcid = <0>;/* virtual channel id */
+-			ipi3_en = <0>;
+-			ipi3_vcid = <0>;
++			d1_mipi_csi2_2: d1-mipi-csi2-2@71070000 {
++				#address-cells = <2>;
++				#size-cells = <2>;
++				compatible = "eswin,eic770x-mipi-csi2";
++				reg = <0x0 0x71070000 0x0 0x10000>;
++				reg-names = "csihost_regs";
++				eswin,syscrg_csr = <&d1_sys_crg>;
++				eswin,vi_top_csr = <&d1_vi_top_csr>;
++				interrupt-parent = <&plic1>;
++				interrupts = <31>;
++				interrupt-names = "csi-intr1";
++				index = <2>;
++				status = "disabled";
++			};
+ 
+-			#ifdef MIPI_CSI2_IMX290_ENBALE
+-			port@1 {
+-				reg = <1>;
+-				d1_csi2_0_1: endpoint {
+-					bus-type = <4>;
+-					clock-lanes = <0>;
+-					#ifdef MIPI_CSI2_2LINE_ENABLE
+-					data-lanes = <1 2>;
+-					#else
+-					data-lanes = <1 2 3 4>;
+-					#endif
+-					//remote-endpoint = <&imx290_csi2>;
+-				};
++			d1_mipi_csi2_3: d1-mipi-csi2-3@71080000 {
++				#address-cells = <2>;
++				#size-cells = <2>;
++				compatible = "eswin,eic770x-mipi-csi2";
++				reg = <0x0 0x71080000 0x0 0x10000>;
++				reg-names = "csihost_regs";
++				eswin,syscrg_csr = <&d1_sys_crg>;
++				eswin,vi_top_csr = <&d1_vi_top_csr>;
++				interrupt-parent = <&plic1>;
++				interrupts = <32>;
++				interrupt-names = "csi-intr1";
++				index = <3>;
++				status = "disabled";
+ 			};
+-			#endif
+ 
+-			port@2 {
+-				reg = <2>;
+-				d1_csi2_dma_0_3: endpoint {
+-					bus-type = <5>;
+-					remote-endpoint = <&d1_csi_dmar_0>;
+-				};
++			d1_mipi_csi2_4: d1-mipi-csi2-4@71090000 {
++				#address-cells = <2>;
++				#size-cells = <2>;
++				compatible = "eswin,eic770x-mipi-csi2";
++				reg = <0x0 0x71090000 0x0 0x10000>;
++				reg-names = "csihost_regs";
++				eswin,syscrg_csr = <&d1_sys_crg>;
++				eswin,vi_top_csr = <&d1_vi_top_csr>;
++				interrupt-parent = <&plic1>;
++				interrupts = <33>;
++				interrupt-names = "csi-intr1";
++				index = <4>;
++				status = "disabled";
+ 			};
+-		};
+ 
+-		d1_csi2_1: csi2@71060000 {
+-			compatible = "snps,dw-csi";
+-			#address-cells = <1>;
+-			#size-cells = <0>;
+-			interrupt-parent = <&plic1>;
+-			interrupts = <30>;
+-			snps,output-type = <0>;
+-			reg = <0x0 0x71060000 0x0 0x1000>;
+-			/*phys = <&mipi_dphy_rx 1>;*/
+-			numa-node-id = <1>;
++			d1_mipi_csi2_5: d1-mipi-csi2-5@710a0000 {
++				#address-cells = <2>;
++				#size-cells = <2>;
++				compatible = "eswin,eic770x-mipi-csi2";
++				reg = <0x0 0x710a0000 0x0 0x10000>;
++				reg-names = "csihost_regs";
++				eswin,syscrg_csr = <&d1_sys_crg>;
++				eswin,vi_top_csr = <&d1_vi_top_csr>;
++				interrupt-parent = <&plic1>;
++				interrupts = <34>;
++				interrupt-names = "csi-intr1";
++				index = <5>;
++				status = "disabled";
++			};
+ 
+-			/* MIPI CONFIG */
+-			snps,en-ppi-width = <0>;/* 0: ppi8, 1: ppi16 */
+-			snps,en-phy-mode = <0>;/* 0: D-PHY, 1: C-PHY */
++			d1_csi2_dphy_hw0: d1-csi2-dphy-hw@710c0000 {
++				compatible = "eswin,eic770x-csi2-dphy-hw";
++				reg = <0x0 0x710c0000 0x0 0x20000>;
++				phy_cfg = <0x710d8000>;
++				csi_base = <0x71050000>;
++				combine_phy = <0x710e0000>;
++				status = "disabled";
++			};
+ 
+-			ipi2_en = <0>;/* for virtual channel */
+-			ipi2_vcid = <0>;/* virtual channel id */
+-			ipi3_en = <0>;
+-			ipi3_vcid = <0>;
++			d1_csi2_dphy_hw1: d1-csi2-dphy-hw1@710e0000 {
++				compatible = "eswin,eic770x-csi2-dphy-hw";
++				reg = <0x0 0x710e0000 0x0 0x20000>;
++				phy_cfg = <0x710f8000>;
++				csi_base = <0x71060000>;
++				status = "disabled";
++			};
+ 
+-			#ifdef MIPI_CSI2_IMX290_ENBALE
+-			port@1 {
+-				reg = <1>;
+-				d1_csi2_1_1: endpoint {
+-					bus-type = <4>;
+-					clock-lanes = <0>;
+-					#ifdef MIPI_CSI2_2LINE_ENABLE
+-					data-lanes = <1 2>;
+-					#else
+-					data-lanes = <1 2 3 4>;
+-					#endif
+-					//remote-endpoint = <&imx290_csi2>;
+-				};
++			d1_csi2_dphy_hw2: d1-csi2-dphy-hw2@71100000 {
++				compatible = "eswin,eic770x-csi2-dphy-hw";
++				reg = <0x0 0x71100000 0x0 0x20000>;
++				phy_cfg = <0x71118000>;
++				csi_base = <0x71070000>;
++				combine_phy = <0x71120000>;
++				status = "disabled";
+ 			};
+-			#endif
+ 
+-			port@2 {
+-				reg = <2>;
+-				d1_csi2_dma_1_3: endpoint {
+-					bus-type = <5>;
+-					remote-endpoint = <&d1_csi_dmar_1>;
+-				};
++			d1_csi2_dphy_hw3: d1-csi2-dphy-hw3@71120000 {
++				compatible = "eswin,eic770x-csi2-dphy-hw";
++				reg = <0x0 0x71120000 0x0 0x20000>;
++				phy_cfg = <0x71138000>;
++				csi_base = <0x71080000>;
++				status = "disabled";
++			};
++
++			d1_csi2_dphy_hw4: d1-csi2-dphy-hw4@71140000 {
++				compatible = "eswin,eic770x-csi2-dphy-hw";
++				reg = <0x0 0x71140000 0x0 0x20000>;
++				phy_cfg = <0x71158000>;
++				csi_base = <0x71090000>;
++				combine_phy = <0x71160000>;
++				status = "disabled";
++			};
++
++			d1_csi2_dphy_hw5: d1-csi2-dphy-hw5@71160000 {
++				compatible = "eswin,eic770x-csi2-dphy-hw";
++				reg = <0x0 0x71160000 0x0 0x20000>;
++				phy_cfg = <0x71178000>;
++				csi_base = <0x710a0000>;
++				status = "disabled";
++			};
++
++			d1_csi2_dphy0: d1-csi2-dphy0 {
++				compatible = "eswin,eic770x-csi2-dphy";
++				eswin,hw = <&d1_csi2_dphy_hw0>;
++				index = <0>;
++				status = "disabled";
++			};
++
++			d1_csi2_dphy1: d1-csi2-dphy1 {
++				compatible = "eswin,eic770x-csi2-dphy";
++				eswin,hw = <&d1_csi2_dphy_hw1>;
++				index = <1>;
++				status = "disabled";
++			};
++
++			d1_csi2_dphy2: d1-csi2-dphy2 {
++				compatible = "eswin,eic770x-csi2-dphy";
++				eswin,hw = <&d1_csi2_dphy_hw2>;
++				index = <2>;
++				status = "disabled";
++			};
++
++			d1_csi2_dphy3: d1-csi2-dphy3 {
++				compatible = "eswin,eic770x-csi2-dphy";
++				eswin,hw = <&d1_csi2_dphy_hw3>;
++				index = <3>;
++				status = "disabled";
++			};
++
++			d1_csi2_dphy4: d1-csi2-dphy4 {
++				compatible = "eswin,eic770x-csi2-dphy";
++				eswin,hw = <&d1_csi2_dphy_hw4>;
++				index = <4>;
++				status = "disabled";
++			};
++
++			d1_csi2_dphy5: d1-csi2-dphy5 {
++				compatible = "eswin,eic770x-csi2-dphy";
++				eswin,hw = <&d1_csi2_dphy_hw5>;
++				index = <5>;
++				status = "disabled";
+ 			};
+ 		};
+ 
+diff --git a/drivers/clk/eswin/clk_eic770x.h b/drivers/clk/eswin/clk_eic770x.h
+new file mode 100644
+index 000000000000..156601fdd267
+--- /dev/null
++++ b/drivers/clk/eswin/clk_eic770x.h
+@@ -0,0 +1,204 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Copyright 2024, Beijing ESWIN Computing Technology Co., Ltd.. All rights reserved.
++ * SPDX-License-Identifier: GPL-2.0
++ *
++ * This program is free software: you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation, version 2.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
++ *
++ * Authors: HuangYiFeng<huangyifeng@eswincomputing.com>
++ */
++
++#ifndef __CLK_EIC770X_H__
++#define __CLK_EIC770X_H__
++
++/*REG OFFSET OF SYS-CRG*/
++#define WIN2030_REG_OFFSET_SPLL0_CFG_0                          0X0000
++#define WIN2030_REG_OFFSET_SPLL0_CFG_1                          0X0004
++#define WIN2030_REG_OFFSET_SPLL0_CFG_2                          0X0008
++#define WIN2030_REG_OFFSET_SPLL0_DSKEWCAL                       0X000C
++#define WIN2030_REG_OFFSET_SPLL0_SSC                            0X0010
++#define WIN2030_REG_OFFSET_SPLL1_CFG_0                          0X0014
++#define WIN2030_REG_OFFSET_SPLL1_CFG_1                          0X0018
++#define WIN2030_REG_OFFSET_SPLL1_CFG_2                          0X001C
++#define WIN2030_REG_OFFSET_SPLL1_DSKEWCAL                       0X0020
++#define WIN2030_REG_OFFSET_SPLL1_SSC                            0X0024
++#define WIN2030_REG_OFFSET_SPLL2_CFG_0                          0X0028
++#define WIN2030_REG_OFFSET_SPLL2_CFG_1                          0X002C
++#define WIN2030_REG_OFFSET_SPLL2_CFG_2                          0X0030
++#define WIN2030_REG_OFFSET_SPLL2_DSKEWCAL                       0X0034
++#define WIN2030_REG_OFFSET_SPLL2_SSC                            0X0038
++#define WIN2030_REG_OFFSET_VPLL_CFG_0                           0X003C
++#define WIN2030_REG_OFFSET_VPLL_CFG_1                           0X0040
++#define WIN2030_REG_OFFSET_VPLL_CFG_2                           0X0044
++#define WIN2030_REG_OFFSET_VPLL_DSKEWCAL                        0X0048
++#define WIN2030_REG_OFFSET_VPLL_SSC                             0X004C
++#define WIN2030_REG_OFFSET_APLL_CFG_0                           0X0050
++#define WIN2030_REG_OFFSET_APLL_CFG_1                           0X0054
++#define WIN2030_REG_OFFSET_APLL_CFG_2                           0X0058
++#define WIN2030_REG_OFFSET_APLL_DSKEWCAL                        0X005C
++#define WIN2030_REG_OFFSET_APLL_SSC                             0X0060
++#define WIN2030_REG_OFFSET_MCPUT_PLL_CFG_0                      0X0064
++#define WIN2030_REG_OFFSET_MCPUT_PLL_CFG_1                      0X0068
++#define WIN2030_REG_OFFSET_MCPUT_PLL_CFG_2                      0X006C
++#define WIN2030_REG_OFFSET_MCPUT_PLL_DSKEWCAL                   0X0070
++#define WIN2030_REG_OFFSET_MCPUT_PLL_SSC                        0X0074
++#define WIN2030_REG_OFFSET_DDRT_PLL_CFG_0                       0X0078
++#define WIN2030_REG_OFFSET_DDRT_PLL_CFG_1                       0X007C
++#define WIN2030_REG_OFFSET_DDRT_PLL_CFG_2                       0X0080
++#define WIN2030_REG_OFFSET_DDRT_PLL_DSKEWCAL                    0X0084
++#define WIN2030_REG_OFFSET_DDRT_PLL_SSC                         0X0088
++#define WIN2030_REG_OFFSET_PLL_STATUS                           0X00A4
++#define WIN2030_REG_OFFSET_NOC_CLK_CTRL                         0X100
++#define WIN2030_REG_OFFSET_BOOTSPI_CLK_CTRL                     0X104
++#define WIN2030_REG_OFFSET_BOOTSPI_CFGCLK_CTRL                  0X108
++#define WIN2030_REG_OFFSET_SCPU_CORECLK_CTRL                    0X10C
++#define WIN2030_REG_OFFSET_SCPU_BUSCLK_CTRL                     0X110
++#define WIN2030_REG_OFFSET_LPCPU_CORECLK_CTRL                   0X114
++#define WIN2030_REG_OFFSET_LPCPU_BUSCLK_CTRL                    0X118
++#define WIN2030_REG_OFFSET_TCU_ACLK_CTRL                        0X11C
++#define WIN2030_REG_OFFSET_TCU_CFG_CTRL                         0X120
++#define WIN2030_REG_OFFSET_DDR_CLK_CTRL                         0X124
++#define WIN2030_REG_OFFSET_DDR1_CLK_CTRL                        0X128
++#define WIN2030_REG_OFFSET_GPU_ACLK_CTRL                        0X12C
++#define WIN2030_REG_OFFSET_GPU_CFG_CTRL                         0X130
++#define WIN2030_REG_OFFSET_GPU_GRAY_CTRL                        0X134
++#define WIN2030_REG_OFFSET_DSP_ACLK_CTRL                        0X138
++#define WIN2030_REG_OFFSET_DSP_CFG_CTRL                         0X13C
++#define WIN2030_REG_OFFSET_D2D_ACLK_CTRL                        0X140
++#define WIN2030_REG_OFFSET_D2D_CFG_CTRL                         0X144
++#define WIN2030_REG_OFFSET_HSP_ACLK_CTRL                        0X148
++#define WIN2030_REG_OFFSET_HSP_CFG_CTRL                         0X14C
++#define WIN2030_REG_OFFSET_SATA_RBC_CTRL                        0X150
++#define WIN2030_REG_OFFSET_SATA_OOB_CTRL                        0X154
++#define WIN2030_REG_OFFSET_ETH0_CTRL                            0X158
++#define WIN2030_REG_OFFSET_ETH1_CTRL                            0X15C
++#define WIN2030_REG_OFFSET_MSHC0_CORECLK_CTRL                   0X160
++#define WIN2030_REG_OFFSET_MSHC1_CORECLK_CTRL                   0X164
++#define WIN2030_REG_OFFSET_MSHC2_CORECLK_CTRL                   0X168
++#define WIN2030_REG_OFFSET_MSHC_USB_SLWCLK                      0X16C
++#define WIN2030_REG_OFFSET_PCIE_ACLK_CTRL                       0X170
++#define WIN2030_REG_OFFSET_PCIE_CFG_CTRL                        0X174
++#define WIN2030_REG_OFFSET_NPU_ACLK_CTRL                        0X178
++#define WIN2030_REG_OFFSET_NPU_LLC_CTRL                         0X17C
++#define WIN2030_REG_OFFSET_NPU_CORE_CTRL                        0X180
++#define WIN2030_REG_OFFSET_VI_DWCLK_CTRL                        0X184
++#define WIN2030_REG_OFFSET_VI_ACLK_CTRL                         0X188
++#define WIN2030_REG_OFFSET_VI_DIG_ISP_CLK_CTRL                  0X18C
++#define WIN2030_REG_OFFSET_VI_DVP_CLK_CTRL                      0X190
++#define WIN2030_REG_OFFSET_VI_SHUTTER0                          0X194
++#define WIN2030_REG_OFFSET_VI_SHUTTER1                          0X198
++#define WIN2030_REG_OFFSET_VI_SHUTTER2                          0X19C
++#define WIN2030_REG_OFFSET_VI_SHUTTER3                          0X1A0
++#define WIN2030_REG_OFFSET_VI_SHUTTER4                          0X1A4
++#define WIN2030_REG_OFFSET_VI_SHUTTER5                          0X1A8
++#define WIN2030_REG_OFFSET_VI_PHY_CLKCTRL                       0X1AC
++#define WIN2030_REG_OFFSET_VO_ACLK_CTRL                         0X1B0
++#define WIN2030_REG_OFFSET_VO_IESMCLK_CTRL                      0X1B4
++#define WIN2030_REG_OFFSET_VO_PIXEL_CTRL                        0X1B8
++#define WIN2030_REG_OFFSET_VO_MCLK_CTRL                         0X1BC
++#define WIN2030_REG_OFFSET_VO_PHY_CLKCTRL                       0X1C0
++#define WIN2030_REG_OFFSET_VC_ACLK_CTRL                         0X1C4
++#define WIN2030_REG_OFFSET_VCDEC_ROOTCLK_CTRL                   0X1C8
++#define WIN2030_REG_OFFSET_G2D_CTRL                             0X1CC
++#define WIN2030_REG_OFFSET_VC_CLKEN_CTRL                        0X1D0
++#define WIN2030_REG_OFFSET_JE_CLK_CTRL                          0X1D4
++#define WIN2030_REG_OFFSET_JD_CLK_CTRL                          0X1D8
++#define WIN2030_REG_OFFSET_VD_CLK_CTRL                          0X1DC
++#define WIN2030_REG_OFFSET_VE_CLK_CTRL                          0X1E0
++#define WIN2030_REG_OFFSET_AON_DMA_CLK_CTRL                     0X1E4
++#define WIN2030_REG_OFFSET_TIMER_CLK_CTRL                       0X1E8
++#define WIN2030_REG_OFFSET_RTC_CLK_CTRL                         0X1EC
++#define WIN2030_REG_OFFSET_PKA_CLK_CTRL                         0X1F0
++#define WIN2030_REG_OFFSET_SPACC_CLK_CTRL                       0X1F4
++#define WIN2030_REG_OFFSET_TRNG_CLK_CTRL                        0X1F8
++#define WIN2030_REG_OFFSET_OTP_CLK_CTRL                         0X1FC
++#define WIN2030_REG_OFFSET_LSP_CLK_EN0                          0X200
++#define WIN2030_REG_OFFSET_LSP_CLK_EN1                          0X204
++#define WIN2030_REG_OFFSET_U84_CLK_CTRL                         0X208
++#define WIN2030_REG_OFFSET_SYSCFG_CLK_CTRL                      0X20C
++#define WIN2030_REG_OFFSET_I2C0_CLK_CTRL                        0X210
++#define WIN2030_REG_OFFSET_I2C1_CLK_CTRL                        0X214
++#define WIN2030_REG_OFFSET_DFT_CLK_CTRL                         0X280
++#define WIN2030_REG_OFFSET_SYS_SWRST_VALUE                      0X300
++#define WIN2030_REG_OFFSET_CLR_RST_STATUS                       0X304
++#define WIN2030_REG_OFFSET_DIE_STATUS                           0X308
++#define WIN2030_REG_OFFSET_CLR_BOOT_INFO                        0X30C
++#define WIN2030_REG_OFFSET_SCPU_BOOT_ADDRESS                    0X310
++#define WIN2030_REG_OFFSET_LPCPU_BOOT_ADDRESS                   0X314
++#define WIN2030_REG_OFFSET_NPUE31_BOOT_ADDRESS                  0X318
++#define WIN2030_REG_OFFSET_U84_BOOT_ADDRESS0_HI                 0X31C
++#define WIN2030_REG_OFFSET_U84_BOOT_ADDRESS0_LOW                0X320
++#define WIN2030_REG_OFFSET_U84_BOOT_ADDRESS1_HI                 0X324
++#define WIN2030_REG_OFFSET_U84_BOOT_ADDRESS1_LOW                0X328
++#define WIN2030_REG_OFFSET_U84_BOOT_ADDRESS2_HI                 0X32C
++#define WIN2030_REG_OFFSET_U84_BOOT_ADDRESS2_LOW                0X330
++#define WIN2030_REG_OFFSET_U84_BOOT_ADDRESS3_HI                 0X334
++#define WIN2030_REG_OFFSET_U84_BOOT_ADDRESS3_LOW                0X338
++#define WIN2030_REG_OFFSET_BOOT_SEL_STAT                        0X33C
++#define WIN2030_REG_OFFSET_BOOT_SPI_CFG                         0X340
++#define WIN2030_REG_OFFSET_SNOC_RST_CTRL                        0X400
++#define WIN2030_REG_OFFSET_GPU_RST_CTRL                         0X404
++#define WIN2030_REG_OFFSET_DSP_RST_CTRL                         0X408
++#define WIN2030_REG_OFFSET_D2D_RST_CTRL                         0X40C
++#define WIN2030_REG_OFFSET_DDR_RST_CTRL                         0X410
++#define WIN2030_REG_OFFSET_TCU_RST_CTRL                         0X414
++#define WIN2030_REG_OFFSET_NPU_RST_CTRL                         0X418
++#define WIN2030_REG_OFFSET_HSPDMA_RST_CTRL                      0X41C
++#define WIN2030_REG_OFFSET_PCIE_RST_CTRL                        0X420
++#define WIN2030_REG_OFFSET_I2C_RST_CTRL                         0X424
++#define WIN2030_REG_OFFSET_FAN_RST_CTRL                         0X428
++#define WIN2030_REG_OFFSET_PVT_RST_CTRL                         0X42C
++#define WIN2030_REG_OFFSET_MBOX_RST_CTRL                        0X430
++#define WIN2030_REG_OFFSET_UART_RST_CTRL                        0X434
++#define WIN2030_REG_OFFSET_GPIO_RST_CTRL                        0X438
++#define WIN2030_REG_OFFSET_TIMER_RST_CTRL                       0X43C
++#define WIN2030_REG_OFFSET_SSI_RST_CTRL                         0X440
++#define WIN2030_REG_OFFSET_WDT_RST_CTRL                         0X444
++#define WIN2030_REG_OFFSET_LSP_CFGRST_CTRL                      0X448
++#define WIN2030_REG_OFFSET_U84_RST_CTRL                         0X44C
++#define WIN2030_REG_OFFSET_SCPU_RST_CTRL                        0X450
++#define WIN2030_REG_OFFSET_LPCPU_RST_CTRL                       0X454
++#define WIN2030_REG_OFFSET_VC_RST_CTRL                          0X458
++#define WIN2030_REG_OFFSET_JD_RST_CTRL                          0X45C
++#define WIN2030_REG_OFFSET_JE_RST_CTRL                          0X460
++#define WIN2030_REG_OFFSET_VE_RST_CTRL                          0X468
++#define WIN2030_REG_OFFSET_G2D_RST_CTRL                         0X46C
++#define WIN2030_REG_OFFSET_VI_RST_CTRL                          0X470
++#define WIN2030_REG_OFFSET_DVP_RST_CTRL                         0X474
++#define WIN2030_REG_OFFSET_ISP0_RST_CTRL                        0X478
++#define WIN2030_REG_OFFSET_ISP1_RST_CTRL                        0X47C
++#define WIN2030_REG_OFFSET_SHUTTER_RST_CTRL                     0X480
++#define WIN2030_REG_OFFSET_VO_PHYRST_CTRL                       0X484
++#define WIN2030_REG_OFFSET_VO_I2SRST_CTRL                       0X488
++#define WIN2030_REG_OFFSET_VO_RST_CTRL                          0X48C
++#define WIN2030_REG_OFFSET_BOOTSPI_RST_CTRL                     0X490
++#define WIN2030_REG_OFFSET_I2C1_RST_CTRL                        0X494
++#define WIN2030_REG_OFFSET_I2C0_RST_CTRL                        0X498
++#define WIN2030_REG_OFFSET_DMA1_RST_CTRL                        0X49C
++#define WIN2030_REG_OFFSET_FPRT_RST_CTRL                        0X4A0
++#define WIN2030_REG_OFFSET_HBLOCK_RST_CTRL                      0X4A4
++#define WIN2030_REG_OFFSET_SECSR_RST_CTRL                       0X4A8
++#define WIN2030_REG_OFFSET_OTP_RST_CTRL                         0X4AC
++#define WIN2030_REG_OFFSET_PKA_RST_CTRL                         0X4B0
++#define WIN2030_REG_OFFSET_SPACC_RST_CTRL                       0X4B4
++#define WIN2030_REG_OFFSET_TRNG_RST_CTRL                        0X4B8
++#define WIN2030_REG_OFFSET_TIMER0_RST_CTRL                      0X4C0
++#define WIN2030_REG_OFFSET_TIMER1_RST_CTRL                      0X4C4
++#define WIN2030_REG_OFFSET_TIMER2_RST_CTRL                      0X4C8
++#define WIN2030_REG_OFFSET_TIMER3_RST_CTRL                      0X4CC
++#define WIN2030_REG_OFFSET_RTC_RST_CTRL                         0X4D0
++#define WIN2030_REG_OFFSET_MNOC_RST_CTRL                        0X4D4
++#define WIN2030_REG_OFFSET_RNOC_RST_CTRL                        0X4D8
++#define WIN2030_REG_OFFSET_CNOC_RST_CTRL                        0X4DC
++#define WIN2030_REG_OFFSET_LNOC_RST_CTRL                        0X4E0
++#endif
+diff --git a/include/dt-bindings/reset/eswin,eic770x-reset.h b/include/dt-bindings/reset/eswin,eic770x-reset.h
+new file mode 100755
+index 000000000000..e544fa4da748
+--- /dev/null
++++ b/include/dt-bindings/reset/eswin,eic770x-reset.h
+@@ -0,0 +1,473 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/*
++ *
++ * Copyright 2024, Beijing ESWIN Computing Technology Co., Ltd.. All rights reserved.
++ *
++ * This program is free software: you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation, version 2.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
++ *
++ * Authors: HuangYiFeng<huangyifeng@eswincomputing.com>
++ */
++
++#ifndef __DT_ESWIN_EIC770X_RESET_H__
++#define __DT_ESWIN_EIC770X_RESET_H__
++
++/*
++ * RESET DEV ID  FOR EACH RESET CONSUMER
++ *
++ */
++#define		SNOC_RST_CTRL					0X00
++#define		GPU_RST_CTRL					0X01
++#define		DSP_RST_CTRL					0X02
++#define		D2D_RST_CTRL					0X03
++#define		DDR_RST_CTRL					0X04
++#define		TCU_RST_CTRL					0X05
++#define		NPU_RST_CTRL					0X06
++#define		HSPDMA_RST_CTRL					0X07
++#define		PCIE_RST_CTRL					0X08
++#define		I2C_RST_CTRL					0X09
++#define		FAN_RST_CTRL					0X0A
++#define		PVT_RST_CTRL					0X0B
++#define		MBOX_RST_CTRL					0X0C
++#define		UART_RST_CTRL					0X0D
++#define		GPIO_RST_CTRL					0X0E
++#define		TIMER_RST_CTRL					0X0F
++#define		SSI_RST_CTRL					0X10
++#define		WDT_RST_CTRL					0X11
++#define		LSP_CFGRST_CTRL					0X12
++#define		U84_RST_CTRL					0X13
++#define		SCPU_RST_CTRL					0X14
++#define		LPCPU_RST_CTRL					0X15
++#define		VC_RST_CTRL					0X16
++#define		JD_RST_CTRL					0X17
++#define		JE_RST_CTRL					0X18
++#define		VD_RST_CTRL					0X19
++#define		VE_RST_CTRL					0X1A
++#define		G2D_RST_CTRL					0X1B
++#define		VI_RST_CTRL					0X1C
++#define		DVP_RST_CTRL					0X1D
++#define		ISP0_RST_CTRL					0X1E
++#define		ISP1_RST_CTRL					0X1F
++#define		SHUTTER_RST_CTRL				0X20
++#define		VO_PHYRST_CTRL					0X21
++#define		VO_I2SRST_CTRL					0X22
++#define		VO_RST_CTRL					0X23
++#define		BOOTSPI_RST_CTRL				0X24
++#define		I2C1_RST_CTRL					0X25
++#define		I2C0_RST_CTRL					0X26
++#define		DMA1_RST_CTRL					0X27
++#define		FPRT_RST_CTRL					0X28
++#define		HBLOCK_RST_CTRL					0X29
++#define		SECSR_RST_CTRL					0X2A
++#define		OTP_RST_CTRL					0X2B
++#define		PKA_RST_CTRL					0X2C
++#define		SPACC_RST_CTRL					0X2D
++#define		TRNG_RST_CTRL					0X2E
++#define		RESERVED					0X2F
++#define		TIMER0_RST_CTRL					0X30
++#define		TIMER1_RST_CTRL					0X31
++#define		TIMER2_RST_CTRL					0X32
++#define		TIMER3_RST_CTRL					0X33
++#define		RTC_RST_CTRL					0X34
++#define		MNOC_RST_CTRL					0X35
++#define		RNOC_RST_CTRL					0X36
++#define		CNOC_RST_CTRL					0X37
++#define		LNOC_RST_CTRL					0X38
++
++/*
++ * CONSUMER RESET CONTROL BIT
++ */
++/*SNOC*/
++#define		SW_NOC_NSP_RSTN						(1 << 0)
++#define		SW_NOC_CFG_RSTN						(1 << 1)
++#define		SW_RNOC_NSP_RSTN					(1 << 2)
++#define		SW_SNOC_TCU_ARSTN					(1 << 3)
++#define		SW_SNOC_U84_ARSTN					(1 << 4)
++#define		SW_SNOC_PCIET_XSRSTN					(1 << 5)
++#define		SW_SNOC_PCIET_XMRSTN					(1 << 6)
++#define		SW_SNOC_PCIET_PRSTN					(1 << 7)
++#define		SW_SNOC_NPU_ARSTN					(1 << 8)
++#define		SW_SNOC_JTAG_ARSTN					(1 << 9)
++#define		SW_SNOC_DSPT_ARSTN					(1 << 10)
++#define		SW_SNOC_DDRC1_P2_ARSTN					(1 << 11)
++#define		SW_SNOC_DDRC1_P1_ARSTN					(1 << 12)
++#define		SW_SNOC_DDRC0_P2_ARSTN					(1 << 13)
++#define		SW_SNOC_DDRC0_P1_ARSTN					(1 << 14)
++#define		SW_SNOC_D2D_ARSTN					(1 << 15)
++#define		SW_SNOC_AON_ARSTN					(1 << 16)
++
++/*GPU*/
++#define		SW_GPU_AXI_RSTN						(1 << 0)
++#define		SW_GPU_CFG_RSTN						(1 << 1)
++#define		SW_GPU_GRAY_RSTN					(1 << 2)
++#define		SW_GPU_JONES_RSTN					(1 << 3)
++#define		SW_GPU_SPU_RSTN						(1 << 4)
++
++/*DSP*/
++#define		SW_DSP_AXI_RSTN						(1 << 0)
++#define		SW_DSP_CFG_RSTN						(1 << 1)
++#define		SW_DSP_DIV4_RSTN					(1 << 2)
++#define		SW_DSP_DIV_RSTN_0					(1 << 4)
++#define		SW_DSP_DIV_RSTN_1					(1 << 5)
++#define		SW_DSP_DIV_RSTN_2					(1 << 6)
++#define		SW_DSP_DIV_RSTN_3					(1 << 7)
++
++/*D2D*/
++#define		SW_D2D_AXI_RSTN						(1 << 0)
++#define		SW_D2D_CFG_RSTN						(1 << 1)
++#define		SW_D2D_PRST_N						(1 << 2)
++#define		SW_D2D_RAW_PCS_RST_N					(1 << 4)
++#define		SW_D2D_RX_RST_N						(1 << 5)
++#define		SW_D2D_TX_RST_N						(1 << 6)
++#define		SW_D2D_CORE_RST_N					(1 << 7)
++
++/*TCU*/
++#define		SW_TCU_AXI_RSTN						(1 << 0)
++#define		SW_TCU_CFG_RSTN						(1 << 1)
++#define		TBU_RSTN_0						(1 << 4)
++#define		TBU_RSTN_1						(1 << 5)
++#define		TBU_RSTN_2						(1 << 6)
++#define		TBU_RSTN_3						(1 << 7)
++#define		TBU_RSTN_4						(1 << 8)
++#define		TBU_RSTN_5						(1 << 9)
++#define		TBU_RSTN_6						(1 << 10)
++#define		TBU_RSTN_7						(1 << 11)
++#define		TBU_RSTN_8						(1 << 12)
++#define		TBU_RSTN_9						(1 << 13)
++#define		TBU_RSTN_10						(1 << 14)
++#define		TBU_RSTN_11						(1 << 15)
++#define		TBU_RSTN_12						(1 << 16)
++#define		TBU_RSTN_13						(1 << 17)
++#define		TBU_RSTN_14						(1 << 18)
++#define		TBU_RSTN_15						(1 << 19)
++#define		TBU_RSTN_16						(1 << 20)
++
++/*NPU*/
++#define		SW_NPU_AXI_RSTN						(1 << 0)
++#define		SW_NPU_CFG_RSTN						(1 << 1)
++#define		SW_NPU_CORE_RSTN					(1 << 2)
++#define		SW_NPU_E31CORE_RSTN					(1 << 3)
++#define		SW_NPU_E31BUS_RSTN					(1 << 4)
++#define		SW_NPU_E31DBG_RSTN					(1 << 5)
++#define		SW_NPU_LLC_RSTN						(1 << 6)
++
++/*HSP DMA*/
++#define		SW_HSP_AXI_RSTN						(1 << 0)
++#define		SW_HSP_CFG_RSTN						(1 << 1)
++#define		SW_HSP_POR_RSTN						(1 << 2)
++#define		SW_MSHC0_PHY_RSTN					(1 << 3)
++#define		SW_MSHC1_PHY_RSTN					(1 << 4)
++#define		SW_MSHC2_PHY_RSTN					(1 << 5)
++#define		SW_MSHC0_TXRX_RSTN					(1 << 6)
++#define		SW_MSHC1_TXRX_RSTN					(1 << 7)
++#define		SW_MSHC2_TXRX_RSTN					(1 << 8)
++#define		SW_SATA_ASIC0_RSTN					(1 << 9)
++#define		SW_SATA_OOB_RSTN					(1 << 10)
++#define		SW_SATA_PMALIVE_RSTN					(1 << 11)
++#define		SW_SATA_RBC_RSTN					(1 << 12)
++#define		SW_DMA0_RST_N						(1 << 13)
++#define		SW_HSP_DMA0_RSTN					(1 << 14)
++#define		SW_USB0_VAUX_RSTN					(1 << 15)
++#define		SW_USB1_VAUX_RSTN					(1 << 16)
++#define		SW_HSP_SD1_PRSTN					(1 << 17)
++#define		SW_HSP_SD0_PRSTN					(1 << 18)
++#define		SW_HSP_EMMC_PRSTN					(1 << 19)
++#define		SW_HSP_DMA_PRSTN					(1 << 20)
++#define		SW_HSP_SD1_ARSTN					(1 << 21)
++#define		SW_HSP_SD0_ARSTN					(1 << 22)
++#define		SW_HSP_EMMC_ARSTN					(1 << 23)
++#define		SW_HSP_DMA_ARSTN					(1 << 24)
++#define		SW_HSP_ETH1_ARSTN					(1 << 25)
++#define		SW_HSP_ETH0_ARSTN					(1 << 26)
++#define		SW_HSP_SATA_ARSTN					(1 << 27)
++
++/*PCIE*/
++#define		SW_PCIE_CFG_RSTN					(1 << 0)
++#define		SW_PCIE_POWERUP_RSTN					(1 << 1)
++#define		SW_PCIE_PERST_N						(1 << 2)
++
++/*I2C*/
++#define		SW_I2C_RST_N_0						(1 << 0)
++#define		SW_I2C_RST_N_1						(1 << 1)
++#define		SW_I2C_RST_N_2						(1 << 2)
++#define		SW_I2C_RST_N_3						(1 << 3)
++#define		SW_I2C_RST_N_4						(1 << 4)
++#define		SW_I2C_RST_N_5						(1 << 5)
++#define		SW_I2C_RST_N_6						(1 << 6)
++#define		SW_I2C_RST_N_7						(1 << 7)
++#define		SW_I2C_RST_N_8						(1 << 8)
++#define		SW_I2C_RST_N_9						(1 << 9)
++
++/*FAN*/
++#define		SW_FAN_RST_N						(1 << 0)
++
++/*PVT*/
++#define		SW_PVT_RST_N_0						(1 << 0)
++#define		SW_PVT_RST_N_1						(1 << 1)
++
++/*MBOX*/
++#define		SW_MBOX_RST_N_0					(1 << 0)
++#define		SW_MBOX_RST_N_1					(1 << 1)
++#define		SW_MBOX_RST_N_2					(1 << 2)
++#define		SW_MBOX_RST_N_3					(1 << 3)
++#define		SW_MBOX_RST_N_4					(1 << 4)
++#define		SW_MBOX_RST_N_5					(1 << 5)
++#define		SW_MBOX_RST_N_6					(1 << 6)
++#define		SW_MBOX_RST_N_7					(1 << 7)
++#define		SW_MBOX_RST_N_8					(1 << 8)
++#define		SW_MBOX_RST_N_9					(1 << 9)
++#define		SW_MBOX_RST_N_10				(1 << 10)
++#define		SW_MBOX_RST_N_11				(1 << 11)
++#define		SW_MBOX_RST_N_12				(1 << 12)
++#define		SW_MBOX_RST_N_13				(1 << 13)
++#define		SW_MBOX_RST_N_14				(1 << 14)
++#define		SW_MBOX_RST_N_15				(1 << 15)
++
++/*UART*/
++#define		SW_UART_RST_N_0					(1 << 0)
++#define		SW_UART_RST_N_1					(1 << 1)
++#define		SW_UART_RST_N_2					(1 << 2)
++#define		SW_UART_RST_N_3					(1 << 3)
++#define		SW_UART_RST_N_4					(1 << 4)
++
++/*GPIO*/
++#define		SW_GPIO_RST_N_0					(1 << 0)
++#define		SW_GPIO_RST_N_1					(1 << 1)
++
++/*TIMER*/
++#define		SW_TIMER_RST_N					(1 << 0)
++
++/*SSI*/
++#define		SW_SSI_RST_N_0					(1 << 0)
++#define		SW_SSI_RST_N_1					(1 << 1)
++
++/*WDT*/
++#define		SW_WDT_RST_N_0					(1 << 0)
++#define		SW_WDT_RST_N_1					(1 << 1)
++#define		SW_WDT_RST_N_2					(1 << 2)
++#define		SW_WDT_RST_N_3					(1 << 3)
++
++/*LSP CFG*/
++#define		SW_LSP_CFG_RSTN					(1 << 0)
++
++/*U84 CFG*/
++#define		SW_U84_CORE_RSTN_0				(1 << 0)
++#define		SW_U84_CORE_RSTN_1				(1 << 1)
++#define		SW_U84_CORE_RSTN_2				(1 << 2)
++#define		SW_U84_CORE_RSTN_3				(1 << 3)
++#define		SW_U84_BUS_RSTN					(1 << 4)
++#define		SW_U84_DBG_RSTN					(1 << 5)
++#define		SW_U84_TRACECOM_RSTN				(1 << 6)
++#define		SW_U84_TRACE_RSTN_0				(1 << 8)
++#define		SW_U84_TRACE_RSTN_1				(1 << 9)
++#define		SW_U84_TRACE_RSTN_2				(1 << 10)
++#define		SW_U84_TRACE_RSTN_3				(1 << 11)
++
++/*SCPU*/
++#define		SW_SCPU_CORE_RSTN				(1 << 0)
++#define		SW_SCPU_BUS_RSTN				(1 << 1)
++#define		SW_SCPU_DBG_RSTN				(1 << 2)
++
++/*LPCPU*/
++#define		SW_LPCPU_CORE_RSTN				(1 << 0)
++#define		SW_LPCPU_BUS_RSTN				(1 << 1)
++#define		SW_LPCPU_DBG_RSTN				(1 << 2)
++
++/*VC*/
++#define		SW_VC_CFG_RSTN					(1 << 0)
++#define		SW_VC_AXI_RSTN					(1 << 1)
++#define		SW_VC_MONCFG_RSTN				(1 << 2)
++
++/*JD*/
++#define		SW_JD_CFG_RSTN					(1 << 0)
++#define		SW_JD_AXI_RSTN					(1 << 1)
++
++/*JE*/
++#define		SW_JE_CFG_RSTN					(1 << 0)
++#define		SW_JE_AXI_RSTN					(1 << 1)
++
++/*VD*/
++#define		SW_VD_CFG_RSTN					(1 << 0)
++#define		SW_VD_AXI_RSTN					(1 << 1)
++
++/*VE*/
++#define		SW_VE_AXI_RSTN					(1 << 0)
++#define		SW_VE_CFG_RSTN					(1 << 1)
++
++/*G2D*/
++#define		SW_G2D_CORE_RSTN				(1 << 0)
++#define		SW_G2D_CFG_RSTN					(1 << 1)
++#define		SW_G2D_AXI_RSTN					(1 << 2)
++
++/*VI*/
++#define		SW_VI_AXI_RSTN					(1 << 0)
++#define		SW_VI_CFG_RSTN					(1 << 1)
++#define		SW_VI_DWE_RSTN					(1 << 2)
++
++/*DVP*/
++#define		SW_VI_DVP_RSTN					(1 << 0)
++
++/*ISP0*/
++#define		SW_VI_ISP0_RSTN					(1 << 0)
++
++/*ISP1*/
++#define		SW_VI_ISP1_RSTN					(1 << 0)
++
++/*SHUTTR*/
++#define		SW_VI_SHUTTER_RSTN_0				(1 << 0)
++#define		SW_VI_SHUTTER_RSTN_1				(1 << 1)
++#define		SW_VI_SHUTTER_RSTN_2				(1 << 2)
++#define		SW_VI_SHUTTER_RSTN_3				(1 << 3)
++#define		SW_VI_SHUTTER_RSTN_4				(1 << 4)
++#define		SW_VI_SHUTTER_RSTN_5				(1 << 5)
++
++/*VO PHY*/
++#define		SW_VO_MIPI_PRSTN				(1 << 0)
++#define		SW_VO_PRSTN					(1 << 1)
++#define		SW_VO_HDMI_PRSTN				(1 << 3)
++#define		SW_HDMI_PHYCTRL_RSTN				(1 << 4)
++#define		SW_VO_HDMI_RSTN					(1 << 5)
++
++/*VO I2S*/
++#define		SW_VO_I2S_RSTN					(1 << 0)
++#define		SW_VO_I2S_PRSTN					(1 << 1)
++
++/*VO*/
++#define		SW_VO_AXI_RSTN					(1 << 0)
++#define		SW_VO_CFG_RSTN					(1 << 1)
++#define		SW_VO_DC_RSTN					(1 << 2)
++#define		SW_VO_DC_PRSTN					(1 << 3)
++
++/*BOOTSPI*/
++#define		SW_BOOTSPI_HRSTN				(1 << 0)
++#define		SW_BOOTSPI_RSTN					(1 << 1)
++
++/*I2C1*/
++#define		SW_I2C1_PRSTN					(1 << 0)
++
++/*I2C0*/
++#define		SW_I2C0_PRSTN					(1 << 0)
++
++/*DMA1*/
++#define		SW_DMA1_ARSTN					(1 << 0)
++#define		SW_DMA1_HRSTN					(1 << 1)
++
++/*FPRT*/
++#define		SW_FP_PRT_HRSTN					(1 << 0)
++
++/*HBLOCK*/
++#define		SW_HBLOCK_HRSTN					(1 << 0)
++
++/*SECSR*/
++#define		SW_SECSR_HRSTN					(1 << 0)
++
++/*OTP*/
++#define		SW_OTP_PRSTN					(1 << 0)
++
++/*PKA*/
++#define		SW_PKA_HRSTN					(1 << 0)
++
++/*SPACC*/
++#define		SW_SPACC_RSTN					(1 << 0)
++
++/*TRNG*/
++#define		SW_TRNG_HRSTN					(1 << 0)
++
++/*TIMER0*/
++#define		SW_TIMER0_RSTN_0				(1 << 0)
++#define		SW_TIMER0_RSTN_1				(1 << 1)
++#define		SW_TIMER0_RSTN_2				(1 << 2)
++#define		SW_TIMER0_RSTN_3				(1 << 3)
++#define		SW_TIMER0_RSTN_4				(1 << 4)
++#define		SW_TIMER0_RSTN_5				(1 << 5)
++#define		SW_TIMER0_RSTN_6				(1 << 6)
++#define		SW_TIMER0_RSTN_7				(1 << 7)
++#define		SW_TIMER0_PRSTN					(1 << 8)
++
++/*TIMER1*/
++#define		SW_TIMER1_RSTN_0				(1 << 0)
++#define		SW_TIMER1_RSTN_1				(1 << 1)
++#define		SW_TIMER1_RSTN_2				(1 << 2)
++#define		SW_TIMER1_RSTN_3				(1 << 3)
++#define		SW_TIMER1_RSTN_4				(1 << 4)
++#define		SW_TIMER1_RSTN_5				(1 << 5)
++#define		SW_TIMER1_RSTN_6				(1 << 6)
++#define		SW_TIMER1_RSTN_7				(1 << 7)
++#define		SW_TIMER1_PRSTN					(1 << 8)
++
++/*TIMER2*/
++#define		SW_TIMER2_RSTN_0				(1 << 0)
++#define		SW_TIMER2_RSTN_1				(1 << 1)
++#define		SW_TIMER2_RSTN_2				(1 << 2)
++#define		SW_TIMER2_RSTN_3				(1 << 3)
++#define		SW_TIMER2_RSTN_4				(1 << 4)
++#define		SW_TIMER2_RSTN_5				(1 << 5)
++#define		SW_TIMER2_RSTN_6				(1 << 6)
++#define		SW_TIMER2_RSTN_7				(1 << 7)
++#define		SW_TIMER2_PRSTN					(1 << 8)
++
++/*TIMER3*/
++#define		SW_TIMER3_RSTN_0				(1 << 0)
++#define		SW_TIMER3_RSTN_1				(1 << 1)
++#define		SW_TIMER3_RSTN_2				(1 << 2)
++#define		SW_TIMER3_RSTN_3				(1 << 3)
++#define		SW_TIMER3_RSTN_4				(1 << 4)
++#define		SW_TIMER3_RSTN_5				(1 << 5)
++#define		SW_TIMER3_RSTN_6				(1 << 6)
++#define		SW_TIMER3_RSTN_7				(1 << 7)
++#define		SW_TIMER3_PRSTN					(1 << 8)
++
++/*RTC*/
++#define		SW_RTC_RSTN					(1 << 0)
++
++/*MNOC*/
++#define		SW_MNOC_SNOC_NSP_RSTN				(1 << 0)
++#define		SW_MNOC_VC_ARSTN				(1 << 1)
++#define		SW_MNOC_CFG_RSTN				(1 << 2)
++#define		SW_MNOC_HSP_ARSTN				(1 << 3)
++#define		SW_MNOC_GPU_ARSTN				(1 << 4)
++#define		SW_MNOC_DDRC1_P3_ARSTN				(1 << 5)
++#define		SW_MNOC_DDRC0_P3_ARSTN				(1 << 6)
++
++/*RNOC*/
++#define		SW_RNOC_VO_ARSTN				(1 << 0)
++#define		SW_RNOC_VI_ARSTN				(1 << 1)
++#define		SW_RNOC_SNOC_NSP_RSTN				(1 << 2)
++#define		SW_RNOC_CFG_RSTN				(1 << 3)
++#define		SW_MNOC_DDRC1_P4_ARSTN				(1 << 4)
++#define		SW_MNOC_DDRC0_P4_ARSTN				(1 << 5)
++
++/*CNOC*/
++#define		SW_CNOC_VO_CFG_RSTN				(1 << 0)
++#define		SW_CNOC_VI_CFG_RSTN				(1 << 1)
++#define		SW_CNOC_VC_CFG_RSTN				(1 << 2)
++#define		SW_CNOC_TCU_CFG_RSTN				(1 << 3)
++#define		SW_CNOC_PCIET_CFG_RSTN				(1 << 4)
++#define		SW_CNOC_NPU_CFG_RSTN				(1 << 5)
++#define		SW_CNOC_LSP_CFG_RSTN				(1 << 6)
++#define		SW_CNOC_HSP_CFG_RSTN				(1 << 7)
++#define		SW_CNOC_GPU_CFG_RSTN				(1 << 8)
++#define		SW_CNOC_DSPT_CFG_RSTN				(1 << 9)
++#define		SW_CNOC_DDRT1_CFG_RSTN				(1 << 10)
++#define		SW_CNOC_DDRT0_CFG_RSTN				(1 << 11)
++#define		SW_CNOC_D2D_CFG_RSTN				(1 << 12)
++#define		SW_CNOC_CFG_RSTN				(1 << 13)
++#define		SW_CNOC_CLMM_CFG_RSTN				(1 << 14)
++#define		SW_CNOC_AON_CFG_RSTN				(1 << 15)
++
++/*LNOC*/
++#define		SW_LNOC_CFG_RSTN				(1 << 0)
++#define		SW_LNOC_NPU_LLC_ARSTN				(1 << 1)
++#define		SW_LNOC_DDRC1_P0_ARSTN				(1 << 2)
++#define		SW_LNOC_DDRC0_P0_ARSTN				(1 << 3)
++
++#endif /*endif __DT_ESWIN_EIC770X_RESET_H__*/
+-- 
+2.53.0
+

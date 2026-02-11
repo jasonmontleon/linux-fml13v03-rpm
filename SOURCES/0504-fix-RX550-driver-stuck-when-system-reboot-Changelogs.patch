@@ -1,0 +1,27 @@
+From cdd5bb763a243dac69a958a2d656a74110da7392 Mon Sep 17 00:00:00 2001
+From: ouyanghui <ouyanghui@eswincomputing.com>
+Date: Fri, 22 Aug 2025 13:50:12 +0800
+Subject: [PATCH 504/534] fix:RX550 driver stuck when system reboot Changelogs:
+ 1. perst keep deassert when reboot
+
+Signed-off-by: ouyanghui <ouyanghui@eswincomputing.com>
+---
+ drivers/pci/controller/dwc/pcie-eswin.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/pci/controller/dwc/pcie-eswin.c b/drivers/pci/controller/dwc/pcie-eswin.c
+index f00b5909b85f..56d623f949b2 100644
+--- a/drivers/pci/controller/dwc/pcie-eswin.c
++++ b/drivers/pci/controller/dwc/pcie-eswin.c
+@@ -469,7 +469,7 @@ static struct platform_driver eswin_pcie_driver = {
+ 		   .name = "eswin-pcie",
+ 		   .of_match_table = eswin_pcie_of_match,
+ 		   .suppress_bind_attrs = true,
+-		   .pm = &eswin_pcie_pm_ops,
++		   .pm = pm_sleep_ptr(&eswin_pcie_pm_ops),
+ 	},
+ 	.probe = eswin_pcie_probe,
+ 	.remove = __exit_p(eswin_pcie_remove),
+-- 
+2.53.0
+

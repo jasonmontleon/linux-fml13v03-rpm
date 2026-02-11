@@ -1,0 +1,1780 @@
+From 1967d515673aa981fef27dd297932d1e157ff4a6 Mon Sep 17 00:00:00 2001
+From: Jiean He <hejiean@eswincomputing.com>
+Date: Fri, 8 Aug 2025 20:34:28 +0800
+Subject: [PATCH 444/534] Applied patches from local PM branch
+
+Changelogs:
+Apply patches between commit f3293e91e and bdb40f20b from local PM branch.
+Kernel version is updated to 6.6.92
+
+Signed-off-by: hejiean <hejiean@eswincomputing.com>
+---
+ arch/riscv/boot/dts/eswin/eic7700-evb-a2.dtsi |  59 +---
+ .../eic7702-deepcomputing-fml13v03-evt.dts    |  79 +----
+ .../eswin/eic7702-deepcomputing-fml13v03.dts  |  84 +----
+ .../boot/dts/eswin/eic7x-die0-pinctrl.dtsi    |  47 +--
+ arch/riscv/boot/dts/eswin/eswin_aicard.dts    |  95 +-----
+ arch/riscv/configs/eic7700_dbg_defconfig      |  15 +-
+ arch/riscv/configs/eic7702_dbg_defconfig      |  45 ++-
+ arch/riscv/configs/eswin_aicard_defconfig     |   2 +-
+ arch/riscv/configs/fml13v03_defconfig         |   6 +-
+ arch/riscv/configs/m2_evb_defconfig           |   4 +-
+ arch/riscv/configs/u2_evb_defconfig           |   3 +-
+ drivers/clk/eswin/clk.c                       |  50 +++
+ drivers/soc/eswin/ai_driver/npu/npu_main.c    | 315 +++++++++++-------
+ drivers/soc/eswin/eswin-lpcpu.c               |   4 +-
+ .../os/linux/kernel/gc_hal_kernel_device.c    |  41 ---
+ .../os/linux/kernel/gc_hal_kernel_device.h    |   2 -
+ 16 files changed, 339 insertions(+), 512 deletions(-)
+
+diff --git a/arch/riscv/boot/dts/eswin/eic7700-evb-a2.dtsi b/arch/riscv/boot/dts/eswin/eic7700-evb-a2.dtsi
+index 9c4e3867fe80..d15c64867147 100644
+--- a/arch/riscv/boot/dts/eswin/eic7700-evb-a2.dtsi
++++ b/arch/riscv/boot/dts/eswin/eic7700-evb-a2.dtsi
+@@ -30,7 +30,7 @@
+ 
+ #include "eswin-win2030-die0-soc.dtsi"
+ #include "eic7700-pinctrl.dtsi"
+-#include "eic7700-evb-camera-imx327.dtsi"
++// #include "eic7700-evb-camera-imx327.dtsi"
+ #include <dt-bindings/interrupt-controller/irq.h>
+ #include <dt-bindings/gpio/gpio.h>
+ #include <dt-bindings/input/input.h>
+@@ -41,8 +41,7 @@ / {
+ 	#address-cells = <2>;
+ 	#size-cells = <2>;
+ 	model = "ESWIN EIC7700 EVB A2";
+-	compatible = "sifive,hifive-unmatched-a00", "sifive,fu740-c000",
+-		     "sifive,fu740", "eswin,eic7700";
++	compatible = "eswin,eic7x";
+ 
+ 	aliases {
+ 		serial0 = &d0_uart0;
+@@ -402,38 +401,22 @@ &d0_graphcard1 {
+ //	dais = <&d0_i2s0_port>;
+ //};
+ 
+-&isp_0 {
++&vi_subsys {
+ 	status = "okay";
+ };
+ 
++&isp_0 {
++	status = "disabled";
++};
++
+ &isp_1 {
+-	status = "okay";
++	status = "disabled";
+ };
+ 
+ &dewarp {
+ 	status = "okay";
+ };
+ 
+-// &mipi_dphy_rx {
+-// 	status = "okay";
+-// };
+-
+-// &csi_dma0 {
+-// 	status = "okay";
+-// };
+-
+-&csi_dma1 {
+-	status = "disabled";
+-};
+-
+-// &csi2_0 {
+-// 	status = "okay";
+-// };
+-
+-// &csi2_1 {
+-// 	status = "disabled";
+-// };
+-
+ &sdhci_emmc {
+ 	/* emmc */
+ 	status = "okay";
+@@ -499,6 +482,7 @@ &d0_gmac0 {
+ 	rst-gpios = <&portc 30 GPIO_ACTIVE_LOW>;
+ 	eswin,rgmiisel = <&pinctrl 0x290 0x3>;
+ 	eswin,led-cfgs = <0x6100 0xa40 0x420>;
++	phy-mode = "rgmii-txid";
+ 	dly-param-1000m = <0x20202020 0xA0205A20 0x20202020>;
+ 	dly-param-100m = <0x20202020 0xA0205020 0x20202020>;
+ 	dly-param-10m = <0 0 0>;
+@@ -511,6 +495,7 @@ &d0_gmac1 {
+ 	rst-gpios = <&porta 16 GPIO_ACTIVE_LOW>;
+ 	eswin,rgmiisel = <&pinctrl 0x294 0x3>;
+ 	eswin,led-cfgs = <0x6100 0xa40 0x420>;
++	phy-mode = "rgmii-txid";
+ 	dly-param-1000m = <0x20202020 0x46204620 0x20202020>;
+ 	dly-param-100m = <0x20202020 0x50205020 0x20202020>;
+ 	dly-param-10m = <0 0 0>;
+@@ -525,6 +510,7 @@ &d0_sata {
+ 
+ &d0_usbdrd3_0 {
+ 	status = "okay";
++	rt_equalization;
+ };
+ 
+ &d0_usbdrd_dwc3_0 {
+@@ -535,6 +521,7 @@ &d0_usbdrd_dwc3_0 {
+ 
+ &d0_usbdrd3_1 {
+ 	status = "okay";
++	rt_equalization;
+ };
+ 
+ &d0_usbdrd_dwc3_1 {
+@@ -711,7 +698,7 @@ mpq8785@10 {
+ 		compatible = "mps,mpq8785";
+ 		reg = <0x10>;
+ 		eswin,regulator_default-microvolt=<1000000>;
+-		eswin,regulator_label = "supply vdd1", "npu vdd1", "npu current1", "npu temperature1";
++		eswin,regulator_label = "Supply VDD", "NPU Voltage", "NPU CURRENT", "NPU Temperature";
+ 		label = "npu_vdd";
+ 		regulators{
+ 			npu_vcc1:npu_svcc{
+@@ -823,6 +810,10 @@ ina226@48 {
+ &pwm0 {
+ 	/* fan */
+ 	status = "okay";
++	pinctrl-names = "default", "sleep";
++	pinctrl-0 = <&pinctrl_pwm0_default>;
++	pinctrl-1 = <&pinctrl_gpio68_default>;
++	fan-pwm-gpios = <&portc 4 GPIO_ACTIVE_LOW>;
+ };
+ 
+ &pvt0 {
+@@ -853,22 +844,6 @@ &die0_rtc {
+ 	status = "okay";
+ };
+ 
+-&timer0 {
+-	status = "okay";
+-};
+-
+-&timer1 {
+-	status = "okay";
+-};
+-
+-&timer2 {
+-	status = "okay";
+-};
+-
+-&timer3 {
+-	status = "okay";
+-};
+-
+ &pinctrl {
+ 	status = "okay";
+ };
+diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03-evt.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03-evt.dts
+index 6cc7838a2619..7e8270a8393f 100755
+--- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03-evt.dts
++++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03-evt.dts
+@@ -295,11 +295,13 @@ &d0_clock {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&pinctrl_die0_gpio19_default>;
+ 	cpu-voltage-gpios = <&porta 19 GPIO_ACTIVE_HIGH>;
++	cpu-suspend-frequency = <CLK_FREQ_1400M>;
+ };
+ 
+ &d1_clock {
+ 	status = "okay";
+ 	cpu-voltage-gpios = <&porta 19 GPIO_ACTIVE_HIGH>;
++	cpu-suspend-frequency = <CLK_FREQ_1400M>;
+ };
+ 
+ &d0_reset {
+@@ -649,7 +651,7 @@ &gpu0 {
+ 	status = "okay";
+ };
+ &d1_gpu {
+-	status = "okay";
++	status = "disabled";
+ };
+ 
+ &gc820 {
+@@ -895,41 +897,6 @@ &d1_dewarp {
+ 	status = "disabled";
+ };
+ 
+-&mipi_dphy_rx {
+-	status = "disabled";
+-};
+-&d1_mipi_dphy_rx {
+-	status = "disabled";
+-};
+-
+-&csi_dma0 {
+-	status = "disabled";
+-};
+-&d1_csi_dma0 {
+-	status = "disabled";
+-};
+-
+-&csi_dma1 {
+-	status = "disabled";
+-};
+-&d1_csi_dma1 {
+-	status = "disabled";
+-};
+-
+-&csi2_0 {
+-	status = "disabled";
+-};
+-&d1_csi2_0 {
+-	status = "disabled";
+-};
+-
+-&csi2_1 {
+-	status = "disabled";
+-};
+-&d1_csi2_1 {
+-	status = "disabled";
+-};
+-
+ &sdhci_emmc {
+ 	/* emmc */
+ 	status = "okay";
+@@ -1206,8 +1173,6 @@ &bootspi {
+ 	/* spi flash */
+ 	status = "okay";
+ 	num-cs = <1>;
+-	cs-gpios = <&portd 0 GPIO_ACTIVE_LOW>;
+-	wp-gpios = <&portd 4 GPIO_ACTIVE_LOW>;
+ 	spi-flash@0 {
+ 		compatible = "winbond,w25q128jw",
+ 					"jedec,spi-nor";
+@@ -1221,10 +1186,8 @@ spi-flash@0 {
+ 
+ &d1_bootspi {
+ 	/* spi flash */
+-	status = "disabled";
++	status = "okay";
+ 	num-cs = <1>;
+-	cs-gpios = <&d1_portd 0 GPIO_ACTIVE_LOW>;
+-	wp-gpios = <&d1_portd 4 GPIO_ACTIVE_LOW>;
+ 	spi-flash@0 {
+ 		compatible = "winbond,w25q128jw",
+ 					"jedec,spi-nor";
+@@ -1559,7 +1522,7 @@ &pwm0 {
+ 	pinctrl-names = "default", "sleep";
+ 	pinctrl-0 = <&pinctrl_die0_pwm0_default>;
+ 	pinctrl-1 = <&pinctrl_die0_gpio68_default>;
+-	fan-gpios = <&portc 4 GPIO_ACTIVE_HIGH>;
++	fan-pwm-gpios = <&portc 4 GPIO_ACTIVE_HIGH>;
+ };
+ 
+ &d1_pwm0 {
+@@ -1635,38 +1598,6 @@ &d1_rtc {
+ 	status = "okay";
+ };
+ 
+-&timer0 {
+-	status = "okay";
+-};
+-
+-&d1_timer0 {
+-	status = "okay";
+-};
+-
+-&timer1 {
+-	status = "disabled";
+-};
+-
+-&d1_timer1 {
+-	status = "disabled";
+-};
+-
+-&timer2 {
+-	status = "okay";
+-};
+-
+-&d1_timer2 {
+-	status = "okay";
+-};
+-
+-&timer3 {
+-	status = "okay";
+-};
+-
+-&d1_timer3 {
+-	status = "okay";
+-};
+-
+ &pinctrl {
+ 	status = "okay";
+ };
+diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
+index f507433be4cf..fea5a0a2db4b 100644
+--- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
++++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
+@@ -129,12 +129,6 @@ g2d_12GB_boundary_reserved_4k {
+ 			reg = <0x2 0xfffff000 0x0 0x1000>;
+ 		};
+ 
+-		mmz_nid_0_part_0 {
+-			compatible = "eswin-reserve-memory";
+-			reg = <0x3 0x0 0x1 0x80000000>;
+-			no-map;
+-		};
+-
+ 		nid_1_zero_device_simu: nid_1_zero_device_simu@2040000000 {
+ 			no-map;
+ 			reg = <0x20 0x40000000 0x0 0x400000>;
+@@ -149,12 +143,6 @@ d1_lpcpu_reserved: d1_g2d_8GB_boundary_reserved_4k { // 32M reserved for lpcpu
+ 			no-map;
+ 			reg = <0x21 0xfe000000 0x0 0x2000000>;
+ 		};
+-
+-		mmz_nid_1_part_0 {
+-			compatible = "eswin-reserve-memory";
+-			reg = <0x22 0x80000000 0x1 0x80000000>;
+-			no-map;
+-		};
+ 	};
+ 
+ 	distance-map {
+@@ -183,7 +171,6 @@ backlight_regulator: regulator-backlight {
+ 
+ 	backlight: backlight {
+ 		compatible = "pwm-backlight";
+-		pinctrl-0 = <&pinctrl_die0_pwm2_default>;
+ 		pwms = <&pwm0 2 200000 PWM_POLARITY_INVERTED>;
+ 		power-supply = <&backlight_regulator>;
+ 		status = "okay";
+@@ -936,41 +923,6 @@ &d1_dewarp {
+ 	status = "disabled";
+ };
+ 
+-&mipi_dphy_rx {
+-	status = "disabled";
+-};
+-&d1_mipi_dphy_rx {
+-	status = "disabled";
+-};
+-
+-&csi_dma0 {
+-	status = "disabled";
+-};
+-&d1_csi_dma0 {
+-	status = "disabled";
+-};
+-
+-&csi_dma1 {
+-	status = "disabled";
+-};
+-&d1_csi_dma1 {
+-	status = "disabled";
+-};
+-
+-&csi2_0 {
+-	status = "disabled";
+-};
+-&d1_csi2_0 {
+-	status = "disabled";
+-};
+-
+-&csi2_1 {
+-	status = "disabled";
+-};
+-&d1_csi2_1 {
+-	status = "disabled";
+-};
+-
+ &sdhci_emmc {
+ 	/* emmc */
+ 	status = "disabled";
+@@ -1559,7 +1511,7 @@ &pwm0 {
+ 	pinctrl-names = "default", "sleep";
+ 	pinctrl-0 = <&pinctrl_die0_pwm0_default &pinctrl_die0_pwm2_default>;
+ 	pinctrl-1 = <&pinctrl_die0_gpio68_default &pinctrl_die0_gpio41_default>;
+-	fan-gpios = <&portc 4 GPIO_ACTIVE_HIGH>;
++	fan-pwm-gpios = <&portc 4 GPIO_ACTIVE_HIGH>;
+ };
+ 
+ &d1_pwm0 {
+@@ -1569,7 +1521,7 @@ &d1_pwm0 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&pinctrl_die1_pwm0_default>;
+ 	pinctrl-1 = <&pinctrl_die1_gpio68_default>;
+-	fan-gpios = <&d1_portc 4 GPIO_ACTIVE_HIGH>;
++	fan-pwm-gpios = <&d1_portc 4 GPIO_ACTIVE_HIGH>;
+ };
+ 
+ &fan_control {
+@@ -1637,38 +1589,6 @@ &d1_rtc {
+ 	status = "okay";
+ };
+ 
+-&timer0 {
+-	status = "okay";
+-};
+-
+-&d1_timer0 {
+-	status = "okay";
+-};
+-
+-&timer1 {
+-	status = "disabled";
+-};
+-
+-&d1_timer1 {
+-	status = "disabled";
+-};
+-
+-&timer2 {
+-	status = "okay";
+-};
+-
+-&d1_timer2 {
+-	status = "okay";
+-};
+-
+-&timer3 {
+-	status = "okay";
+-};
+-
+-&d1_timer3 {
+-	status = "okay";
+-};
+-
+ &pinctrl {
+ 	status = "okay";
+ };
+diff --git a/arch/riscv/boot/dts/eswin/eic7x-die0-pinctrl.dtsi b/arch/riscv/boot/dts/eswin/eic7x-die0-pinctrl.dtsi
+index 8609edfc2953..4b3dcaab244e 100644
+--- a/arch/riscv/boot/dts/eswin/eic7x-die0-pinctrl.dtsi
++++ b/arch/riscv/boot/dts/eswin/eic7x-die0-pinctrl.dtsi
+@@ -283,7 +283,7 @@ mux {
+ 					function = "spi0_func";
+ 				};
+ 			};
+-			pinctrl_die0_dual_spi1_default: dual_spi1-default{
++	    pinctrl_die0_dual_spi1_default: dual_spi1-default{
+ 				mux1 {
+ 					groups = "spi1_clk_group";
+ 					function = "spi1_clk_func";
+@@ -303,20 +303,6 @@ mux{
+ 					function = "spi1_func";
+ 				};
+ 			};
+-			pinctrl_die0_dual_spi1_default: dual_spi1-default{
+-				mux1 {
+-					groups = "spi1_clk_group";
+-					function = "spi1_clk_func";
+-				};
+-				mux2 {
+-					groups = "spi1_d0_d1_group";
+-					function = "spi1_d0_d1_func";
+-				};
+-				mux3 {
+-					groups = "spi1_cs0_group";
+-					function = "spi1_cs0_func";
+-				};
+-			};
+             pinctrl_die0_spi3_default: spi3-default{
+ 				mux {
+ 					groups = "spi3_group";
+@@ -511,7 +497,7 @@ mux {
+ 			};
+ 
+             //func1
+-			pinctrl_die0_dual_spi2_default: dual_spi2-default{
++	    pinctrl_die0_dual_spi2_default: dual_spi2-default{
+ 				mux1 {
+ 					groups = "spi2_clk_group";
+ 					function = "spi2_clk_func";
+@@ -573,35 +559,6 @@ mux4 {
+ 					function = "spi2_cs_func";
+ 				};
+ 			};
+-
+-			//func1
+-            pinctrl_die0_dual_spi2_default: dual_spi2-default{
+-				mux1 {
+-					groups = "spi2_clk_group";
+-					function = "spi2_clk_func";
+-				};
+-				conf1 {
+-					groups = "spi2_clk_group";
+-					input-enable = <1>;
+-					bias-pull-up = <1>;
+-					bias-pull-down = <0>;
+-				};
+-				mux2 {
+-					groups = "spi2_d0_d1_group";
+-					function = "spi2_d0_d1_func";
+-				};
+-				conf2 {
+-					groups = "spi2_d0_d1_group";
+-					input-enable = <1>;
+-					bias-pull-up = <1>;
+-					bias-pull-down = <0>;
+-				};
+-				mux3 {
+-					groups = "spi2_cs0_group";
+-					function = "spi2_cs0_func";
+-				};
+-			};
+-
+             pinctrl_die0_sata_act_led_default: sata_act_led-default{
+ 				mux {
+ 					groups = "sata_act_led_group";
+diff --git a/arch/riscv/boot/dts/eswin/eswin_aicard.dts b/arch/riscv/boot/dts/eswin/eswin_aicard.dts
+index b9926518edd3..1d4220dbd475 100644
+--- a/arch/riscv/boot/dts/eswin/eswin_aicard.dts
++++ b/arch/riscv/boot/dts/eswin/eswin_aicard.dts
+@@ -40,8 +40,7 @@ / {
+ 	#address-cells = <2>;
+ 	#size-cells = <2>;
+ 	model = "ESWIN EIC7702 VPU A1";
+-	compatible = "sifive,hifive-unmatched-a00", "sifive,fu740-c000",
+-		     "sifive,fu740", "eswin,eic7700";
++	compatible = "eswin,eic7x";
+ 
+ 	aliases {
+ 		serial0 = &d0_uart0;
+@@ -430,10 +429,6 @@ &dc {
+ 	dc_out: port {
+ 		#address-cells = <1>;
+ 		#size-cells = <0>;
+-		dc_out_dsi: endpoint@0 {
+-			reg = <0>;
+-			remote-endpoint = <&dsi_input>;
+-		};
+ 		dc_out_dpi1: endpoint@1 {
+ 			reg = <1>;
+ 			remote-endpoint = <&vd_input>;
+@@ -462,50 +457,6 @@ &dsi_output {
+ 	status = "disabled";
+ };
+ 
+-&dsi_controller {
+-	status = "disabled";
+-	ports {
+-		#address-cells = <1>;
+-		#size-cells = <0>;
+-		port@0 {
+-			#address-cells = <1>;
+-			#size-cells = <0>;
+-			reg = <0>;
+-			dsi_input: endpoint {
+-				remote-endpoint = <&dc_out_dsi>;
+-			};
+-		};
+-		port@1 {
+-			#address-cells = <1>;
+-			#size-cells = <0>;
+-			reg = <1>;
+-			mipi_dsi_out: endpoint {
+-				remote-endpoint = <&panel_in>;
+-			};
+-		};
+-	};
+-
+-	dsi_panel:dsi_panel@0 {
+-		compatible = "eswin,generic-panel";
+-		reg = <0>;
+-		dsi,format = <0>; //RGB888:0, RGB666:1, RGB565:3
+-		dsi,lanes = <4>;
+-		port {
+-			panel_in: endpoint {
+-				remote-endpoint = <&mipi_dsi_out>;
+-			};
+-		};
+-	};
+-};
+-
+-&dsi_panel {
+-	status = "disabled";
+-	pinctrl-names = "default";
+-	pinctrl-0 = <&pinctrl_gpio5_default &pinctrl_gpio111_default>;
+-	backlight0-gpios = <&porta 5 GPIO_ACTIVE_HIGH>;
+-	rst-gpios = <&portd 15 GPIO_ACTIVE_HIGH>;
+-};
+-
+ &dw_hdmi {
+ 	status = "disabled";
+ 	ports {
+@@ -563,35 +514,19 @@ &d0_graphcard2 {
+ 	dais = <&d0_i2s0_port>;
+ };
+ 
+-&isp_0 {
++&vi_subsys {
+ 	status = "disabled";
+ };
+ 
+-&isp_1 {
+-	status = "disabled";
+-};
+-
+-&dewarp {
+-	status = "disabled";
+-};
+-
+-&mipi_dphy_rx {
+-	status = "disabled";
+-};
+-
+-&csi_dma0 {
+-	status = "disabled";
+-};
+-
+-&csi_dma1 {
++&isp_0 {
+ 	status = "disabled";
+ };
+ 
+-&csi2_0 {
++&isp_1 {
+ 	status = "disabled";
+ };
+ 
+-&csi2_1 {
++&dewarp {
+ 	status = "disabled";
+ };
+ 
+@@ -650,6 +585,7 @@ &d0_gmac0 {
+ 	rst-gpios = <&portc 30 GPIO_ACTIVE_LOW>;
+ 	eswin,rgmiisel = <&pinctrl 0x290 0x3>;
+ 	eswin,led-cfgs = <0x6100 0xa40 0x420>;
++	phy-mode = "rgmii-txid";
+ 	dly-param-1000m = <0x23232323 0x800c8023 0x0c0c0c0c>;
+ 	dly-param-100m = <0x50505050 0x803f8050 0x3f3f3f3f>;
+ 	dly-param-10m = <0 0 0>;
+@@ -662,6 +598,7 @@ &d0_gmac1 {
+ 	rst-gpios = <&porta 16 GPIO_ACTIVE_LOW>;
+ 	eswin,rgmiisel = <&pinctrl 0x294 0x3>;
+ 	eswin,led-cfgs = <0x6100 0xa40 0x420>;
++	phy-mode = "rgmii-txid";
+ 	dly-param-1000m = <0x25252525 0x80268025 0x26262626>;
+ 	dly-param-100m = <0x48484848 0x80588048 0x58585858>;
+ 	dly-param-10m = <0 0 0>;
+@@ -848,7 +785,7 @@ tps549d22@10 {
+ 		compatible = "ti,tps549d22";
+ 		reg = <0x10>;
+ 		eswin,regulator_default-microvolt=<1000000>;
+-		eswin,regulator_label = "supply vdd1", "npu vdd1";
++		eswin,regulator_label = "Supply VDD", "NPU Voltage";
+ 		label = "npu_vdd";
+ 		regulators{
+ 			npu_vcc1:npu_svcc{
+@@ -990,22 +927,6 @@ &die0_rtc {
+ 	status = "okay";
+ };
+ 
+-&timer0 {
+-	status = "okay";
+-};
+-
+-&timer1 {
+-	status = "okay";
+-};
+-
+-&timer2 {
+-	status = "okay";
+-};
+-
+-&timer3 {
+-	status = "okay";
+-};
+-
+ &pinctrl {
+ 	status = "okay";
+ 
+diff --git a/arch/riscv/configs/eic7700_dbg_defconfig b/arch/riscv/configs/eic7700_dbg_defconfig
+index 7081d3e8fe1d..1db073cbfd1f 100644
+--- a/arch/riscv/configs/eic7700_dbg_defconfig
++++ b/arch/riscv/configs/eic7700_dbg_defconfig
+@@ -36,10 +36,13 @@ CONFIG_SMP=y
+ CONFIG_HOTPLUG_CPU=y
+ CONFIG_RISCV_SBI_V01=y
+ # CONFIG_RISCV_BOOT_SPINWAIT is not set
+-CONFIG_CMDLINE="earlycon=sbi console=ttyS0,115200n8 clk_ignore_unused cma_pernuma=0x2000000 disable_bypass=false firmware_class.path=/lib/firmware/eic7x/ kgdboc=ttyS0,115200 ftrace_dump_on_oops=1"
++CONFIG_CMDLINE="earlycon=sbi console=ttyS0,115200n8 clk_ignore_unused cma_pernuma=0x2000000 disable_bypass=false no_console_suspend firmware_class.path=/lib/firmware/eic7x/ kgdboc=ttyS0,115200 ftrace_dump_on_oops=1"
+ CONFIG_CMDLINE_EXTEND=y
++CONFIG_PM_DEBUG=y
++CONFIG_PM_ADVANCED_DEBUG=y
+ CONFIG_SUSPEND=y
+ CONFIG_ENERGY_MODEL=y
++CONFIG_CPU_IDLE=y
+ CONFIG_CPU_FREQ=y
+ CONFIG_CPU_FREQ_STAT=y
+ CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE=y
+@@ -483,6 +486,7 @@ CONFIG_DEVFREQ_THERMAL=y
+ CONFIG_THERMAL_EMULATION=y
+ CONFIG_WATCHDOG=y
+ CONFIG_DW_WATCHDOG=y
++CONFIG_ESWIN_WATCHDOG=y
+ CONFIG_REGULATOR=y
+ CONFIG_REGULATOR_MPQ8785=y
+ CONFIG_REGULATOR_TPS549D22=y
+@@ -683,6 +687,8 @@ CONFIG_SND_HDA_PATCH_LOADER=y
+ CONFIG_SND_HDA_CODEC_REALTEK=m
+ CONFIG_SND_HDA_CODEC_HDMI=m
+ CONFIG_SND_HDA_PREALLOC_SIZE=2048
++CONFIG_SND_USB_AUDIO=y
++CONFIG_SND_USB_AUDIO_MIDI_V2=y
+ CONFIG_SND_SOC=y
+ CONFIG_SND_SOC_SOF_TOPLEVEL=y
+ CONFIG_SND_SOC_SOF_OF=y
+@@ -722,7 +728,7 @@ CONFIG_USB_SERIAL_PL2303=y
+ CONFIG_USB_SERIAL_OTI6858=y
+ CONFIG_USB_SERIAL_QUALCOMM=y
+ CONFIG_USB_SERIAL_OPTION=y
+-CONFIG_USB_TEST=y
++CONFIG_USB_TEST=m
+ CONFIG_USB_GADGET=y
+ CONFIG_USB_GADGET_DEBUG_FILES=y
+ CONFIG_USB_GADGET_VBUS_DRAW=500
+@@ -776,7 +782,7 @@ CONFIG_COMMON_CLK_EIC7700=y
+ CONFIG_TIMER_ESWIN=y
+ CONFIG_MAILBOX=y
+ CONFIG_ESWIN_MBOX=y
+-CONFIG_ESWIN_LPCPU=m
++CONFIG_ESWIN_LPCPU=y
+ CONFIG_ARM_SMMU_V3=y
+ CONFIG_RPMSG_VIRTIO=y
+ CONFIG_ARCH_ESWIN_EIC770X_SOC_FAMILY=y
+@@ -784,7 +790,7 @@ CONFIG_ESWIN_DSP=m
+ CONFIG_ESWIN_NPU=m
+ CONFIG_ESWIN_BUS_ERROR=y
+ CONFIG_PM=y
+-CONFIG_PM_SLEEP=y
++# CONFIG_PM_SLEEP=y
+ CONFIG_PM_DEVFREQ=y
+ CONFIG_DEVFREQ_GOV_USERSPACE=y
+ CONFIG_DEVFREQ_GOV_PERFORMANCE=y
+@@ -882,7 +888,6 @@ CONFIG_DEBUG_VM=y
+ CONFIG_DEBUG_VM_PGFLAGS=y
+ CONFIG_DEBUG_MEMORY_INIT=y
+ CONFIG_DEBUG_PER_CPU_MAPS=y
+-CONFIG_KASAN=y
+ CONFIG_SOFTLOCKUP_DETECTOR=y
+ CONFIG_WQ_WATCHDOG=y
+ CONFIG_DEBUG_TIMEKEEPING=y
+diff --git a/arch/riscv/configs/eic7702_dbg_defconfig b/arch/riscv/configs/eic7702_dbg_defconfig
+index 47715ce2803e..545956c6cd50 100644
+--- a/arch/riscv/configs/eic7702_dbg_defconfig
++++ b/arch/riscv/configs/eic7702_dbg_defconfig
+@@ -41,10 +41,13 @@ CONFIG_HOTPLUG_CPU=y
+ CONFIG_NUMA=y
+ CONFIG_RISCV_SBI_V01=y
+ # CONFIG_RISCV_BOOT_SPINWAIT is not set
+-CONFIG_CMDLINE="earlycon=sbi console=ttyS0,115200n8 clk_ignore_unused cma_pernuma=0x20000000 disable_bypass=false firmware_class.path=/lib/firmware/eic7x/ kgdboc=ttyS0,115200 ftrace_dump_on_oops=1"
++CONFIG_CMDLINE="earlycon=sbi console=ttyS0,115200n8 clk_ignore_unused cma_pernuma=0x20000000 disable_bypass=false no_console_suspend firmware_class.path=/lib/firmware/eic7x/ kgdboc=ttyS0,115200 ftrace_dump_on_oops=1"
+ CONFIG_CMDLINE_EXTEND=y
++CONFIG_PM_DEBUG=y
++CONFIG_PM_ADVANCED_DEBUG=y
+ CONFIG_SUSPEND=y
+ CONFIG_ENERGY_MODEL=y
++CONFIG_CPU_IDLE=y
+ CONFIG_CPU_FREQ=y
+ CONFIG_CPU_FREQ_STAT=y
+ CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE=y
+@@ -306,6 +309,9 @@ CONFIG_BT_HS=y
+ CONFIG_BT_HCIUART=y
+ CONFIG_BT_HCIUART_BCM=y
+ CONFIG_BT_HCIUART_RTL=y
++CONFIG_BT_HCIBTUSB=m
++CONFIG_BT_HCIBTUSB_AUTOSUSPEND=y
++CONFIG_BT_HCIBTUSB_MTK=y
+ CONFIG_MCTP=y
+ CONFIG_CFG80211=y
+ CONFIG_CFG80211_WEXT=y
+@@ -419,6 +425,7 @@ CONFIG_DWMAC_WIN2030=y
+ # CONFIG_NET_VENDOR_VIA is not set
+ # CONFIG_NET_VENDOR_WIZNET is not set
+ # CONFIG_NET_VENDOR_XILINX is not set
++CONFIG_MOTORCOMM_PHY=y
+ CONFIG_REALTEK_PHY=y
+ # CONFIG_WLAN_VENDOR_ADMTEK is not set
+ # CONFIG_WLAN_VENDOR_ATH is not set
+@@ -460,6 +467,7 @@ CONFIG_HW_RANDOM=y
+ CONFIG_HW_RANDOM_VIRTIO=y
+ # CONFIG_I2C_COMPAT is not set
+ CONFIG_I2C_CHARDEV=y
++CONFIG_I2C_MUX=y
+ CONFIG_I2C_MUX_PCA954x=y
+ # CONFIG_I2C_HELPER_AUTO is not set
+ CONFIG_I2C_DESIGNWARE_SLAVE=y
+@@ -470,12 +478,15 @@ CONFIG_SPI_DESIGNWARE=y
+ CONFIG_SPI_DW_DMA=y
+ CONFIG_SPI_DW_MMIO=y
+ CONFIG_SPI_ESWIN_BOOTSPI=y
++CONFIG_SPI_SPIDEV=y
+ # CONFIG_PTP_1588_CLOCK is not set
+ CONFIG_PINCTRL=y
+ CONFIG_PINCTRL_EIC7X=y
+ CONFIG_GPIOLIB=y
+ CONFIG_GPIO_SYSFS=y
+ CONFIG_GPIO_DWAPB=y
++CONFIG_BATTERY_CROS_SBS=m
++CONFIG_CHARGER_CROS_USBPD=m
+ CONFIG_SENSORS_ESWIN_FAN_CONTROL=y
+ CONFIG_SENSORS_ESWIN_PVT=y
+ CONFIG_SENSORS_ESWIN_DUMMY_PVT=y
+@@ -493,10 +504,12 @@ CONFIG_DEVFREQ_THERMAL=y
+ CONFIG_THERMAL_EMULATION=y
+ CONFIG_WATCHDOG=y
+ CONFIG_DW_WATCHDOG=y
++CONFIG_ESWIN_WATCHDOG=y
+ CONFIG_REGULATOR=y
+ CONFIG_REGULATOR_TPS549D22=y
+ CONFIG_REGULATOR_ES5340=y
+ CONFIG_REGULATOR_PCA9450=y
++CONFIG_REGULATOR_RASPBERRYPI_TOUCHSCREEN_ATTINY=y
+ CONFIG_MEDIA_SUPPORT=y
+ CONFIG_MEDIA_SUPPORT_FILTER=y
+ CONFIG_MEDIA_CAMERA_SUPPORT=y
+@@ -660,6 +673,11 @@ CONFIG_DRM_SIMPLE_BRIDGE=y
+ CONFIG_DRM_TOSHIBA_TC358768=m
+ CONFIG_DRM_SIMPLEDRM=m
+ CONFIG_DRM_ESWIN=y
++CONFIG_DRM_PANEL_SIMPLE=y
++CONFIG_DRM_TOSHIBA_TC358762=y
++CONFIG_DRM_DW_MIPI_DSI=y
++CONFIG_ESWIN_MIPI_DSI=y
++CONFIG_ESWIN_RASPBERRYPI_7INCH_PANEL=y
+ CONFIG_ESWIN_VIRTUAL_DISPLAY=y
+ CONFIG_ESWIN_DW_HDMI=y
+ CONFIG_DW_HDMI_I2S_AUDIO=y
+@@ -669,6 +687,7 @@ CONFIG_DRM_LEGACY=y
+ CONFIG_FB=y
+ CONFIG_FB_RADEON=m
+ CONFIG_FB_SIMPLE=m
++CONFIG_BACKLIGHT_PWM=y
+ CONFIG_VGA_CONSOLE=y
+ CONFIG_DUMMY_CONSOLE=y
+ CONFIG_DUMMY_CONSOLE_COLUMNS=80
+@@ -686,15 +705,22 @@ CONFIG_SND_HDA_PATCH_LOADER=y
+ CONFIG_SND_HDA_CODEC_REALTEK=m
+ CONFIG_SND_HDA_CODEC_HDMI=m
+ CONFIG_SND_HDA_PREALLOC_SIZE=2048
++CONFIG_SND_USB_AUDIO=y
++CONFIG_SND_USB_AUDIO_MIDI_V2=y
+ CONFIG_SND_SOC=y
+ CONFIG_SND_SOC_SOF_TOPLEVEL=y
+ CONFIG_SND_SOC_SOF_OF=y
+ CONFIG_SND_ESWIN_DW_I2S=y
++CONFIG_SND_SOC_ES8326=y
+ CONFIG_ESWIN_SND_SOC_CODECS=y
+ CONFIG_ESWIN_SND_ES8388_CODEC=y
+ CONFIG_SND_SIMPLE_CARD=y
+ CONFIG_SND_AUDIO_GRAPH_CARD=y
+ CONFIG_UHID=y
++CONFIG_HID_MULTITOUCH=y
++CONFIG_I2C_HID_OF=y
++CONFIG_I2C_HID_OF_ELAN=m
++CONFIG_I2C_HID_OF_GOODIX=m
+ CONFIG_USB_ULPI_BUS=y
+ CONFIG_USB_CONN_GPIO=y
+ CONFIG_USB=y
+@@ -709,7 +735,6 @@ CONFIG_USB_EHCI_HCD_PLATFORM=y
+ CONFIG_USB_OHCI_HCD=y
+ CONFIG_USB_OHCI_HCD_PLATFORM=y
+ CONFIG_USB_ACM=y
+-CONFIG_USB_WDM=y
+ CONFIG_USB_STORAGE=y
+ CONFIG_USB_UAS=y
+ CONFIG_USB_DWC3=y
+@@ -724,7 +749,7 @@ CONFIG_USB_SERIAL_PL2303=y
+ CONFIG_USB_SERIAL_OTI6858=y
+ CONFIG_USB_SERIAL_QUALCOMM=y
+ CONFIG_USB_SERIAL_OPTION=y
+-CONFIG_USB_TEST=y
++CONFIG_USB_TEST=m
+ CONFIG_USB_GADGET=y
+ CONFIG_USB_GADGET_DEBUG_FILES=y
+ CONFIG_USB_GADGET_VBUS_DRAW=500
+@@ -733,6 +758,7 @@ CONFIG_USB_CONFIGFS_MASS_STORAGE=y
+ CONFIG_USB_CONFIGFS_F_LB_SS=y
+ CONFIG_USB_CONFIGFS_F_FS=y
+ CONFIG_USB_ZERO=m
++CONFIG_USB_AUDIO=m
+ CONFIG_USB_MASS_STORAGE=m
+ CONFIG_TYPEC=y
+ CONFIG_TYPEC_FUSB303B=y
+@@ -753,6 +779,8 @@ CONFIG_LEDS_TRIGGER_DEFAULT_ON=y
+ CONFIG_EDAC=y
+ CONFIG_EDAC_ESWIN=y
+ CONFIG_RTC_CLASS=y
++CONFIG_RTC_DRV_DS1307=y
++CONFIG_RTC_DRV_DS1307_CENTURY=y
+ CONFIG_RTC_DRV_PCF8563=y
+ CONFIG_RTC_DRV_ESWIN=y
+ CONFIG_DMADEVICES=y
+@@ -772,11 +800,15 @@ CONFIG_VIDEO_ESWIN_VENC=y
+ CONFIG_VIDEO_ESWIN_HAE=y
+ CONFIG_VIDEO_ESWIN_DEWARP=y
+ CONFIG_VIDEO_ESWIN_MEDIA_EXT_DRIVER=y
++CONFIG_CHROME_PLATFORMS=y
++CONFIG_CROS_EC=m
++CONFIG_CROS_EC_SPI=m
++CONFIG_CROS_EC_POWEROFF=m
+ CONFIG_COMMON_CLK_EIC7700=y
+ CONFIG_TIMER_ESWIN=y
+ CONFIG_MAILBOX=y
+ CONFIG_ESWIN_MBOX=y
+-CONFIG_ESWIN_LPCPU=m
++CONFIG_ESWIN_LPCPU=y
+ CONFIG_ESWIN_MALLOC_DMABUF=y
+ CONFIG_ARM_SMMU_V3=y
+ CONFIG_RPMSG_VIRTIO=y
+@@ -784,9 +816,10 @@ CONFIG_ARCH_ESWIN_EIC770X_SOC_FAMILY=y
+ CONFIG_ARCH_ESWIN_EIC7702_SOC=y
+ CONFIG_ESWIN_DSP=m
+ CONFIG_ESWIN_NPU=m
++CONFIG_ESWIN_BUS_ERROR=y
+ CONFIG_EIC7X_D2D=y
+ CONFIG_PM=y
+-CONFIG_PM_SLEEP=y
++# CONFIG_PM_SLEEP=y
+ CONFIG_PM_DEVFREQ=y
+ CONFIG_DEVFREQ_GOV_USERSPACE=y
+ CONFIG_DEVFREQ_GOV_PERFORMANCE=y
+@@ -801,6 +834,8 @@ CONFIG_ESWIN_MMZ_VB=y
+ CONFIG_ESWIN_DEV_DMA_BUF=y
+ CONFIG_ESWIN_IOMMU_RSV=y
+ CONFIG_ESWIN_DMA_MEMCP=y
++CONFIG_IIO=y
++CONFIG_CM32181=y
+ CONFIG_PWM=y
+ CONFIG_PWM_ESWIN=y
+ CONFIG_RESET_ESWIN=y
+diff --git a/arch/riscv/configs/eswin_aicard_defconfig b/arch/riscv/configs/eswin_aicard_defconfig
+index 916aa1b6c496..3b2fbc9cf7bf 100644
+--- a/arch/riscv/configs/eswin_aicard_defconfig
++++ b/arch/riscv/configs/eswin_aicard_defconfig
+@@ -688,7 +688,7 @@ CONFIG_USB_SERIAL_PL2303=y
+ CONFIG_USB_SERIAL_OTI6858=y
+ CONFIG_USB_SERIAL_QUALCOMM=y
+ CONFIG_USB_SERIAL_OPTION=y
+-CONFIG_USB_TEST=y
++CONFIG_USB_TEST=m
+ CONFIG_USB_GADGET=y
+ CONFIG_USB_GADGET_DEBUG_FILES=y
+ CONFIG_USB_GADGET_VBUS_DRAW=500
+diff --git a/arch/riscv/configs/fml13v03_defconfig b/arch/riscv/configs/fml13v03_defconfig
+index d91e28ec1c26..8d98e892bbfb 100755
+--- a/arch/riscv/configs/fml13v03_defconfig
++++ b/arch/riscv/configs/fml13v03_defconfig
+@@ -3226,7 +3226,7 @@ CONFIG_USB_SISUSBVGA=m
+ CONFIG_USB_LD=m
+ CONFIG_USB_TRANCEVIBRATOR=m
+ CONFIG_USB_IOWARRIOR=m
+-CONFIG_USB_TEST=y
++CONFIG_USB_TEST=m
+ CONFIG_USB_EHSET_TEST_FIXTURE=m
+ CONFIG_USB_ISIGHTFW=m
+ CONFIG_USB_YUREX=m
+@@ -3747,6 +3747,7 @@ CONFIG_ESWIN_DSP=m
+ CONFIG_ESWIN_NPU=m
+ CONFIG_ESWIN_BUS_ERROR=y
+ CONFIG_EIC7X_D2D=y
++CONFIG_ARCH_SUSPEND_POSSIBLE=y
+ CONFIG_PM=y
+ CONFIG_PM_SLEEP=y
+ CONFIG_PM_DEVFREQ=y
+@@ -4438,11 +4439,8 @@ CONFIG_TEST_BLACKHOLE_DEV=m
+ CONFIG_MEMTEST=y
+ CONFIG_BCMDHD=m
+ CONFIG_BCMDHD_SDIO_IRQ=y
+-CONFIG_REGULATOR=y
+-CONFIG_REGULATOR_FIXED_VOLTAGE=y
+ CONFIG_BCMDHD_FW_PATH="/lib/firmware/fw_bcm43456c5_ag.bin"
+ CONFIG_BCMDHD_NVRAM_PATH="/lib/firmware/nvram_ap6256.txt"
+ CONFIG_BCMDHD_CLM_PATH="/lib/firmware/clm_bcm43752a2_ag.blob"
+ CONFIG_VIDEO_ESWIN_VI_TOP=y
+ CONFIG_VIDEO_ESWIN_DVP2AXI=y
+-
+diff --git a/arch/riscv/configs/m2_evb_defconfig b/arch/riscv/configs/m2_evb_defconfig
+index dae9c481aa19..d1b0cb39329a 100644
+--- a/arch/riscv/configs/m2_evb_defconfig
++++ b/arch/riscv/configs/m2_evb_defconfig
+@@ -30,6 +30,7 @@ CONFIG_BLK_DEV_INITRD=y
+ CONFIG_EXPERT=y
+ # CONFIG_SYSFS_SYSCALL is not set
+ CONFIG_PERF_EVENTS=y
++CONFIG_KEXEC=y
+ CONFIG_SOC_ESWIN=y
+ CONFIG_SOC_VIRT=y
+ CONFIG_SMP=y
+@@ -478,6 +479,7 @@ CONFIG_DEVFREQ_THERMAL=y
+ CONFIG_THERMAL_EMULATION=y
+ CONFIG_WATCHDOG=y
+ CONFIG_DW_WATCHDOG=y
++CONFIG_ESWIN_WATCHDOG=y
+ CONFIG_REGULATOR=y
+ CONFIG_REGULATOR_MPQ8785=y
+ CONFIG_REGULATOR_PCA9450=y
+@@ -701,7 +703,7 @@ CONFIG_USB_SERIAL_PL2303=y
+ CONFIG_USB_SERIAL_OTI6858=y
+ CONFIG_USB_SERIAL_QUALCOMM=y
+ CONFIG_USB_SERIAL_OPTION=y
+-CONFIG_USB_TEST=y
++CONFIG_USB_TEST=m
+ CONFIG_USB_GADGET=y
+ CONFIG_USB_GADGET_DEBUG_FILES=y
+ CONFIG_USB_GADGET_VBUS_DRAW=500
+diff --git a/arch/riscv/configs/u2_evb_defconfig b/arch/riscv/configs/u2_evb_defconfig
+index abccc570760a..a2f493596298 100644
+--- a/arch/riscv/configs/u2_evb_defconfig
++++ b/arch/riscv/configs/u2_evb_defconfig
+@@ -491,6 +491,7 @@ CONFIG_DEVFREQ_THERMAL=y
+ CONFIG_THERMAL_EMULATION=y
+ CONFIG_WATCHDOG=y
+ CONFIG_DW_WATCHDOG=y
++CONFIG_ESWIN_WATCHDOG=y
+ CONFIG_REGULATOR=y
+ CONFIG_REGULATOR_TPS549D22=y
+ CONFIG_REGULATOR_ES5340=y
+@@ -722,7 +723,7 @@ CONFIG_USB_SERIAL_PL2303=y
+ CONFIG_USB_SERIAL_OTI6858=y
+ CONFIG_USB_SERIAL_QUALCOMM=y
+ CONFIG_USB_SERIAL_OPTION=y
+-CONFIG_USB_TEST=y
++CONFIG_USB_TEST=m
+ CONFIG_USB_GADGET=y
+ CONFIG_USB_GADGET_DEBUG_FILES=y
+ CONFIG_USB_GADGET_VBUS_DRAW=500
+diff --git a/drivers/clk/eswin/clk.c b/drivers/clk/eswin/clk.c
+index e33d3405305f..c720c46c5a0c 100644
+--- a/drivers/clk/eswin/clk.c
++++ b/drivers/clk/eswin/clk.c
+@@ -310,11 +310,15 @@ static int clk_pll_set_rate(struct clk_hw *hw, unsigned long rate,
+ 	u32 val;
+ 	int ret;
+ 	struct clk *clk_cpu_mux = NULL;
++	struct clk *clk_cpu_aclk_mux = NULL;
++	struct clk *clk_cpu_aclk_div2 = NULL;
+ 	struct clk *clk_cpu_lp_pll = NULL;
+ 	struct clk *clk_cpu_pll = NULL;
+ 	int try_count = 0;
+ 	bool lock_flag = false;
+ 	char clk_cpu_mux_name[50] = { 0 };
++	char clk_cpu_aclk_mux_name[50] = { 0 };
++	char clk_cpu_aclk_div2_name[50] = { 0 };
+ 	char clk_cpu_lp_pll_name[50] = { 0 };
+ 	char clk_cpu_pll_name[50] = { 0 };
+ 	enum voltage_level cpu_target_voltage = VOLTAGE_0_8V;
+@@ -334,12 +338,20 @@ static int clk_pll_set_rate(struct clk_hw *hw, unsigned long rate,
+ 		if (clk->numa_id < 0) {
+ 			sprintf(clk_cpu_mux_name, "%s",
+ 				"mux_u_cpu_root_3mux1_gfree");
++			sprintf(clk_cpu_aclk_mux_name, "%s",
++				"mux_u_cpu_aclk_2mux1_gfree");
++			sprintf(clk_cpu_aclk_div2_name, "%s",
++				"fixed_factor_u_cpu_div2");
+ 			sprintf(clk_cpu_lp_pll_name, "%s",
+ 				"clk_clk_u84_core_lp");
+ 			sprintf(clk_cpu_pll_name, "%s", "clk_pll_cpu");
+ 		} else {
+ 			sprintf(clk_cpu_mux_name, "d%d_%s", clk->numa_id,
+ 				"mux_u_cpu_root_3mux1_gfree");
++			sprintf(clk_cpu_aclk_mux_name, "d%d_%s", clk->numa_id,
++				"mux_u_cpu_aclk_2mux1_gfree");
++			sprintf(clk_cpu_aclk_div2_name, "d%d_%s", clk->numa_id,
++				"fixed_factor_u_cpu_div2");
+ 			sprintf(clk_cpu_lp_pll_name, "d%d_%s", clk->numa_id,
+ 				"clk_clk_u84_core_lp");
+ 			sprintf(clk_cpu_pll_name, "d%d_%s", clk->numa_id,
+@@ -352,6 +364,18 @@ static int clk_pll_set_rate(struct clk_hw *hw, unsigned long rate,
+ 			       clk_cpu_mux_name);
+ 			return -EINVAL;
+ 		}
++		clk_cpu_aclk_mux = __clk_lookup(clk_cpu_aclk_mux_name);
++		if (!clk_cpu_aclk_mux) {
++			pr_err("%s %d, failed to get %s\n", __func__, __LINE__,
++			       clk_cpu_aclk_mux_name);
++			return -EINVAL;
++		}
++		clk_cpu_aclk_div2 = __clk_lookup(clk_cpu_aclk_div2_name);
++		if (!clk_cpu_aclk_div2) {
++			pr_err("%s %d, failed to get %s\n", __func__, __LINE__,
++			       clk_cpu_aclk_div2_name);
++			return -EINVAL;
++		}
+ 		clk_cpu_lp_pll = __clk_lookup(clk_cpu_lp_pll_name);
+ 		if (!clk_cpu_lp_pll) {
+ 			pr_err("%s %d, failed to get %s\n", __func__, __LINE__,
+@@ -380,6 +404,16 @@ static int clk_pll_set_rate(struct clk_hw *hw, unsigned long rate,
+ 			clk_disable_unprepare(clk_cpu_lp_pll);
+ 			return -EPERM;
+ 		}
++
++		ret = clk_set_parent(clk_cpu_aclk_mux, clk_cpu_mux);
++		if (ret) {
++			pr_err("%s %d, failed to switch %s to %s, ret %d\n",
++					__func__, __LINE__, clk_cpu_aclk_mux_name,
++					clk_cpu_mux_name, ret);
++			clk_disable_unprepare(clk_cpu_lp_pll);
++			goto switch_back;
++		}
++
+ 		mutex_lock(&lock);
+ 		if (clk->numa_id >= 0) {
+ 			g_cpu_info.cpu_freqhz[clk->numa_id] = rate;
+@@ -471,6 +505,22 @@ static int clk_pll_set_rate(struct clk_hw *hw, unsigned long rate,
+ 
+ switch_back:
+ 	if (clk->id == EIC7700_PLL_CPU) {
++		/* If the frequency exceeds 1GHz,
++		* frequency division processing is required.
++		* If it fails, switch back cannot be performed.
++		* otherwise, it will cause an overclocking error.
++		*/
++		if (rate >= CLK_FREQ_1000M){
++			ret = clk_set_parent(clk_cpu_aclk_mux, clk_cpu_aclk_div2);
++			if (ret) {
++				pr_err("%s %d, failed to switch %s to %s, ret %d\n",
++						__func__, __LINE__, clk_cpu_aclk_mux_name,
++						clk_cpu_aclk_div2_name, ret);
++				clk_disable_unprepare(clk_cpu_lp_pll);
++				return -EPERM;
++			}
++		}
++
+ 		ret = clk_set_parent(clk_cpu_mux, clk_cpu_pll);
+ 		if (ret) {
+ 			pr_err("%s %d, failed to switch %s to %s, ret %d\n",
+diff --git a/drivers/soc/eswin/ai_driver/npu/npu_main.c b/drivers/soc/eswin/ai_driver/npu/npu_main.c
+index 1ec3e4381392..d5e92b0b83be 100644
+--- a/drivers/soc/eswin/ai_driver/npu/npu_main.c
++++ b/drivers/soc/eswin/ai_driver/npu/npu_main.c
+@@ -82,14 +82,10 @@
+ 
+ MODULE_IMPORT_NS(DMA_BUF);
+ #define DRIVER_NAME "eswin_npu"
++
+ #define NPU_CORE_CLK_HIGHEST 1500000000
++#define DEVFREQ_VOLT_DELAY 50
+ 
+-#define NPU_1_5_GHZ 0
+-#define NPU_1_0_GHZ 1
+-#define NPU_750_MHZ 2
+-#define NPU_520_MHZ 3
+-#define NPU_TBL_MAX 4
+-static struct npu_freq_param npu_freq_tbl[2][NPU_TBL_MAX] = { 0 };
+ int64_t dla_get_time_us(void)
+ {
+ 	return 0;
+@@ -317,15 +313,14 @@ irqreturn_t npu_mbox_irq(int irq, void *dev_id)
+ 		switch (payload.type) {
+ 		case FRAME_DONE:
+ 			stat = payload.param >> 1 & 0x1;
+-			mbx_irq_frame_done(nvdla_dev->win_engine, tiktok, stat);
++			mbx_irq_frame_done(nvdla_dev->win_engine, tiktok, stat, payload.lparam);
+ 			break;
+ 		case NOTIFY_OP_DONE:
+-			mbx_irq_op_done(nvdla_dev->win_engine, tiktok,
+-					op_index);
++			mbx_irq_op_done(nvdla_dev->win_engine, tiktok, op_index);
+ 			break;
+ 		case NOTIFY_EVENT_SINK_DONE:
+-			mbx_irq_event_sink_done(nvdla_dev->win_engine, tiktok,
+-						op_index);
++			stat = payload.param >> 1 & 0xff;
++			mbx_irq_event_sink_done(nvdla_dev->win_engine, tiktok, op_index, stat);
+ 			break;
+ 		default:
+ 			dla_error("invalid payload.type= %hhu\n", payload.type);
+@@ -367,15 +362,7 @@ static int npu_set_freq_req(struct nvdla_device *nvdla_dev, struct npu_freq_para
+ 	llc_rate = clk_get_rate(nvdla_dev->mux_u_npu_llclk_3mux1_gfree);
+ 	npu_rate = clk_get_rate(nvdla_dev->mux_u_npu_core_3mux1_gfree);
+ 
+-
+-
+-
+-
+ 	ret = clk_set_parent(nvdla_dev->mux_u_npu_llclk_3mux1_gfree, tbl->llc_clk_parent);
+-
+-
+-
+-
+ 	if (ret) {
+ 		dev_err(&nvdla_dev->pdev->dev, "set npu llc clock parent err = %d.\n", ret);
+ 		return -EINVAL;
+@@ -386,6 +373,7 @@ static int npu_set_freq_req(struct nvdla_device *nvdla_dev, struct npu_freq_para
+ 		dev_err(&nvdla_dev->pdev->dev, "set npu core clock parent err = %d.\n", ret);
+ 		goto err_npu_core;
+ 	}
++
+ 	mdelay(10);
+ 	rate = clk_round_rate(nvdla_dev->llc_aclk, tbl->llc_rate);
+ 	ret = clk_set_rate(nvdla_dev->llc_aclk, rate);
+@@ -421,6 +409,7 @@ static int npu_devfreq_target(struct device *dev, unsigned long *freq, u32 flags
+ 	unsigned long target_volt, target_rate;
+ 	int ret;
+ 	struct npu_freq_param *tbl = NULL;
++	int highset_idx = nvdla_dev->freq_count - 1;
+ 
+ 	if (nvdla_dev->is_low_freq) {
+ 		dev_dbg(dev, "NPU uses a fixed frequency of 1G\n");
+@@ -441,38 +430,55 @@ static int npu_devfreq_target(struct device *dev, unsigned long *freq, u32 flags
+ 	}
+ 	mutex_lock(&nvdla_dev->devfreq_lock);
+ 
+-	for (int i = 0; i < NPU_TBL_MAX; i++) {
+-		if (npu_freq_tbl[nvdla_dev->numa_id][i].npu_rate == target_rate) {
+-			tbl = &npu_freq_tbl[nvdla_dev->numa_id][i];
++	for (int i = 0; i < nvdla_dev->freq_count; i++) {
++		if (nvdla_dev->freq_tbl[i].npu_rate == target_rate && nvdla_dev->freq_tbl[i].valid == 1) {
++			tbl = &nvdla_dev->freq_tbl[i];
+ 			break;
+ 		}
+ 	}
+ 
+ 	if (!tbl) {
+-		dev_warn(dev, "can't find suitable freq table\n");
++		dev_err(dev, "can't find suitable freq table\n");
+ 		goto out;
+-	} else {
+-		dev_info(dev, "devfreq set npu clk rate:%ld, llc clk rate:%ld, npu volt:%d\n",
+-			tbl->npu_rate, tbl->llc_rate, tbl->volt);
+ 	}
+ 
+ 	if (target_rate > nvdla_dev->rate) { // rise freq
+-		ret = regulator_set_voltage(nvdla_dev->npu_regulator, tbl->volt, tbl->volt);
++		ret = regulator_set_voltage(nvdla_dev->npu_regulator, nvdla_dev->freq_tbl[highset_idx].volt,
++					nvdla_dev->freq_tbl[highset_idx].volt);
+ 		if (ret) {
+-			dev_err(dev, "Cannot set voltage %d uV\n", tbl->volt);
++			dev_err(dev, "Cannot set voltage %d uV\n", nvdla_dev->freq_tbl[highset_idx].volt);
+ 			goto out;
+ 		}
+-		mdelay(10);
++
++		mdelay(DEVFREQ_VOLT_DELAY);
+ 		ret = npu_set_freq_req(nvdla_dev, tbl);
+ 		if (ret) {
+ 			goto out;
+ 		}
+-	} else { // lower freq
++		mdelay(1);
++		if (target_rate != nvdla_dev->freq_tbl[highset_idx].npu_rate) {
++			ret = regulator_set_voltage(nvdla_dev->npu_regulator, tbl->volt, tbl->volt);
++			if (ret) {
++				dev_err(dev, "Cannot set voltage %d uV\n", tbl->volt);
++				goto out;
++			}
++		}
++	} else if (target_rate < nvdla_dev->rate) { // lower freq
++		if (nvdla_dev->rate != nvdla_dev->freq_tbl[highset_idx].npu_rate) {
++			ret = regulator_set_voltage(nvdla_dev->npu_regulator, nvdla_dev->freq_tbl[highset_idx].volt,
++						nvdla_dev->freq_tbl[highset_idx].volt);
++			if (ret) {
++				dev_err(dev, "Cannot set voltage %d uV\n", nvdla_dev->freq_tbl[highset_idx].volt);
++				goto out;
++			}
++			mdelay(DEVFREQ_VOLT_DELAY);
++		}
++
+ 		ret = npu_set_freq_req(nvdla_dev, tbl);
+ 		if (ret) {
+ 			goto out;
+ 		}
+-		mdelay(10);
++		mdelay(1);
+ 		ret = regulator_set_voltage(nvdla_dev->npu_regulator, tbl->volt, tbl->volt);
+ 		if (ret) {
+ 			dev_err(dev, "Cannot set voltage %d uV\n", tbl->volt);
+@@ -483,6 +489,9 @@ static int npu_devfreq_target(struct device *dev, unsigned long *freq, u32 flags
+ 	nvdla_dev->rate = tbl->npu_rate;
+ 	nvdla_dev->volt = tbl->volt;
+ 
++	dev_info(dev, "devfreq set npu clk rate:%ld, llc clk rate:%ld, npu volt:%d\n",
++			tbl->npu_rate, tbl->llc_rate, tbl->volt);
++
+ out:
+ 	mutex_unlock(&nvdla_dev->devfreq_lock);
+ 
+@@ -530,37 +539,104 @@ static struct devfreq_simple_ondemand_data ondemand_data =
+ };
+ #endif
+ 
+-static void npu_set_freq_table(struct nvdla_device *nvdla_dev)
++static int npu_set_freq_table(struct nvdla_device *nvdla_dev)
+ {
+-	int numa_id = nvdla_dev->numa_id;
++#if defined(CONFIG_PM_DEVFREQ)
++	unsigned long freq = 0;
++    unsigned long voltage;
++	struct device *dev = &nvdla_dev->pdev->dev;
++	struct dev_pm_opp *opp;
++	int opp_count, i = 0;
+ 
+-	/* NPU 1.5G HZ, LLC 1.188G HZ*/
+-	npu_freq_tbl[numa_id][NPU_1_5_GHZ].npu_clk_parent = nvdla_dev->fixed_rate_clk_spll1_fout1;
+-	npu_freq_tbl[numa_id][NPU_1_5_GHZ].npu_rate = 1500000000;
+-	npu_freq_tbl[numa_id][NPU_1_5_GHZ].llc_clk_parent = nvdla_dev->fixed_rate_clk_vpll_fout1;
+-	npu_freq_tbl[numa_id][NPU_1_5_GHZ].llc_rate = 1188000000;
+-	npu_freq_tbl[numa_id][NPU_1_5_GHZ].volt = 1050000;
++	opp_count = dev_pm_opp_get_opp_count(dev);
++	if (opp_count <= 0) {
++        dev_err(dev, "Failed to get OPP count: %d\n", opp_count);
++        return -ENODEV;
++    }
++
++	dev_dbg(dev, "get opp count:%d\n", opp_count);
++
++	nvdla_dev->freq_tbl = kmalloc(sizeof(struct npu_freq_param) * opp_count, GFP_KERNEL);
++	if (!nvdla_dev->freq_tbl)
++	return -ENOMEM;
+ 
++	nvdla_dev->freq_count = opp_count;
++
++	while (i < opp_count) {
++        opp = dev_pm_opp_find_freq_ceil(dev, &freq);
++        if (IS_ERR(opp)) {
++            break;
++        }
++
++        voltage = dev_pm_opp_get_voltage(opp);
++        dev_dbg(dev, "Frequency: %lu Hz, Voltage: %lu uV\n", freq, voltage);
++
++		nvdla_dev->freq_tbl[i].npu_rate = freq;
++		nvdla_dev->freq_tbl[i].volt = voltage;
++
++		if (freq == 1500000000) {
++			nvdla_dev->freq_tbl[i].npu_clk_parent = nvdla_dev->fixed_rate_clk_spll1_fout1;
++			nvdla_dev->freq_tbl[i].llc_clk_parent = nvdla_dev->fixed_rate_clk_vpll_fout1;
++			nvdla_dev->freq_tbl[i].llc_rate = 1188000000;
++			nvdla_dev->freq_tbl[i].valid = 1;
++		} else if (freq == 1188000000) {
++			nvdla_dev->freq_tbl[i].npu_clk_parent = nvdla_dev->fixed_rate_clk_vpll_fout1;
++			nvdla_dev->freq_tbl[i].llc_clk_parent = nvdla_dev->fixed_rate_clk_spll0_fout1;
++			nvdla_dev->freq_tbl[i].llc_rate = 800000000;
++			nvdla_dev->freq_tbl[i].valid = 1;
++		} else if (freq == 1040000000) {
++			nvdla_dev->freq_tbl[i].npu_clk_parent = nvdla_dev->fixed_rate_clk_spll2_fout2;
++			nvdla_dev->freq_tbl[i].llc_clk_parent = nvdla_dev->fixed_rate_clk_spll0_fout1;
++			nvdla_dev->freq_tbl[i].llc_rate = 800000000;
++			nvdla_dev->freq_index_1G = i;
++			nvdla_dev->freq_tbl[i].valid = 1;
++		} else if (freq == 750000000) {
++			nvdla_dev->freq_tbl[i].npu_clk_parent = nvdla_dev->fixed_rate_clk_spll1_fout1;
++			nvdla_dev->freq_tbl[i].llc_clk_parent = nvdla_dev->fixed_rate_clk_spll2_fout1;
++			nvdla_dev->freq_tbl[i].llc_rate = 520000000;
++			nvdla_dev->freq_tbl[i].valid = 1;
++		} else if (freq == 520000000) {
++			nvdla_dev->freq_tbl[i].npu_clk_parent = nvdla_dev->fixed_rate_clk_spll2_fout2;
++			nvdla_dev->freq_tbl[i].llc_clk_parent = nvdla_dev->fixed_rate_clk_spll0_fout1;
++			nvdla_dev->freq_tbl[i].llc_rate = 400000000;
++			nvdla_dev->freq_tbl[i].valid = 1;
++		}
++
++		i++;
++		freq++;
++
++        dev_pm_opp_put(opp);
++    }
++
++	if (nvdla_dev->freq_tbl[opp_count-1].valid != 1 || nvdla_dev->freq_index_1G == 0) {
++		dev_err(dev, "opp table not include 1.5G or 1G freq\n");
++		return -ENOMEM;
++	}
++#else
++	nvdla_dev->freq_tbl = kmalloc(sizeof(struct npu_freq_param) * 2, GFP_KERNEL);
++	if (!nvdla_dev->freq_tbl)
++		return -ENOMEM;
++
++	nvdla_dev->freq_count = 2;
+ 	/* NPU 1G HZ, LLC 800M HZ */
+-	npu_freq_tbl[numa_id][NPU_1_0_GHZ].npu_clk_parent = nvdla_dev->fixed_rate_clk_spll2_fout2;
+-	npu_freq_tbl[numa_id][NPU_1_0_GHZ].npu_rate = 1040000000;
+-	npu_freq_tbl[numa_id][NPU_1_0_GHZ].llc_clk_parent = nvdla_dev->fixed_rate_clk_spll0_fout1;
+-	npu_freq_tbl[numa_id][NPU_1_0_GHZ].llc_rate = 800000000;
+-	npu_freq_tbl[numa_id][NPU_1_0_GHZ].volt = 900000;
+-
+-	/* NPU 750M HZ, LLC 520M HZ */
+-	npu_freq_tbl[numa_id][NPU_750_MHZ].npu_clk_parent = nvdla_dev->fixed_rate_clk_spll1_fout1;
+-	npu_freq_tbl[numa_id][NPU_750_MHZ].npu_rate = 750000000;
+-	npu_freq_tbl[numa_id][NPU_750_MHZ].llc_clk_parent = nvdla_dev->fixed_rate_clk_spll2_fout1;
+-	npu_freq_tbl[numa_id][NPU_750_MHZ].llc_rate = 520000000;
+-	npu_freq_tbl[numa_id][NPU_750_MHZ].volt = 800000;
+-
+-	/* NPU 520M HZ, LLC 400M HZ */
+-	npu_freq_tbl[numa_id][NPU_520_MHZ].npu_clk_parent = nvdla_dev->fixed_rate_clk_spll2_fout2;
+-	npu_freq_tbl[numa_id][NPU_520_MHZ].npu_rate = 520000000;
+-	npu_freq_tbl[numa_id][NPU_520_MHZ].llc_clk_parent = nvdla_dev->fixed_rate_clk_spll0_fout1;
+-	npu_freq_tbl[numa_id][NPU_520_MHZ].llc_rate = 400000000;
+-	npu_freq_tbl[numa_id][NPU_520_MHZ].volt = 800000;
++	nvdla_dev->freq_tbl[0].npu_clk_parent = nvdla_dev->fixed_rate_clk_spll2_fout2;
++	nvdla_dev->freq_tbl[0].npu_rate = 1040000000;
++	nvdla_dev->freq_tbl[0].llc_clk_parent = nvdla_dev->fixed_rate_clk_spll0_fout1;
++	nvdla_dev->freq_tbl[0].llc_rate = 800000000;
++	nvdla_dev->freq_tbl[0].volt = 900000;
++	nvdla_dev->freq_index_1G = 0;
++	nvdla_dev->freq_tbl[0].valid = 1;
++
++	/* NPU 1.5G HZ, LLC 1.188G HZ*/
++	nvdla_dev->freq_tbl[1].npu_clk_parent = nvdla_dev->fixed_rate_clk_spll1_fout1;
++	nvdla_dev->freq_tbl[1].npu_rate = 1500000000;
++	nvdla_dev->freq_tbl[1].llc_clk_parent = nvdla_dev->fixed_rate_clk_vpll_fout1;
++	nvdla_dev->freq_tbl[1].llc_rate = 1188000000;
++	nvdla_dev->freq_tbl[1].volt = 1050000;
++	nvdla_dev->freq_tbl[1].valid = 1;
++#endif
++
++	return 0;
+ }
+ 
+ static int32_t  npu_probe_result = 0;
+@@ -576,15 +652,13 @@ static int32_t edla_probe(struct platform_device *pdev)
+ 	struct devfreq *df = NULL;
+ #endif
+ 
+-	dla_debug("%s enter.\n", __FUNCTION__);
++	dev_info(dev, "Probe Eswin NPU.\n");
+ #if SMALL_PEC_MAT
+-	dla_debug("load npu driver with PEC2x2.\n");
++	dev_dbg(dev, "load npu driver with PEC2x2.\n");
+ #else
+-	dla_debug("load npu driver with PEC4x8.\n");
++	dev_dbg(dev, "load npu driver with PEC4x8.\n");
+ #endif
+ 
+-	pr_err("Probe Eswin NPU.\n");
+-
+ 	nvdla_dev = devm_kzalloc(dev, sizeof(*nvdla_dev), GFP_KERNEL);
+ 	if (!nvdla_dev)
+ 		return -ENOMEM;
+@@ -592,13 +666,13 @@ static int32_t edla_probe(struct platform_device *pdev)
+ 	platform_set_drvdata(pdev, nvdla_dev);
+ 	nvdla_dev->pdev = pdev;
+ 	spin_lock_init(&nvdla_dev->nvdla_lock);
+-	mutex_init(&nvdla_dev->task_mutex);
++	mutex_init(&nvdla_dev->mapping_mutex);
+ 	init_waitqueue_head(&nvdla_dev->event_wq);
+ 	mutex_init(&nvdla_dev->devfreq_lock);
+ 
+ 	nvdla_dev->npu_regulator = devm_regulator_get(dev, "npu");
+ 	if (nvdla_dev->npu_regulator == NULL) {
+-		dla_error("cannot get npu regulator, error.\n");
++		dev_err(dev, "cannot get npu regulator, error.\n");
+ 		return -EINVAL;
+ 	}
+ 	nvdla_dev->is_low_freq = of_property_read_bool(pdev->dev.of_node, "apply_npu_1G_freq");
+@@ -612,14 +686,14 @@ static int32_t edla_probe(struct platform_device *pdev)
+ 	err = regulator_enable(nvdla_dev->npu_regulator);
+ 	if (err < 0)
+ 	{
+-		dla_error("npu_regulator enble error:%d\n\r", err);
++		dev_err(dev, "npu_regulator enble error:%d\n\r", err);
+ 		nvdla_dev->npu_regulator = NULL;
+ 		return err;
+ 	}
+ 
+ 	err = npu_dt_node_resources(nvdla_dev);
+ 	if (err) {
+-		dla_error("error, get hw resource, ret=%d\n", err);
++		dev_err(dev, "error, get hw resource, ret=%d\n", err);
+ 		platform_set_drvdata(pdev, NULL);
+ 		regulator_disable(nvdla_dev->npu_regulator);
+ 		return -EINVAL;
+@@ -632,7 +706,33 @@ static int32_t edla_probe(struct platform_device *pdev)
+ 		goto err_mem0;
+ 	}
+ 
+-	npu_set_freq_table(nvdla_dev);
++#if defined(CONFIG_PM_DEVFREQ)
++	/* Add OPP table from device tree */
++	err = devm_pm_opp_of_add_table(dev);
++	if (err) {
++		dev_err(dev, "%s, %d, Failed to add OPP table, ret = %d.\n", __func__, __LINE__, err);
++		goto err_mem0;
++	}
++
++	df = devm_devfreq_add_device(dev, &npu_devfreq_profile, DEVFREQ_GOV_SIMPLE_ONDEMAND, &ondemand_data);
++	if (IS_ERR(df)) {
++		err = PTR_ERR(df);
++		dev_err(dev, "%s, %d, Failed to add devfreq device, ret=%d.\n", __func__, __LINE__, err);
++		goto err_mem0;
++	}
++	/* Register opp_notifier to catch the change of OPP  ????*/
++	err = devm_devfreq_register_opp_notifier(&pdev->dev, df);
++	if (err < 0) {
++		dev_err(&pdev->dev, "failed to register opp notifier\n");
++		goto err_mem0;
++	}
++#endif
++
++	err = npu_set_freq_table(nvdla_dev);
++	if (err < 0) {
++		dev_err(dev, "failed to set freq table\n");
++		goto err_mem0;
++	}
+ 
+ 	if (nvdla_dev->is_low_freq == 0) {
+ 		if (nvdla_dev->npu_def_high_vol) {
+@@ -640,27 +740,25 @@ static int32_t edla_probe(struct platform_device *pdev)
+ 										nvdla_dev->npu_def_high_vol);
+ 		} else {
+ 			err = regulator_set_voltage(nvdla_dev->npu_regulator,
+-						npu_freq_tbl[nvdla_dev->numa_id][NPU_1_5_GHZ].volt,
+-						npu_freq_tbl[nvdla_dev->numa_id][NPU_1_5_GHZ].volt);
++						nvdla_dev->freq_tbl[nvdla_dev->freq_count - 1].volt,
++						nvdla_dev->freq_tbl[nvdla_dev->freq_count - 1].volt);
+ 		}
+ 
+ 		if (err != 0) {
+-			dla_error("error npu regulator volt:%duV ret:%d.\n",
+-				nvdla_dev->npu_def_high_vol ? : npu_freq_tbl[nvdla_dev->numa_id][NPU_1_5_GHZ].volt, err);
++			dev_err(dev, "error npu regulator volt:%duV ret:%d.\n",
++				nvdla_dev->npu_def_high_vol ? : nvdla_dev->freq_tbl[nvdla_dev->freq_count - 1].volt, err);
+ 			goto err_mem0;
+ 		}
+         mdelay(10);
+-		err = npu_set_freq_req(nvdla_dev, &npu_freq_tbl[nvdla_dev->numa_id][NPU_1_5_GHZ]);
+-		nvdla_dev->act_freq_level = 4;
+-
++		err = npu_set_freq_req(nvdla_dev, &nvdla_dev->freq_tbl[nvdla_dev->freq_count - 1]);
+     } else {
+ 		err = regulator_set_voltage(nvdla_dev->npu_regulator,
+-						npu_freq_tbl[nvdla_dev->numa_id][NPU_1_0_GHZ].volt,
+-						npu_freq_tbl[nvdla_dev->numa_id][NPU_1_0_GHZ].volt);
+-		dla_debug("name:%s, volt:%d, ret:%d\n", pdev->name, npu_freq_tbl[nvdla_dev->numa_id][NPU_1_0_GHZ].volt, err);
++						nvdla_dev->freq_tbl[nvdla_dev->freq_index_1G].volt,
++						nvdla_dev->freq_tbl[nvdla_dev->freq_index_1G].volt);
++		dev_dbg(dev, "name:%s, volt:%d, ret:%d\n", pdev->name,
++				nvdla_dev->freq_tbl[nvdla_dev->freq_index_1G].volt, err);
+ 		mdelay(10);
+-		err = npu_set_freq_req(nvdla_dev, &npu_freq_tbl[nvdla_dev->numa_id][NPU_1_0_GHZ]);
+-		nvdla_dev->act_freq_level = 3;
++		err = npu_set_freq_req(nvdla_dev, &nvdla_dev->freq_tbl[nvdla_dev->freq_index_1G]);
+     }
+ 
+ 	if (err) {
+@@ -677,8 +775,8 @@ static int32_t edla_probe(struct platform_device *pdev)
+ 		err = PTR_ERR(nvdla_dev->base);
+ 		goto err_mem0;
+ 	}
+-	if (request_mem_region(E31_EMISSION_DTIM_BASE + nvdla_dev->numa_id * NPU_DIE_REG_OFFSET, E31_EMISSION_DTIM_SIZE,
+-			       "EMISSION_BASE") == NULL) {
++	if (request_mem_region(E31_EMISSION_DTIM_BASE + nvdla_dev->numa_id * NPU_DIE_REG_OFFSET,
++						E31_EMISSION_DTIM_SIZE, "EMISSION_BASE") == NULL) {
+ 		dev_err(&pdev->dev, "request_mem_region error\n");
+ 		err = -EBUSY;
+ 		goto err_mem0;
+@@ -720,28 +818,6 @@ static int32_t edla_probe(struct platform_device *pdev)
+ 		goto err_iomap_program;
+ 	}
+ 
+-#if defined(CONFIG_PM_DEVFREQ)
+-	/* Add OPP table from device tree */
+-	err = devm_pm_opp_of_add_table(dev);
+-	if (err) {
+-		dev_err(dev, "%s, %d, Failed to add OPP table, ret = %d.\n", __func__, __LINE__, err);
+-		goto err_init_reset;
+-	}
+-
+-	df = devm_devfreq_add_device(dev, &npu_devfreq_profile, DEVFREQ_GOV_SIMPLE_ONDEMAND, &ondemand_data);
+-	if (IS_ERR(df)) {
+-		err = PTR_ERR(df);
+-		dev_err(dev, "%s, %d, Failed to add devfreq device, ret=%d.\n", __func__, __LINE__, err);
+-		goto err_init_reset;
+-	}
+-	/* Register opp_notifier to catch the change of OPP  ????*/
+-	err = devm_devfreq_register_opp_notifier(&pdev->dev, df);
+-	if (err < 0) {
+-		dev_err(&pdev->dev, "failed to register opp notifier\n");
+-		return err;
+-	}
+-#endif
+-
+ 	err = npu_init_reset(nvdla_dev);
+ 	if (err)
+ 		goto err_init_reset;
+@@ -766,6 +842,11 @@ static int32_t edla_probe(struct platform_device *pdev)
+ 		goto err_load_firm;
+ 	}
+ 
++	/* Set dma_mask and coherent_dma_mask before perfroming spram buffer attachment*/
++	err = dma_coerce_mask_and_coherent(dev, DMA_BIT_MASK(41));
++	if (err)
++		dev_warn(dev, "Unable to set coherent mask\n");
++
+ 	err = npu_spram_get(nvdla_dev);
+ 	if (err) {
+ 		dla_error("error get  spram.\n");
+@@ -777,10 +858,6 @@ static int32_t edla_probe(struct platform_device *pdev)
+ 	/* config streamID of NPU_DMA */
+ 	npu_dma_sid_cfg(nvdla_dev->base, WIN2030_SID_NPU_DMA);
+ 
+-	err = dma_set_mask_and_coherent(dev, DMA_BIT_MASK(41));
+-	if (err)
+-		dev_warn(dev, "Unable to set coherent mask\n");
+-
+ 	npu_hw_init(nvdla_dev);
+ 	err = edma_init(nvdla_dev);
+ 	if (err) {
+@@ -882,6 +959,11 @@ static int32_t __exit edla_remove(struct platform_device *pdev)
+ 		vfree(nvdla_dev->pause_op_list);
+ 		nvdla_dev->pause_op_list = NULL;
+ 	}
++
++	if (nvdla_dev->freq_tbl) {
++		kfree(nvdla_dev->freq_tbl);
++		nvdla_dev->freq_tbl = NULL;
++	}
+ 	return 0;
+ }
+ 
+@@ -896,7 +978,6 @@ int __maybe_unused npu_runtime_suspend(struct device *dev)
+ 	}
+ 
+ 	npu_tbu_power(dev, false);
+-	ndev->act_freq_level = 0;
+ 
+ 	return npu_disable_clock(ndev);
+ }
+@@ -918,13 +999,6 @@ int __maybe_unused npu_runtime_resume(struct device *dev)
+     }
+ 	npu_tbu_power(dev, true);
+ 
+-	for (int i = 0; i < NPU_TBL_MAX; i++) {
+-		if (npu_freq_tbl[ndev->numa_id][i].npu_rate == ndev->rate) {
+-			ndev->act_freq_level = NPU_TBL_MAX - i;
+-			break;
+-		}
+-	}
+-
+ 	return ret;
+ }
+ 
+@@ -963,8 +1037,7 @@ int __maybe_unused npu_suspend(struct device *dev)
+ 	if ((NULL != nvdla_dev->npu_regulator) && (!IS_ERR(nvdla_dev->npu_regulator)))
+ 	{
+ 		is_enable = regulator_is_enabled(nvdla_dev->npu_regulator);
+-		if(1 == is_enable)
+-		{
++		if(1 == is_enable) {
+ 			regulator_disable(nvdla_dev->npu_regulator);
+ 			mdelay(20);
+ 		}
+@@ -977,6 +1050,7 @@ int __maybe_unused npu_resume(struct device *dev)
+ {
+ 	int ret;
+ 	int is_enable = 0;
++
+ 	struct nvdla_device *ndev = dev_get_drvdata(dev);
+ 	dev_dbg(dev, "%s\n", __func__);
+ 	if(ndev->is_suspend == false) {
+@@ -1013,6 +1087,7 @@ int __maybe_unused npu_resume(struct device *dev)
+ 		dla_error("hardware reset error, ret=%d.\n", ret);
+ 		goto err_reset;
+ 	}
++
+ 	ret = npu_dev_deassert(ndev);
+ 	if (ret < 0) {
+ 		goto err_reset;
+@@ -1040,8 +1115,8 @@ int __maybe_unused npu_resume(struct device *dev)
+ 
+ 	if(pm_runtime_status_suspended(dev)) {
+ 		dev_dbg(dev, "npu is runtime suspended\n");
+-		npu_disable_clock(ndev);
+ 		npu_tbu_power(dev, false);
++		npu_disable_clock(ndev);
+ 	}
+ 
+ 	ndev->is_suspend = false;
+@@ -1076,7 +1151,7 @@ static struct platform_driver edla_driver =
+ 	{
+ 		.name = DRIVER_NAME,
+ 		.of_match_table = of_match_ptr(edla_of_match),
+-		.pm = pm_ptr(&npu_hw_pm_ops),
++		.pm = pm_sleep_ptr(&npu_hw_pm_ops),
+ 	},
+ };
+ 
+diff --git a/drivers/soc/eswin/eswin-lpcpu.c b/drivers/soc/eswin/eswin-lpcpu.c
+index d0da7fa62bf9..1c7d203012c8 100644
+--- a/drivers/soc/eswin/eswin-lpcpu.c
++++ b/drivers/soc/eswin/eswin-lpcpu.c
+@@ -61,9 +61,9 @@ struct lowpower_info {
+ #define CFG_RECV_SUCC  0x366676
+ 
+ #define LPCPU_BOOT_ADDR         0x51828314
+-#define LPCPU_CONFIG_ADDR       0x5880dc00
++#define LPCPU_CONFIG_ADDR       0x5880d400
+ #define LPCPU_CONFIG_MAGIC      0x4c435055
+-#define LPCPU_CONFIG_VERSION    2
++#define LPCPU_CONFIG_VERSION    3
+ #define LPCPU_NPU_FW_MAX_SIZE   (64*1024)
+ #define LPCPU_RSV_MEM_MIN_SIZE  (5*1024*1024)
+ 
+diff --git a/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_device.c b/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_device.c
+index 801df92efc33..3737e8caafc6 100644
+--- a/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_device.c
++++ b/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_device.c
+@@ -3479,47 +3479,6 @@ gc_df_exit(gckGALDEVICE Device)
+ }
+ #endif
+ 
+-int gckGALDEVICE_GetHardwareLoad(struct device *dev, struct devfreq_dev_status *stat)
+-{
+-    gctINT32 i = 0;
+-    gckHARDWARE hardware = NULL;
+-
+-    if (!dev) {
+-        return -1;
+-    }
+-
+-    if (!stat) {
+-        return -1;
+-    }
+-
+-    for (i = 0; i < gcdDEVICE_COUNT; i++) {
+-        if (galDevice->devices[i] == NULL) {
+-            continue;
+-        }
+-
+-        if (dev != galDevice->devices[i]->dev) {
+-            continue;
+-        }
+-
+-        //use core 0 usage default
+-        if (galDevice->devices[i]->kernels[gcvCORE_2D] == NULL) {
+-            continue;
+-        }
+-
+-        hardware = galDevice->devices[i]->kernels[gcvCORE_2D]->hardware;
+-        if (hardware) {
+-            // IPA use, not user hardware->load to prevent clock change too frequncy;
+-            stat->busy_time = 1024; // hardware->load
+-            stat->total_time = 1024; // 100
+-            return 0;
+-        }
+-    }
+-
+-    dev_err(dev, "hae hardware load no device found!\n");
+-
+-    return -1;
+-}
+-
+ /*******************************************************************************
+  *
+  *  gckGALDEVICE_Start
+diff --git a/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_device.h b/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_device.h
+index 3e5b54563185..e4e82fdace9a 100644
+--- a/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_device.h
++++ b/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_device.h
+@@ -161,8 +161,6 @@ gckGALDEVICE_Construct(gcsPLATFORM *Platform, const gcsMODULE_PARAMETERS *Args,
+ gceSTATUS
+ gckGALDEVICE_Destroy(gckGALDEVICE Device);
+ 
+-int gckGALDEVICE_GetHardwareLoad(struct device *dev, struct devfreq_dev_status *stat);
+-
+ static gcmkINLINE gckKERNEL
+ _GetValidKernel(gckGALDEVICE Device)
+ {
+-- 
+2.53.0
+

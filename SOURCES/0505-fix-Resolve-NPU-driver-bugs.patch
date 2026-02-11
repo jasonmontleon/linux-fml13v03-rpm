@@ -1,0 +1,45 @@
+From 77e63d4230a898170ee76bf02300d2ee0e046a25 Mon Sep 17 00:00:00 2001
+From: denglei <denglei@eswincomputing.com>
+Date: Fri, 29 Aug 2025 09:00:39 +0800
+Subject: [PATCH 505/534] fix:Resolve NPU driver bugs.
+
+Changelogs:
+	1.Resolve reset deadlock and PM counting errors.
+	2.Resolve the issue of no corresponding dsp operator
+	  driver crash when submitting the model.
+
+Signed-off-by: denglei <denglei@eswincomputing.com>
+---
+ drivers/soc/eswin/ai_driver/npu/parse_dep.c | 16 ++++++++++------
+ 1 file changed, 10 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/soc/eswin/ai_driver/npu/parse_dep.c b/drivers/soc/eswin/ai_driver/npu/parse_dep.c
+index 8604acd5e545..9a709fd9df48 100644
+--- a/drivers/soc/eswin/ai_driver/npu/parse_dep.c
++++ b/drivers/soc/eswin/ai_driver/npu/parse_dep.c
+@@ -228,12 +228,16 @@ static void dependency_consumer2producer(struct win_executor *executor,
+ 		if (pcer == IDX_EVENT_SOURCE)
+ 			dependency_count[i]++;
+ 
+-		if((pcer == IDX_EVENT_SOURCE || pcer == IDX_EVENT_SINK) &&
+-		    task->op_desc[i].event_op.submodel_type == E31)
+-		{
+-			npu_info->peer_type = E31;
+-			dla_debug("e31 event op:%d,depcnt:%d,peer_type:%lld\n", i,
+-			           dependency_count[i], npu_info->peer_type);
++		if(pcer == IDX_EVENT_SOURCE || pcer == IDX_EVENT_SINK) {
++			if (task->op_desc[i].event_op.submodel_type == E31) {
++				npu_info->peer_type = E31;
++				dla_debug("e31 event op:%d,depcnt:%d,peer_type:%d\n", i,
++						  dependency_count[i], npu_info->peer_type);
++			} else if (task->op_desc[i].event_op.submodel_type == P2P) {
++				npu_info->peer_type = P2P;
++				dla_debug("e31 event op:%d,depcnt:%d,peer_type:%d\n", i,
++						  dependency_count[i], npu_info->peer_type);
++			}
+ 		}
+ 
+ 		consumer = task->common_desc[i].fused_parent.index;
+-- 
+2.53.0
+

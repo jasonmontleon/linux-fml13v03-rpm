@@ -1,0 +1,73 @@
+From 624d0f03e89cb2f8be5841bb33048456f5b69421 Mon Sep 17 00:00:00 2001
+From: chenzhanzhan <chenzhanzhan@eswincomputing.com>
+Date: Tue, 21 Oct 2025 20:08:57 +0800
+Subject: [PATCH 525/534] fix:esw-wdt suspend crash issue
+
+Changelogs:
+	1. esw-wdt probe fail when can't request mailbox channel
+
+Signed-off-by: chenzhanzhan <chenzhanzhan@eswincomputing.com>
+---
+ drivers/mailbox/eswin-mailbox.c |  2 +-
+ drivers/watchdog/esw_wdt.c      | 11 ++++++++++-
+ 2 files changed, 11 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/mailbox/eswin-mailbox.c b/drivers/mailbox/eswin-mailbox.c
+index e929f4a0ba2d..ef6e5f36a11b 100755
+--- a/drivers/mailbox/eswin-mailbox.c
++++ b/drivers/mailbox/eswin-mailbox.c
+@@ -438,7 +438,7 @@ static int eswin_mbox_probe(struct platform_device *pdev)
+ 	if (wakeup_source) {
+ 		mb->wakeup_source = true;
+ 		device_init_wakeup(&pdev->dev, 1);
+-		mb->mbox.txdone_poll = true;
++		mb->mbox.txdone_poll = false;
+ 	} else {
+ 		mb->wakeup_source = false;
+ 		mb->mbox.txdone_poll = true;
+diff --git a/drivers/watchdog/esw_wdt.c b/drivers/watchdog/esw_wdt.c
+index 4001b373c0be..f24afabba401 100644
+--- a/drivers/watchdog/esw_wdt.c
++++ b/drivers/watchdog/esw_wdt.c
+@@ -309,6 +309,7 @@ static int esw_wdt_probe(struct platform_device *pdev) {
+         wdt->mbox_channel = eswin_wdt_request_channel(pdev, mbox_channel_name);
+         if (wdt->mbox_channel == NULL) {
+             dev_err(&pdev->dev, "eswin_wdt_request_channel: %s fail\n", mbox_channel_name);
++            ret = -EBUSY;
+             goto err_misc;
+         }
+     } else {
+@@ -354,7 +355,9 @@ static int esw_wdt_probe(struct platform_device *pdev) {
+ 
+ static int esw_wdt_remove(struct platform_device *pdev) {
+     struct esw_wdt *wdt = platform_get_drvdata(pdev);
+-
++    if (wdt == NULL) {
++        return 0;
++    }
+     esw_wdt_stop(&wdt->wdd);
+ 
+     dev_info(&pdev->dev, "Eswin watchdog driver removed\n");
+@@ -364,6 +367,9 @@ static int esw_wdt_remove(struct platform_device *pdev) {
+ static int esw_wdt_suspend(struct device *dev)
+ {
+     struct esw_wdt *wdt = dev_get_drvdata(dev);
++    if (wdt == NULL) {
++        return 0;
++    }
+     dev_info(dev, "Eswin watchdog driver esw_wdt_suspend (timeout=%d sec, max_timeout=%d sec)\n", wdt->timeout, wdt->max_timeout);
+     esw_wdt_stop(&wdt->wdd);
+     return 0;
+@@ -372,6 +378,9 @@ static int esw_wdt_suspend(struct device *dev)
+ static int esw_wdt_resume(struct device *dev)
+ {
+     struct esw_wdt *wdt = dev_get_drvdata(dev);
++    if (wdt == NULL) {
++        return 0;
++    }
+     dev_info(dev, "Eswin watchdog driver esw_wdt_resume (timeout=%d sec, max_timeout=%d sec)\n", wdt->timeout, wdt->max_timeout);
+ 
+     esw_wdt_start(&wdt->wdd);
+-- 
+2.53.0
+

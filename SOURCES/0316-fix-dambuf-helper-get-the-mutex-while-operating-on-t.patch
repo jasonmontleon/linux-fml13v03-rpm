@@ -1,0 +1,58 @@
+From 21aa29e32821b040bb72e40f35de3f193ce6e4b1 Mon Sep 17 00:00:00 2001
+From: linmin <linmin@eswincomputing.com>
+Date: Thu, 27 Feb 2025 14:14:58 +0800
+Subject: [PATCH 316/534] fix(dambuf helper):get the mutex while operating on
+ the list
+
+Changelogs:
+1.INIT_LIST_HEAD(&heap_obj->list) before adding to the list head.
+2.Hold the root->lock when performing the uninit.
+
+Signed-off-by: linmin <linmin@eswincomputing.com>
+---
+ .../dmabuf-heap-import-helper.c               | 22 ++++++++++++++-----
+ 1 file changed, 16 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/memory/eswin/es_rsvmem_heap/dmabuf-heap-import-helper.c b/drivers/memory/eswin/es_rsvmem_heap/dmabuf-heap-import-helper.c
+index f0d67b27ae4b..fa0297c4e606 100644
+--- a/drivers/memory/eswin/es_rsvmem_heap/dmabuf-heap-import-helper.c
++++ b/drivers/memory/eswin/es_rsvmem_heap/dmabuf-heap-import-helper.c
+@@ -412,9 +412,14 @@ void common_dmabuf_heap_release(struct heap_mem *heap_obj)
+ {
+ 	struct heap_root *root = heap_obj->root;
+ 
+-	mutex_lock(&root->lock);
+-	kref_put(&heap_obj->refcount, __common_dmabuf_heap_release);
+-	mutex_unlock(&root->lock);
++	if(!mutex_is_locked(&root->lock)) {
++		mutex_lock(&root->lock);
++		kref_put(&heap_obj->refcount, __common_dmabuf_heap_release);
++		mutex_unlock(&root->lock);
++	}
++	else {
++		kref_put(&heap_obj->refcount, __common_dmabuf_heap_release);
++	}
+ }
+ EXPORT_SYMBOL(common_dmabuf_heap_release);
+ 
+@@ -583,9 +588,14 @@ void common_dmabuf_heap_rsv_iova_unmap(struct heap_mem *heap_obj)
+ {
+ 	struct heap_root *root = heap_obj->root;
+ 
+-	mutex_lock(&root->lock);
+-	kref_put(&heap_obj->refcount, __common_dmabuf_heap_rsv_iova_unmap);
+-	mutex_unlock(&root->lock);
++	if(!mutex_is_locked(&root->lock)) {
++		mutex_lock(&root->lock);
++		kref_put(&heap_obj->refcount, __common_dmabuf_heap_rsv_iova_unmap);
++		mutex_unlock(&root->lock);
++	}
++	else {
++		kref_put(&heap_obj->refcount, __common_dmabuf_heap_rsv_iova_unmap);
++	}
+ }
+ EXPORT_SYMBOL(common_dmabuf_heap_rsv_iova_unmap);
+ 
+-- 
+2.53.0
+

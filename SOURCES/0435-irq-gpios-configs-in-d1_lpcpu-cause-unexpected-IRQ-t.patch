@@ -1,0 +1,42 @@
+From a9f57a00864a9f43e065c54e81137d03c80920b6 Mon Sep 17 00:00:00 2001
+From: cheney <11722200@qq.com>
+Date: Tue, 9 Sep 2025 10:27:49 +0800
+Subject: [PATCH 435/534] irq-gpios configs in d1_lpcpu cause 'unexpected IRQ
+ trap at vector cf' in wakeup procedure, so remove it.
+
+---
+ arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts | 1 -
+ drivers/soc/eswin/eswin-lpcpu.c                              | 5 +----
+ 2 files changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
+index 9d2df5ceaf16..dbba03791ad3 100644
+--- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
++++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
+@@ -533,7 +533,6 @@ &d1_lpcpu {
+ 	memory-region = <&d1_lpcpu_reserved>;
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&pinctrl_die1_gpio7_on_default>;
+-	irq-gpios = <&d1_porta 7 IRQ_TYPE_EDGE_BOTH>;
+ };
+ 
+ &pinctrl_die0_gpio25_default {
+diff --git a/drivers/soc/eswin/eswin-lpcpu.c b/drivers/soc/eswin/eswin-lpcpu.c
+index de0b60a119c2..d0da7fa62bf9 100644
+--- a/drivers/soc/eswin/eswin-lpcpu.c
++++ b/drivers/soc/eswin/eswin-lpcpu.c
+@@ -450,10 +450,7 @@ static int eswin_lpcpu_probe(struct platform_device *pdev)
+ 	platform_set_drvdata(pdev, lpcpu);
+ 
+ 	lpcpu->irq_gpio = devm_gpiod_get(dev, "irq", GPIOD_IN);
+-	if (IS_ERR(lpcpu->irq_gpio)) {
+-		dev_warn(dev, "Failed to get IRQ GPIo, gpio wakeup will not be supported!\n");
+-	}
+-	else {
++	if (!IS_ERR(lpcpu->irq_gpio)) {
+ 		enable_irq_wake(gpiod_to_irq(lpcpu->irq_gpio));
+ 	}
+ 
+-- 
+2.53.0
+

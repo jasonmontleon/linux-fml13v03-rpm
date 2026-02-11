@@ -1,0 +1,421 @@
+From 4143d0bab545fc94316cd9e3bb0e0e18320937ee Mon Sep 17 00:00:00 2001
+From: denglei <denglei@eswincomputing.com>
+Date: Wed, 10 Sep 2025 14:15:40 +0800
+Subject: [PATCH 513/534] Merge branch 'feature-eccl' into win2030-dev
+
+---
+ arch/riscv/boot/dts/eswin/vpu7702-pcie-a2.dts | 21 ++++-
+ .../eswin/ai_driver/common/dla_interface.h    |  6 +-
+ .../eswin/ai_driver/common/hetero_common.h    |  6 +-
+ .../soc/eswin/ai_driver/common/hetero_ioctl.h |  3 +-
+ .../soc/eswin/ai_driver/common/hetero_ipc.h   | 43 +++++++++-
+ drivers/soc/eswin/ai_driver/npu/event.c       | 79 +++++++++++++++++--
+ drivers/soc/eswin/ai_driver/npu/npu_frame.c   | 78 +++++++++++++++---
+ .../soc/eswin/ai_driver/npu/user_context.c    |  5 +-
+ 8 files changed, 217 insertions(+), 24 deletions(-)
+
+diff --git a/arch/riscv/boot/dts/eswin/vpu7702-pcie-a2.dts b/arch/riscv/boot/dts/eswin/vpu7702-pcie-a2.dts
+index 34b72d61219f..96e4f92f283f 100644
+--- a/arch/riscv/boot/dts/eswin/vpu7702-pcie-a2.dts
++++ b/arch/riscv/boot/dts/eswin/vpu7702-pcie-a2.dts
+@@ -73,6 +73,12 @@ memory@59000000 {
+ 		numa-node-id = <0>;
+ 	};
+ 
++	memory@8000000000 {
++		device_type = "memory";
++		reg = <0x80 0x0 0x20 0x0>;
++		numa-node-id = <0>;
++	};
++
+ 	reserved-memory {
+ 		#address-cells = <2>;
+ 		#size-cells = <2>;
+@@ -118,6 +124,12 @@ mmz_nid_0_part_0 {
+ 			no-map;
+ 		};
+ 
++		pci_phys_mem_0 {
++			compatible = "eswin-reserve-memory";
++			reg = <0x80 0x0 0x20 0x0>;
++			no-map;
++		};
++
+ 		rpc_reserved:rpc_reserved@100000000 {
+ 			reg = <0x1 0x0 0 0x1000>;
+ 			no-map;
+@@ -180,10 +192,15 @@ share_memory {
+ 			#size-cells = <2>;
+ 			phys-base = <0x1 0x4415000>;
+ 			virt-base = <0x1 0x4415000>;
+-			shm-size = <0xbbeb000>;
+-			reg = <0x1 0x4415000 0 0xbbeb000>;
++			shm-size = <0xb7eb000>;
++			reg = <0x1 0x4415000 0 0xb7eb000>;
+ 		};
+ 
++		pci_phys_mem_1 {
++			compatible = "eswin-reserve-memory";
++			reg = <0x1 0xFC00000 0 0x400000>;
++			no-map;
++		};
+ 	};
+ 
+ 	soc {
+diff --git a/drivers/soc/eswin/ai_driver/common/dla_interface.h b/drivers/soc/eswin/ai_driver/common/dla_interface.h
+index bd2d66b85d56..e9baef36ed1e 100644
+--- a/drivers/soc/eswin/ai_driver/common/dla_interface.h
++++ b/drivers/soc/eswin/ai_driver/common/dla_interface.h
+@@ -74,6 +74,7 @@
+ #define DLA_OP_MERGE 0x12
+ 
+ #define E31 2
++#define P2P 3
+ /**
+  * @name Memory types
+  * @brief DLA engnine can read/write to/from 3 memory types
+@@ -250,8 +251,9 @@ struct dla_common_op_desc {
+ 
+ struct dla_event_op_desc {
+     int16_t index;         // a unique event op index in loadable
+-    int8_t submodel_type;  // 0-umd; 1-kmd
+-    int8_t peer_type;     //0-no ; 1: e31 -> e31
++    int8_t submodel_type;  // 0-umd; 1-kmd; 2-e31; 3-p2p
++    int8_t p2p_src;
++    int8_t p2p_dst;
+ } __attribute__((packed, aligned(ALIGNMENT)));
+ 
+ #define EVENT_OP_TENSOR_NUM 8
+diff --git a/drivers/soc/eswin/ai_driver/common/hetero_common.h b/drivers/soc/eswin/ai_driver/common/hetero_common.h
+index 74e134ea2e4a..40beda94b751 100644
+--- a/drivers/soc/eswin/ai_driver/common/hetero_common.h
++++ b/drivers/soc/eswin/ai_driver/common/hetero_common.h
+@@ -358,7 +358,11 @@ typedef struct _npu_dep_info {
+     union {
+         u64 lut_address;
+         u64 dsp_eval_param;
+-        u64 peer_type;
++        struct {
++            u16 peer_type;
++            u16 peer_link;
++            u32 peer_address;
++        };
+     };
+ } __attribute__((aligned(CDMA_SRC_BYTE_ALIGN))) npu_dep_info_t;
+ 
+diff --git a/drivers/soc/eswin/ai_driver/common/hetero_ioctl.h b/drivers/soc/eswin/ai_driver/common/hetero_ioctl.h
+index 89bfbef6a808..840ac01c759e 100644
+--- a/drivers/soc/eswin/ai_driver/common/hetero_ioctl.h
++++ b/drivers/soc/eswin/ai_driver/common/hetero_ioctl.h
+@@ -37,7 +37,8 @@ enum {
+     mem_flag_swap,
+     mem_flag_input,
+     mem_flag_output,
+-    mem_flag_remote
++    mem_flag_remote,
++    mem_flag_distribute
+ };
+ 
+ /**
+diff --git a/drivers/soc/eswin/ai_driver/common/hetero_ipc.h b/drivers/soc/eswin/ai_driver/common/hetero_ipc.h
+index 8801adac3815..20564b36dcef 100644
+--- a/drivers/soc/eswin/ai_driver/common/hetero_ipc.h
++++ b/drivers/soc/eswin/ai_driver/common/hetero_ipc.h
+@@ -283,7 +283,8 @@ typedef enum {
+     EVALUATE_DONE,
+     PROGRAM_DIR_REQ,
+     PROGRAM_DIR_DONE,
+-    DSP_EVAL_DONE
++    DSP_EVAL_DONE,
++    P2P_RECEIVED_MSG
+ } CHANNAL_EVENT_TYPE;
+ 
+ #ifndef __KERNEL__
+@@ -489,6 +490,46 @@ static void messagebox_send_dsp(u32 op_type, u64 payload)
+     // clear lock bit
+     reg_write(mbox_base + MBOX_NPU_WR_LOCK, 0);
+ }
++
++/**
++ *  @brief Send a mailbox message payload to another E31.
++ *
++ *  @param op_type:         Specify the e31 operator type.
++ *  @param payload:         Specify the message payload to send.
++ *  @param mbox_base:       Specify p2p addr the message payload send to.
++ */
++static void messagebox_send_p2p(msg_payload_t payload, u32 mbox_base)
++{
++    u32 mbox_int, mbox_lock, timeout, data;
++    mbox_int = BIT3;
++    mbox_lock = BIT9;
++    timeout = 0;
++
++    // check lock bit and fifo
++    while (1) {
++        reg_write(mbox_base + MBOX_NPU_WR_LOCK, mbox_lock);
++
++        if ((reg_read(mbox_base + MBOX_NPU_WR_LOCK) & mbox_lock) &&
++            (reg_read(mbox_base + MBOX_NPU_FIFO_OFFSET) & 0x1) == 0) {
++            break;
++        }
++
++        if (timeout++ > MBX_LOCK_BIT_TIMEOUT) {
++            return;
++        }
++    }
++
++    // send data
++    data = ((u32)payload.type | (u32)payload.param << 8 | (u32)payload.lparam << 16);
++    reg_write((size_t)(mbox_base + MBOX_NPU_WR_DATA0_OFFSET), data);
++    reg_write((size_t)(mbox_base + MBOX_NPU_WR_DATA1_OFFSET), MBOX_WRITE_FIFO_BIT);
++
++    // enable interrupt
++    reg_write(mbox_base + MBOX_NPU_INT_OFFSET, mbox_int);
++
++    // clear lock bit
++    reg_write(mbox_base + MBOX_NPU_WR_LOCK, 0);
++}
+ #endif
+ 
+ /**
+diff --git a/drivers/soc/eswin/ai_driver/npu/event.c b/drivers/soc/eswin/ai_driver/npu/event.c
+index 67cacae5c475..7d3f936cae77 100644
+--- a/drivers/soc/eswin/ai_driver/npu/event.c
++++ b/drivers/soc/eswin/ai_driver/npu/event.c
+@@ -27,6 +27,8 @@
+ #include "common.h"
+ #include "dla_engine_internal.h"
+ #include "internal_interface.h"
++#include "dla_buffer.h"
++#include "dla_driver.h"
+ 
+ int dla_event_sink_rdma_check(struct dla_processor_group *group,
+ 			 union dla_operation_container *op,
+@@ -40,8 +42,15 @@ int event_sink_tensor_unfold(struct win_executor *executor, int op_idx,
+ 			union dla_surface_container *surface_desc, void *tensor,
+ 			int idx)
+ {
++	struct event_surface_desc *surface = &surface_desc->event_surface;
+ 	event_sink_dev_t *event_sink = NULL;
+ 	event_sink_dev_t *event_sink_data = NULL;
++	struct nvdla_task *task = executor->mem_handles;
++	struct nvdla_device *nvdla_dev = executor->driver_context;
++	int index = surface->data[0].address;
++	int ret = 0;
++	u64 src_base_addr;
++	event_sink_tensor_t *sink_tensor = tensor;
+ 
+ 	event_sink =
+ 		(event_sink_dev_t *)executor->prog_data_buf_bobj[IDX_EVENT_SINK];
+@@ -50,6 +59,62 @@ int event_sink_tensor_unfold(struct win_executor *executor, int op_idx,
+ 
+ 	dla_detail("op_idx:%d idx:%d\n", op_idx, idx);
+ 
++	if (index == -1 || operation_desc->event_op.submodel_type != P2P) {
++		return 0;
++	}
++
++	dla_debug("sink event addr index:%d\n", index);
++
++	ret = read_input_address(executor, &surface->data[0],
++							(void *)&src_base_addr,
++							&sink_tensor[idx].input_is_io_tensor);
++	if (ret != 0) {
++		dla_error("%s %d bad memory type %d\n", __func__, __LINE__,
++			surface->data[0].type);
++		return -1;
++	}
++
++	if (sink_tensor[idx].input_is_io_tensor != invalid_tensor_idx) {
++		dla_debug("sink event tensor is io tensor\n");
++		return 0;
++	}
++
++	ret = dla_detach_dmabuf(&task->bobjs[index]);
++	if (ret < 0) {
++		dla_error("err:dla_detach_dmabuf failed!\n");
++		return ret;
++	}
++
++	mutex_lock(&nvdla_dev->mapping_mutex);
++	ret = dma_set_mask_and_coherent(&nvdla_dev->pdev->dev, DMA_BIT_MASK(32));
++	if (ret) {
++		mutex_unlock(&nvdla_dev->mapping_mutex);
++		dev_warn(&nvdla_dev->pdev->dev, "Unable to set coherent mask 32bit\n");
++		return ret;
++	}
++
++	ret = dla_attach_dmabuf(&task->bobjs[index], &nvdla_dev->pdev->dev);
++	if (ret < 0) {
++		dla_error("err:dla_detach_dmabuf failed!\n");
++		mutex_unlock(&nvdla_dev->mapping_mutex);
++		return ret;
++	}
++
++	dla_debug("sink event iova addr:0x%llx\n", task->bobjs[index].dma_addr);
++
++	event_sink_data->npu_info.peer_address = task->bobjs[index].dma_addr;
++	event_sink_data->npu_info.peer_link = operation_desc->event_op.p2p_src << 8 | operation_desc->event_op.p2p_dst;
++
++	dla_debug("sink event peer addr:0x%x, link:0x%x\n", event_sink_data->npu_info.peer_address,
++			  event_sink_data->npu_info.peer_link);
++
++	ret = dma_set_mask_and_coherent(&nvdla_dev->pdev->dev, DMA_BIT_MASK(41));
++	mutex_unlock(&nvdla_dev->mapping_mutex);
++	if (ret) {
++		dev_warn(&nvdla_dev->pdev->dev, "Unable to set coherent mask 41bit\n");
++		return ret;
++	}
++
+ 	return 0;
+ }
+ 
+@@ -84,13 +149,15 @@ int event_source_tensor_unfold(struct win_executor *executor, int op_idx,
+ 			union dla_surface_container *surface_desc, void *tensor,
+ 			int idx)
+ {
+-	event_sink_dev_t *event_sink = NULL;
+-	event_sink_dev_t *event_sink_data = NULL;
++	event_source_dev_t *event_source = NULL;
++	event_source_dev_t *event_source_data = NULL;
+ 
+-	event_sink =
+-		(event_sink_dev_t *)executor->prog_data_buf_bobj[IDX_EVENT_SOURCE];
+-	event_sink_data = (event_sink_dev_t *)&event_sink[idx];
+-	event_sink_data->npu_info.current_op_idx = op_idx;
++	event_source =
++		(event_source_dev_t *)executor->prog_data_buf_bobj[IDX_EVENT_SOURCE];
++	event_source_data = (event_source_dev_t *)&event_source[idx];
++	event_source_data->npu_info.current_op_idx = op_idx;
++
++	event_source_data->npu_info.peer_link = operation_desc->event_op.p2p_src << 8 | operation_desc->event_op.p2p_dst;
+ 
+ 	dla_detail("op_idx:%d idx:%d\n", op_idx, idx);
+ 
+diff --git a/drivers/soc/eswin/ai_driver/npu/npu_frame.c b/drivers/soc/eswin/ai_driver/npu/npu_frame.c
+index ddf2513e5e16..0a6beef319c5 100644
+--- a/drivers/soc/eswin/ai_driver/npu/npu_frame.c
++++ b/drivers/soc/eswin/ai_driver/npu/npu_frame.c
+@@ -98,12 +98,72 @@ int io_tensor_to_io_addr(struct win_executor *executor,
+ 	int ret;
+ 	struct user_model *model = (struct user_model *)executor->model;
+ 	struct user_context *uctx = model->uctx;
+-	struct nvdla_device *nvdla_dev =
+-		(struct nvdla_device *)executor->driver_context;
++	struct nvdla_device *nvdla_dev = (struct nvdla_device *)executor->driver_context;
++	event_sink_dev_t *event_sink;
++	event_sink_dev_t *event_sink_data;
++	event_source_dev_t *event_source;
++	event_source_dev_t *event_source_data;
++	int8_t p2p_src;
++    int8_t p2p_dst;
+ 
+ 	f->input_num = executor->input_num;
+ 	f->output_num = executor->output_num;
+ 
++	if (((address[0].devBuf.reserve >> 32) & 0xffff) == 0xff11) {
++		event_sink = (event_sink_dev_t *)executor->prog_data_buf_bobj[IDX_EVENT_SINK];
++		event_sink_data = (event_sink_dev_t *)&event_sink[0];
++		p2p_src = (address[0].devBuf.reserve & 0xffff) >> 8;
++		p2p_dst = address[0].devBuf.reserve & 0xff;
++
++		mutex_lock(&nvdla_dev->mapping_mutex);
++		ret = dma_set_mask_and_coherent(&nvdla_dev->pdev->dev, DMA_BIT_MASK(32));
++		if (ret) {
++			dev_warn(&nvdla_dev->pdev->dev, "Unable to set coherent mask 32bit\n");
++			mutex_unlock(&nvdla_dev->mapping_mutex);
++			return ret;
++		}
++
++		dla_debug("sink event fd:%lld, p2p_src:%d, p2p_dst:%d\n", address[0].devBuf.memFd, p2p_src, p2p_dst);
++		fd = address[0].devBuf.memFd;
++		f->input_bobj[0] = dla_import_fd_to_device(fd, &nvdla_dev->pdev->dev);
++		if (IS_ERR(f->input_bobj[0])) {
++			dla_error("err:import input dmabuf error!\n");
++			mutex_unlock(&nvdla_dev->mapping_mutex);
++			return -ENOMEM;
++		}
++		f->input_bobj[0]->fd = -1;
++
++		dla_debug("sink event dma addr:0x%llx\n", f->input_bobj[0]->dma_addr);
++
++		event_sink_data->npu_info.peer_address = f->input_bobj[0]->dma_addr;
++		event_sink_data->npu_info.peer_link = p2p_src << 8 | p2p_dst;
++
++		ret = dma_set_mask_and_coherent(&nvdla_dev->pdev->dev, DMA_BIT_MASK(41));
++		mutex_unlock(&nvdla_dev->mapping_mutex);
++		if (ret) {
++			dev_warn(&nvdla_dev->pdev->dev, "Unable to set coherent mask 41bit\n");
++			return ret;
++		}
++
++		addr_list[address[0].bindId] = f->input_bobj[0]->dma_addr +	address[0].devBuf.offset;
++		dla_detail("addr_list[address[0].bind_id=%lld\n", addr_list[address[0].bindId]);
++
++		return 0;
++	}
++
++	if (((address[0].devBuf.reserve >> 32) & 0xffff) == 0xff22) {
++		event_source = (event_source_dev_t *)executor->prog_data_buf_bobj[IDX_EVENT_SOURCE];
++		event_source_data = (event_source_dev_t *)&event_source[0];
++		p2p_src = (address[0].devBuf.reserve & 0xffff) >> 8;
++		p2p_dst = address[0].devBuf.reserve & 0xff;
++
++		dla_info("source event p2p_src:%d, p2p_dst:%d, \n", p2p_src, p2p_dst);
++
++		event_source_data->npu_info.peer_link = p2p_src << 8 | p2p_dst;
++
++		return 0;
++	}
++
+ 	ret = npu_set_dsp_iobuf(executor, f);
+ 	if (ret < 0) {
+ 		dla_error("%s, %d, set dsp iobuf error.\n", __func__, __LINE__);
+@@ -137,12 +197,11 @@ int io_tensor_to_io_addr(struct win_executor *executor,
+ 			}
+ 			mutex_unlock(&uctx->dma_lock);
+ 			if (!entry || !handle) {
+-				f->input_bobj[i] = dla_import_fd_to_device(
+-					fd, &nvdla_dev->pdev->dev);
++				mutex_lock(&nvdla_dev->mapping_mutex);
++				f->input_bobj[i] = dla_import_fd_to_device(fd, &nvdla_dev->pdev->dev);
++				mutex_unlock(&nvdla_dev->mapping_mutex);
+ 				if (IS_ERR(f->input_bobj[i])) {
+-					dla_error(
+-						"err:import input dmabuf error!i=%d\n",
+-						i);
++					dla_error("err:import input dmabuf error!i=%d\n", i);
+ 					goto map_err;
+ 				}
+ 				f->input_bobj[i]->fd = -1;
+@@ -180,8 +239,9 @@ int io_tensor_to_io_addr(struct win_executor *executor,
+ 			}
+ 			mutex_unlock(&uctx->dma_lock);
+ 			if (!entry || !handle) {
+-				f->output_bobj[i] = dla_import_fd_to_device(
+-					fd, &nvdla_dev->pdev->dev);
++				mutex_lock(&nvdla_dev->mapping_mutex);
++				f->output_bobj[i] = dla_import_fd_to_device(fd, &nvdla_dev->pdev->dev);
++				mutex_unlock(&nvdla_dev->mapping_mutex);
+ 				if (!f->output_bobj[i]) {
+ 					dla_error(
+ 						"%s, %d, import output fd = %d err.r\n",
+diff --git a/drivers/soc/eswin/ai_driver/npu/user_context.c b/drivers/soc/eswin/ai_driver/npu/user_context.c
+index dc4a2a6de0c8..2cb30760bd42 100644
+--- a/drivers/soc/eswin/ai_driver/npu/user_context.c
++++ b/drivers/soc/eswin/ai_driver/npu/user_context.c
+@@ -106,8 +106,9 @@ static int npu_get_model_bobj(int shm_fd, struct user_model *model)
+ 	int ret;
+ 
+ 	dla_debug("shm_fd=%d\n", shm_fd);
+-	model->model_bobj =
+-		dla_import_fd_to_device(shm_fd, &nvdla_dev->pdev->dev);
++	mutex_lock(&nvdla_dev->mapping_mutex);
++	model->model_bobj = dla_import_fd_to_device(shm_fd, &nvdla_dev->pdev->dev);
++	mutex_unlock(&nvdla_dev->mapping_mutex);
+ 	if (IS_ERR(model->model_bobj)) {
+ 		dla_error("err:import shm fd failed!\n");
+ 		return -EFAULT;
+-- 
+2.53.0
+

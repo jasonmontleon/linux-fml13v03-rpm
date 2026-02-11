@@ -1,0 +1,56 @@
+From f0b5779b3fcd6f7efda5db463662c3ba33843687 Mon Sep 17 00:00:00 2001
+From: "yang.wang" <yang.wang@deepcomputing.io>
+Date: Fri, 29 Aug 2025 14:37:17 +0800
+Subject: [PATCH 436/534] drm/dw-hdmi: Remove hardcoded clock whitelist to
+ support more high-res displays
+
+Signed-off-by: yang.wang <yang.wang@deepcomputing.io>
+---
+ drivers/gpu/drm/eswin/dw-hdmi.c    | 8 --------
+ drivers/gpu/drm/eswin/es_dw_hdmi.c | 4 ++--
+ 2 files changed, 2 insertions(+), 10 deletions(-)
+
+diff --git a/drivers/gpu/drm/eswin/dw-hdmi.c b/drivers/gpu/drm/eswin/dw-hdmi.c
+index 05e8495d6c5e..58bb53434f7b 100644
+--- a/drivers/gpu/drm/eswin/dw-hdmi.c
++++ b/drivers/gpu/drm/eswin/dw-hdmi.c
+@@ -3371,14 +3371,6 @@ dw_hdmi_bridge_mode_valid(struct drm_bridge *bridge,
+ 	if (mode->flags & DRM_MODE_FLAG_INTERLACE)
+ 		return MODE_NO_INTERLACE;
+ 
+-	if (hdmi->numa_id == 0) {
+-		if (mode->clock != 235690 &&	// 2.2K: 2256x1504
+-			mode->clock != 371370 &&	// 2.8K: 2880x1800
+-		    mode->clock != 154120 &&	// 1920x1200
+-		    mode->clock != 277440)		// 2.5K: 2560x1600
+-			return MODE_BAD;
+-	}
+-
+ 	if (pdata->mode_valid)
+ 		mode_status = pdata->mode_valid(hdmi, pdata->priv_data, info,
+ 						mode);
+diff --git a/drivers/gpu/drm/eswin/es_dw_hdmi.c b/drivers/gpu/drm/eswin/es_dw_hdmi.c
+index bfe63f043274..dafb70b022ee 100644
+--- a/drivers/gpu/drm/eswin/es_dw_hdmi.c
++++ b/drivers/gpu/drm/eswin/es_dw_hdmi.c
+@@ -152,7 +152,7 @@ static const struct dw_hdmi_mpll_config eswin_mpll_cfg[] = {
+ 		},
+ 	},
+ 	{
+-		277440000,
++		281000000,
+ 		{
+ 			{ 0x0000, 0x0605 },
+ 			{ 0x1018, 0x0219 },
+@@ -228,7 +228,7 @@ static const struct dw_hdmi_curr_ctrl eswin_cur_ctr[] = {
+ 		{ 0x3040, 0x3182, 0x3100 },
+ 	},
+ 	{
+-		277440000,
++		281000000,
+ 		{ 0x3041, 0x3182, 0x3100 },
+ 	},
+ 	{
+-- 
+2.53.0
+

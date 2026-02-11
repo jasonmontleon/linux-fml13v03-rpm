@@ -1,0 +1,41 @@
+From 706c61b3b5da7084f5c05d20209e993ee2765389 Mon Sep 17 00:00:00 2001
+From: Sandie Cao <sandie.cao@deepcomputing.io>
+Date: Fri, 6 Jun 2025 10:32:16 +0800
+Subject: [PATCH 306/534] Revert "dts: riscv: eswin: Fix wireless load fail
+ after suspend"
+
+This reverts commit 593e849fe7be18bda36875228c43c61e1a078173.
+---
+ arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi | 2 --
+ arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi | 2 --
+ 2 files changed, 4 deletions(-)
+
+diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi b/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
+index 7dcb5bb5e719..0a6e866db65c 100644
+--- a/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
++++ b/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
+@@ -868,8 +868,6 @@ msi_ctrl_int : 220
+ 			interrupt-names = "msi", "inta", "intb", "intc", "intd";
+ 			interrupt-parent = <&plic0>;
+ 			interrupt-map-mask = <0x0 0x0 0x0 0x7>;
+-			msi-parent = <&plic0>;
+-			interrupt-affinity = <&cpu_0>, <&cpu_1>, <&cpu_2>, <&cpu_3>;
+ 			interrupt-map = <0x0 0x0 0x0 0x1 &plic0 179>,
+ 							<0x0 0x0 0x0 0x2 &plic0 180>,
+ 							<0x0 0x0 0x0 0x3 &plic0 181>,
+diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi b/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi
+index 76b59bc65d54..6bf51152c5c3 100644
+--- a/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi
++++ b/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi
+@@ -1538,8 +1538,6 @@ msi_ctrl_int : 220
+ 			interrupt-names = "msi", "inta", "intb", "intc", "intd";
+ 			interrupt-parent = <&plic1>;
+ 			interrupt-map-mask = <0x0 0x0 0x0 0x7>;
+-			msi-parent = <&plic1>;
+-			interrupt-affinity = <&cpu_4>, <&cpu_5>, <&cpu_6>, <&cpu_7>;
+ 			interrupt-map = <0x0 0x0 0x0 0x1 &plic1 179>,
+ 							<0x0 0x0 0x0 0x2 &plic1 180>,
+ 							<0x0 0x0 0x0 0x3 &plic1 181>,
+-- 
+2.53.0
+

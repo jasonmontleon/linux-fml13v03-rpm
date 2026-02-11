@@ -1,0 +1,61 @@
+From 88ce03144c05099a41dc3d2191bc6bc84ebd0f11 Mon Sep 17 00:00:00 2001
+From: wangguosheng <wangguosheng@eswincomputing.com>
+Date: Wed, 28 May 2025 11:00:35 +0800
+Subject: [PATCH 373/534] style:fix the warning in DTS
+
+Changelogs:
+1. fix the warning in DTS
+
+Signed-off-by: wangguosheng <wangguosheng@eswincomputing.com>
+---
+ arch/riscv/boot/dts/eswin/eswin-win2030-arch-d2d.dtsi | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030-arch-d2d.dtsi b/arch/riscv/boot/dts/eswin/eswin-win2030-arch-d2d.dtsi
+index a9194e19204a..c4b5facdedfc 100644
+--- a/arch/riscv/boot/dts/eswin/eswin-win2030-arch-d2d.dtsi
++++ b/arch/riscv/boot/dts/eswin/eswin-win2030-arch-d2d.dtsi
+@@ -20,7 +20,7 @@
+ 
+ #define CHIPLET_AND_DIE (0x2)
+ #include "eswin-win2030-arch.dtsi"
+-#include "eic770x-opptable.dtsi"
++#include "eic7702-opptable.dtsi"
+ 
+ 
+ &L64 {
+@@ -293,6 +293,7 @@ d1_bus_err0: bus-error-unit@21700000 {
+ 		reg = <0x0 0x21700000 0x0 0x1000>;
+ 		reg-names = "control";
+ 		numa-node-id = <1>;
++		status = "disabled";
+ 	};
+ 	d1_bus_err1: bus-error-unit@21701000 {
+ 		compatible = "sifive,buserror";
+@@ -301,6 +302,7 @@ d1_bus_err1: bus-error-unit@21701000 {
+ 		reg = <0x0 0x21701000 0x0 0x1000>;
+ 		reg-names = "control";
+ 		numa-node-id = <1>;
++		status = "disabled";
+ 	};
+ 	d1_bus_err2: bus-error-unit@21702000 {
+ 		compatible = "sifive,buserror";
+@@ -309,6 +311,7 @@ d1_bus_err2: bus-error-unit@21702000 {
+ 		reg = <0x0 0x21702000 0x0 0x1000>;
+ 		reg-names = "control";
+ 		numa-node-id = <1>;
++		status = "disabled";
+ 	};
+ 	d1_bus_err3: bus-error-unit@21703000 {
+ 		compatible = "sifive,buserror";
+@@ -317,6 +320,7 @@ d1_bus_err3: bus-error-unit@21703000 {
+ 		reg = <0x0 0x21703000 0x0 0x1000>;
+ 		reg-names = "control";
+ 		numa-node-id = <1>;
++		status = "disabled";
+ 	};
+ 
+ 	D1CACHE: cache-controller@22010000 {
+-- 
+2.53.0
+

@@ -1,0 +1,28 @@
+From ba33a16d1e273505b814462fa06d421d174d3ee9 Mon Sep 17 00:00:00 2001
+From: donghuawei <donghuawei@eswincomputing.com>
+Date: Wed, 4 Sep 2024 15:53:40 +0800
+Subject: [PATCH 167/534] feat:npu drv need add autoload
+
+Changelogs:
+	npu driver need autoload after system boot.
+
+Signed-off-by: donghuawei <donghuawei@eswincomputing.com>
+---
+ drivers/soc/eswin/ai_driver/npu/npu_main.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/soc/eswin/ai_driver/npu/npu_main.c b/drivers/soc/eswin/ai_driver/npu/npu_main.c
+index a5455fcffd01..d045a32b5b59 100644
+--- a/drivers/soc/eswin/ai_driver/npu/npu_main.c
++++ b/drivers/soc/eswin/ai_driver/npu/npu_main.c
+@@ -247,6 +247,7 @@ static const struct of_device_id edla_of_match[] = {
+ 	},
+ 	{},
+ };
++MODULE_DEVICE_TABLE(of, edla_of_match);
+ 
+ void *npu_get_win_engine(void *arg_nvdla_dev)
+ {
+-- 
+2.53.0
+

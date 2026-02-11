@@ -1,0 +1,29 @@
+From 4f86c9b98a2acbad5822ad5cae5eba7e39200d7a Mon Sep 17 00:00:00 2001
+From: sandiecao <sandie.cao@deepcomputing.io>
+Date: Tue, 4 Nov 2025 16:11:59 +0800
+Subject: [PATCH 532/534] riscv: config: fml13v03: add
+ CONFIG_ARCH_SUSPEND_POSSIBLE=y for s3
+
+Signed-off-by: sandiecao <sandie.cao@deepcomputing.io>
+---
+ arch/riscv/configs/fml13v03_defconfig | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/arch/riscv/configs/fml13v03_defconfig b/arch/riscv/configs/fml13v03_defconfig
+index f0428afebddd..8d98e892bbfb 100755
+--- a/arch/riscv/configs/fml13v03_defconfig
++++ b/arch/riscv/configs/fml13v03_defconfig
+@@ -4393,8 +4393,8 @@ CONFIG_PRINTK_TIME=y
+ CONFIG_CONSOLE_LOGLEVEL_DEFAULT=15
+ CONFIG_CONSOLE_LOGLEVEL_QUIET=15
+ CONFIG_MESSAGE_LOGLEVEL_DEFAULT=7
+-CONFIG_DYNAMIC_DEBUG=n
+-CONFIG_DYNAMIC_DEBUG_CORE=n
++CONFIG_DYNAMIC_DEBUG=y
++CONFIG_DYNAMIC_DEBUG_CORE=y
+ CONFIG_VMLINUX_MAP=y
+ CONFIG_MAGIC_SYSRQ=y
+ CONFIG_DEBUG_FS=y
+-- 
+2.53.0
+

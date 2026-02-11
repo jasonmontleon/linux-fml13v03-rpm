@@ -1,0 +1,66 @@
+From 75111ed0adc2741c2bda2ef653d76a9ee46efaf6 Mon Sep 17 00:00:00 2001
+From: cheney <11722200@qq.com>
+Date: Tue, 26 Aug 2025 11:42:51 +0800
+Subject: [PATCH 429/534] chore(config): enable CPU frequency scaling option
+
+---
+ .../eswin/eic7702-deepcomputing-fml13v03.dts  | 37 ++++++++++++-------
+ 1 file changed, 24 insertions(+), 13 deletions(-)
+
+diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
+index 8f88220860ee..a735c67f7515 100644
+--- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
++++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
+@@ -268,25 +268,36 @@ d1_zero_device: zero-device@3a000000 {
+ 	};
+ };
+ 
+-&thermal_zones {
+-	thermal0 {
+-		cooling-maps {
+-			/delete-node/ map0;
+-		};
+-	};
+-	d1_thermal0 {
+-		cooling-maps {
+-			/delete-node/ map0;
+-		};
+-	};
+-};
+-
+ &d0_cpu_opp_table {
++	/delete-node/ opp-24000000;
++	/delete-node/ opp-100000000;
++	/delete-node/ opp-200000000;
++	/delete-node/ opp-300000000;
++	/delete-node/ opp-400000000;
++	/delete-node/ opp-500000000;
++	/delete-node/ opp-600000000;
++	/delete-node/ opp-700000000;
++	/delete-node/ opp-800000000;
++	/delete-node/ opp-900000000;
++	/delete-node/ opp-1000000000;
++	/delete-node/ opp-1100000000;
+ 	/delete-node/ opp-1200000000;
+ 	/delete-node/ opp-1300000000;
+ };
+ 
+ &d1_cpu_opp_table {
++	/delete-node/ opp-24000000;
++	/delete-node/ opp-100000000;
++	/delete-node/ opp-200000000;
++	/delete-node/ opp-300000000;
++	/delete-node/ opp-400000000;
++	/delete-node/ opp-500000000;
++	/delete-node/ opp-600000000;
++	/delete-node/ opp-700000000;
++	/delete-node/ opp-800000000;
++	/delete-node/ opp-900000000;
++	/delete-node/ opp-1000000000;
++	/delete-node/ opp-1100000000;
+ 	/delete-node/ opp-1200000000;
+ 	/delete-node/ opp-1300000000;
+ };
+-- 
+2.53.0
+

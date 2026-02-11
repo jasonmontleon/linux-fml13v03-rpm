@@ -1,0 +1,119 @@
+From 32a082b1c3ccea0a81222f1401c53a0d2ef77b3a Mon Sep 17 00:00:00 2001
+From: "yang.wang" <yang.wang@deepcomputing.io>
+Date: Wed, 26 Mar 2025 14:57:22 +0800
+Subject: [PATCH 260/534] EC: Add support for reading version information.
+
+Signed-off-by: yang.wang <yang.wang@deepcomputing.io>
+---
+ arch/riscv/configs/fml13v03_defconfig         | 10 ------
+ drivers/platform/chrome/cros_ec_sysfs.c       | 31 +++++++++++++++++++
+ .../linux/platform_data/cros_ec_commands.h    |  6 ++++
+ 3 files changed, 37 insertions(+), 10 deletions(-)
+
+diff --git a/arch/riscv/configs/fml13v03_defconfig b/arch/riscv/configs/fml13v03_defconfig
+index 8275d6cab804..e0bbfa825341 100755
+--- a/arch/riscv/configs/fml13v03_defconfig
++++ b/arch/riscv/configs/fml13v03_defconfig
+@@ -296,16 +296,9 @@ CONFIG_BT_BNEP=m
+ CONFIG_BT_BNEP_MC_FILTER=y
+ CONFIG_BT_BNEP_PROTO_FILTER=y
+ CONFIG_BT_HIDP=m
+-CONFIG_BT_INTEL=m
+-CONFIG_BT_BCM=m
+-CONFIG_BT_RTL=m
+-CONFIG_BT_MTK=m
+ CONFIG_BT_HCIBTUSB=m
+ CONFIG_BT_HCIBTUSB_AUTOSUSPEND=y
+-CONFIG_BT_HCIBTUSB_POLL_SYNC=y
+-CONFIG_BT_HCIBTUSB_BCM=y
+ CONFIG_BT_HCIBTUSB_MTK=y
+-CONFIG_BT_HCIBTUSB_RTL=y
+ CONFIG_MCTP=y
+ CONFIG_CFG80211=y
+ CONFIG_CFG80211_WEXT=y
+@@ -491,7 +484,6 @@ CONFIG_SENSORS_TMP102=y
+ CONFIG_SENSORS_PAC1934=y
+ CONFIG_WATCHDOG=y
+ CONFIG_DW_WATCHDOG=y
+-CONFIG_MFD_CROS_EC_DEV=m
+ CONFIG_REGULATOR=y
+ CONFIG_REGULATOR_FIXED_VOLTAGE=y
+ CONFIG_REGULATOR_TPS549D22=y
+@@ -775,7 +767,6 @@ CONFIG_CROS_EC_SPI=m
+ # CONFIG_CROS_EC_VBC is not set
+ # CONFIG_CROS_EC_DEBUGFS is not set
+ # CONFIG_CROS_EC_SENSORHUB is not set
+-# CONFIG_CROS_EC_SYSFS is not set
+ # CONFIG_CROS_USBPD_NOTIFY is not set
+ CONFIG_COMMON_CLK_EIC7700=y
+ CONFIG_TIMER_ESWIN=y
+@@ -802,7 +793,6 @@ CONFIG_IIO=y
+ CONFIG_CM32181=y
+ CONFIG_PWM=y
+ CONFIG_PWM_ESWIN=y
+-CONFIG_RESET_ESWIN=y
+ CONFIG_INTERCONNECT=y
+ CONFIG_EXT4_FS=y
+ CONFIG_EXT4_FS_POSIX_ACL=y
+diff --git a/drivers/platform/chrome/cros_ec_sysfs.c b/drivers/platform/chrome/cros_ec_sysfs.c
+index 09e3bf5e8ec6..ae4733052ca0 100644
+--- a/drivers/platform/chrome/cros_ec_sysfs.c
++++ b/drivers/platform/chrome/cros_ec_sysfs.c
+@@ -191,6 +191,37 @@ static ssize_t version_show(struct device *dev,
+ 				   r_board->board_version);
+ 	}
+ 
++	/* Get touch board version */
++	msg->command = EC_CMD_GET_TOUCHPAD_VERSION + ec->cmd_offset;
++	msg->insize = sizeof(*r_board);
++	ret = cros_ec_cmd_xfer_status(ec->ec_dev, msg);
++	if (ret < 0) {
++		count += sysfs_emit_at(
++			buf, count, "Touchpad version: XFER / EC ERROR %d / %d\n",
++			ret, msg->result);
++	} else {
++		r_board = (struct ec_response_board_version *)msg->data;
++
++		count += sysfs_emit_at(buf, count, "Touchpad version: %d\n",
++				       r_board->board_version);
++	}
++
++	/* Get audio-exp board version */
++	msg->command = EC_CMD_GET_AUDIO_EXP_VERSION + ec->cmd_offset;
++	msg->insize = sizeof(*r_board);
++	ret = cros_ec_cmd_xfer_status(ec->ec_dev, msg);
++	if (ret < 0) {
++		count += sysfs_emit_at(
++			buf, count,
++			"Audio-exp board version: XFER / EC ERROR %d / %d\n", ret,
++			msg->result);
++	} else {
++		r_board = (struct ec_response_board_version *)msg->data;
++
++		count += sysfs_emit_at(buf, count, "Audio-exp board version: %d\n",
++				       r_board->board_version);
++	}
++
+ exit:
+ 	kfree(msg);
+ 	return count;
+diff --git a/include/linux/platform_data/cros_ec_commands.h b/include/linux/platform_data/cros_ec_commands.h
+index ab721cf13a98..3b422b0de468 100644
+--- a/include/linux/platform_data/cros_ec_commands.h
++++ b/include/linux/platform_data/cros_ec_commands.h
+@@ -1706,6 +1706,12 @@ struct ec_params_flash_select {
+ 	uint8_t select;
+ } __ec_align4;
+ 
++/*****************************************************************************/
++/* Get touch board HW version */
++#define EC_CMD_GET_TOUCHPAD_VERSION 0x001D
++
++/* Get audio board HW version */
++#define EC_CMD_GET_AUDIO_EXP_VERSION 0x001E
+ 
+ /*****************************************************************************/
+ /* PWM commands */
+-- 
+2.53.0
+

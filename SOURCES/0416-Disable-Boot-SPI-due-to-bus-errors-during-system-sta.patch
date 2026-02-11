@@ -1,0 +1,26 @@
+From 8f9c1b2c53ce3d6c0ed45fd65f85f9c193827a34 Mon Sep 17 00:00:00 2001
+From: cheney <11722200@qq.com>
+Date: Mon, 14 Jul 2025 16:52:33 +0800
+Subject: [PATCH 416/534] Disable Boot SPI due to bus errors during system
+ startup.
+
+---
+ arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
+index a5af0129bc7f..ba0a9cea46bd 100644
+--- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
++++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
+@@ -1216,7 +1216,7 @@ &d1_ssi1 {
+ 
+ &bootspi {
+ 	/* spi flash */
+-	status = "okay";
++	status = "disabled";
+ 	num-cs = <1>;
+ 	cs-gpios = <&portd 0 GPIO_ACTIVE_LOW>;
+ 	wp-gpios = <&portd 4 GPIO_ACTIVE_LOW>;
+-- 
+2.53.0
+

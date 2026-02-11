@@ -1,0 +1,120 @@
+From d8a45c6e679e8d40f7bd41abbe631b4a768302c7 Mon Sep 17 00:00:00 2001
+From: ningyu <ningyu@eswincomputing.com>
+Date: Thu, 22 May 2025 20:04:39 +0800
+Subject: [PATCH 299/534] add thermal zone
+
+---
+ .../dts/eswin/eswin-win2030-die0-soc.dtsi     |  9 ++++----
+ .../dts/eswin/eswin-win2030-die1-soc.dtsi     | 23 +++++++++----------
+ 2 files changed, 16 insertions(+), 16 deletions(-)
+
+diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi b/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
+index c7058a8cfe2e..f8c7f0ac5b92 100644
+--- a/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
++++ b/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
+@@ -38,23 +38,23 @@ thermal0 {
+ 			polling-delay-passive = <100>; /*ms*/
+ 			polling-delay = <1000>; /*ms*/
+ 			sustainable-power = <30000>; /*mW*/
+-			thermal-sensors = <&pvt0>;
++			thermal-sensors = <&pvt1>;
+ 
+ 			trips {
+ 
+ 				threshold: trip-point0 {
+-					temperature = <90000>;
++					temperature = <60000>;
+ 					hysteresis = <1000>;
+ 					type = "passive";
+ 				};
+ 				target: trip-point1 {
+-					temperature = <100000>;
++					temperature = <70000>;
+ 					hysteresis = <1000>;
+ 					type = "passive";
+ 				};
+ 
+ 				crit: trip-point2 {
+-					temperature     = <105000>;
++					temperature     = <80000>;
+ 					hysteresis      = <0>;
+ 					type            = "critical";
+ 				};
+@@ -1374,6 +1374,7 @@ pvt1: pvt@0x52360000 {
+ 			reg = <0x0 0x52360000 0x0 0x20000>;
+ 			interrupts = <350>;
+ 			interrupt-parent = <&plic0>;
++			#thermal-sensor-cells = <0>;
+ 			status = "disabled";
+ 			label = "pvt1";
+ 			numa-node-id = <0>;
+diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi b/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi
+index 71868819a401..9196d44fe899 100644
+--- a/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi
++++ b/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi
+@@ -33,13 +33,12 @@
+ / {
+ 	thermal-zones {
+ 		d1_thermal0 {
+-			polling-delay-passive = <500>; /*ms*/
+-			polling-delay = <5000>; /*ms*/
+-			sustainable-power = <1200>; /*mW*/
+-			thermal-sensors = <&d1_pvt0>;
++			polling-delay-passive = <100>; /*ms*/
++			polling-delay = <1000>; /*ms*/
++			sustainable-power = <30000>; /*mW*/
++			thermal-sensors = <&d1_pvt1>;
+ 
+ 			trips {
+-				/*
+ 				d1_threshold: trip-point0 {
+ 					temperature = <60000>;
+ 					hysteresis = <1000>;
+@@ -50,30 +49,29 @@ d1_target: trip-point1 {
+ 					hysteresis = <1000>;
+ 					type = "passive";
+ 				};
+-				*/
+ 				d1_crit: trip-point2 {
+-					temperature     = <105000>;
++					temperature     = <80000>;
+ 					hysteresis      = <0>;
+ 					type            = "critical";
+ 				};
+ 			};
+ 
+ 			cooling-maps {
+-				/*
+ 				map0 {
+ 					trip = <&d1_target>;
+ 					contribution = <1024>;
+ 					cooling-device =
+-						<&cpu_4 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-						<&cpu_5 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-						<&cpu_6 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-						<&cpu_7 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
++						<&cpu_4 0 10>,
++						<&cpu_5 0 10>,
++						<&cpu_6 0 10>,
++						<&cpu_7 0 10>;
+ 				};
+ 				map1 {
+ 					trip = <&d1_target>;
+ 					contribution = <1024>;
+ 					cooling-device = <&d1_npu THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+ 				};
++				/*
+ 				map2 {
+ 					trip = <&d1_target>;
+ 					contribution = <1024>;
+@@ -732,6 +730,7 @@ d1_pvt1: pvt@0x72360000 {
+ 			reg = <0x0 0x72360000 0x0 0x20000>;
+ 			interrupts = <350>;
+ 			interrupt-parent = <&plic1>;
++			#thermal-sensor-cells = <0>;
+ 			status = "disabled";
+ 			label = "d1_pvt1";
+ 			numa-node-id = <1>;
+-- 
+2.53.0
+

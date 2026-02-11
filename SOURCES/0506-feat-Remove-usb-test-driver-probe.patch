@@ -1,0 +1,68 @@
+From 07ae4e179e56fb6a3fee3c078e7d0c08656b14a9 Mon Sep 17 00:00:00 2001
+From: zhangqianqian1 <zhangqianqian1@eswincomputing.com>
+Date: Mon, 1 Sep 2025 10:04:43 +0800
+Subject: [PATCH 506/534] feat:Remove usb test driver probe.
+
+Changelogs:
+	Remove usb test driver probe.
+
+Signed-off-by: zhangqianqian <zhangqianqian1@eswincomputing.com>
+---
+ arch/riscv/configs/vpu7702_evb_defconfig     | 1 +
+ arch/riscv/configs/vpu7702_pcie_a2_defconfig | 1 +
+ arch/riscv/configs/vpu7702_pcie_defconfig    | 1 +
+ arch/riscv/configs/win2030_defconfig         | 2 ++
+ 4 files changed, 5 insertions(+)
+
+diff --git a/arch/riscv/configs/vpu7702_evb_defconfig b/arch/riscv/configs/vpu7702_evb_defconfig
+index 000a87503b55..cfaacdb611cf 100644
+--- a/arch/riscv/configs/vpu7702_evb_defconfig
++++ b/arch/riscv/configs/vpu7702_evb_defconfig
+@@ -764,6 +764,7 @@ CONFIG_MEMORY=y
+ CONFIG_ESWIN_BUDDY=y
+ CONFIG_ESWIN_PROC=y
+ CONFIG_ESWIN_RSVMEM_HEAP=y
++CONFIG_ESWIN_RSVMEM_HEAP_DEBUG_BUFINFO=y
+ CONFIG_ESWIN_MMZ_VB=y
+ CONFIG_ESWIN_DEV_DMA_BUF=y
+ CONFIG_ESWIN_IOMMU_RSV=y
+diff --git a/arch/riscv/configs/vpu7702_pcie_a2_defconfig b/arch/riscv/configs/vpu7702_pcie_a2_defconfig
+index 710482b18261..28ab5d6c7213 100644
+--- a/arch/riscv/configs/vpu7702_pcie_a2_defconfig
++++ b/arch/riscv/configs/vpu7702_pcie_a2_defconfig
+@@ -764,6 +764,7 @@ CONFIG_MEMORY=y
+ CONFIG_ESWIN_BUDDY=y
+ CONFIG_ESWIN_PROC=y
+ CONFIG_ESWIN_RSVMEM_HEAP=y
++CONFIG_ESWIN_RSVMEM_HEAP_DEBUG_BUFINFO=y
+ CONFIG_ESWIN_MMZ_VB=y
+ CONFIG_ESWIN_DEV_DMA_BUF=y
+ CONFIG_ESWIN_IOMMU_RSV=y
+diff --git a/arch/riscv/configs/vpu7702_pcie_defconfig b/arch/riscv/configs/vpu7702_pcie_defconfig
+index a4fd5d442e09..d3cea020544f 100644
+--- a/arch/riscv/configs/vpu7702_pcie_defconfig
++++ b/arch/riscv/configs/vpu7702_pcie_defconfig
+@@ -763,6 +763,7 @@ CONFIG_MEMORY=y
+ CONFIG_ESWIN_BUDDY=y
+ CONFIG_ESWIN_PROC=y
+ CONFIG_ESWIN_RSVMEM_HEAP=y
++CONFIG_ESWIN_RSVMEM_HEAP_DEBUG_BUFINFO=y
+ CONFIG_ESWIN_MMZ_VB=y
+ CONFIG_ESWIN_DEV_DMA_BUF=y
+ CONFIG_ESWIN_IOMMU_RSV=y
+diff --git a/arch/riscv/configs/win2030_defconfig b/arch/riscv/configs/win2030_defconfig
+index 70fae6f85473..c6186d15072e 100644
+--- a/arch/riscv/configs/win2030_defconfig
++++ b/arch/riscv/configs/win2030_defconfig
+@@ -652,6 +652,8 @@ CONFIG_SND_HDA_PATCH_LOADER=y
+ CONFIG_SND_HDA_CODEC_REALTEK=m
+ CONFIG_SND_HDA_CODEC_HDMI=m
+ CONFIG_SND_HDA_PREALLOC_SIZE=2048
++CONFIG_SND_USB_AUDIO=y
++CONFIG_SND_USB_AUDIO_MIDI_V2=y
+ CONFIG_SND_SOC=y
+ CONFIG_SND_SOC_SOF_TOPLEVEL=y
+ CONFIG_SND_SOC_SOF_OF=y
+-- 
+2.53.0
+
