@@ -1,4 +1,4 @@
-From 46842c88877b4f714d95a6c6d559b099dc88f237 Mon Sep 17 00:00:00 2001
+From bd1ad54b6d5fc77d512b212a5ca51398f1bc973e Mon Sep 17 00:00:00 2001
 From: hehuan1 <hehuan1@eswincomputing.com>
 Date: Tue, 10 Jun 2025 21:51:57 +0800
 Subject: [PATCH 308/534] WIN2030-18074:feat: implement cpu read data from

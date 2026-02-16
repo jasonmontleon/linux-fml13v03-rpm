@@ -1,4 +1,4 @@
-From ef80f71911d9e08163c09315cb7a770827aae58c Mon Sep 17 00:00:00 2001
+From ee67472d8c456f8ebaaaef8b40bba6dd59464ef9 Mon Sep 17 00:00:00 2001
 From: Han Gao <gaohan@iscas.ac.cn>
 Date: Tue, 16 Jul 2024 11:58:36 +0800
 Subject: [PATCH 094/534] Revert: add envcfgh for kvm

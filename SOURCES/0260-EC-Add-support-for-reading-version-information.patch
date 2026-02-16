@@ -1,4 +1,4 @@
-From eff235690613115da84d45da97b47a0d8b5843fe Mon Sep 17 00:00:00 2001
+From f75d548ecfa6b5b5755ebb98bd1e72dc07d26dbe Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Wed, 26 Mar 2025 14:57:22 +0800
 Subject: [PATCH 260/534] EC: Add support for reading version information.

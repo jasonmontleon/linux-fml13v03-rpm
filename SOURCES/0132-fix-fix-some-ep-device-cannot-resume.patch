@@ -1,4 +1,4 @@
-From 1ac119a3d1da2148487b3e3f11a96391e7acf1f0 Mon Sep 17 00:00:00 2001
+From 5a8639a02074d84a37ea27a94ca33450726a9301 Mon Sep 17 00:00:00 2001
 From: huzhixuan <huzhixuan@eswincomputing.com>
 Date: Wed, 31 Jul 2024 17:39:47 +0800
 Subject: [PATCH 132/534] fix:fix some ep device cannot resume

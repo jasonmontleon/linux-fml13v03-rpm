@@ -1,4 +1,4 @@
-From e0ad6d6847b516b2cbc3fb22d799bc0825b22f28 Mon Sep 17 00:00:00 2001
+From 31c76aecb5dee857296c395bd0c368715ade53fc Mon Sep 17 00:00:00 2001
 From: linmin <linmin@eswincomputing.com>
 Date: Thu, 8 Aug 2024 19:28:10 +0800
 Subject: [PATCH 145/534] feat:Deselect CONFIG_PM

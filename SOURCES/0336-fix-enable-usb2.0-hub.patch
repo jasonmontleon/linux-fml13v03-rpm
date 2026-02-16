@@ -1,4 +1,4 @@
-From f3847d9ac9b41e477084371d1e7f6cf5975eae2c Mon Sep 17 00:00:00 2001
+From b6127f92c25e1dc8209b4df5e6b531b5cb15b01c Mon Sep 17 00:00:00 2001
 From: ningyu <ningyu@eswincomputing.com>
 Date: Wed, 23 Apr 2025 14:40:47 +0800
 Subject: [PATCH 336/534] fix:enable usb2.0 hub

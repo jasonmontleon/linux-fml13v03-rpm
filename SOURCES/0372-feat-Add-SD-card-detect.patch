@@ -1,4 +1,4 @@
-From 64ca3339399de21bb5117a8e37fc0960aa206e88 Mon Sep 17 00:00:00 2001
+From cffe2dc03e5e2938b051e888a35adde0ffd1c80c Mon Sep 17 00:00:00 2001
 From: Xiang Xu <xuxiang@eswincomputing.com>
 Date: Tue, 27 May 2025 10:04:56 +0800
 Subject: [PATCH 372/534] feat:Add SD card detect

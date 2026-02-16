@@ -1,4 +1,4 @@
-From 07d7fcebdda2bf5750c6dc8bda66266c75e0a39c Mon Sep 17 00:00:00 2001
+From 7fa87e7c3575ef41d196dd62920133ad2b689115 Mon Sep 17 00:00:00 2001
 From: ningyu <ningyu@eswincomputing.com>
 Date: Tue, 22 Apr 2025 16:24:55 +0800
 Subject: [PATCH 335/534] fix:add disable-wp in sdio

@@ -1,4 +1,4 @@
-From 8157f027b99b0e878f1e12c803fbb4f3c20a798b Mon Sep 17 00:00:00 2001
+From a73a5dbf7f45c042d75fc6a7fdd1099df7007af2 Mon Sep 17 00:00:00 2001
 From: huangyifeng <huangyifeng@eswincomputing.com>
 Date: Thu, 29 Aug 2024 16:17:29 +0800
 Subject: [PATCH 173/534] feat:add cpu volatge adjust

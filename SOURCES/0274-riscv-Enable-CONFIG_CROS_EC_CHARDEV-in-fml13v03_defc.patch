@@ -1,4 +1,4 @@
-From 2053c38aa57abe93a30592768f064ffb15838f34 Mon Sep 17 00:00:00 2001
+From 2a0aa16d3884092490f8a49920e2f2694cea5fb0 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Wed, 9 Apr 2025 16:51:03 +0800
 Subject: [PATCH 274/534] riscv: Enable CONFIG_CROS_EC_CHARDEV in

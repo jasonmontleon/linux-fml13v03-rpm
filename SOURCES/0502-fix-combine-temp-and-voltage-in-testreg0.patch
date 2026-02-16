@@ -1,4 +1,4 @@
-From c1cc7d556bed9fe163b20677f805a67ae6db8691 Mon Sep 17 00:00:00 2001
+From dca1e724bc0bd2e7149bdbe3b8d43316cff36377 Mon Sep 17 00:00:00 2001
 From: ningyu <ningyu@eswincomputing.com>
 Date: Thu, 21 Aug 2025 20:28:35 +0800
 Subject: [PATCH 502/534] fix:combine temp and voltage in testreg0

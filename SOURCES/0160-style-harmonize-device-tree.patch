@@ -1,4 +1,4 @@
-From 159f2bb193c878e7a1e66e9701b0c07b19303232 Mon Sep 17 00:00:00 2001
+From c7dd867e70fca3c2980804807462486979f82603 Mon Sep 17 00:00:00 2001
 From: linmin <linmin@eswincomputing.com>
 Date: Tue, 27 Aug 2024 10:26:01 +0800
 Subject: [PATCH 160/534] style:harmonize device-tree

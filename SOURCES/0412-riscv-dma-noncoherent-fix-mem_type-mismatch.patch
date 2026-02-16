@@ -1,4 +1,4 @@
-From fd770407f65f772ba73d0188cbdcc421e3c646b6 Mon Sep 17 00:00:00 2001
+From 2d98667d62ae8b6dcf93f476a373aa53e9702d9b Mon Sep 17 00:00:00 2001
 From: Sandie Cao <sandie.cao@deepcomputing.io>
 Date: Fri, 4 Jul 2025 16:07:22 +0800
 Subject: [PATCH 412/534] riscv: dma-noncoherent: fix mem_type mismatch

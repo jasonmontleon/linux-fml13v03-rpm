@@ -1,4 +1,4 @@
-From f5ee2eba3ed0fecf45dd31e3fc9fbe864da2a944 Mon Sep 17 00:00:00 2001
+From 22d7d81dd18f2d47310a57897cc66ffb329669ee Mon Sep 17 00:00:00 2001
 From: denglei <denglei@eswincomputing.com>
 Date: Mon, 2 Sep 2024 10:17:35 +0800
 Subject: [PATCH 165/534] fix:Update the NPU & DSP driver code.
