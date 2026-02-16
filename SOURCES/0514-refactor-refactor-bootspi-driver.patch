@@ -1,4 +1,4 @@
-From 2ff7d0e67db8deddda21242bb2b2f63a6828f2e4 Mon Sep 17 00:00:00 2001
+From c3b159f497e782bc475dc163feabb40c58197f75 Mon Sep 17 00:00:00 2001
 From: Xiang Xu <xuxiang@eswincomputing.com>
 Date: Fri, 12 Sep 2025 17:04:41 +0800
 Subject: [PATCH 514/534] refactor:refactor bootspi driver

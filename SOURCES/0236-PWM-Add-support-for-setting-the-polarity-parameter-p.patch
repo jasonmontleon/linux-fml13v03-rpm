@@ -1,4 +1,4 @@
-From 1a7cee56ea4017625cf9bde1949d908457342942 Mon Sep 17 00:00:00 2001
+From d500cd8841fc6006cc17849038fb635c64a0a3eb Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Tue, 18 Mar 2025 15:07:53 +0800
 Subject: [PATCH 236/534] PWM: Add support for setting the polarity parameter

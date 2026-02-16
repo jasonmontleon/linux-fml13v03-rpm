@@ -1,4 +1,4 @@
-From 83089e5323b695e43c650909bf1374a670674d70 Mon Sep 17 00:00:00 2001
+From daa5b70739c11fe27570a99fca1aadbe3521c66f Mon Sep 17 00:00:00 2001
 From: huangyifeng <huangyifeng@eswincomputing.com>
 Date: Mon, 27 Jan 2025 10:54:04 +0800
 Subject: [PATCH 239/534] feat:reset driver fit for upstream

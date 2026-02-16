@@ -1,4 +1,4 @@
-From 64351af94d0faa2183b67b9ff0f25395608024f9 Mon Sep 17 00:00:00 2001
+From 0fad3eba39ad326aa1539f06614270f9d1b404c6 Mon Sep 17 00:00:00 2001
 From: wangguosheng <wangguosheng@eswincomputing.com>
 Date: Tue, 27 May 2025 16:07:07 +0800
 Subject: [PATCH 300/534] WIN2030-18029:style:fix the warning in DTS

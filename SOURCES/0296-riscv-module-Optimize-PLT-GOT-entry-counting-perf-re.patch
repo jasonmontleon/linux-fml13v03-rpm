@@ -1,4 +1,4 @@
-From 5fab528c7051bab165742f02583024f5d3785410 Mon Sep 17 00:00:00 2001
+From f4b2b18333f8ba468a4ba26b4e7c31c416284b46 Mon Sep 17 00:00:00 2001
 From: Sandie Cao <sandie.cao@deepcomputing.io>
 Date: Thu, 22 May 2025 10:42:53 +0800
 Subject: [PATCH 296/534] riscv: module: Optimize PLT/GOT entry counting perf

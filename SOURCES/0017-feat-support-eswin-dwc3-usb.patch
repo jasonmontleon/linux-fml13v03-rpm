@@ -1,4 +1,4 @@
-From a566a369c52454d4dffd2f1a998efde6058ddb34 Mon Sep 17 00:00:00 2001
+From a451f2157ec7afe4a38e4866a2824d85c7c031d8 Mon Sep 17 00:00:00 2001
 From: yangwei1 <yangwei1@eswincomputing.com>
 Date: Wed, 22 May 2024 20:20:01 +0800
 Subject: [PATCH 017/534] feat:support eswin dwc3 usb

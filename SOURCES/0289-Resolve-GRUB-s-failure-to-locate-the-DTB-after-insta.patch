@@ -1,4 +1,4 @@
-From 7db69b9ce72212a3e048274a456b51f457cf817a Mon Sep 17 00:00:00 2001
+From 2557680cd7074ff4e8c72fb2a65a8ae9b33e3bde Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Wed, 14 May 2025 09:29:50 +0800
 Subject: [PATCH 289/534] Resolve GRUB's failure to locate the DTB after

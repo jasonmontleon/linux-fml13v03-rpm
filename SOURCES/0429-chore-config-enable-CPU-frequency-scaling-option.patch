@@ -1,4 +1,4 @@
-From 75111ed0adc2741c2bda2ef653d76a9ee46efaf6 Mon Sep 17 00:00:00 2001
+From edc489347e215bddd485bb9683f19a96a8557019 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Tue, 26 Aug 2025 11:42:51 +0800
 Subject: [PATCH 429/534] chore(config): enable CPU frequency scaling option

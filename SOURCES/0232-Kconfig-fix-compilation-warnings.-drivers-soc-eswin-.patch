@@ -1,4 +1,4 @@
-From f4e73d78bd3784fc883ed19c433275ca0a44859f Mon Sep 17 00:00:00 2001
+From 93b7c61b6ebc28f596290125b2c352f37b9415f5 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Thu, 13 Mar 2025 18:10:47 +0800
 Subject: [PATCH 232/534] Kconfig: fix compilation warnings.

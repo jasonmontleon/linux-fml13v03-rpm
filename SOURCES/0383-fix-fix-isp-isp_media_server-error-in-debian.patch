@@ -1,4 +1,4 @@
-From 57d503bdfbb4e49ecf07d312f1f1610616a4822c Mon Sep 17 00:00:00 2001
+From 32055e6c20834eab7d77ce8cf0aa8e8daffc9b1d Mon Sep 17 00:00:00 2001
 From: shenzhenya <shenzhenya@eswincomputing.com>
 Date: Wed, 28 May 2025 10:41:07 +0800
 Subject: [PATCH 383/534] fix: fix isp isp_media_server error in debian

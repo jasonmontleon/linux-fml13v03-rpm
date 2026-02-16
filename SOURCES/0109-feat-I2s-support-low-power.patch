@@ -1,4 +1,4 @@
-From 2d5642e0b7ff267b0d519d722a62ad07e90f64d8 Mon Sep 17 00:00:00 2001
+From 5a5018f63f2a8243448d43f162d7118632d05b6f Mon Sep 17 00:00:00 2001
 From: denglei <denglei@eswincomputing.com>
 Date: Mon, 15 Jul 2024 09:00:09 +0800
 Subject: [PATCH 109/534] feat:I2s support low power.

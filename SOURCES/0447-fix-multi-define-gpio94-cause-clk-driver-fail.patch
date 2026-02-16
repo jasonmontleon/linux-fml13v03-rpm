@@ -1,4 +1,4 @@
-From d24d1018afe3d68539bbe40a81a963025035567f Mon Sep 17 00:00:00 2001
+From a138b519f5031ded5abe35afdfd59b62babd06b9 Mon Sep 17 00:00:00 2001
 From: ningyu <ningyu@eswincomputing.com>
 Date: Wed, 6 Aug 2025 19:37:32 +0800
 Subject: [PATCH 447/534] fix:multi define gpio94 cause clk driver fail

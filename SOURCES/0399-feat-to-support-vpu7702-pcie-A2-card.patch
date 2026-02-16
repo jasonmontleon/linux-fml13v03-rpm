@@ -1,4 +1,4 @@
-From f44dd6eb65195161275e04f9d7952cb9cfd8cae7 Mon Sep 17 00:00:00 2001
+From 61db9d90fe95a93af03e2c05a9fa18822b898cc4 Mon Sep 17 00:00:00 2001
 From: zhouliang1 <zhouliang1@eswincomputing.com>
 Date: Fri, 13 Jun 2025 10:19:29 +0800
 Subject: [PATCH 399/534] feat:to support vpu7702 pcie A2 card

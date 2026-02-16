@@ -1,4 +1,4 @@
-From 7a0ec764277376783dfc979a492d1d99d0920db9 Mon Sep 17 00:00:00 2001
+From 41b5e2c2e4b7aada25db8f916e0348b38546b310 Mon Sep 17 00:00:00 2001
 From: yufangxian <yufangxian@eswincomputing.com>
 Date: Mon, 1 Sep 2025 13:42:37 +0800
 Subject: [PATCH 490/534] fix: fix d314 probe imx219 fail

@@ -1,4 +1,4 @@
-From 3e787396982784374a99cd402623228833f94a87 Mon Sep 17 00:00:00 2001
+From e93423f2afb0b9fcafa75d56cd6d314ed40bd504 Mon Sep 17 00:00:00 2001
 From: Dongdong Zhang <zhangdongdong@eswincomputing.com>
 Date: Thu, 15 May 2025 10:15:20 +0800
 Subject: [PATCH 390/534] feat:Reserve memory for version info

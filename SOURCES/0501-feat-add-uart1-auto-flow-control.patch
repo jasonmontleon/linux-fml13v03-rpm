@@ -1,4 +1,4 @@
-From a1011eddb17767077d47544fd899a451256fa75e Mon Sep 17 00:00:00 2001
+From 912a1a34adaedbbbd87525aa5c493e5c8eab15bf Mon Sep 17 00:00:00 2001
 From: Xiang Xu <xuxiang@eswincomputing.com>
 Date: Tue, 26 Aug 2025 19:12:37 +0800
 Subject: [PATCH 501/534] feat:add uart1 auto-flow-control

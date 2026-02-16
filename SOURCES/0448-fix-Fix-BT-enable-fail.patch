@@ -1,4 +1,4 @@
-From a19002e459a03c722396db3f9f31fe0c9c87b139 Mon Sep 17 00:00:00 2001
+From f36028ffbaff3d2cab98da5d5c6989790e6fced4 Mon Sep 17 00:00:00 2001
 From: wangjinlong <wangjinlong@eswincomputing.com>
 Date: Thu, 31 Jul 2025 10:30:40 +0800
 Subject: [PATCH 448/534] fix: Fix BT enable fail

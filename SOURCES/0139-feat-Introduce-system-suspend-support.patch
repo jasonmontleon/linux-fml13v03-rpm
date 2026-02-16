@@ -1,4 +1,4 @@
-From 8e887798bd46e26bd16fa0983d443677c42971eb Mon Sep 17 00:00:00 2001
+From 837a32a9de677469761bac7a07ebd5fdaa5091e1 Mon Sep 17 00:00:00 2001
 From: huangyifeng <huangyifeng@eswincomputing.com>
 Date: Thu, 1 Aug 2024 16:47:31 +0800
 Subject: [PATCH 139/534] feat:Introduce system suspend support

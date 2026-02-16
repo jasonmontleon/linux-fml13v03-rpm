@@ -1,4 +1,4 @@
-From 90d9ac9590f3daf22d3b4f998da4a308583587d5 Mon Sep 17 00:00:00 2001
+From 0698a3cee4472712648ea89dd60e0d8aa0659819 Mon Sep 17 00:00:00 2001
 From: ningyu <ningyu@eswincomputing.com>
 Date: Wed, 22 Jan 2025 11:12:59 +0800
 Subject: [PATCH 219/534] fix: modify critical temperature

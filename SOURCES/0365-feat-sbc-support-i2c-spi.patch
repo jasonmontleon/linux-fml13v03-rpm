@@ -1,4 +1,4 @@
-From 760d6a6c149e91ece81d19753f1fa9b74442124a Mon Sep 17 00:00:00 2001
+From a5c44e8977cbfffc5b77e4674977227c18ba9d18 Mon Sep 17 00:00:00 2001
 From: Xiang Xu <xuxiang@eswincomputing.com>
 Date: Tue, 20 May 2025 17:14:45 +0800
 Subject: [PATCH 365/534] feat:sbc support i2c, spi

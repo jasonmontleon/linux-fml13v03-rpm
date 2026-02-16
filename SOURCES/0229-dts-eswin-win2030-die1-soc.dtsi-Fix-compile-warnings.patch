@@ -1,4 +1,4 @@
-From a5fde957c6d04bba6fa397cf9b69dc260f4df97c Mon Sep 17 00:00:00 2001
+From 732e9f9a16f9182852515d791674c040d870a7e5 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Thu, 13 Mar 2025 17:31:32 +0800
 Subject: [PATCH 229/534] dts: eswin-win2030-die1-soc.dtsi: Fix compile

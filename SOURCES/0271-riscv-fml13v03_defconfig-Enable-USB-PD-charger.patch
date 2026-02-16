@@ -1,4 +1,4 @@
-From fee7f64516d89580ceb6ca3303912ed23d57fa9f Mon Sep 17 00:00:00 2001
+From 76d54563c1a308d8b6003b16e062aefe385a51d9 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Wed, 2 Apr 2025 17:37:28 +0800
 Subject: [PATCH 271/534] riscv: fml13v03_defconfig: Enable USB PD charger
