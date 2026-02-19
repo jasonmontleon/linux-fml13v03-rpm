@@ -1,4 +1,4 @@
-From 32c4b5f0a71ffde9783a6794e49f35e15e4b3486 Mon Sep 17 00:00:00 2001
+From 7866405bbf7eac7c0071d20dbfc21473f3c49f9c Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Fri, 16 May 2025 14:02:04 +0800
 Subject: [PATCH 291/534] power: cros-sbs-battery: Fix driver registration

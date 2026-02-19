@@ -1,4 +1,4 @@
-From 5339de63722415a43703188bad1f65220b97c039 Mon Sep 17 00:00:00 2001
+From 03ccf56c66c2d7efe9329281f3e827e3424c5170 Mon Sep 17 00:00:00 2001
 From: Han Gao <gaohan@iscas.ac.cn>
 Date: Thu, 30 May 2024 20:44:53 +0800
 Subject: [PATCH 085/534] configs: enable kvm

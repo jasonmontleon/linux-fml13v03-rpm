@@ -1,4 +1,4 @@
-From 1e51245874e88bc48c65551d8aca60dff33bf53f Mon Sep 17 00:00:00 2001
+From 55607dfde826063888c725544239741717f0b2bc Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Wed, 26 Mar 2025 14:05:27 +0800
 Subject: [PATCH 259/534] Add EC support and the cros-sbs-battery driver.

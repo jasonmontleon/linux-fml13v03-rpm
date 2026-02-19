@@ -1,4 +1,4 @@
-From be2c15c1c48ad2fa2a4d4eac7574a264b2c8f658 Mon Sep 17 00:00:00 2001
+From 940e419214572030dbc08502220ae1a2af400b2b Mon Sep 17 00:00:00 2001
 From: yangwei1 <yangwei1@eswincomputing.com>
 Date: Mon, 3 Jun 2024 19:00:03 +0800
 Subject: [PATCH 045/534] fix:add label for all hwmon

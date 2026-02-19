@@ -1,4 +1,4 @@
-From 95f09ed709e33e6c8f12ccc333eb28c8ad50fc42 Mon Sep 17 00:00:00 2001
+From 970a0762ebb0e0918614c38a74bd97f8f1b67acc Mon Sep 17 00:00:00 2001
 From: Sandie Cao <sandie.cao@deepcomputing.io>
 Date: Wed, 28 May 2025 14:00:46 +0800
 Subject: [PATCH 302/534] dts: riscv: eswin: fml13v03: change max NPU power to

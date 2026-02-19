@@ -1,4 +1,4 @@
-From a17419c29b583e63bab756dc0355dddc18191ecc Mon Sep 17 00:00:00 2001
+From be74e2501e53017af208b0366810408ee46939b2 Mon Sep 17 00:00:00 2001
 From: congyuyang <congyuyang@eswincomputing.com>
 Date: Thu, 1 Aug 2024 15:09:50 +0800
 Subject: [PATCH 141/534] feat:change idle defconfig from win2030 to eic7700

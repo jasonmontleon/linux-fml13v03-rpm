@@ -1,4 +1,4 @@
-From 361ae4e364c1b13b647f2d07edd9a446af31509b Mon Sep 17 00:00:00 2001
+From fa198a8f8c0aff18bb02f0650fe69588a27421a4 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Thu, 17 Apr 2025 11:31:33 +0800
 Subject: [PATCH 279/534] update es8326 and i2s driver for audio format support

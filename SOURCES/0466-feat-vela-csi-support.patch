@@ -1,4 +1,4 @@
-From 862544ee174e2e9120cc1047ffd10c4d7c9ae3ea Mon Sep 17 00:00:00 2001
+From e97ae76bcceeba8aee73b2bf4ea1f751bc4098fa Mon Sep 17 00:00:00 2001
 From: yufangxian <yufangxian@eswincomputing.com>
 Date: Wed, 20 Aug 2025 16:33:00 +0800
 Subject: [PATCH 466/534] feat: vela csi support

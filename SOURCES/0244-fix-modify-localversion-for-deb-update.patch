@@ -1,4 +1,4 @@
-From 69fcfde804c9786c5241926e162dd35efe727d83 Mon Sep 17 00:00:00 2001
+From 9567b7274ee01927f97086fd3ba9cfaead2caf29 Mon Sep 17 00:00:00 2001
 From: ningyu <ningyu@eswincomputing.com>
 Date: Mon, 24 Feb 2025 10:54:31 +0800
 Subject: [PATCH 244/534] fix:modify localversion for deb update

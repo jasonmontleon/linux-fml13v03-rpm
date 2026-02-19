@@ -1,4 +1,4 @@
-From 652696bb79e802e9df202dd92bedfc1c87277d8c Mon Sep 17 00:00:00 2001
+From c1fda9d2a2f0d598fd1d557c64c6fd7886e44ea6 Mon Sep 17 00:00:00 2001
 From: yufangxian <yufangxian@eswincomputing.com>
 Date: Fri, 9 May 2025 09:46:58 +0800
 Subject: [PATCH 354/534] fix: dvp2axi kernel warning

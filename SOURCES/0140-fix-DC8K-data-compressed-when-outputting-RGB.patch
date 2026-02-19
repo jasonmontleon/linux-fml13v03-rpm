@@ -1,4 +1,4 @@
-From a972fd7cb6a3f3d61838f38fa89aa3d6636a6553 Mon Sep 17 00:00:00 2001
+From 9233fd09d7b3294e4630d10711b817beb4c908c1 Mon Sep 17 00:00:00 2001
 From: lilijun <lilijun@eswincomputing.com>
 Date: Wed, 31 Jul 2024 16:23:32 +0800
 Subject: [PATCH 140/534] fix(DC8K):data compressed when outputting RGB

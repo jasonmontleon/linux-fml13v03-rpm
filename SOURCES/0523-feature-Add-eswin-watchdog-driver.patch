@@ -1,4 +1,4 @@
-From f1de8ed28c2e8087a12091a13fc1fcab4f2e93a1 Mon Sep 17 00:00:00 2001
+From 39a8f2cd1d2a638137a753e41f2e04ab164da8f1 Mon Sep 17 00:00:00 2001
 From: chenzhanzhan <chenzhanzhan@eswincomputing.com>
 Date: Wed, 10 Sep 2025 10:26:21 +0800
 Subject: [PATCH 523/534] feature: Add eswin watchdog driver

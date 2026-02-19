@@ -1,4 +1,4 @@
-From a7df0e9052357011191c5685a5fbd6f4c2632b6a Mon Sep 17 00:00:00 2001
+From 2366c6d1c9785c0c69f63a5fbc304c5fd0f15d8f Mon Sep 17 00:00:00 2001
 From: huzhixuan <huzhixuan@eswincomputing.com>
 Date: Thu, 25 Jul 2024 18:13:06 +0800
 Subject: [PATCH 122/534] feat:PCIe Controller PM support power on/off.

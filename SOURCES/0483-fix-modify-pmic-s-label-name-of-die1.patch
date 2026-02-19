@@ -1,4 +1,4 @@
-From 4c211b3c45b055cc1a8f27a15da38f87c1b83ad4 Mon Sep 17 00:00:00 2001
+From 98295d77579ce47dedea2f8b43d60d3af8cd35ab Mon Sep 17 00:00:00 2001
 From: ningyu <ningyu@eswincomputing.com>
 Date: Thu, 28 Aug 2025 19:08:22 +0800
 Subject: [PATCH 483/534] fix:modify pmic's label name of die1
