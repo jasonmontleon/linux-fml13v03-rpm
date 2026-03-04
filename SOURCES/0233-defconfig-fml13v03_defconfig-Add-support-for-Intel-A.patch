@@ -1,0 +1,28 @@
+From 825684a3f6edb80ea617b5acf326743fca35b03c Mon Sep 17 00:00:00 2001
+From: "yang.wang" <yang.wang@deepcomputing.io>
+Date: Wed, 12 Mar 2025 11:23:29 +0800
+Subject: [PATCH 233/540] defconfig: fml13v03_defconfig: Add support for Intel
+ AX210/AX1675 Wi-Fi 6E.
+
+Signed-off-by: yang.wang <yang.wang@deepcomputing.io>
+---
+ arch/riscv/configs/fml13v03_defconfig | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/arch/riscv/configs/fml13v03_defconfig b/arch/riscv/configs/fml13v03_defconfig
+index 420935eaa6c61..c1d5d90c241d2 100755
+--- a/arch/riscv/configs/fml13v03_defconfig
++++ b/arch/riscv/configs/fml13v03_defconfig
+@@ -412,7 +412,8 @@ CONFIG_USB_RTL8152=m
+ # CONFIG_WLAN_VENDOR_ATMEL is not set
+ # CONFIG_WLAN_VENDOR_BROADCOM is not set
+ # CONFIG_WLAN_VENDOR_CISCO is not set
+-# CONFIG_WLAN_VENDOR_INTEL is not set
++CONFIG_IWLWIFI=m
++CONFIG_IWLMVM=m
+ # CONFIG_WLAN_VENDOR_INTERSIL is not set
+ # CONFIG_WLAN_VENDOR_MARVELL is not set
+ CONFIG_MT7921E=m
+-- 
+2.53.0
+

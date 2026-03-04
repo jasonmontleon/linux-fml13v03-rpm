@@ -1,0 +1,55 @@
+From 25d9ff018635edaad63d487a8c4b53794c88cc76 Mon Sep 17 00:00:00 2001
+From: cheney <11722200@qq.com>
+Date: Mon, 7 Apr 2025 16:38:25 +0800
+Subject: [PATCH 278/540] Add EC_CMD_HOST_SHUTDOWN to CROS poweroff flow for EC
+ shutdown support.
+
+---
+ drivers/platform/chrome/cros_ec_poweroff.c     | 7 ++-----
+ include/linux/platform_data/cros_ec_commands.h | 4 ++++
+ 2 files changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/platform/chrome/cros_ec_poweroff.c b/drivers/platform/chrome/cros_ec_poweroff.c
+index 31f25f805f3a8..655bff8b6100e 100644
+--- a/drivers/platform/chrome/cros_ec_poweroff.c
++++ b/drivers/platform/chrome/cros_ec_poweroff.c
+@@ -2,7 +2,6 @@
+ #include <linux/module.h>
+ #include <linux/delay.h>
+ #include <linux/platform_device.h>
+-#include <linux/reboot.h>
+ #include <linux/spi/spi.h>
+ #include <linux/of.h>
+ #include <linux/of_platform.h>
+@@ -60,11 +59,9 @@ static int cros_ec_send_shutdown_async(struct cros_ec_device *ec)
+ 	}
+ 
+ 	msg.version = 0;
+-	msg.command = EC_CMD_REBOOT;
+-	msg.outsize = 2;
++	msg.command = EC_CMD_HOST_SHUTDOWN;
++	msg.outsize = 0;
+ 	msg.insize = 0;
+-	msg.data[0] = EC_REBOOT_HIBERNATE;
+-	msg.data[1] = 0;
+ 
+ 	len = cros_ec_prepare_tx(ec, &msg);
+ 	if (len < 0) {
+diff --git a/include/linux/platform_data/cros_ec_commands.h b/include/linux/platform_data/cros_ec_commands.h
+index 00ac1d572b221..5d7e4347254e0 100644
+--- a/include/linux/platform_data/cros_ec_commands.h
++++ b/include/linux/platform_data/cros_ec_commands.h
+@@ -4143,6 +4143,10 @@ struct ec_params_dedicated_charger_limit {
+ 	uint16_t voltage_lim; /* in mV */
+ } __ec_align2;
+ 
++/*****************************************************************************/
++/* Inform the host when entering a shutdown state */
++#define EC_CMD_HOST_SHUTDOWN 0x00FF
++
+ /*****************************************************************************/
+ /* Hibernate/Deep Sleep Commands */
+ 
+-- 
+2.53.0
+

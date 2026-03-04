@@ -1,0 +1,34 @@
+From a0b7e2f046c348c8b149c5b41247f22c07b9afe0 Mon Sep 17 00:00:00 2001
+From: zouxiaojun <zouxiaojun@eswincomputing.com>
+Date: Mon, 1 Sep 2025 15:58:44 +0800
+Subject: [PATCH 494/540] to(vdec):vdec log opt
+
+Changelogs:
+vdec log opt, pm_runtime_put_autosuspend might return EAGAIN, and this
+return value is no need to handle.
+
+Signed-off-by: zouxiaojun <zouxiaojun@eswincomputing.com>
+---
+ drivers/staging/media/eswin/vdec/hantro_vcmd.c | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/drivers/staging/media/eswin/vdec/hantro_vcmd.c b/drivers/staging/media/eswin/vdec/hantro_vcmd.c
+index 908010e2b6f76..32ffc7ff33ede 100644
+--- a/drivers/staging/media/eswin/vdec/hantro_vcmd.c
++++ b/drivers/staging/media/eswin/vdec/hantro_vcmd.c
+@@ -1677,11 +1677,7 @@ static long release_cmdbuf(struct file *filp, u16 cmdbuf_id)
+ 	up(&vcmd_reserve_cmdbuf_sem[module_type]);
+ 	/** release for the pm*/
+ 	if (atomic_dec_return(&(fp_priv->core_tasks[dev->core_id])) >= 0) {
+-		int ret = vdec_pm_runtime_put(dev->core_id);
+-
+-		if (ret < 0) {
+-			LOG_WARN("pm_runtime_put_autosuspend return %d\n", ret);
+-		}
++		vdec_pm_runtime_put(dev->core_id);
+ 	}
+ 
+ 	return 0;
+-- 
+2.53.0
+

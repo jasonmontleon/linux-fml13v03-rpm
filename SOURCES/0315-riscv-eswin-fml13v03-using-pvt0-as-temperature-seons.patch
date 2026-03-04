@@ -1,0 +1,77 @@
+From 8e513ae7b89006ae92bdc8791e115b11d24eb47b Mon Sep 17 00:00:00 2001
+From: Sandie Cao <sandie.cao@deepcomputing.io>
+Date: Mon, 16 Jun 2025 14:50:48 +0800
+Subject: [PATCH 315/540] riscv: eswin: fml13v03: using pvt0 as temperature
+ seonsor
+
+Signed-off-by: Sandie Cao <sandie.cao@deepcomputing.io>
+---
+ .../boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts     | 8 ++++++--
+ arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi     | 2 +-
+ arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi     | 2 +-
+ arch/riscv/configs/fml13v03_defconfig                     | 1 +
+ 4 files changed, 9 insertions(+), 4 deletions(-)
+
+diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
+index 8bac0f0c8f273..910a1505f414e 100644
+--- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
++++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
+@@ -1588,11 +1588,15 @@ &fan_control {
+ };
+ 
+ &pvt0 {
+-	status = "disabled";
++	status = "okay";
++	compatible = "eswin,eswin-dummy-pvt-cpu";
++	eswin,syscon = <&d0_sys_con 0x0668>;
+ };
+ 
+ &d1_pvt0 {
+-	status = "disabled";
++	status = "okay";
++	compatible = "eswin,eswin-dummy-pvt-cpu";
++	eswin,syscon = <&d1_sys_con 0x0668>;
+ };
+ 
+ &pvt1 {
+diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi b/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
+index 0a6e866db65cf..9ef5cb260e413 100644
+--- a/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
++++ b/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
+@@ -38,7 +38,7 @@ thermal0 {
+ 			polling-delay-passive = <100>; /*ms*/
+ 			polling-delay = <1000>; /*ms*/
+ 			sustainable-power = <30000>; /*mW*/
+-			thermal-sensors = <&pvt1>;
++			thermal-sensors = <&pvt0>;
+ 
+ 			trips {
+ 
+diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi b/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi
+index 21e045c91ee6b..6927177ce2c84 100644
+--- a/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi
++++ b/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi
+@@ -36,7 +36,7 @@ d1_thermal0 {
+ 			polling-delay-passive = <100>; /*ms*/
+ 			polling-delay = <1000>; /*ms*/
+ 			sustainable-power = <30000>; /*mW*/
+-			thermal-sensors = <&d1_pvt1>;
++			thermal-sensors = <&d1_pvt0>;
+ 
+ 			trips {
+ 				d1_threshold: trip-point0 {
+diff --git a/arch/riscv/configs/fml13v03_defconfig b/arch/riscv/configs/fml13v03_defconfig
+index bc94f4ba64c96..f785a5367bbb8 100755
+--- a/arch/riscv/configs/fml13v03_defconfig
++++ b/arch/riscv/configs/fml13v03_defconfig
+@@ -2046,6 +2046,7 @@ CONFIG_SENSORS_DRIVETEMP=m
+ CONFIG_SENSORS_DS620=m
+ CONFIG_SENSORS_DS1621=m
+ CONFIG_SENSORS_ESWIN_PVT=y
++CONFIG_SENSORS_ESWIN_DUMMY_PVT=y
+ CONFIG_SENSORS_I5K_AMB=m
+ CONFIG_SENSORS_F71805F=m
+ CONFIG_SENSORS_F71882FG=m
+-- 
+2.53.0
+

@@ -1,0 +1,36 @@
+From df703f8caa57bca4860055845871ce2f82842dc9 Mon Sep 17 00:00:00 2001
+From: gengzonglin <gengzonglin@eswincomputing.com>
+Date: Wed, 29 Oct 2025 09:58:36 +0800
+Subject: [PATCH 534/540] fix: Sys hangs when multi I2C execute suspend.
+
+Changelogs:
+	1.Disable I2C async suspend operation.
+
+Signed-off-by: gengzonglin gengzonglin@eswincomputing.com
+---
+ drivers/i2c/busses/i2c-designware-platdrv.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/drivers/i2c/busses/i2c-designware-platdrv.c b/drivers/i2c/busses/i2c-designware-platdrv.c
+index 95aefeff9decb..4fcc490aff85f 100644
+--- a/drivers/i2c/busses/i2c-designware-platdrv.c
++++ b/drivers/i2c/busses/i2c-designware-platdrv.c
+@@ -374,6 +374,15 @@ static int dw_i2c_plat_probe(struct platform_device *pdev)
+ 
+ 	device_enable_async_suspend(device);
+ 
++	/*
++	 * When there is a large amount of print information
++	 * with multiple I2c devices suspend simultaneously,
++	 * it might cause the system to crash.
++	 * @TODO we need to find the rootcause in the future.
++	 * [Current workaround]Disable I2C async suspend operation.
++	 * device_enable_async_suspend(&pdev->dev);
++	 */
++
+ 	/* The code below assumes runtime PM to be disabled. */
+ 	WARN_ON(pm_runtime_enabled(device));
+ 
+-- 
+2.53.0
+

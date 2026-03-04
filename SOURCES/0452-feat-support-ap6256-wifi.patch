@@ -1,0 +1,54 @@
+From 6c1e4f668275062d312738229783db9ded1b4017 Mon Sep 17 00:00:00 2001
+From: wangjinlong <wangjinlong@eswincomputing.com>
+Date: Thu, 31 Jul 2025 15:19:35 +0800
+Subject: [PATCH 452/540] feat:support ap6256 wifi
+
+Changelogs:
+1. add ap6256 wifi dts
+
+Signed-off-by: wangjinlong <wangjinlong@eswincomputing.com>
+---
+ arch/riscv/boot/dts/eswin/eic7700-ce1.dts | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/arch/riscv/boot/dts/eswin/eic7700-ce1.dts b/arch/riscv/boot/dts/eswin/eic7700-ce1.dts
+index a4249273f201a..9e89b4ecdaeb7 100644
+--- a/arch/riscv/boot/dts/eswin/eic7700-ce1.dts
++++ b/arch/riscv/boot/dts/eswin/eic7700-ce1.dts
+@@ -175,6 +175,12 @@ vdd_soc: regulator-0 {
+ 		states = <800000 0x0>,
+ 				<900000 0x1>;
+ 	};
++	reg_vcc1v8: vcc1v8 {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc1v8";
++		regulator-min-microvolt = <1800000>;
++		regulator-max-microvolt = <1800000>;
++	};
+ };
+ 
+ &d0_clock {
+@@ -523,6 +529,7 @@ &sdio1 {
+ 	non-removable;
+ 	no-sd;
+ 	no-mmc;
++	vqmmc-supply = <&reg_vcc1v8>;
+ 	aw3155:wifi_aw3155@0 {
+ 		compatible = "aml_w1_sdio";
+ 		reg = <0x0>;
+@@ -535,6 +542,12 @@ aw3155:wifi_aw3155@0 {
+ 		rst-gpios = <&portb 2 GPIO_ACTIVE_HIGH>;
+ 
+ 	};
++	mdhd_wlan {
++                compatible = "android,bcmdhd_wlan";
++                pinctrl-names = "default";
++                pinctrl-0 = <&pinctrl_gpio34_default>;
++                gpio_wl_reg_on = <&portb 2 GPIO_ACTIVE_HIGH>;
++        };
+ };
+ 
+ &d0_gmac0 {
+-- 
+2.53.0
+

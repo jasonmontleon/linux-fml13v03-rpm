@@ -1,0 +1,322 @@
+From 2421df49ada20ca64aaf79323fb9747ed84d748e Mon Sep 17 00:00:00 2001
+From: "yang.wang" <yang.wang@deepcomputing.io>
+Date: Wed, 16 Apr 2025 11:06:18 +0800
+Subject: [PATCH 283/540] Enhance ES8326 audio support for Eswin EIC7702
+
+- Add 11.025kHz, 22.05kHz, 32kHz sample rates in ES8326 codec.
+- Optimize MCLK/BCLK for 44.1kHz/48kHz in I2S driver.
+- Remove hardcoded clock settings in device tree.
+- Set DMA period count to 4.
+- Fix 16-bit audio clock cycles in I2S.
+- Add dynamic sysclk in ES8326 driver.
+
+Signed-off-by: yang.wang <yang.wang@deepcomputing.io>
+---
+ .../eswin/eic7702-deepcomputing-fml13v03.dts  |   2 -
+ sound/soc/codecs/es8326.c                     |  24 ++-
+ sound/soc/eswin/esw-dma.c                     |   2 +-
+ sound/soc/eswin/esw-i2s.c                     | 150 +++++++++---------
+ 4 files changed, 100 insertions(+), 78 deletions(-)
+
+diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
+index 91d810cac7620..101212973b2ae 100644
+--- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
++++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
+@@ -803,7 +803,6 @@ &d0_graphcard0 {
+ &d0_graphcard1 {
+ 	status = "okay";
+ 	label = "ES8326 Audio";
+-//	mclk-fs = <128>;
+ 	dais = <&d0_i2s1_port>;
+ };
+ 
+@@ -1277,7 +1276,6 @@ d0_es8326_0: es8326@19 {
+ 
+ 		port {
+ 			es8326_endpoint: endpoint {
+-				system-clock-frequency = <12288000>;
+ 				remote-endpoint = <&d0_i2s1_endpoint>;
+ 			};
+ 		};
+diff --git a/sound/soc/codecs/es8326.c b/sound/soc/codecs/es8326.c
+index 3c810e03a57de..55aa264d81653 100644
+--- a/sound/soc/codecs/es8326.c
++++ b/sound/soc/codecs/es8326.c
+@@ -247,6 +247,10 @@ static const struct _coeff_div coeff_div[] = {
+ 	{256, 8000, 2048000, 0x60, 0x00, 0x11, 0x35, 0x0A, 0x1B, 0x1F, 0x7F},
+ 	{256, 16000, 4096000, 0x20, 0x00, 0x01, 0x35, 0x0A, 0x1B, 0x1F, 0x3F},
+ 
++	{256, 11025, 2822400, 0x00, 0x00, 0x20, 0x35, 0x0A, 0x0A, 0x1F, 0x1F},
++	{256, 22050, 5644800, 0x00, 0x00, 0x20, 0x35, 0x0A, 0x0A, 0x1F, 0x1F},
++	{256, 32000, 8192000, 0x00, 0x00, 0x30, 0x2D, 0x0A, 0x0A, 0x1F, 0x1F},
++
+ 	{256, 44100, 11289600, 0x00, 0x00, 0x10, 0x2D, 0x0A, 0x0A, 0x1F, 0x1F},
+ 	{256, 48000, 12288000, 0x00, 0x00, 0x30, 0x2D, 0x0A, 0x0A, 0x1F, 0x1F},
+ 	{288, 8000, 2304000, 0x20, 0x00, 0x01, 0x35, 0x0A, 0x1B, 0x23, 0x47},
+@@ -263,7 +267,7 @@ static const struct _coeff_div coeff_div[] = {
+ 	{768, 8000, 6144000, 0x60, 0x02, 0x11, 0x35, 0x0A, 0x1B, 0x1F, 0x7F},
+ 	{768, 16000, 12288000, 0x20, 0x02, 0x01, 0x35, 0x0A, 0x1B, 0x1F, 0x3F},
+ 	{800, 48000, 38400000, 0x00, 0x18, 0x13, 0x2D, 0x0A, 0x0A, 0x1F, 0x1F},
+-	{1024, 8000, 8192000, 0x60, 0x00, 0x10, 0x35, 0x0A, 0x1B, 0x1F, 0x7F},
++	{1024, 8000, 8192000, 0x60, 0x00, 0x10, 0x35, 0x1B, 0x1B, 0x1F, 0x7F},
+ 	{1024, 16000, 16384000, 0x20, 0x00, 0x00, 0x35, 0x0A, 0x1B, 0x1F, 0x3F},
+ 	{1152, 16000, 18432000, 0x20, 0x08, 0x11, 0x35, 0x0A, 0x1B, 0x1F, 0x3F},
+ 	{1536, 8000, 12288000, 0x60, 0x02, 0x01, 0x35, 0x0A, 0x1B, 0x1F, 0x7F},
+@@ -275,7 +279,6 @@ static const struct _coeff_div coeff_div[] = {
+ 	{2304, 8000, 18432000, 0x40, 0x02, 0x10, 0x35, 0x0A, 0x1B, 0x1F, 0x5F},
+ 	{3072, 8000, 24576000, 0x60, 0x02, 0x10, 0x35, 0x0A, 0x1B, 0x1F, 0x7F},
+ 	{3250, 8000, 26000000, 0x0C, 0x18, 0x0F, 0x2D, 0x0A, 0x0A, 0x27, 0x27},
+-
+ };
+ 
+ static inline int get_coeff(int mclk, int rate)
+@@ -351,6 +354,21 @@ static int es8326_pcm_hw_params(struct snd_pcm_substream *substream,
+ 	u8 srate = 0;
+ 	int coeff;
+ 
++#ifdef ESWIN_CONFIG_CODEC_ES8326
++	switch (params_rate(params)) {
++	case 8000:
++		es8326->sysclk = params_rate(params) * 1024;
++		break;
++	case 16000:
++		es8326->sysclk = params_rate(params) * 512;
++		break;
++	default:
++		es8326->sysclk = params_rate(params) * 256;
++		break;
++	}
++	dev_dbg(component->dev, "Setting sysclk %u Hz\n", es8326->sysclk);
++#endif
++
+ 	coeff = get_coeff(es8326->sysclk, params_rate(params));
+ 	/* bit size */
+ 	switch (params_format(params)) {
+@@ -1045,7 +1063,7 @@ static int es8326_i2c_probe(struct i2c_client *i2c)
+ 	if (!es8326)
+ 		return -ENOMEM;
+ 
+-#ifdef STARFIVE_CONFIG_CODEC_ES8326
++#ifdef ESWIN_CONFIG_CODEC_ES8326
+ 	es8326->jack = devm_kzalloc(&i2c->dev, sizeof(struct snd_soc_jack),
+ 				    GFP_KERNEL);
+ 	if (!es8326->jack)
+diff --git a/sound/soc/eswin/esw-dma.c b/sound/soc/eswin/esw-dma.c
+index 14a365e84718e..d2f0c79e0fe2d 100644
+--- a/sound/soc/eswin/esw-dma.c
++++ b/sound/soc/eswin/esw-dma.c
+@@ -28,7 +28,7 @@
+ 
+ #define MAX_PERIOD_SIZE 4096
+ #define MIN_PERIOD_SIZE 512
+-#define MAX_PERIOD_CNT 16
++#define MAX_PERIOD_CNT 4
+ #define MIN_PERIOD_CNT 2
+ 
+ static void esw_pcm_dma_complete(void *arg)
+diff --git a/sound/soc/eswin/esw-i2s.c b/sound/soc/eswin/esw-i2s.c
+index eed2859387b11..c71bc41f11f20 100755
+--- a/sound/soc/eswin/esw-i2s.c
++++ b/sound/soc/eswin/esw-i2s.c
+@@ -65,6 +65,9 @@
+ 
+ #define MAX_SAMPLE_RATE_SUPPORT (192000UL)
+ #define MAX_SAMPLE_RATE_CLK (MAX_SAMPLE_RATE_SUPPORT * 32 * 2) // 32 bits, 2channels
++#define SAMPLE_RATE_44100      44100
++#define SAMPLE_RATE_22050      22050
++#define SAMPLE_RATE_11025      11025
+ 
+ #define DIE0_VO_TOP_CSR        0x50280000UL
+ #define DIE1_VO_TOP_CSR        0x70280000UL
+@@ -74,12 +77,8 @@
+ #define DIV_NUM_MASK           0x1f
+ 
+ #define ESW_I2S_RATES (SNDRV_PCM_RATE_192000 | \
+-			SNDRV_PCM_RATE_96000 | \
+-			SNDRV_PCM_RATE_48000 | \
+-			SNDRV_PCM_RATE_44100 | \
+-			SNDRV_PCM_RATE_32000 | \
+-			SNDRV_PCM_RATE_16000 | \
+-			SNDRV_PCM_RATE_8000)
++				SNDRV_PCM_RATE_96000 | \
++				SNDRV_PCM_RATE_8000_48000)
+ #define ESW_I2S_FORMATS (SNDRV_PCM_FMTBIT_S32_LE | \
+ 			SNDRV_PCM_FMTBIT_S16_LE | \
+ 			SNDRV_PCM_FMTBIT_S24_LE | \
+@@ -447,13 +446,15 @@ static int i2s_hw_params(struct snd_pcm_substream *substream,
+ 	uint32_t div_num = 0;
+ 	uint32_t div_num_reg;
+ 	int ret;
++	unsigned long mclk_rate;
++
++	dev_dbg(i2s_drvdata->dev, "Sample rate: %d Hz, channels: %d, width: %d bits\n",
++		params_rate(params), params_channels(params), params_width(params));
+ 
+-	dev_dbg(i2s_drvdata->dev, "sample rate:%d, chan:%d, width:%d\n",
+-			 params_rate(params), params_channels(params), params_width(params));
+ 	switch (params_format(params)) {
+ 	case SNDRV_PCM_FORMAT_S16_LE:
+ 		config->data_width = 16;
+-		i2s_drvdata->ccr = CLOCK_CYCLES_32 << CCR_WSS_POS |
++		i2s_drvdata->ccr = CLOCK_CYCLES_16 << CCR_WSS_POS |
+ 					NO_CLOCK_GATING;
+ 		i2s_drvdata->xfer_resolution = RESOLUTION_16_BIT;
+ 		break;
+@@ -474,6 +475,8 @@ static int i2s_hw_params(struct snd_pcm_substream *substream,
+ 		dev_err(i2s_drvdata->dev, "eswin-i2s: unsupported PCM fmt");
+ 		return -EINVAL;
+ 	}
++
++	// Set channel number
+ 	config->chan_nr = MAX_CHANNEL_NUM;
+ 	switch (config->chan_nr) {
+ 	case TWO_CHANNEL_SUPPORT:
+@@ -482,79 +485,82 @@ static int i2s_hw_params(struct snd_pcm_substream *substream,
+ 		dev_err(i2s_drvdata->dev, "channel not supported\n");
+ 		return -EINVAL;
+ 	}
++
++	// Configure I2S settings
+ 	i2s_config(i2s_drvdata, substream->stream);
+ 	i2s_write_reg(i2s_drvdata->i2s_base, CCR, i2s_drvdata->ccr);
++
++	// Get sample rate
+ 	config->sample_rate = params_rate(params);
++
+ 	if (i2s_drvdata->capability & DW_I2S_MASTER) {
+-		if (config->sample_rate == 44100) {
+-			if (!enable_441k[i2s_drvdata->nid]) {
+-				if (!i2s_enable_cnt[i2s_drvdata->nid]) {
+-					ret = clk_set_rate(i2s_drvdata->mclk, MAX_SAMPLE_RATE_CLK * 2);
+-					if (ret) {
+-						dev_err(i2s_drvdata->dev, "Can't set I2S mclock rate: %d\n", ret);
+-						return ret;
+-					}
+-					ret = clk_set_rate(i2s_drvdata->apll_clk, APLL_LOW_FREQ);
+-					if (ret) {
+-						dev_err(i2s_drvdata->dev, "Can't set I2S apll clock rate: %d\n", ret);
+-						return ret;
+-					}
+-					enable_441k[i2s_drvdata->nid] = 1;
+-					div_num_reg = i2s_read_reg(i2s_drvdata->i2s_div_base, 0) & ~DIV_NUM_MASK;
+-					div_num_reg |= 1;
+-					i2s_write_reg(i2s_drvdata->i2s_div_base, 0, div_num_reg);
+-					i2s_drvdata->i2s_div_num = 1;
+-					dev_dbg(i2s_drvdata->dev, "apll rate:%ld\n", clk_get_rate(i2s_drvdata->apll_clk));
+-				} else {
+-					dev_err(i2s_drvdata->dev, "Other sample rate audio is playing.\n");
+-					return -EINVAL;
+-				}
+-			} else {
+-				div_num_reg = i2s_read_reg(i2s_drvdata->i2s_div_base, 0) & ~DIV_NUM_MASK;
+-				div_num_reg |= 1;
+-				i2s_write_reg(i2s_drvdata->i2s_div_base, 0, div_num_reg);
+-				i2s_drvdata->i2s_div_num = 1;
++		if (config->sample_rate == SAMPLE_RATE_44100 ||
++		    config->sample_rate == SAMPLE_RATE_22050 ||
++		    config->sample_rate == SAMPLE_RATE_11025) {
++			// 44.1kHz series
++			mclk_rate = config->sample_rate * 256;
++			ret = clk_set_rate(i2s_drvdata->apll_clk, APLL_LOW_FREQ); // 225.792 MHz
++			if (ret) {
++				dev_err(i2s_drvdata->dev, "Failed to set APLL to 225.792 MHz: %d\n", ret);
++				return ret;
++			}
++			ret = clk_set_rate(i2s_drvdata->mclk, mclk_rate);
++			if (ret) {
++				dev_err(i2s_drvdata->dev, "Failed to set MCLK to %ld Hz: %d\n", mclk_rate, ret);
++				return ret;
+ 			}
++
++			enable_441k[i2s_drvdata->nid] = 1;
+ 		} else {
+-			if (enable_441k[i2s_drvdata->nid]) {
+-				if (!i2s_enable_cnt[i2s_drvdata->nid]) {
+-					ret = clk_set_rate(i2s_drvdata->apll_clk, APLL_HIGH_FREQ);
+-					if (ret) {
+-						dev_err(i2s_drvdata->dev, "Can't set I2S apll clock rate: %d\n", ret);
+-						return ret;
+-					}
+-					ret = clk_set_rate(i2s_drvdata->mclk, MAX_SAMPLE_RATE_CLK);
+-					if (ret) {
+-						dev_err(i2s_drvdata->dev, "Can't set I2S mclock rate: %d\n", ret);
+-						return ret;
+-					}
+-					enable_441k[i2s_drvdata->nid] = 0;
+-					dev_dbg(i2s_drvdata->dev, "apll rate:%ld\n", clk_get_rate(i2s_drvdata->apll_clk));
+-				} else {
+-					dev_err(i2s_drvdata->dev, "44.1khz audio is playing.\n");
+-					return -EINVAL;
+-				}
++			// 48kHz series
++			if (config->sample_rate == 8000)
++				mclk_rate = config->sample_rate * 1024;
++			else if (config->sample_rate == 16000)
++				mclk_rate = config->sample_rate * 512;
++			else
++				mclk_rate = config->sample_rate * 256;
++
++			ret = clk_set_rate(i2s_drvdata->apll_clk, APLL_HIGH_FREQ); // 983.04 MHz
++			if (ret) {
++				dev_err(i2s_drvdata->dev, "Failed to set APLL to 983.04 MHz: %d\n", ret);
++				return ret;
+ 			}
+-			if (MAX_SAMPLE_RATE_SUPPORT % config->sample_rate != 0) {
+-				dev_err(i2s_drvdata->dev, "Not support sample rate: %d\n", config->sample_rate);
+-				return -EINVAL;
++			ret = clk_set_rate(i2s_drvdata->mclk, mclk_rate);
++			if (ret) {
++				dev_err(i2s_drvdata->dev, "Failed to set MCLK to %ld Hz: %d\n", mclk_rate, ret);
++				return ret;
+ 			}
+ 
+-			div_num = MAX_SAMPLE_RATE_SUPPORT / config->sample_rate - 1;
+-
+-			if (i2s_drvdata->active) {
+-				if (i2s_drvdata->i2s_div_num != div_num) {
+-					dev_err(i2s_drvdata->dev, "Not support the playback and capture clocks are different\n");
+-					return -EINVAL;
+-				}
+-			} else {
+-				div_num_reg = i2s_read_reg(i2s_drvdata->i2s_div_base, 0) & ~DIV_NUM_MASK;
+-				div_num_reg |= div_num;
+-				dev_dbg(i2s_drvdata->dev, "div num:0x%x\n", div_num);
+-				i2s_drvdata->i2s_div_num = div_num;
+-				i2s_write_reg(i2s_drvdata->i2s_div_base, 0, div_num_reg);
+-			}
++			enable_441k[i2s_drvdata->nid] = 0;
++		}
++
++		// Calculate frame size (data width * channels)
++		int frame_size = config->data_width * config->chan_nr;
++		// Calculate BCLK rate
++		unsigned long bclk_rate = config->sample_rate * frame_size;
++		if (bclk_rate == 0) {
++			dev_err(i2s_drvdata->dev, "Calculated BCLK rate is zero\n");
++			return -EINVAL;
++		}
++		// Calculate divider for BCLK (MCLK / BCLK - 1)
++		div_num = mclk_rate / bclk_rate - 1;
++
++// Define maximum divider value (assuming 8-bit divider)
++#define DIV_NUM_MAX 255
++		// Ensure div_num is valid
++		if (div_num < 0 || div_num > DIV_NUM_MAX) {
++			dev_err(i2s_drvdata->dev, "Invalid divider value: %u for sample rate: %d Hz\n",
++				div_num, config->sample_rate);
++			return -EINVAL;
+ 		}
++
++		// Set divider register for BCLK
++		div_num_reg = i2s_read_reg(i2s_drvdata->i2s_div_base, 0) & ~DIV_NUM_MASK;
++		div_num_reg |= div_num;
++		dev_dbg(i2s_drvdata->dev, "MCLK: %ld Hz, BCLK: %ld Hz, LRCLK: %d Hz, divider: %u\n",
++			mclk_rate, bclk_rate, config->sample_rate, div_num);
++		i2s_write_reg(i2s_drvdata->i2s_div_base, 0, div_num_reg);
++		i2s_drvdata->i2s_div_num = div_num;
+ 	}
+ 
+ 	return 0;
+-- 
+2.53.0
+

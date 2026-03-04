@@ -1,0 +1,48 @@
+From e81fc22a57eb40ac0b0ef23bbd1e5e0d5076946d Mon Sep 17 00:00:00 2001
+From: ningyu <ningyu@eswincomputing.com>
+Date: Wed, 6 Aug 2025 19:37:32 +0800
+Subject: [PATCH 453/540] fix:multi define gpio94 cause clk driver fail
+
+Changelogs:
+Add cpu voltage adjust gpio94, and delete gpio default define in pinctrl
+
+Signed-off-by: ningyu <ningyu@eswincomputing.com>
+---
+ arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi | 9 ---------
+ 1 file changed, 9 deletions(-)
+
+diff --git a/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi b/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
+index c0773b294487e..103cd9e003570 100644
+--- a/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
++++ b/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
+@@ -235,13 +235,11 @@ &d0_clock {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&pinctrl_die0_gpio94_default>;
+ 	cpu-voltage-gpios = <&portc 30 GPIO_ACTIVE_HIGH>;
+-	cpu-default-frequency = <CLK_FREQ_1800M>;
+ };
+ 
+ &d1_clock {
+ 	status = "okay";
+ 	cpu-voltage-gpios = <&portc 30 GPIO_ACTIVE_HIGH>;
+-	cpu-default-frequency = <CLK_FREQ_1800M>;
+ };
+ 
+ &D1CACHE {
+@@ -253,13 +251,6 @@ d1_zero_device: zero-device@3a000000 {
+ 	};
+ };
+ 
+-&d0_clock {
+-	status = "okay";
+-};
+-&d1_clock {
+-	status = "okay";
+-};
+-
+ &d0_reset {
+ 	status = "okay";
+ };
+-- 
+2.53.0
+

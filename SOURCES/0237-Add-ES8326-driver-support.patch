@@ -1,0 +1,373 @@
+From 97c4638757e42a22863407a938219e0d28e04650 Mon Sep 17 00:00:00 2001
+From: "yang.wang" <yang.wang@deepcomputing.io>
+Date: Thu, 13 Mar 2025 18:07:23 +0800
+Subject: [PATCH 237/540] Add ES8326 driver support.
+
+Signed-off-by: yang.wang <yang.wang@deepcomputing.io>
+---
+ .../eswin/eic7702-deepcomputing-fml13v03.dts  | 112 +++++++++---------
+ arch/riscv/configs/fml13v03_defconfig         |   1 +
+ sound/soc/codecs/es8326.c                     |  91 +++++++++++++-
+ sound/soc/codecs/es8326.h                     |   4 +
+ 4 files changed, 147 insertions(+), 61 deletions(-)
+
+diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
+index a25ba793e2d76..9588c5c64b4a5 100644
+--- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
++++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
+@@ -675,14 +675,19 @@ d1_i2s0_endpoint: endpoint {
+ };
+ 
+ &d0_i2s1 {
+-	status = "disabled";
+-//	numa-node-id = <0>;
+-//	d0_i2s1_port: port {
+-//		d0_i2s1_endpoint: endpoint {
+-//			remote-endpoint = <&d0_codec0_endpoint>;
+-//			dai-format = "i2s";
+-//		};
+-//	};
++    status = "okay";
++    numa-node-id = <0>;
++    #sound-dai-cells = <0>;
++    clocks = <&d0_clock WIN2030_CLK_VO_I2S_MCLK>, <&d0_clock WIN2030_APLL_FOUT1>;
++    clock-names = "mclk", "apll";
++    pinctrl-names = "default";
++    pinctrl-0 = <&pinctrl_die0_i2s1_default>;
++    d0_i2s1_port: port {
++        d0_i2s1_endpoint: endpoint {
++            remote-endpoint = <&es8326_endpoint>;
++            dai-format = "i2s";
++        };
++    };
+ };
+ 
+ &d1_i2s1 {
+@@ -704,9 +709,10 @@ &d0_graphcard0 {
+ };
+ 
+ &d0_graphcard1 {
+-	status = "disabled";
+-//	label = "Analog Audio-0";
+-//	dais = <&d0_i2s1_port>;
++	status = "okay";
++	label = "ES8326 Audio";
++//	mclk-fs = <128>;
++	dais = <&d0_i2s1_port>;
+ };
+ 
+ &d0_graphcard2 {
+@@ -1162,57 +1168,45 @@ &d1_fan_control {
+ };
+ 
+ &d0_i2c0 {
+-	/* codec es8388 */
+-	status = "disabled";
+-//	d0_es8388_0: es8388-0@10 {
+-//		compatible = "eswin,es8388";
+-//		reg = <0x10>;
+-//		#sound-dai-cells = <0>;
+-//		port {
+-//			d0_codec0_endpoint: endpoint {
+-//				system-clock-frequency = <12288000>;
+-//				remote-endpoint = <&d0_i2s1_endpoint>;
+-//			};
+-//		};
+-//	};
+-//	d0_es8388_1: es8388-1@11 {
+-//		compatible = "eswin,es8388";
+-//		reg = <0x11>;
+-//		#sound-dai-cells = <0>;
+-//		port {
+-//			d0_codec1_endpoint: endpoint {
+-//				system-clock-frequency = <12288000>;
+-//				remote-endpoint = <&d0_i2s2_endpoint>;
+-//			};
+-//		};
+-//	};
++	status = "okay";
++
++	/* codec es8326 */
++	d0_es8326_0: es8326@19 {
++		#sound-dai-cells = <0>;
++		compatible = "everest,es8326";
++		reg = <0x19>;
++		status = "okay";
++
++        clocks = <&d0_clock WIN2030_CLK_VO_I2S_MCLK>;
++        clock-names = "mclk";
++
++		interrupt-parent = <&porta>;
++		interrupts = <28 IRQ_TYPE_EDGE_FALLING>;
++
++		pinctrl-names = "default";
++		pinctrl-0 = <&pinctrl_die0_gpio28_default
++					 &pinctrl_die0_gpio111_default>;
++
++		spk-ctl-gpio = <&portd 15 GPIO_ACTIVE_HIGH>;
++
++//		everest,jack-detect-inverted;
++		everest,jack-pol = [0e];
++		everest,mic1-src = [00];
++		everest,mic2-src = [44];
++		everest,interrupt-src = [08];
++        everest,interrupt-clk = [45];
++
++		port {
++			es8326_endpoint: endpoint {
++				system-clock-frequency = <12288000>;
++				remote-endpoint = <&d0_i2s1_endpoint>;
++			};
++		};
++	};
+ };
+ 
+ &d1_i2c0 {
+-	/* codec es8388 */
+-	status = "disabled";
+-//	d1_es8388_0: es8388-0@10 {
+-//		compatible = "eswin,es8388";
+-//		reg = <0x10>;
+-//		#sound-dai-cells = <0>;
+-//		port {
+-//			d1_codec0_endpoint: endpoint {
+-//				system-clock-frequency = <12288000>;
+-//				remote-endpoint = <&d1_i2s1_endpoint>;
+-//			};
+-//		};
+-//	};
+-//	d1_es8388_1: es8388-1@11 {
+-//		compatible = "eswin,es8388";
+-//		reg = <0x11>;
+-//		#sound-dai-cells = <0>;
+-//		port {
+-//			d1_codec1_endpoint: endpoint {
+-//				system-clock-frequency = <12288000>;
+-//				remote-endpoint = <&d1_i2s2_endpoint>;
+-//			};
+-//		};
+-//	};
++	status = "disabled";
+ };
+ 
+ &d0_i2c1 {
+diff --git a/arch/riscv/configs/fml13v03_defconfig b/arch/riscv/configs/fml13v03_defconfig
+index 30b90ea7e508d..97e92b1a81a0c 100755
+--- a/arch/riscv/configs/fml13v03_defconfig
++++ b/arch/riscv/configs/fml13v03_defconfig
+@@ -656,6 +656,7 @@ CONFIG_SND_SOC=y
+ CONFIG_SND_SOC_SOF_TOPLEVEL=y
+ CONFIG_SND_SOC_SOF_OF=y
+ CONFIG_SND_ESWIN_DW_I2S=y
++CONFIG_SND_SOC_ES8326=y
+ CONFIG_ESWIN_SND_SOC_CODECS=y
+ CONFIG_ESWIN_SND_ES8388_CODEC=y
+ CONFIG_SND_SIMPLE_CARD=y
+diff --git a/sound/soc/codecs/es8326.c b/sound/soc/codecs/es8326.c
+index 32a9b26ee2c89..3c810e03a57de 100644
+--- a/sound/soc/codecs/es8326.c
++++ b/sound/soc/codecs/es8326.c
+@@ -16,6 +16,8 @@
+ #include <sound/soc.h>
+ #include <sound/soc-dapm.h>
+ #include <sound/tlv.h>
++#include <linux/gpio.h>
++#include <linux/of_gpio.h>
+ #include "es8326.h"
+ 
+ struct es8326_priv {
+@@ -43,6 +45,10 @@ struct es8326_priv {
+ 	int version;
+ 	int hp;
+ 	int jack_remove_retry;
++#ifdef ESWIN_CONFIG_CODEC_ES8326
++	int spk_ctl_gpio;
++	bool mute_en;
++#endif
+ };
+ 
+ static const SNDRV_CTL_TLVD_DECLARE_DB_SCALE(dac_vol_tlv, -9550, 50, 0);
+@@ -160,6 +166,14 @@ static const struct snd_soc_dapm_route es8326_dapm_routes[] = {
+ 	{"HPOR", NULL, "RHPMIX"},
+ };
+ 
++#ifdef ESWIN_CONFIG_CODEC_ES8326
++static void es8326_enable_spk(struct es8326_priv *es8326, bool enable)
++{
++	if (es8326->spk_ctl_gpio >= 0)
++		gpio_set_value(es8326->spk_ctl_gpio, enable);
++}
++#endif
++
+ static bool es8326_volatile_register(struct device *dev, unsigned int reg)
+ {
+ 	switch (reg) {
+@@ -397,6 +411,11 @@ static int es8326_mute(struct snd_soc_dai *dai, int mute, int direction)
+ 		regmap_update_bits(es8326->regmap, ES8326_DAC_MUTE,
+ 				ES8326_MUTE_MASK, ES8326_MUTE);
+ 		regmap_write(es8326->regmap, ES8326_HP_DRIVER, 0xf0);
++
++#ifdef ESWIN_CONFIG_CODEC_ES8326
++		es8326_enable_spk(es8326, false);
++		es8326->mute_en = true;
++#endif
+ 	} else {
+ 		if (!es8326->calibrated) {
+ 			regmap_write(es8326->regmap, ES8326_HP_CAL, ES8326_HP_FORCE_CAL);
+@@ -414,6 +433,12 @@ static int es8326_mute(struct snd_soc_dai *dai, int mute, int direction)
+ 		regmap_write(es8326->regmap, ES8326_HP_CAL, ES8326_HP_ON);
+ 		regmap_update_bits(es8326->regmap, ES8326_DAC_MUTE,
+ 				ES8326_MUTE_MASK, ~(ES8326_MUTE));
++
++#ifdef ESWIN_CONFIG_CODEC_ES8326
++		if (!es8326->hp)
++			es8326_enable_spk(es8326, true);
++		es8326->mute_en = false;
++#endif
+ 	}
+ 	return 0;
+ }
+@@ -614,8 +639,12 @@ static void es8326_jack_detect_handler(struct work_struct *work)
+ 	if ((iface & ES8326_HPINSERT_FLAG) == 0) {
+ 		/* Jack unplugged or spurious IRQ */
+ 		dev_dbg(comp->dev, "No headset detected\n");
++#ifdef ESWIN_CONFIG_CODEC_ES8326
++		if (!es8326->mute_en)
++			es8326_enable_spk(es8326, true);
++#endif
+ 		es8326_disable_micbias(es8326->component);
+-		if (es8326->jack->status & SND_JACK_HEADPHONE) {
++		//if (es8326->jack->status & SND_JACK_HEADPHONE) {
+ 			dev_dbg(comp->dev, "Report hp remove event\n");
+ 			snd_soc_jack_report(es8326->jack, 0,
+ 				    SND_JACK_BTN_0 | SND_JACK_BTN_1 | SND_JACK_BTN_2);
+@@ -625,7 +654,7 @@ static void es8326_jack_detect_handler(struct work_struct *work)
+ 			regmap_write(es8326->regmap, ES8326_ADC1_SRC, 0x44);
+ 			regmap_write(es8326->regmap, ES8326_ADC2_SRC, 0x66);
+ 			es8326->hp = 0;
+-		}
++		//}
+ 		regmap_update_bits(es8326->regmap, ES8326_HPDET_TYPE, 0x03, 0x01);
+ 		/*
+ 		 * Inverted HPJACK_POL bit to trigger one IRQ to double check HP Removal event
+@@ -665,10 +694,16 @@ static void es8326_jack_detect_handler(struct work_struct *work)
+ 		}
+ 		if ((iface & ES8326_HPBUTTON_FLAG) == 0x01) {
+ 			dev_dbg(comp->dev, "Headphone detected\n");
++#ifdef ESWIN_CONFIG_CODEC_ES8326
++			es8326_enable_spk(es8326, false);
++#endif
+ 			snd_soc_jack_report(es8326->jack,
+ 					SND_JACK_HEADPHONE, SND_JACK_HEADSET);
+ 		} else {
+ 			dev_dbg(comp->dev, "Headset detected\n");
++#ifdef ESWIN_CONFIG_CODEC_ES8326
++			es8326_enable_spk(es8326, false);
++#endif
+ 			snd_soc_jack_report(es8326->jack,
+ 					SND_JACK_HEADSET, SND_JACK_HEADSET);
+ 
+@@ -856,14 +891,34 @@ static int es8326_suspend(struct snd_soc_component *component)
+ 	return 0;
+ }
+ 
++#define ES8326_JACK_MASK (SND_JACK_HEADSET)
++
+ static int es8326_probe(struct snd_soc_component *component)
+ {
+ 	struct es8326_priv *es8326 = snd_soc_component_get_drvdata(component);
+ 	int ret;
++	struct snd_soc_card *card = component->card;
+ 
+ 	es8326->component = component;
+ 	es8326->jd_inverted = device_property_read_bool(component->dev,
+ 							"everest,jack-detect-inverted");
++	if (!es8326->jack) {
++		es8326->jack = devm_kzalloc(component->dev,
++					    sizeof(struct snd_soc_jack),
++					    GFP_KERNEL);
++		if (!es8326->jack) {
++			dev_err(component->dev,
++				"Failed to allocate memory for jack\n");
++			return -ENOMEM;
++		}
++	}
++	ret = snd_soc_card_jack_new(card, "Headphone", ES8326_JACK_MASK,
++				    es8326->jack);
++	if (ret < 0) {
++		dev_err(component->dev, "Cannot create jack\n");
++		devm_kfree(component->dev, es8326->jack);
++		es8326->jack = NULL;
++	}
+ 
+ 	ret = device_property_read_u8(component->dev, "everest,mic1-src", &es8326->mic1_src);
+ 	if (ret != 0) {
+@@ -903,6 +958,14 @@ static int es8326_probe(struct snd_soc_component *component)
+ 	dev_dbg(component->dev, "interrupt-clk %x", es8326->interrupt_clk);
+ 
+ 	es8326_resume(component);
++
++#ifdef ESWIN_CONFIG_CODEC_ES8326
++	es8326_enable_spk(es8326, false);
++	es8326->mute_en = true;
++	regmap_write(es8326->regmap, ES8326_ADC_MUTE, 0x0f);
++	regmap_write(es8326->regmap, ES8326_ADC1_SRC, 0x44);
++	regmap_write(es8326->regmap, ES8326_ADC2_SRC, 0x66);
++#endif
+ 	return 0;
+ }
+ 
+@@ -982,6 +1045,13 @@ static int es8326_i2c_probe(struct i2c_client *i2c)
+ 	if (!es8326)
+ 		return -ENOMEM;
+ 
++#ifdef STARFIVE_CONFIG_CODEC_ES8326
++	es8326->jack = devm_kzalloc(&i2c->dev, sizeof(struct snd_soc_jack),
++				    GFP_KERNEL);
++	if (!es8326->jack)
++		return -ENOMEM;
++#endif
++
+ 	i2c_set_clientdata(i2c, es8326);
+ 	es8326->i2c = i2c;
+ 	mutex_init(&es8326->lock);
+@@ -1007,6 +1077,23 @@ static int es8326_i2c_probe(struct i2c_client *i2c)
+ 		es8326->irq = -ENXIO;
+ 	}
+ 
++#ifdef ESWIN_CONFIG_CODEC_ES8326
++	es8326->spk_ctl_gpio = of_get_named_gpio(i2c->dev.of_node, "spk-ctl-gpio", 0);
++	if (es8326->spk_ctl_gpio < 0) {
++		dev_info(&i2c->dev, "Can not read property spk_ctl_gpio\n");
++		es8326->spk_ctl_gpio = -1;
++	}
++	else {
++		ret = devm_gpio_request_one(&i2c->dev, es8326->spk_ctl_gpio,
++					    GPIOF_DIR_OUT, NULL);
++		if (ret) {
++			dev_err(&i2c->dev, "Failed to request spk_ctl_gpio\n");
++			return ret;
++		}
++		es8326_enable_spk(es8326, false);
++	}
++#endif
++
+ 	es8326->mclk = devm_clk_get_optional(&i2c->dev, "mclk");
+ 	if (IS_ERR(es8326->mclk)) {
+ 		dev_err(&i2c->dev, "unable to get mclk\n");
+diff --git a/sound/soc/codecs/es8326.h b/sound/soc/codecs/es8326.h
+index 90a08351d6acd..1c661374a0213 100644
+--- a/sound/soc/codecs/es8326.h
++++ b/sound/soc/codecs/es8326.h
+@@ -193,4 +193,8 @@
+ #define ES8326_VERSION (1 << 0)
+ #define ES8326_VERSION_B (3 << 0)
+ 
++#if IS_ENABLED(CONFIG_SND_SOC_ES8326)
++#define ESWIN_CONFIG_CODEC_ES8326 1
++#endif
++
+ #endif
+-- 
+2.53.0
+

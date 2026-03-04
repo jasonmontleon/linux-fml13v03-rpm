@@ -1,0 +1,101 @@
+From 547044d6f91bef4ef5949936bbfec10ba018802d Mon Sep 17 00:00:00 2001
+From: ningyu <ningyu@eswincomputing.com>
+Date: Thu, 21 Aug 2025 20:28:35 +0800
+Subject: [PATCH 508/540] fix:combine temp and voltage in testreg0
+
+Changelogs:
+Because test register1~3 are used by EP mode, so combine temperature and voltage of pvt0 and store in test register0
+
+Signed-off-by: ningyu <ningyu@eswincomputing.com>
+---
+ drivers/hwmon/eswin_dummy_pvt.c | 21 ++++++++++++++++++++-
+ drivers/hwmon/eswin_pvt.h       |  4 ++--
+ 2 files changed, 22 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/hwmon/eswin_dummy_pvt.c b/drivers/hwmon/eswin_dummy_pvt.c
+index bfc725adb498b..34f5f79d35545 100644
+--- a/drivers/hwmon/eswin_dummy_pvt.c
++++ b/drivers/hwmon/eswin_dummy_pvt.c
+@@ -46,6 +46,7 @@
+ #include  <linux/mfd/syscon.h>
+ #include <linux/of.h>
+ 
++static LIST_HEAD(eswin_pvt_dummy_dev);
+ /*
+  * For the sake of the code simplification we created the sensors info table
+  * with the sensor names, activation modes, threshold registers base address
+@@ -249,6 +250,20 @@ static int eswin_pvt_read_data(struct pvt_hwmon *pvt, enum pvt_sensor_type type,
+ 	return 0;
+ }
+ 
++int eswin_get_cpu_7702_temp(const char *name, int numa_id, long *val)
++{
++	struct pvt_hwmon *pvt = NULL;
++	int ret = -EINVAL;
++
++	list_for_each_entry(pvt, &eswin_pvt_dummy_dev, entry) {
++		if (pvt->sensor_info && strstr(pvt->sensor_info->label, name) && pvt->nid == numa_id) {
++			ret = eswin_pvt_read_data(pvt, PVT_TEMP, val);
++		}
++	}
++	return ret;
++}
++EXPORT_SYMBOL_GPL(eswin_get_cpu_7702_temp);
++
+ static int eswin_pvt_read_limit(struct pvt_hwmon *pvt, enum pvt_sensor_type type,
+ 			  bool is_low, long *val)
+ {
+@@ -632,6 +647,7 @@ static struct pvt_hwmon *eswin_pvt_create_data(struct platform_device *pdev)
+ 	pvt->dev = dev;
+ 	pvt->sensor = PVT_SENSOR_FIRST;
+ 	mutex_init(&pvt->iface_mtx);
++	INIT_LIST_HEAD(&pvt->entry);
+ 
+ 	for (idx = 0; idx < PVT_SENSORS_NUM; ++idx)
+ 		init_completion(&pvt->cache[idx].conversion);
+@@ -660,9 +676,12 @@ static int eswin_pvt_request_regs(struct pvt_hwmon *pvt)
+ static void eswin_pvt_remove(void *data)
+ {
+ 	struct pvt_hwmon *pvt = data;
++
+ 	if (!IS_ERR_OR_NULL(pvt->regmap)) {
+ 		regmap_exit(pvt->regmap);
+ 		pvt->regmap = NULL;
++
++		list_del(&pvt->entry);
+ 	}
+ }
+ 
+@@ -753,7 +772,7 @@ static int eswin_pvt_probe(struct platform_device *pdev)
+ 		dev_err(pvt->dev, "Can't add PVT clocks disable action\n");
+ 		return ret;
+ 	}
+-
++	list_add(&pvt->entry, &eswin_pvt_dummy_dev);
+ 	return 0;
+ }
+ 
+diff --git a/drivers/hwmon/eswin_pvt.h b/drivers/hwmon/eswin_pvt.h
+index 45314085a08ed..79343ea5ce9a4 100644
+--- a/drivers/hwmon/eswin_pvt.h
++++ b/drivers/hwmon/eswin_pvt.h
+@@ -201,7 +201,7 @@ struct pvt_cache {
+ struct pvt_hwmon {
+ 	struct device *dev;
+ 	struct device *hwmon;
+-
++	struct list_head entry;
+ 	void __iomem *regs;
+ 	int irq;
+ 
+@@ -241,6 +241,6 @@ struct pvt_poly {
+ 	long total_divider;
+ 	struct pvt_poly_term terms[];
+ };
+-
++int eswin_get_cpu_7702_temp(const char *name, int numa_id, long *val);
+ #endif /* __HWMON_ESWIN_PVT_H__ */
+ 
+-- 
+2.53.0
+

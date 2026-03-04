@@ -1,0 +1,27 @@
+From ef34d71ccd5065519acf7121dfa723400cb39eb7 Mon Sep 17 00:00:00 2001
+From: Jason Montleon <jmontleo@redhat.com>
+Date: Wed, 4 Mar 2026 12:38:25 -0500
+Subject: [PATCH 002/540] Revert "media: i2c: ov5647: Fix PIXEL_RATE value for
+ VGA mode"
+
+This reverts commit 089625cccd7eb8d65a381e81f1e3e1db064334df.
+---
+ drivers/media/i2c/ov5647.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/media/i2c/ov5647.c b/drivers/media/i2c/ov5647.c
+index 6c7a1f2c1ed2c..4327e6331e847 100644
+--- a/drivers/media/i2c/ov5647.c
++++ b/drivers/media/i2c/ov5647.c
+@@ -583,7 +583,7 @@ static const struct ov5647_mode ov5647_modes[] = {
+ 			.width		= 2560,
+ 			.height		= 1920,
+ 		},
+-		.pixel_rate	= 58333000,
++		.pixel_rate	= 55000000,
+ 		.hts		= 1852,
+ 		.vts		= 0x1f8,
+ 		.reg_list	= ov5647_640x480_10bpp,
+-- 
+2.53.0
+

@@ -1,0 +1,45 @@
+From 630d89babfb392e7d7d4df15c9388a84e98d4231 Mon Sep 17 00:00:00 2001
+From: Sandie Cao <sandie.cao@deepcomputing.io>
+Date: Wed, 30 Apr 2025 17:41:13 +0800
+Subject: [PATCH 291/540] dts: riscv: eswin: fml13v03: disabled pvt0 & timer0
+
+Signed-off-by: Sandie Cao <sandie.cao@deepcomputing.io>
+---
+ .../boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts     | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
+index 545645a3b68ee..785dfbec0287f 100644
+--- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
++++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
+@@ -1523,11 +1523,11 @@ &fan_control {
+ };
+ 
+ &pvt0 {
+-	status = "okay";
++	status = "disabled";
+ };
+ 
+ &d1_pvt0 {
+-	status = "okay";
++	status = "disabled";
+ };
+ 
+ &pvt1 {
+@@ -1587,11 +1587,11 @@ &d1_timer0 {
+ };
+ 
+ &timer1 {
+-	status = "okay";
++	status = "disabled";
+ };
+ 
+ &d1_timer1 {
+-	status = "okay";
++	status = "disabled";
+ };
+ 
+ &timer2 {
+-- 
+2.53.0
+

@@ -1,0 +1,43 @@
+From 37185bef1733cc6efdc0db8ad04de4f63dee26e5 Mon Sep 17 00:00:00 2001
+From: cheney <11722200@qq.com>
+Date: Wed, 2 Jul 2025 10:43:05 +0800
+Subject: [PATCH 415/540] Fix the issue where the backlight does not turn on.
+
+---
+ .../riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts | 2 +-
+ drivers/pwm/pwm-dwc-eswin.c                                 | 6 ++++++
+ 2 files changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
+index 98d2a3769173d..1d77fad613dac 100644
+--- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
++++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
+@@ -1579,7 +1579,7 @@ &d1_pwm0 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&pinctrl_die1_pwm0_default>;
+ 	pinctrl-1 = <&pinctrl_die1_gpio68_default>;
+-	enable-gpios = <&d1_portc 4 GPIO_ACTIVE_HIGH>;
++	fan-gpios = <&d1_portc 4 GPIO_ACTIVE_HIGH>;
+ };
+ 
+ &fan_control {
+diff --git a/drivers/pwm/pwm-dwc-eswin.c b/drivers/pwm/pwm-dwc-eswin.c
+index 8143b899cdad2..d69372bd5e0a9 100644
+--- a/drivers/pwm/pwm-dwc-eswin.c
++++ b/drivers/pwm/pwm-dwc-eswin.c
+@@ -103,6 +103,12 @@ static int __dwc_pwm_configure_timer(struct dwc_pwm *dwc,
+ 	u32 high=0;
+ 	u32 low=0;
+ 
++	if (duty >= state->period)
++		duty = state->period - DWC_CLK_PERIOD_NS;
++
++	if (duty == 0 && state->enabled)
++		duty = state->period / 2;
++
+ 	/*
+ 	 * Calculate width of low and high period in terms of input clock
+ 	 * periods and check are the result within HW limits between 0 and
+-- 
+2.53.0
+

@@ -1,0 +1,38 @@
+From 9cccfcc5be84e0b856e6cbe16452fadfea1ecc40 Mon Sep 17 00:00:00 2001
+From: Jason Montleon <jmontleo@redhat.com>
+Date: Wed, 4 Mar 2026 12:39:24 -0500
+Subject: [PATCH 006/540] Revert "media: i2c: ov5647: Initialize subdev before
+ controls"
+
+This reverts commit cabd025182cfed4a19b3aab57493e312d681e398.
+---
+ drivers/media/i2c/ov5647.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/media/i2c/ov5647.c b/drivers/media/i2c/ov5647.c
+index 6d39d47d6cc63..8de398423b7cb 100644
+--- a/drivers/media/i2c/ov5647.c
++++ b/drivers/media/i2c/ov5647.c
+@@ -1430,15 +1430,15 @@ static int ov5647_probe(struct i2c_client *client)
+ 
+ 	sensor->mode = OV5647_DEFAULT_MODE;
+ 
++	ret = ov5647_init_controls(sensor);
++	if (ret)
++		goto mutex_destroy;
++
+ 	sd = &sensor->sd;
+ 	v4l2_i2c_subdev_init(sd, client, &ov5647_subdev_ops);
+ 	sd->internal_ops = &ov5647_subdev_internal_ops;
+ 	sd->flags |= V4L2_SUBDEV_FL_HAS_DEVNODE | V4L2_SUBDEV_FL_HAS_EVENTS;
+ 
+-	ret = ov5647_init_controls(sensor);
+-	if (ret)
+-		goto mutex_destroy;
+-
+ 	sensor->pad.flags = MEDIA_PAD_FL_SOURCE;
+ 	sd->entity.function = MEDIA_ENT_F_CAM_SENSOR;
+ 	ret = media_entity_pads_init(&sd->entity, 1, &sensor->pad);
+-- 
+2.53.0
+

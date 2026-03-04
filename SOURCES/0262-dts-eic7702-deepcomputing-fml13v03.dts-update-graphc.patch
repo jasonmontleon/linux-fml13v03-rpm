@@ -1,0 +1,36 @@
+From 7f297bdcabd536cd871586b71b5b60669f6ef5d7 Mon Sep 17 00:00:00 2001
+From: "yang.wang" <yang.wang@deepcomputing.io>
+Date: Fri, 21 Mar 2025 11:08:32 +0800
+Subject: [PATCH 262/540] dts: eic7702-deepcomputing-fml13v03.dts: update
+ graphcard configuration
+
+Signed-off-by: yang.wang <yang.wang@deepcomputing.io>
+---
+ arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
+index b5e4706815362..89ea3cf635fd3 100644
+--- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
++++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
+@@ -750,7 +750,7 @@ &d1_i2s2 {
+ };
+ 
+ &d0_graphcard0 {
+-	status = "okay";
++	status = "disabled";
+ 	label = "HDMI Audio-0";
+ 	dais = <&d0_i2s0_port>;
+ };
+@@ -776,7 +776,7 @@ &d1_graphcard1 {
+ 	status = "disabled";
+ };
+ 
+-&d1_graphcard1 {
++&d1_graphcard2 {
+ 	status = "disabled";
+ };
+ 
+-- 
+2.53.0
+

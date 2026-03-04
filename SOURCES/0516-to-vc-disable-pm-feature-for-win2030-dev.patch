@@ -1,0 +1,29 @@
+From ac273047f86509494c24f59a606e18e431e9f16e Mon Sep 17 00:00:00 2001
+From: zouxiaojun <zouxiaojun@eswincomputing.com>
+Date: Wed, 10 Sep 2025 14:44:03 +0800
+Subject: [PATCH 516/540] to(vc):disable pm feature for win2030-dev
+
+Changelogs:
+disable pm feature for win2030-dev
+
+Signed-off-by: zouxiaojun <zouxiaojun@eswincomputing.com>
+---
+ drivers/staging/media/eswin/vdec/hantro_dec.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/staging/media/eswin/vdec/hantro_dec.c b/drivers/staging/media/eswin/vdec/hantro_dec.c
+index 038e7c576eb2f..ea6355f52bcd4 100644
+--- a/drivers/staging/media/eswin/vdec/hantro_dec.c
++++ b/drivers/staging/media/eswin/vdec/hantro_dec.c
+@@ -4442,7 +4442,7 @@ static struct platform_driver eswin_vdec_driver = {
+ 	.driver = {
+ 		.name   = DEC_DEV_NAME,
+ 		.of_match_table = eswin_vdec_match,
+-		.pm = &eswin_vdec_dev_pm_ops,
++		.pm = pm_sleep_ptr(&eswin_vdec_dev_pm_ops),
+ 	},
+ };
+ 
+-- 
+2.53.0
+

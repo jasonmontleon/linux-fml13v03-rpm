@@ -1,0 +1,64 @@
+From 54fc6fafafecc82c5c2a5cd71cca3280c50ed281 Mon Sep 17 00:00:00 2001
+From: Wu Zhangben <wuzhangben@eswincomputing.com>
+Date: Wed, 20 Aug 2025 12:59:34 +0800
+Subject: [PATCH 485/540] refactor:S3 GPIO configs distributed in lpcpu_config
+
+Changelogs:
+
+1. S3 GPIO control configs distributed in lpcpu_config which uses CONFIG_SEND message
+2. Update device trees for new configs, support up to 16 configs, eg:
+    &d0_lpcpu {
+        // name array for every config, 6 characters max for each name
+        control-gpio-names = "socvdd", "d2dpwr", "npupwr", "pasd";
+        // <port, polarity> array for every config
+        control-gpios = <21 GPIO_ACTIVE_HIGH>, <18 GPIO_ACTIVE_HIGH>,
+                        <19 GPIO_ACTIVE_HIGH>, <111 GPIO_ACTIVE_LOW>;
+    }
+3. Add warmup npu runtime buffer address to lpcpu_config
+4. Update lpcpu_config version to 2
+5. Update dts files
+
+Signed-off-by: Wu Zhangben <wuzhangben@eswincomputing.com>
+---
+ .../boot/dts/eswin/eic7702-deepcomputing-fml13v03-evt.dts      | 3 ++-
+ arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi       | 3 ++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03-evt.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03-evt.dts
+index ea18664d8de99..6a52df025d219 100755
+--- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03-evt.dts
++++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03-evt.dts
+@@ -508,7 +508,6 @@ &d0_lpcpu {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&pinctrl_die0_gpio0_default>;
+ 	irq-gpios = <&porta 0 GPIO_ACTIVE_HIGH>;
+-	vddctrl = <104 0 1>;
+ };
+ 
+ &d1_lpcpu {
+@@ -517,6 +516,8 @@ &d1_lpcpu {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&pinctrl_die1_gpio7_on_default>;
+ 	irq-gpios = <&d1_porta 7 IRQ_TYPE_EDGE_BOTH>;
++	control-gpio-names = "socvdd";
++	control-gpio-ports = <104 GPIO_ACTIVE_HIGH>;
+ };
+ 
+ &pinctrl_die0_gpio25_default {
+diff --git a/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi b/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
+index 893401ea82687..e19d0ad973a6a 100644
+--- a/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
++++ b/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
+@@ -450,7 +450,8 @@ &d0_lpcpu {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&pinctrl_die0_gpio0_default>;
+ 	irq-gpios = <&porta 0 GPIO_ACTIVE_HIGH>;
+-	soc-vdd-ctrl = <21 0 0>;
++	control-gpio-names = "socvdd";
++	control-gpio-ports = <21 GPIO_ACTIVE_HIGH>;
+ };
+ 
+ &d1_lpcpu {
+-- 
+2.53.0
+

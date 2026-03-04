@@ -1,0 +1,27 @@
+From dfd156f69fc21a218d8cf325607e2fb9de5d4949 Mon Sep 17 00:00:00 2001
+From: Jason Montleon <jmontleo@redhat.com>
+Date: Wed, 4 Mar 2026 12:38:10 -0500
+Subject: [PATCH 001/540] Revert "media: i2c: ov5647: use our own mutex for the
+ ctrl lock"
+
+This reverts commit d03a29cb36d6c8824ba568fed2c494daa977b42b.
+---
+ drivers/media/i2c/ov5647.c | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/drivers/media/i2c/ov5647.c b/drivers/media/i2c/ov5647.c
+index b8033fb7aa30e..6c7a1f2c1ed2c 100644
+--- a/drivers/media/i2c/ov5647.c
++++ b/drivers/media/i2c/ov5647.c
+@@ -1297,8 +1297,6 @@ static int ov5647_init_controls(struct ov5647 *sensor)
+ 
+ 	v4l2_ctrl_handler_init(&sensor->ctrls, 9);
+ 
+-	sensor->ctrls.lock = &sensor->lock;
+-
+ 	v4l2_ctrl_new_std(&sensor->ctrls, &ov5647_ctrl_ops,
+ 			  V4L2_CID_AUTOGAIN, 0, 1, 1, 0);
+ 
+-- 
+2.53.0
+

@@ -1,0 +1,45 @@
+From 8148b4a9a539a159e73320ce5b67de7517d7179e Mon Sep 17 00:00:00 2001
+From: wangguosheng <wangguosheng@eswincomputing.com>
+Date: Tue, 26 Aug 2025 18:37:00 +0800
+Subject: [PATCH 482/540] fix: fix gpio error for pm
+
+Changelogs:
+1. d560 test whether the function of the 4-channel fan is normal.
+
+Signed-off-by: wangguosheng <wangguosheng@eswincomputing.com>
+---
+ arch/riscv/boot/dts/eswin/eic7702-d560-interleave.dts    | 2 --
+ arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi | 4 ++++
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/arch/riscv/boot/dts/eswin/eic7702-d560-interleave.dts b/arch/riscv/boot/dts/eswin/eic7702-d560-interleave.dts
+index 18897dc8d6c36..e6bf44c316489 100644
+--- a/arch/riscv/boot/dts/eswin/eic7702-d560-interleave.dts
++++ b/arch/riscv/boot/dts/eswin/eic7702-d560-interleave.dts
+@@ -179,8 +179,6 @@ &fan_control {
+ };
+ 
+ &d1_fan_control {
+-	pinctrl-0 = <&pinctrl_die1_fan_tach_default &pinctrl_die1_pwm0_default
+-				&pinctrl_die1_pwm1_default &pinctrl_die1_pwm2_default>;
+ 	status = "okay";
+ 	fan-0 {
+ 		label = "d1_fan";
+diff --git a/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi b/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
+index 783745d195ad4..cf97e2daababb 100644
+--- a/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
++++ b/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
+@@ -1233,6 +1233,10 @@ &pwm0 {
+ };
+ &d1_pwm0 {
+ 	status = "okay";
++	pinctrl-names = "default", "sleep";
++	pinctrl-0 = <&pinctrl_die1_pwm0_default &pinctrl_die1_pwm1_default &pinctrl_die1_pwm2_default>;
++	pinctrl-1 = <&pinctrl_die1_gpio68_default &pinctrl_die1_gpio40_default &pinctrl_die1_gpio41_default>;
++	fan-gpios = <&d1_portc 4 GPIO_ACTIVE_HIGH>;
+ };
+ 
+ &pvt0 {
+-- 
+2.53.0
+

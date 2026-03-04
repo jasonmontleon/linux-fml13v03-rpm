@@ -1,0 +1,25 @@
+From 8852ead67995bf085ac28cb44170506724a898f9 Mon Sep 17 00:00:00 2001
+From: cheney <11722200@qq.com>
+Date: Fri, 11 Apr 2025 18:27:06 +0800
+Subject: [PATCH 281/540] dts: eic7702-deepcomputing-fml13v03.dts: enable gpu1
+
+---
+ arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
+index 249f961e360d7..91d810cac7620 100644
+--- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
++++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
+@@ -599,7 +599,7 @@ &gpu0 {
+ 	status = "okay";
+ };
+ &d1_gpu {
+-	status = "disabled";
++	status = "okay";
+ };
+ 
+ &gc820 {
+-- 
+2.53.0
+

@@ -1,0 +1,147 @@
+From 93ad5889ddee72540c10bbf041d51f988fce9f99 Mon Sep 17 00:00:00 2001
+From: wangguosheng <wangguosheng@eswincomputing.com>
+Date: Tue, 27 May 2025 16:07:07 +0800
+Subject: [PATCH 306/540] WIN2030-18029:style:fix the warning in DTS
+
+Changelogs:
+1. fix the warning in DTS
+
+Signed-off-by: wangguosheng <wangguosheng@eswincomputing.com>
+Change-Id: I87e492d04dafc019c8fd38c36efb215ed77b347c
+---
+ arch/riscv/boot/dts/eswin/eic7700-osm.dts            | 12 ------------
+ arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dts         |  1 +
+ arch/riscv/boot/dts/eswin/eic7700-som260-a1.dtsi     |  2 ++
+ arch/riscv/boot/dts/eswin/eic7700-som314.dtsi        |  2 ++
+ .../dts/eswin/eic7702-deepcomputing-fml13v03.dts     |  2 +-
+ .../riscv/boot/dts/eswin/eswin-win2030-arch-d2d.dtsi |  4 ++++
+ arch/riscv/boot/dts/eswin/eswin-win2030.dts          |  2 ++
+ 7 files changed, 12 insertions(+), 13 deletions(-)
+
+diff --git a/arch/riscv/boot/dts/eswin/eic7700-osm.dts b/arch/riscv/boot/dts/eswin/eic7700-osm.dts
+index 28939e0f728ae..ab2bf385a71e6 100644
+--- a/arch/riscv/boot/dts/eswin/eic7700-osm.dts
++++ b/arch/riscv/boot/dts/eswin/eic7700-osm.dts
+@@ -696,19 +696,7 @@ &fan_control {
+ };
+ 
+ &d0_i2c0 {
+-	/* codec es8388 */
+ 	status = "disabled";
+-	d0_es8388_0: es8388-0@10 {
+-		compatible = "eswin,es8388";
+-		reg = <0x10>;
+-		#sound-dai-cells = <0>;
+-		port {
+-			d0_codec0_endpoint: endpoint {
+-				system-clock-frequency = <12288000>;
+-				remote-endpoint = <&d0_i2s1_endpoint>;
+-			};
+-		};
+-	};
+ };
+ 
+ &d0_i2c1 {
+diff --git a/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dts b/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dts
+index 1b97290f83a9d..6fa9d4a34ee81 100644
+--- a/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dts
++++ b/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dts
+@@ -648,6 +648,7 @@ npu_vcc1:npu_svcc{
+ 	};
+ 	usb_pd_sink@8 {
+ 		label = "usb_pd_sink";
++		reg = <0x8>;
+ 	};
+ };
+ 
+diff --git a/arch/riscv/boot/dts/eswin/eic7700-som260-a1.dtsi b/arch/riscv/boot/dts/eswin/eic7700-som260-a1.dtsi
+index 867d0b1e89924..254ac14f107da 100644
+--- a/arch/riscv/boot/dts/eswin/eic7700-som260-a1.dtsi
++++ b/arch/riscv/boot/dts/eswin/eic7700-som260-a1.dtsi
+@@ -380,6 +380,8 @@ &dsi_controller {
+ &dw_hdmi {
+ 	status = "okay";
+ 	ports {
++		#address-cells = <1>;
++		#size-cells = <0>;
+ 		port@0 {
+ 			reg = <0>;
+ 			hdmi_in_dc: endpoint@0 {
+diff --git a/arch/riscv/boot/dts/eswin/eic7700-som314.dtsi b/arch/riscv/boot/dts/eswin/eic7700-som314.dtsi
+index 16d1f8c189cd7..1a17bcafdc9bb 100644
+--- a/arch/riscv/boot/dts/eswin/eic7700-som314.dtsi
++++ b/arch/riscv/boot/dts/eswin/eic7700-som314.dtsi
+@@ -328,6 +328,8 @@ &dsi_panel {
+ &dw_hdmi {
+ 	status = "okay";
+ 	ports {
++		#address-cells = <1>;
++		#size-cells = <0>;
+ 		port@0 {
+ 			reg = <0>;
+ 			hdmi_in_dc: endpoint@0 {
+diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
+index 6a6296ce58249..552eab01284e9 100644
+--- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
++++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
+@@ -1172,7 +1172,7 @@ &ssi1 {
+ 	cs-gpios = <&portc 24 GPIO_ACTIVE_LOW>;
+ 	num-cs = <1>;
+ 
+-	fwos_ec: spi@0 {
++	fwos_ec: ec@0 {
+ 		compatible = "google,cros-ec-spi";
+ 		reg = <0>;
+ 		status = "okay";
+diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030-arch-d2d.dtsi b/arch/riscv/boot/dts/eswin/eswin-win2030-arch-d2d.dtsi
+index 8051667cf6aae..b1f5b1aeb3a30 100644
+--- a/arch/riscv/boot/dts/eswin/eswin-win2030-arch-d2d.dtsi
++++ b/arch/riscv/boot/dts/eswin/eswin-win2030-arch-d2d.dtsi
+@@ -109,6 +109,7 @@ cpu_4: cpu@4 {
+ 		numa-node-id = <1>;
+ 		clocks = <&d1_clock EIC7700_CLK_CPU_EXT_SRC_CORE_CLK_0>;
+ 		operating-points-v2 = <&d1_cpu_opp_table>;
++		#cooling-cells = <2>;
+ 		cpu-idle-states = <&CPU_RET>;
+ 		cpu4_intc: interrupt-controller {
+ 			#interrupt-cells = <1>;
+@@ -157,6 +158,7 @@ cpu_5: cpu@5 {
+ 		numa-node-id = <1>;
+ 		clocks = <&d1_clock EIC7700_CLK_CPU_EXT_SRC_CORE_CLK_1>;
+ 		operating-points-v2 = <&d1_cpu_opp_table>;
++		#cooling-cells = <2>;
+ 		cpu-idle-states = <&CPU_RET>;
+ 		cpu5_intc: interrupt-controller {
+ 			#interrupt-cells = <1>;
+@@ -204,6 +206,7 @@ cpu_6: cpu@6 {
+ 		numa-node-id = <1>;
+ 		clocks = <&d1_clock EIC7700_CLK_CPU_EXT_SRC_CORE_CLK_2>;
+ 		operating-points-v2 = <&d1_cpu_opp_table>;
++		#cooling-cells = <2>;
+ 		cpu-idle-states = <&CPU_RET>;
+ 		cpu6_intc: interrupt-controller {
+ 			#interrupt-cells = <1>;
+@@ -251,6 +254,7 @@ cpu_7: cpu@7 {
+ 		numa-node-id = <1>;
+ 		clocks = <&d1_clock EIC7700_CLK_CPU_EXT_SRC_CORE_CLK_3>;
+ 		operating-points-v2 = <&d1_cpu_opp_table>;
++		#cooling-cells = <2>;
+ 		cpu-idle-states = <&CPU_RET>;
+ 		cpu7_intc: interrupt-controller {
+ 			#interrupt-cells = <1>;
+diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030.dts b/arch/riscv/boot/dts/eswin/eswin-win2030.dts
+index 8d9e0e76c3506..165d68f6334c5 100644
+--- a/arch/riscv/boot/dts/eswin/eswin-win2030.dts
++++ b/arch/riscv/boot/dts/eswin/eswin-win2030.dts
+@@ -853,6 +853,8 @@ &dw_hdmi {
+     status = "disabled";
+     eswin-plat = <0>;
+ 	ports {
++		#address-cells = <1>;
++		#size-cells = <0>;
+ 		port@2 {
+ 			reg = <2>;
+ 			hdmi_in_i2s: endpoint@1 {
+-- 
+2.53.0
+

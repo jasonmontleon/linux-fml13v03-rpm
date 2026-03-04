@@ -1,0 +1,41 @@
+From 331d4b4defa1b73663123649e4baa6cc02ea4501 Mon Sep 17 00:00:00 2001
+From: yangwei1 <yangwei1@eswincomputing.com>
+Date: Wed, 24 Jul 2024 16:21:05 +0800
+Subject: [PATCH 125/540] fix:Fix a fan duty cycle error
+
+Changelogs:
+	fix the control fan duty clcle is opposite
+
+Signed-off-by: yangwei1 <yangwei1@eswincomputing.com>
+---
+ arch/riscv/boot/dts/eswin/eic7700-evb-a2.dts     | 1 -
+ arch/riscv/boot/dts/eswin/hifive-premier-550.dts | 1 +
+ 2 files changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/riscv/boot/dts/eswin/eic7700-evb-a2.dts b/arch/riscv/boot/dts/eswin/eic7700-evb-a2.dts
+index dada3492fe110..27b8bd0457751 100644
+--- a/arch/riscv/boot/dts/eswin/eic7700-evb-a2.dts
++++ b/arch/riscv/boot/dts/eswin/eic7700-evb-a2.dts
+@@ -683,7 +683,6 @@ &d0_mbox7 {
+ 
+ &fan_control {
+ 	status = "okay";
+-	eswin,pwm_inverted;
+ };
+ 
+ &d0_i2c0 {
+diff --git a/arch/riscv/boot/dts/eswin/hifive-premier-550.dts b/arch/riscv/boot/dts/eswin/hifive-premier-550.dts
+index 31a1b673b89c3..1a9ded7f2c325 100644
+--- a/arch/riscv/boot/dts/eswin/hifive-premier-550.dts
++++ b/arch/riscv/boot/dts/eswin/hifive-premier-550.dts
+@@ -582,6 +582,7 @@ &d0_mbox7 {
+ 
+ &fan_control {
+ 	status = "okay";
++	eswin,pwm_inverted;
+ };
+ 
+ &d0_i2c0 {
+-- 
+2.53.0
+

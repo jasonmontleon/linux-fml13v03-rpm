@@ -1,0 +1,26 @@
+From 0d183fab59b643202c275f958b70c1183c84e622 Mon Sep 17 00:00:00 2001
+From: cheney <11722200@qq.com>
+Date: Wed, 14 May 2025 09:29:50 +0800
+Subject: [PATCH 295/540] Resolve GRUB's failure to locate the DTB after
+ installing linux*.deb packages.
+
+---
+ scripts/package/builddeb | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/scripts/package/builddeb b/scripts/package/builddeb
+index cbcf14820fb9b..d7dd0d04c70c9 100755
+--- a/scripts/package/builddeb
++++ b/scripts/package/builddeb
+@@ -59,7 +59,7 @@ install_linux_image () {
+ 
+ 	# Only some architectures with OF support have this target
+ 	if is_enabled CONFIG_OF_EARLY_FLATTREE && [ -d "${srctree}/arch/${SRCARCH}/boot/dts" ]; then
+-		${MAKE} -f ${srctree}/Makefile INSTALL_DTBS_PATH="${pdir}/boot/dtbs/linux-image-${KERNELRELEASE}" dtbs_install
++		${MAKE} -f ${srctree}/Makefile INSTALL_DTBS_PATH="${pdir}/usr/lib/linux-image-${KERNELRELEASE}" dtbs_install
+ 	fi
+ 
+ 	${MAKE} -f ${srctree}/Makefile INSTALL_MOD_PATH="${pdir}" modules_install
+-- 
+2.53.0
+

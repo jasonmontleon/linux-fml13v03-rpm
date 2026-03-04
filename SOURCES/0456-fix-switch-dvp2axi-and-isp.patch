@@ -1,0 +1,1283 @@
+From d55229f85ae29b70b14fcd8ccab64d719f4104c7 Mon Sep 17 00:00:00 2001
+From: yufangxian <yufangxian@eswincomputing.com>
+Date: Thu, 7 Aug 2025 13:31:09 +0800
+Subject: [PATCH 456/540] fix: switch dvp2axi and isp
+
+Changelogs:
+1. fix dvp2axi cannot run after isp capture image
+2. do soft reset before dvp2axi first run
+
+Signed-off-by: yufangxian <yufangxian@eswincomputing.com>
+---
+ .../dts/eswin/eic7700-evb-camera-imx327.dtsi  |  48 ++-
+ .../boot/dts/eswin/eic7700-osm-camera.dtsi    |  10 +-
+ .../media/platform/eswin/dvp2axi/capture.c    | 276 ++++++------------
+ drivers/media/platform/eswin/dvp2axi/dev.c    |  81 +----
+ drivers/media/platform/eswin/dvp2axi/dev.h    |   4 +-
+ drivers/media/platform/eswin/dvp2axi/hw.c     | 194 +++---------
+ .../platform/eswin/mipi-csi2/dw-csi-plat.c    |  16 +-
+ .../platform/eswin/mipi-csi2/dw-csi-plat.h    |  26 +-
+ .../platform/eswin/mipi-csi2/dw-mipi-csi.c    |   6 +
+ drivers/media/v4l2-core/v4l2-subdev.c         |   2 -
+ drivers/phy/eswin/phy-eswin-csi2-dphy-hw.c    |  11 +-
+ drivers/phy/eswin/phy-eswin-csi2-dphy.c       |   4 -
+ 12 files changed, 184 insertions(+), 494 deletions(-)
+
+diff --git a/arch/riscv/boot/dts/eswin/eic7700-evb-camera-imx327.dtsi b/arch/riscv/boot/dts/eswin/eic7700-evb-camera-imx327.dtsi
+index 23863b71e5f10..b1676235008e8 100644
+--- a/arch/riscv/boot/dts/eswin/eic7700-evb-camera-imx327.dtsi
++++ b/arch/riscv/boot/dts/eswin/eic7700-evb-camera-imx327.dtsi
+@@ -155,10 +155,10 @@ imx327_out0: endpoint {
+ 
+ &d0_i2c4 {
+ 	/* mipi csi2/csi3 */
+-	status = "disabled";
++	status = "okay";
+ 	imx327_2: imx327@36 {
+ 			compatible = "sony,imx327";
+-			status = "disabled";
++			status = "okay";
+ 			address-cells = <1>;
+ 			size-cells = <0>;
+ 			#reg = <0x0 0x36 0x0 0x0>;
+@@ -166,19 +166,14 @@ imx327_2: imx327@36 {
+ 			clocks = <&d0_clock EIC7700_CLK_VI_SHUTTER_0>; 
+ 			assigned-clocks = <&d0_clock EIC7700_CLK_VI_SHUTTER_0>;
+ 			assigned-clock-rates = <37125000>;
+-			clock-names = "xvclk";
++			clock-names = "xclk";
+ 			/* Reset and power down GPIOs controlled by tca6416_0 */
+ 			reset-gpios = <&tca6416_0 1 GPIO_ACTIVE_HIGH>;  // GPIO number 1 for MIPI_CSI0_RESET
+ 			pwdn-gpios = <&tca6416_0 0 GPIO_ACTIVE_HIGH>; // GPIO number 0 for MIPI_CSI0_PWDN
+ 			enable-gpios = <&tca6416_0 7 GPIO_ACTIVE_HIGH>;
+-			// reset-gpios = <&portd 1 GPIO_ACTIVE_HIGH>;  // GPIO number 1 for MIPI_CSI0_RESET
+-			// pwdn-gpios = <&portd 6 GPIO_ACTIVE_HIGH>; // GPIO number 0 for MIPI_CSI0_PWDN
+-			//pinctrl-names = "default";
+-			//pinctrl-0 = <&cif_clkout>;
+-			
++
+ 			port {
+ 				imx327_out2: endpoint {
+-					// remote-endpoint = <&mipi_in_ucam0>;
+ 					remote-endpoint = <&mipidphy2_in_ucam0>;
+ 					data-lanes = <1 2 3 4>;
+ 					link-frequencies = /bits/ 64 <222750000>;
+@@ -189,10 +184,10 @@ imx327_out2: endpoint {
+ 
+ &d0_i2c5 {
+ 	/* mipi csi4/csi5 */
+-	status = "disabled";
++	status = "okay";
+ 	imx327_4: imx327@36 {
+ 			compatible = "sony,imx327";
+-			status = "disabled";
++			status = "okay";
+ 			address-cells = <1>;
+ 			size-cells = <0>;
+ 			#reg = <0x0 0x36 0x0 0x0>;
+@@ -200,19 +195,14 @@ imx327_4: imx327@36 {
+ 			clocks = <&d0_clock EIC7700_CLK_VI_SHUTTER_0>; 
+ 			assigned-clocks = <&d0_clock EIC7700_CLK_VI_SHUTTER_0>;
+ 			assigned-clock-rates = <37125000>;
+-			clock-names = "xvclk";
++			clock-names = "xclk";
+ 			/* Reset and power down GPIOs controlled by tca6416_0 */
+ 			reset-gpios = <&tca6416_0 1 GPIO_ACTIVE_HIGH>;  // GPIO number 1 for MIPI_CSI0_RESET
+ 			pwdn-gpios = <&tca6416_0 0 GPIO_ACTIVE_HIGH>; // GPIO number 0 for MIPI_CSI0_PWDN
+ 			enable-gpios = <&tca6416_0 7 GPIO_ACTIVE_HIGH>;
+-			// reset-gpios = <&portd 1 GPIO_ACTIVE_HIGH>;  // GPIO number 1 for MIPI_CSI0_RESET
+-			// pwdn-gpios = <&portd 6 GPIO_ACTIVE_HIGH>; // GPIO number 0 for MIPI_CSI0_PWDN
+-			//pinctrl-names = "default";
+-			//pinctrl-0 = <&cif_clkout>;
+-			
++
+ 			port {
+ 				imx327_out4: endpoint {
+-					// remote-endpoint = <&mipi_in_ucam0>;
+ 					remote-endpoint = <&mipidphy4_in_ucam0>;
+ 					data-lanes = <1 2 3 4>;
+ 					link-frequencies = /bits/ 64 <222750000>;
+@@ -290,10 +280,10 @@ csidphy0_out: endpoint {
+ &csi2_dphy_hw2 {
+ 	lanes = <1 2 3 4>;
+ 	lanes-dp-dn = <3 3 3 3>;	// 4lanes: positive on dn/ negative on dp to hs and lp mode
+-	status = "disabled";
++	status = "okay";
+ };
+ &csi2_dphy2 {
+-	status = "disabled";
++	status = "okay";
+ 	ports {
+ 		#address-cells = <1>;
+ 		#size-cells = <0>;
+@@ -326,10 +316,10 @@ csidphy2_out: endpoint@1 {
+ &csi2_dphy_hw4 {
+ 	lanes = <1 2 3 4>;
+ 	lanes-dp-dn = <3 3 3 3>;	// 4lanes: positive on dn/ negative on dp to hs and lp mode
+-	status = "disabled";
++	status = "okay";
+ };
+ &csi2_dphy4 {
+-	status = "disabled";
++	status = "okay";
+ 	ports {
+ 		#address-cells = <1>;
+ 		#size-cells = <0>;
+@@ -400,7 +390,7 @@ mipi_csi2_output1: endpoint {
+ &mipi_csi2_2 {
+ 	num_lanes = <4>;
+ 	snps,en-ppi-width = <1>; // 1: 16-bit, 0: 8-bit
+-	status = "disabled";
++	status = "okay";
+ 	ports {
+ 		#address-cells = <1>;
+ 		#size-cells = <0>;
+@@ -431,7 +421,7 @@ mipi_csi2_2_output0: endpoint@1 {
+ &mipi_csi2_4 {
+ 	num_lanes = <4>;
+ 	snps,en-ppi-width = <1>; // 1: 16-bit, 0: 8-bit
+-	status = "disabled";
++	status = "okay";
+ 	ports {
+ 		#address-cells = <1>;
+ 		#size-cells = <0>;
+@@ -483,11 +473,11 @@ axi2dvp_mipi2_in0: endpoint {
+ 
+ &dvp2axi_mipi_lvds1 {
+ 	dvp2axi_id = <1>;
+-	status = "disabled";
++	status = "okay";
+ };
+ 
+ &dvp2axi_mipi_lvds2 {
+-	status = "disabled";
++	status = "okay";
+ 	dvp2axi_id = <2>;
+ 	port@0 {
+ 		axi2dvp_mipi2_in2: endpoint@0 {
+@@ -498,12 +488,12 @@ axi2dvp_mipi2_in2: endpoint@0 {
+ 
+ &dvp2axi_mipi_lvds3 {
+ 	dvp2axi_id = <3>;
+-	status = "disabled";
++	status = "okay";
+ };
+ 
+ &dvp2axi_mipi_lvds4 {
+ 	dvp2axi_id = <4>;
+-	status = "disabled";
++	status = "okay";
+ 	port@0 {
+ 		axi2dvp_mipi2_in4: endpoint@0 {
+ 			remote-endpoint = <&mipi_csi2_4_output0>;
+@@ -513,7 +503,7 @@ axi2dvp_mipi2_in4: endpoint@0 {
+ 
+ &dvp2axi_mipi_lvds5 {
+ 	dvp2axi_id = <5>;
+-	status = "disabled";
++	status = "okay";
+ };
+ 
+ &isp_0 {
+diff --git a/arch/riscv/boot/dts/eswin/eic7700-osm-camera.dtsi b/arch/riscv/boot/dts/eswin/eic7700-osm-camera.dtsi
+index 43e70252da364..44049e1ebbe74 100644
+--- a/arch/riscv/boot/dts/eswin/eic7700-osm-camera.dtsi
++++ b/arch/riscv/boot/dts/eswin/eic7700-osm-camera.dtsi
+@@ -288,7 +288,10 @@ imx219_0: imx219@10 {
+ 		address-cells = <1>;
+ 		size-cells = <0>;
+ 		reg = <0x10>;
+-
++		clocks = <&d0_clock EIC7700_CLK_VI_SHUTTER_0>;
++		assigned-clocks = <&d0_clock EIC7700_CLK_VI_SHUTTER_0>;
++		assigned-clock-rates = <24000000>;
++		clock-names = "xvclk";
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&pinctrl_gpio72_default &pinctrl_gpio70_default>;
+ 		mclk-gpios = <&portc 8 GPIO_ACTIVE_HIGH>;
+@@ -312,7 +315,10 @@ imx219_1: imx219@10 {
+ 		address-cells = <1>;
+ 		size-cells = <0>;
+ 		reg = <0x10>;
+-
++		clocks = <&d0_clock EIC7700_CLK_VI_SHUTTER_0>;
++		assigned-clocks = <&d0_clock EIC7700_CLK_VI_SHUTTER_0>;
++		assigned-clock-rates = <24000000>;
++		clock-names = "xvclk";
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&pinctrl_gpio78_default>;
+ 		mclk-gpios = <&portc 14 GPIO_ACTIVE_HIGH>;
+diff --git a/drivers/media/platform/eswin/dvp2axi/capture.c b/drivers/media/platform/eswin/dvp2axi/capture.c
+index 08182c8daad3a..cbf6620444b8d 100644
+--- a/drivers/media/platform/eswin/dvp2axi/capture.c
++++ b/drivers/media/platform/eswin/dvp2axi/capture.c
+@@ -76,11 +76,6 @@
+  * @xsubs: horizontal color samples in a 4*4 matrix, for yuv
+  * @ysubs: vertical color samples in a 4*4 matrix, for yuv
+  */
+-// #define VI_CAPTURE_DEBUG
+-#ifdef VI_CAPTURE_DEBUG
+-ktime_t start_time, end_time;
+-u64 delta_us;
+-#endif
+ 
+ static inline void DVP2AXI_HalWriteReg(struct es_dvp2axi_hw *dvp2axi_hw, u32 address, u32 data) {
+     writel(data, dvp2axi_hw->base_addr + address);
+@@ -1871,10 +1866,6 @@ void es_dvp2axi_do_stop_stream(struct es_dvp2axi_stream *stream,
+ 
+ 	mutex_lock(&dev->stream_lock);
+ 
+-	v4l2_info(&dev->v4l2_dev,
+-		  "stream[%d] start stopping, total mode 0x%x, cur 0x%x\n",
+-		  stream->id, stream->cur_stream_mode, mode);
+-
+ 	if (mode == stream->cur_stream_mode) {
+ 		if (stream->dma_en) {
+ 			if (!dev->sensor_linetime)
+@@ -2044,7 +2035,7 @@ void es_dvp2axi_do_stop_stream(struct es_dvp2axi_stream *stream,
+ 
+ 	stream->cur_stream_mode &= ~mode;
+ 	INIT_LIST_HEAD(&stream->vb_done_list);
+-	v4l2_info(&dev->v4l2_dev, "stream[%d] stopping finished, dma_en 0x%x\n",
++	v4l2_dbg(1, es_dvp2axi_debug, v4l2_dev, "stream[%d] stopping finished, dma_en 0x%x\n",
+ 		  stream->id, stream->dma_en);
+ 	mutex_unlock(&dev->stream_lock);
+ 	es_dvp2axi_detach_sync_mode(dev);
+@@ -2052,28 +2043,23 @@ void es_dvp2axi_do_stop_stream(struct es_dvp2axi_stream *stream,
+ 
+ static void es_dvp2axi_stop_streaming(struct vb2_queue *queue)
+ {
+-#ifdef VI_CAPTURE_DEBUG
+-	end_time = ktime_get_ns();
+-	delta_us = (end_time - start_time) / 1000;
+-	pr_debug("[TIME CAL] es_dvp2axi_start_streaming took %llu us\n", delta_us);
+-#endif
+-
+ 	struct es_dvp2axi_stream *stream = queue->drv_priv;
+ 	int stream_id = stream->id;
+ 	uint32_t csr0;
+ 
+ 	mutex_lock(&stream->dvp2axidev->hw_dev->dev_multi_chn_lock);
+-
++	dvp2axi_hw_irq_mask(stream->dvp2axidev->hw_dev, stream->id, 1);
+ 	csr0 = DVP2AXI_HalReadReg(stream->dvp2axidev->hw_dev, VI_DVP2AXI_CTRL0_CSR);
+ 	es_dvp2axi_do_stop_stream(stream, ES_DVP2AXI_STREAM_MODE_CAPTURE);
+ 	csr0 &= ~(1 << stream_id); // disable stream channel
+ 	DVP2AXI_HalWriteReg(stream->dvp2axidev->hw_dev, VI_DVP2AXI_CTRL0_CSR, csr0);
+-	mutex_unlock(&stream->dvp2axidev->hw_dev->dev_multi_chn_lock);
+-
+ 	if((csr0 & 0x3f) == 0) {
+ 		dev_dbg(stream->dvp2axidev->hw_dev->dev, "all streams have been stopped, dvp2axi_hw_soft_reset \n");
++		dvp2axi_hw_irq_axi_mask(stream->dvp2axidev->hw_dev, 1);
+ 		dvp2axi_hw_soft_reset(stream->dvp2axidev->hw_dev);
+ 	}
++	mutex_unlock(&stream->dvp2axidev->hw_dev->dev_multi_chn_lock);
++	stream->state = ES_DVP2AXI_STATE_READY;
+ 	dev_dbg(stream->dvp2axidev->hw_dev->dev, "stream[%d] lost frame %lld \n", stream->id, stream->dvp2axidev->irq_stats.not_active_buf_cnt[stream->id]++);
+ }
+ 
+@@ -2325,10 +2311,10 @@ int es_dvp2axi_update_sensor_info(struct es_dvp2axi_stream *stream)
+ 				__func__, terminal_sensor->sd->name);
+ 			// return ret;
+ 			ret = 0;
+-		} 
++		}
+ 		terminal_sensor->fi.interval.numerator = 1;
+ 		terminal_sensor->fi.interval.denominator = 30;
+-		
++
+ 		// if (v4l2_subdev_call(terminal_sensor->sd, core, ioctl,
+ 		// 		     ESMODULE_GET_CSI_DSI_INFO,
+ 		// 		     &terminal_sensor->dsi_input_en)) {
+@@ -2373,8 +2359,23 @@ int es_dvp2axi_do_start_stream(struct es_dvp2axi_stream *stream,
+ 	int ret;
+ 	int i = 0;
+ 	u32 skip_frame = 0;
+-
+-	v4l2_info(&dev->v4l2_dev, "stream[%d] start streaming, stream addr %p\n", stream->id, stream);
++	struct v4l2_subdev_format csi_fmt;
++
++	v4l2_dbg(1, es_dvp2axi_debug, &dev->v4l2_dev, "sensor info: %s, mbus type: %d, lanes: %d, width: %d, height: %d, code: 0x%x\n",
++		  sensor_info->sd ? sensor_info->sd->name : "NULL",
++		  sensor_info->mbus.type, sensor_info->lanes, stream->pixm.width, stream->pixm.height,
++		  stream->dvp2axi_fmt_in->mbus_code);
++
++	csi_fmt.which = V4L2_SUBDEV_FORMAT_ACTIVE;
++	csi_fmt.pad = 0;
++	csi_fmt.format.width = stream->pixm.width;
++	csi_fmt.format.height = stream->pixm.height;
++	csi_fmt.format.code = stream->dvp2axi_fmt_in->mbus_code;
++	ret = v4l2_subdev_call(sensor_info->sd, pad, set_fmt, NULL, &csi_fmt);
++	if (ret) {
++		v4l2_err(v4l2_dev, "set csi fmt failed %d\n", ret);
++		goto destroy_buf;
++	}
+ 
+ 	if ((stream->cur_stream_mode & ES_DVP2AXI_STREAM_MODE_CAPTURE) == mode) {
+ 		ret = -EBUSY;
+@@ -2590,7 +2591,7 @@ void es_dvp2axi_dump_reg(struct es_dvp2axi_hw *hw)
+ {
+ 	for(int offset = 0; offset < 0xb8; offset += 4) {
+ 		uint32_t reg_val = DVP2AXI_HalReadReg(hw, offset);
+-		pr_debug("DVP2AXI_REG[0x%02x] = 0x%08x\n", offset, reg_val);
++		dev_dbg(hw->dev, "DVP2AXI_REG[0x%02x] = 0x%08x\n", offset, reg_val);
+ 	}
+ }
+ 
+@@ -2602,9 +2603,8 @@ static int es_dvp2axi_start_streaming(struct vb2_queue *queue, unsigned int coun
+ 	uint32_t dvpx_bpl = 0;
+ 	uint32_t dvp2axi_ctrl2, dvp2axi_ctrl33;
+ 	uint32_t dvp2axi_bpp;
+-
+ 	int ret = 0;
+-	
++
+ 	switch(stream->id) {
+ 		case 0:
+ 			dvp2axi_bpp = (DVP2AXI_HalReadReg(dvp2axi_hw, VI_DVP2AXI_CTRL1_CSR) & VI_DVP2AXI_CTRL1_DVP0_PIXEL_WIDTH_MASK ) >> 20;
+@@ -2658,31 +2658,45 @@ static int es_dvp2axi_start_streaming(struct vb2_queue *queue, unsigned int coun
+ 		dvpx_bpl |= bpl;
+ 	}
+ 
+-	pr_debug("dvp2axi stream[%d] bpl %d, dvpx_bpl %d, dvp2axi_bpp %d\n",
++	dev_dbg(stream->dvp2axidev->dev, "dvp2axi stream[%d] bpl %d, dvpx_bpl %d, dvp2axi_bpp %d\n",
+ 		stream->id, bpl, dvpx_bpl, dvp2axi_bpp);
+ 
+ 	mutex_lock(&dvp2axi_hw->dev_multi_chn_lock);
+ 	if(stream->id == 0 || stream->id == 2 || stream->id == 4)  {
+ 		dvp2axi_ctrl33 = DVP2AXI_HalReadReg(dvp2axi_hw, VI_DVP2AXI_CTRL33_CSR + (stream->id / 2) * 0x4);
+-		dvp2axi_ctrl33 |= dvpx_bpl;
++		dvp2axi_ctrl33 =(dvp2axi_ctrl33 & 0xffff0000) | dvpx_bpl;
+ 		DVP2AXI_HalWriteReg(dvp2axi_hw, VI_DVP2AXI_CTRL33_CSR + (stream->id / 2) * 0x4, dvp2axi_ctrl33);
+ 	} else {
+ 		dvp2axi_ctrl33 = DVP2AXI_HalReadReg(dvp2axi_hw, VI_DVP2AXI_CTRL33_CSR + ((stream->id - 1) / 2) * 0x4);
+-		dvp2axi_ctrl33 |= (dvpx_bpl << 16);
++		dvp2axi_ctrl33 |= (dvp2axi_ctrl33 & 0xffff) | (dvpx_bpl << 16);
+ 		DVP2AXI_HalWriteReg(dvp2axi_hw, VI_DVP2AXI_CTRL33_CSR + ((stream->id - 1) / 2) * 0x4, dvp2axi_ctrl33);
+ 	}
+ 
++	//flush irq before start stream
++	if(stream->id < 3) {
++		DVP2AXI_HalWriteReg(dvp2axi_hw, VI_DVP2AXI_INT0_CSR, (0x7 << stream->id));
++	} else {
++		DVP2AXI_HalWriteReg(dvp2axi_hw, VI_DVP2AXI_INT1_CSR, (0x7 << (stream->id - 3)));
++	}
++	DVP2AXI_HalWriteReg(dvp2axi_hw, VI_DVP2AXI_INT2_CSR,(0x1 << (stream->id+2)));
++
+ 	uint32_t csr0 = DVP2AXI_HalReadReg(dvp2axi_hw, VI_DVP2AXI_CTRL0_CSR);
+-	es_dvp2axi_dump_reg(dvp2axi_hw);
++	if((csr0 & 0x3f) == 0)
++		dvp2axi_hw_soft_reset(stream->dvp2axidev->hw_dev);
+ 	csr0 = csr0 | (1 << stream->id);
+ 	DVP2AXI_HalWriteReg(dvp2axi_hw, VI_DVP2AXI_CTRL0_CSR, csr0);
+-	mutex_unlock(&dvp2axi_hw->dev_multi_chn_lock);
++	dvp2axi_hw_irq_mask(dvp2axi_hw, stream->id, 0);
++	dvp2axi_hw_irq_axi_mask(stream->dvp2axidev->hw_dev, 0);
+ 	ret = es_dvp2axi_do_start_stream(stream, ES_DVP2AXI_STREAM_MODE_CAPTURE);
+-
+-	pr_debug("dvp2axi enabled=0x%x\n", csr0);
+-#ifdef VI_CAPTURE_DEBUG
+-	start_time = ktime_get_ns();	
+-#endif
++	if(ret < 0) {
++		csr0 = csr0 & ~(1 << stream->id);
++		dev_err(stream->dvp2axidev->dev, "es_dvp2axi_do_start_stream failed %d\n", ret);
++		goto unlock;
++	}
++	es_dvp2axi_dump_reg(dvp2axi_hw);
++	dev_dbg(stream->dvp2axidev->dev, "dvp2axi enabled=0x%x\n", csr0);
++unlock:
++	mutex_unlock(&dvp2axi_hw->dev_multi_chn_lock);
+ 	return ret;
+ }
+ 
+@@ -3117,50 +3131,55 @@ static int es_dvp2axi_fh_release(struct file *filp)
+ 	int ret = 0;
+ 
+ 	stream->is_first_flush = true;
+-
+ 	ret = vb2_fop_release(filp);
+-	
+ 	pm_runtime_put_sync(dvp2axidev->dev);
+-	
+ 	return ret;
+ }
+ 
+-void dvp2axi_hw_irq_mask(struct es_dvp2axi_hw *dvp2axi_hw, struct es_dvp2axi_stream *stream, int mask)
++void dvp2axi_hw_irq_mask(struct es_dvp2axi_hw *dvp2axi_hw, u32 stream_id, int mask)
+ {
+-	return;
+ 	u32 int0;
+ 	u32 int1;
+ 	u32 int2;
+-
+ 	int0 = DVP2AXI_HalReadReg(dvp2axi_hw, VI_DVP2AXI_INT_MASK0_CSR);
+ 	int1 = DVP2AXI_HalReadReg(dvp2axi_hw, VI_DVP2AXI_INT_MASK1_CSR);
+ 	int2 = DVP2AXI_HalReadReg(dvp2axi_hw, VI_DVP2AXI_INT_MASK2_CSR);
+ 
+-    if(mask) {
+-		dev_dbg(dvp2axi_hw->dev, "mask dvp2axi stream%d interrupt\n", stream->id);
+-		if(stream->id < 3) {
+-			int0 |= (0x7 << stream->id);
++	if(mask) {
++		if(stream_id < 3) {
++			int0 |= (0x7 << stream_id);
+ 		} else {
+-			int1 |= (0x7 << (stream->id - 3));
++			int1 |= (0x7 << (stream_id - 3));
+ 		}
+-		int2 |= (0x1 << (stream->id + 2));
++		int2 |= (0x1 << (stream_id + 2));
+ 		DVP2AXI_HalWriteReg(dvp2axi_hw, VI_DVP2AXI_INT_MASK0_CSR, int0);
+-    	DVP2AXI_HalWriteReg(dvp2axi_hw, VI_DVP2AXI_INT_MASK1_CSR, int1);
+-    	DVP2AXI_HalWriteReg(dvp2axi_hw, VI_DVP2AXI_INT_MASK2_CSR, int2);
++		DVP2AXI_HalWriteReg(dvp2axi_hw, VI_DVP2AXI_INT_MASK1_CSR, int1);
++		DVP2AXI_HalWriteReg(dvp2axi_hw, VI_DVP2AXI_INT_MASK2_CSR, int2);
+ 	} else {
+-		dev_dbg(dvp2axi_hw->dev, "unmask dvp2axi stream%d interrupt\n", stream->id);
+-		if(stream->id < 3) {
+-			int0 &= ~(0x7 << stream->id);
++		if(stream_id < 3) {
++			int0 &= ~(0x7 << stream_id);
+ 		} else {
+-			int1 &= ~(0x7 << (stream->id - 3));
++			int1 &= ~(0x7 << (stream_id - 3));
+ 		}
+-		int2 &= ~(0x1 << (stream->id + 2));
+-		DVP2AXI_HalWriteReg(dvp2axi_hw, VI_DVP2AXI_INT_MASK0_CSR, 0x0);
+-    	DVP2AXI_HalWriteReg(dvp2axi_hw, VI_DVP2AXI_INT_MASK1_CSR, 0x0);
+-    	DVP2AXI_HalWriteReg(dvp2axi_hw, VI_DVP2AXI_INT_MASK2_CSR, 0x0);
++		int2 &= ~(0x1 << (stream_id + 2));
++		DVP2AXI_HalWriteReg(dvp2axi_hw, VI_DVP2AXI_INT_MASK0_CSR, int0);
++		DVP2AXI_HalWriteReg(dvp2axi_hw, VI_DVP2AXI_INT_MASK1_CSR, int1);
++		DVP2AXI_HalWriteReg(dvp2axi_hw, VI_DVP2AXI_INT_MASK2_CSR, int2);
+ 	}
+ }
+ 
++void dvp2axi_hw_irq_axi_mask(struct es_dvp2axi_hw *dvp2axi_hw, int mask)
++{
++	u32 int2;
++	int2 = DVP2AXI_HalReadReg(dvp2axi_hw, VI_DVP2AXI_INT_MASK2_CSR);
++	if (mask) {
++		int2 |= 0x3 | (0x1 << 8);
++		DVP2AXI_HalWriteReg(dvp2axi_hw, VI_DVP2AXI_INT_MASK2_CSR, int2);
++	} else {
++		int2 &= ~(0x3 | (0x1 << 8));
++		DVP2AXI_HalWriteReg(dvp2axi_hw, VI_DVP2AXI_INT_MASK2_CSR, int2);
++	}
++}
+ 
+ static const struct v4l2_file_operations es_dvp2axi_fops = {
+ 	.open = es_dvp2axi_fh_open,
+@@ -4320,34 +4339,25 @@ void es_irq_oneframe(struct device *dev, struct es_dvp2axi_device *dvp2axi_dev)
+ 
+ 
+ 	if(frame0_done_detect) {
++		stream->frame_idx++;
+ 		active_buf = stream->curr_buf;
+ 		stream->frame_phase = DVP2AXI_CSI_FRAME0_READY;
+ 	}
+ 	if(frame1_done_detect) {
++		stream->frame_idx++;
+ 		active_buf = stream->next_buf;
+ 		stream->frame_phase = DVP2AXI_CSI_FRAME1_READY;
+ 	}
+ 	if (frame2_done_detect) {
++		stream->frame_idx++;
+ 		active_buf = stream->last_buf;
+ 		stream->frame_phase = DVP2AXI_CSI_FRAME2_READY;
+ 	}
+ 
+ 	if(stream->is_first_flush) {
+ 		stream->is_first_flush = false;
+-	} 
++	}
+ 	es_dvp2axi_addr_state = ES_DVP2AXI_YUV_ADDR_STATE_UPDATE;
+-	//TODO need to check whether the frame is done but not get flush signal
+-	// if ((vi_dvp2axi_int0 & VI_DVP2AXI_DVP0_ID0_FRAME_FLUSH_MASK) && (stream->frame_phase == DVP2AXI_CSI_FRAME0_READY)) {  // done handle
+-	// 	ret = es_dvp2axi_assign_new_buffer_oneframe(stream, es_dvp2axi_addr_state);
+-	// }
+-	// if((vi_dvp2axi_int0 & VI_DVP2AXI_DVP0_ID1_FRAME_FLUSH_MASK) && (stream->frame_phase == DVP2AXI_CSI_FRAME1_READY)) {
+-	// 	ret = es_dvp2axi_assign_new_buffer_oneframe(stream, es_dvp2axi_addr_state);
+-	// }
+-	// if((vi_dvp2axi_int0 & VI_DVP2AXI_DVP0_ID2_FRAME_FLUSH_MASK) && (stream->frame_phase == DVP2AXI_CSI_FRAME2_READY)) {
+-	// 		//TODO not use now
+-	// 	ret = es_dvp2axi_assign_new_buffer_oneframe(stream, es_dvp2axi_addr_state);
+-	// }
+-
+ 	if (stream->frame_phase == DVP2AXI_CSI_FRAME0_READY) {  // done handle
+ 		ret = es_dvp2axi_assign_new_buffer_oneframe(stream, es_dvp2axi_addr_state);
+ 	}
+@@ -4390,8 +4400,6 @@ void es_irq_oneframe(struct device *dev, struct es_dvp2axi_device *dvp2axi_dev)
+ 		flush_intr1 = vi_dvp2axi_int1 & (0x7 << ((stream->id-3) * 3));
+ 		DVP2AXI_HalWriteReg(dvp2axi_hw, VI_DVP2AXI_INT1_CSR, flush_intr1 | done_intr1);
+ 	}
+-	// DVP2AXI_HalWriteReg(dvp2axi_hw, VI_DVP2AXI_INT0_CSR, vi_dvp2axi_int0);
+-	// DVP2AXI_HalWriteReg(dvp2axi_hw, VI_DVP2AXI_INT1_CSR, vi_dvp2axi_int1);
+ 	stream->frame_phase = DVP2AXI_CSI_FRAME_UNREADY;
+ }
+ 
+@@ -4401,10 +4409,10 @@ void es_irq_err_handle(struct device *dev, struct es_dvp2axi_device *dvp2axi_dev
+ 	struct es_dvp2axi_hw	*dvp2axi_hw =  dev_get_drvdata(dev);
+ 	vi_dvp2axi_int_err = DVP2AXI_HalReadReg(dvp2axi_hw, VI_DVP2AXI_INT2_CSR);
+ 
+-	dev_dbg(dev, "vi_dvp2axi_int_err 0x%x\n", vi_dvp2axi_int_err);
++	dev_err_ratelimited(dev, "vi_dvp2axi_int_err 0x%x\n", vi_dvp2axi_int_err);
+ 	if(vi_dvp2axi_int_err & VI_DVP2AXI_INT2_AXI_IDBUFFER_FULL)
+ 		atomic_inc(&dvp2axi_hw->dvp2axi_errirq_cnts[0]);
+-	
++
+ 	if(vi_dvp2axi_int_err & VI_DVP2AXI_INT2_AXI_RESP_ERROR)
+ 		atomic_inc(&dvp2axi_hw->dvp2axi_errirq_cnts[1]);
+ 
+@@ -4428,7 +4436,6 @@ void es_irq_err_handle(struct device *dev, struct es_dvp2axi_device *dvp2axi_dev
+ 
+ 	if(vi_dvp2axi_int_err & VI_DVP2AXI_INT2_AXI_IDBUFFER_AFULL)
+ 		atomic_inc(&dvp2axi_hw->dvp2axi_errirq_cnts[8]);
+-	// dvp2axi_hw_soft_reset(dvp2axi_hw);
+ 	DVP2AXI_HalWriteReg(dvp2axi_hw, VI_DVP2AXI_INT2_CSR, vi_dvp2axi_int_err);
+ }
+ 
+@@ -5131,123 +5138,6 @@ static int es_dvp2axi_stop_dma_capture(struct es_dvp2axi_stream *stream)
+ 	return 0;
+ }
+ 
+-void es_dvp2axi_err_print_work(struct work_struct *work)
+-{
+-	struct es_dvp2axi_err_state_work *err_state_work =
+-		container_of(work, struct es_dvp2axi_err_state_work, work);
+-	struct es_dvp2axi_device *dev = container_of(
+-		err_state_work, struct es_dvp2axi_device, err_state_work);
+-	u32 err_state = 0;
+-	int intstat = 0;
+-	int lastline = 0;
+-	int lastpixel = 0;
+-	u64 cur_time = 0;
+-	bool is_print = false;
+-
+-	cur_time = es_dvp2axi_time_get_ns(dev);
+-	if (err_state_work->last_timestamp == 0) {
+-		is_print = true;
+-	} else {
+-		if (cur_time - err_state_work->last_timestamp > 500000000)
+-			is_print = true;
+-	}
+-	err_state_work->last_timestamp = cur_time;
+-	err_state = err_state_work->err_state;
+-	intstat = err_state_work->intstat;
+-	lastline = err_state_work->lastline;
+-	lastpixel = err_state_work->lastpixel;
+-	if (err_state & ES_DVP2AXI_ERR_ID0_NOT_BUF && is_print)
+-		v4l2_err(
+-			&dev->v4l2_dev,
+-			"stream[0] not active buffer, frame num %d, cnt %llu\n",
+-			dev->stream[0].frame_idx,
+-			dev->irq_stats.not_active_buf_cnt[0]);
+-	if (err_state & ES_DVP2AXI_ERR_ID1_NOT_BUF && is_print)
+-		v4l2_err(
+-			&dev->v4l2_dev,
+-			"stream[1] not active buffer, frame num %d, cnt %llu\n",
+-			dev->stream[1].frame_idx,
+-			dev->irq_stats.not_active_buf_cnt[1]);
+-	if (err_state & ES_DVP2AXI_ERR_ID2_NOT_BUF && is_print)
+-		v4l2_err(
+-			&dev->v4l2_dev,
+-			"stream[2] not active buffer, frame num %d, cnt %llu\n",
+-			dev->stream[2].frame_idx,
+-			dev->irq_stats.not_active_buf_cnt[2]);
+-	if (err_state & ES_DVP2AXI_ERR_ID3_NOT_BUF && is_print)
+-		v4l2_err(
+-			&dev->v4l2_dev,
+-			"stream[3] not active buffer, frame num %d, cnt %llu\n",
+-			dev->stream[3].frame_idx,
+-			dev->irq_stats.not_active_buf_cnt[3]);
+-	if (err_state & ES_DVP2AXI_ERR_ID0_TRIG_SIMULT && is_print)
+-		v4l2_err(
+-			&dev->v4l2_dev,
+-			"stream[0], frm0/frm1 end simultaneously,frm id:%d, cnt %llu\n",
+-			dev->stream[0].frame_idx,
+-			dev->irq_stats.trig_simult_cnt[0]);
+-	if (err_state & ES_DVP2AXI_ERR_ID1_TRIG_SIMULT && is_print)
+-		v4l2_err(
+-			&dev->v4l2_dev,
+-			"stream[1], frm0/frm1 end simultaneously,frm id:%d, cnt %llu\n",
+-			dev->stream[1].frame_idx,
+-			dev->irq_stats.trig_simult_cnt[1]);
+-	if (err_state & ES_DVP2AXI_ERR_ID2_TRIG_SIMULT && is_print)
+-		v4l2_err(
+-			&dev->v4l2_dev,
+-			"stream[2], frm0/frm1 end simultaneously,frm id:%d, cnt %llu\n",
+-			dev->stream[2].frame_idx,
+-			dev->irq_stats.trig_simult_cnt[2]);
+-	if (err_state & ES_DVP2AXI_ERR_ID3_TRIG_SIMULT && is_print)
+-		v4l2_err(
+-			&dev->v4l2_dev,
+-			"stream[3], frm0/frm1 end simultaneously,frm id:%d, cnt %llu\n",
+-			dev->stream[3].frame_idx,
+-			dev->irq_stats.trig_simult_cnt[3]);
+-	if (err_state & ES_DVP2AXI_ERR_SIZE) {
+-		if (dev->chip_id >= CHIP_EIC770X_DVP2AXI)
+-			v4l2_err(
+-				&dev->v4l2_dev,
+-				"ERROR: csi size err, intstat:0x%x, size:0x%x,0x%x,0x%x,0x%x, cnt %llu\n",
+-				intstat, err_state_work->size_id0,
+-				err_state_work->size_id1,
+-				err_state_work->size_id2,
+-				err_state_work->size_id3,
+-				dev->irq_stats.csi_size_err_cnt);
+-		else
+-			v4l2_err(
+-				&dev->v4l2_dev,
+-				"ERROR: csi size err, intstat:0x%x, lastline:0x%x, cnt %llu\n",
+-				intstat, lastline,
+-				dev->irq_stats.csi_size_err_cnt);
+-	}
+-	if (err_state & ES_DVP2AXI_ERR_OVERFLOW)
+-		v4l2_err(
+-			&dev->v4l2_dev,
+-			"ERROR: csi fifo overflow, intstat:0x%x, lastline:0x%x, cnt %llu\n",
+-			intstat, lastline, dev->irq_stats.csi_overflow_cnt);
+-	if (err_state & ES_DVP2AXI_ERR_BANDWIDTH_LACK)
+-		v4l2_err(
+-			&dev->v4l2_dev,
+-			"ERROR: csi bandwidth lack, intstat:0x%x, lastline:0x%x, cnt %llu\n",
+-			intstat, lastline, dev->irq_stats.csi_bwidth_lack_cnt);
+-	if (err_state & ES_DVP2AXI_ERR_ID0_MULTI_FS)
+-		v4l2_err(&dev->v4l2_dev,
+-			 "ERR: multi fs in oneframe in id0, fs_num:%u\n",
+-			 dev->stream[0].fs_cnt_in_single_frame);
+-	if (err_state & ES_DVP2AXI_ERR_BUS)
+-		v4l2_err(&dev->v4l2_dev,
+-			 "dvp bus err, intstat 0x%x, last line 0x%x\n", intstat,
+-			 lastline);
+-	if (err_state & ES_DVP2AXI_ERR_PIXEL)
+-		v4l2_err(&dev->v4l2_dev,
+-			 "dvp pix err, intstat 0x%x, last pixel 0x%x\n",
+-			 intstat, lastpixel);
+-	if (err_state & ES_DVP2AXI_ERR_LINE)
+-		v4l2_err(&dev->v4l2_dev,
+-			 "dvp line err, intstat 0x%x, last line 0x%x\n",
+-			 intstat, lastline);
+-}
+ int es_dvp2axi_stream_suspend(struct es_dvp2axi_device *dvp2axi_dev, int mode)
+ {
+ 	return 0;
+diff --git a/drivers/media/platform/eswin/dvp2axi/dev.c b/drivers/media/platform/eswin/dvp2axi/dev.c
+index 80e221be1996a..3b623212e7334 100644
+--- a/drivers/media/platform/eswin/dvp2axi/dev.c
++++ b/drivers/media/platform/eswin/dvp2axi/dev.c
+@@ -52,10 +52,6 @@ int es_dvp2axi_debug = 0;
+ module_param_named(debug, es_dvp2axi_debug, int, 0644);
+ MODULE_PARM_DESC(debug, "Debug level (0-1)");
+ 
+-static char es_dvp2axi_version[ES_DVP2AXI_VERNO_LEN];
+-module_param_string(version, es_dvp2axi_version, ES_DVP2AXI_VERNO_LEN, 0444);
+-MODULE_PARM_DESC(version, "version number");
+-
+ static DEFINE_MUTEX(es_dvp2axi_dev_mutex);
+ static LIST_HEAD(es_dvp2axi_device_list);
+ 
+@@ -943,39 +939,6 @@ static int es_dvp2axi_pipeline_set_stream(struct es_dvp2axi_pipeline *p, bool on
+ 		    (!on && atomic_dec_return(&p->stream_cnt) > 0))
+ 			return 0;
+ 
+-		if (on) {
+-			dvp2axi_dev->irq_stats.csi_overflow_cnt = 0;
+-			dvp2axi_dev->irq_stats.csi_bwidth_lack_cnt = 0;
+-			dvp2axi_dev->irq_stats.dvp_bus_err_cnt = 0;
+-			dvp2axi_dev->irq_stats.dvp_line_err_cnt = 0;
+-			dvp2axi_dev->irq_stats.dvp_overflow_cnt = 0;
+-			dvp2axi_dev->irq_stats.dvp_pix_err_cnt = 0;
+-			dvp2axi_dev->irq_stats.all_err_cnt = 0;
+-			dvp2axi_dev->irq_stats.csi_size_err_cnt = 0;
+-			dvp2axi_dev->irq_stats.dvp_size_err_cnt = 0;
+-			dvp2axi_dev->irq_stats.dvp_bwidth_lack_cnt = 0;
+-			dvp2axi_dev->irq_stats.frm_end_cnt[0] = 0;
+-			dvp2axi_dev->irq_stats.frm_end_cnt[1] = 0;
+-			dvp2axi_dev->irq_stats.frm_end_cnt[2] = 0;
+-			dvp2axi_dev->irq_stats.frm_end_cnt[3] = 0;
+-			dvp2axi_dev->irq_stats.not_active_buf_cnt[0] = 0;
+-			dvp2axi_dev->irq_stats.not_active_buf_cnt[1] = 0;
+-			dvp2axi_dev->irq_stats.not_active_buf_cnt[2] = 0;
+-			dvp2axi_dev->irq_stats.not_active_buf_cnt[3] = 0;
+-			dvp2axi_dev->irq_stats.trig_simult_cnt[0] = 0;
+-			dvp2axi_dev->irq_stats.trig_simult_cnt[1] = 0;
+-			dvp2axi_dev->irq_stats.trig_simult_cnt[2] = 0;
+-			dvp2axi_dev->irq_stats.trig_simult_cnt[3] = 0;
+-			dvp2axi_dev->reset_watchdog_timer.is_triggered = false;
+-			dvp2axi_dev->reset_watchdog_timer.is_running = false;
+-			dvp2axi_dev->err_state_work.last_timestamp = 0;
+-			dvp2axi_dev->is_toisp_reset = false;
+-			for (i = 0; i < dvp2axi_dev->num_channels; i++)
+-				dvp2axi_dev->reset_watchdog_timer
+-					.last_buf_wakeup_cnt[i] = 0;
+-			dvp2axi_dev->reset_watchdog_timer.run_cnt = 0;
+-		}
+-
+ 		/* phy -> sensor */
+ 		for (i = 0; i < p->num_subdevs; i++) {
+ 			if (p->subdevs[i] == dvp2axi_dev->terminal_sensor.sd &&
+@@ -991,7 +954,6 @@ static int es_dvp2axi_pipeline_set_stream(struct es_dvp2axi_pipeline *p, bool on
+ 			    ret != -ENODEV)
+ 				goto err_stream_off;
+ 		}
+-
+ 	} else {
+ 		if (!on && atomic_dec_return(&p->stream_cnt) > 0)
+ 			return 0;
+@@ -1014,41 +976,6 @@ static int es_dvp2axi_pipeline_set_stream(struct es_dvp2axi_pipeline *p, bool on
+ 		}
+ 
+ 		if ((on && can_be_set) || !on) {
+-			if (on) {
+-				dvp2axi_dev->irq_stats.csi_overflow_cnt = 0;
+-				dvp2axi_dev->irq_stats.csi_bwidth_lack_cnt = 0;
+-				dvp2axi_dev->irq_stats.dvp_bus_err_cnt = 0;
+-				dvp2axi_dev->irq_stats.dvp_line_err_cnt = 0;
+-				dvp2axi_dev->irq_stats.dvp_overflow_cnt = 0;
+-				dvp2axi_dev->irq_stats.dvp_pix_err_cnt = 0;
+-				dvp2axi_dev->irq_stats.dvp_bwidth_lack_cnt = 0;
+-				dvp2axi_dev->irq_stats.all_err_cnt = 0;
+-				dvp2axi_dev->irq_stats.csi_size_err_cnt = 0;
+-				dvp2axi_dev->irq_stats.dvp_size_err_cnt = 0;
+-				dvp2axi_dev->irq_stats.frm_end_cnt[0] = 0;
+-				dvp2axi_dev->irq_stats.frm_end_cnt[1] = 0;
+-				dvp2axi_dev->irq_stats.frm_end_cnt[2] = 0;
+-				dvp2axi_dev->irq_stats.frm_end_cnt[3] = 0;
+-				dvp2axi_dev->irq_stats.not_active_buf_cnt[0] = 0;
+-				dvp2axi_dev->irq_stats.not_active_buf_cnt[1] = 0;
+-				dvp2axi_dev->irq_stats.not_active_buf_cnt[2] = 0;
+-				dvp2axi_dev->irq_stats.not_active_buf_cnt[3] = 0;
+-				dvp2axi_dev->irq_stats.trig_simult_cnt[0] = 0;
+-				dvp2axi_dev->irq_stats.trig_simult_cnt[1] = 0;
+-				dvp2axi_dev->irq_stats.trig_simult_cnt[2] = 0;
+-				dvp2axi_dev->irq_stats.trig_simult_cnt[3] = 0;
+-				dvp2axi_dev->is_start_hdr = true;
+-				dvp2axi_dev->reset_watchdog_timer.is_triggered =
+-					false;
+-				dvp2axi_dev->reset_watchdog_timer.is_running =
+-					false;
+-				dvp2axi_dev->is_toisp_reset = false;
+-				for (i = 0; i < dvp2axi_dev->num_channels; i++)
+-					dvp2axi_dev->reset_watchdog_timer
+-						.last_buf_wakeup_cnt[i] = 0;
+-				dvp2axi_dev->reset_watchdog_timer.run_cnt = 0;
+-			}
+-
+ 			/* phy -> sensor */
+ 			for (i = 0; i < p->num_subdevs; i++) {
+ 				if (p->subdevs[i] ==
+@@ -1069,7 +996,6 @@ static int es_dvp2axi_pipeline_set_stream(struct es_dvp2axi_pipeline *p, bool on
+ 		}
+ 	}
+ 
+-
+ 	return 0;
+ 
+ err_stream_off:
+@@ -1134,6 +1060,7 @@ static int es_dvp2axi_create_link(struct es_dvp2axi_device *dev,
+ 					break;
+ 				}
+ 			}
++			break;
+ 		}
+ 	}
+ 
+@@ -1579,10 +1506,8 @@ int es_dvp2axi_plat_init(struct es_dvp2axi_device *dvp2axi_dev, struct device_no
+ 	memset(&dvp2axi_dev->channels[0].capture_info, 0,
+ 	       sizeof(dvp2axi_dev->channels[0].capture_info));
+ 
+-	INIT_WORK(&dvp2axi_dev->err_state_work.work, es_dvp2axi_err_print_work);
+ 	INIT_WORK(&dvp2axi_dev->sensor_work.work, es_dvp2axi_set_sensor_stream);
+ 	INIT_DELAYED_WORK(&dvp2axi_dev->work_deal_err, es_dvp2axi_deal_err_intr);
+-	pr_debug("t1 %s, %d \n", __func__, __LINE__);
+ 
+ 	if (of_property_read_u32(node, "dvp2axi_id", &dvp2axi_dev->dvp2axi_id))
+ 		dvp2axi_id = 0;
+@@ -1701,8 +1626,6 @@ static int es_dvp2axi_plat_probe(struct platform_device *pdev)
+ 	const struct es_dvp2axi_match_data *data;
+ 	int ret;
+ 
+-	dev_dbg(dev, "es_dvp2axi driver version: %s\n", es_dvp2axi_version);
+-
+ 	match = of_match_node(es_dvp2axi_plat_of_match, node);
+ 	if (IS_ERR(match))
+ 		return PTR_ERR(match);
+@@ -1731,7 +1654,7 @@ static int es_dvp2axi_plat_probe(struct platform_device *pdev)
+ 		dev_warn(dev, "dev:%s create proc failed\n", dev_name(dev));
+ 	es_dvp2axi_init_reset_monitor(dvp2axi_dev);
+ 	pm_runtime_enable(&pdev->dev);
+-	pr_debug("%s succsess\n", __func__);
++	dev_info(dvp2axi_dev->dev, "probe succsess\n");
+ 	return 0;
+ }
+ 
+diff --git a/drivers/media/platform/eswin/dvp2axi/dev.h b/drivers/media/platform/eswin/dvp2axi/dev.h
+index c1590db407695..02d4ed16544e1 100644
+--- a/drivers/media/platform/eswin/dvp2axi/dev.h
++++ b/drivers/media/platform/eswin/dvp2axi/dev.h
+@@ -948,8 +948,8 @@ struct es_dvp2axi_device {
+ 
+ 
+ void dvp2axi_hw_soft_reset(struct es_dvp2axi_hw *es_dvp2axi_hw);
+-
+-void dvp2axi_hw_irq_mask(struct es_dvp2axi_hw *dvp2axi_hw, struct es_dvp2axi_stream *stream, int mask);
++void dvp2axi_hw_irq_mask(struct es_dvp2axi_hw *dvp2axi_hw, u32 stream_id, int mask);
++void dvp2axi_hw_irq_axi_mask(struct es_dvp2axi_hw *dvp2axi_hw, int mask);
+ 
+ extern struct platform_driver es_dvp2axi_plat_drv;
+ #ifdef CONFIG_NUMA
+diff --git a/drivers/media/platform/eswin/dvp2axi/hw.c b/drivers/media/platform/eswin/dvp2axi/hw.c
+index 3dcbaa94289a5..f1b886e8e0a8a 100644
+--- a/drivers/media/platform/eswin/dvp2axi/hw.c
++++ b/drivers/media/platform/eswin/dvp2axi/hw.c
+@@ -56,150 +56,20 @@
+ #define ARSMMUSSID	GENMASK(7, 0)	// The ssid of read operation
+ 
+ u32 devm_irq_num[6] = {0};
+-static inline void DVP2AXI_HalWriteReg(struct es_dvp2axi_hw *dvp2axi_hw, u32 address, u32 data) {
+-    writel(data, dvp2axi_hw->base_addr + address);
+-}
+-static inline u32 DVP2AXI_HalReadReg(struct es_dvp2axi_hw *dvp2axi_hw, u32 address) {
+-    u32 val;
+-    val = readl(dvp2axi_hw->base_addr + address);
+-    return val;
+-}
+-
+-static const char * const eic770x_dvp2axi_clks[] = {
+-	"aclk_dvp2axi",
+-	"hclk_dvp2axi",
+-	"dclk_dvp2axi",
+-	"iclk_host0",
+-	"iclk_host1",
+-};
+-
+-static const char * const eic770x_dvp2axi_rsts[] = {
+-	"rst_dvp2axi_a",
+-	"rst_dvp2axi_h",
+-	"rst_dvp2axi_d",
+-	"rst_dvp2axi_host0",
+-	"rst_dvp2axi_host1",
+-	"rst_dvp2axi_host2",
+-	"rst_dvp2axi_host3",
+-	"rst_dvp2axi_host4",
+-	"rst_dvp2axi_host5",
+-};
+ 
+-static const struct dvp2axi_reg eic770x_dvp2axi_regs[] = {
+-	[DVP2AXI_REG_DVP_CTRL] = DVP2AXI_REG(DVP_CTRL),
+-	[DVP2AXI_REG_DVP_INTEN] = DVP2AXI_REG(DVP_INTEN),
+-	[DVP2AXI_REG_DVP_INTSTAT] = DVP2AXI_REG(DVP_INTSTAT),
+-	[DVP2AXI_REG_DVP_FOR] = DVP2AXI_REG(DVP_FOR),
+-	[DVP2AXI_REG_DVP_MULTI_ID] = DVP2AXI_REG(DVP_MULTI_ID),
+-	[DVP2AXI_REG_DVP_SAV_EAV] = DVP2AXI_REG(DVP_SAV_EAV),
+-	[DVP2AXI_REG_DVP_FRM0_ADDR_Y] = DVP2AXI_REG(DVP_FRM0_ADDR_Y_ID0),
+-	[DVP2AXI_REG_DVP_FRM0_ADDR_UV] = DVP2AXI_REG(DVP_FRM0_ADDR_UV_ID0),
+-	[DVP2AXI_REG_DVP_FRM1_ADDR_Y] = DVP2AXI_REG(DVP_FRM1_ADDR_Y_ID0),
+-	[DVP2AXI_REG_DVP_FRM1_ADDR_UV] = DVP2AXI_REG(DVP_FRM1_ADDR_UV_ID0),
+-	[DVP2AXI_REG_DVP_FRM0_ADDR_Y_ID1] = DVP2AXI_REG(DVP_FRM0_ADDR_Y_ID1),
+-	[DVP2AXI_REG_DVP_FRM0_ADDR_UV_ID1] = DVP2AXI_REG(DVP_FRM0_ADDR_UV_ID1),
+-	[DVP2AXI_REG_DVP_FRM1_ADDR_Y_ID1] = DVP2AXI_REG(DVP_FRM1_ADDR_Y_ID1),
+-	[DVP2AXI_REG_DVP_FRM1_ADDR_UV_ID1] = DVP2AXI_REG(DVP_FRM1_ADDR_UV_ID1),
+-	[DVP2AXI_REG_DVP_FRM0_ADDR_Y_ID2] = DVP2AXI_REG(DVP_FRM0_ADDR_Y_ID2),
+-	[DVP2AXI_REG_DVP_FRM0_ADDR_UV_ID2] = DVP2AXI_REG(DVP_FRM0_ADDR_UV_ID2),
+-	[DVP2AXI_REG_DVP_FRM1_ADDR_Y_ID2] = DVP2AXI_REG(DVP_FRM1_ADDR_Y_ID2),
+-	[DVP2AXI_REG_DVP_FRM1_ADDR_UV_ID2] = DVP2AXI_REG(DVP_FRM1_ADDR_UV_ID2),
+-	[DVP2AXI_REG_DVP_FRM0_ADDR_Y_ID3] = DVP2AXI_REG(DVP_FRM0_ADDR_Y_ID3),
+-	[DVP2AXI_REG_DVP_FRM0_ADDR_UV_ID3] = DVP2AXI_REG(DVP_FRM0_ADDR_UV_ID3),
+-	[DVP2AXI_REG_DVP_FRM1_ADDR_Y_ID3] = DVP2AXI_REG(DVP_FRM1_ADDR_Y_ID3),
+-	[DVP2AXI_REG_DVP_FRM1_ADDR_UV_ID3] = DVP2AXI_REG(DVP_FRM1_ADDR_UV_ID3),
+-	[DVP2AXI_REG_DVP_VIR_LINE_WIDTH] = DVP2AXI_REG(DVP_VIR_LINE_WIDTH),
+-	[DVP2AXI_REG_DVP_SET_SIZE] = DVP2AXI_REG(DVP_CROP_SIZE),
+-	[DVP2AXI_REG_DVP_CROP] = DVP2AXI_REG(DVP_CROP),
+-	[DVP2AXI_REG_DVP_LINE_INT_NUM] = DVP2AXI_REG(DVP_LINE_INT_NUM_01),
+-	[DVP2AXI_REG_DVP_LINE_INT_NUM1] = DVP2AXI_REG(DVP_LINE_INT_NUM_23),
+-	[DVP2AXI_REG_DVP_LINE_CNT] = DVP2AXI_REG(DVP_LINE_INT_NUM_01),
+-	[DVP2AXI_REG_DVP_LINE_CNT1] = DVP2AXI_REG(DVP_LINE_INT_NUM_23),
+-
+-	[DVP2AXI_REG_MIPI_LVDS_ID0_CTRL0] = DVP2AXI_REG(CSI_MIPI0_ID0_CTRL0),
+-	[DVP2AXI_REG_MIPI_LVDS_ID0_CTRL1] = DVP2AXI_REG(CSI_MIPI0_ID0_CTRL1),
+-	[DVP2AXI_REG_MIPI_LVDS_ID1_CTRL0] = DVP2AXI_REG(CSI_MIPI0_ID1_CTRL0),
+-	[DVP2AXI_REG_MIPI_LVDS_ID1_CTRL1] = DVP2AXI_REG(CSI_MIPI0_ID1_CTRL1),
+-	[DVP2AXI_REG_MIPI_LVDS_ID2_CTRL0] = DVP2AXI_REG(CSI_MIPI0_ID2_CTRL0),
+-	[DVP2AXI_REG_MIPI_LVDS_ID2_CTRL1] = DVP2AXI_REG(CSI_MIPI0_ID2_CTRL1),
+-	[DVP2AXI_REG_MIPI_LVDS_ID3_CTRL0] = DVP2AXI_REG(CSI_MIPI0_ID3_CTRL0),
+-	[DVP2AXI_REG_MIPI_LVDS_ID3_CTRL1] = DVP2AXI_REG(CSI_MIPI0_ID3_CTRL1),
+-	[DVP2AXI_REG_MIPI_LVDS_CTRL] = DVP2AXI_REG(CSI_MIPI0_CTRL),
+-	[DVP2AXI_REG_MIPI_LVDS_FRAME0_ADDR_Y_ID0] = DVP2AXI_REG(CSI_MIPI0_FRM0_ADDR_Y_ID0),
+-	[DVP2AXI_REG_MIPI_LVDS_FRAME1_ADDR_Y_ID0] = DVP2AXI_REG(CSI_MIPI0_FRM1_ADDR_Y_ID0),
+-	[DVP2AXI_REG_MIPI_LVDS_FRAME0_ADDR_UV_ID0] = DVP2AXI_REG(CSI_MIPI0_FRM0_ADDR_UV_ID0),
+-	[DVP2AXI_REG_MIPI_LVDS_FRAME1_ADDR_UV_ID0] = DVP2AXI_REG(CSI_MIPI0_FRM1_ADDR_UV_ID0),
+-	[DVP2AXI_REG_MIPI_LVDS_FRAME0_VLW_Y_ID0] = DVP2AXI_REG(CSI_MIPI0_VLW_ID0),
+-	[DVP2AXI_REG_MIPI_LVDS_FRAME0_ADDR_Y_ID1] = DVP2AXI_REG(CSI_MIPI0_FRM0_ADDR_Y_ID1),
+-	[DVP2AXI_REG_MIPI_LVDS_FRAME1_ADDR_Y_ID1] = DVP2AXI_REG(CSI_MIPI0_FRM1_ADDR_Y_ID1),
+-	[DVP2AXI_REG_MIPI_LVDS_FRAME0_ADDR_UV_ID1] = DVP2AXI_REG(CSI_MIPI0_FRM0_ADDR_UV_ID1),
+-	[DVP2AXI_REG_MIPI_LVDS_FRAME1_ADDR_UV_ID1] = DVP2AXI_REG(CSI_MIPI0_FRM1_ADDR_UV_ID1),
+-	[DVP2AXI_REG_MIPI_LVDS_FRAME0_VLW_Y_ID1] = DVP2AXI_REG(CSI_MIPI0_VLW_ID1),
+-	[DVP2AXI_REG_MIPI_LVDS_FRAME0_ADDR_Y_ID2] = DVP2AXI_REG(CSI_MIPI0_FRM0_ADDR_Y_ID2),
+-	[DVP2AXI_REG_MIPI_LVDS_FRAME1_ADDR_Y_ID2] = DVP2AXI_REG(CSI_MIPI0_FRM1_ADDR_Y_ID2),
+-	[DVP2AXI_REG_MIPI_LVDS_FRAME0_ADDR_UV_ID2] = DVP2AXI_REG(CSI_MIPI0_FRM0_ADDR_UV_ID2),
+-	[DVP2AXI_REG_MIPI_LVDS_FRAME1_ADDR_UV_ID2] = DVP2AXI_REG(CSI_MIPI0_FRM1_ADDR_UV_ID2),
+-	[DVP2AXI_REG_MIPI_LVDS_FRAME0_VLW_Y_ID2] = DVP2AXI_REG(CSI_MIPI0_VLW_ID2),
+-	[DVP2AXI_REG_MIPI_LVDS_FRAME0_ADDR_Y_ID3] = DVP2AXI_REG(CSI_MIPI0_FRM0_ADDR_Y_ID3),
+-	[DVP2AXI_REG_MIPI_LVDS_FRAME1_ADDR_Y_ID3] = DVP2AXI_REG(CSI_MIPI0_FRM1_ADDR_Y_ID3),
+-	[DVP2AXI_REG_MIPI_LVDS_FRAME0_ADDR_UV_ID3] = DVP2AXI_REG(CSI_MIPI0_FRM0_ADDR_UV_ID3),
+-	[DVP2AXI_REG_MIPI_LVDS_FRAME1_ADDR_UV_ID3] = DVP2AXI_REG(CSI_MIPI0_FRM1_ADDR_UV_ID3),
+-	[DVP2AXI_REG_MIPI_LVDS_FRAME0_VLW_Y_ID3] = DVP2AXI_REG(CSI_MIPI0_VLW_ID3),
+-	[DVP2AXI_REG_MIPI_LVDS_INTEN] = DVP2AXI_REG(CSI_MIPI0_INTEN),
+-	[DVP2AXI_REG_MIPI_LVDS_INTSTAT] = DVP2AXI_REG(CSI_MIPI0_INTSTAT),
+-	[DVP2AXI_REG_MIPI_LVDS_LINE_INT_NUM_ID0_1] = DVP2AXI_REG(CSI_MIPI0_LINE_INT_NUM_ID0_1),
+-	[DVP2AXI_REG_MIPI_LVDS_LINE_INT_NUM_ID2_3] = DVP2AXI_REG(CSI_MIPI0_LINE_INT_NUM_ID2_3),
+-	[DVP2AXI_REG_MIPI_LVDS_LINE_LINE_CNT_ID0_1] = DVP2AXI_REG(CSI_MIPI0_LINE_CNT_ID0_1),
+-	[DVP2AXI_REG_MIPI_LVDS_LINE_LINE_CNT_ID2_3] = DVP2AXI_REG(CSI_MIPI0_LINE_CNT_ID2_3),
+-	[DVP2AXI_REG_MIPI_LVDS_ID0_CROP_START] = DVP2AXI_REG(CSI_MIPI0_ID0_CROP_START),
+-	[DVP2AXI_REG_MIPI_LVDS_ID1_CROP_START] = DVP2AXI_REG(CSI_MIPI0_ID1_CROP_START),
+-	[DVP2AXI_REG_MIPI_LVDS_ID2_CROP_START] = DVP2AXI_REG(CSI_MIPI0_ID2_CROP_START),
+-	[DVP2AXI_REG_MIPI_LVDS_ID3_CROP_START] = DVP2AXI_REG(CSI_MIPI0_ID3_CROP_START),
+-	[DVP2AXI_REG_MIPI_FRAME_NUM_VC0] = DVP2AXI_REG(CSI_MIPI0_FRAME_NUM_VC0),
+-	[DVP2AXI_REG_MIPI_FRAME_NUM_VC1] = DVP2AXI_REG(CSI_MIPI0_FRAME_NUM_VC1),
+-	[DVP2AXI_REG_MIPI_FRAME_NUM_VC2] = DVP2AXI_REG(CSI_MIPI0_FRAME_NUM_VC2),
+-	[DVP2AXI_REG_MIPI_FRAME_NUM_VC3] = DVP2AXI_REG(CSI_MIPI0_FRAME_NUM_VC3),
+-	[DVP2AXI_REG_MIPI_EFFECT_CODE_ID0] = DVP2AXI_REG(CSI_MIPI0_EFFECT_CODE_ID0),
+-	[DVP2AXI_REG_MIPI_EFFECT_CODE_ID1] = DVP2AXI_REG(CSI_MIPI0_EFFECT_CODE_ID1),
+-	[DVP2AXI_REG_MIPI_EFFECT_CODE_ID2] = DVP2AXI_REG(CSI_MIPI0_EFFECT_CODE_ID2),
+-	[DVP2AXI_REG_MIPI_EFFECT_CODE_ID3] = DVP2AXI_REG(CSI_MIPI0_EFFECT_CODE_ID3),
+-	[DVP2AXI_REG_MIPI_FRAME_SIZE_ID0] = DVP2AXI_REG(CSI_MIPI0_FRAME_SIZE_ID0),
+-	[DVP2AXI_REG_MIPI_FRAME_SIZE_ID1] = DVP2AXI_REG(CSI_MIPI0_FRAME_SIZE_ID1),
+-	[DVP2AXI_REG_MIPI_FRAME_SIZE_ID2] = DVP2AXI_REG(CSI_MIPI0_FRAME_SIZE_ID2),
+-	[DVP2AXI_REG_MIPI_FRAME_SIZE_ID3] = DVP2AXI_REG(CSI_MIPI0_FRAME_SIZE_ID3),
+-	[DVP2AXI_REG_MIPI_ON_PAD] = DVP2AXI_REG(CSI_MIPI0_ON_PAD),
+-
+-	[DVP2AXI_REG_GLB_CTRL] = DVP2AXI_REG(GLB_CTRL),
+-	[DVP2AXI_REG_GLB_INTEN] = DVP2AXI_REG(GLB_INTEN),
+-	[DVP2AXI_REG_GLB_INTST] = DVP2AXI_REG(GLB_INTST),
+-
+-	[DVP2AXI_REG_SCL_CH_CTRL] = DVP2AXI_REG(SCL_CH_CTRL),
+-	[DVP2AXI_REG_SCL_CTRL] = DVP2AXI_REG(SCL_CTRL),
+-	[DVP2AXI_REG_SCL_FRM0_ADDR_CH0] = DVP2AXI_REG(SCL_FRM0_ADDR_CH0),
+-	[DVP2AXI_REG_SCL_FRM1_ADDR_CH0] = DVP2AXI_REG(SCL_FRM1_ADDR_CH0),
+-	[DVP2AXI_REG_SCL_VLW_CH0] = DVP2AXI_REG(SCL_VLW_CH0),
+-	[DVP2AXI_REG_SCL_FRM0_ADDR_CH1] = DVP2AXI_REG(SCL_FRM0_ADDR_CH1),
+-	[DVP2AXI_REG_SCL_FRM1_ADDR_CH1] = DVP2AXI_REG(SCL_FRM1_ADDR_CH1),
+-	[DVP2AXI_REG_SCL_VLW_CH1] = DVP2AXI_REG(SCL_VLW_CH1),
+-	[DVP2AXI_REG_SCL_FRM0_ADDR_CH2] = DVP2AXI_REG(SCL_FRM0_ADDR_CH2),
+-	[DVP2AXI_REG_SCL_FRM1_ADDR_CH2] = DVP2AXI_REG(SCL_FRM1_ADDR_CH2),
+-	[DVP2AXI_REG_SCL_VLW_CH2] = DVP2AXI_REG(SCL_VLW_CH2),
+-	[DVP2AXI_REG_SCL_FRM0_ADDR_CH3] = DVP2AXI_REG(SCL_FRM0_ADDR_CH3),
+-	[DVP2AXI_REG_SCL_FRM1_ADDR_CH3] = DVP2AXI_REG(SCL_FRM1_ADDR_CH3),
+-	[DVP2AXI_REG_SCL_VLW_CH3] = DVP2AXI_REG(SCL_VLW_CH3),
+-	[DVP2AXI_REG_SCL_BLC_CH0] = DVP2AXI_REG(SCL_BLC_CH0),
+-	[DVP2AXI_REG_SCL_BLC_CH1] = DVP2AXI_REG(SCL_BLC_CH1),
+-	[DVP2AXI_REG_SCL_BLC_CH2] = DVP2AXI_REG(SCL_BLC_CH2),
+-	[DVP2AXI_REG_SCL_BLC_CH3] = DVP2AXI_REG(SCL_BLC_CH3),
+-	[DVP2AXI_REG_TOISP0_CTRL] = DVP2AXI_REG(TOISP0_CH_CTRL),
+-	[DVP2AXI_REG_TOISP0_SIZE] = DVP2AXI_REG(TOISP0_CROP_SIZE),
+-	[DVP2AXI_REG_TOISP0_CROP] = DVP2AXI_REG(TOISP0_CROP),
+-	[DVP2AXI_REG_TOISP1_CTRL] = DVP2AXI_REG(TOISP1_CH_CTRL),
+-	[DVP2AXI_REG_TOISP1_SIZE] = DVP2AXI_REG(TOISP1_CROP_SIZE),
+-	[DVP2AXI_REG_TOISP1_CROP] = DVP2AXI_REG(TOISP1_CROP),
+-	[DVP2AXI_REG_GRF_DVP2AXIIO_CON] = DVP2AXI_REG(DVP2AXI_GRF_SOC_CON2),
+-};
++static inline void DVP2AXI_HalWriteReg(struct es_dvp2axi_hw *dvp2axi_hw,
++				       u32 address, u32 data)
++{
++	writel(data, dvp2axi_hw->base_addr + address);
++}
+ 
++static inline u32 DVP2AXI_HalReadReg(struct es_dvp2axi_hw *dvp2axi_hw,
++				     u32 address)
++{
++	u32 val;
++	val = readl(dvp2axi_hw->base_addr + address);
++	return val;
++}
+ 
+ static const struct of_device_id es_dvp2axi_plat_of_match[] = {
+ 	{
+@@ -383,12 +253,26 @@ static int es_dvp2axi_plat_hw_probe(struct platform_device *pdev)
+ 		return ret;
+ 	}
+ 
++	res = platform_get_resource_byname(pdev, IORESOURCE_MEM,
++					   "dvp2axi_regs");
++	dvp2axi_hw->base_addr = devm_ioremap_resource(dev, res);
++	if (PTR_ERR(dvp2axi_hw->base_addr) == -EBUSY) {
++		resource_size_t offset = res->start;
++		resource_size_t size = resource_size(res);
++
++		dvp2axi_hw->base_addr = devm_ioremap(dev, offset, size);
++		if (IS_ERR(dvp2axi_hw->base_addr)) {
++			dev_err(dev, "ioremap failed\n");
++			return PTR_ERR(dvp2axi_hw->base_addr);
++		}
++	}
++
+ 	for(int i = 0; i < ES_DVP2AXI_IRQ_NUM; i++) {
+ 		irq = platform_get_irq(pdev, i);
+ 		dvp2axi_hw->devm_irq_num[i] = irq;
+ 		if (irq < 0)
+ 			return irq;
+-		if(i == ES_DVP2AXI_ERR_IRQ || i == ES_DVP2AXI_AFULL_IRQ) 
++		if(i == ES_DVP2AXI_ERR_IRQ || i == ES_DVP2AXI_AFULL_IRQ)
+ 			ret = devm_request_irq(dev, irq, es_dvp2axi_err_irq_handler,
+ 			       IRQF_SHARED,
+ 			       dev_driver_string(dev), dev);
+@@ -396,34 +280,22 @@ static int es_dvp2axi_plat_hw_probe(struct platform_device *pdev)
+ 			ret = devm_request_irq(dev, irq, es_dvp2axi_irq_handler,
+ 			       IRQF_SHARED,
+ 			       dev_driver_string(dev), dev);
+-	
++
+ 		if (ret < 0) {
+ 			dev_err(dev, "request irq failed: %d\n", ret);
+ 			return ret;
+ 		}
+ 	}
+ 
++	for(int i=0; i < 6; i++)
++		dvp2axi_hw_irq_mask(dvp2axi_hw, i, 1);
++	dvp2axi_hw_irq_axi_mask(dvp2axi_hw, 1);
++
+ 	for(int i = 0; i < ES_DVP2AXI_ERRIRQ_NUM; i++)
+ 		atomic_set(&dvp2axi_hw->dvp2axi_errirq_cnts[i], 0);
+ 
+ 	dvp2axi_hw->irq = irq;
+ 
+-	res = platform_get_resource_byname(pdev,
+-		IORESOURCE_MEM,
+-		"dvp2axi_regs");
+-	dvp2axi_hw->base_addr = devm_ioremap_resource(dev, res);
+-	if (PTR_ERR(dvp2axi_hw->base_addr) == -EBUSY) {
+-		resource_size_t offset = res->start;
+-		resource_size_t size = resource_size(res);
+-
+-		dvp2axi_hw->base_addr = devm_ioremap(dev, offset, size);
+-		if (IS_ERR(dvp2axi_hw->base_addr)) {
+-			dev_err(dev, "ioremap failed\n");
+-			return PTR_ERR(dvp2axi_hw->base_addr);
+-		}
+-	}
+-
+-	// dvp2axi_hw->is_dma_sg_ops = true;
+ 	dvp2axi_hw->is_dma_sg_ops = false;
+ 	dvp2axi_hw->is_dma_contig = true;
+ 	mutex_init(&dvp2axi_hw->dev_lock);
+@@ -571,4 +443,4 @@ module_exit(es_dvp2axi_plat_drv_exit);
+ MODULE_AUTHOR("ES VI team");
+ MODULE_DESCRIPTION("ES DVP2AXI platform driver");
+ MODULE_LICENSE("GPL v2");
+-MODULE_IMPORT_NS(DMA_BUF);
++MODULE_IMPORT_NS(DMA_BUF);
+\ No newline at end of file
+diff --git a/drivers/media/platform/eswin/mipi-csi2/dw-csi-plat.c b/drivers/media/platform/eswin/mipi-csi2/dw-csi-plat.c
+index 5b6c9ea713761..3910a40980262 100755
+--- a/drivers/media/platform/eswin/mipi-csi2/dw-csi-plat.c
++++ b/drivers/media/platform/eswin/mipi-csi2/dw-csi-plat.c
+@@ -138,6 +138,7 @@ dw_mipi_csi_set_fmt(struct v4l2_subdev *sd,
+ 		if (fmt->which == V4L2_SUBDEV_FORMAT_ACTIVE)
+ 			dev->fmt = dev_fmt;
+ 		dev->fmt->mbus_code = mf->code;
++		dev->format = *mf;
+ 		dw_mipi_csi_set_ipi_fmt(dev);
+ 	}
+ 
+@@ -492,23 +493,20 @@ static int csi2_notifier_bound(struct v4l2_async_notifier *notifier,
+ 			 __func__, csi2->num_sensors);
+ 		return -EBUSY;
+ 	}
+-	pr_debug("%s:%d csi2->num_sensors %d\n", __func__, __LINE__, csi2->num_sensors);
++
+ 	sensor = &csi2->sensors[csi2->num_sensors++];
+ 	sensor->sd = sd;
+ 
+ 	for (pad = 0; pad < sd->entity.num_pads; pad++)
+ 		if (sensor->sd->entity.pads[pad].flags & MEDIA_PAD_FL_SOURCE)
+ 			break;
+-	pr_debug("%s:%d sensor->sd->name %s\n", __func__, __LINE__, sensor->sd->name);
+-	pr_debug("%s:%d sensor->sd->entity->name %s\n", __func__, __LINE__, sensor->sd->entity.name);
+-	
++
+ 	if (pad == sensor->sd->entity.num_pads) {
+ 		dev_err(csi2->dev, "failed to find src pad for %s\n", sd->name);
+ 
+ 		return -ENXIO;
+ 	}
+ 
+-//TODO 为什么这里创建了link，但是没有enable
+ 	ret = media_create_pad_link(
+ 		&sensor->sd->entity, pad, &csi2->sd.entity, DWC_CSI2_PAD_SINK,
+ 		0 /* csi2->num_sensors != 1 ? 0 : MEDIA_LNK_FL_ENABLED */);
+@@ -615,7 +613,6 @@ static int csi2_notifier(struct dw_csi *csi2)
+ 	return ret;
+ }
+ 
+-
+ static int dw_csi_probe(struct platform_device *pdev)
+ {
+ 	const struct of_device_id *of_id = NULL;
+@@ -625,18 +622,13 @@ static int dw_csi_probe(struct platform_device *pdev)
+ 	struct v4l2_subdev *sd;
+ 	struct device *parent = pdev->dev.parent;
+ 	struct eswin_vi_device* es_vi_dev;
+-
+ 	int ret;
+-	
+-	es_vi_dev = dev_get_drvdata(parent);
+ 
+-	dev_dbg(dev, "DW MIPI CSI-2 Host Probe in. \n");
++	es_vi_dev = dev_get_drvdata(parent);
+ 
+ 	if (!IS_ENABLED(CONFIG_OF))
+ 		pdata = pdev->dev.platform_data;
+ 
+-	dev_vdbg(dev, "Probing started\n");
+-
+ 	/* Resource allocation */
+ 	csi = devm_kzalloc(dev, sizeof(*csi), GFP_KERNEL);
+ 	if (!csi)
+diff --git a/drivers/media/platform/eswin/mipi-csi2/dw-csi-plat.h b/drivers/media/platform/eswin/mipi-csi2/dw-csi-plat.h
+index 257cbfbd044ba..a308f9b0a4094 100755
+--- a/drivers/media/platform/eswin/mipi-csi2/dw-csi-plat.h
++++ b/drivers/media/platform/eswin/mipi-csi2/dw-csi-plat.h
+@@ -59,14 +59,34 @@ struct mipi_fmt dw_mipi_csi_formats[] = {
+ 		/* RAW 10 */
+ 		.mbus_code = MEDIA_BUS_FMT_SBGGR10_1X10,
+ 		.depth = 10,
++	},{
++		/* RAW 10 */
++		.mbus_code = MEDIA_BUS_FMT_SGBRG10_1X10,
++		.depth = 10,
+ 	}, {
+-		/* RAW 8 */
+-		.mbus_code = 0x3001,
+-		.depth = 8,
++		/* RAW 10 */
++		.mbus_code = MEDIA_BUS_FMT_SGRBG10_1X10,
++		.depth = 10,
++	}, {
++		/* RAW 10 */
++		.mbus_code = MEDIA_BUS_FMT_SRGGB10_1X10,
++		.depth = 10,
+ 	}, {
+ 		/* RAW 12 */
+ 		.mbus_code = MEDIA_BUS_FMT_SBGGR12_1X12,
+ 		.depth = 12,
++	}, {
++		/* RAW 12 */
++		.mbus_code = MEDIA_BUS_FMT_SGBRG12_1X12,
++		.depth = 12,
++	}, {
++		/* RAW 12 */
++		.mbus_code = MEDIA_BUS_FMT_SGRBG12_1X12,
++		.depth = 12,
++	}, {
++		/* RAW 12 */
++		.mbus_code = MEDIA_BUS_FMT_SRGGB12_1X12,
++		.depth = 12,
+ 	}, {
+ 		/* RAW 14 */
+ 		.mbus_code = MEDIA_BUS_FMT_SBGGR14_1X14,
+diff --git a/drivers/media/platform/eswin/mipi-csi2/dw-mipi-csi.c b/drivers/media/platform/eswin/mipi-csi2/dw-mipi-csi.c
+index eb5144e504321..a7b4a829e6031 100755
+--- a/drivers/media/platform/eswin/mipi-csi2/dw-mipi-csi.c
++++ b/drivers/media/platform/eswin/mipi-csi2/dw-mipi-csi.c
+@@ -221,11 +221,17 @@ void dw_mipi_csi_set_ipi_fmt(struct dw_csi *csi_dev)
+ 		break;
+ 
+ 	case MEDIA_BUS_FMT_SBGGR10_1X10:
++	case MEDIA_BUS_FMT_SGBRG10_1X10:
++	case MEDIA_BUS_FMT_SGRBG10_1X10:
++	case MEDIA_BUS_FMT_SRGGB10_1X10:
+ 	case MEDIA_BUS_FMT_SBGGR10_2X8_PADHI_BE:
+ 		csi_dev->hw.ipi_dt = CSI_2_RAW10;
+ 		break;
+ 
+ 	case MEDIA_BUS_FMT_SBGGR12_1X12:
++	case MEDIA_BUS_FMT_SGBRG12_1X12:
++	case MEDIA_BUS_FMT_SGRBG12_1X12:
++	case MEDIA_BUS_FMT_SRGGB12_1X12:
+ 		csi_dev->hw.ipi_dt = CSI_2_RAW12;
+ 		break;
+ 
+diff --git a/drivers/media/v4l2-core/v4l2-subdev.c b/drivers/media/v4l2-core/v4l2-subdev.c
+index eb905c565fe10..f80d9f9d51cab 100644
+--- a/drivers/media/v4l2-core/v4l2-subdev.c
++++ b/drivers/media/v4l2-core/v4l2-subdev.c
+@@ -662,10 +662,8 @@ static long subdev_do_ioctl(struct file *file, unsigned int cmd, void *arg,
+ 
+ 		if (!client_supports_streams)
+ 			format->stream = 0;
+-		printk("set fmt,, sd name = %s, %d",sd->name, *format->format.reserved);
+ 		memset(format->reserved, 0, sizeof(format->reserved));
+ 		memset(format->format.reserved, 0, sizeof(format->format.reserved));
+-		
+ 		return v4l2_subdev_call(sd, pad, set_fmt, state, format);
+ 	}
+ 
+diff --git a/drivers/phy/eswin/phy-eswin-csi2-dphy-hw.c b/drivers/phy/eswin/phy-eswin-csi2-dphy-hw.c
+index ba7686dc092be..8bb690c43599d 100644
+--- a/drivers/phy/eswin/phy-eswin-csi2-dphy-hw.c
++++ b/drivers/phy/eswin/phy-eswin-csi2-dphy-hw.c
+@@ -110,8 +110,7 @@ struct hsfreq_range {
+ static inline void eic770x_write_csi2_dphy_reg(void __iomem *hw_base_addr, u32 offset,
+ 				       u32 value)
+ {
+-		writel(value, hw_base_addr + 4 * offset);
+-		pr_debug("%s : write reg:0x%x, val:0x%x\n", __func__, offset, value);
++	writel(value, hw_base_addr + 4 * offset);
+ }
+ 
+ //	{445, {{0x1229, 0xa70}, {0x3080, 0xe1d}, {0x3280, 0xe1d},  {0x1029, 0xbf0}, {0x1229, 0xb70}, {0x1429, 0xbf0},}} 这应该是400Mpbs速率
+@@ -762,8 +761,6 @@ static int eswin_csi2_dphy_hw_probe(struct platform_device *pdev)
+ 	struct device *parent = pdev->dev.parent;
+ 	u32 ret;
+ 
+-	dev_dbg(dev, "csi2 dphy hw probe in!\n");
+-
+ 	es_vi_dev = dev_get_drvdata(parent);
+ 
+ 	dphy_hw = devm_kzalloc(dev, sizeof(*dphy_hw), GFP_KERNEL);
+@@ -861,20 +858,20 @@ static int eswin_csi2_dphy_hw_probe(struct platform_device *pdev)
+ 			return ret;
+ 		}
+ 		u32 combine_phy_addr_size = 0x20000;
+-	
++
+ 		dphy_hw->combine_dphy_base_addr = devm_ioremap(dphy_hw->dev, dphy_hw->combine_dphy_phy_addr, combine_phy_addr_size);
+ 		if (IS_ERR(dphy_hw->combine_dphy_base_addr)) {
+ 			dev_err(dphy_hw->dev, "Failed to map Combine PHY address\n");
+ 			return PTR_ERR(dphy_hw->combine_dphy_base_addr);
+ 		}
+-		pr_debug("%s: combine_phy = 0x%x\n", __func__, dphy_hw->combine_dphy_phy_addr);
++		dev_dbg(dev, "combine_phy = 0x%x\n", dphy_hw->combine_dphy_phy_addr);
+ 	}
+ 
+ 	atomic_set(&dphy_hw->stream_cnt, 0);
+ 	mutex_init(&dphy_hw->mutex);
+ 	platform_set_drvdata(pdev, dphy_hw);
+ 
+-	dev_dbg(dev, "csi2 dphy hw probe successfully!\n");
++	dev_info(dev, "csi2 dphy hw probe successfully!\n");
+ 	return 0;
+ }
+ 
+diff --git a/drivers/phy/eswin/phy-eswin-csi2-dphy.c b/drivers/phy/eswin/phy-eswin-csi2-dphy.c
+index 661e78dbb5d86..467fdf8e72ad5 100644
+--- a/drivers/phy/eswin/phy-eswin-csi2-dphy.c
++++ b/drivers/phy/eswin/phy-eswin-csi2-dphy.c
+@@ -94,12 +94,8 @@ static int csi2_dphy_get_sensor_data_rate(struct v4l2_subdev *sd)
+ 		return -EINVAL;
+ 	}
+ 
+-	v4l2_info(sd, "sensor link_index %d, link_freq %lld\n", qm.index, qm.value);
+-
+ 	dphy->data_rate_mbps = qm.value * 2;
+ 	do_div(dphy->data_rate_mbps, 1000 * 1000);
+-	v4l2_info(sd, "dphy%d, data_rate_mbps %lld\n", dphy->phy_index,
+-		  dphy->data_rate_mbps);
+ 	return 0;
+ }
+ 
+-- 
+2.53.0
+

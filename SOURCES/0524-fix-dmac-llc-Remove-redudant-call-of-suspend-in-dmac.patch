@@ -1,0 +1,34 @@
+From 2579fd99a8fadd6e28cea4c6dab8321062669e41 Mon Sep 17 00:00:00 2001
+From: Min Lin <linmin@eswincomputing.com>
+Date: Tue, 30 Sep 2025 14:08:15 +0800
+Subject: [PATCH 524/540] fix(dmac,llc):Remove redudant call of suspend in dmac
+ probe
+
+Changelogs:
+1.Removed axi_dma_suspend(chip) from dw_probe(). This is redudant
+  and will cause uncorrect refcnt for tbu, clk and reset.
+2.Move win2030_tbu_power(&pdev->dev, true) to the bottom of the
+  llc_probe
+
+Signed-off-by: Min Lin <linmin@eswincomputing.com>
+---
+ drivers/dma/dw-axi-dmac/dw-axi-dmac-platform.c | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/drivers/dma/dw-axi-dmac/dw-axi-dmac-platform.c b/drivers/dma/dw-axi-dmac/dw-axi-dmac-platform.c
+index 3853731657646..0322ab4e76fcc 100644
+--- a/drivers/dma/dw-axi-dmac/dw-axi-dmac-platform.c
++++ b/drivers/dma/dw-axi-dmac/dw-axi-dmac-platform.c
+@@ -1826,9 +1826,6 @@ static int dw_probe(struct platform_device *pdev)
+ 
+ 	dev_info(chip->dev, "DesignWare AXI DMA Controller, %d channels\n",
+ 		 dw->hdata->nr_channels);
+-	ret = axi_dma_suspend(chip);
+-	if (ret < 0)
+-		goto err_pm_disable;
+ 
+ 	dw_axi_dma_register_debugfs(chip);
+ 
+-- 
+2.53.0
+

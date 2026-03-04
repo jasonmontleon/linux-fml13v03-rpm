@@ -1,0 +1,30 @@
+From 7851c0ba178236e4a991a3b516cb3f31ca8bf3a5 Mon Sep 17 00:00:00 2001
+From: cheney <11722200@qq.com>
+Date: Thu, 17 Apr 2025 10:00:04 +0800
+Subject: [PATCH 284/540] gpu: hdmi: Limit die0 to 2.2K and 2.8K resolutions to
+ prevent black screen issues on the internal display when die0 and die1
+ screens are set to mirror mode.
+
+---
+ drivers/gpu/drm/eswin/dw-hdmi.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/drivers/gpu/drm/eswin/dw-hdmi.c b/drivers/gpu/drm/eswin/dw-hdmi.c
+index dd244a7007231..204192aef3a1e 100644
+--- a/drivers/gpu/drm/eswin/dw-hdmi.c
++++ b/drivers/gpu/drm/eswin/dw-hdmi.c
+@@ -3371,6 +3371,11 @@ dw_hdmi_bridge_mode_valid(struct drm_bridge *bridge,
+ 	if (mode->flags & DRM_MODE_FLAG_INTERLACE)
+ 		return MODE_NO_INTERLACE;
+ 
++	if (hdmi->numa_id == 0) {
++		if (mode->clock != 235690 && mode->clock != 371370)
++			return MODE_BAD;
++	}
++
+ 	if (pdata->mode_valid)
+ 		mode_status = pdata->mode_valid(hdmi, pdata->priv_data, info,
+ 						mode);
+-- 
+2.53.0
+

@@ -1,0 +1,29 @@
+From 3ba292947336c203f4e4dc42f388b4d05784efb0 Mon Sep 17 00:00:00 2001
+From: zhangyizhong <zhangyizhong@eswincomputing.com>
+Date: Tue, 4 Mar 2025 09:38:52 +0800
+Subject: [PATCH 254/540] feat:enable gpu1 by default on 7702.
+
+Changelogs:
+1. enable gpu1 by default on 7702.
+
+Signed-off-by: zhangyizhong <zhangyizhong@eswincomputing.com>
+---
+ arch/riscv/boot/dts/eswin/eic7702-evb-a1.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/riscv/boot/dts/eswin/eic7702-evb-a1.dts b/arch/riscv/boot/dts/eswin/eic7702-evb-a1.dts
+index f2416dce48140..36a0964ebcbe6 100644
+--- a/arch/riscv/boot/dts/eswin/eic7702-evb-a1.dts
++++ b/arch/riscv/boot/dts/eswin/eic7702-evb-a1.dts
+@@ -452,7 +452,7 @@ &gpu0 {
+ 	status = "okay";
+ };
+ &d1_gpu {
+-	status = "disabled";
++	status = "okay";
+ };
+ 
+ &gc820 {
+-- 
+2.53.0
+

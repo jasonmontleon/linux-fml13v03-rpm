@@ -1,0 +1,27 @@
+From c9a3bd8766db715075a2163585cd426b3b48dfdd Mon Sep 17 00:00:00 2001
+From: Jason Montleon <jmontleo@redhat.com>
+Date: Wed, 4 Mar 2026 12:39:08 -0500
+Subject: [PATCH 005/540] Revert "media: i2c: ov5647: Correct pixel array
+ offset"
+
+This reverts commit 1f413dac763a8caed44d8591aa064e4ab8061f52.
+---
+ drivers/media/i2c/ov5647.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/media/i2c/ov5647.c b/drivers/media/i2c/ov5647.c
+index 7854d72e83492..6d39d47d6cc63 100644
+--- a/drivers/media/i2c/ov5647.c
++++ b/drivers/media/i2c/ov5647.c
+@@ -69,7 +69,7 @@
+ #define OV5647_NATIVE_HEIGHT		1956U
+ 
+ #define OV5647_PIXEL_ARRAY_LEFT		16U
+-#define OV5647_PIXEL_ARRAY_TOP		6U
++#define OV5647_PIXEL_ARRAY_TOP		16U
+ #define OV5647_PIXEL_ARRAY_WIDTH	2592U
+ #define OV5647_PIXEL_ARRAY_HEIGHT	1944U
+ 
+-- 
+2.53.0
+

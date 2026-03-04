@@ -1,0 +1,114 @@
+From 94ac32b2d9669b48e44fd575932b328f94676ec7 Mon Sep 17 00:00:00 2001
+From: cheney <11722200@qq.com>
+Date: Wed, 23 Jul 2025 16:04:58 +0800
+Subject: [PATCH 428/540] fix: cpu: Set maximum frequency to 1.4GHz (missed in
+ previous commit)
+
+---
+ .../eswin/eic7702-deepcomputing-fml13v03.dts  | 90 +++++++++----------
+ 1 file changed, 45 insertions(+), 45 deletions(-)
+
+diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
+index 8bc250425a1f2..1a138844cf924 100644
+--- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
++++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
+@@ -256,51 +256,51 @@ d1_zero_device: zero-device@3a000000 {
+ 	};
+ };
+ 
+-&d0_cpu_opp_table {
+-	opp-1500000000 {
+-		opp-hz = /bits/ 64 <CLK_FREQ_1500M>;
+-		opp-microvolt = <900000>;
+-		clock-latency-ns = <70000>;
+-	};
+-	opp-1600000000 {
+-		opp-hz = /bits/ 64 <CLK_FREQ_1600M>;
+-		opp-microvolt = <900000>;
+-		clock-latency-ns = <70000>;
+-	};
+-	opp-1700000000 {
+-		opp-hz = /bits/ 64 <CLK_FREQ_1700M>;
+-		opp-microvolt = <900000>;
+-		clock-latency-ns = <70000>;
+-	};
+-	opp-1800000000 {
+-		opp-hz = /bits/ 64 <CLK_FREQ_1800M>;
+-		opp-microvolt = <900000>;
+-		clock-latency-ns = <70000>;
+-	};
+-};
+-
+-&d1_cpu_opp_table {
+-	opp-1500000000 {
+-		opp-hz = /bits/ 64 <CLK_FREQ_1500M>;
+-		opp-microvolt = <900000>;
+-		clock-latency-ns = <70000>;
+-	};
+-	opp-1600000000 {
+-		opp-hz = /bits/ 64 <CLK_FREQ_1600M>;
+-		opp-microvolt = <900000>;
+-		clock-latency-ns = <70000>;
+-	};
+-	opp-1700000000 {
+-		opp-hz = /bits/ 64 <CLK_FREQ_1700M>;
+-		opp-microvolt = <900000>;
+-		clock-latency-ns = <70000>;
+-	};
+-	opp-1800000000 {
+-		opp-hz = /bits/ 64 <CLK_FREQ_1800M>;
+-		opp-microvolt = <900000>;
+-		clock-latency-ns = <70000>;
+-	};
+-};
++// &d0_cpu_opp_table {
++// 	opp-1500000000 {
++// 		opp-hz = /bits/ 64 <CLK_FREQ_1500M>;
++// 		opp-microvolt = <900000>;
++// 		clock-latency-ns = <70000>;
++// 	};
++// 	opp-1600000000 {
++// 		opp-hz = /bits/ 64 <CLK_FREQ_1600M>;
++// 		opp-microvolt = <900000>;
++// 		clock-latency-ns = <70000>;
++// 	};
++// 	opp-1700000000 {
++// 		opp-hz = /bits/ 64 <CLK_FREQ_1700M>;
++// 		opp-microvolt = <900000>;
++// 		clock-latency-ns = <70000>;
++// 	};
++// 	opp-1800000000 {
++// 		opp-hz = /bits/ 64 <CLK_FREQ_1800M>;
++// 		opp-microvolt = <900000>;
++// 		clock-latency-ns = <70000>;
++// 	};
++// };
++
++// &d1_cpu_opp_table {
++// 	opp-1500000000 {
++// 		opp-hz = /bits/ 64 <CLK_FREQ_1500M>;
++// 		opp-microvolt = <900000>;
++// 		clock-latency-ns = <70000>;
++// 	};
++// 	opp-1600000000 {
++// 		opp-hz = /bits/ 64 <CLK_FREQ_1600M>;
++// 		opp-microvolt = <900000>;
++// 		clock-latency-ns = <70000>;
++// 	};
++// 	opp-1700000000 {
++// 		opp-hz = /bits/ 64 <CLK_FREQ_1700M>;
++// 		opp-microvolt = <900000>;
++// 		clock-latency-ns = <70000>;
++// 	};
++// 	opp-1800000000 {
++// 		opp-hz = /bits/ 64 <CLK_FREQ_1800M>;
++// 		opp-microvolt = <900000>;
++// 		clock-latency-ns = <70000>;
++// 	};
++// };
+ 
+ &d0_clock {
+ 	status = "okay";
+-- 
+2.53.0
+

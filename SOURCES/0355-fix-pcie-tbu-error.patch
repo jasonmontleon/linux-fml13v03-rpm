@@ -1,0 +1,28 @@
+From 5c16cad8a4fe7e7a64ac55d833e2ca01694571d1 Mon Sep 17 00:00:00 2001
+From: Xiang Xu <xuxiang@eswincomputing.com>
+Date: Wed, 7 May 2025 17:33:03 +0800
+Subject: [PATCH 355/540] fix: pcie tbu error
+
+Changelogs:
+1. pcie tbu error
+
+Signed-off-by: Xiang Xu <xuxiang@eswincomputing.com>
+---
+ drivers/pci/controller/dwc/pcie-eswin.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/pci/controller/dwc/pcie-eswin.c b/drivers/pci/controller/dwc/pcie-eswin.c
+index 4b24fb9b1bd41..ca08847d7c048 100644
+--- a/drivers/pci/controller/dwc/pcie-eswin.c
++++ b/drivers/pci/controller/dwc/pcie-eswin.c
+@@ -270,6 +270,7 @@ static int eswin_pcie_host_init(struct dw_pcie_rp *pp)
+ 
+ 	if (!ret) {
+ 		dev_info(pcie->pci.dev, "No clock exist.\n");
++		win2030_tbu_power(pcie->pci.dev, false);
+ 		eswin_pcie_power_off(pcie);
+ 		eswin_pcie_clk_disable(pcie);
+ 		return -ENODEV;
+-- 
+2.53.0
+

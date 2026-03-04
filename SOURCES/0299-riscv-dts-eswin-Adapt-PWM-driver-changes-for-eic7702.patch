@@ -1,0 +1,27 @@
+From 7108fffa879f984488b28dcf9377eb7462987a5b Mon Sep 17 00:00:00 2001
+From: "yang.wang" <yang.wang@deepcomputing.io>
+Date: Fri, 16 May 2025 15:34:36 +0800
+Subject: [PATCH 299/540] riscv: dts: eswin: Adapt PWM driver changes for
+ eic7702 backlight fix
+
+Signed-off-by: yang.wang <yang.wang@deepcomputing.io>
+---
+ arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
+index c5153c0d6b9fc..92f1b84af5d45 100644
+--- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
++++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
+@@ -1519,6 +1519,8 @@ &d1_pwm0 {
+ 	clocks = <&d1_clock EIC7700_CLK_LSP_TIMER_PCLK>;
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&d1_pinctrl_pwm0_default>;
++	pinctrl-1 = <&pinctrl_die1_gpio68_default>;
++	fan-gpios = <&d1_portc 4 GPIO_ACTIVE_HIGH>;
+ };
+ 
+ &fan_control {
+-- 
+2.53.0
+
