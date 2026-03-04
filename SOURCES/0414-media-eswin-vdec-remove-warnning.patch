@@ -1,4 +1,4 @@
-From a79d86ef2b7b1b0647af6537291dd6f14234a280 Mon Sep 17 00:00:00 2001
+From c7aac03cf0289547628fd14833cc8ae102b898b4 Mon Sep 17 00:00:00 2001
 From: Sandie Cao <sandie.cao@deepcomputing.io>
 Date: Tue, 8 Jul 2025 09:24:06 +0800
 Subject: [PATCH 414/534] media: eswin: vdec: remove warnning
@@ -10,7 +10,7 @@ Signed-off-by: Sandie Cao <sandie.cao@deepcomputing.io>
  2 files changed, 2 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/staging/media/eswin/vdec/hantro_dec.c b/drivers/staging/media/eswin/vdec/hantro_dec.c
-index 30825672b7ef..5e31435f79d7 100644
+index 30825672b7ef5..5e31435f79d72 100644
 --- a/drivers/staging/media/eswin/vdec/hantro_dec.c
 +++ b/drivers/staging/media/eswin/vdec/hantro_dec.c
 @@ -487,6 +487,7 @@ static core_cfg config;
@@ -30,7 +30,7 @@ index 30825672b7ef..5e31435f79d7 100644
  #ifdef HANTRODEC_DEBUG
  
 diff --git a/drivers/staging/media/eswin/vdec/hantro_vcmd.c b/drivers/staging/media/eswin/vdec/hantro_vcmd.c
-index 36880d6c67c9..4a1c6ead7219 100644
+index 36880d6c67c9a..4a1c6ead72192 100644
 --- a/drivers/staging/media/eswin/vdec/hantro_vcmd.c
 +++ b/drivers/staging/media/eswin/vdec/hantro_vcmd.c
 @@ -2689,8 +2689,6 @@ int hantrovcmd_release(struct inode *inode, struct file *filp)

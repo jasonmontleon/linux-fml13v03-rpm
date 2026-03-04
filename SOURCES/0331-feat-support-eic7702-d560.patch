@@ -1,4 +1,4 @@
-From b3c2b3594272735af294d69c4c49c9a39c3068b3 Mon Sep 17 00:00:00 2001
+From 38f8d7f11ece1359a17cd14638d833065c198f8f Mon Sep 17 00:00:00 2001
 From: ningyu <ningyu@eswincomputing.com>
 Date: Fri, 18 Apr 2025 11:04:35 +0800
 Subject: [PATCH 331/534] feat:support eic7702 d560
@@ -12,7 +12,7 @@ Signed-off-by: ningyu <ningyu@eswincomputing.com>
  1 file changed, 99 insertions(+), 356 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-som560.dtsi b/arch/riscv/boot/dts/eswin/eic7702-som560.dtsi
-index d82f2b5b4044..c09e33c2180a 100644
+index d82f2b5b40442..c09e33c2180a3 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-som560.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7702-som560.dtsi
 @@ -43,8 +43,7 @@ / {

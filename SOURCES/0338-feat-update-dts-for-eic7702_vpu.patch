@@ -1,4 +1,4 @@
-From fa6ae2ead335b26fd142d2d1d25f0d17a5ae6bf0 Mon Sep 17 00:00:00 2001
+From b8f2a030b7b521c1faed2cf18458910fd978e98e Mon Sep 17 00:00:00 2001
 From: tanshanshan <tanshanshan@eswincomputing.com>
 Date: Sat, 12 Apr 2025 19:36:18 +0800
 Subject: [PATCH 338/534] feat:update dts for eic7702_vpu
@@ -16,7 +16,7 @@ Reviewed-by: Joey Zheng <zhengyu@eswincomputing.com>
  2 files changed, 70 insertions(+), 120 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-vpu7702.dts b/arch/riscv/boot/dts/eswin/eic7700-vpu7702.dts
-index 0a7a169ebb26..eed4e31d0557 100644
+index 0a7a169ebb26e..eed4e31d0557d 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-vpu7702.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7700-vpu7702.dts
 @@ -48,7 +48,6 @@ aliases {
@@ -283,7 +283,7 @@ index 0a7a169ebb26..eed4e31d0557 100644
  
  &pwm0 {
 diff --git a/arch/riscv/configs/eic7700_vpu7702_defconfig b/arch/riscv/configs/eic7700_vpu7702_defconfig
-index ca6a63a49950..5744fd7d1796 100644
+index ca6a63a499504..5744fd7d17963 100644
 --- a/arch/riscv/configs/eic7700_vpu7702_defconfig
 +++ b/arch/riscv/configs/eic7700_vpu7702_defconfig
 @@ -848,3 +848,6 @@ CONFIG_VIDEO_ESWIN_DEWARP=y

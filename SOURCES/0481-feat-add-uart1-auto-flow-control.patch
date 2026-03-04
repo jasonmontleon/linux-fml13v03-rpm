@@ -1,4 +1,4 @@
-From 7d317dcc670d4301504c952dc76d3ce7019ccd0a Mon Sep 17 00:00:00 2001
+From e4c0bcb5b4eee196222e57c16d411cde72b31e59 Mon Sep 17 00:00:00 2001
 From: Xiang Xu <xuxiang@eswincomputing.com>
 Date: Tue, 26 Aug 2025 19:12:37 +0800
 Subject: [PATCH 481/534] feat:add uart1 auto-flow-control
@@ -12,10 +12,10 @@ Signed-off-by: Xiang Xu <xuxiang@eswincomputing.com>
  1 file changed, 8 insertions(+)
 
 diff --git a/drivers/tty/serial/8250/8250_dw.c b/drivers/tty/serial/8250/8250_dw.c
-index 496922b756ab..b4735f208b33 100644
+index 091267b50f172..b39f026080e8f 100644
 --- a/drivers/tty/serial/8250/8250_dw.c
 +++ b/drivers/tty/serial/8250/8250_dw.c
-@@ -793,6 +793,13 @@ static const struct dw8250_platform_data dw8250_skip_set_rate_data = {
+@@ -800,6 +800,13 @@ static const struct dw8250_platform_data dw8250_skip_set_rate_data = {
  	.quirks = DW_UART_QUIRK_SKIP_SET_RATE,
  };
  
@@ -29,7 +29,7 @@ index 496922b756ab..b4735f208b33 100644
  static const struct of_device_id dw8250_of_match[] = {
  	{ .compatible = "snps,dw-apb-uart", .data = &dw8250_dw_apb },
  	{ .compatible = "cavium,octeon-3860-uart", .data = &dw8250_octeon_3860_data },
-@@ -800,6 +807,7 @@ static const struct of_device_id dw8250_of_match[] = {
+@@ -807,6 +814,7 @@ static const struct of_device_id dw8250_of_match[] = {
  	{ .compatible = "renesas,rzn1-uart", .data = &dw8250_renesas_rzn1_data },
  	{ .compatible = "sophgo,sg2044-uart", .data = &dw8250_skip_set_rate_data },
  	{ .compatible = "starfive,jh7100-uart", .data = &dw8250_skip_set_rate_data },

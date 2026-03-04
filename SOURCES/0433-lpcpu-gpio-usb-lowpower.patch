@@ -1,4 +1,4 @@
-From ae7b2b4ba238fd51059bfa4360fa85da518de148 Mon Sep 17 00:00:00 2001
+From ee3d1231cd5aca28987350d45394a46edee88cc5 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Thu, 4 Sep 2025 13:38:50 +0800
 Subject: [PATCH 433/534] lpcpu: gpio usb lowpower
@@ -17,7 +17,7 @@ Subject: [PATCH 433/534] lpcpu: gpio usb lowpower
  create mode 100644 vendor/eswin/firmware/eic7702_lpcpu_npu_fw_die1.bin
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
-index 5386b67db4bb..9d2df5ceaf16 100644
+index 5386b67db4bbe..9d2df5ceaf168 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 @@ -119,7 +119,7 @@ ramoops@fff00000 {
@@ -101,7 +101,7 @@ index 5386b67db4bb..9d2df5ceaf16 100644
  
  &d0_usbdrd_dwc3_1 {
 diff --git a/arch/riscv/boot/dts/eswin/eic7x-die0-pinctrl.dtsi b/arch/riscv/boot/dts/eswin/eic7x-die0-pinctrl.dtsi
-index 20bcd3995c6e..8609edfc2953 100644
+index 20bcd3995c6e8..8609edfc2953d 100644
 --- a/arch/riscv/boot/dts/eswin/eic7x-die0-pinctrl.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7x-die0-pinctrl.dtsi
 @@ -353,13 +353,13 @@ mux {
@@ -139,7 +139,7 @@ index 20bcd3995c6e..8609edfc2953 100644
  					groups = "gpio43_group";
  					function = "gpio43_func";
 diff --git a/arch/riscv/configs/eic7702_dbg_defconfig b/arch/riscv/configs/eic7702_dbg_defconfig
-index 521bf2ea8b19..e0fe69d5a784 100644
+index 521bf2ea8b19a..e0fe69d5a7843 100644
 --- a/arch/riscv/configs/eic7702_dbg_defconfig
 +++ b/arch/riscv/configs/eic7702_dbg_defconfig
 @@ -323,6 +323,9 @@ CONFIG_DEVTMPFS=y
@@ -153,7 +153,7 @@ index 521bf2ea8b19..e0fe69d5a784 100644
  CONFIG_BLK_DEV_RAM=y
  CONFIG_BLK_DEV_RAM_COUNT=2
 diff --git a/drivers/gpu/drm/eswin/es_dw_hdmi.c b/drivers/gpu/drm/eswin/es_dw_hdmi.c
-index add19a666642..de19e1156454 100644
+index add19a6666423..de19e1156454e 100644
 --- a/drivers/gpu/drm/eswin/es_dw_hdmi.c
 +++ b/drivers/gpu/drm/eswin/es_dw_hdmi.c
 @@ -890,7 +890,7 @@ static const struct of_device_id dw_hdmi_eswin_dt_ids[] = {
@@ -252,7 +252,7 @@ index add19a666642..de19e1156454 100644
  }
  
 diff --git a/drivers/soc/eswin/eswin-lpcpu.c b/drivers/soc/eswin/eswin-lpcpu.c
-index 63be32d49f80..de0b60a119c2 100644
+index 63be32d49f800..de0b60a119c2b 100644
 --- a/drivers/soc/eswin/eswin-lpcpu.c
 +++ b/drivers/soc/eswin/eswin-lpcpu.c
 @@ -43,6 +43,7 @@
@@ -807,7 +807,7 @@ index 63be32d49f80..de0b60a119c2 100644
  
  	return 0;
 diff --git a/drivers/usb/dwc3/dwc3-eswin.c b/drivers/usb/dwc3/dwc3-eswin.c
-index e9ccdbaaab2f..d5870860c317 100755
+index e9ccdbaaab2f0..d5870860c3178 100755
 --- a/drivers/usb/dwc3/dwc3-eswin.c
 +++ b/drivers/usb/dwc3/dwc3-eswin.c
 @@ -47,6 +47,7 @@

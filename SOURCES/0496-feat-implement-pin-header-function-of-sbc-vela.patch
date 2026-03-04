@@ -1,4 +1,4 @@
-From c38c437b3b243bacfe2f61237a13bdae20e4b7dc Mon Sep 17 00:00:00 2001
+From e1296d9119f7aa978dba2f6ab290690decfcefe4 Mon Sep 17 00:00:00 2001
 From: Xiang Xu <xuxiang@eswincomputing.com>
 Date: Mon, 25 Aug 2025 10:11:09 +0800
 Subject: [PATCH 496/534] feat:implement pin header function of sbc/vela
@@ -13,7 +13,7 @@ Signed-off-by: Xiang Xu <xuxiang@eswincomputing.com>
  2 files changed, 111 insertions(+), 35 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dtsi b/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dtsi
-index 7d2943a199bb..b42aaeda5da3 100755
+index 7d2943a199bb8..b42aaeda5da30 100755
 --- a/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dtsi
 @@ -532,6 +532,8 @@ &d0_uart4 {
@@ -84,7 +84,7 @@ index 7d2943a199bb..b42aaeda5da3 100755
  /* GPIO Function Description
  	gpio11  : usb hub reset(O)
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-vela.dts b/arch/riscv/boot/dts/eswin/eic7700-vela.dts
-index bf612bdc2dde..f6d399c8a87f 100644
+index bf612bdc2dde5..f6d399c8a87f2 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-vela.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7700-vela.dts
 @@ -104,7 +104,19 @@ mdhd_wlan {

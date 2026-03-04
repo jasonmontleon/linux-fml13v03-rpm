@@ -1,4 +1,4 @@
-From bcce675d72acf11458e4af1546a35ad123c593d6 Mon Sep 17 00:00:00 2001
+From 2a242fad34efb2bd99e3bf49e4af866ffd1b84b5 Mon Sep 17 00:00:00 2001
 From: ningyu <ningyu@eswincomputing.com>
 Date: Mon, 12 Aug 2024 13:10:39 +0800
 Subject: [PATCH 149/534] refactor:uniform naming of hifive premier p550
@@ -14,7 +14,7 @@ Signed-off-by: ningyu <ningyu@eswincomputing.com>
  rename arch/riscv/boot/dts/eswin/{hifive-premier-550.dts => hifive-premier-p550.dts} (100%)
 
 diff --git a/arch/riscv/boot/dts/eswin/Makefile b/arch/riscv/boot/dts/eswin/Makefile
-index 83f22c56ae87..3812da5bbdce 100644
+index 83f22c56ae877..3812da5bbdcee 100644
 --- a/arch/riscv/boot/dts/eswin/Makefile
 +++ b/arch/riscv/boot/dts/eswin/Makefile
 @@ -2,7 +2,7 @@

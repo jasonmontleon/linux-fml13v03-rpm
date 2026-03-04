@@ -1,4 +1,4 @@
-From 8b998906326207adfc4aa839feea254b8e4e98d2 Mon Sep 17 00:00:00 2001
+From bd1871bb5f529d8d6c6615474c1457fb8057db72 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Tue, 20 May 2025 16:02:05 +0800
 Subject: [PATCH 294/534] riscv: dts: eswin: Add Wi-Fi and Bluetooth rfkill
@@ -10,7 +10,7 @@ Signed-off-by: yang.wang <yang.wang@deepcomputing.io>
  1 file changed, 35 insertions(+), 7 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
-index 92f1b84af5d4..a93bdb2b01dc 100644
+index 92f1b84af5d45..a93bdb2b01dca 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 @@ -215,6 +215,35 @@ camera_light_power: regulator-gpio69 {

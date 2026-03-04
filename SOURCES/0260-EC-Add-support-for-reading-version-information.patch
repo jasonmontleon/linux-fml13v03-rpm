@@ -1,4 +1,4 @@
-From e44a7d72fe2ddc896212a58c1416b56d13156757 Mon Sep 17 00:00:00 2001
+From ee942869238e725d2f89fba44dd35d9be42ae981 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Wed, 26 Mar 2025 14:57:22 +0800
 Subject: [PATCH 260/534] EC: Add support for reading version information.
@@ -11,7 +11,7 @@ Signed-off-by: yang.wang <yang.wang@deepcomputing.io>
  3 files changed, 37 insertions(+), 10 deletions(-)
 
 diff --git a/arch/riscv/configs/fml13v03_defconfig b/arch/riscv/configs/fml13v03_defconfig
-index 8275d6cab804..e0bbfa825341 100755
+index 8275d6cab804e..e0bbfa825341e 100755
 --- a/arch/riscv/configs/fml13v03_defconfig
 +++ b/arch/riscv/configs/fml13v03_defconfig
 @@ -296,16 +296,9 @@ CONFIG_BT_BNEP=m
@@ -56,7 +56,7 @@ index 8275d6cab804..e0bbfa825341 100755
  CONFIG_EXT4_FS=y
  CONFIG_EXT4_FS_POSIX_ACL=y
 diff --git a/drivers/platform/chrome/cros_ec_sysfs.c b/drivers/platform/chrome/cros_ec_sysfs.c
-index 09e3bf5e8ec6..ae4733052ca0 100644
+index 09e3bf5e8ec69..ae4733052ca09 100644
 --- a/drivers/platform/chrome/cros_ec_sysfs.c
 +++ b/drivers/platform/chrome/cros_ec_sysfs.c
 @@ -191,6 +191,37 @@ static ssize_t version_show(struct device *dev,
@@ -98,7 +98,7 @@ index 09e3bf5e8ec6..ae4733052ca0 100644
  	kfree(msg);
  	return count;
 diff --git a/include/linux/platform_data/cros_ec_commands.h b/include/linux/platform_data/cros_ec_commands.h
-index ab721cf13a98..3b422b0de468 100644
+index ab721cf13a986..3b422b0de4684 100644
 --- a/include/linux/platform_data/cros_ec_commands.h
 +++ b/include/linux/platform_data/cros_ec_commands.h
 @@ -1706,6 +1706,12 @@ struct ec_params_flash_select {

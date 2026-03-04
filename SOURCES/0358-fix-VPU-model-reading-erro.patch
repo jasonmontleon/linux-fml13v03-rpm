@@ -1,4 +1,4 @@
-From 4f7e1ae1aad5dd625a297e1cd1dc8e88d4c03a0b Mon Sep 17 00:00:00 2001
+From eecc5867ab192c33f0060222d45d94f3b48ee6de Mon Sep 17 00:00:00 2001
 From: zhaodonghui <zhaodonghui@eswincomputing.com>
 Date: Mon, 12 May 2025 17:42:25 +0800
 Subject: [PATCH 358/534] fix:VPU model reading erro
@@ -20,7 +20,7 @@ Tested-by: Guichao Zhou <zhouguichao@eswincomputing.com>
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-vpu7702.dts b/arch/riscv/boot/dts/eswin/eic7700-vpu7702.dts
 deleted file mode 100644
-index dc9c4b349683..000000000000
+index dc9c4b349683e..0000000000000
 --- a/arch/riscv/boot/dts/eswin/eic7700-vpu7702.dts
 +++ /dev/null
 @@ -1,1036 +0,0 @@
@@ -1061,7 +1061,7 @@ index dc9c4b349683..000000000000
 -	status = "okay";
 -};
 diff --git a/arch/riscv/boot/dts/eswin/vpu7702-pcie.dts b/arch/riscv/boot/dts/eswin/vpu7702-pcie.dts
-index fd7737b62c61..03f548efbc80 100644
+index fd7737b62c61c..03f548efbc803 100644
 --- a/arch/riscv/boot/dts/eswin/vpu7702-pcie.dts
 +++ b/arch/riscv/boot/dts/eswin/vpu7702-pcie.dts
 @@ -39,7 +39,7 @@

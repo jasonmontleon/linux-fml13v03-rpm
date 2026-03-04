@@ -1,4 +1,4 @@
-From 98295d77579ce47dedea2f8b43d60d3af8cd35ab Mon Sep 17 00:00:00 2001
+From b052eda2666501f8f3d59129934b2ea9817e9766 Mon Sep 17 00:00:00 2001
 From: ningyu <ningyu@eswincomputing.com>
 Date: Thu, 28 Aug 2025 19:08:22 +0800
 Subject: [PATCH 483/534] fix:modify pmic's label name of die1
@@ -12,7 +12,7 @@ Signed-off-by: ningyu <ningyu@eswincomputing.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-d560a.dts b/arch/riscv/boot/dts/eswin/eic7702-d560a.dts
-index b5af295df905..d189592c2771 100644
+index b5af295df905e..d189592c2771c 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-d560a.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-d560a.dts
 @@ -68,7 +68,7 @@ es5340@f {

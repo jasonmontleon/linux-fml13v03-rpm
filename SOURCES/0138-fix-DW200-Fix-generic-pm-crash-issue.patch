@@ -1,4 +1,4 @@
-From b07268da9221d274380ac10dede425b4d91646f7 Mon Sep 17 00:00:00 2001
+From ba8b26ad8756d7cc13c5c4fe42d821c89e9ba5c4 Mon Sep 17 00:00:00 2001
 From: lilijun <lilijun@eswincomputing.com>
 Date: Tue, 30 Jul 2024 10:24:25 +0800
 Subject: [PATCH 138/534] fix(DW200): Fix generic pm crash issue
@@ -14,7 +14,7 @@ Signed-off-by: lilijun <lilijun@eswincomputing.com>
  1 file changed, 50 insertions(+), 9 deletions(-)
 
 diff --git a/drivers/staging/media/eswin/dewarp/vvcam_dwe_driver.c b/drivers/staging/media/eswin/dewarp/vvcam_dwe_driver.c
-index 7ee5a88a803c..78a843e5f85d 100644
+index 7ee5a88a803c7..78a843e5f85d9 100644
 --- a/drivers/staging/media/eswin/dewarp/vvcam_dwe_driver.c
 +++ b/drivers/staging/media/eswin/dewarp/vvcam_dwe_driver.c
 @@ -131,7 +131,7 @@ struct es_dw200_private {

@@ -1,4 +1,4 @@
-From 89318c7a13db63d38e7c31f5f0a70780e2c50e7a Mon Sep 17 00:00:00 2001
+From c005bdea5a99368fa03d550a51e9300ee5a4c580 Mon Sep 17 00:00:00 2001
 From: hehuan1 <hehuan1@eswincomputing.com>
 Date: Wed, 20 Aug 2025 16:07:48 +0800
 Subject: [PATCH 498/534] fix: resolve abnormal prints
@@ -12,7 +12,7 @@ Signed-off-by: hehuan1 <hehuan1@eswincomputing.com>
  1 file changed, 43 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/hwmon/eswin_pvt.c b/drivers/hwmon/eswin_pvt.c
-index c1f39c940df5..7d78c4f37d63 100644
+index c1f39c940df54..7d78c4f37d639 100644
 --- a/drivers/hwmon/eswin_pvt.c
 +++ b/drivers/hwmon/eswin_pvt.c
 @@ -84,7 +84,7 @@ static const struct pvt_sensor_info pvt_info_ddr[] = {

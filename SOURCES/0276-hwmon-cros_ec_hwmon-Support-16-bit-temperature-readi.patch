@@ -1,4 +1,4 @@
-From 2b1d73250cfd5f65985eb0d9c2878a4db2ccda7a Mon Sep 17 00:00:00 2001
+From a2f35885c15545aa589294284d88f84a1e85294c Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Tue, 15 Apr 2025 14:39:44 +0800
 Subject: [PATCH 276/534] hwmon: cros_ec_hwmon: Support 16-bit temperature
@@ -10,7 +10,7 @@ Signed-off-by: yang.wang <yang.wang@deepcomputing.io>
  1 file changed, 18 insertions(+), 15 deletions(-)
 
 diff --git a/drivers/hwmon/cros_ec_hwmon.c b/drivers/hwmon/cros_ec_hwmon.c
-index 6f29d14ab401..252a788d1ae5 100644
+index 6f29d14ab4013..252a788d1ae58 100644
 --- a/drivers/hwmon/cros_ec_hwmon.c
 +++ b/drivers/hwmon/cros_ec_hwmon.c
 @@ -25,19 +25,19 @@ struct cros_ec_hwmon_priv {

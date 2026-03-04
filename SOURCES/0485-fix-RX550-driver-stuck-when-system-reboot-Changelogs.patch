@@ -1,4 +1,4 @@
-From 554e613556ca8127769318e2132323dc692bd7d8 Mon Sep 17 00:00:00 2001
+From 94ff5a11a40030c088e716c1fe78692883b7534e Mon Sep 17 00:00:00 2001
 From: ouyanghui <ouyanghui@eswincomputing.com>
 Date: Fri, 22 Aug 2025 13:50:12 +0800
 Subject: [PATCH 485/534] fix:RX550 driver stuck when system reboot Changelogs:
@@ -10,7 +10,7 @@ Signed-off-by: ouyanghui <ouyanghui@eswincomputing.com>
  1 file changed, 2 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/pci/controller/dwc/pcie-eswin.c b/drivers/pci/controller/dwc/pcie-eswin.c
-index ca08847d7c04..f00b5909b85f 100644
+index ca08847d7c048..f00b5909b85fc 100644
 --- a/drivers/pci/controller/dwc/pcie-eswin.c
 +++ b/drivers/pci/controller/dwc/pcie-eswin.c
 @@ -78,9 +78,8 @@ struct eswin_pcie {

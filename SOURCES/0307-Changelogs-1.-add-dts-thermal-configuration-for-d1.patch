@@ -1,4 +1,4 @@
-From a70e4465aab24ab684ad59ade2d62303273b0d4f Mon Sep 17 00:00:00 2001
+From a0918dd42911b2805b28842ac24e7b3c175ebe2a Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Fri, 13 Jun 2025 09:28:16 +0800
 Subject: [PATCH 307/534] Changelogs: 1. add dts thermal configuration for d1
@@ -9,7 +9,7 @@ Subject: [PATCH 307/534] Changelogs: 1. add dts thermal configuration for d1
  2 files changed, 21 insertions(+), 3 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030-arch-d2d.dtsi b/arch/riscv/boot/dts/eswin/eswin-win2030-arch-d2d.dtsi
-index b1f5b1aeb3a3..a9194e19204a 100644
+index b1f5b1aeb3a30..a9194e19204a4 100644
 --- a/arch/riscv/boot/dts/eswin/eswin-win2030-arch-d2d.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eswin-win2030-arch-d2d.dtsi
 @@ -110,6 +110,7 @@ cpu_4: cpu@4 {
@@ -45,7 +45,7 @@ index b1f5b1aeb3a3..a9194e19204a 100644
  		cpu7_intc: interrupt-controller {
  			#interrupt-cells = <1>;
 diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi b/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi
-index 6bf51152c5c3..21e045c91ee6 100644
+index 6bf51152c5c33..21e045c91ee6b 100644
 --- a/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi
 @@ -430,6 +430,8 @@ vdec1: video-decoder1@70100000 {

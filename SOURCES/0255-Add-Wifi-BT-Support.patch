@@ -1,4 +1,4 @@
-From 966f7714440bee923113c3a88059bbbf51cd0086 Mon Sep 17 00:00:00 2001
+From 1706fde42058f5efbb71d2b6281a238f2bce3ecc Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Wed, 19 Mar 2025 18:07:48 +0800
 Subject: [PATCH 255/534] Add Wifi/BT Support.
@@ -11,7 +11,7 @@ Subject: [PATCH 255/534] Add Wifi/BT Support.
  4 files changed, 23 insertions(+), 3 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
-index 2161add2de9b..b5e470681536 100644
+index 2161add2de9be..b5e4706815362 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 @@ -494,7 +494,12 @@ &d1_lpcpu {
@@ -28,7 +28,7 @@ index 2161add2de9b..b5e470681536 100644
  	/* wifi key e */
  	status = "okay";
 diff --git a/arch/riscv/boot/dts/eswin/eic7x-die0-pinctrl.dtsi b/arch/riscv/boot/dts/eswin/eic7x-die0-pinctrl.dtsi
-index 8409a0886b7d..9e8e0ce060a1 100644
+index 8409a0886b7da..9e8e0ce060a1e 100644
 --- a/arch/riscv/boot/dts/eswin/eic7x-die0-pinctrl.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7x-die0-pinctrl.dtsi
 @@ -799,6 +799,11 @@ mux {
@@ -44,7 +44,7 @@ index 8409a0886b7d..9e8e0ce060a1 100644
              pinctrl_die0_gpio28_default: gpio28-default{
  				mux {
 diff --git a/arch/riscv/boot/dts/eswin/eic7x-die1-pinctrl.dtsi b/arch/riscv/boot/dts/eswin/eic7x-die1-pinctrl.dtsi
-index fcb3d855c105..8a1c568c104e 100644
+index fcb3d855c105d..8a1c568c104e2 100644
 --- a/arch/riscv/boot/dts/eswin/eic7x-die1-pinctrl.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7x-die1-pinctrl.dtsi
 @@ -717,7 +717,7 @@ mux {
@@ -68,7 +68,7 @@ index fcb3d855c105..8a1c568c104e 100644
  			};
              pinctrl_die1_gpio19_default: gpio19-default{
 diff --git a/arch/riscv/configs/fml13v03_defconfig b/arch/riscv/configs/fml13v03_defconfig
-index 9d0e62125f2b..0fbd77c040e2 100755
+index 9d0e62125f2bc..0fbd77c040e21 100755
 --- a/arch/riscv/configs/fml13v03_defconfig
 +++ b/arch/riscv/configs/fml13v03_defconfig
 @@ -296,6 +296,16 @@ CONFIG_BT_BNEP=m

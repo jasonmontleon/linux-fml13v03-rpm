@@ -1,4 +1,4 @@
-From e56a901c2e424103389318b56a169d1ba28f0b7b Mon Sep 17 00:00:00 2001
+From c375c3376a28b5febe02b7e08975fbf01787fa90 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Tue, 2 Sep 2025 19:03:12 +0800
 Subject: [PATCH 432/534] Code cleanup
@@ -9,7 +9,7 @@ Subject: [PATCH 432/534] Code cleanup
  2 files changed, 1 insertion(+), 16 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-pinctrl.dtsi b/arch/riscv/boot/dts/eswin/eic7700-pinctrl.dtsi
-index 6a4913a716ae..dadee5cff3ab 100644
+index 6a4913a716ae9..dadee5cff3ab7 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-pinctrl.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7700-pinctrl.dtsi
 @@ -109,22 +109,6 @@ mux{
@@ -36,7 +36,7 @@ index 6a4913a716ae..dadee5cff3ab 100644
  				mux {
  					groups = "spi3_group";
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
-index a735c67f7515..5386b67db4bb 100644
+index a735c67f7515e..5386b67db4bbe 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 @@ -56,6 +56,7 @@ aliases {

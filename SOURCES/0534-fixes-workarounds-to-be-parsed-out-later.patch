@@ -1,4 +1,4 @@
-From 85fc57ad093a143777c643a6bb971f3fbe0cbbba Mon Sep 17 00:00:00 2001
+From 0d8fea3c700fc4e544ec00297cf71a9215b2d6d7 Mon Sep 17 00:00:00 2001
 From: Jason Montleon <jason@montleon.com>
 Date: Wed, 19 Nov 2025 05:24:37 +0000
 Subject: [PATCH 534/534] fixes/workarounds to be parsed out later
@@ -29,7 +29,7 @@ Subject: [PATCH 534/534] fixes/workarounds to be parsed out later
  create mode 100644 include/linux/eswin_memblock.h
 
 diff --git a/arch/riscv/include/asm/pgtable.h b/arch/riscv/include/asm/pgtable.h
-index 8e1fc296499a..dc1724837136 100644
+index 8e1fc296499ae..dc17248371365 100644
 --- a/arch/riscv/include/asm/pgtable.h
 +++ b/arch/riscv/include/asm/pgtable.h
 @@ -647,8 +647,6 @@ static inline pgprot_t pgprot_writecombine(pgprot_t _prot)
@@ -42,7 +42,7 @@ index 8e1fc296499a..dc1724837136 100644
   * THP functions
   */
 diff --git a/drivers/media/i2c/Makefile b/drivers/media/i2c/Makefile
-index 64624c43150a..e344b7495e67 100644
+index 64624c43150a9..e344b7495e67d 100644
 --- a/drivers/media/i2c/Makefile
 +++ b/drivers/media/i2c/Makefile
 @@ -24,7 +24,6 @@ obj-$(CONFIG_VIDEO_BT819) += bt819.o
@@ -59,7 +59,7 @@ index 64624c43150a..e344b7495e67 100644
  obj-$(CONFIG_VIDEO_WM8775) += wm8775.o
 -obj-$(CONFIG_VIDEO_IMX327) += imx327.o
 diff --git a/drivers/memory/eswin/Makefile b/drivers/memory/eswin/Makefile
-index 9f256dc64dad..d036f957cb67 100644
+index 9f256dc64dada..d036f957cb67e 100644
 --- a/drivers/memory/eswin/Makefile
 +++ b/drivers/memory/eswin/Makefile
 @@ -12,5 +12,3 @@ obj-$(CONFIG_ESWIN_DMA_MEMCP)           += es_dma_memcp/
@@ -69,7 +69,7 @@ index 9f256dc64dad..d036f957cb67 100644
 -
 -COPY_HEADERS := $(shell cp $(ES_MEM_HEADER)/*.h include/linux)
 diff --git a/drivers/memory/eswin/es_dev_buf/Makefile b/drivers/memory/eswin/es_dev_buf/Makefile
-index 3ba183ff62bd..391af838aada 100644
+index 3ba183ff62bd7..391af838aada1 100644
 --- a/drivers/memory/eswin/es_dev_buf/Makefile
 +++ b/drivers/memory/eswin/es_dev_buf/Makefile
 @@ -1,5 +1 @@
@@ -79,7 +79,7 @@ index 3ba183ff62bd..391af838aada 100644
 -COPY_HEADERS:=$(shell cp $(ES_DEV_DMA_BUF_HEADER)/*.h include/linux)
 -
 diff --git a/drivers/phy/eswin/es-camera-module.h b/drivers/phy/eswin/es-camera-module.h
-index eb3f8bb351fd..f862edea89c0 100644
+index eb3f8bb351fd6..f862edea89c0a 100644
 --- a/drivers/phy/eswin/es-camera-module.h
 +++ b/drivers/phy/eswin/es-camera-module.h
 @@ -1,4 +1,4 @@
@@ -96,7 +96,7 @@ index eb3f8bb351fd..f862edea89c0 100644
 \ No newline at end of file
 + 
 diff --git a/drivers/phy/eswin/es-dvp2axi-config.h b/drivers/phy/eswin/es-dvp2axi-config.h
-index 8382f76f6ac2..9ac4e301e8b5 100644
+index 8382f76f6ac22..9ac4e301e8b5b 100644
 --- a/drivers/phy/eswin/es-dvp2axi-config.h
 +++ b/drivers/phy/eswin/es-dvp2axi-config.h
 @@ -1,4 +1,4 @@
@@ -113,7 +113,7 @@ index 8382f76f6ac2..9ac4e301e8b5 100644
 \ No newline at end of file
 + 
 diff --git a/drivers/phy/eswin/es-video-format.h b/drivers/phy/eswin/es-video-format.h
-index 88d5c4c80128..2ad529a37634 100644
+index 88d5c4c801282..2ad529a376343 100644
 --- a/drivers/phy/eswin/es-video-format.h
 +++ b/drivers/phy/eswin/es-video-format.h
 @@ -1,4 +1,4 @@
@@ -123,7 +123,7 @@ index 88d5c4c80128..2ad529a37634 100644
   * ESWIN phy video-format driver
   *
 diff --git a/drivers/spi/spi-eswin.c b/drivers/spi/spi-eswin.c
-index 0e0652e93906..4e2b43bbca4e 100644
+index 0e0652e93906c..4e2b43bbca4ea 100644
 --- a/drivers/spi/spi-eswin.c
 +++ b/drivers/spi/spi-eswin.c
 @@ -1130,6 +1130,13 @@ static const struct of_device_id eswin_spi_mmio_of_match[] = {
@@ -159,7 +159,7 @@ index 0e0652e93906..4e2b43bbca4e 100644
 +MODULE_LICENSE("GPL v2");
 diff --git a/include/linux/buddy.h b/include/linux/buddy.h
 new file mode 100644
-index 000000000000..ff47325f2d27
+index 0000000000000..ff47325f2d27c
 --- /dev/null
 +++ b/include/linux/buddy.h
 @@ -0,0 +1,217 @@
@@ -382,7 +382,7 @@ index 000000000000..ff47325f2d27
 +#endif
 diff --git a/include/linux/dsp_dma_buf.h b/include/linux/dsp_dma_buf.h
 new file mode 100644
-index 000000000000..ab6962ad1ccf
+index 0000000000000..ab6962ad1ccfa
 --- /dev/null
 +++ b/include/linux/dsp_dma_buf.h
 @@ -0,0 +1,44 @@
@@ -432,7 +432,7 @@ index 000000000000..ab6962ad1ccf
 +#endif
 diff --git a/include/linux/eswin_memblock.h b/include/linux/eswin_memblock.h
 new file mode 100644
-index 000000000000..23e7b0831b8f
+index 0000000000000..23e7b0831b8fe
 --- /dev/null
 +++ b/include/linux/eswin_memblock.h
 @@ -0,0 +1,20 @@
@@ -457,7 +457,7 @@ index 000000000000..23e7b0831b8f
 +
 +#endif
 diff --git a/include/uapi/linux/dma_memcp.h b/include/uapi/linux/dma_memcp.h
-index 30ca7423a39c..aec2723fc4c8 100644
+index 30ca7423a39c1..aec2723fc4c8d 100644
 --- a/include/uapi/linux/dma_memcp.h
 +++ b/include/uapi/linux/dma_memcp.h
 @@ -21,6 +21,9 @@
@@ -471,7 +471,7 @@ index 30ca7423a39c..aec2723fc4c8 100644
  #define ES_DMA_MEMCP_H
  
 diff --git a/include/uapi/linux/es-camera-module.h b/include/uapi/linux/es-camera-module.h
-index a6b70b66cbd1..6acef59f1fa7 100644
+index a6b70b66cbd1f..6acef59f1fa7f 100644
 --- a/include/uapi/linux/es-camera-module.h
 +++ b/include/uapi/linux/es-camera-module.h
 @@ -1,4 +1,4 @@
@@ -492,7 +492,7 @@ index a6b70b66cbd1..6acef59f1fa7 100644
  
  /* sensor lvds sync code
 diff --git a/include/uapi/linux/es-dvp2axi-config.h b/include/uapi/linux/es-dvp2axi-config.h
-index 5f51c5b1fe9b..c71c92e7fbb2 100644
+index 5f51c5b1fe9b6..c71c92e7fbb22 100644
 --- a/include/uapi/linux/es-dvp2axi-config.h
 +++ b/include/uapi/linux/es-dvp2axi-config.h
 @@ -1,4 +1,4 @@
@@ -502,7 +502,7 @@ index 5f51c5b1fe9b..c71c92e7fbb2 100644
   * ESWIN DVP2AXI config driver
   *
 diff --git a/include/uapi/linux/es-video-format.h b/include/uapi/linux/es-video-format.h
-index 0366e9c95431..2f7f4a612fa8 100644
+index 0366e9c95431a..2f7f4a612fa8d 100644
 --- a/include/uapi/linux/es-video-format.h
 +++ b/include/uapi/linux/es-video-format.h
 @@ -1,4 +1,4 @@
@@ -512,7 +512,7 @@ index 0366e9c95431..2f7f4a612fa8 100644
   * ESWIN video format driver
   *
 diff --git a/include/uapi/linux/es_vb_user.h b/include/uapi/linux/es_vb_user.h
-index d296ad3021c3..fe36df02a747 100644
+index d296ad3021c35..fe36df02a7473 100644
 --- a/include/uapi/linux/es_vb_user.h
 +++ b/include/uapi/linux/es_vb_user.h
 @@ -1,4 +1,4 @@
@@ -522,7 +522,7 @@ index d296ad3021c3..fe36df02a747 100644
   * ESWIN MMZ VB user state api header.
   *
 diff --git a/include/uapi/linux/eswin-ipc-scpu.h b/include/uapi/linux/eswin-ipc-scpu.h
-index 9227a9351488..64c377727d41 100644
+index 9227a93514887..64c377727d418 100644
 --- a/include/uapi/linux/eswin-ipc-scpu.h
 +++ b/include/uapi/linux/eswin-ipc-scpu.h
 @@ -47,6 +47,9 @@
@@ -545,7 +545,7 @@ index 9227a9351488..64c377727d41 100644
  }khandle_dma_allocation_data_t;
  
 diff --git a/include/uapi/linux/malloc_dmabuf.h b/include/uapi/linux/malloc_dmabuf.h
-index bf66ff0230ea..1c5832b43bfd 100644
+index bf66ff0230ea3..1c5832b43bfd9 100644
 --- a/include/uapi/linux/malloc_dmabuf.h
 +++ b/include/uapi/linux/malloc_dmabuf.h
 @@ -21,6 +21,8 @@
@@ -565,7 +565,7 @@ index bf66ff0230ea..1c5832b43bfd 100644
 \ No newline at end of file
 +#endif
 diff --git a/include/uapi/linux/mmz_vb.h b/include/uapi/linux/mmz_vb.h
-index 27a5f0a94352..5e808bba0e49 100644
+index 27a5f0a943526..5e808bba0e498 100644
 --- a/include/uapi/linux/mmz_vb.h
 +++ b/include/uapi/linux/mmz_vb.h
 @@ -2,6 +2,9 @@

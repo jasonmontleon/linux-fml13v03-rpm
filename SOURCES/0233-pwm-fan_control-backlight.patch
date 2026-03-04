@@ -1,4 +1,4 @@
-From 074cdf22cd7d10d8368461eb1dde702e767e51a4 Mon Sep 17 00:00:00 2001
+From 0fe5c1a9bfa2fab89023f7cb701a670951c9ef15 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Mon, 17 Mar 2025 17:54:27 +0800
 Subject: [PATCH 233/534] pwm: fan_control & backlight .
@@ -11,7 +11,7 @@ Signed-off-by: yang.wang <yang.wang@deepcomputing.io>
  3 files changed, 61 insertions(+), 15 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
-index 9588c5c64b4a..7be25ad21838 100644
+index 9588c5c64b4a5..7be25ad218387 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 @@ -159,19 +159,47 @@ distance-map {
@@ -97,7 +97,7 @@ index 9588c5c64b4a..7be25ad21838 100644
  
  &pvt0 {
 diff --git a/arch/riscv/configs/fml13v03_defconfig b/arch/riscv/configs/fml13v03_defconfig
-index 97e92b1a81a0..323ba31752ba 100755
+index 97e92b1a81a0c..323ba31752ba6 100755
 --- a/arch/riscv/configs/fml13v03_defconfig
 +++ b/arch/riscv/configs/fml13v03_defconfig
 @@ -470,6 +470,7 @@ CONFIG_SENSORS_PAC1934=y
@@ -117,7 +117,7 @@ index 97e92b1a81a0..323ba31752ba 100755
  CONFIG_SND=y
  CONFIG_SND_HDA_INTEL=m
 diff --git a/drivers/pwm/pwm-dwc-eswin.c b/drivers/pwm/pwm-dwc-eswin.c
-index 1873b8351b0c..71841d8a012a 100644
+index 1873b8351b0cc..71841d8a012ad 100644
 --- a/drivers/pwm/pwm-dwc-eswin.c
 +++ b/drivers/pwm/pwm-dwc-eswin.c
 @@ -104,7 +104,7 @@ static int __dwc_pwm_configure_timer(struct dwc_pwm *dwc,

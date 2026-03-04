@@ -1,4 +1,4 @@
-From e97ae76bcceeba8aee73b2bf4ea1f751bc4098fa Mon Sep 17 00:00:00 2001
+From 5220e033b11a4429651bdc50b55eaee26b7e86b8 Mon Sep 17 00:00:00 2001
 From: yufangxian <yufangxian@eswincomputing.com>
 Date: Wed, 20 Aug 2025 16:33:00 +0800
 Subject: [PATCH 466/534] feat: vela csi support
@@ -19,7 +19,7 @@ Signed-off-by: congyuyang <congyuyang@eswincomputing.com>
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-vela-camera-imx219.dtsi b/arch/riscv/boot/dts/eswin/eic7700-vela-camera-imx219.dtsi
 new file mode 100644
-index 000000000000..2d71b341f200
+index 0000000000000..2d71b341f200e
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/eic7700-vela-camera-imx219.dtsi
 @@ -0,0 +1,337 @@
@@ -362,7 +362,7 @@ index 000000000000..2d71b341f200
 +};
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-vela-camera-imx415.dtsi b/arch/riscv/boot/dts/eswin/eic7700-vela-camera-imx415.dtsi
 new file mode 100644
-index 000000000000..a53342ed816a
+index 0000000000000..a53342ed816a5
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/eic7700-vela-camera-imx415.dtsi
 @@ -0,0 +1,337 @@
@@ -704,7 +704,7 @@ index 000000000000..a53342ed816a
 +	status = "disabled";
 +};
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-vela.dts b/arch/riscv/boot/dts/eswin/eic7700-vela.dts
-index 37c48f7ace22..5dbf7f6445b8 100644
+index 37c48f7ace220..5dbf7f6445b8a 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-vela.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7700-vela.dts
 @@ -19,6 +19,7 @@

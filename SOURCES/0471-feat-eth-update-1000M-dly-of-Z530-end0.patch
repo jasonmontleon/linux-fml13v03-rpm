@@ -1,4 +1,4 @@
-From d4c5005b5e412c076430ca969ed5d651de5d7882 Mon Sep 17 00:00:00 2001
+From 0ce25a04154db922651529478272990cf28e041c Mon Sep 17 00:00:00 2001
 From: lizhi2 <lizhi2@eswincomputing.com>
 Date: Mon, 25 Aug 2025 09:35:04 +0800
 Subject: [PATCH 471/534] feat(eth): update 1000M dly of Z530 end0
@@ -12,7 +12,7 @@ Signed-off-by: lizhi2 <lizhi2@eswincomputing.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-z530.dts b/arch/riscv/boot/dts/eswin/eic7700-z530.dts
-index a790850fda0e..3db40fb3cecf 100644
+index a790850fda0e2..3db40fb3cecf9 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-z530.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7700-z530.dts
 @@ -45,7 +45,7 @@ reg_vcc1v8: vcc1v8 {

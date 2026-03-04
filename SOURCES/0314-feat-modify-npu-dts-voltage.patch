@@ -1,4 +1,4 @@
-From f5e31399ef181606b29026e5efa6a0a512753668 Mon Sep 17 00:00:00 2001
+From 85af6cc2ad974fb8c4727115891f139e2800df7f Mon Sep 17 00:00:00 2001
 From: donghuawei <donghuawei@eswincomputing.com>
 Date: Tue, 18 Feb 2025 16:40:28 +0800
 Subject: [PATCH 314/534] feat: modify npu dts voltage
@@ -15,7 +15,7 @@ Signed-off-by: donghuawei <donghuawei@eswincomputing.com>
  2 files changed, 10 insertions(+), 117 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-tb.dts b/arch/riscv/boot/dts/eswin/eic7702-tb.dts
-index e5f4d9647c38..055ca07da685 100644
+index e5f4d9647c386..055ca07da6858 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-tb.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-tb.dts
 @@ -465,6 +465,7 @@ &d0_npu{
@@ -27,7 +27,7 @@ index e5f4d9647c38..055ca07da685 100644
  
  &d0_dsp_subsys {
 diff --git a/drivers/memory/eswin/codacache/llc_spram.c b/drivers/memory/eswin/codacache/llc_spram.c
-index 3611c7cca9fe..2da4ff9ab120 100644
+index 3611c7cca9fe4..2da4ff9ab1206 100644
 --- a/drivers/memory/eswin/codacache/llc_spram.c
 +++ b/drivers/memory/eswin/codacache/llc_spram.c
 @@ -105,9 +105,6 @@ struct spram_dev {

@@ -1,4 +1,4 @@
-From 99374897c98e4859ae7e5b9f2d857a7257cfb508 Mon Sep 17 00:00:00 2001
+From 02664ba188250a4a66f90687162e23a627484751 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Fri, 23 May 2025 18:20:18 +0800
 Subject: [PATCH 297/534] cros_ec_poweroff: Switch to synchronous SPI transfer
@@ -10,7 +10,7 @@ Signed-off-by: yang.wang <yang.wang@deepcomputing.io>
  1 file changed, 32 insertions(+), 50 deletions(-)
 
 diff --git a/drivers/platform/chrome/cros_ec_poweroff.c b/drivers/platform/chrome/cros_ec_poweroff.c
-index 655bff8b6100..6ccbbf9e333d 100644
+index 655bff8b6100e..6ccbbf9e333d0 100644
 --- a/drivers/platform/chrome/cros_ec_poweroff.c
 +++ b/drivers/platform/chrome/cros_ec_poweroff.c
 @@ -1,3 +1,4 @@

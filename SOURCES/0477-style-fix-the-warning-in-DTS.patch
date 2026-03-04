@@ -1,4 +1,4 @@
-From 42733c2d79ddd6ea4e62283a5ced2721ec78dfcb Mon Sep 17 00:00:00 2001
+From 06a20b8d813e210c910d6dbb831410831fca08cb Mon Sep 17 00:00:00 2001
 From: wangguosheng <wangguosheng@eswincomputing.com>
 Date: Wed, 27 Aug 2025 13:18:36 +0800
 Subject: [PATCH 477/534] style:fix the warning in DTS
@@ -17,7 +17,7 @@ Signed-off-by: wangguosheng <wangguosheng@eswincomputing.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03-evt.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03-evt.dts
-index 7e8270a8393f..fce5c14cea74 100755
+index 7e8270a8393fb..fce5c14cea746 100755
 --- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03-evt.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03-evt.dts
 @@ -1142,7 +1142,7 @@ &ssi1 {

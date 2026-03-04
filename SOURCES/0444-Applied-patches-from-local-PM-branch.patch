@@ -1,4 +1,4 @@
-From a389c8c3df6fe281aaa28f0894165b677a8ce132 Mon Sep 17 00:00:00 2001
+From 734e0b57b71d09cf6c42d61c42f20086ac529d0a Mon Sep 17 00:00:00 2001
 From: Jiean He <hejiean@eswincomputing.com>
 Date: Fri, 8 Aug 2025 20:34:28 +0800
 Subject: [PATCH 444/534] Applied patches from local PM branch
@@ -28,7 +28,7 @@ Signed-off-by: hejiean <hejiean@eswincomputing.com>
  16 files changed, 339 insertions(+), 512 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-evb-a2.dtsi b/arch/riscv/boot/dts/eswin/eic7700-evb-a2.dtsi
-index 9c4e3867fe80..d15c64867147 100644
+index 9c4e3867fe80e..d15c648671470 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-evb-a2.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7700-evb-a2.dtsi
 @@ -30,7 +30,7 @@
@@ -171,7 +171,7 @@ index 9c4e3867fe80..d15c64867147 100644
  	status = "okay";
  };
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03-evt.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03-evt.dts
-index 6cc7838a2619..7e8270a8393f 100755
+index 6cc7838a2619c..7e8270a8393fb 100755
 --- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03-evt.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03-evt.dts
 @@ -295,11 +295,13 @@ &d0_clock {
@@ -309,7 +309,7 @@ index 6cc7838a2619..7e8270a8393f 100755
  	status = "okay";
  };
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
-index f507433be4cf..fea5a0a2db4b 100644
+index f507433be4cfc..fea5a0a2db4bb 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 @@ -129,12 +129,6 @@ g2d_12GB_boundary_reserved_4k {
@@ -446,7 +446,7 @@ index f507433be4cf..fea5a0a2db4b 100644
  	status = "okay";
  };
 diff --git a/arch/riscv/boot/dts/eswin/eic7x-die0-pinctrl.dtsi b/arch/riscv/boot/dts/eswin/eic7x-die0-pinctrl.dtsi
-index 8609edfc2953..4b3dcaab244e 100644
+index 8609edfc2953d..4b3dcaab244e2 100644
 --- a/arch/riscv/boot/dts/eswin/eic7x-die0-pinctrl.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7x-die0-pinctrl.dtsi
 @@ -283,7 +283,7 @@ mux {
@@ -525,7 +525,7 @@ index 8609edfc2953..4b3dcaab244e 100644
  				mux {
  					groups = "sata_act_led_group";
 diff --git a/arch/riscv/boot/dts/eswin/eswin_aicard.dts b/arch/riscv/boot/dts/eswin/eswin_aicard.dts
-index b9926518edd3..1d4220dbd475 100644
+index b9926518edd3a..1d4220dbd4759 100644
 --- a/arch/riscv/boot/dts/eswin/eswin_aicard.dts
 +++ b/arch/riscv/boot/dts/eswin/eswin_aicard.dts
 @@ -40,8 +40,7 @@ / {
@@ -689,7 +689,7 @@ index b9926518edd3..1d4220dbd475 100644
  	status = "okay";
  
 diff --git a/arch/riscv/configs/eic7700_dbg_defconfig b/arch/riscv/configs/eic7700_dbg_defconfig
-index 7081d3e8fe1d..1db073cbfd1f 100644
+index 7081d3e8fe1d6..1db073cbfd1f5 100644
 --- a/arch/riscv/configs/eic7700_dbg_defconfig
 +++ b/arch/riscv/configs/eic7700_dbg_defconfig
 @@ -36,10 +36,13 @@ CONFIG_SMP=y
@@ -760,7 +760,7 @@ index 7081d3e8fe1d..1db073cbfd1f 100644
  CONFIG_WQ_WATCHDOG=y
  CONFIG_DEBUG_TIMEKEEPING=y
 diff --git a/arch/riscv/configs/eic7702_dbg_defconfig b/arch/riscv/configs/eic7702_dbg_defconfig
-index 47715ce2803e..545956c6cd50 100644
+index 47715ce2803e4..545956c6cd503 100644
 --- a/arch/riscv/configs/eic7702_dbg_defconfig
 +++ b/arch/riscv/configs/eic7702_dbg_defconfig
 @@ -41,10 +41,13 @@ CONFIG_HOTPLUG_CPU=y
@@ -949,7 +949,7 @@ index 47715ce2803e..545956c6cd50 100644
  CONFIG_PWM_ESWIN=y
  CONFIG_RESET_ESWIN=y
 diff --git a/arch/riscv/configs/eswin_aicard_defconfig b/arch/riscv/configs/eswin_aicard_defconfig
-index 916aa1b6c496..3b2fbc9cf7bf 100644
+index 916aa1b6c4968..3b2fbc9cf7bf5 100644
 --- a/arch/riscv/configs/eswin_aicard_defconfig
 +++ b/arch/riscv/configs/eswin_aicard_defconfig
 @@ -688,7 +688,7 @@ CONFIG_USB_SERIAL_PL2303=y
@@ -962,7 +962,7 @@ index 916aa1b6c496..3b2fbc9cf7bf 100644
  CONFIG_USB_GADGET_DEBUG_FILES=y
  CONFIG_USB_GADGET_VBUS_DRAW=500
 diff --git a/arch/riscv/configs/fml13v03_defconfig b/arch/riscv/configs/fml13v03_defconfig
-index d91e28ec1c26..8d98e892bbfb 100755
+index d91e28ec1c26d..8d98e892bbfb9 100755
 --- a/arch/riscv/configs/fml13v03_defconfig
 +++ b/arch/riscv/configs/fml13v03_defconfig
 @@ -3226,7 +3226,7 @@ CONFIG_USB_SISUSBVGA=m
@@ -995,7 +995,7 @@ index d91e28ec1c26..8d98e892bbfb 100755
  CONFIG_VIDEO_ESWIN_DVP2AXI=y
 -
 diff --git a/arch/riscv/configs/m2_evb_defconfig b/arch/riscv/configs/m2_evb_defconfig
-index dae9c481aa19..d1b0cb39329a 100644
+index dae9c481aa199..d1b0cb39329ac 100644
 --- a/arch/riscv/configs/m2_evb_defconfig
 +++ b/arch/riscv/configs/m2_evb_defconfig
 @@ -30,6 +30,7 @@ CONFIG_BLK_DEV_INITRD=y
@@ -1024,7 +1024,7 @@ index dae9c481aa19..d1b0cb39329a 100644
  CONFIG_USB_GADGET_DEBUG_FILES=y
  CONFIG_USB_GADGET_VBUS_DRAW=500
 diff --git a/arch/riscv/configs/u2_evb_defconfig b/arch/riscv/configs/u2_evb_defconfig
-index abccc570760a..a2f493596298 100644
+index abccc570760a8..a2f4935962983 100644
 --- a/arch/riscv/configs/u2_evb_defconfig
 +++ b/arch/riscv/configs/u2_evb_defconfig
 @@ -491,6 +491,7 @@ CONFIG_DEVFREQ_THERMAL=y
@@ -1045,7 +1045,7 @@ index abccc570760a..a2f493596298 100644
  CONFIG_USB_GADGET_DEBUG_FILES=y
  CONFIG_USB_GADGET_VBUS_DRAW=500
 diff --git a/drivers/clk/eswin/clk.c b/drivers/clk/eswin/clk.c
-index e33d3405305f..c720c46c5a0c 100644
+index e33d3405305fd..c720c46c5a0c4 100644
 --- a/drivers/clk/eswin/clk.c
 +++ b/drivers/clk/eswin/clk.c
 @@ -310,11 +310,15 @@ static int clk_pll_set_rate(struct clk_hw *hw, unsigned long rate,
@@ -1145,7 +1145,7 @@ index e33d3405305f..c720c46c5a0c 100644
  		if (ret) {
  			pr_err("%s %d, failed to switch %s to %s, ret %d\n",
 diff --git a/drivers/soc/eswin/ai_driver/npu/npu_main.c b/drivers/soc/eswin/ai_driver/npu/npu_main.c
-index 1ec3e4381392..d5e92b0b83be 100644
+index 1ec3e43813929..d5e92b0b83be7 100644
 --- a/drivers/soc/eswin/ai_driver/npu/npu_main.c
 +++ b/drivers/soc/eswin/ai_driver/npu/npu_main.c
 @@ -82,14 +82,10 @@
@@ -1695,7 +1695,7 @@ index 1ec3e4381392..d5e92b0b83be 100644
  };
  
 diff --git a/drivers/soc/eswin/eswin-lpcpu.c b/drivers/soc/eswin/eswin-lpcpu.c
-index d0da7fa62bf9..1c7d203012c8 100644
+index d0da7fa62bf9e..1c7d203012c8b 100644
 --- a/drivers/soc/eswin/eswin-lpcpu.c
 +++ b/drivers/soc/eswin/eswin-lpcpu.c
 @@ -61,9 +61,9 @@ struct lowpower_info {
@@ -1711,7 +1711,7 @@ index d0da7fa62bf9..1c7d203012c8 100644
  #define LPCPU_RSV_MEM_MIN_SIZE  (5*1024*1024)
  
 diff --git a/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_device.c b/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_device.c
-index 801df92efc33..3737e8caafc6 100644
+index 801df92efc33d..3737e8caafc62 100644
 --- a/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_device.c
 +++ b/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_device.c
 @@ -3479,47 +3479,6 @@ gc_df_exit(gckGALDEVICE Device)
@@ -1763,7 +1763,7 @@ index 801df92efc33..3737e8caafc6 100644
   *
   *  gckGALDEVICE_Start
 diff --git a/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_device.h b/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_device.h
-index 3e5b54563185..e4e82fdace9a 100644
+index 3e5b545631854..e4e82fdace9aa 100644
 --- a/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_device.h
 +++ b/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_device.h
 @@ -161,8 +161,6 @@ gckGALDEVICE_Construct(gcsPLATFORM *Platform, const gcsMODULE_PARAMETERS *Args,

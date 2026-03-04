@@ -1,4 +1,4 @@
-From 9365f05a6496df8a8808869dc596d6139257ad8b Mon Sep 17 00:00:00 2001
+From df3933e6355dc15d2b5d3602a8da52475063e178 Mon Sep 17 00:00:00 2001
 From: huangyifeng <huangyifeng@eswincomputing.com>
 Date: Fri, 14 Feb 2025 15:15:18 +0800
 Subject: [PATCH 313/534] feat:clk driver fit for upstream
@@ -23,7 +23,7 @@ Signed-off-by: huangyifeng <huangyifeng@eswincomputing.com>
 
 diff --git a/Documentation/devicetree/bindings/reset/eswin,eic770x-reset.yaml b/Documentation/devicetree/bindings/reset/eswin,eic770x-reset.yaml
 deleted file mode 100644
-index 8b0b3b867011..000000000000
+index 8b0b3b867011b..0000000000000
 --- a/Documentation/devicetree/bindings/reset/eswin,eic770x-reset.yaml
 +++ /dev/null
 @@ -1,51 +0,0 @@
@@ -80,7 +80,7 @@ index 8b0b3b867011..000000000000
 -
 diff --git a/drivers/clk/eswin/clk_eic770x.h b/drivers/clk/eswin/clk_eic770x.h
 deleted file mode 100644
-index 156601fdd267..000000000000
+index 156601fdd2678..0000000000000
 --- a/drivers/clk/eswin/clk_eic770x.h
 +++ /dev/null
 @@ -1,204 +0,0 @@
@@ -290,7 +290,7 @@ index 156601fdd267..000000000000
 -#endif
 diff --git a/include/dt-bindings/reset/eswin,eic770x-reset.h b/include/dt-bindings/reset/eswin,eic770x-reset.h
 deleted file mode 100755
-index e544fa4da748..000000000000
+index e544fa4da7484..0000000000000
 --- a/include/dt-bindings/reset/eswin,eic770x-reset.h
 +++ /dev/null
 @@ -1,473 +0,0 @@

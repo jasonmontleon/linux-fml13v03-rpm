@@ -1,4 +1,4 @@
-From f1d72b15f4a592518d66257b4095b12bfb884f8c Mon Sep 17 00:00:00 2001
+From d9eef72fb8581d65e988963c1ac3843d63666c37 Mon Sep 17 00:00:00 2001
 From: wangguosheng <wangguosheng@eswincomputing.com>
 Date: Tue, 27 May 2025 10:17:42 +0800
 Subject: [PATCH 370/534] style:fix the warning in DTS
@@ -16,7 +16,7 @@ Signed-off-by: wangguosheng <wangguosheng@eswincomputing.com>
  5 files changed, 25 insertions(+), 163 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-evb-camera.dtsi b/arch/riscv/boot/dts/eswin/eic7700-evb-camera.dtsi
-index 8c6729abc63a..d9551aabd7c9 100644
+index 8c6729abc63a8..d9551aabd7c9a 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-evb-camera.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7700-evb-camera.dtsi
 @@ -64,6 +64,7 @@ vvcam_isp_port0_raw: endpoint {
@@ -71,7 +71,7 @@ index 8c6729abc63a..d9551aabd7c9 100644
  
  
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-hifive-premier-p550-camera.dtsi b/arch/riscv/boot/dts/eswin/eic7700-hifive-premier-p550-camera.dtsi
-index dc6947943a84..876f3652b8b3 100644
+index dc6947943a849..876f3652b8b38 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-hifive-premier-p550-camera.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7700-hifive-premier-p550-camera.dtsi
 @@ -4,7 +4,7 @@ vvcam_isp_0: vvcam_isp@0 {
@@ -100,7 +100,7 @@ index dc6947943a84..876f3652b8b3 100644
  		dma-ranges = <0x0 0x20000000 0x0 0x80000000 0x0 0x40000000>;
  		iommus = <&smmu0 WIN2030_SID_ISP0>;
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-osm-camera.dtsi b/arch/riscv/boot/dts/eswin/eic7700-osm-camera.dtsi
-index e88d667627d8..ce42246ba09f 100644
+index e88d667627d8d..ce42246ba09fc 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-osm-camera.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7700-osm-camera.dtsi
 @@ -13,7 +13,7 @@ port@0 {
@@ -149,7 +149,7 @@ index e88d667627d8..ce42246ba09f 100644
  };
  
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dts b/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dts
-index 5b34d2ae27e0..0d20206dd760 100644
+index 5b34d2ae27e05..0d20206dd7600 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dts
 @@ -696,7 +696,7 @@ &d0_i2c3 {
@@ -162,7 +162,7 @@ index 5b34d2ae27e0..0d20206dd760 100644
  		#io-channel-cells = <1>;
  		label = "sys_power";
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-z530.dts b/arch/riscv/boot/dts/eswin/eic7700-z530.dts
-index c041cbebc527..d753fbba823f 100644
+index c041cbebc5271..d753fbba823f0 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-z530.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7700-z530.dts
 @@ -172,158 +172,6 @@ gt911:touchscreen@14 {

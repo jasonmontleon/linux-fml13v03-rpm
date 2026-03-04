@@ -1,4 +1,4 @@
-From ca6ddbc501feee4c1d0eb98e5afa26435452da0d Mon Sep 17 00:00:00 2001
+From d03f5e446392ec68f13a041668e5c30c624dbde0 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Wed, 2 Jul 2025 10:43:05 +0800
 Subject: [PATCH 409/534] Fix the issue where the backlight does not turn on.
@@ -9,7 +9,7 @@ Subject: [PATCH 409/534] Fix the issue where the backlight does not turn on.
  2 files changed, 7 insertions(+), 1 deletion(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
-index 98d2a3769173..1d77fad613da 100644
+index 98d2a3769173d..1d77fad613dac 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 @@ -1579,7 +1579,7 @@ &d1_pwm0 {
@@ -22,7 +22,7 @@ index 98d2a3769173..1d77fad613da 100644
  
  &fan_control {
 diff --git a/drivers/pwm/pwm-dwc-eswin.c b/drivers/pwm/pwm-dwc-eswin.c
-index 8143b899cdad..d69372bd5e0a 100644
+index 8143b899cdad2..d69372bd5e0a9 100644
 --- a/drivers/pwm/pwm-dwc-eswin.c
 +++ b/drivers/pwm/pwm-dwc-eswin.c
 @@ -103,6 +103,12 @@ static int __dwc_pwm_configure_timer(struct dwc_pwm *dwc,

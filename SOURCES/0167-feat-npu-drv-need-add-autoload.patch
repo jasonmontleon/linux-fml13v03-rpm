@@ -1,4 +1,4 @@
-From 3a97d81c5c3712e2a251dc25306e133d77acc411 Mon Sep 17 00:00:00 2001
+From ad9f3b1aa67e3c281c240a9b9a7e02e7970a82f4 Mon Sep 17 00:00:00 2001
 From: donghuawei <donghuawei@eswincomputing.com>
 Date: Wed, 4 Sep 2024 15:53:40 +0800
 Subject: [PATCH 167/534] feat:npu drv need add autoload
@@ -12,7 +12,7 @@ Signed-off-by: donghuawei <donghuawei@eswincomputing.com>
  1 file changed, 1 insertion(+)
 
 diff --git a/drivers/soc/eswin/ai_driver/npu/npu_main.c b/drivers/soc/eswin/ai_driver/npu/npu_main.c
-index a5455fcffd01..d045a32b5b59 100644
+index a5455fcffd013..d045a32b5b59c 100644
 --- a/drivers/soc/eswin/ai_driver/npu/npu_main.c
 +++ b/drivers/soc/eswin/ai_driver/npu/npu_main.c
 @@ -247,6 +247,7 @@ static const struct of_device_id edla_of_match[] = {

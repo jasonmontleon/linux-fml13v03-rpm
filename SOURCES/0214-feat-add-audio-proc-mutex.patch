@@ -1,4 +1,4 @@
-From 92d4dc62c2fc64fc72a8ad3f287f2d2a1a89a9d1 Mon Sep 17 00:00:00 2001
+From 8e0fdfaa2d12b14687c0b98df39c3eaaaf250130 Mon Sep 17 00:00:00 2001
 From: yangqiang <yangqiang1@eswincomputing.com>
 Date: Fri, 8 Nov 2024 14:56:51 +0800
 Subject: [PATCH 214/534] feat:add audio proc mutex.
@@ -12,7 +12,7 @@ Signed-off-by: yangqiang <yangqiang1@eswincomputing.com>
  1 file changed, 14 insertions(+), 3 deletions(-)
 
 diff --git a/sound/soc/eswin/esw-audio-proc.c b/sound/soc/eswin/esw-audio-proc.c
-index f0c0cbe10f56..83c3bbb26c73 100644
+index f0c0cbe10f568..83c3bbb26c73e 100644
 --- a/sound/soc/eswin/esw-audio-proc.c
 +++ b/sound/soc/eswin/esw-audio-proc.c
 @@ -27,6 +27,7 @@

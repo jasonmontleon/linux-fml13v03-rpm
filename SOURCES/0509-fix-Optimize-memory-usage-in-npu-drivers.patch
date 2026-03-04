@@ -1,4 +1,4 @@
-From fcf5c56e82841024c0bc0d189b8d9051e19e7060 Mon Sep 17 00:00:00 2001
+From dcff28225d61f8305d0b24aa092f075a4201df3a Mon Sep 17 00:00:00 2001
 From: denglei <denglei@eswincomputing.com>
 Date: Tue, 2 Sep 2025 10:35:13 +0800
 Subject: [PATCH 509/534] fix:Optimize memory usage in npu drivers.
@@ -15,7 +15,7 @@ Signed-off-by: denglei <denglei@eswincomputing.com>
  3 files changed, 17 insertions(+), 9 deletions(-)
 
 diff --git a/drivers/soc/eswin/ai_driver/dsp/dsp_main.h b/drivers/soc/eswin/ai_driver/dsp/dsp_main.h
-index ac6e04357adf..77d7017ba765 100644
+index ac6e04357adf8..77d7017ba7658 100644
 --- a/drivers/soc/eswin/ai_driver/dsp/dsp_main.h
 +++ b/drivers/soc/eswin/ai_driver/dsp/dsp_main.h
 @@ -114,11 +114,11 @@ struct prio_array {
@@ -45,7 +45,7 @@ index ac6e04357adf..77d7017ba765 100644
  #define U84_TO_MCU_IOVA_SIZE 0x1000
  
 diff --git a/drivers/soc/eswin/ai_driver/npu/dla_buffer.c b/drivers/soc/eswin/ai_driver/npu/dla_buffer.c
-index 1db428181eed..9a5fca80aee1 100644
+index 1db428181eedf..9a5fca80aee13 100644
 --- a/drivers/soc/eswin/ai_driver/npu/dla_buffer.c
 +++ b/drivers/soc/eswin/ai_driver/npu/dla_buffer.c
 @@ -307,7 +307,10 @@ int dla_import_dmabuf_from_model(struct user_model *model)
@@ -60,7 +60,7 @@ index 1db428181eed..9a5fca80aee1 100644
  			dla_error("err:dla_attach_dmabuf failed!\n");
  			dma_buf_put(dma_buf);
 diff --git a/drivers/soc/eswin/ai_driver/npu/engine.c b/drivers/soc/eswin/ai_driver/npu/engine.c
-index fe6d3c1339c8..0a29fbe5a158 100644
+index fe6d3c1339c89..0a29fbe5a1585 100644
 --- a/drivers/soc/eswin/ai_driver/npu/engine.c
 +++ b/drivers/soc/eswin/ai_driver/npu/engine.c
 @@ -164,6 +164,8 @@ int read_input_address(struct win_executor *executor,

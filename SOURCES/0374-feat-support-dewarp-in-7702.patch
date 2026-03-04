@@ -1,4 +1,4 @@
-From 236f254874f4ed24e134e8bb78288ef107cfb802 Mon Sep 17 00:00:00 2001
+From aa136e4e7037860f3541489cfbc8c88e111f5f1a Mon Sep 17 00:00:00 2001
 From: congyuyang <congyuyang@eswincomputing.com>
 Date: Thu, 29 May 2025 10:30:27 +0800
 Subject: [PATCH 374/534] feat:support dewarp in 7702
@@ -12,7 +12,7 @@ Signed-off-by: congyuyang <congyuyang@eswincomputing.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi b/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
-index e74479b92029..d835fd640338 100644
+index e74479b920295..d835fd640338c 100644
 --- a/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
 @@ -1413,7 +1413,7 @@ pvt1: pvt@0x52360000 {

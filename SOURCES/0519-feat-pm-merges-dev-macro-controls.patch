@@ -1,4 +1,4 @@
-From 17264040fe01f328182ba761ce01a0a5ad2aaab9 Mon Sep 17 00:00:00 2001
+From 5a5d47662b246f2ad7e168453d86cdd98a53cb49 Mon Sep 17 00:00:00 2001
 From: hujiamiao <hujiamiao@eswincomputing.com>
 Date: Wed, 24 Sep 2025 14:03:50 +0800
 Subject: [PATCH 519/534] feat:pm merges dev macro controls
@@ -34,7 +34,7 @@ Signed-off-by: hujiamiao <hujiamiao@eswincomputing.com>
 
 diff --git a/arch/riscv/configs/eic7700_pm_defconfig b/arch/riscv/configs/eic7700_pm_defconfig
 new file mode 100644
-index 000000000000..6e603218fca6
+index 0000000000000..6e603218fca6f
 --- /dev/null
 +++ b/arch/riscv/configs/eic7700_pm_defconfig
 @@ -0,0 +1,917 @@
@@ -957,7 +957,7 @@ index 000000000000..6e603218fca6
 +CONFIG_BCMDHD_CLM_PATH="/lib/firmware/clm_bcm43752a2_ag.blob"
 diff --git a/arch/riscv/configs/eic7702_pm_defconfig b/arch/riscv/configs/eic7702_pm_defconfig
 new file mode 100644
-index 000000000000..aad45b0160aa
+index 0000000000000..aad45b0160aaa
 --- /dev/null
 +++ b/arch/riscv/configs/eic7702_pm_defconfig
 @@ -0,0 +1,943 @@
@@ -1905,7 +1905,7 @@ index 000000000000..aad45b0160aa
 +CONFIG_USB_NET_CDCETHER=m
 +CONFIG_USB_WDM=m
 diff --git a/drivers/ata/ahci.c b/drivers/ata/ahci.c
-index 98104d0b842b..f962a7be092b 100644
+index 98104d0b842bd..f962a7be092bc 100644
 --- a/drivers/ata/ahci.c
 +++ b/drivers/ata/ahci.c
 @@ -653,7 +653,7 @@ static struct pci_driver ahci_pci_driver = {
@@ -1918,10 +1918,10 @@ index 98104d0b842b..f962a7be092b 100644
  };
  
 diff --git a/drivers/ata/libata-core.c b/drivers/ata/libata-core.c
-index d5e713f284b7..3902ce6bd448 100644
+index 91c6291b01f4e..9cf4a38fbdc17 100644
 --- a/drivers/ata/libata-core.c
 +++ b/drivers/ata/libata-core.c
-@@ -5379,7 +5379,7 @@ EXPORT_SYMBOL_GPL(ata_host_resume);
+@@ -5403,7 +5403,7 @@ EXPORT_SYMBOL_GPL(ata_host_resume);
  const struct device_type ata_port_type = {
  	.name = ATA_PORT_TYPE_NAME,
  #ifdef CONFIG_PM
@@ -1931,7 +1931,7 @@ index d5e713f284b7..3902ce6bd448 100644
  };
  
 diff --git a/drivers/clocksource/timer-eswin.c b/drivers/clocksource/timer-eswin.c
-index 96ad1398bf1d..70de370e4ebd 100644
+index 96ad1398bf1df..70de370e4ebd4 100644
 --- a/drivers/clocksource/timer-eswin.c
 +++ b/drivers/clocksource/timer-eswin.c
 @@ -362,7 +362,7 @@ static struct platform_driver eswin_timer_driver = {
@@ -1944,7 +1944,7 @@ index 96ad1398bf1d..70de370e4ebd 100644
  };
  module_platform_driver(eswin_timer_driver);
 diff --git a/drivers/dma/dw-axi-dmac/dw-axi-dmac-platform.c b/drivers/dma/dw-axi-dmac/dw-axi-dmac-platform.c
-index 0322ab4e76fc..aa06b40f4127 100644
+index 0322ab4e76fcc..aa06b40f41275 100644
 --- a/drivers/dma/dw-axi-dmac/dw-axi-dmac-platform.c
 +++ b/drivers/dma/dw-axi-dmac/dw-axi-dmac-platform.c
 @@ -1920,7 +1920,7 @@ static struct platform_driver dw_driver = {
@@ -1957,7 +1957,7 @@ index 0322ab4e76fc..aa06b40f4127 100644
  };
  module_platform_driver(dw_driver);
 diff --git a/drivers/gpio/gpio-dwapb.c b/drivers/gpio/gpio-dwapb.c
-index 6b7d47a52b10..ac638f9b3c30 100644
+index 6b7d47a52b10a..ac638f9b3c308 100644
 --- a/drivers/gpio/gpio-dwapb.c
 +++ b/drivers/gpio/gpio-dwapb.c
 @@ -837,7 +837,7 @@ static SIMPLE_DEV_PM_OPS(dwapb_gpio_pm_ops, dwapb_gpio_suspend,
@@ -1970,7 +1970,7 @@ index 6b7d47a52b10..ac638f9b3c30 100644
  		.acpi_match_table = dwapb_acpi_match,
  	},
 diff --git a/drivers/gpu/drm/eswin/dw_hdmi_hdcp2.c b/drivers/gpu/drm/eswin/dw_hdmi_hdcp2.c
-index aa71bc7cce8e..0ad189a141d1 100644
+index aa71bc7cce8ef..0ad189a141d15 100644
 --- a/drivers/gpu/drm/eswin/dw_hdmi_hdcp2.c
 +++ b/drivers/gpu/drm/eswin/dw_hdmi_hdcp2.c
 @@ -870,7 +870,7 @@ struct platform_driver dw_hdmi_hdcp2_driver = {
@@ -1983,7 +1983,7 @@ index aa71bc7cce8e..0ad189a141d1 100644
      },
  };
 diff --git a/drivers/gpu/drm/eswin/es_drv.c b/drivers/gpu/drm/eswin/es_drv.c
-index 1809b0a5f2a0..0071da8d33c7 100644
+index 1809b0a5f2a0e..0071da8d33c79 100644
 --- a/drivers/gpu/drm/eswin/es_drv.c
 +++ b/drivers/gpu/drm/eswin/es_drv.c
 @@ -594,7 +594,7 @@ static struct platform_driver es_drm_platform_driver = {
@@ -1996,7 +1996,7 @@ index 1809b0a5f2a0..0071da8d33c7 100644
  };
  
 diff --git a/drivers/i2c/busses/i2c-designware-platdrv.c b/drivers/i2c/busses/i2c-designware-platdrv.c
-index e6fa6cb1011a..95aefeff9dec 100644
+index e6fa6cb1011ab..95aefeff9decb 100644
 --- a/drivers/i2c/busses/i2c-designware-platdrv.c
 +++ b/drivers/i2c/busses/i2c-designware-platdrv.c
 @@ -493,7 +493,7 @@ static struct platform_driver dw_i2c_driver = {
@@ -2009,7 +2009,7 @@ index e6fa6cb1011a..95aefeff9dec 100644
  };
  
 diff --git a/drivers/mailbox/eswin-mailbox.c b/drivers/mailbox/eswin-mailbox.c
-index 2475dddafe2a..ef6e5f36a11b 100755
+index 2475dddafe2a4..ef6e5f36a11ba 100755
 --- a/drivers/mailbox/eswin-mailbox.c
 +++ b/drivers/mailbox/eswin-mailbox.c
 @@ -603,7 +603,7 @@ static struct platform_driver eswin_mbox_driver = {
@@ -2022,7 +2022,7 @@ index 2475dddafe2a..ef6e5f36a11b 100755
  };
  
 diff --git a/drivers/media/i2c/imx586.c b/drivers/media/i2c/imx586.c
-index 5c9337e88dc7..e0577a8e0027 100644
+index 5c9337e88dc79..e0577a8e00275 100644
 --- a/drivers/media/i2c/imx586.c
 +++ b/drivers/media/i2c/imx586.c
 @@ -1863,7 +1863,7 @@ static const struct i2c_device_id imx586_match_id[] = {
@@ -2035,7 +2035,7 @@ index 5c9337e88dc7..e0577a8e0027 100644
  	},
  	.probe		= imx586_probe,
 diff --git a/drivers/mmc/host/sdhci-of-eswin-sdio.c b/drivers/mmc/host/sdhci-of-eswin-sdio.c
-index ff4465e425d8..b50a5fd7f0ae 100644
+index ff4465e425d8b..b50a5fd7f0ae2 100644
 --- a/drivers/mmc/host/sdhci-of-eswin-sdio.c
 +++ b/drivers/mmc/host/sdhci-of-eswin-sdio.c
 @@ -427,7 +427,9 @@ static int eswin_sdhci_sdio_resume(struct device *dev)
@@ -2058,7 +2058,7 @@ index ff4465e425d8..b50a5fd7f0ae 100644
  	.probe = eswin_sdhci_sdio_probe,
  	.remove = eswin_sdhci_sdio_remove,
 diff --git a/drivers/mmc/host/sdhci-of-eswin.c b/drivers/mmc/host/sdhci-of-eswin.c
-index 04989a386f70..4e722c068c24 100644
+index 04989a386f707..4e722c068c249 100644
 --- a/drivers/mmc/host/sdhci-of-eswin.c
 +++ b/drivers/mmc/host/sdhci-of-eswin.c
 @@ -1147,7 +1147,7 @@ static struct platform_driver eswin_sdhci_driver =
@@ -2071,7 +2071,7 @@ index 04989a386f70..4e722c068c24 100644
  	.probe = eswin_sdhci_probe,
  	.remove = eswin_sdhci_remove,
 diff --git a/drivers/pmdomain/eswin/eic770x-pmu.c b/drivers/pmdomain/eswin/eic770x-pmu.c
-index 7e4db667f333..8675d7d64e1a 100644
+index 7e4db667f333b..8675d7d64e1a2 100644
 --- a/drivers/pmdomain/eswin/eic770x-pmu.c
 +++ b/drivers/pmdomain/eswin/eic770x-pmu.c
 @@ -261,6 +261,7 @@ static int eic770x_pmu_init_domain(struct eic770x_pmu *pmu, int index)
@@ -2094,7 +2094,7 @@ index 7e4db667f333..8675d7d64e1a 100644
  	ret = eic770x_pmu_get_domain_state(pmd, &is_on);
  	if (ret)
 diff --git a/drivers/rtc/rtc-eswin.c b/drivers/rtc/rtc-eswin.c
-index 8489496e08f8..dc751089bfaa 100644
+index 8489496e08f8c..dc751089bfaa5 100644
 --- a/drivers/rtc/rtc-eswin.c
 +++ b/drivers/rtc/rtc-eswin.c
 @@ -338,7 +338,7 @@ static struct platform_driver eswin_rtc_driver = {
@@ -2107,7 +2107,7 @@ index 8489496e08f8..dc751089bfaa 100644
  	},
  };
 diff --git a/drivers/spi/spi-dw-mmio.c b/drivers/spi/spi-dw-mmio.c
-index 4ffde137c2b0..9184af73fdba 100644
+index 4ffde137c2b00..9184af73fdba6 100644
 --- a/drivers/spi/spi-dw-mmio.c
 +++ b/drivers/spi/spi-dw-mmio.c
 @@ -545,7 +545,7 @@ static struct platform_driver dw_spi_mmio_driver = {
@@ -2120,10 +2120,10 @@ index 4ffde137c2b0..9184af73fdba 100644
  };
  module_platform_driver(dw_spi_mmio_driver);
 diff --git a/drivers/usb/dwc3/core.c b/drivers/usb/dwc3/core.c
-index 45c9a399f8a5..ee05ec0f8287 100644
+index 11b938fd9de04..7031d27da93ab 100644
 --- a/drivers/usb/dwc3/core.c
 +++ b/drivers/usb/dwc3/core.c
-@@ -2441,7 +2441,7 @@ static struct platform_driver dwc3_driver = {
+@@ -2458,7 +2458,7 @@ static struct platform_driver dwc3_driver = {
  		.name	= "dwc3",
  		.of_match_table	= of_match_ptr(of_dwc3_match),
  		.acpi_match_table = ACPI_PTR(dwc3_acpi_match),
@@ -2133,7 +2133,7 @@ index 45c9a399f8a5..ee05ec0f8287 100644
  };
  
 diff --git a/drivers/usb/dwc3/dwc3-eswin.c b/drivers/usb/dwc3/dwc3-eswin.c
-index 58e5bdb66ed7..f2a6f3b51e13 100755
+index 58e5bdb66ed76..f2a6f3b51e132 100755
 --- a/drivers/usb/dwc3/dwc3-eswin.c
 +++ b/drivers/usb/dwc3/dwc3-eswin.c
 @@ -859,7 +859,7 @@ static struct platform_driver dwc3_eswin_driver = {

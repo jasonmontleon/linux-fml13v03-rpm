@@ -1,4 +1,4 @@
-From f47380e8a762400a9a695e5a5afc3e57775e9691 Mon Sep 17 00:00:00 2001
+From ade87eedacca37229de5a48cd3289ace5b085ceb Mon Sep 17 00:00:00 2001
 From: zouxiaojun <zouxiaojun@eswincomputing.com>
 Date: Wed, 2 Apr 2025 14:59:35 +0800
 Subject: [PATCH 325/534] fix(venc):opt venc log while pm resume/suspend
@@ -12,7 +12,7 @@ Signed-off-by: zouxiaojun <zouxiaojun@eswincomputing.com>
  1 file changed, 340 insertions(+), 114 deletions(-)
 
 diff --git a/drivers/staging/media/eswin/venc/vc8000e_driver.c b/drivers/staging/media/eswin/venc/vc8000e_driver.c
-index 15865a5c9b2a..b5e514738101 100644
+index 15865a5c9b2a0..b5e5147381013 100644
 --- a/drivers/staging/media/eswin/venc/vc8000e_driver.c
 +++ b/drivers/staging/media/eswin/venc/vc8000e_driver.c
 @@ -34,6 +34,7 @@

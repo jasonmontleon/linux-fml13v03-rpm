@@ -1,4 +1,4 @@
-From 0d708cc57f7e646cf6555537f50dc1e7703d4b20 Mon Sep 17 00:00:00 2001
+From 73ae124226b9aea57f0a7dd6f011ec920778bc42 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Thu, 24 Apr 2025 14:30:10 +0800
 Subject: [PATCH 282/534] riscv: enable zram with LZ4 in fml13v03_defconfig
@@ -9,7 +9,7 @@ Signed-off-by: yang.wang <yang.wang@deepcomputing.io>
  1 file changed, 7 insertions(+)
 
 diff --git a/arch/riscv/configs/fml13v03_defconfig b/arch/riscv/configs/fml13v03_defconfig
-index a0311d75cad2..214a1b6fb678 100755
+index a0311d75cad2a..214a1b6fb678b 100755
 --- a/arch/riscv/configs/fml13v03_defconfig
 +++ b/arch/riscv/configs/fml13v03_defconfig
 @@ -327,6 +327,8 @@ CONFIG_RESET_ATTACK_MITIGATION=y

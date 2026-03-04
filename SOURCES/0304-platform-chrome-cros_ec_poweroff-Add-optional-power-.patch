@@ -1,4 +1,4 @@
-From 1381cc349463209342d0e53d1109bf8f3217db7a Mon Sep 17 00:00:00 2001
+From 17abc5ec126b9afc89951f46b13e66db6647e7d1 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Thu, 5 Jun 2025 09:47:25 +0800
 Subject: [PATCH 304/534] platform/chrome: cros_ec_poweroff: Add optional power
@@ -10,7 +10,7 @@ Signed-off-by: yang.wang <yang.wang@deepcomputing.io>
  1 file changed, 13 insertions(+)
 
 diff --git a/drivers/platform/chrome/cros_ec_poweroff.c b/drivers/platform/chrome/cros_ec_poweroff.c
-index 6ccbbf9e333d..19d8d7600e7b 100644
+index 6ccbbf9e333d0..19d8d7600e7b3 100644
 --- a/drivers/platform/chrome/cros_ec_poweroff.c
 +++ b/drivers/platform/chrome/cros_ec_poweroff.c
 @@ -12,6 +12,7 @@

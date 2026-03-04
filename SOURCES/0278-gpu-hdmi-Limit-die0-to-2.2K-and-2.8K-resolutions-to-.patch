@@ -1,4 +1,4 @@
-From 80a6ff3c42e2e654c9a3812d4a651f010f5e706a Mon Sep 17 00:00:00 2001
+From f7b51853a40c7f194fad54a1e4bebdf550f08fe6 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Thu, 17 Apr 2025 10:00:04 +0800
 Subject: [PATCH 278/534] gpu: hdmi: Limit die0 to 2.2K and 2.8K resolutions to
@@ -10,7 +10,7 @@ Subject: [PATCH 278/534] gpu: hdmi: Limit die0 to 2.2K and 2.8K resolutions to
  1 file changed, 5 insertions(+)
 
 diff --git a/drivers/gpu/drm/eswin/dw-hdmi.c b/drivers/gpu/drm/eswin/dw-hdmi.c
-index dd244a700723..204192aef3a1 100644
+index dd244a7007231..204192aef3a1e 100644
 --- a/drivers/gpu/drm/eswin/dw-hdmi.c
 +++ b/drivers/gpu/drm/eswin/dw-hdmi.c
 @@ -3371,6 +3371,11 @@ dw_hdmi_bridge_mode_valid(struct drm_bridge *bridge,

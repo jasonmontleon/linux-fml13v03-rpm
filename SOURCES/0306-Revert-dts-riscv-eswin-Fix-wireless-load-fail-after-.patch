@@ -1,4 +1,4 @@
-From 76f6d76dca431df38f8d51660593cfb0d42a42d1 Mon Sep 17 00:00:00 2001
+From 4cc2c69c3c62d6eefa871fff4f6a41613da4b90f Mon Sep 17 00:00:00 2001
 From: Sandie Cao <sandie.cao@deepcomputing.io>
 Date: Fri, 6 Jun 2025 10:32:16 +0800
 Subject: [PATCH 306/534] Revert "dts: riscv: eswin: Fix wireless load fail
@@ -11,7 +11,7 @@ This reverts commit 593e849fe7be18bda36875228c43c61e1a078173.
  2 files changed, 4 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi b/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
-index 7dcb5bb5e719..0a6e866db65c 100644
+index 7dcb5bb5e719c..0a6e866db65cf 100644
 --- a/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
 @@ -868,8 +868,6 @@ msi_ctrl_int : 220
@@ -24,7 +24,7 @@ index 7dcb5bb5e719..0a6e866db65c 100644
  							<0x0 0x0 0x0 0x2 &plic0 180>,
  							<0x0 0x0 0x0 0x3 &plic0 181>,
 diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi b/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi
-index 76b59bc65d54..6bf51152c5c3 100644
+index 76b59bc65d54e..6bf51152c5c33 100644
 --- a/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi
 @@ -1538,8 +1538,6 @@ msi_ctrl_int : 220

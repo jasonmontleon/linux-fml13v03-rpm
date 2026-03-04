@@ -1,4 +1,4 @@
-From f3183b59152803827ade5feb91c5ebdb80462c9c Mon Sep 17 00:00:00 2001
+From 2f22aa4867234b1a5828e229f55bfff9b0ae2182 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Mon, 14 Jul 2025 18:14:49 +0800
 Subject: [PATCH 419/534] add_dual_spi1_spi2
@@ -11,7 +11,7 @@ Subject: [PATCH 419/534] add_dual_spi1_spi2
  4 files changed, 163 insertions(+)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-pinctrl.dtsi b/arch/riscv/boot/dts/eswin/eic7700-pinctrl.dtsi
-index 5ccd4dfcf817..08910ff178fb 100644
+index 5ccd4dfcf817c..08910ff178fbb 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-pinctrl.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7700-pinctrl.dtsi
 @@ -95,6 +95,22 @@ mux{
@@ -72,7 +72,7 @@ index 5ccd4dfcf817..08910ff178fb 100644
  				mux {
  					groups = "sata_act_led_group";
 diff --git a/arch/riscv/boot/dts/eswin/eic7x-die0-pinctrl.dtsi b/arch/riscv/boot/dts/eswin/eic7x-die0-pinctrl.dtsi
-index 8409a0886b7d..5e8738fe735d 100644
+index 8409a0886b7da..5e8738fe735d6 100644
 --- a/arch/riscv/boot/dts/eswin/eic7x-die0-pinctrl.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7x-die0-pinctrl.dtsi
 @@ -289,6 +289,20 @@ mux{
@@ -132,7 +132,7 @@ index 8409a0886b7d..5e8738fe735d 100644
  				mux {
  					groups = "sata_act_led_group";
 diff --git a/arch/riscv/boot/dts/eswin/eic7x-die1-pinctrl.dtsi b/arch/riscv/boot/dts/eswin/eic7x-die1-pinctrl.dtsi
-index 88b7a0e850b0..d629d5ff0412 100644
+index 88b7a0e850b0a..d629d5ff04125 100644
 --- a/arch/riscv/boot/dts/eswin/eic7x-die1-pinctrl.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7x-die1-pinctrl.dtsi
 @@ -289,6 +289,20 @@ mux{
@@ -192,7 +192,7 @@ index 88b7a0e850b0..d629d5ff0412 100644
  				mux {
  					groups = "sata_act_led_group";
 diff --git a/drivers/pinctrl/pinctrl-eic7x.c b/drivers/pinctrl/pinctrl-eic7x.c
-index 3183b0dc424a..b1c84f2e4ef0 100644
+index 3183b0dc424a8..b1c84f2e4ef06 100644
 --- a/drivers/pinctrl/pinctrl-eic7x.c
 +++ b/drivers/pinctrl/pinctrl-eic7x.c
 @@ -299,6 +299,8 @@ static const char * const sdio0_group[] = {"sdio0_group"};

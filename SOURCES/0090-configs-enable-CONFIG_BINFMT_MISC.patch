@@ -1,4 +1,4 @@
-From 6763076d35259c52b34e557a9c11f5779e3c6878 Mon Sep 17 00:00:00 2001
+From b978057a5cb42d4b0bfd4de868978e7dff2d08a1 Mon Sep 17 00:00:00 2001
 From: Han Gao <gaohan@iscas.ac.cn>
 Date: Fri, 14 Jun 2024 13:05:45 +0800
 Subject: [PATCH 090/534] configs: enable CONFIG_BINFMT_MISC
@@ -9,7 +9,7 @@ Signed-off-by: Han Gao <gaohan@iscas.ac.cn>
  1 file changed, 1 insertion(+)
 
 diff --git a/arch/riscv/configs/win2030_defconfig b/arch/riscv/configs/win2030_defconfig
-index 9a186bcd4be7..78c1df17d734 100644
+index 9a186bcd4be7e..78c1df17d7348 100644
 --- a/arch/riscv/configs/win2030_defconfig
 +++ b/arch/riscv/configs/win2030_defconfig
 @@ -53,6 +53,7 @@ CONFIG_MODULES=y

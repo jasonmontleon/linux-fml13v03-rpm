@@ -1,4 +1,4 @@
-From 3c359c864f4002c219ebb5df0a7d5d4e43bac1a5 Mon Sep 17 00:00:00 2001
+From 0c0f092b80e3487ef21d7c22372ee4f35f37faa8 Mon Sep 17 00:00:00 2001
 From: Jiean He <hejiean@eswincomputing.com>
 Date: Mon, 1 Sep 2025 10:13:10 +0800
 Subject: [PATCH 487/534] fix: fix memory leak in eswin_heap
@@ -15,7 +15,7 @@ Signed-off-by: hejiean <hejiean@eswincomputing.com>
  1 file changed, 34 insertions(+), 41 deletions(-)
 
 diff --git a/drivers/memory/eswin/es_rsvmem_heap/eswin_rsvmem_common.c b/drivers/memory/eswin/es_rsvmem_heap/eswin_rsvmem_common.c
-index 067f30627a46..cb076bb50b51 100644
+index 067f30627a46b..cb076bb50b516 100644
 --- a/drivers/memory/eswin/es_rsvmem_heap/eswin_rsvmem_common.c
 +++ b/drivers/memory/eswin/es_rsvmem_heap/eswin_rsvmem_common.c
 @@ -52,8 +52,8 @@ static struct class *eswin_heap_class;

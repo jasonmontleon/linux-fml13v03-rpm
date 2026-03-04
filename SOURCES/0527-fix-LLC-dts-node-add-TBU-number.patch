@@ -1,4 +1,4 @@
-From 8e811914f47b8c797d0f8a0efb9901bc09bc64f7 Mon Sep 17 00:00:00 2001
+From 3da7482684e9a09b4537583c2655de6eb71fa3de Mon Sep 17 00:00:00 2001
 From: denglei <denglei@eswincomputing.com>
 Date: Fri, 24 Oct 2025 10:33:17 +0800
 Subject: [PATCH 527/534] fix:LLC dts node add TBU number.
@@ -14,7 +14,7 @@ Signed-off-by: denglei <denglei@eswincomputing.com>
  3 files changed, 5 insertions(+), 11 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi b/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
-index 26857746de42..02f5ded734f4 100644
+index 26857746de42b..02f5ded734f4c 100644
 --- a/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
 @@ -622,6 +622,7 @@ dev_llc_d0: llc@51c00000 {
@@ -26,7 +26,7 @@ index 26857746de42..02f5ded734f4 100644
  		};
  
 diff --git a/drivers/interconnect/eswin/noc.c b/drivers/interconnect/eswin/noc.c
-index c6d44719db36..078819cec4df 100644
+index c6d44719db367..078819cec4df3 100644
 --- a/drivers/interconnect/eswin/noc.c
 +++ b/drivers/interconnect/eswin/noc.c
 @@ -2316,7 +2316,7 @@ static int win2030_noc_remove(struct platform_device *pdev)
@@ -65,7 +65,7 @@ index c6d44719db36..078819cec4df 100644
  };
  
 diff --git a/sound/soc/eswin/esw-i2s.c b/sound/soc/eswin/esw-i2s.c
-index 9f56fd7a9223..1f44ff61d1fd 100755
+index 9f56fd7a92230..1f44ff61d1fd9 100755
 --- a/sound/soc/eswin/esw-i2s.c
 +++ b/sound/soc/eswin/esw-i2s.c
 @@ -1187,7 +1187,7 @@ static struct platform_driver i2s_driver = {

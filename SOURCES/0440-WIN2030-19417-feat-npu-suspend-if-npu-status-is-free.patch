@@ -1,4 +1,4 @@
-From f661b62ae4af38ed5053c950e87315f3b53bfa2d Mon Sep 17 00:00:00 2001
+From df8c8516020e5ddf8fb7598224bc2f601c43e6ad Mon Sep 17 00:00:00 2001
 From: sandiecao <sandie.cao@deepcomputing.io>
 Date: Mon, 29 Sep 2025 14:29:22 +0800
 Subject: [PATCH 440/534] WIN2030-19417:feat:npu suspend if npu status is free.
@@ -14,7 +14,7 @@ Signed-off-by: zhuxuefei <zhuxuefei@eswincomputing.com>
  2 files changed, 6 insertions(+)
 
 diff --git a/drivers/soc/eswin/ai_driver/npu/npu_main.c b/drivers/soc/eswin/ai_driver/npu/npu_main.c
-index 84fb77bff04d..1ec3e4381392 100644
+index 84fb77bff04d3..1ec3e43813929 100644
 --- a/drivers/soc/eswin/ai_driver/npu/npu_main.c
 +++ b/drivers/soc/eswin/ai_driver/npu/npu_main.c
 @@ -935,6 +935,9 @@ int __maybe_unused npu_suspend(struct device *dev)
@@ -28,7 +28,7 @@ index 84fb77bff04d..1ec3e4381392 100644
  	dev_dbg(dev, "%s\n", __func__);
  	ret = npu_hardware_reset(NULL);
 diff --git a/drivers/soc/eswin/ai_driver/npu/scheduler.c b/drivers/soc/eswin/ai_driver/npu/scheduler.c
-index e0b4d20db85f..6e14b3d978cc 100644
+index e0b4d20db85f2..6e14b3d978ccb 100644
 --- a/drivers/soc/eswin/ai_driver/npu/scheduler.c
 +++ b/drivers/soc/eswin/ai_driver/npu/scheduler.c
 @@ -305,6 +305,9 @@ void mbx_irq_frame_done(struct win_engine *priv, u32 tiktok, u32 stat)

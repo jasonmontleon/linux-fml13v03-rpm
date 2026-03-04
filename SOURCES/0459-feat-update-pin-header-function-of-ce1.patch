@@ -1,4 +1,4 @@
-From 0e73f13bfc19ccc7daa9680688d668c0c69d0350 Mon Sep 17 00:00:00 2001
+From 4787758e1a6c735aacfba005d1ec1f6b88b2502c Mon Sep 17 00:00:00 2001
 From: Xiang Xu <xuxiang@eswincomputing.com>
 Date: Wed, 13 Aug 2025 14:11:23 +0800
 Subject: [PATCH 459/534] feat:update pin header function of ce1
@@ -13,7 +13,7 @@ Signed-off-by: Xiang Xu <xuxiang@eswincomputing.com>
  1 file changed, 3 insertions(+), 4 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-ce1.dtsi b/arch/riscv/boot/dts/eswin/eic7700-ce1.dtsi
-index 91c9ca2f7145..d025773aa21d 100644
+index 91c9ca2f7145c..d025773aa21d1 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-ce1.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7700-ce1.dtsi
 @@ -822,10 +822,9 @@ &pinctrl {

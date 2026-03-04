@@ -1,4 +1,4 @@
-From 8ec76c8ddbec090808e23c0e56fd978130b1b5e4 Mon Sep 17 00:00:00 2001
+From e1abedcfae697a3c953f40d93f69a0f204b3ae8c Mon Sep 17 00:00:00 2001
 From: yufangxian <yufangxian@eswincomputing.com>
 Date: Fri, 8 Aug 2025 17:45:30 +0800
 Subject: [PATCH 451/534] fix: cannot recogonize the third imx586 sensor
@@ -12,7 +12,7 @@ Signed-off-by: yufangxian <yufangxian@eswincomputing.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-evb-fccsp-camera-imx586.dtsi b/arch/riscv/boot/dts/eswin/eic7700-evb-fccsp-camera-imx586.dtsi
-index d6187d70df94..2f341156dc9b 100644
+index d6187d70df942..2f341156dc9bd 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-evb-fccsp-camera-imx586.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7700-evb-fccsp-camera-imx586.dtsi
 @@ -184,7 +184,7 @@ imx586_4: imx586@1a {

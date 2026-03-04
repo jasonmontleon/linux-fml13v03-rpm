@@ -1,4 +1,4 @@
-From b448d1d52a0653ca4c70545ac29c4d8c1d098876 Mon Sep 17 00:00:00 2001
+From 69123d1ba84648334e9a892a3894073055f6a3fd Mon Sep 17 00:00:00 2001
 From: zhangqianqian1 <zhangqianqian1@eswincomputing.com>
 Date: Wed, 24 Sep 2025 17:01:00 +0800
 Subject: [PATCH 516/534] feat:Remove usb_test and kernel dynamic log.
@@ -13,7 +13,7 @@ Signed-off-by: zhangqianqian <zhangqianqian1@eswincomputing.com>
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/arch/riscv/configs/fml13v03_defconfig b/arch/riscv/configs/fml13v03_defconfig
-index 8d98e892bbfb..f0428afebddd 100755
+index 8d98e892bbfb9..f0428afebddd7 100755
 --- a/arch/riscv/configs/fml13v03_defconfig
 +++ b/arch/riscv/configs/fml13v03_defconfig
 @@ -4393,8 +4393,8 @@ CONFIG_PRINTK_TIME=y

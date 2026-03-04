@@ -1,4 +1,4 @@
-From d053ea1982eb41154616fec691e96928df929548 Mon Sep 17 00:00:00 2001
+From 8973830dd75ecde8a3d1ae1bc9fa9fd5b537fdc8 Mon Sep 17 00:00:00 2001
 From: Jason Montleon <jason@montleon.com>
 Date: Wed, 19 Nov 2025 06:28:30 +0000
 Subject: [PATCH 533/534] resync 6.6.92 rebase with 6.6.92 merge
@@ -16,7 +16,7 @@ Subject: [PATCH 533/534] resync 6.6.92 rebase with 6.6.92 merge
  create mode 100644 arch/riscv/configs/eic7700_vpu7702_defconfig
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-vela.dts b/arch/riscv/boot/dts/eswin/eic7700-vela.dts
-index 809400c9e436..cc462c9ef43a 100644
+index 809400c9e436f..cc462c9ef43a7 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-vela.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7700-vela.dts
 @@ -294,4 +294,4 @@ gpio80  : lora ctrl2(O)
@@ -28,7 +28,7 @@ index 809400c9e436..cc462c9ef43a 100644
 +*/
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-vpu7702.dts b/arch/riscv/boot/dts/eswin/eic7700-vpu7702.dts
 new file mode 100644
-index 000000000000..c7d0d3e9c1f4
+index 0000000000000..c7d0d3e9c1f4f
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/eic7700-vpu7702.dts
 @@ -0,0 +1,1088 @@
@@ -1121,7 +1121,7 @@ index 000000000000..c7d0d3e9c1f4
 +	status = "okay";
 +};
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-z530.dts b/arch/riscv/boot/dts/eswin/eic7700-z530.dts
-index 25642bd8dd88..63dda4e5e7bb 100644
+index 25642bd8dd88d..63dda4e5e7bb3 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-z530.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7700-z530.dts
 @@ -253,4 +253,4 @@ gpio80  : lora ctrl2(O)
@@ -1132,7 +1132,7 @@ index 25642bd8dd88..63dda4e5e7bb 100644
 \ No newline at end of file
 +*/
 diff --git a/arch/riscv/boot/dts/eswin/eic7x-die1-pinctrl.dtsi b/arch/riscv/boot/dts/eswin/eic7x-die1-pinctrl.dtsi
-index 51191d9f2267..8e4992eebc96 100644
+index 51191d9f22672..8e4992eebc96e 100644
 --- a/arch/riscv/boot/dts/eswin/eic7x-die1-pinctrl.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7x-die1-pinctrl.dtsi
 @@ -283,7 +283,7 @@ mux {
@@ -1211,7 +1211,7 @@ index 51191d9f2267..8e4992eebc96 100644
  					groups = "sata_act_led_group";
 diff --git a/arch/riscv/configs/eic7700_vpu7702_defconfig b/arch/riscv/configs/eic7700_vpu7702_defconfig
 new file mode 100644
-index 000000000000..ca6a63a49950
+index 0000000000000..ca6a63a499504
 --- /dev/null
 +++ b/arch/riscv/configs/eic7700_vpu7702_defconfig
 @@ -0,0 +1,850 @@
@@ -2066,7 +2066,7 @@ index 000000000000..ca6a63a49950
 +CONFIG_VIDEO_ESWIN_VDEC=y
 +CONFIG_VIDEO_ESWIN_MEDIA_EXT_DRIVER=y
 diff --git a/drivers/media/platform/eswin/dvp2axi/capture.c b/drivers/media/platform/eswin/dvp2axi/capture.c
-index c66029de223c..86cac3318b19 100644
+index c66029de223c6..86cac3318b19e 100644
 --- a/drivers/media/platform/eswin/dvp2axi/capture.c
 +++ b/drivers/media/platform/eswin/dvp2axi/capture.c
 @@ -4986,4 +4986,4 @@ int es_dvp2axi_stream_suspend(struct es_dvp2axi_device *dvp2axi_dev, int mode)
@@ -2077,7 +2077,7 @@ index c66029de223c..86cac3318b19 100644
 \ No newline at end of file
 +}
 diff --git a/drivers/media/platform/eswin/dvp2axi/hw.c b/drivers/media/platform/eswin/dvp2axi/hw.c
-index a7b66257269a..4406d7333cc8 100644
+index a7b66257269ab..4406d7333cc87 100644
 --- a/drivers/media/platform/eswin/dvp2axi/hw.c
 +++ b/drivers/media/platform/eswin/dvp2axi/hw.c
 @@ -419,4 +419,4 @@ module_exit(es_dvp2axi_plat_drv_exit);

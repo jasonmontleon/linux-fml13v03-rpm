@@ -1,4 +1,4 @@
-From 82f34774e9a8acc107076b623491ad73e3d98b1e Mon Sep 17 00:00:00 2001
+From f7dc916f65bfeaf4804aeb8f8d4cedb850e4400f Mon Sep 17 00:00:00 2001
 From: ouyanghui <ouyanghui@eswincomputing.com>
 Date: Fri, 29 Aug 2025 11:16:06 +0800
 Subject: [PATCH 511/534] fix:cpu frequency switching cause d2d protocol error
@@ -16,7 +16,7 @@ Signed-off-by: ouyanghui <ouyanghui@eswincomputing.com>
  1 file changed, 25 insertions(+), 71 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi b/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
-index 7b7b129bd0f5..dcec16c4d27b 100644
+index 7b7b129bd0f5e..dcec16c4d27b4 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
 @@ -507,7 +507,7 @@ &gpu0 {

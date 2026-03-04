@@ -1,4 +1,4 @@
-From 1112baf4acd85ad6f9741b65eb4aae89dce088b8 Mon Sep 17 00:00:00 2001
+From ce986e8e37cecbda850293e09e96214ebe3ffe37 Mon Sep 17 00:00:00 2001
 From: Xiang Xu <xuxiang@eswincomputing.com>
 Date: Thu, 18 Sep 2025 17:03:35 +0800
 Subject: [PATCH 438/534] refactor:refactor bootspi driver
@@ -24,7 +24,7 @@ Signed-off-by: Xiang Xu <xuxiang@eswincomputing.com>
  create mode 100644 drivers/spi/spi-eswin.h
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-evb-a2.dtsi b/arch/riscv/boot/dts/eswin/eic7700-evb-a2.dtsi
-index 991f2f69df25..9c4e3867fe80 100644
+index 991f2f69df25d..9c4e3867fe80e 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-evb-a2.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7700-evb-a2.dtsi
 @@ -630,8 +630,6 @@ &bootspi {
@@ -37,7 +37,7 @@ index 991f2f69df25..9c4e3867fe80 100644
  		compatible = "winbond,w25q128jw",
  					"jedec,spi-nor";
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dtsi b/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dtsi
-index 5d756cc3a136..8b95d02deda8 100755
+index 5d756cc3a1361..8b95d02deda86 100755
 --- a/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dtsi
 @@ -551,8 +551,6 @@ &bootspi {
@@ -50,7 +50,7 @@ index 5d756cc3a136..8b95d02deda8 100755
  		compatible = "winbond,w25q128jw",
  					"jedec,spi-nor";
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
-index 75001119d7cd..4312a22a8d9f 100644
+index 75001119d7cdc..4312a22a8d9f7 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 @@ -1244,10 +1244,8 @@ &d1_ssi1 {
@@ -78,7 +78,7 @@ index 75001119d7cd..4312a22a8d9f 100644
  		compatible = "winbond,w25q128jw",
  					"jedec,spi-nor";
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi b/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
-index 2a9d0709fca6..c0773b294487 100644
+index 2a9d0709fca67..c0773b294487e 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
 @@ -1096,8 +1096,6 @@ &bootspi {
@@ -100,7 +100,7 @@ index 2a9d0709fca6..c0773b294487 100644
  		compatible = "winbond,w25q128jw",
  					"jedec,spi-nor";
 diff --git a/arch/riscv/boot/dts/eswin/eswin_aicard.dts b/arch/riscv/boot/dts/eswin/eswin_aicard.dts
-index f0457670b50a..b9926518edd3 100644
+index f0457670b50af..b9926518edd3a 100644
 --- a/arch/riscv/boot/dts/eswin/eswin_aicard.dts
 +++ b/arch/riscv/boot/dts/eswin/eswin_aicard.dts
 @@ -781,8 +781,6 @@ &bootspi {
@@ -113,7 +113,7 @@ index f0457670b50a..b9926518edd3 100644
  		compatible = "winbond,w25q128jw",
  					"jedec,spi-nor";
 diff --git a/drivers/spi/Makefile b/drivers/spi/Makefile
-index dc4c98c2dd90..86435fb45f70 100644
+index dc4c98c2dd907..86435fb45f70b 100644
 --- a/drivers/spi/Makefile
 +++ b/drivers/spi/Makefile
 @@ -50,7 +50,7 @@ obj-$(CONFIG_SPI_DW_BT1)		+= spi-dw-bt1.o
@@ -127,7 +127,7 @@ index dc4c98c2dd90..86435fb45f70 100644
  obj-$(CONFIG_SPI_FSL_CPM)		+= spi-fsl-cpm.o
 diff --git a/drivers/spi/spi-eswin-bootspi.c b/drivers/spi/spi-eswin-bootspi.c
 deleted file mode 100644
-index 6b35329f8a20..000000000000
+index 6b35329f8a202..0000000000000
 --- a/drivers/spi/spi-eswin-bootspi.c
 +++ /dev/null
 @@ -1,1066 +0,0 @@
@@ -1199,7 +1199,7 @@ index 6b35329f8a20..000000000000
 -MODULE_LICENSE("GPL v2");
 diff --git a/drivers/spi/spi-eswin.c b/drivers/spi/spi-eswin.c
 new file mode 100644
-index 000000000000..0e0652e93906
+index 0000000000000..0e0652e93906c
 --- /dev/null
 +++ b/drivers/spi/spi-eswin.c
 @@ -0,0 +1,1155 @@
@@ -2361,7 +2361,7 @@ index 000000000000..0e0652e93906
 \ No newline at end of file
 diff --git a/drivers/spi/spi-eswin.h b/drivers/spi/spi-eswin.h
 new file mode 100644
-index 000000000000..9ae1ea538e51
+index 0000000000000..9ae1ea538e516
 --- /dev/null
 +++ b/drivers/spi/spi-eswin.h
 @@ -0,0 +1,181 @@

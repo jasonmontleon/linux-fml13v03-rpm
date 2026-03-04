@@ -1,4 +1,4 @@
-From f59cc9284bb0446ded6388e749ff681a45c03c60 Mon Sep 17 00:00:00 2001
+From 34a769133a02c5f592f7c279cff3c051a57f9115 Mon Sep 17 00:00:00 2001
 From: huangyifeng <huangyifeng@eswincomputing.com>
 Date: Mon, 27 Jan 2025 10:54:04 +0800
 Subject: [PATCH 310/534] feat:reset driver fit for upstream
@@ -22,7 +22,7 @@ Signed-off-by: huangyifeng <huangyifeng@eswincomputing.com>
 
 diff --git a/Documentation/devicetree/bindings/reset/eswin,eic770x-reset.yaml b/Documentation/devicetree/bindings/reset/eswin,eic770x-reset.yaml
 new file mode 100644
-index 000000000000..8b0b3b867011
+index 0000000000000..8b0b3b867011b
 --- /dev/null
 +++ b/Documentation/devicetree/bindings/reset/eswin,eic770x-reset.yaml
 @@ -0,0 +1,51 @@
@@ -78,7 +78,7 @@ index 000000000000..8b0b3b867011
 +...
 +
 diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi b/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
-index 9ef5cb260e41..d835fd640338 100644
+index 9ef5cb260e413..d835fd640338c 100644
 --- a/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
 @@ -1,4 +1,4 @@
@@ -1220,7 +1220,7 @@ index 9ef5cb260e41..d835fd640338 100644
  		};
  
 diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi b/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi
-index 6927177ce2c8..1995499e7aab 100644
+index 6927177ce2c84..1995499e7aab7 100644
 --- a/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi
 @@ -30,54 +30,76 @@
@@ -2355,7 +2355,7 @@ index 6927177ce2c8..1995499e7aab 100644
  
 diff --git a/drivers/clk/eswin/clk_eic770x.h b/drivers/clk/eswin/clk_eic770x.h
 new file mode 100644
-index 000000000000..156601fdd267
+index 0000000000000..156601fdd2678
 --- /dev/null
 +++ b/drivers/clk/eswin/clk_eic770x.h
 @@ -0,0 +1,204 @@
@@ -2565,7 +2565,7 @@ index 000000000000..156601fdd267
 +#endif
 diff --git a/include/dt-bindings/reset/eswin,eic770x-reset.h b/include/dt-bindings/reset/eswin,eic770x-reset.h
 new file mode 100755
-index 000000000000..e544fa4da748
+index 0000000000000..e544fa4da7484
 --- /dev/null
 +++ b/include/dt-bindings/reset/eswin,eic770x-reset.h
 @@ -0,0 +1,473 @@

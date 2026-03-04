@@ -1,4 +1,4 @@
-From df0f5ea98bf0dec3b05214a95f58f5f7e54e41e8 Mon Sep 17 00:00:00 2001
+From a71c5307dd10156f27d9b00a45684621cdfa5f27 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Thu, 20 Mar 2025 14:22:25 +0800
 Subject: [PATCH 257/534] Change: Rework the previous DTS changes related to
@@ -13,7 +13,7 @@ Subject: [PATCH 257/534] Change: Rework the previous DTS changes related to
  3 files changed, 48 insertions(+), 8 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
-index 89ea3cf635fd..1ebbfeff875b 100644
+index 89ea3cf635fd3..1ebbfeff875bc 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 @@ -491,6 +491,51 @@ &d1_lpcpu {
@@ -69,7 +69,7 @@ index 89ea3cf635fd..1ebbfeff875b 100644
  	/* m.2 ssd key m */
  	status = "okay";
 diff --git a/arch/riscv/boot/dts/eswin/eic7x-die0-pinctrl.dtsi b/arch/riscv/boot/dts/eswin/eic7x-die0-pinctrl.dtsi
-index 9e8e0ce060a1..8409a0886b7d 100644
+index 9e8e0ce060a1e..8409a0886b7da 100644
 --- a/arch/riscv/boot/dts/eswin/eic7x-die0-pinctrl.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7x-die0-pinctrl.dtsi
 @@ -799,11 +799,6 @@ mux {
@@ -85,7 +85,7 @@ index 9e8e0ce060a1..8409a0886b7d 100644
              pinctrl_die0_gpio28_default: gpio28-default{
  				mux {
 diff --git a/arch/riscv/boot/dts/eswin/eic7x-die1-pinctrl.dtsi b/arch/riscv/boot/dts/eswin/eic7x-die1-pinctrl.dtsi
-index 8a1c568c104e..fcb3d855c105 100644
+index 8a1c568c104e2..fcb3d855c105d 100644
 --- a/arch/riscv/boot/dts/eswin/eic7x-die1-pinctrl.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7x-die1-pinctrl.dtsi
 @@ -717,7 +717,7 @@ mux {

@@ -1,4 +1,4 @@
-From d64e4ae46b352cf42372a4a1cc87df62b71493c9 Mon Sep 17 00:00:00 2001
+From 0024a2961f72f727260761b2d92e783118549c5f Mon Sep 17 00:00:00 2001
 From: yufangxian <yufangxian@eswincomputing.com>
 Date: Fri, 23 May 2025 13:32:19 +0800
 Subject: [PATCH 368/534] feat: sbc vi
@@ -16,7 +16,7 @@ Signed-off-by: yufangxian <yufangxian@eswincomputing.com>
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-sbc-a1-camera.dtsi b/arch/riscv/boot/dts/eswin/eic7700-sbc-a1-camera.dtsi
 new file mode 100644
-index 000000000000..c34f0ce14190
+index 0000000000000..c34f0ce141905
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/eic7700-sbc-a1-camera.dtsi
 @@ -0,0 +1,231 @@
@@ -252,7 +252,7 @@ index 000000000000..c34f0ce14190
 +	status = "disabled";
 +};
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dts b/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dts
-index 7c5bc77fd477..5b34d2ae27e0 100644
+index 7c5bc77fd4771..5b34d2ae27e05 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dts
 @@ -33,6 +33,7 @@
@@ -285,7 +285,7 @@ index 7c5bc77fd477..5b34d2ae27e0 100644
 +	memory-region = <&dvp2axi_mem>;
 +};
 diff --git a/drivers/media/platform/eswin/mipi-csi2/dw-csi-plat.c b/drivers/media/platform/eswin/mipi-csi2/dw-csi-plat.c
-index 92dd6fd50039..973ee3ef97bf 100755
+index 92dd6fd50039f..973ee3ef97bf3 100755
 --- a/drivers/media/platform/eswin/mipi-csi2/dw-csi-plat.c
 +++ b/drivers/media/platform/eswin/mipi-csi2/dw-csi-plat.c
 @@ -445,8 +445,6 @@ dw_mipi_csi_parse_dt(struct platform_device *pdev, struct dw_csi *dev)

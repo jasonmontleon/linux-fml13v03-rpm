@@ -1,4 +1,4 @@
-From 2d3ea172ae61f2649b0d7c523b4f78f0ae78a389 Mon Sep 17 00:00:00 2001
+From fd926ec197f6ad76c9b8b8627a59c3a907c180bb Mon Sep 17 00:00:00 2001
 From: Min Lin <linmin@eswincomputing.com>
 Date: Tue, 30 Sep 2025 14:08:15 +0800
 Subject: [PATCH 518/534] fix(dmac,llc):Remove redudant call of suspend in dmac
@@ -16,7 +16,7 @@ Signed-off-by: Min Lin <linmin@eswincomputing.com>
  1 file changed, 3 deletions(-)
 
 diff --git a/drivers/dma/dw-axi-dmac/dw-axi-dmac-platform.c b/drivers/dma/dw-axi-dmac/dw-axi-dmac-platform.c
-index 385373165764..0322ab4e76fc 100644
+index 3853731657646..0322ab4e76fcc 100644
 --- a/drivers/dma/dw-axi-dmac/dw-axi-dmac-platform.c
 +++ b/drivers/dma/dw-axi-dmac/dw-axi-dmac-platform.c
 @@ -1826,9 +1826,6 @@ static int dw_probe(struct platform_device *pdev)

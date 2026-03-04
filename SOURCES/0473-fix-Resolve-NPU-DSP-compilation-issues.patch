@@ -1,4 +1,4 @@
-From 781192fd8812ab88bfecd6a8a9bc1375562a51d3 Mon Sep 17 00:00:00 2001
+From 17e4d6e1c90ca0217c12b92c2d24ab3b6c846fb8 Mon Sep 17 00:00:00 2001
 From: denglei <denglei@eswincomputing.com>
 Date: Mon, 25 Aug 2025 16:02:05 +0800
 Subject: [PATCH 473/534] fix:Resolve NPU/DSP compilation issues.
@@ -15,7 +15,7 @@ Signed-off-by: denglei <denglei@eswincomputing.com>
  4 files changed, 11 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/soc/eswin/ai_driver/dsp/dsp_ioctl.c b/drivers/soc/eswin/ai_driver/dsp/dsp_ioctl.c
-index 574abbf3376b..b7d76b3a2cf5 100644
+index 574abbf3376b2..b7d76b3a2cf50 100644
 --- a/drivers/soc/eswin/ai_driver/dsp/dsp_ioctl.c
 +++ b/drivers/soc/eswin/ai_driver/dsp/dsp_ioctl.c
 @@ -509,8 +509,8 @@ static struct dsp_user_req_async *dsp_set_task_info(struct dsp_file *dsp_file,
@@ -48,7 +48,7 @@ index 574abbf3376b..b7d76b3a2cf5 100644
  	}
  	INIT_LIST_HEAD(&dsp_file->async_ll_complete);
 diff --git a/drivers/soc/eswin/ai_driver/dsp/dsp_platform.c b/drivers/soc/eswin/ai_driver/dsp/dsp_platform.c
-index ecaf1a70712b..38ef05eda2f6 100644
+index ecaf1a70712b3..38ef05eda2f60 100644
 --- a/drivers/soc/eswin/ai_driver/dsp/dsp_platform.c
 +++ b/drivers/soc/eswin/ai_driver/dsp/dsp_platform.c
 @@ -101,6 +101,8 @@
@@ -61,7 +61,7 @@ index ecaf1a70712b..38ef05eda2f6 100644
  	DSP_IRQ_NONE,
  	DSP_IRQ_LEVEL,
 diff --git a/drivers/soc/eswin/ai_driver/dsp/dsp_platform.h b/drivers/soc/eswin/ai_driver/dsp/dsp_platform.h
-index 03abfbe83c35..69c90e944d1f 100644
+index 03abfbe83c357..69c90e944d1fe 100644
 --- a/drivers/soc/eswin/ai_driver/dsp/dsp_platform.h
 +++ b/drivers/soc/eswin/ai_driver/dsp/dsp_platform.h
 @@ -60,10 +60,13 @@ int es_dsp_clk_disable(struct es_dsp *dsp);
@@ -79,7 +79,7 @@ index 03abfbe83c35..69c90e944d1f 100644
  int dsp_alloc_hw(struct platform_device *pdev, struct es_dsp *dsp);
  int dsp_enable_irq(struct es_dsp *dsp);
 diff --git a/drivers/soc/eswin/ai_driver/dsp/mloader/xt_mld_loader.c b/drivers/soc/eswin/ai_driver/dsp/mloader/xt_mld_loader.c
-index e5967e94da47..f77995d442a2 100644
+index e5967e94da47a..f77995d442a22 100644
 --- a/drivers/soc/eswin/ai_driver/dsp/mloader/xt_mld_loader.c
 +++ b/drivers/soc/eswin/ai_driver/dsp/mloader/xt_mld_loader.c
 @@ -212,9 +212,9 @@ static xtmld_ptr align_ptr(xtmld_ptr ptr, uint32_t t_align, uint32_t t_paddr)

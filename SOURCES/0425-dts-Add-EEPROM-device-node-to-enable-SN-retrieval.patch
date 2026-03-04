@@ -1,4 +1,4 @@
-From b6fa86567bf2386cbfa1aef1b65b6a7ed9765355 Mon Sep 17 00:00:00 2001
+From c166585e01bffc1aef467b2e9057c7ad259e324d Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Mon, 4 Aug 2025 15:09:42 +0800
 Subject: [PATCH 425/534] dts: Add EEPROM device node to enable SN retrieval
@@ -8,7 +8,7 @@ Subject: [PATCH 425/534] dts: Add EEPROM device node to enable SN retrieval
  1 file changed, 14 insertions(+), 1 deletion(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
-index e42af9a63330..d594bdeff7ef 100644
+index e42af9a633301..d594bdeff7efc 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 @@ -160,6 +160,14 @@ distance-map {

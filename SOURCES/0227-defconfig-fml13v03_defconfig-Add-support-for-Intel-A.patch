@@ -1,4 +1,4 @@
-From 72d52990d3c42b1f5557852681be42030f2d88b0 Mon Sep 17 00:00:00 2001
+From 30b0a5c4850ba88e1452d2ce2dc1d78f9d8c1702 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Wed, 12 Mar 2025 11:23:29 +0800
 Subject: [PATCH 227/534] defconfig: fml13v03_defconfig: Add support for Intel
@@ -10,7 +10,7 @@ Signed-off-by: yang.wang <yang.wang@deepcomputing.io>
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/arch/riscv/configs/fml13v03_defconfig b/arch/riscv/configs/fml13v03_defconfig
-index 420935eaa6c6..c1d5d90c241d 100755
+index 420935eaa6c61..c1d5d90c241d2 100755
 --- a/arch/riscv/configs/fml13v03_defconfig
 +++ b/arch/riscv/configs/fml13v03_defconfig
 @@ -412,7 +412,8 @@ CONFIG_USB_RTL8152=m

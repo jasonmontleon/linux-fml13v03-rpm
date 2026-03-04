@@ -1,4 +1,4 @@
-From 56ba4ed92f608f29a31538e42be6344ab233a31e Mon Sep 17 00:00:00 2001
+From af8569b05dbb95d2a1d907b1551f7ed4da44c71a Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Mon, 7 Apr 2025 16:38:25 +0800
 Subject: [PATCH 272/534] Add EC_CMD_HOST_SHUTDOWN to CROS poweroff flow for EC
@@ -10,7 +10,7 @@ Subject: [PATCH 272/534] Add EC_CMD_HOST_SHUTDOWN to CROS poweroff flow for EC
  2 files changed, 6 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/platform/chrome/cros_ec_poweroff.c b/drivers/platform/chrome/cros_ec_poweroff.c
-index 31f25f805f3a..655bff8b6100 100644
+index 31f25f805f3a8..655bff8b6100e 100644
 --- a/drivers/platform/chrome/cros_ec_poweroff.c
 +++ b/drivers/platform/chrome/cros_ec_poweroff.c
 @@ -2,7 +2,6 @@
@@ -36,7 +36,7 @@ index 31f25f805f3a..655bff8b6100 100644
  	len = cros_ec_prepare_tx(ec, &msg);
  	if (len < 0) {
 diff --git a/include/linux/platform_data/cros_ec_commands.h b/include/linux/platform_data/cros_ec_commands.h
-index 00ac1d572b22..5d7e4347254e 100644
+index 00ac1d572b221..5d7e4347254e0 100644
 --- a/include/linux/platform_data/cros_ec_commands.h
 +++ b/include/linux/platform_data/cros_ec_commands.h
 @@ -4143,6 +4143,10 @@ struct ec_params_dedicated_charger_limit {

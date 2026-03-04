@@ -1,4 +1,4 @@
-From 7d89cfbedfacb66173b981c0417ea65f1c9af486 Mon Sep 17 00:00:00 2001
+From 1bbd86096314fc2aab3f4cc60483da5e32b2d264 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Thu, 13 Mar 2025 17:31:32 +0800
 Subject: [PATCH 229/534] dts: eswin-win2030-die1-soc.dtsi: Fix compile
@@ -27,7 +27,7 @@ Signed-off-by: yang.wang <yang.wang@deepcomputing.io>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi b/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi
-index 309c9ee991d2..cedb2490af55 100644
+index 309c9ee991d28..cedb2490af55b 100644
 --- a/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi
 @@ -1675,7 +1675,7 @@ d1_sdio1: mmc@0x70470000{

@@ -1,4 +1,4 @@
-From a14ca8c19a01d62625f2bf52dd42007028e2212a Mon Sep 17 00:00:00 2001
+From d3bffe09521669dd4278e8d62604e84beadfe2c0 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Tue, 6 May 2025 10:55:08 +0800
 Subject: [PATCH 288/534] sound/soc/codecs/es8326: Optimize speaker control to
@@ -10,7 +10,7 @@ Signed-off-by: yang.wang <yang.wang@deepcomputing.io>
  1 file changed, 18 insertions(+), 17 deletions(-)
 
 diff --git a/sound/soc/codecs/es8326.c b/sound/soc/codecs/es8326.c
-index 2a751e266ad6..a2f649d778a7 100644
+index 2a751e266ad6e..a2f649d778a72 100644
 --- a/sound/soc/codecs/es8326.c
 +++ b/sound/soc/codecs/es8326.c
 @@ -47,7 +47,7 @@ struct es8326_priv {

@@ -1,4 +1,4 @@
-From b8b0ae7b3d7b7f3bb0e2dbc191ad4f246b387a3b Mon Sep 17 00:00:00 2001
+From 68150f310b8c6b62bf8f0dea320ae13ec59b2d9d Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Wed, 9 Apr 2025 15:18:16 +0800
 Subject: [PATCH 273/534] riscv: Update fml13v03_defconfig for USB audio
@@ -10,7 +10,7 @@ Signed-off-by: yang.wang <yang.wang@deepcomputing.io>
  1 file changed, 3 insertions(+)
 
 diff --git a/arch/riscv/configs/fml13v03_defconfig b/arch/riscv/configs/fml13v03_defconfig
-index 38396e7abdbf..67f46496fbb9 100755
+index 38396e7abdbfa..67f46496fbb98 100755
 --- a/arch/riscv/configs/fml13v03_defconfig
 +++ b/arch/riscv/configs/fml13v03_defconfig
 @@ -672,6 +672,8 @@ CONFIG_SND_HDA_PATCH_LOADER=y

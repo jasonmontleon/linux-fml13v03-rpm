@@ -1,4 +1,4 @@
-From 9be32ba1d5f3cc6f52ab571ec305ed0a5579d294 Mon Sep 17 00:00:00 2001
+From 049913ad7fecad77a5cd975fe316702e6f97d9c9 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Thu, 27 Mar 2025 14:16:16 +0800
 Subject: [PATCH 263/534] NPU: fix NPU startup hang issue.
@@ -10,7 +10,7 @@ Signed-off-by: yang.wang <yang.wang@deepcomputing.io>
  2 files changed, 9 insertions(+), 9 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
-index c6ce1a0113d2..1ced9cfcd2af 100644
+index c6ce1a0113d23..1ced9cfcd2afd 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 @@ -61,27 +61,27 @@ cpus {
@@ -50,7 +50,7 @@ index c6ce1a0113d2..1ced9cfcd2af 100644
  	};
  
 diff --git a/drivers/regulator/tps549d22-regulator.c b/drivers/regulator/tps549d22-regulator.c
-index dd0052525c36..93684d917863 100644
+index dd0052525c36a..93684d917863f 100644
 --- a/drivers/regulator/tps549d22-regulator.c
 +++ b/drivers/regulator/tps549d22-regulator.c
 @@ -462,7 +462,7 @@ static s32 tps549d22_init_data(struct TPS549D22_DRIVER_DATA *data,

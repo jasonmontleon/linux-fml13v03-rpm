@@ -1,4 +1,4 @@
-From fbe5121ee61b596813fa4728aef743a10aaa0ad9 Mon Sep 17 00:00:00 2001
+From 15a9451cbfb3091214409df9f683057dfc50fb16 Mon Sep 17 00:00:00 2001
 From: zouxiaojun <zouxiaojun@eswincomputing.com>
 Date: Mon, 28 Jul 2025 17:14:40 +0800
 Subject: [PATCH 452/534] fix(venc):abort vcmd while venc generic suspend
@@ -18,7 +18,7 @@ Signed-off-by: zouxiaojun <zouxiaojun@eswincomputing.com>
  3 files changed, 135 insertions(+), 66 deletions(-)
 
 diff --git a/drivers/staging/media/eswin/vdec/hantro_vcmd.c b/drivers/staging/media/eswin/vdec/hantro_vcmd.c
-index fdee1889c2da..908010e2b6f7 100644
+index fdee1889c2da6..908010e2b6f76 100644
 --- a/drivers/staging/media/eswin/vdec/hantro_vcmd.c
 +++ b/drivers/staging/media/eswin/vdec/hantro_vcmd.c
 @@ -4485,7 +4485,6 @@ int hantrovcmd_reset(u32 core_id) {
@@ -41,7 +41,7 @@ index fdee1889c2da..908010e2b6f7 100644
  	dev->sw_cmdbuf_rdy_num = rdy_cmdbuf_count;
  	/** reset the sw_exe_cmdbuf_count, because the vcmd was aborted*/
 diff --git a/drivers/staging/media/eswin/venc/vc8000_vcmd_driver.c b/drivers/staging/media/eswin/venc/vc8000_vcmd_driver.c
-index f2529304b4eb..db69a6a5f004 100644
+index f2529304b4eb0..db69a6a5f0040 100644
 --- a/drivers/staging/media/eswin/venc/vc8000_vcmd_driver.c
 +++ b/drivers/staging/media/eswin/venc/vc8000_vcmd_driver.c
 @@ -266,6 +266,8 @@ struct hantrovcmd_dev {
@@ -419,7 +419,7 @@ index f2529304b4eb..db69a6a5f004 100644
  
  /** get status statistcs*/
 diff --git a/drivers/staging/media/eswin/venc/vcmdswhwregisters.h b/drivers/staging/media/eswin/venc/vcmdswhwregisters.h
-index f394179604f0..1d699a821f7f 100644
+index f394179604f01..1d699a821f7fc 100644
 --- a/drivers/staging/media/eswin/venc/vcmdswhwregisters.h
 +++ b/drivers/staging/media/eswin/venc/vcmdswhwregisters.h
 @@ -96,6 +96,7 @@ typedef size_t ptr_t;

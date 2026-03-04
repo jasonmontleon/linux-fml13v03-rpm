@@ -1,4 +1,4 @@
-From 412eb0061dbb80d76958b9b4799a194650116788 Mon Sep 17 00:00:00 2001
+From fb763febd23745416c834a311807d4ea5d951794 Mon Sep 17 00:00:00 2001
 From: zhouliang1 <zhouliang1@eswincomputing.com>
 Date: Fri, 14 Feb 2025 16:48:39 +0800
 Subject: [PATCH 318/534] feat:merge feature-vpu7702 branch
@@ -14,7 +14,7 @@ Reviewed-by: Joey Zheng <zhengyu@eswincomputing.com>
  2 files changed, 23 insertions(+), 193 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/Makefile b/arch/riscv/boot/dts/eswin/Makefile
-index 86f63422221b..e3dcce7d0c68 100644
+index 86f63422221be..e3dcce7d0c687 100644
 --- a/arch/riscv/boot/dts/eswin/Makefile
 +++ b/arch/riscv/boot/dts/eswin/Makefile
 @@ -2,7 +2,9 @@
@@ -59,7 +59,7 @@ index 86f63422221b..e3dcce7d0c68 100644
 +subdir-y += overlays
  obj-$(CONFIG_BUILTIN_DTB) += $(addsuffix .o, $(dtb-y))
 diff --git a/kernel/printk/printk.c b/kernel/printk/printk.c
-index c10dc4bc3e65..22e302081b7b 100644
+index c10dc4bc3e65a..22e302081b7b6 100644
 --- a/kernel/printk/printk.c
 +++ b/kernel/printk/printk.c
 @@ -55,41 +55,11 @@

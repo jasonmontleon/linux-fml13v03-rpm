@@ -1,4 +1,4 @@
-From a577c7cc6b4dad95933b18d03f2d2d4e984ed615 Mon Sep 17 00:00:00 2001
+From 40041980f737761cedf45d488a95ce8875c4cc0f Mon Sep 17 00:00:00 2001
 From: zhuxuefei <zhuxuefei@eswincomputing.com>
 Date: Tue, 12 Aug 2025 14:33:41 +0800
 Subject: [PATCH 475/534] feat:npu frame schedule fix when npu suspend.
@@ -12,7 +12,7 @@ Signed-off-by: zhuxuefei <zhuxuefei@eswincomputing.com>
  1 file changed, 33 insertions(+), 42 deletions(-)
 
 diff --git a/drivers/soc/eswin/ai_driver/npu/scheduler.c b/drivers/soc/eswin/ai_driver/npu/scheduler.c
-index 436b20387ee1..b9eaf57a708a 100644
+index 436b20387ee17..b9eaf57a708a5 100644
 --- a/drivers/soc/eswin/ai_driver/npu/scheduler.c
 +++ b/drivers/soc/eswin/ai_driver/npu/scheduler.c
 @@ -41,20 +41,16 @@ module_param(frame_timeout, int, 0644);

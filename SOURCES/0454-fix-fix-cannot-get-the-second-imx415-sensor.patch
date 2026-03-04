@@ -1,4 +1,4 @@
-From ffcf95de16b5d5adb95784a47d56d92d60649d0d Mon Sep 17 00:00:00 2001
+From 0155576aa753ece4453ae0ce8c6a1f812da80421 Mon Sep 17 00:00:00 2001
 From: yufangxian <yufangxian@eswincomputing.com>
 Date: Mon, 11 Aug 2025 15:42:15 +0800
 Subject: [PATCH 454/534] fix: fix cannot get the second imx415 sensor
@@ -12,7 +12,7 @@ Signed-off-by: yufangxian <yufangxian@eswincomputing.com>
  1 file changed, 1 insertion(+)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-sbc-a1-camera-imx415.dtsi b/arch/riscv/boot/dts/eswin/eic7700-sbc-a1-camera-imx415.dtsi
-index 7bea3dc58f3a..288a248d89f9 100644
+index 7bea3dc58f3ac..288a248d89f92 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-sbc-a1-camera-imx415.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7700-sbc-a1-camera-imx415.dtsi
 @@ -313,6 +313,7 @@ imx415_1: imx415@37 {

@@ -1,4 +1,4 @@
-From 0bd3d10b6d09e10f1784f95c705329978215d1cc Mon Sep 17 00:00:00 2001
+From 1e842fd6e1039992e00b550f8908b3c78ac29cf3 Mon Sep 17 00:00:00 2001
 From: denglei <denglei@eswincomputing.com>
 Date: Tue, 2 Sep 2025 10:35:13 +0800
 Subject: [PATCH 493/534] fix:Optimize memory usage in npu drivers.
@@ -19,7 +19,7 @@ Signed-off-by: denglei <denglei@eswincomputing.com>
  7 files changed, 255 insertions(+), 523 deletions(-)
 
 diff --git a/drivers/soc/eswin/ai_driver/dsp/dsp_ioctl.c b/drivers/soc/eswin/ai_driver/dsp/dsp_ioctl.c
-index b7d76b3a2cf5..147109322527 100644
+index b7d76b3a2cf50..1471093225274 100644
 --- a/drivers/soc/eswin/ai_driver/dsp/dsp_ioctl.c
 +++ b/drivers/soc/eswin/ai_driver/dsp/dsp_ioctl.c
 @@ -106,8 +106,7 @@ static long dsp_ioctl_load_op(struct file *flip, dsp_ioctl_load_s __user *arg)
@@ -571,7 +571,7 @@ index b7d76b3a2cf5..147109322527 100644
  }
  static long dsp_ioctl(struct file *flip, unsigned int cmd, unsigned long arg)
 diff --git a/drivers/soc/eswin/ai_driver/dsp/dsp_main.h b/drivers/soc/eswin/ai_driver/dsp/dsp_main.h
-index b225e2287ff4..ac6e04357adf 100644
+index b225e2287ff41..ac6e04357adf8 100644
 --- a/drivers/soc/eswin/ai_driver/dsp/dsp_main.h
 +++ b/drivers/soc/eswin/ai_driver/dsp/dsp_main.h
 @@ -188,8 +188,6 @@ struct es_dsp {
@@ -584,7 +584,7 @@ index b225e2287ff4..ac6e04357adf 100644
  	atomic_t dmabuf_mapped_cnt;
  #if defined(CONFIG_PM_DEVFREQ)
 diff --git a/drivers/soc/eswin/ai_driver/dsp/dsp_pool.c b/drivers/soc/eswin/ai_driver/dsp/dsp_pool.c
-index 5da8214d8605..f578d1731999 100644
+index 5da8214d86056..f578d17319998 100644
 --- a/drivers/soc/eswin/ai_driver/dsp/dsp_pool.c
 +++ b/drivers/soc/eswin/ai_driver/dsp/dsp_pool.c
 @@ -110,7 +110,7 @@ struct dsp_pool *dsp_pool_create(struct device *dev, size_t size,
@@ -615,7 +615,7 @@ index 5da8214d8605..f578d1731999 100644
  		return;
  	}
 diff --git a/drivers/soc/eswin/ai_driver/npu/dla_buffer.c b/drivers/soc/eswin/ai_driver/npu/dla_buffer.c
-index 8aea165e53ec..1db428181eed 100644
+index 8aea165e53ece..1db428181eedf 100644
 --- a/drivers/soc/eswin/ai_driver/npu/dla_buffer.c
 +++ b/drivers/soc/eswin/ai_driver/npu/dla_buffer.c
 @@ -282,8 +282,7 @@ int dla_import_dmabuf_from_model(struct user_model *model)
@@ -647,7 +647,7 @@ index 8aea165e53ec..1db428181eed 100644
  	return ret;
  }
 diff --git a/drivers/soc/eswin/ai_driver/npu/dsp.c b/drivers/soc/eswin/ai_driver/npu/dsp.c
-index 15e43027b1a5..a796dc577520 100644
+index 15e43027b1a56..a796dc5775208 100644
 --- a/drivers/soc/eswin/ai_driver/npu/dsp.c
 +++ b/drivers/soc/eswin/ai_driver/npu/dsp.c
 @@ -73,8 +73,7 @@ static void npu_put_dsp_dmabuf(struct file *file, struct dsp_dma_buf **dma_buf)
@@ -1297,7 +1297,7 @@ index 15e43027b1a5..a796dc577520 100644
  		}
  
 diff --git a/drivers/soc/eswin/ai_driver/npu/engine.c b/drivers/soc/eswin/ai_driver/npu/engine.c
-index fa165ac48a2f..fe6d3c1339c8 100644
+index fa165ac48a2f2..fe6d3c1339c89 100644
 --- a/drivers/soc/eswin/ai_driver/npu/engine.c
 +++ b/drivers/soc/eswin/ai_driver/npu/engine.c
 @@ -74,8 +74,7 @@ int set_current(struct win_engine *engine, struct win_executor *executor,
@@ -1551,7 +1551,7 @@ index fa165ac48a2f..fe6d3c1339c8 100644
  			executor->cfg_seq[i] = NULL;
  		}
 diff --git a/drivers/soc/eswin/ai_driver/npu/parse_dep.c b/drivers/soc/eswin/ai_driver/npu/parse_dep.c
-index e21c41146346..8604acd5e545 100644
+index e21c41146346a..8604acd5e545e 100644
 --- a/drivers/soc/eswin/ai_driver/npu/parse_dep.c
 +++ b/drivers/soc/eswin/ai_driver/npu/parse_dep.c
 @@ -151,11 +151,8 @@ static npu_dep_info_t *npu_get_dep_info(struct win_executor *executor, u8 pcer,

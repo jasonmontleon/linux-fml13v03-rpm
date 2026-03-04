@@ -1,4 +1,4 @@
-From ded1eb6659f75e0f9385e8f499ea7dec2b8f9bc9 Mon Sep 17 00:00:00 2001
+From 514e7b76ad7da02d5547a1148b5f4f0afad1b798 Mon Sep 17 00:00:00 2001
 From: Sandie Cao <sandie.cao@deepcomputing.io>
 Date: Wed, 23 Apr 2025 11:53:19 +0800
 Subject: [PATCH 283/534] S3 patch
@@ -697,7 +697,7 @@ Subject: [PATCH 283/534] S3 patch
  delete mode 100644 tools/testing/selftests/kvm/settings
 
 diff --git a/arch/riscv/boot/dts/eswin/Makefile b/arch/riscv/boot/dts/eswin/Makefile
-index 8a491266562a..86f63422221b 100644
+index 8a491266562a7..86f63422221be 100644
 --- a/arch/riscv/boot/dts/eswin/Makefile
 +++ b/arch/riscv/boot/dts/eswin/Makefile
 @@ -10,6 +10,9 @@ dtb-$(CONFIG_SOC_ESWIN) += eswin-win2030.dtb \
@@ -711,7 +711,7 @@ index 8a491266562a..86f63422221b 100644
  							eic7702-deepcomputing-fml13v03-low-power.dtb
  obj-$(CONFIG_BUILTIN_DTB) += $(addsuffix .o, $(dtb-y))
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-d314.dts b/arch/riscv/boot/dts/eswin/eic7700-d314.dts
-index df9ab2e935ec..a471f9506b5b 100644
+index df9ab2e935ecc..a471f9506b5b7 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-d314.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7700-d314.dts
 @@ -129,7 +129,7 @@ &d0_sata {
@@ -732,7 +732,7 @@ index df9ab2e935ec..a471f9506b5b 100644
  		};
  	};
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-evb-a2.dts b/arch/riscv/boot/dts/eswin/eic7700-evb-a2.dts
-index ebcde065a160..5c9f192c0e0d 100644
+index ebcde065a1605..5c9f192c0e0d8 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-evb-a2.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7700-evb-a2.dts
 @@ -63,15 +63,15 @@ cpus {
@@ -821,7 +821,7 @@ index ebcde065a160..5c9f192c0e0d 100644
  
  &pinctrl {
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-evb-a3.dts b/arch/riscv/boot/dts/eswin/eic7700-evb-a3.dts
-index 9631c73e0bd3..4f511e5d7369 100644
+index 9631c73e0bd35..4f511e5d7369e 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-evb-a3.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7700-evb-a3.dts
 @@ -22,35 +22,4 @@
@@ -862,7 +862,7 @@ index 9631c73e0bd3..4f511e5d7369 100644
  };
 \ No newline at end of file
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-evb.dts b/arch/riscv/boot/dts/eswin/eic7700-evb.dts
-index ffd2cc5d26ab..5ecaef256fca 100644
+index ffd2cc5d26ab5..5ecaef256fcaa 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-evb.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7700-evb.dts
 @@ -62,15 +62,15 @@ cpus {
@@ -959,7 +959,7 @@ index ffd2cc5d26ab..5ecaef256fca 100644
  
  &pinctrl {
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-hifive-premier-p550.dts b/arch/riscv/boot/dts/eswin/eic7700-hifive-premier-p550.dts
-index 64f4adfa8f71..686388faa6ad 100644
+index 64f4adfa8f718..686388faa6ad2 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-hifive-premier-p550.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7700-hifive-premier-p550.dts
 @@ -60,15 +60,15 @@ cpus {
@@ -1066,7 +1066,7 @@ index 64f4adfa8f71..686388faa6ad 100644
  &pinctrl {
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-osm.dts b/arch/riscv/boot/dts/eswin/eic7700-osm.dts
 new file mode 100644
-index 000000000000..682c7265399e
+index 0000000000000..682c7265399e7
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/eic7700-osm.dts
 @@ -0,0 +1,870 @@
@@ -1941,7 +1941,7 @@ index 000000000000..682c7265399e
 +	status = "okay";
 +};
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-pinctrl.dtsi b/arch/riscv/boot/dts/eswin/eic7700-pinctrl.dtsi
-index 285b3bb9bcdb..5ccd4dfcf817 100644
+index 285b3bb9bcdb7..5ccd4dfcf817c 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-pinctrl.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7700-pinctrl.dtsi
 @@ -882,6 +882,11 @@ mux {
@@ -1957,7 +1957,7 @@ index 285b3bb9bcdb..5ccd4dfcf817 100644
              pinctrl_gpio56_default: gpio56-default{
  				mux {
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dts b/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dts
-index 2d8f548f198f..9222d744069d 100644
+index 2d8f548f198f1..9222d744069db 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dts
 @@ -45,7 +45,8 @@ / {
@@ -2036,7 +2036,7 @@ index 2d8f548f198f..9222d744069d 100644
  
  &pvt0 {
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-som260-a1.dtsi b/arch/riscv/boot/dts/eswin/eic7700-som260-a1.dtsi
-index 598bf620ee0d..1df838861306 100644
+index 598bf620ee0d1..1df8388613065 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-som260-a1.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7700-som260-a1.dtsi
 @@ -62,15 +62,15 @@ cpus {
@@ -2088,7 +2088,7 @@ index 598bf620ee0d..1df838861306 100644
  
  &pvt0 {
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-som314.dtsi b/arch/riscv/boot/dts/eswin/eic7700-som314.dtsi
-index 1a9606808c21..65058b6c40e4 100644
+index 1a9606808c211..65058b6c40e47 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-som314.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7700-som314.dtsi
 @@ -59,15 +59,15 @@ cpus {
@@ -2155,7 +2155,7 @@ index 1a9606808c21..65058b6c40e4 100644
  &pvt0 {
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-vpu7702.dts b/arch/riscv/boot/dts/eswin/eic7700-vpu7702.dts
 new file mode 100644
-index 000000000000..c89dc7af6346
+index 0000000000000..c89dc7af63465
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/eic7700-vpu7702.dts
 @@ -0,0 +1,1088 @@
@@ -3249,7 +3249,7 @@ index 000000000000..c89dc7af6346
 +};
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-d560.dts b/arch/riscv/boot/dts/eswin/eic7702-d560.dts
 new file mode 100644
-index 000000000000..bdedf4253327
+index 0000000000000..bdedf42533279
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/eic7702-d560.dts
 @@ -0,0 +1,323 @@
@@ -3577,7 +3577,7 @@ index 000000000000..bdedf4253327
 +	gpio43  : usb1 pwren(O)
 +*/
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
-index 3c45518096e4..545645a3b68e 100644
+index 3c45518096e45..545645a3b68ee 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 @@ -126,7 +126,7 @@ g2d_12GB_boundary_reserved_4k {
@@ -3624,7 +3624,7 @@ index 3c45518096e4..545645a3b68e 100644
  
  &d1_pwm0 {
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-evb-a1-d0.dts b/arch/riscv/boot/dts/eswin/eic7702-evb-a1-d0.dts
-index 5952e80d5fbb..bb334434e2db 100644
+index 5952e80d5fbb1..bb334434e2dbc 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-evb-a1-d0.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-evb-a1-d0.dts
 @@ -121,6 +121,7 @@ &d0_reset {
@@ -3680,7 +3680,7 @@ index 5952e80d5fbb..bb334434e2db 100644
  
  &pinctrl {
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-evb-a1-d1.dts b/arch/riscv/boot/dts/eswin/eic7702-evb-a1-d1.dts
-index ae3db7b2a3b8..5ecd25fd3915 100644
+index ae3db7b2a3b8b..5ecd25fd39156 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-evb-a1-d1.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-evb-a1-d1.dts
 @@ -133,6 +133,7 @@ &d0_reset {
@@ -3736,7 +3736,7 @@ index ae3db7b2a3b8..5ecd25fd3915 100644
  
  &pinctrl {
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-evb-a1-interleave.dts b/arch/riscv/boot/dts/eswin/eic7702-evb-a1-interleave.dts
-index c1ab29ec50ad..74b4fa87bcb1 100644
+index c1ab29ec50ad8..74b4fa87bcb14 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-evb-a1-interleave.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-evb-a1-interleave.dts
 @@ -1316,7 +1316,7 @@ d1_codec1_endpoint: endpoint {
@@ -3784,7 +3784,7 @@ index c1ab29ec50ad..74b4fa87bcb1 100644
  &d1_pwm0 {
  	status = "disabled";
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-evb-a1.dts b/arch/riscv/boot/dts/eswin/eic7702-evb-a1.dts
-index 36a0964ebcbe..445beb0d45f3 100644
+index 36a0964ebcbe6..445beb0d45f36 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-evb-a1.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-evb-a1.dts
 @@ -64,27 +64,27 @@ cpus {
@@ -3908,7 +3908,7 @@ index 36a0964ebcbe..445beb0d45f3 100644
  &timer2 {
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-som560.dtsi b/arch/riscv/boot/dts/eswin/eic7702-som560.dtsi
 new file mode 100644
-index 000000000000..de69bc2359e4
+index 0000000000000..de69bc2359e4b
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/eic7702-som560.dtsi
 @@ -0,0 +1,1434 @@
@@ -5347,7 +5347,7 @@ index 000000000000..de69bc2359e4
 +	status = "okay";
 +};
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-tb.dts b/arch/riscv/boot/dts/eswin/eic7702-tb.dts
-index c0dd0416b116..5ebb68adfc08 100644
+index c0dd0416b1167..5ebb68adfc08a 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-tb.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-tb.dts
 @@ -64,27 +64,27 @@ cpus {
@@ -5440,7 +5440,7 @@ index c0dd0416b116..5ebb68adfc08 100644
  
  &timer2 {
 diff --git a/arch/riscv/boot/dts/eswin/eic770x-opptable.dtsi b/arch/riscv/boot/dts/eswin/eic770x-opptable.dtsi
-index c8f0d48745ca..6198424e38d5 100644
+index c8f0d48745ca0..6198424e38d5e 100644
 --- a/arch/riscv/boot/dts/eswin/eic770x-opptable.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic770x-opptable.dtsi
 @@ -225,6 +225,22 @@ opp@1040000000 {
@@ -5467,7 +5467,7 @@ index c8f0d48745ca..6198424e38d5 100644
  		compatible = "operating-points-v2";
  		opp@800000000 {
 diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030-arch.dtsi b/arch/riscv/boot/dts/eswin/eswin-win2030-arch.dtsi
-index 693a82515c87..98c4689b99a6 100644
+index 693a82515c871..98c4689b99a69 100644
 --- a/arch/riscv/boot/dts/eswin/eswin-win2030-arch.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eswin-win2030-arch.dtsi
 @@ -87,7 +87,7 @@ cpu_0: cpu@0 {
@@ -5507,7 +5507,7 @@ index 693a82515c87..98c4689b99a6 100644
  			cpu3_intc: interrupt-controller {
  				#interrupt-cells = <1>;
 diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi b/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
-index e202497879a0..c7058a8cfe2e 100644
+index e202497879a05..c7058a8cfe2e9 100644
 --- a/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
 @@ -29,29 +29,30 @@
@@ -6073,7 +6073,7 @@ index e202497879a0..c7058a8cfe2e 100644
  			interrupts = <26 25>;
  			#size-cells = <2>;
 diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi b/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi
-index 7587a9984463..49f3179454ed 100644
+index 7587a9984463d..49f3179454ed6 100644
 --- a/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi
 @@ -29,7 +29,7 @@
@@ -6618,7 +6618,7 @@ index 7587a9984463..49f3179454ed 100644
  
  		d1_ddr0: ddr-controller@72300000 {
 diff --git a/arch/riscv/configs/eic7700_dbg_defconfig b/arch/riscv/configs/eic7700_dbg_defconfig
-index c2163c674122..67fcb2940a09 100644
+index c2163c6741226..67fcb2940a097 100644
 --- a/arch/riscv/configs/eic7700_dbg_defconfig
 +++ b/arch/riscv/configs/eic7700_dbg_defconfig
 @@ -736,6 +736,7 @@ CONFIG_RPMSG_VIRTIO=y
@@ -6636,7 +6636,7 @@ index c2163c674122..67fcb2940a09 100644
 +CONFIG_BCMDHD=m
 +CONFIG_BCMDHD_SDIO_IRQ=y
 diff --git a/arch/riscv/configs/eic7700_defconfig b/arch/riscv/configs/eic7700_defconfig
-index 39eb68bfc9fb..f90fd076f227 100644
+index 39eb68bfc9fb9..f90fd076f227d 100644
 --- a/arch/riscv/configs/eic7700_defconfig
 +++ b/arch/riscv/configs/eic7700_defconfig
 @@ -35,15 +35,19 @@ CONFIG_SMP=y
@@ -6723,7 +6723,7 @@ index 39eb68bfc9fb..f90fd076f227 100644
 +CONFIG_BCMDHD_SDIO_IRQ=y
 diff --git a/arch/riscv/configs/eic7700_vpu7702_defconfig b/arch/riscv/configs/eic7700_vpu7702_defconfig
 new file mode 100644
-index 000000000000..ca6a63a49950
+index 0000000000000..ca6a63a499504
 --- /dev/null
 +++ b/arch/riscv/configs/eic7700_vpu7702_defconfig
 @@ -0,0 +1,850 @@
@@ -7578,7 +7578,7 @@ index 000000000000..ca6a63a49950
 +CONFIG_VIDEO_ESWIN_VDEC=y
 +CONFIG_VIDEO_ESWIN_MEDIA_EXT_DRIVER=y
 diff --git a/arch/riscv/configs/eic7702_defconfig b/arch/riscv/configs/eic7702_defconfig
-index 9dc573c2c5c2..ddc3da19655f 100644
+index 9dc573c2c5c24..ddc3da19655fe 100644
 --- a/arch/riscv/configs/eic7702_defconfig
 +++ b/arch/riscv/configs/eic7702_defconfig
 @@ -40,14 +40,19 @@ CONFIG_HOTPLUG_CPU=y
@@ -7681,7 +7681,7 @@ index 9dc573c2c5c2..ddc3da19655f 100644
 +CONFIG_BCMDHD=m
 +CONFIG_BCMDHD_SDIO_IRQ=y
 diff --git a/arch/riscv/configs/fml13v03_defconfig b/arch/riscv/configs/fml13v03_defconfig
-index 214a1b6fb678..86b9e6931cec 100755
+index 214a1b6fb678b..86b9e6931cec0 100755
 --- a/arch/riscv/configs/fml13v03_defconfig
 +++ b/arch/riscv/configs/fml13v03_defconfig
 @@ -38,14 +38,19 @@ CONFIG_HOTPLUG_CPU=y
@@ -7776,7 +7776,7 @@ index 214a1b6fb678..86b9e6931cec 100755
 +CONFIG_BCMDHD=m
 +CONFIG_BCMDHD_SDIO_IRQ=y
 diff --git a/arch/riscv/configs/win2030_defconfig b/arch/riscv/configs/win2030_defconfig
-index 802d08829eac..c00bea148348 100644
+index 802d08829eacd..c00bea148348b 100644
 --- a/arch/riscv/configs/win2030_defconfig
 +++ b/arch/riscv/configs/win2030_defconfig
 @@ -409,6 +409,7 @@ CONFIG_DWMAC_WIN2030=y
@@ -7797,7 +7797,7 @@ index 802d08829eac..c00bea148348 100644
  CONFIG_RPMSG_VIRTIO=y
  CONFIG_ARCH_ESWIN_EIC770X_SOC_FAMILY=y
 diff --git a/arch/riscv/include/asm/dma-noncoherent.h b/arch/riscv/include/asm/dma-noncoherent.h
-index 7a9fe8a0e2db..b1e0cba77c41 100644
+index 7a9fe8a0e2dbb..b1e0cba77c415 100644
 --- a/arch/riscv/include/asm/dma-noncoherent.h
 +++ b/arch/riscv/include/asm/dma-noncoherent.h
 @@ -7,7 +7,7 @@
@@ -7863,7 +7863,7 @@ index 7a9fe8a0e2db..b1e0cba77c41 100644
  	}
  #endif
 diff --git a/arch/riscv/mm/dma-noncoherent.c b/arch/riscv/mm/dma-noncoherent.c
-index eec109eaf89f..5ecf95370a69 100644
+index eec109eaf89f8..5ecf95370a690 100644
 --- a/arch/riscv/mm/dma-noncoherent.c
 +++ b/arch/riscv/mm/dma-noncoherent.c
 @@ -72,7 +72,7 @@ static inline bool arch_sync_dma_cpu_needs_post_dma_flush(void)
@@ -7982,7 +7982,7 @@ index eec109eaf89f..5ecf95370a69 100644
  #endif
 \ No newline at end of file
 diff --git a/drivers/ata/ahci_eswin.c b/drivers/ata/ahci_eswin.c
-index 47240248f468..76f803828053 100644
+index 47240248f4683..76f803828053b 100644
 --- a/drivers/ata/ahci_eswin.c
 +++ b/drivers/ata/ahci_eswin.c
 @@ -59,7 +59,7 @@
@@ -8158,10 +8158,10 @@ index 47240248f468..76f803828053 100644
  
  	return 0;
 diff --git a/drivers/base/power/wakeup.c b/drivers/base/power/wakeup.c
-index a917219feea6..f708f781a765 100644
+index eae81def0902a..6eb6cd13d4a2c 100644
 --- a/drivers/base/power/wakeup.c
 +++ b/drivers/base/power/wakeup.c
-@@ -478,6 +478,13 @@ EXPORT_SYMBOL_GPL(device_wakeup_disable);
+@@ -476,6 +476,13 @@ EXPORT_SYMBOL_GPL(device_wakeup_disable);
   */
  void device_set_wakeup_capable(struct device *dev, bool capable)
  {
@@ -8176,7 +8176,7 @@ index a917219feea6..f708f781a765 100644
  		return;
  
 diff --git a/drivers/clocksource/timer-eswin.c b/drivers/clocksource/timer-eswin.c
-index f7003459da04..96ad1398bf1d 100644
+index f7003459da049..96ad1398bf1df 100644
 --- a/drivers/clocksource/timer-eswin.c
 +++ b/drivers/clocksource/timer-eswin.c
 @@ -30,6 +30,7 @@
@@ -8303,7 +8303,7 @@ index f7003459da04..96ad1398bf1d 100644
  };
  module_platform_driver(eswin_timer_driver);
 diff --git a/drivers/dma/dw-axi-dmac/dw-axi-dmac-platform.c b/drivers/dma/dw-axi-dmac/dw-axi-dmac-platform.c
-index 470f5d0e60dc..385373165764 100644
+index 470f5d0e60dc6..3853731657646 100644
 --- a/drivers/dma/dw-axi-dmac/dw-axi-dmac-platform.c
 +++ b/drivers/dma/dw-axi-dmac/dw-axi-dmac-platform.c
 @@ -71,11 +71,12 @@
@@ -8462,7 +8462,7 @@ index 470f5d0e60dc..385373165764 100644
  	{}
  };
 diff --git a/drivers/dma/dw-axi-dmac/dw-axi-dmac.h b/drivers/dma/dw-axi-dmac/dw-axi-dmac.h
-index bcbc75598af5..1fe082705ced 100644
+index bcbc75598af58..1fe082705ced2 100644
 --- a/drivers/dma/dw-axi-dmac/dw-axi-dmac.h
 +++ b/drivers/dma/dw-axi-dmac/dw-axi-dmac.h
 @@ -90,6 +90,7 @@ struct axi_dma_chip {
@@ -8474,7 +8474,7 @@ index bcbc75598af5..1fe082705ced 100644
  	struct dentry *debugfs_dir;
  	spinlock_t lock;
 diff --git a/drivers/gpu/drm/eswin/dw-hdmi.c b/drivers/gpu/drm/eswin/dw-hdmi.c
-index 204192aef3a1..66378eabf5dd 100644
+index 204192aef3a1e..66378eabf5ddd 100644
 --- a/drivers/gpu/drm/eswin/dw-hdmi.c
 +++ b/drivers/gpu/drm/eswin/dw-hdmi.c
 @@ -4618,6 +4618,10 @@ void dw_hdmi_suspend(struct dw_hdmi *hdmi)
@@ -8505,7 +8505,7 @@ index 204192aef3a1..66378eabf5dd 100644
  MODULE_AUTHOR("Andy Yan <andy.yan@rock-chips.com>");
  MODULE_AUTHOR("Yakir Yang <ykk@rock-chips.com>");
 diff --git a/drivers/gpu/drm/eswin/dw-hdmi.h b/drivers/gpu/drm/eswin/dw-hdmi.h
-index 9304c5865aee..31bc32fb0dcc 100644
+index 9304c5865aeeb..31bc32fb0dcc2 100644
 --- a/drivers/gpu/drm/eswin/dw-hdmi.h
 +++ b/drivers/gpu/drm/eswin/dw-hdmi.h
 @@ -1286,4 +1286,5 @@ enum supported_eotf_type {
@@ -8515,7 +8515,7 @@ index 9304c5865aee..31bc32fb0dcc 100644
 +void dw_hdmi_resume_early(struct dw_hdmi *hdmi);
  #endif /* __DW_HDMI_H__ */
 diff --git a/drivers/gpu/drm/eswin/es_dc.c b/drivers/gpu/drm/eswin/es_dc.c
-index 7c608e29d25b..fae201342d8f 100644
+index 7c608e29d25ba..fae201342d8f0 100644
 --- a/drivers/gpu/drm/eswin/es_dc.c
 +++ b/drivers/gpu/drm/eswin/es_dc.c
 @@ -281,6 +281,7 @@ static void dc_deinit(struct device *dev)
@@ -8678,7 +8678,7 @@ index 7c608e29d25b..fae201342d8f 100644
  }
  
 diff --git a/drivers/gpu/drm/eswin/es_dc.h b/drivers/gpu/drm/eswin/es_dc.h
-index 63c5c8d79aa4..8c7c014c7d06 100644
+index 63c5c8d79aa46..8c7c014c7d063 100644
 --- a/drivers/gpu/drm/eswin/es_dc.h
 +++ b/drivers/gpu/drm/eswin/es_dc.h
 @@ -36,6 +36,8 @@ struct es_dc_funcs {
@@ -8699,7 +8699,7 @@ index 63c5c8d79aa4..8c7c014c7d06 100644
  	const struct es_dc_funcs *funcs;
  };
 diff --git a/drivers/gpu/drm/eswin/es_dc_hw.c b/drivers/gpu/drm/eswin/es_dc_hw.c
-index 4ba66b5bba2e..337f233b8228 100644
+index 4ba66b5bba2e8..337f233b82286 100644
 --- a/drivers/gpu/drm/eswin/es_dc_hw.c
 +++ b/drivers/gpu/drm/eswin/es_dc_hw.c
 @@ -863,6 +863,7 @@ int dc_hw_init(struct dc_hw *hw)
@@ -8735,7 +8735,7 @@ index 4ba66b5bba2e..337f233b8228 100644
  			dc_write(hw, DC_CURSOR_CONFIG, 0x00);
  		}
 diff --git a/drivers/gpu/drm/eswin/es_drv.c b/drivers/gpu/drm/eswin/es_drv.c
-index d29c3572857c..ac940763ef80 100644
+index d29c3572857c2..ac940763ef805 100644
 --- a/drivers/gpu/drm/eswin/es_drv.c
 +++ b/drivers/gpu/drm/eswin/es_drv.c
 @@ -28,6 +28,7 @@
@@ -8854,7 +8854,7 @@ index d29c3572857c..ac940763ef80 100644
  #endif
  
 diff --git a/drivers/gpu/drm/eswin/es_drv.h b/drivers/gpu/drm/eswin/es_drv.h
-index b6ef6cf9548e..856866f933ac 100644
+index b6ef6cf9548e8..856866f933ac2 100644
 --- a/drivers/gpu/drm/eswin/es_drv.h
 +++ b/drivers/gpu/drm/eswin/es_drv.h
 @@ -45,6 +45,7 @@
@@ -8866,7 +8866,7 @@ index b6ef6cf9548e..856866f933ac 100644
  #ifdef CONFIG_ESWIN_DW_HDMI
  	struct drm_property *connector_id_prop;
 diff --git a/drivers/gpu/drm/eswin/es_dw_hdmi.c b/drivers/gpu/drm/eswin/es_dw_hdmi.c
-index eefbabba3c92..a58a0094bc86 100644
+index eefbabba3c92b..a58a0094bc865 100644
 --- a/drivers/gpu/drm/eswin/es_dw_hdmi.c
 +++ b/drivers/gpu/drm/eswin/es_dw_hdmi.c
 @@ -260,7 +260,7 @@ dw_hdmi_eswin_mode_valid(struct dw_hdmi *hdmi, void *data,
@@ -8901,7 +8901,7 @@ index eefbabba3c92..a58a0094bc86 100644
  struct platform_driver dw_hdmi_eswin_pltfm_driver = {
      .probe  = dw_hdmi_eswin_probe,
 diff --git a/drivers/gpu/drm/eswin/es_plane.c b/drivers/gpu/drm/eswin/es_plane.c
-index 93b97db5cb73..13718c3f4493 100644
+index 93b97db5cb736..13718c3f44932 100644
 --- a/drivers/gpu/drm/eswin/es_plane.c
 +++ b/drivers/gpu/drm/eswin/es_plane.c
 @@ -252,10 +252,17 @@ static int es_plane_atomic_check(struct drm_plane *plane,
@@ -8923,7 +8923,7 @@ index 93b97db5cb73..13718c3f4493 100644
  }
  
 diff --git a/drivers/gpu/drm/img/img-volcanic/services/server/devices/rgxtimecorr.c b/drivers/gpu/drm/img/img-volcanic/services/server/devices/rgxtimecorr.c
-index bea5cd1c98ef..669ed230d783 100644
+index bea5cd1c98efb..669ed230d7838 100644
 --- a/drivers/gpu/drm/img/img-volcanic/services/server/devices/rgxtimecorr.c
 +++ b/drivers/gpu/drm/img/img-volcanic/services/server/devices/rgxtimecorr.c
 @@ -464,9 +464,9 @@ static inline IMG_UINT32 _RGXGPUFreqGetIndex(RGX_GPU_DVFS_TABLE *psGpuDVFSTable,
@@ -8939,7 +8939,7 @@ index bea5cd1c98ef..669ed230d783 100644
  	paui32GPUFrequencies[i] = ui32CoreClockSpeed;
  
 diff --git a/drivers/gpu/drm/img/img-volcanic/services/server/env/linux/pvr_drm.c b/drivers/gpu/drm/img/img-volcanic/services/server/env/linux/pvr_drm.c
-index 145f40c5b884..dc00e74d589a 100644
+index 145f40c5b884b..dc00e74d589a6 100644
 --- a/drivers/gpu/drm/img/img-volcanic/services/server/env/linux/pvr_drm.c
 +++ b/drivers/gpu/drm/img/img-volcanic/services/server/env/linux/pvr_drm.c
 @@ -98,26 +98,26 @@ static DEFINE_MUTEX(g_device_mutex);
@@ -8993,7 +8993,7 @@ index 145f40c5b884..dc00e74d589a 100644
  	/* Hibernation (suspend-to-disk/S4) callbacks.
  	 * This mode saves the content of the video RAM to the system RAM and then
 diff --git a/drivers/gpu/drm/img/img-volcanic/services/server/env/linux/pvr_platform_drv.c b/drivers/gpu/drm/img/img-volcanic/services/server/env/linux/pvr_platform_drv.c
-index 57e27ebcc1c8..9bffd02fc353 100644
+index 57e27ebcc1c80..9bffd02fc3533 100644
 --- a/drivers/gpu/drm/img/img-volcanic/services/server/env/linux/pvr_platform_drv.c
 +++ b/drivers/gpu/drm/img/img-volcanic/services/server/env/linux/pvr_platform_drv.c
 @@ -61,6 +61,8 @@
@@ -9084,7 +9084,7 @@ index 57e27ebcc1c8..9bffd02fc353 100644
  	 * The load callback, called from drm_dev_register, is deprecated,
  	 * because of potential race conditions. Calling the function here,
 diff --git a/drivers/gpu/drm/img/img-volcanic/services/system/eswin_cpu/sysconfig.c b/drivers/gpu/drm/img/img-volcanic/services/system/eswin_cpu/sysconfig.c
-index 9102b4ec61ae..6dd85240ea67 100644
+index 9102b4ec61aef..6dd85240ea67c 100644
 --- a/drivers/gpu/drm/img/img-volcanic/services/system/eswin_cpu/sysconfig.c
 +++ b/drivers/gpu/drm/img/img-volcanic/services/system/eswin_cpu/sysconfig.c
 @@ -1,14 +1,23 @@
@@ -9243,7 +9243,7 @@ index 9102b4ec61ae..6dd85240ea67 100644
  	psDevConfig = OSAllocZMem(sizeof(*psDevConfig) +
  							  sizeof(*psRGXData) +
 diff --git a/drivers/gpu/drm/img/img-volcanic/services/system/eswin_cpu/sysinfo.h b/drivers/gpu/drm/img/img-volcanic/services/system/eswin_cpu/sysinfo.h
-index ec76a48bb4bc..89c8663ab623 100644
+index ec76a48bb4bc0..89c8663ab623c 100644
 --- a/drivers/gpu/drm/img/img-volcanic/services/system/eswin_cpu/sysinfo.h
 +++ b/drivers/gpu/drm/img/img-volcanic/services/system/eswin_cpu/sysinfo.h
 @@ -16,6 +16,8 @@
@@ -9265,7 +9265,7 @@ index ec76a48bb4bc..89c8663ab623 100644
  #endif	/* !defined(__SYSINFO_H__) */
  
 diff --git a/drivers/hwmon/eswin-fan-control.c b/drivers/hwmon/eswin-fan-control.c
-index b921b72b9546..60357c800b1a 100644
+index b921b72b95466..60357c800b1aa 100644
 --- a/drivers/hwmon/eswin-fan-control.c
 +++ b/drivers/hwmon/eswin-fan-control.c
 @@ -88,7 +88,7 @@ static ssize_t eswin_fan_pwm_ctl_show(struct device *dev, struct device_attribut
@@ -9320,7 +9320,7 @@ index b921b72b9546..60357c800b1a 100644
  	},
  	.probe = eswin_fan_control_probe,
 diff --git a/drivers/hwmon/eswin_pvt.c b/drivers/hwmon/eswin_pvt.c
-index fd8dec5db85e..114435fd7bc9 100644
+index fd8dec5db85eb..114435fd7bc9a 100644
 --- a/drivers/hwmon/eswin_pvt.c
 +++ b/drivers/hwmon/eswin_pvt.c
 @@ -43,7 +43,7 @@
@@ -9423,7 +9423,7 @@ index fd8dec5db85e..114435fd7bc9 100644
  };
  module_platform_driver(pvt_driver);
 diff --git a/drivers/hwmon/pac193x.c b/drivers/hwmon/pac193x.c
-index c0d165a206c3..f8edcc4bfb2f 100644
+index c0d165a206c3b..f8edcc4bfb2f3 100644
 --- a/drivers/hwmon/pac193x.c
 +++ b/drivers/hwmon/pac193x.c
 @@ -951,11 +951,34 @@ static int pac193x_probe(struct i2c_client *client)
@@ -9470,7 +9470,7 @@ index c0d165a206c3..f8edcc4bfb2f 100644
  	},
  	.probe = pac193x_probe,
 diff --git a/drivers/iommu/eswin/eswin-win2030-sid.c b/drivers/iommu/eswin/eswin-win2030-sid.c
-index 7a4d5fe5002e..d97f3215d5de 100644
+index 7a4d5fe5002e3..d97f3215d5de8 100644
 --- a/drivers/iommu/eswin/eswin-win2030-sid.c
 +++ b/drivers/iommu/eswin/eswin-win2030-sid.c
 @@ -133,7 +133,7 @@ int win2030_dynm_sid_enable(int nid)
@@ -9647,7 +9647,7 @@ index 7a4d5fe5002e..d97f3215d5de 100644
  }
  EXPORT_SYMBOL(print_tcu_node_status);
 diff --git a/drivers/mailbox/Kconfig b/drivers/mailbox/Kconfig
-index a44784068faf..3cc765e1ce8e 100644
+index a44784068fafe..3cc765e1ce8ef 100644
 --- a/drivers/mailbox/Kconfig
 +++ b/drivers/mailbox/Kconfig
 @@ -304,11 +304,4 @@ config ESWIN_MBOX
@@ -9663,7 +9663,7 @@ index a44784068faf..3cc765e1ce8e 100644
 -
  endif
 diff --git a/drivers/mailbox/Makefile b/drivers/mailbox/Makefile
-index 917a154a1b64..157518a5d716 100644
+index 917a154a1b64a..157518a5d716a 100644
 --- a/drivers/mailbox/Makefile
 +++ b/drivers/mailbox/Makefile
 @@ -64,5 +64,3 @@ obj-$(CONFIG_QCOM_IPCC)		+= qcom-ipcc.o
@@ -9673,7 +9673,7 @@ index 917a154a1b64..157518a5d716 100644
 -
 -obj-$(CONFIG_ESWIN_LPCPU)	+= eswin-lpcpu.o
 diff --git a/drivers/mailbox/eswin-mailbox.c b/drivers/mailbox/eswin-mailbox.c
-index 6727882ee682..2475dddafe2a 100755
+index 6727882ee6820..2475dddafe2a4 100755
 --- a/drivers/mailbox/eswin-mailbox.c
 +++ b/drivers/mailbox/eswin-mailbox.c
 @@ -74,6 +74,9 @@ struct eswin_mbox {
@@ -9824,7 +9824,7 @@ index 6727882ee682..2475dddafe2a 100755
  
  static const struct dev_pm_ops eswin_mbox_dev_pm_ops = {
 diff --git a/drivers/memory/eswin/codacache/llc_spram.c b/drivers/memory/eswin/codacache/llc_spram.c
-index bc26aaa10e00..3611c7cca9fe 100644
+index bc26aaa10e003..3611c7cca9fe4 100644
 --- a/drivers/memory/eswin/codacache/llc_spram.c
 +++ b/drivers/memory/eswin/codacache/llc_spram.c
 @@ -45,6 +45,9 @@
@@ -10107,7 +10107,7 @@ index bc26aaa10e00..3611c7cca9fe 100644
  	}
  
 diff --git a/drivers/memory/eswin/es_mmz_vb/mmz_vb.c b/drivers/memory/eswin/es_mmz_vb/mmz_vb.c
-index 635ee815b7e7..dfbfa2783c8c 100644
+index 635ee815b7e74..dfbfa2783c8c3 100644
 --- a/drivers/memory/eswin/es_mmz_vb/mmz_vb.c
 +++ b/drivers/memory/eswin/es_mmz_vb/mmz_vb.c
 @@ -103,7 +103,8 @@ static int vb_blk_to_pool(struct esVB_BLOCK_TO_POOL_CMD_S *blkToPoolCmd);
@@ -10165,7 +10165,7 @@ index 635ee815b7e7..dfbfa2783c8c 100644
  	int ret = 0;
  	struct dma_buf *dmabuf;
 diff --git a/drivers/mmc/host/sdhci-eswin.h b/drivers/mmc/host/sdhci-eswin.h
-index 65b0b69bfda7..78d24a6088f0 100644
+index 65b0b69bfda7a..78d24a6088f0a 100644
 --- a/drivers/mmc/host/sdhci-eswin.h
 +++ b/drivers/mmc/host/sdhci-eswin.h
 @@ -204,6 +204,8 @@ struct eswin_sdhci_phy_data {
@@ -10178,7 +10178,7 @@ index 65b0b69bfda7..78d24a6088f0 100644
  	bool has_cqe;
  	struct eswin_sdhci_clk_data clk_data;
 diff --git a/drivers/mmc/host/sdhci-of-eswin-sdio.c b/drivers/mmc/host/sdhci-of-eswin-sdio.c
-index 01779e01cd61..fce5c978bd2a 100644
+index 01779e01cd61e..fce5c978bd2aa 100644
 --- a/drivers/mmc/host/sdhci-of-eswin-sdio.c
 +++ b/drivers/mmc/host/sdhci-of-eswin-sdio.c
 @@ -364,6 +364,8 @@ static int eswin_sdhci_sdio_suspend(struct device *dev)
@@ -10334,7 +10334,7 @@ index 01779e01cd61..fce5c978bd2a 100644
  	return 0;
  }
 diff --git a/drivers/mmc/host/sdhci-of-eswin.c b/drivers/mmc/host/sdhci-of-eswin.c
-index b9881798fc4e..04989a386f70 100644
+index b9881798fc4e8..04989a386f707 100644
 --- a/drivers/mmc/host/sdhci-of-eswin.c
 +++ b/drivers/mmc/host/sdhci-of-eswin.c
 @@ -483,6 +483,8 @@ static int eswin_sdhci_suspend(struct device *dev)
@@ -10437,7 +10437,7 @@ index b9881798fc4e..04989a386f70 100644
  	sdhci_pltfm_free(pdev);
  	return ret;
 diff --git a/drivers/mtd/spi-nor/core.c b/drivers/mtd/spi-nor/core.c
-index 1b0c6770c14e..9c160e873d63 100644
+index 1b0c6770c14e4..9c160e873d638 100644
 --- a/drivers/mtd/spi-nor/core.c
 +++ b/drivers/mtd/spi-nor/core.c
 @@ -3280,6 +3280,9 @@ static int spi_nor_suspend(struct mtd_info *mtd)
@@ -10461,7 +10461,7 @@ index 1b0c6770c14e..9c160e873d63 100644
  
  static int spi_nor_get_device(struct mtd_info *mtd)
 diff --git a/drivers/mtd/spi-nor/core.h b/drivers/mtd/spi-nor/core.h
-index 9217379b9cfe..4f2e3cb9d139 100644
+index 9217379b9cfef..4f2e3cb9d139f 100644
 --- a/drivers/mtd/spi-nor/core.h
 +++ b/drivers/mtd/spi-nor/core.h
 @@ -114,6 +114,18 @@
@@ -10484,7 +10484,7 @@ index 9217379b9cfe..4f2e3cb9d139 100644
  enum spi_nor_option_flags {
  	SNOR_F_HAS_SR_TB	= BIT(0),
 diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-win2030.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-win2030.c
-index 6ae7b0ecfb86..abde386aaea4 100644
+index 6ae7b0ecfb86a..abde386aaea4e 100644
 --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-win2030.c
 +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-win2030.c
 @@ -78,10 +78,14 @@ struct dwc_qos_priv {
@@ -10618,7 +10618,7 @@ index 6ae7b0ecfb86..abde386aaea4 100644
  
  	return ret;
 diff --git a/drivers/net/wireless/Kconfig b/drivers/net/wireless/Kconfig
-index 7555af5195ec..1890822520d1 100644
+index 7555af5195ec3..1890822520d1b 100644
 --- a/drivers/net/wireless/Kconfig
 +++ b/drivers/net/wireless/Kconfig
 @@ -37,6 +37,7 @@ source "drivers/net/wireless/st/Kconfig"
@@ -10630,7 +10630,7 @@ index 7555af5195ec..1890822520d1 100644
  source "drivers/net/wireless/legacy/Kconfig"
  
 diff --git a/drivers/net/wireless/Makefile b/drivers/net/wireless/Makefile
-index 4d7374d567d1..17277ec302c4 100644
+index 4d7374d567d18..17277ec302c44 100644
 --- a/drivers/net/wireless/Makefile
 +++ b/drivers/net/wireless/Makefile
 @@ -22,6 +22,7 @@ obj-$(CONFIG_WLAN_VENDOR_SILABS) += silabs/
@@ -10643,7 +10643,7 @@ index 4d7374d567d1..17277ec302c4 100644
  obj-$(CONFIG_WLAN) += virtual/
 diff --git a/drivers/net/wireless/ap12275/Kconfig b/drivers/net/wireless/ap12275/Kconfig
 new file mode 100644
-index 000000000000..c33dd6c62333
+index 0000000000000..c33dd6c623333
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/Kconfig
 @@ -0,0 +1,82 @@
@@ -10731,7 +10731,7 @@ index 000000000000..c33dd6c62333
 +endchoice
 diff --git a/drivers/net/wireless/ap12275/Makefile b/drivers/net/wireless/ap12275/Makefile
 new file mode 100644
-index 000000000000..aeb52709c356
+index 0000000000000..aeb52709c3564
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/Makefile
 @@ -0,0 +1,474 @@
@@ -11211,7 +11211,7 @@ index 000000000000..aeb52709c356
 +ccflags-y := $(EXTRA_CFLAGS)
 diff --git a/drivers/net/wireless/ap12275/aiutils.c b/drivers/net/wireless/ap12275/aiutils.c
 new file mode 100644
-index 000000000000..12f204401c57
+index 0000000000000..12f204401c57e
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/aiutils.c
 @@ -0,0 +1,2622 @@
@@ -13839,7 +13839,7 @@ index 000000000000..12f204401c57
 +#endif /* DONGLEBUILD */
 diff --git a/drivers/net/wireless/ap12275/bcm_app_utils.c b/drivers/net/wireless/ap12275/bcm_app_utils.c
 new file mode 100644
-index 000000000000..7f8d553b9988
+index 0000000000000..7f8d553b9988f
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/bcm_app_utils.c
 @@ -0,0 +1,1252 @@
@@ -15097,7 +15097,7 @@ index 000000000000..7f8d553b9988
 +}
 diff --git a/drivers/net/wireless/ap12275/bcmbloom.c b/drivers/net/wireless/ap12275/bcmbloom.c
 new file mode 100644
-index 000000000000..a062531413b9
+index 0000000000000..a062531413b9d
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/bcmbloom.c
 @@ -0,0 +1,232 @@
@@ -15335,7 +15335,7 @@ index 000000000000..a062531413b9
 +}
 diff --git a/drivers/net/wireless/ap12275/bcmevent.c b/drivers/net/wireless/ap12275/bcmevent.c
 new file mode 100644
-index 000000000000..25054456f58e
+index 0000000000000..25054456f58e7
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/bcmevent.c
 @@ -0,0 +1,449 @@
@@ -15790,7 +15790,7 @@ index 000000000000..25054456f58e
 +}
 diff --git a/drivers/net/wireless/ap12275/bcmsdh.c b/drivers/net/wireless/ap12275/bcmsdh.c
 new file mode 100644
-index 000000000000..c564690aa6a5
+index 0000000000000..c564690aa6a55
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/bcmsdh.c
 @@ -0,0 +1,947 @@
@@ -16743,7 +16743,7 @@ index 000000000000..c564690aa6a5
 +#endif
 diff --git a/drivers/net/wireless/ap12275/bcmsdh_linux.c b/drivers/net/wireless/ap12275/bcmsdh_linux.c
 new file mode 100644
-index 000000000000..fe34db51186e
+index 0000000000000..fe34db51186e8
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/bcmsdh_linux.c
 @@ -0,0 +1,582 @@
@@ -17331,7 +17331,7 @@ index 000000000000..fe34db51186e
 +#endif /* BCMSDH_MODULE */
 diff --git a/drivers/net/wireless/ap12275/bcmsdh_sdmmc.c b/drivers/net/wireless/ap12275/bcmsdh_sdmmc.c
 new file mode 100644
-index 000000000000..ca5bcd75e562
+index 0000000000000..ca5bcd75e5628
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/bcmsdh_sdmmc.c
 @@ -0,0 +1,2079 @@
@@ -19416,7 +19416,7 @@ index 000000000000..ca5bcd75e562
 +}
 diff --git a/drivers/net/wireless/ap12275/bcmsdh_sdmmc_linux.c b/drivers/net/wireless/ap12275/bcmsdh_sdmmc_linux.c
 new file mode 100644
-index 000000000000..4e3e52aad5e0
+index 0000000000000..4e3e52aad5e08
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/bcmsdh_sdmmc_linux.c
 @@ -0,0 +1,421 @@
@@ -19843,7 +19843,7 @@ index 000000000000..4e3e52aad5e0
 +}
 diff --git a/drivers/net/wireless/ap12275/bcmsdstd.c b/drivers/net/wireless/ap12275/bcmsdstd.c
 new file mode 100644
-index 000000000000..e7dfab4fee3b
+index 0000000000000..e7dfab4fee3bd
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/bcmsdstd.c
 @@ -0,0 +1,5308 @@
@@ -25157,7 +25157,7 @@ index 000000000000..e7dfab4fee3b
 +}
 diff --git a/drivers/net/wireless/ap12275/bcmsdstd.h b/drivers/net/wireless/ap12275/bcmsdstd.h
 new file mode 100644
-index 000000000000..de742ed544a9
+index 0000000000000..de742ed544a9f
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/bcmsdstd.h
 @@ -0,0 +1,298 @@
@@ -25461,7 +25461,7 @@ index 000000000000..de742ed544a9
 +#endif /* _BCM_SD_STD_H */
 diff --git a/drivers/net/wireless/ap12275/bcmsdstd_linux.c b/drivers/net/wireless/ap12275/bcmsdstd_linux.c
 new file mode 100644
-index 000000000000..11d3f09f37d6
+index 0000000000000..11d3f09f37d64
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/bcmsdstd_linux.c
 @@ -0,0 +1,697 @@
@@ -26164,7 +26164,7 @@ index 000000000000..11d3f09f37d6
 +}
 diff --git a/drivers/net/wireless/ap12275/bcmstdlib_s.c b/drivers/net/wireless/ap12275/bcmstdlib_s.c
 new file mode 100644
-index 000000000000..c540349ac503
+index 0000000000000..c540349ac503d
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/bcmstdlib_s.c
 @@ -0,0 +1,299 @@
@@ -26469,7 +26469,7 @@ index 000000000000..c540349ac503
 +}
 diff --git a/drivers/net/wireless/ap12275/bcmutils.c b/drivers/net/wireless/ap12275/bcmutils.c
 new file mode 100644
-index 000000000000..7b47d8475d07
+index 0000000000000..7b47d8475d07c
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/bcmutils.c
 @@ -0,0 +1,6510 @@
@@ -32985,7 +32985,7 @@ index 000000000000..7b47d8475d07
 +}
 diff --git a/drivers/net/wireless/ap12275/bcmwifi_channels.c b/drivers/net/wireless/ap12275/bcmwifi_channels.c
 new file mode 100644
-index 000000000000..9333915ea703
+index 0000000000000..9333915ea7038
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/bcmwifi_channels.c
 @@ -0,0 +1,3333 @@
@@ -36324,7 +36324,7 @@ index 000000000000..9333915ea703
 +}
 diff --git a/drivers/net/wireless/ap12275/bcmwifi_radiotap.c b/drivers/net/wireless/ap12275/bcmwifi_radiotap.c
 new file mode 100644
-index 000000000000..acdb551fc046
+index 0000000000000..acdb551fc046b
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/bcmwifi_radiotap.c
 @@ -0,0 +1,1035 @@
@@ -37365,7 +37365,7 @@ index 000000000000..acdb551fc046
 +}
 diff --git a/drivers/net/wireless/ap12275/bcmxtlv.c b/drivers/net/wireless/ap12275/bcmxtlv.c
 new file mode 100644
-index 000000000000..33d02ae6a3c8
+index 0000000000000..33d02ae6a3c80
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/bcmxtlv.c
 @@ -0,0 +1,644 @@
@@ -38015,7 +38015,7 @@ index 000000000000..33d02ae6a3c8
 +}
 diff --git a/drivers/net/wireless/ap12275/dbus.c b/drivers/net/wireless/ap12275/dbus.c
 new file mode 100644
-index 000000000000..9b65c3c04ab8
+index 0000000000000..9b65c3c04ab8e
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dbus.c
 @@ -0,0 +1,3516 @@
@@ -41537,7 +41537,7 @@ index 000000000000..9b65c3c04ab8
 +#endif  /* #ifdef LINUX_EXTERNAL_MODULE_DBUS */
 diff --git a/drivers/net/wireless/ap12275/dbus_usb.c b/drivers/net/wireless/ap12275/dbus_usb.c
 new file mode 100644
-index 000000000000..28cf3f092f1c
+index 0000000000000..28cf3f092f1ca
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dbus_usb.c
 @@ -0,0 +1,1088 @@
@@ -42631,7 +42631,7 @@ index 000000000000..28cf3f092f1c
 +#endif /* BCM_DNGL_EMBEDIMAGE */
 diff --git a/drivers/net/wireless/ap12275/dbus_usb_linux.c b/drivers/net/wireless/ap12275/dbus_usb_linux.c
 new file mode 100644
-index 000000000000..f113d5b8d6c5
+index 0000000000000..f113d5b8d6c58
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dbus_usb_linux.c
 @@ -0,0 +1,4807 @@
@@ -47444,7 +47444,7 @@ index 000000000000..f113d5b8d6c5
 +#endif /* LINUX */
 diff --git a/drivers/net/wireless/ap12275/dhd.h b/drivers/net/wireless/ap12275/dhd.h
 new file mode 100644
-index 000000000000..025e8184e20c
+index 0000000000000..025e8184e20cd
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd.h
 @@ -0,0 +1,4798 @@
@@ -52248,7 +52248,7 @@ index 000000000000..025e8184e20c
 +#endif /* _dhd_h_ */
 diff --git a/drivers/net/wireless/ap12275/dhd_bitpack.h b/drivers/net/wireless/ap12275/dhd_bitpack.h
 new file mode 100644
-index 000000000000..8332fb790a78
+index 0000000000000..8332fb790a78e
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_bitpack.h
 @@ -0,0 +1,33 @@
@@ -52287,7 +52287,7 @@ index 000000000000..8332fb790a78
 +#endif /* __BITPACK_H */
 diff --git a/drivers/net/wireless/ap12275/dhd_bus.h b/drivers/net/wireless/ap12275/dhd_bus.h
 new file mode 100644
-index 000000000000..e5067ea47a13
+index 0000000000000..e5067ea47a130
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_bus.h
 @@ -0,0 +1,432 @@
@@ -52725,7 +52725,7 @@ index 000000000000..e5067ea47a13
 +#endif /* _dhd_bus_h_ */
 diff --git a/drivers/net/wireless/ap12275/dhd_ccode.c b/drivers/net/wireless/ap12275/dhd_ccode.c
 new file mode 100644
-index 000000000000..af4a74161b4b
+index 0000000000000..af4a74161b4b3
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_ccode.c
 @@ -0,0 +1,376 @@
@@ -53107,7 +53107,7 @@ index 000000000000..af4a74161b4b
 +#endif
 diff --git a/drivers/net/wireless/ap12275/dhd_cdc.c b/drivers/net/wireless/ap12275/dhd_cdc.c
 new file mode 100644
-index 000000000000..668d11389e56
+index 0000000000000..668d11389e569
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_cdc.c
 @@ -0,0 +1,994 @@
@@ -54107,7 +54107,7 @@ index 000000000000..668d11389e56
 +}
 diff --git a/drivers/net/wireless/ap12275/dhd_cfg80211.c b/drivers/net/wireless/ap12275/dhd_cfg80211.c
 new file mode 100644
-index 000000000000..370510189ffe
+index 0000000000000..370510189ffe7
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_cfg80211.c
 @@ -0,0 +1,615 @@
@@ -54728,7 +54728,7 @@ index 000000000000..370510189ffe
 +#endif /* RPM_FAST_TRIGGER */
 diff --git a/drivers/net/wireless/ap12275/dhd_cfg80211.h b/drivers/net/wireless/ap12275/dhd_cfg80211.h
 new file mode 100644
-index 000000000000..ae24bce5503c
+index 0000000000000..ae24bce5503c5
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_cfg80211.h
 @@ -0,0 +1,53 @@
@@ -54787,7 +54787,7 @@ index 000000000000..ae24bce5503c
 +#endif /* __DHD_CFG80211__ */
 diff --git a/drivers/net/wireless/ap12275/dhd_common.c b/drivers/net/wireless/ap12275/dhd_common.c
 new file mode 100644
-index 000000000000..6ad487f0bb49
+index 0000000000000..6ad487f0bb49c
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_common.c
 @@ -0,0 +1,12045 @@
@@ -66838,7 +66838,7 @@ index 000000000000..6ad487f0bb49
 +}
 diff --git a/drivers/net/wireless/ap12275/dhd_config.c b/drivers/net/wireless/ap12275/dhd_config.c
 new file mode 100644
-index 000000000000..6a7caa18a088
+index 0000000000000..6a7caa18a0885
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_config.c
 @@ -0,0 +1,5828 @@
@@ -72672,7 +72672,7 @@ index 000000000000..6a7caa18a088
 +}
 diff --git a/drivers/net/wireless/ap12275/dhd_config.h b/drivers/net/wireless/ap12275/dhd_config.h
 new file mode 100644
-index 000000000000..34fb51fffc37
+index 0000000000000..34fb51fffc377
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_config.h
 @@ -0,0 +1,477 @@
@@ -73155,7 +73155,7 @@ index 000000000000..34fb51fffc37
 +#endif /* _dhd_config_ */
 diff --git a/drivers/net/wireless/ap12275/dhd_csi.c b/drivers/net/wireless/ap12275/dhd_csi.c
 new file mode 100644
-index 000000000000..aa243a3c2aa5
+index 0000000000000..aa243a3c2aa5a
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_csi.c
 @@ -0,0 +1,827 @@
@@ -73988,7 +73988,7 @@ index 000000000000..aa243a3c2aa5
 +#endif /* CSI_SUPPORT */
 diff --git a/drivers/net/wireless/ap12275/dhd_csi.h b/drivers/net/wireless/ap12275/dhd_csi.h
 new file mode 100644
-index 000000000000..02ee564f6572
+index 0000000000000..02ee564f65721
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_csi.h
 @@ -0,0 +1,466 @@
@@ -74460,7 +74460,7 @@ index 000000000000..02ee564f6572
 +#endif /* __DHD_CSI_H__ */
 diff --git a/drivers/net/wireless/ap12275/dhd_custom_gpio.c b/drivers/net/wireless/ap12275/dhd_custom_gpio.c
 new file mode 100644
-index 000000000000..21edfc12a9cb
+index 0000000000000..21edfc12a9cbf
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_custom_gpio.c
 @@ -0,0 +1,490 @@
@@ -74956,7 +74956,7 @@ index 000000000000..21edfc12a9cb
 +}
 diff --git a/drivers/net/wireless/ap12275/dhd_custom_hikey.c b/drivers/net/wireless/ap12275/dhd_custom_hikey.c
 new file mode 100644
-index 000000000000..070fc5695932
+index 0000000000000..070fc56959329
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_custom_hikey.c
 @@ -0,0 +1,342 @@
@@ -75304,7 +75304,7 @@ index 000000000000..070fc5695932
 +#endif /* BOARD_HIKEY_MODULAR */
 diff --git a/drivers/net/wireless/ap12275/dhd_custom_memprealloc.c b/drivers/net/wireless/ap12275/dhd_custom_memprealloc.c
 new file mode 100644
-index 000000000000..fac72fe11be3
+index 0000000000000..fac72fe11be36
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_custom_memprealloc.c
 @@ -0,0 +1,476 @@
@@ -75786,7 +75786,7 @@ index 000000000000..fac72fe11be3
 +#endif /* CONFIG_BROADCOM_WIFI_RESERVED_MEM */
 diff --git a/drivers/net/wireless/ap12275/dhd_dbg.h b/drivers/net/wireless/ap12275/dhd_dbg.h
 new file mode 100644
-index 000000000000..cac6787a0066
+index 0000000000000..cac6787a00665
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_dbg.h
 @@ -0,0 +1,573 @@
@@ -76365,7 +76365,7 @@ index 000000000000..cac6787a0066
 +#endif /* _dhd_dbg_ */
 diff --git a/drivers/net/wireless/ap12275/dhd_dbg_ring.c b/drivers/net/wireless/ap12275/dhd_dbg_ring.c
 new file mode 100644
-index 000000000000..b1c3d85c89fe
+index 0000000000000..b1c3d85c89fe5
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_dbg_ring.c
 @@ -0,0 +1,561 @@
@@ -76932,7 +76932,7 @@ index 000000000000..b1c3d85c89fe
 +}
 diff --git a/drivers/net/wireless/ap12275/dhd_dbg_ring.h b/drivers/net/wireless/ap12275/dhd_dbg_ring.h
 new file mode 100644
-index 000000000000..cce8f15c64fc
+index 0000000000000..cce8f15c64fc6
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_dbg_ring.h
 @@ -0,0 +1,158 @@
@@ -77096,7 +77096,7 @@ index 000000000000..cce8f15c64fc
 +#endif /* __DHD_DBG_RING_H__ */
 diff --git a/drivers/net/wireless/ap12275/dhd_debug.c b/drivers/net/wireless/ap12275/dhd_debug.c
 new file mode 100644
-index 000000000000..e065e2804167
+index 0000000000000..e065e28041674
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_debug.c
 @@ -0,0 +1,3673 @@
@@ -80775,7 +80775,7 @@ index 000000000000..e065e2804167
 +#endif /* DHD_DEBUGABILITY_LOG_DUMP_RING */
 diff --git a/drivers/net/wireless/ap12275/dhd_debug.h b/drivers/net/wireless/ap12275/dhd_debug.h
 new file mode 100644
-index 000000000000..6631c9830950
+index 0000000000000..6631c9830950c
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_debug.h
 @@ -0,0 +1,943 @@
@@ -81724,7 +81724,7 @@ index 000000000000..6631c9830950
 +#endif /* _dhd_debug_h_ */
 diff --git a/drivers/net/wireless/ap12275/dhd_debug_linux.c b/drivers/net/wireless/ap12275/dhd_debug_linux.c
 new file mode 100644
-index 000000000000..8f2f21a26815
+index 0000000000000..8f2f21a26815c
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_debug_linux.c
 @@ -0,0 +1,630 @@
@@ -82360,7 +82360,7 @@ index 000000000000..8f2f21a26815
 +}
 diff --git a/drivers/net/wireless/ap12275/dhd_event_log_filter.c b/drivers/net/wireless/ap12275/dhd_event_log_filter.c
 new file mode 100644
-index 000000000000..b5417aece43d
+index 0000000000000..b5417aece43dd
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_event_log_filter.c
 @@ -0,0 +1,3258 @@
@@ -85624,7 +85624,7 @@ index 000000000000..b5417aece43d
 +#endif /* WLADPS_ENERGY_GAIN */
 diff --git a/drivers/net/wireless/ap12275/dhd_event_log_filter.h b/drivers/net/wireless/ap12275/dhd_event_log_filter.h
 new file mode 100644
-index 000000000000..37612db18fe2
+index 0000000000000..37612db18fe2d
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_event_log_filter.h
 @@ -0,0 +1,56 @@
@@ -85686,7 +85686,7 @@ index 000000000000..37612db18fe2
 +#endif /* !dhd_event_log_filter_h */
 diff --git a/drivers/net/wireless/ap12275/dhd_flowring.c b/drivers/net/wireless/ap12275/dhd_flowring.c
 new file mode 100644
-index 000000000000..1b3b20c34f57
+index 0000000000000..1b3b20c34f578
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_flowring.c
 @@ -0,0 +1,1511 @@
@@ -87203,7 +87203,7 @@ index 000000000000..1b3b20c34f57
 +}
 diff --git a/drivers/net/wireless/ap12275/dhd_flowring.h b/drivers/net/wireless/ap12275/dhd_flowring.h
 new file mode 100644
-index 000000000000..1b1d1d0d20b9
+index 0000000000000..1b1d1d0d20b9b
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_flowring.h
 @@ -0,0 +1,310 @@
@@ -87519,7 +87519,7 @@ index 000000000000..1b1d1d0d20b9
 +#endif /* _dhd_flowrings_h_ */
 diff --git a/drivers/net/wireless/ap12275/dhd_gpio.c b/drivers/net/wireless/ap12275/dhd_gpio.c
 new file mode 100644
-index 000000000000..76aea8350814
+index 0000000000000..76aea83508143
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_gpio.c
 @@ -0,0 +1,405 @@
@@ -87930,7 +87930,7 @@ index 000000000000..76aea8350814
 +}
 diff --git a/drivers/net/wireless/ap12275/dhd_ip.c b/drivers/net/wireless/ap12275/dhd_ip.c
 new file mode 100644
-index 000000000000..f226e4a343d3
+index 0000000000000..f226e4a343d33
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_ip.c
 @@ -0,0 +1,1435 @@
@@ -89371,7 +89371,7 @@ index 000000000000..f226e4a343d3
 +#endif /* DHDTCPSYNC_FLOOD_BLK */
 diff --git a/drivers/net/wireless/ap12275/dhd_ip.h b/drivers/net/wireless/ap12275/dhd_ip.h
 new file mode 100644
-index 000000000000..efbf2d3f62a6
+index 0000000000000..efbf2d3f62a66
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_ip.h
 @@ -0,0 +1,96 @@
@@ -89473,7 +89473,7 @@ index 000000000000..efbf2d3f62a6
 +#endif /* _dhd_ip_h_ */
 diff --git a/drivers/net/wireless/ap12275/dhd_linux.c b/drivers/net/wireless/ap12275/dhd_linux.c
 new file mode 100644
-index 000000000000..2c82c69daa18
+index 0000000000000..2c82c69daa18b
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_linux.c
 @@ -0,0 +1,24268 @@
@@ -113747,7 +113747,7 @@ index 000000000000..2c82c69daa18
 +#endif /* DHD_DEBUG_WAKE_LOCK */
 diff --git a/drivers/net/wireless/ap12275/dhd_linux.h b/drivers/net/wireless/ap12275/dhd_linux.h
 new file mode 100644
-index 000000000000..364aa8216201
+index 0000000000000..364aa8216201c
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_linux.h
 @@ -0,0 +1,609 @@
@@ -114362,7 +114362,7 @@ index 000000000000..364aa8216201
 +#endif /* __DHD_LINUX_H__ */
 diff --git a/drivers/net/wireless/ap12275/dhd_linux_exportfs.c b/drivers/net/wireless/ap12275/dhd_linux_exportfs.c
 new file mode 100644
-index 000000000000..002fc3d8e998
+index 0000000000000..002fc3d8e998d
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_linux_exportfs.c
 @@ -0,0 +1,3292 @@
@@ -117660,7 +117660,7 @@ index 000000000000..002fc3d8e998
 +#endif /* DHD_SUPPORT_HDM */
 diff --git a/drivers/net/wireless/ap12275/dhd_linux_lb.c b/drivers/net/wireless/ap12275/dhd_linux_lb.c
 new file mode 100644
-index 000000000000..dfb5ab6edb89
+index 0000000000000..dfb5ab6edb897
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_linux_lb.c
 @@ -0,0 +1,1526 @@
@@ -119192,7 +119192,7 @@ index 000000000000..dfb5ab6edb89
 +#endif /* SET_PCIE_IRQ_CPU_CORE */
 diff --git a/drivers/net/wireless/ap12275/dhd_linux_pktdump.c b/drivers/net/wireless/ap12275/dhd_linux_pktdump.c
 new file mode 100644
-index 000000000000..57091830117b
+index 0000000000000..57091830117bb
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_linux_pktdump.c
 @@ -0,0 +1,2262 @@
@@ -121460,7 +121460,7 @@ index 000000000000..57091830117b
 +#endif /* BCMPCIE */
 diff --git a/drivers/net/wireless/ap12275/dhd_linux_pktdump.h b/drivers/net/wireless/ap12275/dhd_linux_pktdump.h
 new file mode 100644
-index 000000000000..e1ae011725da
+index 0000000000000..e1ae011725da5
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_linux_pktdump.h
 @@ -0,0 +1,167 @@
@@ -121633,7 +121633,7 @@ index 000000000000..e1ae011725da
 +#endif /* __DHD_LINUX_PKTDUMP_H_ */
 diff --git a/drivers/net/wireless/ap12275/dhd_linux_platdev.c b/drivers/net/wireless/ap12275/dhd_linux_platdev.c
 new file mode 100644
-index 000000000000..ef79a8a8027f
+index 0000000000000..ef79a8a8027f1
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_linux_platdev.c
 @@ -0,0 +1,1294 @@
@@ -122933,7 +122933,7 @@ index 000000000000..ef79a8a8027f
 +}
 diff --git a/drivers/net/wireless/ap12275/dhd_linux_priv.h b/drivers/net/wireless/ap12275/dhd_linux_priv.h
 new file mode 100644
-index 000000000000..029217a885f4
+index 0000000000000..029217a885f48
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_linux_priv.h
 @@ -0,0 +1,550 @@
@@ -123489,7 +123489,7 @@ index 000000000000..029217a885f4
 +#endif /* __DHD_LINUX_PRIV_H__ */
 diff --git a/drivers/net/wireless/ap12275/dhd_linux_rx.c b/drivers/net/wireless/ap12275/dhd_linux_rx.c
 new file mode 100644
-index 000000000000..f70bc7ddeb5e
+index 0000000000000..f70bc7ddeb5e9
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_linux_rx.c
 @@ -0,0 +1,1696 @@
@@ -125191,7 +125191,7 @@ index 000000000000..f70bc7ddeb5e
 +#endif /* RX_PKT_POOL */
 diff --git a/drivers/net/wireless/ap12275/dhd_linux_sched.c b/drivers/net/wireless/ap12275/dhd_linux_sched.c
 new file mode 100644
-index 000000000000..4735c4bda897
+index 0000000000000..4735c4bda897a
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_linux_sched.c
 @@ -0,0 +1,60 @@
@@ -125257,7 +125257,7 @@ index 000000000000..4735c4bda897
 +}
 diff --git a/drivers/net/wireless/ap12275/dhd_linux_sock_qos.h b/drivers/net/wireless/ap12275/dhd_linux_sock_qos.h
 new file mode 100644
-index 000000000000..f6745d80c1c1
+index 0000000000000..f6745d80c1c12
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_linux_sock_qos.h
 @@ -0,0 +1,76 @@
@@ -125339,7 +125339,7 @@ index 000000000000..f6745d80c1c1
 +#endif /* _DHD_LINUX_TPA_H_ */
 diff --git a/drivers/net/wireless/ap12275/dhd_linux_tx.c b/drivers/net/wireless/ap12275/dhd_linux_tx.c
 new file mode 100644
-index 000000000000..93a96a20cffd
+index 0000000000000..93a96a20cffdf
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_linux_tx.c
 @@ -0,0 +1,1309 @@
@@ -126654,7 +126654,7 @@ index 000000000000..93a96a20cffd
 +}
 diff --git a/drivers/net/wireless/ap12275/dhd_linux_tx.h b/drivers/net/wireless/ap12275/dhd_linux_tx.h
 new file mode 100644
-index 000000000000..1484f7b5c31b
+index 0000000000000..1484f7b5c31b7
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_linux_tx.h
 @@ -0,0 +1,49 @@
@@ -126709,7 +126709,7 @@ index 000000000000..1484f7b5c31b
 +#endif /* _dhd_linux_tx_h_ */
 diff --git a/drivers/net/wireless/ap12275/dhd_linux_wq.c b/drivers/net/wireless/ap12275/dhd_linux_wq.c
 new file mode 100644
-index 000000000000..c642853ff081
+index 0000000000000..c642853ff081b
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_linux_wq.c
 @@ -0,0 +1,413 @@
@@ -127128,7 +127128,7 @@ index 000000000000..c642853ff081
 +}
 diff --git a/drivers/net/wireless/ap12275/dhd_linux_wq.h b/drivers/net/wireless/ap12275/dhd_linux_wq.h
 new file mode 100644
-index 000000000000..2c097e6c5753
+index 0000000000000..2c097e6c5753b
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_linux_wq.h
 @@ -0,0 +1,88 @@
@@ -127222,7 +127222,7 @@ index 000000000000..2c097e6c5753
 +#endif /* _dhd_linux_wq_h_ */
 diff --git a/drivers/net/wireless/ap12275/dhd_log_dump.c b/drivers/net/wireless/ap12275/dhd_log_dump.c
 new file mode 100644
-index 000000000000..cb8fd58838df
+index 0000000000000..cb8fd58838df2
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_log_dump.c
 @@ -0,0 +1,2480 @@
@@ -129708,7 +129708,7 @@ index 000000000000..cb8fd58838df
 +#endif /* DHD_LOG_DUMP */
 diff --git a/drivers/net/wireless/ap12275/dhd_log_dump.h b/drivers/net/wireless/ap12275/dhd_log_dump.h
 new file mode 100644
-index 000000000000..97d48461634e
+index 0000000000000..97d48461634ec
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_log_dump.h
 @@ -0,0 +1,402 @@
@@ -130116,7 +130116,7 @@ index 000000000000..97d48461634e
 +#endif /* !__DHD_LOG_DUMP_H__ */
 diff --git a/drivers/net/wireless/ap12275/dhd_mschdbg.c b/drivers/net/wireless/ap12275/dhd_mschdbg.c
 new file mode 100644
-index 000000000000..167fa19e08fc
+index 0000000000000..167fa19e08fcc
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_mschdbg.c
 @@ -0,0 +1,796 @@
@@ -130918,7 +130918,7 @@ index 000000000000..167fa19e08fc
 +#endif /* SHOW_LOGTRACE */
 diff --git a/drivers/net/wireless/ap12275/dhd_mschdbg.h b/drivers/net/wireless/ap12275/dhd_mschdbg.h
 new file mode 100644
-index 000000000000..533b4ebd5119
+index 0000000000000..533b4ebd5119c
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_mschdbg.h
 @@ -0,0 +1,36 @@
@@ -130960,7 +130960,7 @@ index 000000000000..533b4ebd5119
 +#endif /* _dhd_mschdbg_h_ */
 diff --git a/drivers/net/wireless/ap12275/dhd_msgbuf.c b/drivers/net/wireless/ap12275/dhd_msgbuf.c
 new file mode 100644
-index 000000000000..d614e648fdf6
+index 0000000000000..d614e648fdf66
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_msgbuf.c
 @@ -0,0 +1,14807 @@
@@ -145773,7 +145773,7 @@ index 000000000000..d614e648fdf6
 +#endif /* DHD_FLOW_RING_STATUS_TRACE */
 diff --git a/drivers/net/wireless/ap12275/dhd_pcie.c b/drivers/net/wireless/ap12275/dhd_pcie.c
 new file mode 100644
-index 000000000000..027bebf96a90
+index 0000000000000..027bebf96a903
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_pcie.c
 @@ -0,0 +1,18411 @@
@@ -164190,7 +164190,7 @@ index 000000000000..027bebf96a90
 +}
 diff --git a/drivers/net/wireless/ap12275/dhd_pcie.h b/drivers/net/wireless/ap12275/dhd_pcie.h
 new file mode 100644
-index 000000000000..68a100912960
+index 0000000000000..68a1009129609
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_pcie.h
 @@ -0,0 +1,940 @@
@@ -165136,7 +165136,7 @@ index 000000000000..68a100912960
 +#endif /* dhd_pcie_h */
 diff --git a/drivers/net/wireless/ap12275/dhd_pcie_linux.c b/drivers/net/wireless/ap12275/dhd_pcie_linux.c
 new file mode 100644
-index 000000000000..9870ab28137d
+index 0000000000000..9870ab28137dc
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_pcie_linux.c
 @@ -0,0 +1,3114 @@
@@ -168256,7 +168256,7 @@ index 000000000000..9870ab28137d
 +#endif
 diff --git a/drivers/net/wireless/ap12275/dhd_pktlog.c b/drivers/net/wireless/ap12275/dhd_pktlog.c
 new file mode 100644
-index 000000000000..2ddb493da11d
+index 0000000000000..2ddb493da11df
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_pktlog.c
 @@ -0,0 +1,2050 @@
@@ -170312,7 +170312,7 @@ index 000000000000..2ddb493da11d
 +#endif /* DHD_PKT_LOGGING */
 diff --git a/drivers/net/wireless/ap12275/dhd_pktlog.h b/drivers/net/wireless/ap12275/dhd_pktlog.h
 new file mode 100644
-index 000000000000..f4f9f26681f6
+index 0000000000000..f4f9f26681f66
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_pktlog.h
 @@ -0,0 +1,325 @@
@@ -170643,7 +170643,7 @@ index 000000000000..f4f9f26681f6
 +#endif /* __DHD_PKTLOG_H_ */
 diff --git a/drivers/net/wireless/ap12275/dhd_plat.h b/drivers/net/wireless/ap12275/dhd_plat.h
 new file mode 100644
-index 000000000000..ec19a28efc78
+index 0000000000000..ec19a28efc780
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_plat.h
 @@ -0,0 +1,103 @@
@@ -170752,7 +170752,7 @@ index 000000000000..ec19a28efc78
 +#endif /* __DHD_PLAT_H__ */
 diff --git a/drivers/net/wireless/ap12275/dhd_pno.c b/drivers/net/wireless/ap12275/dhd_pno.c
 new file mode 100644
-index 000000000000..b097a1de508d
+index 0000000000000..b097a1de508dd
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_pno.c
 @@ -0,0 +1,4906 @@
@@ -175664,7 +175664,7 @@ index 000000000000..b097a1de508d
 +#endif /* PNO_SUPPORT */
 diff --git a/drivers/net/wireless/ap12275/dhd_pno.h b/drivers/net/wireless/ap12275/dhd_pno.h
 new file mode 100644
-index 000000000000..1846b2eb2929
+index 0000000000000..1846b2eb29291
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_pno.h
 @@ -0,0 +1,585 @@
@@ -176255,7 +176255,7 @@ index 000000000000..1846b2eb2929
 +#endif /* __DHD_PNO_H__ */
 diff --git a/drivers/net/wireless/ap12275/dhd_proto.h b/drivers/net/wireless/ap12275/dhd_proto.h
 new file mode 100644
-index 000000000000..6241da7dc067
+index 0000000000000..6241da7dc0670
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_proto.h
 @@ -0,0 +1,272 @@
@@ -176533,7 +176533,7 @@ index 000000000000..6241da7dc067
 +#endif /* _dhd_proto_h_ */
 diff --git a/drivers/net/wireless/ap12275/dhd_rtt.c b/drivers/net/wireless/ap12275/dhd_rtt.c
 new file mode 100644
-index 000000000000..3d393b7e4fa6
+index 0000000000000..3d393b7e4fa60
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_rtt.c
 @@ -0,0 +1,5562 @@
@@ -182101,7 +182101,7 @@ index 000000000000..3d393b7e4fa6
 +}
 diff --git a/drivers/net/wireless/ap12275/dhd_rtt.h b/drivers/net/wireless/ap12275/dhd_rtt.h
 new file mode 100644
-index 000000000000..6fb3500771d7
+index 0000000000000..6fb3500771d7e
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_rtt.h
 @@ -0,0 +1,563 @@
@@ -182670,7 +182670,7 @@ index 000000000000..6fb3500771d7
 +#endif /* __DHD_RTT_H__ */
 diff --git a/drivers/net/wireless/ap12275/dhd_sdio.c b/drivers/net/wireless/ap12275/dhd_sdio.c
 new file mode 100644
-index 000000000000..98f8d8e4ffa3
+index 0000000000000..98f8d8e4ffa3f
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_sdio.c
 @@ -0,0 +1,12553 @@
@@ -195229,7 +195229,7 @@ index 000000000000..98f8d8e4ffa3
 +}
 diff --git a/drivers/net/wireless/ap12275/dhd_static_buf.c b/drivers/net/wireless/ap12275/dhd_static_buf.c
 new file mode 100644
-index 000000000000..a247a42691d5
+index 0000000000000..a247a42691d5b
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_static_buf.c
 @@ -0,0 +1,654 @@
@@ -195889,7 +195889,7 @@ index 000000000000..a247a42691d5
 +#endif
 diff --git a/drivers/net/wireless/ap12275/dhd_statlog.c b/drivers/net/wireless/ap12275/dhd_statlog.c
 new file mode 100644
-index 000000000000..396cbcd0edf6
+index 0000000000000..396cbcd0edf6a
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_statlog.c
 @@ -0,0 +1,1081 @@
@@ -196976,7 +196976,7 @@ index 000000000000..396cbcd0edf6
 +#endif /* DHD_STATUS_LOGGING */
 diff --git a/drivers/net/wireless/ap12275/dhd_statlog.h b/drivers/net/wireless/ap12275/dhd_statlog.h
 new file mode 100644
-index 000000000000..846d5dd86644
+index 0000000000000..846d5dd86644c
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_statlog.h
 @@ -0,0 +1,240 @@
@@ -197222,7 +197222,7 @@ index 000000000000..846d5dd86644
 +#endif /* __DHD_STATLOG_H_ */
 diff --git a/drivers/net/wireless/ap12275/dhd_wlfc.c b/drivers/net/wireless/ap12275/dhd_wlfc.c
 new file mode 100644
-index 000000000000..8c5081ba0bf3
+index 0000000000000..8c5081ba0bf37
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_wlfc.c
 @@ -0,0 +1,4787 @@
@@ -202015,7 +202015,7 @@ index 000000000000..8c5081ba0bf3
 +#endif /* PROP_TXSTATUS */
 diff --git a/drivers/net/wireless/ap12275/dhd_wlfc.h b/drivers/net/wireless/ap12275/dhd_wlfc.h
 new file mode 100644
-index 000000000000..aac58fe89e03
+index 0000000000000..aac58fe89e031
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/dhd_wlfc.h
 @@ -0,0 +1,585 @@
@@ -202606,7 +202606,7 @@ index 000000000000..aac58fe89e03
 +#endif /* __wlfc_host_driver_definitions_h__ */
 diff --git a/drivers/net/wireless/ap12275/frag.c b/drivers/net/wireless/ap12275/frag.c
 new file mode 100644
-index 000000000000..981dd6e524b0
+index 0000000000000..981dd6e524b03
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/frag.c
 @@ -0,0 +1,183 @@
@@ -202795,7 +202795,7 @@ index 000000000000..981dd6e524b0
 +}
 diff --git a/drivers/net/wireless/ap12275/fwpkg_utils.c b/drivers/net/wireless/ap12275/fwpkg_utils.c
 new file mode 100644
-index 000000000000..0855780562c5
+index 0000000000000..0855780562c54
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/fwpkg_utils.c
 @@ -0,0 +1,391 @@
@@ -203192,7 +203192,7 @@ index 000000000000..0855780562c5
 +}
 diff --git a/drivers/net/wireless/ap12275/hnd_pktpool.c b/drivers/net/wireless/ap12275/hnd_pktpool.c
 new file mode 100644
-index 000000000000..57a330d735ec
+index 0000000000000..57a330d735ec8
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/hnd_pktpool.c
 @@ -0,0 +1,2341 @@
@@ -205539,7 +205539,7 @@ index 000000000000..57a330d735ec
 +#endif /* BCMPKTPOOL */
 diff --git a/drivers/net/wireless/ap12275/hnd_pktq.c b/drivers/net/wireless/ap12275/hnd_pktq.c
 new file mode 100644
-index 000000000000..2248c57c74fa
+index 0000000000000..2248c57c74fa6
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/hnd_pktq.c
 @@ -0,0 +1,1650 @@
@@ -207195,7 +207195,7 @@ index 000000000000..2248c57c74fa
 +#endif	/* HND_PKTQ_THREAD_SAFE */
 diff --git a/drivers/net/wireless/ap12275/hndpmu.c b/drivers/net/wireless/ap12275/hndpmu.c
 new file mode 100644
-index 000000000000..737413260b24
+index 0000000000000..737413260b24d
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/hndpmu.c
 @@ -0,0 +1,9945 @@
@@ -217146,7 +217146,7 @@ index 000000000000..737413260b24
 +}
 diff --git a/drivers/net/wireless/ap12275/include/802.11.h b/drivers/net/wireless/ap12275/include/802.11.h
 new file mode 100644
-index 000000000000..3404aac0a397
+index 0000000000000..3404aac0a397b
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/802.11.h
 @@ -0,0 +1,2489 @@
@@ -219641,7 +219641,7 @@ index 000000000000..3404aac0a397
 +#endif /* _802_11_H_ */
 diff --git a/drivers/net/wireless/ap12275/include/802.11ac.h b/drivers/net/wireless/ap12275/include/802.11ac.h
 new file mode 100644
-index 000000000000..8d40684ace42
+index 0000000000000..8d40684ace42e
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/802.11ac.h
 @@ -0,0 +1,487 @@
@@ -220134,7 +220134,7 @@ index 000000000000..8d40684ace42
 +#endif /* _802_11ac_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/802.11ah.h b/drivers/net/wireless/ap12275/include/802.11ah.h
 new file mode 100644
-index 000000000000..6e30f3a21218
+index 0000000000000..6e30f3a212186
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/802.11ah.h
 @@ -0,0 +1,281 @@
@@ -220421,7 +220421,7 @@ index 000000000000..6e30f3a21218
 +#endif /* _802_11ah_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/802.11ax.h b/drivers/net/wireless/ap12275/include/802.11ax.h
 new file mode 100644
-index 000000000000..15672ade9e34
+index 0000000000000..15672ade9e344
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/802.11ax.h
 @@ -0,0 +1,1201 @@
@@ -221628,7 +221628,7 @@ index 000000000000..15672ade9e34
 +#endif /* _802_11ax_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/802.11az.h b/drivers/net/wireless/ap12275/include/802.11az.h
 new file mode 100644
-index 000000000000..d9fdf0e3ab61
+index 0000000000000..d9fdf0e3ab610
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/802.11az.h
 @@ -0,0 +1,637 @@
@@ -222271,7 +222271,7 @@ index 000000000000..d9fdf0e3ab61
 +#endif /* _802_11az_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/802.11brcm.h b/drivers/net/wireless/ap12275/include/802.11brcm.h
 new file mode 100644
-index 000000000000..040d1c25a1d0
+index 0000000000000..040d1c25a1d0a
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/802.11brcm.h
 @@ -0,0 +1,348 @@
@@ -222625,7 +222625,7 @@ index 000000000000..040d1c25a1d0
 +#endif /* _802_11brcm_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/802.11cust.h b/drivers/net/wireless/ap12275/include/802.11cust.h
 new file mode 100644
-index 000000000000..7cbe2fc4f6ba
+index 0000000000000..7cbe2fc4f6ba4
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/802.11cust.h
 @@ -0,0 +1,76 @@
@@ -222707,7 +222707,7 @@ index 000000000000..7cbe2fc4f6ba
 +#endif /* _802_11cust_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/802.11k.h b/drivers/net/wireless/ap12275/include/802.11k.h
 new file mode 100644
-index 000000000000..7439c8206dca
+index 0000000000000..7439c8206dca5
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/802.11k.h
 @@ -0,0 +1,928 @@
@@ -223641,7 +223641,7 @@ index 000000000000..7439c8206dca
 +#endif /* _802_11k_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/802.11n.h b/drivers/net/wireless/ap12275/include/802.11n.h
 new file mode 100644
-index 000000000000..e86dd0f644e1
+index 0000000000000..e86dd0f644e10
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/802.11n.h
 @@ -0,0 +1,384 @@
@@ -224031,7 +224031,7 @@ index 000000000000..e86dd0f644e1
 +#endif /* _802_11n_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/802.11owe.h b/drivers/net/wireless/ap12275/include/802.11owe.h
 new file mode 100644
-index 000000000000..2af77fbef570
+index 0000000000000..2af77fbef570a
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/802.11owe.h
 @@ -0,0 +1,62 @@
@@ -224099,7 +224099,7 @@ index 000000000000..2af77fbef570
 +#endif /* _802_11owe_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/802.11s.h b/drivers/net/wireless/ap12275/include/802.11s.h
 new file mode 100644
-index 000000000000..6ddbde466a66
+index 0000000000000..6ddbde466a66d
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/802.11s.h
 @@ -0,0 +1,316 @@
@@ -224421,7 +224421,7 @@ index 000000000000..6ddbde466a66
 +#endif  /* #ifndef _802_11s_H_ */
 diff --git a/drivers/net/wireless/ap12275/include/802.11u.h b/drivers/net/wireless/ap12275/include/802.11u.h
 new file mode 100644
-index 000000000000..11852217d6ad
+index 0000000000000..11852217d6ade
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/802.11u.h
 @@ -0,0 +1,200 @@
@@ -224627,7 +224627,7 @@ index 000000000000..11852217d6ad
 +#endif /* _802_11u_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/802.11v.h b/drivers/net/wireless/ap12275/include/802.11v.h
 new file mode 100644
-index 000000000000..88b407fdb3fa
+index 0000000000000..88b407fdb3fad
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/802.11v.h
 @@ -0,0 +1,794 @@
@@ -225427,7 +225427,7 @@ index 000000000000..88b407fdb3fa
 +#endif /* _802_11v_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/802.11w.h b/drivers/net/wireless/ap12275/include/802.11w.h
 new file mode 100644
-index 000000000000..1d46d71b7d9e
+index 0000000000000..1d46d71b7d9e0
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/802.11w.h
 @@ -0,0 +1,50 @@
@@ -225483,7 +225483,7 @@ index 000000000000..1d46d71b7d9e
 +#endif	/* _802_11w_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/802.11wapi.h b/drivers/net/wireless/ap12275/include/802.11wapi.h
 new file mode 100644
-index 000000000000..4f0899078619
+index 0000000000000..4f08990786195
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/802.11wapi.h
 @@ -0,0 +1,70 @@
@@ -225559,7 +225559,7 @@ index 000000000000..4f0899078619
 +#endif /* _802_11wapi_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/802.11wfa.h b/drivers/net/wireless/ap12275/include/802.11wfa.h
 new file mode 100644
-index 000000000000..39d91e610963
+index 0000000000000..39d91e6109638
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/802.11wfa.h
 @@ -0,0 +1,245 @@
@@ -225810,7 +225810,7 @@ index 000000000000..39d91e610963
 +#endif /* _802_11wfa_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/802.11z.h b/drivers/net/wireless/ap12275/include/802.11z.h
 new file mode 100644
-index 000000000000..125f4ccd1810
+index 0000000000000..125f4ccd1810b
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/802.11z.h
 @@ -0,0 +1,142 @@
@@ -225958,7 +225958,7 @@ index 000000000000..125f4ccd1810
 +#endif /* _802_11z_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/802.1d.h b/drivers/net/wireless/ap12275/include/802.1d.h
 new file mode 100644
-index 000000000000..45a94c0f98a8
+index 0000000000000..45a94c0f98a88
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/802.1d.h
 @@ -0,0 +1,47 @@
@@ -226011,7 +226011,7 @@ index 000000000000..45a94c0f98a8
 +#endif /* _802_1_D__ */
 diff --git a/drivers/net/wireless/ap12275/include/802.3.h b/drivers/net/wireless/ap12275/include/802.3.h
 new file mode 100644
-index 000000000000..263e9e793f9c
+index 0000000000000..263e9e793f9cc
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/802.3.h
 @@ -0,0 +1,49 @@
@@ -226066,7 +226066,7 @@ index 000000000000..263e9e793f9c
 +#endif	/* #ifndef _802_3_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/aidmp.h b/drivers/net/wireless/ap12275/include/aidmp.h
 new file mode 100644
-index 000000000000..d76c8881e8e1
+index 0000000000000..d76c8881e8e13
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/aidmp.h
 @@ -0,0 +1,438 @@
@@ -226510,7 +226510,7 @@ index 000000000000..d76c8881e8e1
 +#endif	/* _AIDMP_H */
 diff --git a/drivers/net/wireless/ap12275/include/bcm_mpool_pub.h b/drivers/net/wireless/ap12275/include/bcm_mpool_pub.h
 new file mode 100644
-index 000000000000..a19fc20052f0
+index 0000000000000..a19fc20052f0a
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/bcm_mpool_pub.h
 @@ -0,0 +1,344 @@
@@ -226860,7 +226860,7 @@ index 000000000000..a19fc20052f0
 +#endif /* _BCM_MPOOL_PUB_H */
 diff --git a/drivers/net/wireless/ap12275/include/bcm_ring.h b/drivers/net/wireless/ap12275/include/bcm_ring.h
 new file mode 100644
-index 000000000000..fc45bf48f3b2
+index 0000000000000..fc45bf48f3b23
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/bcm_ring.h
 @@ -0,0 +1,585 @@
@@ -227451,7 +227451,7 @@ index 000000000000..fc45bf48f3b2
 +#endif /* ! __bcm_ring_h_included__ */
 diff --git a/drivers/net/wireless/ap12275/include/bcmarp.h b/drivers/net/wireless/ap12275/include/bcmarp.h
 new file mode 100644
-index 000000000000..21f5e2463ec4
+index 0000000000000..21f5e2463ec4b
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/bcmarp.h
 @@ -0,0 +1,84 @@
@@ -227541,7 +227541,7 @@ index 000000000000..21f5e2463ec4
 +#endif	/* !defined(_bcmarp_h_) */
 diff --git a/drivers/net/wireless/ap12275/include/bcmbloom.h b/drivers/net/wireless/ap12275/include/bcmbloom.h
 new file mode 100644
-index 000000000000..a978d4d45d01
+index 0000000000000..a978d4d45d013
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/bcmbloom.h
 @@ -0,0 +1,73 @@
@@ -227620,7 +227620,7 @@ index 000000000000..a978d4d45d01
 +#endif /* _bcmbloom_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/bcmcdc.h b/drivers/net/wireless/ap12275/include/bcmcdc.h
 new file mode 100644
-index 000000000000..ed029055f990
+index 0000000000000..ed029055f9901
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/bcmcdc.h
 @@ -0,0 +1,115 @@
@@ -227741,7 +227741,7 @@ index 000000000000..ed029055f990
 +#endif /* _bcmcdc_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/bcmdefs.h b/drivers/net/wireless/ap12275/include/bcmdefs.h
 new file mode 100644
-index 000000000000..f5c5b60e8e8a
+index 0000000000000..f5c5b60e8e8a8
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/bcmdefs.h
 @@ -0,0 +1,1073 @@
@@ -228820,7 +228820,7 @@ index 000000000000..f5c5b60e8e8a
 +#endif /* _bcmdefs_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/bcmdevs.h b/drivers/net/wireless/ap12275/include/bcmdevs.h
 new file mode 100644
-index 000000000000..2276c4465fee
+index 0000000000000..2276c4465fee0
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/bcmdevs.h
 @@ -0,0 +1,669 @@
@@ -229495,7 +229495,7 @@ index 000000000000..2276c4465fee
 +#endif /* _BCMDEVS_H */
 diff --git a/drivers/net/wireless/ap12275/include/bcmdevs_legacy.h b/drivers/net/wireless/ap12275/include/bcmdevs_legacy.h
 new file mode 100644
-index 000000000000..e10901a6a370
+index 0000000000000..e10901a6a3702
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/bcmdevs_legacy.h
 @@ -0,0 +1,165 @@
@@ -229666,7 +229666,7 @@ index 000000000000..e10901a6a370
 +#endif /* _bcmdevs_legacy_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/bcmdhcp.h b/drivers/net/wireless/ap12275/include/bcmdhcp.h
 new file mode 100644
-index 000000000000..6f89292fab6d
+index 0000000000000..6f89292fab6d0
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/bcmdhcp.h
 @@ -0,0 +1,88 @@
@@ -229760,7 +229760,7 @@ index 000000000000..6f89292fab6d
 +#endif	/* #ifndef _bcmdhcp_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/bcmendian.h b/drivers/net/wireless/ap12275/include/bcmendian.h
 new file mode 100644
-index 000000000000..82968b4592c2
+index 0000000000000..82968b4592c2b
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/bcmendian.h
 @@ -0,0 +1,451 @@
@@ -230217,7 +230217,7 @@ index 000000000000..82968b4592c2
 +#endif /* !_BCMENDIAN_H_ */
 diff --git a/drivers/net/wireless/ap12275/include/bcmerror.h b/drivers/net/wireless/ap12275/include/bcmerror.h
 new file mode 100644
-index 000000000000..836e6ce59730
+index 0000000000000..836e6ce59730e
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/bcmerror.h
 @@ -0,0 +1,911 @@
@@ -231134,7 +231134,7 @@ index 000000000000..836e6ce59730
 +#endif	/* _bcmerror_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/bcmeth.h b/drivers/net/wireless/ap12275/include/bcmeth.h
 new file mode 100644
-index 000000000000..814691053572
+index 0000000000000..814691053572f
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/bcmeth.h
 @@ -0,0 +1,109 @@
@@ -231249,7 +231249,7 @@ index 000000000000..814691053572
 +#endif	/*  _BCMETH_H_ */
 diff --git a/drivers/net/wireless/ap12275/include/bcmevent.h b/drivers/net/wireless/ap12275/include/bcmevent.h
 new file mode 100644
-index 000000000000..3597e6169ec9
+index 0000000000000..3597e6169ec94
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/bcmevent.h
 @@ -0,0 +1,1795 @@
@@ -233050,7 +233050,7 @@ index 000000000000..3597e6169ec9
 +#endif /* _BCMEVENT_H_ */
 diff --git a/drivers/net/wireless/ap12275/include/bcmicmp.h b/drivers/net/wireless/ap12275/include/bcmicmp.h
 new file mode 100644
-index 000000000000..3a58a850617a
+index 0000000000000..3a58a850617a5
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/bcmicmp.h
 @@ -0,0 +1,83 @@
@@ -233139,7 +233139,7 @@ index 000000000000..3a58a850617a
 +#endif	/* #ifndef _bcmicmp_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/bcmigmp.h b/drivers/net/wireless/ap12275/include/bcmigmp.h
 new file mode 100644
-index 000000000000..559c964b86cb
+index 0000000000000..559c964b86cba
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/bcmigmp.h
 @@ -0,0 +1,74 @@
@@ -233219,7 +233219,7 @@ index 000000000000..559c964b86cb
 +#endif	/* #ifndef _bcmigmp_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/bcmiov.h b/drivers/net/wireless/ap12275/include/bcmiov.h
 new file mode 100644
-index 000000000000..3e5a6fa2ad6f
+index 0000000000000..3e5a6fa2ad6f5
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/bcmiov.h
 @@ -0,0 +1,439 @@
@@ -233664,7 +233664,7 @@ index 000000000000..3e5a6fa2ad6f
 +#endif /* _bcmiov_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/bcmip.h b/drivers/net/wireless/ap12275/include/bcmip.h
 new file mode 100644
-index 000000000000..7eb5736f5ab2
+index 0000000000000..7eb5736f5ab2d
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/bcmip.h
 @@ -0,0 +1,299 @@
@@ -233969,7 +233969,7 @@ index 000000000000..7eb5736f5ab2
 +#endif	/* _bcmip_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/bcmipv6.h b/drivers/net/wireless/ap12275/include/bcmipv6.h
 new file mode 100644
-index 000000000000..813ace19d72e
+index 0000000000000..813ace19d72e9
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/bcmipv6.h
 @@ -0,0 +1,168 @@
@@ -234143,7 +234143,7 @@ index 000000000000..813ace19d72e
 +#endif	/* !defined(_bcmipv6_h_) */
 diff --git a/drivers/net/wireless/ap12275/include/bcmmsgbuf.h b/drivers/net/wireless/ap12275/include/bcmmsgbuf.h
 new file mode 100644
-index 000000000000..884d79506a41
+index 0000000000000..884d79506a419
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/bcmmsgbuf.h
 @@ -0,0 +1,1705 @@
@@ -235854,7 +235854,7 @@ index 000000000000..884d79506a41
 +#endif /* _bcmmsgbuf_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/bcmnvram.h b/drivers/net/wireless/ap12275/include/bcmnvram.h
 new file mode 100644
-index 000000000000..0ad290aa6c0b
+index 0000000000000..0ad290aa6c0b4
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/bcmnvram.h
 @@ -0,0 +1,162 @@
@@ -236022,7 +236022,7 @@ index 000000000000..0ad290aa6c0b
 +#endif /* _bcmnvram_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/bcmpcie.h b/drivers/net/wireless/ap12275/include/bcmpcie.h
 new file mode 100644
-index 000000000000..b0796d96a042
+index 0000000000000..b0796d96a042c
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/bcmpcie.h
 @@ -0,0 +1,614 @@
@@ -236642,7 +236642,7 @@ index 000000000000..b0796d96a042
 +#endif	/* _bcmpcie_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/bcmperf.h b/drivers/net/wireless/ap12275/include/bcmperf.h
 new file mode 100644
-index 000000000000..8bc2d0ebbbe7
+index 0000000000000..8bc2d0ebbbe78
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/bcmperf.h
 @@ -0,0 +1,33 @@
@@ -236681,7 +236681,7 @@ index 000000000000..8bc2d0ebbbe7
 +#endif /* _BCMPERF_H_ */
 diff --git a/drivers/net/wireless/ap12275/include/bcmproto.h b/drivers/net/wireless/ap12275/include/bcmproto.h
 new file mode 100644
-index 000000000000..afc4616a30da
+index 0000000000000..afc4616a30da0
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/bcmproto.h
 @@ -0,0 +1,275 @@
@@ -236962,7 +236962,7 @@ index 000000000000..afc4616a30da
 +#endif	/* _bcmproto_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/bcmrand.h b/drivers/net/wireless/ap12275/include/bcmrand.h
 new file mode 100644
-index 000000000000..b2fdf820ff64
+index 0000000000000..b2fdf820ff647
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/bcmrand.h
 @@ -0,0 +1,65 @@
@@ -237033,7 +237033,7 @@ index 000000000000..b2fdf820ff64
 +#endif	/* _bcmrand_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/bcmsdbus.h b/drivers/net/wireless/ap12275/include/bcmsdbus.h
 new file mode 100644
-index 000000000000..6f265a8f1c1d
+index 0000000000000..6f265a8f1c1d4
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/bcmsdbus.h
 @@ -0,0 +1,187 @@
@@ -237226,7 +237226,7 @@ index 000000000000..6f265a8f1c1d
 +#endif /* _sdio_api_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/bcmsdh.h b/drivers/net/wireless/ap12275/include/bcmsdh.h
 new file mode 100644
-index 000000000000..27417dcb1b0b
+index 0000000000000..27417dcb1b0ba
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/bcmsdh.h
 @@ -0,0 +1,298 @@
@@ -237530,7 +237530,7 @@ index 000000000000..27417dcb1b0b
 +#endif /* _bcmsdh_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/bcmsdh_sdmmc.h b/drivers/net/wireless/ap12275/include/bcmsdh_sdmmc.h
 new file mode 100644
-index 000000000000..8e500c255ae1
+index 0000000000000..8e500c255ae18
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/bcmsdh_sdmmc.h
 @@ -0,0 +1,135 @@
@@ -237671,7 +237671,7 @@ index 000000000000..8e500c255ae1
 +#endif /* __BCMSDH_SDMMC_H__ */
 diff --git a/drivers/net/wireless/ap12275/include/bcmsdpcm.h b/drivers/net/wireless/ap12275/include/bcmsdpcm.h
 new file mode 100644
-index 000000000000..173e100a2b3d
+index 0000000000000..173e100a2b3df
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/bcmsdpcm.h
 @@ -0,0 +1,304 @@
@@ -237981,7 +237981,7 @@ index 000000000000..173e100a2b3d
 +#endif	/* _bcmsdpcm_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/bcmsrom_fmt.h b/drivers/net/wireless/ap12275/include/bcmsrom_fmt.h
 new file mode 100644
-index 000000000000..a9fd1695efdc
+index 0000000000000..a9fd1695efdc3
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/bcmsrom_fmt.h
 @@ -0,0 +1,1028 @@
@@ -239015,7 +239015,7 @@ index 000000000000..a9fd1695efdc
 +#endif	/* _bcmsrom_fmt_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/bcmstdlib_s.h b/drivers/net/wireless/ap12275/include/bcmstdlib_s.h
 new file mode 100644
-index 000000000000..c70493353a9c
+index 0000000000000..c70493353a9cf
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/bcmstdlib_s.h
 @@ -0,0 +1,54 @@
@@ -239075,7 +239075,7 @@ index 000000000000..c70493353a9c
 +#endif /* _bcmstdlib_s_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/bcmtcp.h b/drivers/net/wireless/ap12275/include/bcmtcp.h
 new file mode 100644
-index 000000000000..804026bd14f6
+index 0000000000000..804026bd14f68
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/bcmtcp.h
 @@ -0,0 +1,86 @@
@@ -239167,7 +239167,7 @@ index 000000000000..804026bd14f6
 +#endif	/* #ifndef _bcmtcp_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/bcmtlv.h b/drivers/net/wireless/ap12275/include/bcmtlv.h
 new file mode 100644
-index 000000000000..7a9fbab17ae4
+index 0000000000000..7a9fbab17ae41
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/bcmtlv.h
 @@ -0,0 +1,382 @@
@@ -239555,7 +239555,7 @@ index 000000000000..7a9fbab17ae4
 +#endif	/* _bcmtlv_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/bcmudp.h b/drivers/net/wireless/ap12275/include/bcmudp.h
 new file mode 100644
-index 000000000000..8e4405afa85d
+index 0000000000000..8e4405afa85d8
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/bcmudp.h
 @@ -0,0 +1,54 @@
@@ -239615,7 +239615,7 @@ index 000000000000..8e4405afa85d
 +#endif	/* #ifndef _bcmudp_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/bcmutils.h b/drivers/net/wireless/ap12275/include/bcmutils.h
 new file mode 100644
-index 000000000000..558345d57f09
+index 0000000000000..558345d57f09a
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/bcmutils.h
 @@ -0,0 +1,1613 @@
@@ -241234,7 +241234,7 @@ index 000000000000..558345d57f09
 +#endif	/* _bcmutils_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/bcmwifi_channels.h b/drivers/net/wireless/ap12275/include/bcmwifi_channels.h
 new file mode 100644
-index 000000000000..ff399f7ae6f9
+index 0000000000000..ff399f7ae6f94
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/bcmwifi_channels.h
 @@ -0,0 +1,909 @@
@@ -242149,7 +242149,7 @@ index 000000000000..ff399f7ae6f9
 +#endif	/* _bcmwifi_channels_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/bcmwifi_radiotap.h b/drivers/net/wireless/ap12275/include/bcmwifi_radiotap.h
 new file mode 100644
-index 000000000000..d90b5af7ec77
+index 0000000000000..d90b5af7ec771
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/bcmwifi_radiotap.h
 @@ -0,0 +1,382 @@
@@ -242537,7 +242537,7 @@ index 000000000000..d90b5af7ec77
 +#endif	/* _BCMWIFI_RADIOTAP_H_ */
 diff --git a/drivers/net/wireless/ap12275/include/bcmwifi_rates.h b/drivers/net/wireless/ap12275/include/bcmwifi_rates.h
 new file mode 100644
-index 000000000000..36b6e72b8a47
+index 0000000000000..36b6e72b8a474
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/bcmwifi_rates.h
 @@ -0,0 +1,1262 @@
@@ -243805,7 +243805,7 @@ index 000000000000..36b6e72b8a47
 +#endif /* _bcmwifi_rates_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/bcmwifi_rspec.h b/drivers/net/wireless/ap12275/include/bcmwifi_rspec.h
 new file mode 100644
-index 000000000000..7ab1f093ca48
+index 0000000000000..7ab1f093ca48c
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/bcmwifi_rspec.h
 @@ -0,0 +1,286 @@
@@ -244097,7 +244097,7 @@ index 000000000000..7ab1f093ca48
 +#endif /* _bcmwifi_rspec_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/bootrommem.h b/drivers/net/wireless/ap12275/include/bootrommem.h
 new file mode 100644
-index 000000000000..ebebdab93651
+index 0000000000000..ebebdab936511
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/bootrommem.h
 @@ -0,0 +1,97 @@
@@ -244200,7 +244200,7 @@ index 000000000000..ebebdab93651
 +#endif /* _BOOTROMMEM_H_ */
 diff --git a/drivers/net/wireless/ap12275/include/brcm_nl80211.h b/drivers/net/wireless/ap12275/include/brcm_nl80211.h
 new file mode 100644
-index 000000000000..fb61d4596eb0
+index 0000000000000..fb61d4596eb09
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/brcm_nl80211.h
 @@ -0,0 +1,79 @@
@@ -244285,7 +244285,7 @@ index 000000000000..fb61d4596eb0
 +#endif /* _brcm_nl80211_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/dbus.h b/drivers/net/wireless/ap12275/include/dbus.h
 new file mode 100644
-index 000000000000..64f0636b0960
+index 0000000000000..64f0636b09601
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/dbus.h
 @@ -0,0 +1,640 @@
@@ -244931,7 +244931,7 @@ index 000000000000..64f0636b0960
 +#endif /* __DBUS_H__ */
 diff --git a/drivers/net/wireless/ap12275/include/dhd_daemon.h b/drivers/net/wireless/ap12275/include/dhd_daemon.h
 new file mode 100644
-index 000000000000..f71d02907540
+index 0000000000000..f71d029075400
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/dhd_daemon.h
 @@ -0,0 +1,55 @@
@@ -244992,7 +244992,7 @@ index 000000000000..f71d02907540
 +#endif /* __BCM_DHDD_H__ */
 diff --git a/drivers/net/wireless/ap12275/include/dhdioctl.h b/drivers/net/wireless/ap12275/include/dhdioctl.h
 new file mode 100644
-index 000000000000..dc558e21d4b9
+index 0000000000000..dc558e21d4b9a
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/dhdioctl.h
 @@ -0,0 +1,450 @@
@@ -245448,7 +245448,7 @@ index 000000000000..dc558e21d4b9
 +#endif /* _dhdioctl_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/dngl_rtlv.h b/drivers/net/wireless/ap12275/include/dngl_rtlv.h
 new file mode 100644
-index 000000000000..a1a14add605e
+index 0000000000000..a1a14add605e5
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/dngl_rtlv.h
 @@ -0,0 +1,83 @@
@@ -245537,7 +245537,7 @@ index 000000000000..a1a14add605e
 +#endif /* _dngl_rtlv_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/dngl_stats.h b/drivers/net/wireless/ap12275/include/dngl_stats.h
 new file mode 100644
-index 000000000000..0d38086b0f36
+index 0000000000000..0d38086b0f367
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/dngl_stats.h
 @@ -0,0 +1,43 @@
@@ -245586,7 +245586,7 @@ index 000000000000..0d38086b0f36
 +#endif /* _dngl_stats_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/dnglevent.h b/drivers/net/wireless/ap12275/include/dnglevent.h
 new file mode 100644
-index 000000000000..5cff81d5cba4
+index 0000000000000..5cff81d5cba41
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/dnglevent.h
 @@ -0,0 +1,188 @@
@@ -245780,7 +245780,7 @@ index 000000000000..5cff81d5cba4
 +#endif /* _DNGLEVENT_H_ */
 diff --git a/drivers/net/wireless/ap12275/include/dnglioctl.h b/drivers/net/wireless/ap12275/include/dnglioctl.h
 new file mode 100644
-index 000000000000..4a9769a62085
+index 0000000000000..4a9769a620850
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/dnglioctl.h
 @@ -0,0 +1,177 @@
@@ -245963,7 +245963,7 @@ index 000000000000..4a9769a62085
 +#endif /* _dngl_ioctl_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/eapol.h b/drivers/net/wireless/ap12275/include/eapol.h
 new file mode 100644
-index 000000000000..e170a338c817
+index 0000000000000..e170a338c8170
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/eapol.h
 @@ -0,0 +1,345 @@
@@ -246314,7 +246314,7 @@ index 000000000000..e170a338c817
 +#endif /* _eapol_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/epivers.h b/drivers/net/wireless/ap12275/include/epivers.h
 new file mode 100644
-index 000000000000..2d2da353d92c
+index 0000000000000..2d2da353d92cc
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/epivers.h
 @@ -0,0 +1,55 @@
@@ -246375,7 +246375,7 @@ index 000000000000..2d2da353d92c
 +#endif /* _epivers_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/etd.h b/drivers/net/wireless/ap12275/include/etd.h
 new file mode 100644
-index 000000000000..9c97574ef71c
+index 0000000000000..9c97574ef71c8
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/etd.h
 @@ -0,0 +1,701 @@
@@ -247082,7 +247082,7 @@ index 000000000000..9c97574ef71c
 +#endif /* _ETD_H_ */
 diff --git a/drivers/net/wireless/ap12275/include/ethernet.h b/drivers/net/wireless/ap12275/include/ethernet.h
 new file mode 100644
-index 000000000000..a8e13bc084e0
+index 0000000000000..a8e13bc084e01
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/ethernet.h
 @@ -0,0 +1,265 @@
@@ -247353,7 +247353,7 @@ index 000000000000..a8e13bc084e0
 +#endif /* _NET_ETHERNET_H_ */
 diff --git a/drivers/net/wireless/ap12275/include/event_log.h b/drivers/net/wireless/ap12275/include/event_log.h
 new file mode 100644
-index 000000000000..c2b0ee25a49e
+index 0000000000000..c2b0ee25a49e0
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/event_log.h
 @@ -0,0 +1,761 @@
@@ -248120,7 +248120,7 @@ index 000000000000..c2b0ee25a49e
 +#endif /* _EVENT_LOG_H_ */
 diff --git a/drivers/net/wireless/ap12275/include/event_log_payload.h b/drivers/net/wireless/ap12275/include/event_log_payload.h
 new file mode 100644
-index 000000000000..9c17e079841f
+index 0000000000000..9c17e079841ff
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/event_log_payload.h
 @@ -0,0 +1,1545 @@
@@ -249671,7 +249671,7 @@ index 000000000000..9c17e079841f
 +#endif /* _EVENT_LOG_PAYLOAD_H_ */
 diff --git a/drivers/net/wireless/ap12275/include/event_log_set.h b/drivers/net/wireless/ap12275/include/event_log_set.h
 new file mode 100644
-index 000000000000..08f048cbd259
+index 0000000000000..08f048cbd2594
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/event_log_set.h
 @@ -0,0 +1,409 @@
@@ -250086,7 +250086,7 @@ index 000000000000..08f048cbd259
 +#endif /* _EVENT_LOG_SET_H_ */
 diff --git a/drivers/net/wireless/ap12275/include/event_log_tag.h b/drivers/net/wireless/ap12275/include/event_log_tag.h
 new file mode 100644
-index 000000000000..6490a12ba483
+index 0000000000000..6490a12ba4831
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/event_log_tag.h
 @@ -0,0 +1,667 @@
@@ -250759,7 +250759,7 @@ index 000000000000..6490a12ba483
 +#endif /* _EVENT_LOG_TAG_H_ */
 diff --git a/drivers/net/wireless/ap12275/include/event_trace.h b/drivers/net/wireless/ap12275/include/event_trace.h
 new file mode 100644
-index 000000000000..e760301763ea
+index 0000000000000..e760301763ea6
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/event_trace.h
 @@ -0,0 +1,187 @@
@@ -250952,7 +250952,7 @@ index 000000000000..e760301763ea
 +#endif	/* _WL_DIAG_H */
 diff --git a/drivers/net/wireless/ap12275/include/fils.h b/drivers/net/wireless/ap12275/include/fils.h
 new file mode 100644
-index 000000000000..935cd30f218b
+index 0000000000000..935cd30f218b4
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/fils.h
 @@ -0,0 +1,466 @@
@@ -251424,7 +251424,7 @@ index 000000000000..935cd30f218b
 +#endif /* __FILSAUTH_H__ */
 diff --git a/drivers/net/wireless/ap12275/include/frag.h b/drivers/net/wireless/ap12275/include/frag.h
 new file mode 100644
-index 000000000000..f2f8abda89ec
+index 0000000000000..f2f8abda89ec9
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/frag.h
 @@ -0,0 +1,46 @@
@@ -251476,7 +251476,7 @@ index 000000000000..f2f8abda89ec
 +#endif /* __FRAG_H__ */
 diff --git a/drivers/net/wireless/ap12275/include/fwpkg_utils.h b/drivers/net/wireless/ap12275/include/fwpkg_utils.h
 new file mode 100644
-index 000000000000..899b4fa09c19
+index 0000000000000..899b4fa09c191
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/fwpkg_utils.h
 @@ -0,0 +1,80 @@
@@ -251562,7 +251562,7 @@ index 000000000000..899b4fa09c19
 +#endif /* _fwpkg_utils_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/hnd_armtrap.h b/drivers/net/wireless/ap12275/include/hnd_armtrap.h
 new file mode 100644
-index 000000000000..370ded15ed0a
+index 0000000000000..370ded15ed0a7
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/hnd_armtrap.h
 @@ -0,0 +1,86 @@
@@ -251654,7 +251654,7 @@ index 000000000000..370ded15ed0a
 +#endif	/* _hnd_armtrap_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/hnd_cons.h b/drivers/net/wireless/ap12275/include/hnd_cons.h
 new file mode 100644
-index 000000000000..5482c27cb0e6
+index 0000000000000..5482c27cb0e66
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/hnd_cons.h
 @@ -0,0 +1,98 @@
@@ -251758,7 +251758,7 @@ index 000000000000..5482c27cb0e6
 +#endif /* _hnd_cons_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/hnd_debug.h b/drivers/net/wireless/ap12275/include/hnd_debug.h
 new file mode 100644
-index 000000000000..141fc31654da
+index 0000000000000..141fc31654da4
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/hnd_debug.h
 @@ -0,0 +1,253 @@
@@ -252017,7 +252017,7 @@ index 000000000000..141fc31654da
 +#endif /* _HND_DEBUG_H */
 diff --git a/drivers/net/wireless/ap12275/include/hnd_pktpool.h b/drivers/net/wireless/ap12275/include/hnd_pktpool.h
 new file mode 100644
-index 000000000000..dcaeb648b9c4
+index 0000000000000..dcaeb648b9c49
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/hnd_pktpool.h
 @@ -0,0 +1,329 @@
@@ -252352,7 +252352,7 @@ index 000000000000..dcaeb648b9c4
 +#endif /* _hnd_pktpool_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/hnd_pktq.h b/drivers/net/wireless/ap12275/include/hnd_pktq.h
 new file mode 100644
-index 000000000000..cea32415c030
+index 0000000000000..cea32415c0303
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/hnd_pktq.h
 @@ -0,0 +1,335 @@
@@ -252693,7 +252693,7 @@ index 000000000000..cea32415c030
 +#endif /* _hnd_pktq_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/hnd_trap.h b/drivers/net/wireless/ap12275/include/hnd_trap.h
 new file mode 100644
-index 000000000000..47d6e8515702
+index 0000000000000..47d6e8515702d
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/hnd_trap.h
 @@ -0,0 +1,33 @@
@@ -252732,7 +252732,7 @@ index 000000000000..47d6e8515702
 +#endif	/* _hnd_trap_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/hndchipc.h b/drivers/net/wireless/ap12275/include/hndchipc.h
 new file mode 100644
-index 000000000000..38664c9d9e37
+index 0000000000000..38664c9d9e376
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/hndchipc.h
 @@ -0,0 +1,47 @@
@@ -252785,7 +252785,7 @@ index 000000000000..38664c9d9e37
 +#endif /* _hndchipc_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/hndlhl.h b/drivers/net/wireless/ap12275/include/hndlhl.h
 new file mode 100644
-index 000000000000..558aee07ce8c
+index 0000000000000..558aee07ce8c6
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/hndlhl.h
 @@ -0,0 +1,94 @@
@@ -252885,7 +252885,7 @@ index 000000000000..558aee07ce8c
 +#endif /* _hndlhl_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/hndoobr.h b/drivers/net/wireless/ap12275/include/hndoobr.h
 new file mode 100644
-index 000000000000..1fbb87421462
+index 0000000000000..1fbb874214622
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/hndoobr.h
 @@ -0,0 +1,96 @@
@@ -252987,7 +252987,7 @@ index 000000000000..1fbb87421462
 +#endif /* _hndoobr_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/hndpmu.h b/drivers/net/wireless/ap12275/include/hndpmu.h
 new file mode 100644
-index 000000000000..da912c8016ab
+index 0000000000000..da912c8016ab7
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/hndpmu.h
 @@ -0,0 +1,348 @@
@@ -253341,7 +253341,7 @@ index 000000000000..da912c8016ab
 +#endif /* _hndpmu_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/hndsoc.h b/drivers/net/wireless/ap12275/include/hndsoc.h
 new file mode 100644
-index 000000000000..f2d9f59587a5
+index 0000000000000..f2d9f59587a5e
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/hndsoc.h
 @@ -0,0 +1,353 @@
@@ -253700,7 +253700,7 @@ index 000000000000..f2d9f59587a5
 +#endif /* _HNDSOC_H */
 diff --git a/drivers/net/wireless/ap12275/include/ieee80211_radiotap.h b/drivers/net/wireless/ap12275/include/ieee80211_radiotap.h
 new file mode 100644
-index 000000000000..89e2021291c1
+index 0000000000000..89e2021291c14
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/ieee80211_radiotap.h
 @@ -0,0 +1,415 @@
@@ -254121,7 +254121,7 @@ index 000000000000..89e2021291c1
 +#endif /* !_NET80211_IEEE80211_RADIOTAP_H_ */
 diff --git a/drivers/net/wireless/ap12275/include/linux_osl.h b/drivers/net/wireless/ap12275/include/linux_osl.h
 new file mode 100644
-index 000000000000..6f7afd539414
+index 0000000000000..6f7afd539414c
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/linux_osl.h
 @@ -0,0 +1,994 @@
@@ -255121,7 +255121,7 @@ index 000000000000..6f7afd539414
 +#endif	/* _linux_osl_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/linux_pkt.h b/drivers/net/wireless/ap12275/include/linux_pkt.h
 new file mode 100644
-index 000000000000..fb4da88589c6
+index 0000000000000..fb4da88589c66
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/linux_pkt.h
 @@ -0,0 +1,443 @@
@@ -255570,7 +255570,7 @@ index 000000000000..fb4da88589c6
 +#endif	/* _linux_pkt_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/linuxerrmap.h b/drivers/net/wireless/ap12275/include/linuxerrmap.h
 new file mode 100644
-index 000000000000..3cc5a012c36a
+index 0000000000000..3cc5a012c36a1
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/linuxerrmap.h
 @@ -0,0 +1,28 @@
@@ -255604,7 +255604,7 @@ index 000000000000..3cc5a012c36a
 +#endif /* _linuxerrmap_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/linuxver.h b/drivers/net/wireless/ap12275/include/linuxver.h
 new file mode 100644
-index 000000000000..c427c783f9a0
+index 0000000000000..c427c783f9a04
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/linuxver.h
 @@ -0,0 +1,1071 @@
@@ -256681,7 +256681,7 @@ index 000000000000..c427c783f9a0
 +#endif /* _linuxver_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/lpflags.h b/drivers/net/wireless/ap12275/include/lpflags.h
 new file mode 100644
-index 000000000000..6ff882a14c19
+index 0000000000000..6ff882a14c194
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/lpflags.h
 @@ -0,0 +1,39 @@
@@ -256726,7 +256726,7 @@ index 000000000000..6ff882a14c19
 +#endif /* _lpflags_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/mbo.h b/drivers/net/wireless/ap12275/include/mbo.h
 new file mode 100644
-index 000000000000..c9130a910d78
+index 0000000000000..c9130a910d782
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/mbo.h
 @@ -0,0 +1,281 @@
@@ -257013,7 +257013,7 @@ index 000000000000..c9130a910d78
 +#endif /* __MBO_H__ */
 diff --git a/drivers/net/wireless/ap12275/include/msgtrace.h b/drivers/net/wireless/ap12275/include/msgtrace.h
 new file mode 100644
-index 000000000000..46df878f9d8f
+index 0000000000000..46df878f9d8fa
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/msgtrace.h
 @@ -0,0 +1,59 @@
@@ -257078,7 +257078,7 @@ index 000000000000..46df878f9d8f
 +#endif	/* _MSGTRACE_H */
 diff --git a/drivers/net/wireless/ap12275/include/nan.h b/drivers/net/wireless/ap12275/include/nan.h
 new file mode 100644
-index 000000000000..3ced5eb92c7d
+index 0000000000000..3ced5eb92c7d7
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/nan.h
 @@ -0,0 +1,1913 @@
@@ -258997,7 +258997,7 @@ index 000000000000..3ced5eb92c7d
 +#endif /* _NAN_H_ */
 diff --git a/drivers/net/wireless/ap12275/include/osl.h b/drivers/net/wireless/ap12275/include/osl.h
 new file mode 100644
-index 000000000000..175a4ea621a8
+index 0000000000000..175a4ea621a85
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/osl.h
 @@ -0,0 +1,530 @@
@@ -259533,7 +259533,7 @@ index 000000000000..175a4ea621a8
 +#endif	/* _osl_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/osl_decl.h b/drivers/net/wireless/ap12275/include/osl_decl.h
 new file mode 100644
-index 000000000000..898fb0f9ca41
+index 0000000000000..898fb0f9ca413
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/osl_decl.h
 @@ -0,0 +1,31 @@
@@ -259570,7 +259570,7 @@ index 000000000000..898fb0f9ca41
 +#endif
 diff --git a/drivers/net/wireless/ap12275/include/osl_ext.h b/drivers/net/wireless/ap12275/include/osl_ext.h
 new file mode 100644
-index 000000000000..33084e3df4f4
+index 0000000000000..33084e3df4f49
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/osl_ext.h
 @@ -0,0 +1,759 @@
@@ -260335,7 +260335,7 @@ index 000000000000..33084e3df4f4
 +#endif	/* _osl_ext_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/p2p.h b/drivers/net/wireless/ap12275/include/p2p.h
 new file mode 100644
-index 000000000000..87d9057db402
+index 0000000000000..87d9057db4023
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/p2p.h
 @@ -0,0 +1,696 @@
@@ -261037,7 +261037,7 @@ index 000000000000..87d9057db402
 +#endif /* _P2P_H_ */
 diff --git a/drivers/net/wireless/ap12275/include/packed_section_end.h b/drivers/net/wireless/ap12275/include/packed_section_end.h
 new file mode 100644
-index 000000000000..566b15c71124
+index 0000000000000..566b15c711241
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/packed_section_end.h
 @@ -0,0 +1,62 @@
@@ -261105,7 +261105,7 @@ index 000000000000..566b15c71124
 +#undef	BWL_POST_PACKED_STRUCT
 diff --git a/drivers/net/wireless/ap12275/include/packed_section_start.h b/drivers/net/wireless/ap12275/include/packed_section_start.h
 new file mode 100644
-index 000000000000..1cda56d8ebec
+index 0000000000000..1cda56d8ebec6
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/packed_section_start.h
 @@ -0,0 +1,117 @@
@@ -261228,7 +261228,7 @@ index 000000000000..1cda56d8ebec
 +#endif
 diff --git a/drivers/net/wireless/ap12275/include/pcicfg.h b/drivers/net/wireless/ap12275/include/pcicfg.h
 new file mode 100644
-index 000000000000..ac082a7fb39d
+index 0000000000000..ac082a7fb39d8
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/pcicfg.h
 @@ -0,0 +1,737 @@
@@ -261971,7 +261971,7 @@ index 000000000000..ac082a7fb39d
 +#endif	/* _h_pcicfg_ */
 diff --git a/drivers/net/wireless/ap12275/include/pcie_core.h b/drivers/net/wireless/ap12275/include/pcie_core.h
 new file mode 100644
-index 000000000000..d1d3cf49d2eb
+index 0000000000000..d1d3cf49d2eb6
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/pcie_core.h
 @@ -0,0 +1,1513 @@
@@ -263490,7 +263490,7 @@ index 000000000000..d1d3cf49d2eb
 +#endif	/* _PCIE_CORE_H */
 diff --git a/drivers/net/wireless/ap12275/include/phy_event_log_payload.h b/drivers/net/wireless/ap12275/include/phy_event_log_payload.h
 new file mode 100644
-index 000000000000..336fdea42324
+index 0000000000000..336fdea423248
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/phy_event_log_payload.h
 @@ -0,0 +1,3430 @@
@@ -266926,7 +266926,7 @@ index 000000000000..336fdea42324
 +#endif /* _PHY_EVENT_LOG_PAYLOAD_H_ */
 diff --git a/drivers/net/wireless/ap12275/include/sbchipc.h b/drivers/net/wireless/ap12275/include/sbchipc.h
 new file mode 100644
-index 000000000000..b3503bc220cd
+index 0000000000000..b3503bc220cda
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/sbchipc.h
 @@ -0,0 +1,5368 @@
@@ -272300,7 +272300,7 @@ index 000000000000..b3503bc220cd
 +#endif	/* _SBCHIPC_H */
 diff --git a/drivers/net/wireless/ap12275/include/sbconfig.h b/drivers/net/wireless/ap12275/include/sbconfig.h
 new file mode 100644
-index 000000000000..424a3621cce3
+index 0000000000000..424a3621cce37
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/sbconfig.h
 @@ -0,0 +1,279 @@
@@ -272585,7 +272585,7 @@ index 000000000000..424a3621cce3
 +#endif	/* _SBCONFIG_H */
 diff --git a/drivers/net/wireless/ap12275/include/sbgci.h b/drivers/net/wireless/ap12275/include/sbgci.h
 new file mode 100644
-index 000000000000..55afc79d30bb
+index 0000000000000..55afc79d30bb0
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/sbgci.h
 @@ -0,0 +1,424 @@
@@ -273015,7 +273015,7 @@ index 000000000000..55afc79d30bb
 +#endif	/* _SBGCI_H */
 diff --git a/drivers/net/wireless/ap12275/include/sbhndarm.h b/drivers/net/wireless/ap12275/include/sbhndarm.h
 new file mode 100644
-index 000000000000..92660123db22
+index 0000000000000..92660123db225
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/sbhndarm.h
 @@ -0,0 +1,414 @@
@@ -273435,7 +273435,7 @@ index 000000000000..92660123db22
 +#endif	/* _sbhndarm_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/sbhnddma.h b/drivers/net/wireless/ap12275/include/sbhnddma.h
 new file mode 100644
-index 000000000000..86422ebc65c2
+index 0000000000000..86422ebc65c2b
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/sbhnddma.h
 @@ -0,0 +1,481 @@
@@ -273922,7 +273922,7 @@ index 000000000000..86422ebc65c2
 +#endif	/* _sbhnddma_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/sbhndpio.h b/drivers/net/wireless/ap12275/include/sbhndpio.h
 new file mode 100644
-index 000000000000..289a40b5e7f9
+index 0000000000000..289a40b5e7f91
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/sbhndpio.h
 @@ -0,0 +1,60 @@
@@ -273988,7 +273988,7 @@ index 000000000000..289a40b5e7f9
 +#endif /* _sbhndpio_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/sbpcmcia.h b/drivers/net/wireless/ap12275/include/sbpcmcia.h
 new file mode 100644
-index 000000000000..297898f2a68f
+index 0000000000000..297898f2a68fc
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/sbpcmcia.h
 @@ -0,0 +1,415 @@
@@ -274409,7 +274409,7 @@ index 000000000000..297898f2a68f
 +#endif	/* _SBPCMCIA_H */
 diff --git a/drivers/net/wireless/ap12275/include/sbsdio.h b/drivers/net/wireless/ap12275/include/sbsdio.h
 new file mode 100644
-index 000000000000..18ba61233618
+index 0000000000000..18ba612336188
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/sbsdio.h
 @@ -0,0 +1,185 @@
@@ -274600,7 +274600,7 @@ index 000000000000..18ba61233618
 +#endif	/* _SBSDIO_H */
 diff --git a/drivers/net/wireless/ap12275/include/sbsdpcmdev.h b/drivers/net/wireless/ap12275/include/sbsdpcmdev.h
 new file mode 100644
-index 000000000000..91e04882acd8
+index 0000000000000..91e04882acd8f
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/sbsdpcmdev.h
 @@ -0,0 +1,307 @@
@@ -274913,7 +274913,7 @@ index 000000000000..91e04882acd8
 +#endif	/* _sbsdpcmdev_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/sbsocram.h b/drivers/net/wireless/ap12275/include/sbsocram.h
 new file mode 100644
-index 000000000000..a8802bf60427
+index 0000000000000..a8802bf604278
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/sbsocram.h
 @@ -0,0 +1,198 @@
@@ -275117,7 +275117,7 @@ index 000000000000..a8802bf60427
 +#endif	/* _SBSOCRAM_H */
 diff --git a/drivers/net/wireless/ap12275/include/sbsysmem.h b/drivers/net/wireless/ap12275/include/sbsysmem.h
 new file mode 100644
-index 000000000000..dc7f8a783e12
+index 0000000000000..dc7f8a783e122
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/sbsysmem.h
 @@ -0,0 +1,191 @@
@@ -275314,7 +275314,7 @@ index 000000000000..dc7f8a783e12
 +#endif	/* _SBSYSMEM_H */
 diff --git a/drivers/net/wireless/ap12275/include/sdio.h b/drivers/net/wireless/ap12275/include/sdio.h
 new file mode 100644
-index 000000000000..70721f1bced3
+index 0000000000000..70721f1bced39
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/sdio.h
 @@ -0,0 +1,644 @@
@@ -275964,7 +275964,7 @@ index 000000000000..70721f1bced3
 +#endif /* _SDIO_H */
 diff --git a/drivers/net/wireless/ap12275/include/sdioh.h b/drivers/net/wireless/ap12275/include/sdioh.h
 new file mode 100644
-index 000000000000..20200c131fdc
+index 0000000000000..20200c131fdcd
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/sdioh.h
 @@ -0,0 +1,459 @@
@@ -276429,7 +276429,7 @@ index 000000000000..20200c131fdc
 +#endif /* _SDIOH_H */
 diff --git a/drivers/net/wireless/ap12275/include/sdiovar.h b/drivers/net/wireless/ap12275/include/sdiovar.h
 new file mode 100644
-index 000000000000..cd10d991eac3
+index 0000000000000..cd10d991eac31
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/sdiovar.h
 @@ -0,0 +1,124 @@
@@ -276559,7 +276559,7 @@ index 000000000000..cd10d991eac3
 +#endif /* _sdiovar_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/siutils.h b/drivers/net/wireless/ap12275/include/siutils.h
 new file mode 100644
-index 000000000000..43ecaf5a139a
+index 0000000000000..43ecaf5a139a5
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/siutils.h
 @@ -0,0 +1,1052 @@
@@ -277617,7 +277617,7 @@ index 000000000000..43ecaf5a139a
 +#endif	/* _siutils_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/trxhdr.h b/drivers/net/wireless/ap12275/include/trxhdr.h
 new file mode 100644
-index 000000000000..e87f27ce50e3
+index 0000000000000..e87f27ce50e3d
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/trxhdr.h
 @@ -0,0 +1,93 @@
@@ -277716,7 +277716,7 @@ index 000000000000..e87f27ce50e3
 +#endif /* _TRX_HDR_H */
 diff --git a/drivers/net/wireless/ap12275/include/typedefs.h b/drivers/net/wireless/ap12275/include/typedefs.h
 new file mode 100644
-index 000000000000..df09e00be80d
+index 0000000000000..df09e00be80d9
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/typedefs.h
 @@ -0,0 +1,424 @@
@@ -278146,7 +278146,7 @@ index 000000000000..df09e00be80d
 +#endif /* _TYPEDEFS_H_ */
 diff --git a/drivers/net/wireless/ap12275/include/usbrdl.h b/drivers/net/wireless/ap12275/include/usbrdl.h
 new file mode 100644
-index 000000000000..91bdd07ab3af
+index 0000000000000..91bdd07ab3afe
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/usbrdl.h
 @@ -0,0 +1,221 @@
@@ -278373,7 +278373,7 @@ index 000000000000..91bdd07ab3af
 +#endif  /* _USB_RDL_H */
 diff --git a/drivers/net/wireless/ap12275/include/vlan.h b/drivers/net/wireless/ap12275/include/vlan.h
 new file mode 100644
-index 000000000000..e22e1900e411
+index 0000000000000..e22e1900e411b
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/vlan.h
 @@ -0,0 +1,91 @@
@@ -278470,7 +278470,7 @@ index 000000000000..e22e1900e411
 +#endif /* _vlan_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/wl_bam.h b/drivers/net/wireless/ap12275/include/wl_bam.h
 new file mode 100644
-index 000000000000..c816b6ade818
+index 0000000000000..c816b6ade8182
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/wl_bam.h
 @@ -0,0 +1,65 @@
@@ -278541,7 +278541,7 @@ index 000000000000..c816b6ade818
 +#endif  /* _WL_BAM_H_ */
 diff --git a/drivers/net/wireless/ap12275/include/wldev_common.h b/drivers/net/wireless/ap12275/include/wldev_common.h
 new file mode 100644
-index 000000000000..bfd998c84191
+index 0000000000000..bfd998c841911
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/wldev_common.h
 @@ -0,0 +1,143 @@
@@ -278690,7 +278690,7 @@ index 000000000000..bfd998c84191
 +#endif /* __WLDEV_COMMON_H__ */
 diff --git a/drivers/net/wireless/ap12275/include/wlfc_proto.h b/drivers/net/wireless/ap12275/include/wlfc_proto.h
 new file mode 100644
-index 000000000000..bf5d3972cae1
+index 0000000000000..bf5d3972cae17
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/wlfc_proto.h
 @@ -0,0 +1,520 @@
@@ -279216,7 +279216,7 @@ index 000000000000..bf5d3972cae1
 +#endif /* __wlfc_proto_definitions_h__ */
 diff --git a/drivers/net/wireless/ap12275/include/wlioctl.h b/drivers/net/wireless/ap12275/include/wlioctl.h
 new file mode 100644
-index 000000000000..78331cc48c49
+index 0000000000000..78331cc48c492
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/wlioctl.h
 @@ -0,0 +1,31227 @@
@@ -310449,7 +310449,7 @@ index 000000000000..78331cc48c49
 +#endif /* _wlioctl_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/wlioctl_defs.h b/drivers/net/wireless/ap12275/include/wlioctl_defs.h
 new file mode 100644
-index 000000000000..55ede5bc4f28
+index 0000000000000..55ede5bc4f280
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/wlioctl_defs.h
 @@ -0,0 +1,2556 @@
@@ -313011,7 +313011,7 @@ index 000000000000..55ede5bc4f28
 +#endif /* wlioctl_defs_h */
 diff --git a/drivers/net/wireless/ap12275/include/wlioctl_utils.h b/drivers/net/wireless/ap12275/include/wlioctl_utils.h
 new file mode 100644
-index 000000000000..9558938684bd
+index 0000000000000..9558938684bd1
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/wlioctl_utils.h
 @@ -0,0 +1,60 @@
@@ -313077,7 +313077,7 @@ index 000000000000..9558938684bd
 +#endif /* _wlioctl_utils_h_ */
 diff --git a/drivers/net/wireless/ap12275/include/wpa.h b/drivers/net/wireless/ap12275/include/wpa.h
 new file mode 100644
-index 000000000000..da403ee53db8
+index 0000000000000..da403ee53db8f
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/include/wpa.h
 @@ -0,0 +1,280 @@
@@ -313363,7 +313363,7 @@ index 000000000000..da403ee53db8
 +#endif /* _proto_wpa_h_ */
 diff --git a/drivers/net/wireless/ap12275/linux_osl.c b/drivers/net/wireless/ap12275/linux_osl.c
 new file mode 100644
-index 000000000000..0333bc80c4a7
+index 0000000000000..0333bc80c4a75
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/linux_osl.c
 @@ -0,0 +1,2307 @@
@@ -315676,7 +315676,7 @@ index 000000000000..0333bc80c4a7
 +#endif
 diff --git a/drivers/net/wireless/ap12275/linux_osl_priv.h b/drivers/net/wireless/ap12275/linux_osl_priv.h
 new file mode 100644
-index 000000000000..51530815e935
+index 0000000000000..51530815e9353
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/linux_osl_priv.h
 @@ -0,0 +1,177 @@
@@ -315859,7 +315859,7 @@ index 000000000000..51530815e935
 +#endif /* _LINUX_OSL_PRIV_H_ */
 diff --git a/drivers/net/wireless/ap12275/linux_pkt.c b/drivers/net/wireless/ap12275/linux_pkt.c
 new file mode 100644
-index 000000000000..22e05a4d0cb1
+index 0000000000000..22e05a4d0cb1a
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/linux_pkt.c
 @@ -0,0 +1,909 @@
@@ -316774,7 +316774,7 @@ index 000000000000..22e05a4d0cb1
 +#endif /* LINUX_VERSION >= 3.6.0 && TSQ_MULTIPLIER */
 diff --git a/drivers/net/wireless/ap12275/linuxerrmap.c b/drivers/net/wireless/ap12275/linuxerrmap.c
 new file mode 100644
-index 000000000000..a182d4f8dd27
+index 0000000000000..a182d4f8dd275
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/linuxerrmap.c
 @@ -0,0 +1,128 @@
@@ -316908,7 +316908,7 @@ index 000000000000..a182d4f8dd27
 +}
 diff --git a/drivers/net/wireless/ap12275/pcie_core.c b/drivers/net/wireless/ap12275/pcie_core.c
 new file mode 100644
-index 000000000000..bc3e4bebfc38
+index 0000000000000..bc3e4bebfc386
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/pcie_core.c
 @@ -0,0 +1,228 @@
@@ -317142,7 +317142,7 @@ index 000000000000..bc3e4bebfc38
 +#endif /* BCMDRIVER */
 diff --git a/drivers/net/wireless/ap12275/sbutils.c b/drivers/net/wireless/ap12275/sbutils.c
 new file mode 100644
-index 000000000000..bb8b6a12fb1c
+index 0000000000000..bb8b6a12fb1c4
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/sbutils.c
 @@ -0,0 +1,1110 @@
@@ -318258,7 +318258,7 @@ index 000000000000..bb8b6a12fb1c
 +#endif	/* BCMDBG */
 diff --git a/drivers/net/wireless/ap12275/siutils.c b/drivers/net/wireless/ap12275/siutils.c
 new file mode 100644
-index 000000000000..1176aec1c269
+index 0000000000000..1176aec1c2694
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/siutils.c
 @@ -0,0 +1,10256 @@
@@ -328520,7 +328520,7 @@ index 000000000000..1176aec1c269
 +#endif /* USE_LHL_TIMER */
 diff --git a/drivers/net/wireless/ap12275/siutils_priv.h b/drivers/net/wireless/ap12275/siutils_priv.h
 new file mode 100644
-index 000000000000..055125ecc70f
+index 0000000000000..055125ecc70f8
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/siutils_priv.h
 @@ -0,0 +1,519 @@
@@ -329045,7 +329045,7 @@ index 000000000000..055125ecc70f
 +#endif	/* _siutils_priv_h_ */
 diff --git a/drivers/net/wireless/ap12275/wb_regon_coordinator.c b/drivers/net/wireless/ap12275/wb_regon_coordinator.c
 new file mode 100644
-index 000000000000..571d9728bcdb
+index 0000000000000..571d9728bcdb3
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/wb_regon_coordinator.c
 @@ -0,0 +1,522 @@
@@ -329573,7 +329573,7 @@ index 000000000000..571d9728bcdb
 +}
 diff --git a/drivers/net/wireless/ap12275/wifi_stats.h b/drivers/net/wireless/ap12275/wifi_stats.h
 new file mode 100644
-index 000000000000..cc2aa041fefe
+index 0000000000000..cc2aa041fefe8
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/wifi_stats.h
 @@ -0,0 +1,459 @@
@@ -330038,7 +330038,7 @@ index 000000000000..cc2aa041fefe
 +#endif /* _wifi_stats_h_ */
 diff --git a/drivers/net/wireless/ap12275/wl_android.c b/drivers/net/wireless/ap12275/wl_android.c
 new file mode 100644
-index 000000000000..2d070aa823ba
+index 0000000000000..2d070aa823bab
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/wl_android.c
 @@ -0,0 +1,10269 @@
@@ -340313,7 +340313,7 @@ index 000000000000..2d070aa823ba
 +#endif /* SUPPORT_AP_INIT_BWCONF */
 diff --git a/drivers/net/wireless/ap12275/wl_android.h b/drivers/net/wireless/ap12275/wl_android.h
 new file mode 100644
-index 000000000000..35df083769d7
+index 0000000000000..35df083769d7f
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/wl_android.h
 @@ -0,0 +1,272 @@
@@ -340591,7 +340591,7 @@ index 000000000000..35df083769d7
 +#endif /* _wl_android_ */
 diff --git a/drivers/net/wireless/ap12275/wl_android_ext.c b/drivers/net/wireless/ap12275/wl_android_ext.c
 new file mode 100644
-index 000000000000..1e821df15c02
+index 0000000000000..1e821df15c02d
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/wl_android_ext.c
 @@ -0,0 +1,4253 @@
@@ -344850,7 +344850,7 @@ index 000000000000..1e821df15c02
 +#endif /* BSSCACHE */
 diff --git a/drivers/net/wireless/ap12275/wl_android_ext.h b/drivers/net/wireless/ap12275/wl_android_ext.h
 new file mode 100644
-index 000000000000..da605828db5a
+index 0000000000000..da605828db5a5
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/wl_android_ext.h
 @@ -0,0 +1,217 @@
@@ -345073,7 +345073,7 @@ index 000000000000..da605828db5a
 +#endif
 diff --git a/drivers/net/wireless/ap12275/wl_bam.c b/drivers/net/wireless/ap12275/wl_bam.c
 new file mode 100644
-index 000000000000..c568b04ab6d2
+index 0000000000000..c568b04ab6d27
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/wl_bam.c
 @@ -0,0 +1,314 @@
@@ -345393,7 +345393,7 @@ index 000000000000..c568b04ab6d2
 +}
 diff --git a/drivers/net/wireless/ap12275/wl_cfg80211.c b/drivers/net/wireless/ap12275/wl_cfg80211.c
 new file mode 100644
-index 000000000000..262159ebc8b4
+index 0000000000000..262159ebc8b40
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/wl_cfg80211.c
 @@ -0,0 +1,28823 @@
@@ -374222,7 +374222,7 @@ index 000000000000..262159ebc8b4
 +#endif /* WL_STATIC_IF */
 diff --git a/drivers/net/wireless/ap12275/wl_cfg80211.h b/drivers/net/wireless/ap12275/wl_cfg80211.h
 new file mode 100644
-index 000000000000..0b56bb49ab47
+index 0000000000000..0b56bb49ab477
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/wl_cfg80211.h
 @@ -0,0 +1,3874 @@
@@ -378102,7 +378102,7 @@ index 000000000000..0b56bb49ab47
 +#endif /* _wl_cfg80211_h_ */
 diff --git a/drivers/net/wireless/ap12275/wl_cfg_btcoex.c b/drivers/net/wireless/ap12275/wl_cfg_btcoex.c
 new file mode 100644
-index 000000000000..49a51285ce8a
+index 0000000000000..49a51285ce8a0
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/wl_cfg_btcoex.c
 @@ -0,0 +1,934 @@
@@ -379042,7 +379042,7 @@ index 000000000000..49a51285ce8a
 +#endif /* defined(OEM_ANDROID) */
 diff --git a/drivers/net/wireless/ap12275/wl_cfgnan.c b/drivers/net/wireless/ap12275/wl_cfgnan.c
 new file mode 100644
-index 000000000000..134c5387dbdf
+index 0000000000000..134c5387dbdfe
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/wl_cfgnan.c
 @@ -0,0 +1,10470 @@
@@ -389518,7 +389518,7 @@ index 000000000000..134c5387dbdf
 +#endif /* WL_NAN */
 diff --git a/drivers/net/wireless/ap12275/wl_cfgnan.h b/drivers/net/wireless/ap12275/wl_cfgnan.h
 new file mode 100644
-index 000000000000..23d4f3d7c47e
+index 0000000000000..23d4f3d7c47e8
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/wl_cfgnan.h
 @@ -0,0 +1,1023 @@
@@ -390547,7 +390547,7 @@ index 000000000000..23d4f3d7c47e
 +#endif	/* _wl_cfgnan_h_ */
 diff --git a/drivers/net/wireless/ap12275/wl_cfgp2p.c b/drivers/net/wireless/ap12275/wl_cfgp2p.c
 new file mode 100644
-index 000000000000..971148400ba4
+index 0000000000000..971148400ba49
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/wl_cfgp2p.c
 @@ -0,0 +1,3031 @@
@@ -393584,7 +393584,7 @@ index 000000000000..971148400ba4
 +#endif /* BCMDBUS */
 diff --git a/drivers/net/wireless/ap12275/wl_cfgp2p.h b/drivers/net/wireless/ap12275/wl_cfgp2p.h
 new file mode 100644
-index 000000000000..95a21f45547f
+index 0000000000000..95a21f45547f8
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/wl_cfgp2p.h
 @@ -0,0 +1,486 @@
@@ -394076,7 +394076,7 @@ index 000000000000..95a21f45547f
 +#endif /* _wl_cfgp2p_h_ */
 diff --git a/drivers/net/wireless/ap12275/wl_cfgscan.c b/drivers/net/wireless/ap12275/wl_cfgscan.c
 new file mode 100644
-index 000000000000..4299065a7103
+index 0000000000000..4299065a7103a
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/wl_cfgscan.c
 @@ -0,0 +1,7497 @@
@@ -401579,7 +401579,7 @@ index 000000000000..4299065a7103
 +}
 diff --git a/drivers/net/wireless/ap12275/wl_cfgscan.h b/drivers/net/wireless/ap12275/wl_cfgscan.h
 new file mode 100644
-index 000000000000..d92ca6dfa456
+index 0000000000000..d92ca6dfa456b
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/wl_cfgscan.h
 @@ -0,0 +1,245 @@
@@ -401830,7 +401830,7 @@ index 000000000000..d92ca6dfa456
 +#endif /* _wl_cfgscan_h_ */
 diff --git a/drivers/net/wireless/ap12275/wl_cfgvendor.c b/drivers/net/wireless/ap12275/wl_cfgvendor.c
 new file mode 100644
-index 000000000000..db6bbf84394f
+index 0000000000000..db6bbf84394f0
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/wl_cfgvendor.c
 @@ -0,0 +1,14705 @@
@@ -416541,7 +416541,7 @@ index 000000000000..db6bbf84394f
 +#endif /* WL_CFGVENDOR_CUST_ADVLOG */
 diff --git a/drivers/net/wireless/ap12275/wl_cfgvendor.h b/drivers/net/wireless/ap12275/wl_cfgvendor.h
 new file mode 100644
-index 000000000000..0612595c2844
+index 0000000000000..0612595c2844f
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/wl_cfgvendor.h
 @@ -0,0 +1,1310 @@
@@ -417857,7 +417857,7 @@ index 000000000000..0612595c2844
 +#endif /* _wl_cfgvendor_h_ */
 diff --git a/drivers/net/wireless/ap12275/wl_cfgvif.c b/drivers/net/wireless/ap12275/wl_cfgvif.c
 new file mode 100644
-index 000000000000..eeeddd3fa214
+index 0000000000000..eeeddd3fa214d
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/wl_cfgvif.c
 @@ -0,0 +1,8097 @@
@@ -425960,7 +425960,7 @@ index 000000000000..eeeddd3fa214
 +#endif /* WL_STATIC_IF */
 diff --git a/drivers/net/wireless/ap12275/wl_cfgvif.h b/drivers/net/wireless/ap12275/wl_cfgvif.h
 new file mode 100644
-index 000000000000..50e165d7f6a9
+index 0000000000000..50e165d7f6a99
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/wl_cfgvif.h
 @@ -0,0 +1,299 @@
@@ -426265,7 +426265,7 @@ index 000000000000..50e165d7f6a9
 +#endif /* _wl_cfgvif_h_ */
 diff --git a/drivers/net/wireless/ap12275/wl_escan.c b/drivers/net/wireless/ap12275/wl_escan.c
 new file mode 100644
-index 000000000000..0a7aea9148ba
+index 0000000000000..0a7aea9148ba2
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/wl_escan.c
 @@ -0,0 +1,1914 @@
@@ -428185,7 +428185,7 @@ index 000000000000..0a7aea9148ba
 +#endif /* WL_ESCAN */
 diff --git a/drivers/net/wireless/ap12275/wl_escan.h b/drivers/net/wireless/ap12275/wl_escan.h
 new file mode 100644
-index 000000000000..5670681106bc
+index 0000000000000..5670681106bc5
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/wl_escan.h
 @@ -0,0 +1,86 @@
@@ -428277,7 +428277,7 @@ index 000000000000..5670681106bc
 +#endif /* _wl_escan_ */
 diff --git a/drivers/net/wireless/ap12275/wl_event.c b/drivers/net/wireless/ap12275/wl_event.c
 new file mode 100644
-index 000000000000..2d2a999d84af
+index 0000000000000..2d2a999d84af2
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/wl_event.c
 @@ -0,0 +1,558 @@
@@ -428841,7 +428841,7 @@ index 000000000000..2d2a999d84af
 +#endif
 diff --git a/drivers/net/wireless/ap12275/wl_event.h b/drivers/net/wireless/ap12275/wl_event.h
 new file mode 100644
-index 000000000000..cae71544a05c
+index 0000000000000..cae71544a05c0
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/wl_event.h
 @@ -0,0 +1,18 @@
@@ -428865,7 +428865,7 @@ index 000000000000..cae71544a05c
 +#endif
 diff --git a/drivers/net/wireless/ap12275/wl_ext_genl.c b/drivers/net/wireless/ap12275/wl_ext_genl.c
 new file mode 100644
-index 000000000000..815eb6de4d4e
+index 0000000000000..815eb6de4d4e7
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/wl_ext_genl.c
 @@ -0,0 +1,568 @@
@@ -429439,7 +429439,7 @@ index 000000000000..815eb6de4d4e
 +#endif
 diff --git a/drivers/net/wireless/ap12275/wl_iapsta.c b/drivers/net/wireless/ap12275/wl_iapsta.c
 new file mode 100644
-index 000000000000..a0127f1dfe78
+index 0000000000000..a0127f1dfe78f
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/wl_iapsta.c
 @@ -0,0 +1,7233 @@
@@ -436678,7 +436678,7 @@ index 000000000000..a0127f1dfe78
 +#endif /* WL_EXT_IAPSTA */
 diff --git a/drivers/net/wireless/ap12275/wl_iapsta.h b/drivers/net/wireless/ap12275/wl_iapsta.h
 new file mode 100644
-index 000000000000..6b655b3c746a
+index 0000000000000..6b655b3c746a9
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/wl_iapsta.h
 @@ -0,0 +1,108 @@
@@ -436792,7 +436792,7 @@ index 000000000000..6b655b3c746a
 +#endif
 diff --git a/drivers/net/wireless/ap12275/wl_iw.c b/drivers/net/wireless/ap12275/wl_iw.c
 new file mode 100644
-index 000000000000..96d63cdf207f
+index 0000000000000..96d63cdf207f1
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/wl_iw.c
 @@ -0,0 +1,4359 @@
@@ -441157,7 +441157,7 @@ index 000000000000..96d63cdf207f
 +#endif /* USE_IW */
 diff --git a/drivers/net/wireless/ap12275/wl_iw.h b/drivers/net/wireless/ap12275/wl_iw.h
 new file mode 100644
-index 000000000000..a16265501e25
+index 0000000000000..a16265501e252
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/wl_iw.h
 @@ -0,0 +1,170 @@
@@ -441333,7 +441333,7 @@ index 000000000000..a16265501e25
 +#endif /* _wl_iw_h_ */
 diff --git a/drivers/net/wireless/ap12275/wl_linux_mon.c b/drivers/net/wireless/ap12275/wl_linux_mon.c
 new file mode 100644
-index 000000000000..fa295d757a4a
+index 0000000000000..fa295d757a4ab
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/wl_linux_mon.c
 @@ -0,0 +1,412 @@
@@ -441751,7 +441751,7 @@ index 000000000000..fa295d757a4a
 +}
 diff --git a/drivers/net/wireless/ap12275/wl_roam.c b/drivers/net/wireless/ap12275/wl_roam.c
 new file mode 100644
-index 000000000000..e061b342c51d
+index 0000000000000..e061b342c51d2
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/wl_roam.c
 @@ -0,0 +1,608 @@
@@ -442365,7 +442365,7 @@ index 000000000000..e061b342c51d
 +#endif /* ESCAN_CHANNEL_CACHE */
 diff --git a/drivers/net/wireless/ap12275/wl_timer.c b/drivers/net/wireless/ap12275/wl_timer.c
 new file mode 100644
-index 000000000000..0255acd55fbd
+index 0000000000000..0255acd55fbd2
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/wl_timer.c
 @@ -0,0 +1,611 @@
@@ -442982,7 +442982,7 @@ index 000000000000..0255acd55fbd
 +#endif
 diff --git a/drivers/net/wireless/ap12275/wl_timer.h b/drivers/net/wireless/ap12275/wl_timer.h
 new file mode 100644
-index 000000000000..6b43384682b7
+index 0000000000000..6b43384682b76
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/wl_timer.h
 @@ -0,0 +1,8 @@
@@ -442996,7 +442996,7 @@ index 000000000000..6b43384682b7
 +#endif
 diff --git a/drivers/net/wireless/ap12275/wldev_common.c b/drivers/net/wireless/ap12275/wldev_common.c
 new file mode 100644
-index 000000000000..8dcbc7fb9c52
+index 0000000000000..8dcbc7fb9c52e
 --- /dev/null
 +++ b/drivers/net/wireless/ap12275/wldev_common.c
 @@ -0,0 +1,604 @@
@@ -443605,7 +443605,7 @@ index 000000000000..8dcbc7fb9c52
 +	return error;
 +}
 diff --git a/drivers/pci/controller/dwc/pcie-eswin.c b/drivers/pci/controller/dwc/pcie-eswin.c
-index 4da79e854ea4..58741c0f670b 100644
+index 4da79e854ea46..58741c0f670bb 100644
 --- a/drivers/pci/controller/dwc/pcie-eswin.c
 +++ b/drivers/pci/controller/dwc/pcie-eswin.c
 @@ -411,10 +411,12 @@ static int eswin_pcie_suspend(struct device *dev)
@@ -443682,7 +443682,7 @@ index 4da79e854ea4..58741c0f670b 100644
  };
  
 diff --git a/drivers/pmdomain/eswin/eic770x-pmu.c b/drivers/pmdomain/eswin/eic770x-pmu.c
-index da8a09d21d8b..e2a7d74bb46f 100644
+index da8a09d21d8b8..e2a7d74bb46fb 100644
 --- a/drivers/pmdomain/eswin/eic770x-pmu.c
 +++ b/drivers/pmdomain/eswin/eic770x-pmu.c
 @@ -29,11 +29,14 @@
@@ -443819,7 +443819,7 @@ index da8a09d21d8b..e2a7d74bb46f 100644
  		if(!nval ){
  			pd_info->power_dly.dly_en_up = val[0];
 diff --git a/drivers/pwm/pwm-dwc-eswin.c b/drivers/pwm/pwm-dwc-eswin.c
-index 39fa3fb81661..3cf2dabe257f 100644
+index 39fa3fb816618..3cf2dabe257fa 100644
 --- a/drivers/pwm/pwm-dwc-eswin.c
 +++ b/drivers/pwm/pwm-dwc-eswin.c
 @@ -1,19 +1,9 @@
@@ -444040,7 +444040,7 @@ index 39fa3fb81661..3cf2dabe257f 100644
  	},
  };
 diff --git a/drivers/regulator/mpq8785.c b/drivers/regulator/mpq8785.c
-index 3787fe244618..a2bfd04af41b 100644
+index 3787fe244618b..a2bfd04af41b3 100644
 --- a/drivers/regulator/mpq8785.c
 +++ b/drivers/regulator/mpq8785.c
 @@ -3,8 +3,7 @@
@@ -444256,7 +444256,7 @@ index 3787fe244618..a2bfd04af41b 100644
  
  int mpq8785_regulator_disable(struct regulator_dev *rdev)
 diff --git a/drivers/rtc/rtc-eswin.c b/drivers/rtc/rtc-eswin.c
-index b4ca046d8ff8..c7edbce2a875 100644
+index b4ca046d8ff88..c7edbce2a875b 100644
 --- a/drivers/rtc/rtc-eswin.c
 +++ b/drivers/rtc/rtc-eswin.c
 @@ -58,6 +58,7 @@ struct eswin_rtc_dev {
@@ -444326,7 +444326,7 @@ index b4ca046d8ff8..c7edbce2a875 100644
  	}
  
 diff --git a/drivers/soc/eswin/Kconfig b/drivers/soc/eswin/Kconfig
-index a886b27762f4..ff8027bd51df 100644
+index a886b27762f41..ff8027bd51df4 100644
 --- a/drivers/soc/eswin/Kconfig
 +++ b/drivers/soc/eswin/Kconfig
 @@ -32,4 +32,18 @@ config EIC770X_OTP
@@ -444349,7 +444349,7 @@ index a886b27762f4..ff8027bd51df 100644
 +
  endif
 diff --git a/drivers/soc/eswin/Makefile b/drivers/soc/eswin/Makefile
-index 820463ed596a..0a31b989dd48 100644
+index 820463ed596a8..0a31b989dd483 100644
 --- a/drivers/soc/eswin/Makefile
 +++ b/drivers/soc/eswin/Makefile
 @@ -3,4 +3,6 @@ obj-$(CONFIG_ESWIN_DSP_SUBSYS) += dsp_subsys.o
@@ -444362,7 +444362,7 @@ index 820463ed596a..0a31b989dd48 100644
 +obj-$(CONFIG_ESWIN_LPCPU)	+= eswin-lpcpu.o
 +obj-$(CONFIG_ESWIN_BUS_ERROR)	+= bus_error.o
 diff --git a/drivers/soc/eswin/ai_driver/Kconfig b/drivers/soc/eswin/ai_driver/Kconfig
-index e2d60db9a5e2..8dcf4e6b23a0 100644
+index e2d60db9a5e2a..8dcf4e6b23a0c 100644
 --- a/drivers/soc/eswin/ai_driver/Kconfig
 +++ b/drivers/soc/eswin/ai_driver/Kconfig
 @@ -15,8 +15,3 @@ config ESWIN_NPU
@@ -444375,7 +444375,7 @@ index e2d60db9a5e2..8dcf4e6b23a0 100644
 -    depends on ESWIN_NPU
 -
 diff --git a/drivers/soc/eswin/ai_driver/common/devices/npu_base_regs.h b/drivers/soc/eswin/ai_driver/common/devices/npu_base_regs.h
-index bfbbe244a712..b082c38f0518 100644
+index bfbbe244a7127..b082c38f05185 100644
 --- a/drivers/soc/eswin/ai_driver/common/devices/npu_base_regs.h
 +++ b/drivers/soc/eswin/ai_driver/common/devices/npu_base_regs.h
 @@ -87,8 +87,10 @@ typedef enum type_NPU_MODULE_SEL_ID_E {
@@ -444390,7 +444390,7 @@ index bfbbe244a712..b082c38f0518 100644
  /* NPU configuration base address */
  #define NPU_CFG_BASE_ADDR 0x51828000
 diff --git a/drivers/soc/eswin/ai_driver/common/dla_interface.h b/drivers/soc/eswin/ai_driver/common/dla_interface.h
-index 550dd165b57d..bd2d66b85d56 100644
+index 550dd165b57d6..bd2d66b85d56f 100644
 --- a/drivers/soc/eswin/ai_driver/common/dla_interface.h
 +++ b/drivers/soc/eswin/ai_driver/common/dla_interface.h
 @@ -73,6 +73,7 @@
@@ -444410,7 +444410,7 @@ index 550dd165b57d..bd2d66b85d56 100644
  
  #define EVENT_OP_TENSOR_NUM 8
 diff --git a/drivers/soc/eswin/ai_driver/common/hetero_common.h b/drivers/soc/eswin/ai_driver/common/hetero_common.h
-index 18297aae7002..74e134ea2e4a 100644
+index 18297aae70022..74e134ea2e4a0 100644
 --- a/drivers/soc/eswin/ai_driver/common/hetero_common.h
 +++ b/drivers/soc/eswin/ai_driver/common/hetero_common.h
 @@ -358,6 +358,7 @@ typedef struct _npu_dep_info {
@@ -444422,7 +444422,7 @@ index 18297aae7002..74e134ea2e4a 100644
  } __attribute__((aligned(CDMA_SRC_BYTE_ALIGN))) npu_dep_info_t;
  
 diff --git a/drivers/soc/eswin/ai_driver/common/hetero_ioctl.h b/drivers/soc/eswin/ai_driver/common/hetero_ioctl.h
-index 8858e6863ab1..6dff5245a0b8 100644
+index 8858e6863ab15..6dff5245a0b82 100644
 --- a/drivers/soc/eswin/ai_driver/common/hetero_ioctl.h
 +++ b/drivers/soc/eswin/ai_driver/common/hetero_ioctl.h
 @@ -37,6 +37,7 @@ enum {
@@ -444434,7 +444434,7 @@ index 8858e6863ab1..6dff5245a0b8 100644
  
  /**
 diff --git a/drivers/soc/eswin/ai_driver/common/hetero_ipc.h b/drivers/soc/eswin/ai_driver/common/hetero_ipc.h
-index 667e13996be3..898b71346aae 100644
+index 667e13996be36..898b71346aae6 100644
 --- a/drivers/soc/eswin/ai_driver/common/hetero_ipc.h
 +++ b/drivers/soc/eswin/ai_driver/common/hetero_ipc.h
 @@ -235,9 +235,7 @@ typedef struct _host_node {
@@ -444448,7 +444448,7 @@ index 667e13996be3..898b71346aae 100644
  
  typedef struct _dsp_node {
 diff --git a/drivers/soc/eswin/ai_driver/common/hetero_perf.h b/drivers/soc/eswin/ai_driver/common/hetero_perf.h
-index 5e96bcc4f760..20f0ecf3a03a 100644
+index 5e96bcc4f760f..20f0ecf3a03ab 100644
 --- a/drivers/soc/eswin/ai_driver/common/hetero_perf.h
 +++ b/drivers/soc/eswin/ai_driver/common/hetero_perf.h
 @@ -26,11 +26,6 @@
@@ -444464,7 +444464,7 @@ index 5e96bcc4f760..20f0ecf3a03a 100644
  
  typedef struct _npu_model_perf {
 diff --git a/drivers/soc/eswin/ai_driver/dsp/dsp_main.c b/drivers/soc/eswin/ai_driver/dsp/dsp_main.c
-index 9cd6a5686515..b4677cecc559 100644
+index 9cd6a56865155..b4677cecc559d 100644
 --- a/drivers/soc/eswin/ai_driver/dsp/dsp_main.c
 +++ b/drivers/soc/eswin/ai_driver/dsp/dsp_main.c
 @@ -3,7 +3,6 @@
@@ -444735,7 +444735,7 @@ index 9cd6a5686515..b4677cecc559 100644
  	dsp_free_hw(dsp);
  	return 0;
 diff --git a/drivers/soc/eswin/ai_driver/dsp/dsp_main.h b/drivers/soc/eswin/ai_driver/dsp/dsp_main.h
-index f98ae647cd7c..99aab26af20f 100644
+index f98ae647cd7c5..99aab26af20ff 100644
 --- a/drivers/soc/eswin/ai_driver/dsp/dsp_main.h
 +++ b/drivers/soc/eswin/ai_driver/dsp/dsp_main.h
 @@ -191,6 +191,9 @@ struct es_dsp {
@@ -444749,7 +444749,7 @@ index f98ae647cd7c..99aab26af20f 100644
  
  #define DSP_FIRMWARE_IOVA 0xfe000000
 diff --git a/drivers/soc/eswin/ai_driver/dsp/dsp_platform.c b/drivers/soc/eswin/ai_driver/dsp/dsp_platform.c
-index 9754713ea389..79f65176471b 100644
+index 9754713ea3895..79f65176471b2 100644
 --- a/drivers/soc/eswin/ai_driver/dsp/dsp_platform.c
 +++ b/drivers/soc/eswin/ai_driver/dsp/dsp_platform.c
 @@ -3,7 +3,6 @@
@@ -444770,7 +444770,7 @@ index 9754713ea389..79f65176471b 100644
  }
  
 diff --git a/drivers/soc/eswin/ai_driver/npu/Makefile b/drivers/soc/eswin/ai_driver/npu/Makefile
-index 630aa94bc05f..31e513ce5ed8 100644
+index 630aa94bc05f3..31e513ce5ed83 100644
 --- a/drivers/soc/eswin/ai_driver/npu/Makefile
 +++ b/drivers/soc/eswin/ai_driver/npu/Makefile
 @@ -1,11 +1,8 @@
@@ -444795,7 +444795,7 @@ index 630aa94bc05f..31e513ce5ed8 100644
  #ccflags-y += -DCONV_DUMP
  ccflags-y += -DLOG_LEVEL=$(LOG_LEVEL)
 diff --git a/drivers/soc/eswin/ai_driver/npu/dla_driver.h b/drivers/soc/eswin/ai_driver/npu/dla_driver.h
-index f143abd41e96..aad6bb6100b6 100644
+index f143abd41e96a..aad6bb6100b6f 100644
 --- a/drivers/soc/eswin/ai_driver/npu/dla_driver.h
 +++ b/drivers/soc/eswin/ai_driver/npu/dla_driver.h
 @@ -100,6 +100,8 @@ struct nvdla_device {
@@ -444808,7 +444808,7 @@ index f143abd41e96..aad6bb6100b6 100644
  
  void dla_reg_write(struct nvdla_device *dev, uint32_t addr, uint32_t value);
 diff --git a/drivers/soc/eswin/ai_driver/npu/dla_log.c b/drivers/soc/eswin/ai_driver/npu/dla_log.c
-index a215530f5d55..590b75280a87 100644
+index a215530f5d55c..590b75280a871 100644
 --- a/drivers/soc/eswin/ai_driver/npu/dla_log.c
 +++ b/drivers/soc/eswin/ai_driver/npu/dla_log.c
 @@ -29,9 +29,7 @@
@@ -444831,7 +444831,7 @@ index a215530f5d55..590b75280a87 100644
  int loop_buf_enable = 0;
  module_param(loop_buf_enable, int, 0644);
 diff --git a/drivers/soc/eswin/ai_driver/npu/engine.c b/drivers/soc/eswin/ai_driver/npu/engine.c
-index f9950ef478c6..fa165ac48a2f 100644
+index f9950ef478c69..fa165ac48a2f2 100644
 --- a/drivers/soc/eswin/ai_driver/npu/engine.c
 +++ b/drivers/soc/eswin/ai_driver/npu/engine.c
 @@ -557,15 +557,7 @@ int win_engine_init(struct nvdla_device *nvdla_dev, void **arg_engine)
@@ -444864,7 +444864,7 @@ index f9950ef478c6..fa165ac48a2f 100644
  		engine = NULL;
  	}
 diff --git a/drivers/soc/eswin/ai_driver/npu/internal_interface.h b/drivers/soc/eswin/ai_driver/npu/internal_interface.h
-index b215769d3249..e5b14e5fb7d5 100644
+index b215769d32490..e5b14e5fb7d5e 100644
 --- a/drivers/soc/eswin/ai_driver/npu/internal_interface.h
 +++ b/drivers/soc/eswin/ai_driver/npu/internal_interface.h
 @@ -180,7 +180,6 @@ struct win_engine {
@@ -444876,7 +444876,7 @@ index b215769d3249..e5b14e5fb7d5 100644
  	atomic_t is_sending;
  
 diff --git a/drivers/soc/eswin/ai_driver/npu/npu_main.c b/drivers/soc/eswin/ai_driver/npu/npu_main.c
-index 04a8e7b4f77a..37f644862547 100644
+index 04a8e7b4f77a4..37f644862547f 100644
 --- a/drivers/soc/eswin/ai_driver/npu/npu_main.c
 +++ b/drivers/soc/eswin/ai_driver/npu/npu_main.c
 @@ -3,7 +3,6 @@
@@ -445142,7 +445142,7 @@ index 04a8e7b4f77a..37f644862547 100644
  }
  
 diff --git a/drivers/soc/eswin/ai_driver/npu/nvdla_hw.c b/drivers/soc/eswin/ai_driver/npu/nvdla_hw.c
-index c6b07d84c768..673f1ad67669 100644
+index c6b07d84c7681..673f1ad67669a 100644
 --- a/drivers/soc/eswin/ai_driver/npu/nvdla_hw.c
 +++ b/drivers/soc/eswin/ai_driver/npu/nvdla_hw.c
 @@ -260,6 +260,27 @@ int npu_dev_reset(struct nvdla_device *nvdla_dev)
@@ -445227,7 +445227,7 @@ index c6b07d84c768..673f1ad67669 100644
  err_mbox_clk:
  	clk_disable_unprepare(ndev->e31_core_clk);
 diff --git a/drivers/soc/eswin/ai_driver/npu/nvdla_lowlevel.h b/drivers/soc/eswin/ai_driver/npu/nvdla_lowlevel.h
-index a5d3ab9b088e..a03a764622cc 100644
+index a5d3ab9b088e4..a03a764622cc3 100644
 --- a/drivers/soc/eswin/ai_driver/npu/nvdla_lowlevel.h
 +++ b/drivers/soc/eswin/ai_driver/npu/nvdla_lowlevel.h
 @@ -43,6 +43,7 @@ int npu_hardware_reset(struct nvdla_device *nvdla_dev);
@@ -445239,7 +445239,7 @@ index a5d3ab9b088e..a03a764622cc 100644
  void npu_dma_sid_cfg(void __iomem *npu_subsys_base, u32 sid);
  
 diff --git a/drivers/soc/eswin/ai_driver/npu/nvdla_proc.c b/drivers/soc/eswin/ai_driver/npu/nvdla_proc.c
-index d7e1270e4a7d..4bbbb3942e1b 100644
+index d7e1270e4a7d6..4bbbb3942e1b7 100644
 --- a/drivers/soc/eswin/ai_driver/npu/nvdla_proc.c
 +++ b/drivers/soc/eswin/ai_driver/npu/nvdla_proc.c
 @@ -37,7 +37,6 @@ static spinlock_t proc_lock[2];
@@ -445453,7 +445453,7 @@ index d7e1270e4a7d..4bbbb3942e1b 100644
  	remove_proc_entry("esnpu", NULL);
  }
 diff --git a/drivers/soc/eswin/ai_driver/npu/parse_dep.c b/drivers/soc/eswin/ai_driver/npu/parse_dep.c
-index acdbe89ac814..5a09746e08dc 100644
+index acdbe89ac814d..5a09746e08dc6 100644
 --- a/drivers/soc/eswin/ai_driver/npu/parse_dep.c
 +++ b/drivers/soc/eswin/ai_driver/npu/parse_dep.c
 @@ -226,6 +226,14 @@ static void dependency_consumer2producer(struct win_executor *executor,
@@ -445481,7 +445481,7 @@ index acdbe89ac814..5a09746e08dc 100644
  		npu_info->depcnt = dependency_count[i];
  		pcer_cnt[pcer]++;
 diff --git a/drivers/soc/eswin/ai_driver/npu/user_context.c b/drivers/soc/eswin/ai_driver/npu/user_context.c
-index 2ae719709386..e45522a24df4 100644
+index 2ae719709386f..e45522a24df42 100644
 --- a/drivers/soc/eswin/ai_driver/npu/user_context.c
 +++ b/drivers/soc/eswin/ai_driver/npu/user_context.c
 @@ -39,7 +39,7 @@
@@ -445578,7 +445578,7 @@ index 2ae719709386..e45522a24df4 100644
  	}
 diff --git a/drivers/soc/eswin/bus_error.c b/drivers/soc/eswin/bus_error.c
 new file mode 100644
-index 000000000000..ae5c06467358
+index 0000000000000..ae5c064673584
 --- /dev/null
 +++ b/drivers/soc/eswin/bus_error.c
 @@ -0,0 +1,133 @@
@@ -445716,7 +445716,7 @@ index 000000000000..ae5c06467358
 +
 +subsys_initcall(init_bus_error_unit);
 diff --git a/drivers/soc/eswin/d2d.c b/drivers/soc/eswin/d2d.c
-index 2b60e5eb4a6b..b9a58bd146da 100644
+index 2b60e5eb4a6b3..b9a58bd146da7 100644
 --- a/drivers/soc/eswin/d2d.c
 +++ b/drivers/soc/eswin/d2d.c
 @@ -203,10 +203,11 @@ static int  d2d_probe(struct platform_device *pdev)
@@ -445738,7 +445738,7 @@ diff --git a/drivers/mailbox/eswin-lpcpu.c b/drivers/soc/eswin/eswin-lpcpu.c
 similarity index 93%
 rename from drivers/mailbox/eswin-lpcpu.c
 rename to drivers/soc/eswin/eswin-lpcpu.c
-index 0568e1ef57f5..905410ed89ab 100644
+index 0568e1ef57f56..905410ed89ab7 100644
 --- a/drivers/mailbox/eswin-lpcpu.c
 +++ b/drivers/soc/eswin/eswin-lpcpu.c
 @@ -40,6 +40,7 @@
@@ -445846,7 +445846,7 @@ index 0568e1ef57f5..905410ed89ab 100644
  }
  
 diff --git a/drivers/soc/eswin/pm_eic770x.c b/drivers/soc/eswin/pm_eic770x.c
-index ac5aa4928b6c..dc67bb941317 100644
+index ac5aa4928b6c6..dc67bb941317d 100644
 --- a/drivers/soc/eswin/pm_eic770x.c
 +++ b/drivers/soc/eswin/pm_eic770x.c
 @@ -24,9 +24,55 @@
@@ -445964,7 +445964,7 @@ index ac5aa4928b6c..dc67bb941317 100644
  
  	return 0;
 diff --git a/drivers/soc/sifive/sifive_ccache.c b/drivers/soc/sifive/sifive_ccache.c
-index 55e69e613a25..f6ff949eb98d 100644
+index 55e69e613a25a..f6ff949eb98d2 100644
 --- a/drivers/soc/sifive/sifive_ccache.c
 +++ b/drivers/soc/sifive/sifive_ccache.c
 @@ -307,22 +307,20 @@ static int zero_device_init(struct device_node *root, int nid)
@@ -446010,7 +446010,7 @@ index 55e69e613a25..f6ff949eb98d 100644
  		waymaskN_addr = ccache_base[nid] + SIFIVE_CCACHE_WAYMASK_OFFSET + (masterid << 3);
  		for (wayIdx = 0; wayIdx < 16; wayIdx++) {
 diff --git a/drivers/spi/spi-dw-mmio.c b/drivers/spi/spi-dw-mmio.c
-index 4462f5b87513..8877c1234188 100644
+index 4462f5b875136..8877c1234188b 100644
 --- a/drivers/spi/spi-dw-mmio.c
 +++ b/drivers/spi/spi-dw-mmio.c
 @@ -393,7 +393,10 @@ static int dw_spi_mmio_probe(struct platform_device *pdev)
@@ -446130,7 +446130,7 @@ index 4462f5b87513..8877c1234188 100644
  };
  module_platform_driver(dw_spi_mmio_driver);
 diff --git a/drivers/spi/spi-eswin-bootspi.c b/drivers/spi/spi-eswin-bootspi.c
-index 0cf0d34ea315..6b35329f8a20 100644
+index 0cf0d34ea3152..6b35329f8a202 100644
 --- a/drivers/spi/spi-eswin-bootspi.c
 +++ b/drivers/spi/spi-eswin-bootspi.c
 @@ -950,8 +950,8 @@ static int eswin_bootspi_remove(struct platform_device *pdev)
@@ -446153,7 +446153,7 @@ index 0cf0d34ea315..6b35329f8a20 100644
  	}
  	return ret;
 diff --git a/drivers/staging/media/eswin/dewarp/vvcam_dwe_driver.c b/drivers/staging/media/eswin/dewarp/vvcam_dwe_driver.c
-index dd178b8e361d..e6b77b507ded 100644
+index dd178b8e361d6..e6b77b507ded6 100644
 --- a/drivers/staging/media/eswin/dewarp/vvcam_dwe_driver.c
 +++ b/drivers/staging/media/eswin/dewarp/vvcam_dwe_driver.c
 @@ -1514,9 +1514,11 @@ static int dewarp_runtime_resume(struct device *dev)
@@ -446223,7 +446223,7 @@ index dd178b8e361d..e6b77b507ded 100644
  };
  
 diff --git a/drivers/staging/media/eswin/hae/hal/kernel/gc_hal_kernel.c b/drivers/staging/media/eswin/hae/hal/kernel/gc_hal_kernel.c
-index fb921fbd970e..c5b7110e346d 100644
+index fb921fbd970e6..c5b7110e346de 100644
 --- a/drivers/staging/media/eswin/hae/hal/kernel/gc_hal_kernel.c
 +++ b/drivers/staging/media/eswin/hae/hal/kernel/gc_hal_kernel.c
 @@ -3957,12 +3957,6 @@ gckKERNEL_AttachProcessEx(gckKERNEL Kernel, gctBOOL Attach, gctUINT32 PID)
@@ -446240,7 +446240,7 @@ index fb921fbd970e..c5b7110e346d 100644
                  if (Kernel->processPageTable) {
                      status = gckEVENT_Submit(Kernel->eventObj, &eventAttr);
 diff --git a/drivers/staging/media/eswin/hae/hal/kernel/inc/gc_hal_base.h b/drivers/staging/media/eswin/hae/hal/kernel/inc/gc_hal_base.h
-index 2af1f18c7754..986d2f046527 100644
+index 2af1f18c77543..986d2f0465274 100644
 --- a/drivers/staging/media/eswin/hae/hal/kernel/inc/gc_hal_base.h
 +++ b/drivers/staging/media/eswin/hae/hal/kernel/inc/gc_hal_base.h
 @@ -2906,6 +2906,9 @@ gcoOS_ProfileDB(IN gctCONST_STRING Function, IN OUT gctBOOL_PTR Initialized);
@@ -446254,7 +446254,7 @@ index 2af1f18c7754..986d2f046527 100644
  gckOS_Print(IN gctCONST_STRING Message, ...) CHECK_PRINTF_FORMAT(1, 2);
  
 diff --git a/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_device.c b/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_device.c
-index b31682bb944e..9699a7b40d14 100644
+index b31682bb944ee..9699a7b40d148 100644
 --- a/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_device.c
 +++ b/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_device.c
 @@ -2267,14 +2267,8 @@ isrRoutine(int irq, void *ctxt)
@@ -446274,7 +446274,7 @@ index b31682bb944e..9699a7b40d14 100644
  
      return IRQ_NONE;
 diff --git a/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_driver.c b/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_driver.c
-index b373ca81a3db..eabfbfb1b2de 100644
+index b373ca81a3dbd..eabfbfb1b2dee 100644
 --- a/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_driver.c
 +++ b/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_driver.c
 @@ -1522,7 +1522,7 @@ static void viv_dev_shutdown(struct platform_device *pdev)
@@ -446355,7 +446355,7 @@ index b373ca81a3db..eabfbfb1b2de 100644
          }
      }
 diff --git a/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_os.c b/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_os.c
-index 68bcf61c95f0..e661e24e2fb5 100644
+index 68bcf61c95f01..e661e24e2fb53 100644
 --- a/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_os.c
 +++ b/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_os.c
 @@ -1,3 +1,26 @@
@@ -446397,7 +446397,7 @@ index 68bcf61c95f0..e661e24e2fb5 100644
  
      case gcvBROADCAST_GPU_IDLE:
 diff --git a/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_parameter.h b/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_parameter.h
-index db95354cb7c0..22f6ebe226a6 100644
+index db95354cb7c05..22f6ebe226a67 100644
 --- a/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_parameter.h
 +++ b/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_parameter.h
 @@ -1,3 +1,26 @@
@@ -446428,7 +446428,7 @@ index db95354cb7c0..22f6ebe226a6 100644
  *
  *    The MIT License (MIT)
 diff --git a/drivers/staging/media/eswin/hae/hal/os/linux/kernel/platform/eswin/gc_hal_kernel_platform_win2030.c b/drivers/staging/media/eswin/hae/hal/os/linux/kernel/platform/eswin/gc_hal_kernel_platform_win2030.c
-index 25f1c2e3b5f9..d0bdc1a449e7 100644
+index 25f1c2e3b5f94..d0bdc1a449e75 100644
 --- a/drivers/staging/media/eswin/hae/hal/os/linux/kernel/platform/eswin/gc_hal_kernel_platform_win2030.c
 +++ b/drivers/staging/media/eswin/hae/hal/os/linux/kernel/platform/eswin/gc_hal_kernel_platform_win2030.c
 @@ -183,7 +183,6 @@ static const int nc_of_rsts = gcmCOUNTOF(rst_names);
@@ -446597,7 +446597,7 @@ index 25f1c2e3b5f9..d0bdc1a449e7 100644
  }
  
 diff --git a/drivers/staging/media/eswin/vdec/hantro_dec.c b/drivers/staging/media/eswin/vdec/hantro_dec.c
-index 780b2561ab20..8c3c98de4ed4 100644
+index 780b2561ab200..8c3c98de4ed48 100644
 --- a/drivers/staging/media/eswin/vdec/hantro_dec.c
 +++ b/drivers/staging/media/eswin/vdec/hantro_dec.c
 @@ -4123,7 +4123,7 @@ static int hantro_vdec_probe(struct platform_device *pdev)
@@ -446646,7 +446646,7 @@ index 780b2561ab20..8c3c98de4ed4 100644
  	return ret;
  }
 diff --git a/drivers/staging/media/eswin/vdec/hantro_vcmd.c b/drivers/staging/media/eswin/vdec/hantro_vcmd.c
-index 6d6cb6dcb1ea..36880d6c67c9 100644
+index 6d6cb6dcb1ea1..36880d6c67c9a 100644
 --- a/drivers/staging/media/eswin/vdec/hantro_vcmd.c
 +++ b/drivers/staging/media/eswin/vdec/hantro_vcmd.c
 @@ -1618,7 +1618,7 @@ static long release_cmdbuf(struct file *filp, u16 cmdbuf_id)
@@ -446839,7 +446839,7 @@ index 6d6cb6dcb1ea..36880d6c67c9 100644
  }
  
 diff --git a/drivers/staging/media/eswin/vdec/subsys.c b/drivers/staging/media/eswin/vdec/subsys.c
-index 7b8b2a50975c..4c2aa743ed3e 100644
+index 7b8b2a50975c6..4c2aa743ed3ee 100644
 --- a/drivers/staging/media/eswin/vdec/subsys.c
 +++ b/drivers/staging/media/eswin/vdec/subsys.c
 @@ -233,7 +233,7 @@ struct platform_device *vdec_get_platform_device(u32 core_id)
@@ -446860,7 +446860,7 @@ index 7b8b2a50975c..4c2aa743ed3e 100644
 +	return pm_runtime_put_autosuspend(&pdev->dev);
  }
 diff --git a/drivers/staging/media/eswin/vdec/subsys.h b/drivers/staging/media/eswin/vdec/subsys.h
-index 92e777d40369..a5b8307c5d90 100644
+index 92e777d403699..a5b8307c5d90f 100644
 --- a/drivers/staging/media/eswin/vdec/subsys.h
 +++ b/drivers/staging/media/eswin/vdec/subsys.h
 @@ -172,10 +172,11 @@ long hantrovcmd_ioctl(struct file *filp, unsigned int cmd, unsigned long arg);
@@ -446877,7 +446877,7 @@ index 92e777d40369..a5b8307c5d90 100644
  /******************************************************************************/
  /* MMU */
 diff --git a/drivers/staging/media/eswin/venc/vc8000_vcmd_driver.c b/drivers/staging/media/eswin/venc/vc8000_vcmd_driver.c
-index 0686cc8dbd04..71aca911ea49 100644
+index 0686cc8dbd04d..71aca911ea490 100644
 --- a/drivers/staging/media/eswin/venc/vc8000_vcmd_driver.c
 +++ b/drivers/staging/media/eswin/venc/vc8000_vcmd_driver.c
 @@ -321,7 +321,7 @@ static void create_kernel_process_manager(void);
@@ -447112,7 +447112,7 @@ index 0686cc8dbd04..71aca911ea49 100644
  {
  	/** the devices must not be power down now.*/
 diff --git a/drivers/staging/media/eswin/venc/vc8000e_driver.c b/drivers/staging/media/eswin/venc/vc8000e_driver.c
-index 0244069626c1..15865a5c9b2a 100644
+index 0244069626c18..15865a5c9b2a0 100644
 --- a/drivers/staging/media/eswin/venc/vc8000e_driver.c
 +++ b/drivers/staging/media/eswin/venc/vc8000e_driver.c
 @@ -1,3 +1,23 @@
@@ -447351,7 +447351,7 @@ index 0244069626c1..15865a5c9b2a 100644
  	LOG_DBG("runtime suspend\n");
  	return venc_dev_close(dev);
 diff --git a/drivers/usb/dwc3/dwc3-eswin.c b/drivers/usb/dwc3/dwc3-eswin.c
-index 0f4231b585a9..c07c0f301999 100755
+index 0f4231b585a92..c07c0f3019994 100755
 --- a/drivers/usb/dwc3/dwc3-eswin.c
 +++ b/drivers/usb/dwc3/dwc3-eswin.c
 @@ -86,6 +86,10 @@ struct dwc3_eswin {
@@ -447620,7 +447620,7 @@ index 0f4231b585a9..c07c0f301999 100755
  		phy_power_on(dwc->usb2_generic_phy);
  
 diff --git a/include/dt-bindings/power/eswin,eic770x-pmu.h b/include/dt-bindings/power/eswin,eic770x-pmu.h
-index aca28e5543fe..db37a3082ded 100644
+index aca28e5543fed..db37a3082ded1 100644
 --- a/include/dt-bindings/power/eswin,eic770x-pmu.h
 +++ b/include/dt-bindings/power/eswin,eic770x-pmu.h
 @@ -30,4 +30,5 @@
@@ -447630,7 +447630,7 @@ index aca28e5543fe..db37a3082ded 100644
 +#define EIC770X_PD_NPU          7
  #endif
 diff --git a/include/linux/eswin-win2030-sid-cfg.h b/include/linux/eswin-win2030-sid-cfg.h
-index 40f0ba5749a8..f430e3f62cec 100644
+index 40f0ba5749a88..f430e3f62ceca 100644
 --- a/include/linux/eswin-win2030-sid-cfg.h
 +++ b/include/linux/eswin-win2030-sid-cfg.h
 @@ -27,6 +27,7 @@ int win2030_aon_sid_cfg(struct device *dev);
@@ -447642,7 +447642,7 @@ index 40f0ba5749a8..f430e3f62cec 100644
  void trigger_waveform_start(void);
  void trigger_waveform_stop(void);
 diff --git a/include/linux/mtd/spi-nor.h b/include/linux/mtd/spi-nor.h
-index cdcfe0fd2e7d..cf26758937e5 100644
+index cdcfe0fd2e7d6..cf26758937e58 100644
 --- a/include/linux/mtd/spi-nor.h
 +++ b/include/linux/mtd/spi-nor.h
 @@ -50,6 +50,9 @@
@@ -447657,7 +447657,7 @@ index cdcfe0fd2e7d..cf26758937e5 100644
  #define SPINOR_OP_READ_FAST_4B	0x0c	/* Read data bytes (high frequency) */
 diff --git a/include/soc/eswin/eswin-lpcpu.h b/include/soc/eswin/eswin-lpcpu.h
 new file mode 100644
-index 000000000000..cbaf3c1b6e30
+index 0000000000000..cbaf3c1b6e302
 --- /dev/null
 +++ b/include/soc/eswin/eswin-lpcpu.h
 @@ -0,0 +1,16 @@
@@ -447678,7 +447678,7 @@ index 000000000000..cbaf3c1b6e30
 +
 +#endif /* _LINUX_ESWIN_LPCPU_H_ */
 diff --git a/include/uapi/linux/es_vb_user.h b/include/uapi/linux/es_vb_user.h
-index db3bda6d0d69..19588ab99b01 100644
+index db3bda6d0d693..19588ab99b013 100644
 --- a/include/uapi/linux/es_vb_user.h
 +++ b/include/uapi/linux/es_vb_user.h
 @@ -1,6 +1,31 @@
@@ -447732,7 +447732,7 @@ index db3bda6d0d69..19588ab99b01 100644
   * mmz vb pool or block struct definition
   */
 diff --git a/include/uapi/linux/mmz_vb.h b/include/uapi/linux/mmz_vb.h
-index 1bb76ebb5aa8..27a5f0a94352 100644
+index 1bb76ebb5aa8f..27a5f0a943526 100644
 --- a/include/uapi/linux/mmz_vb.h
 +++ b/include/uapi/linux/mmz_vb.h
 @@ -145,7 +145,7 @@ typedef struct esVB_RETRIEVE_MEM_NODE_CMD_S
@@ -447745,7 +447745,7 @@ index 1bb76ebb5aa8..27a5f0a94352 100644
  
  //corresponding to MMZ_VB_IOCTL_DMABUF_SIZE
 diff --git a/kernel/dma/coherent.c b/kernel/dma/coherent.c
-index ff5683a57f77..e51697ee439e 100644
+index ff5683a57f771..e51697ee439ef 100644
 --- a/kernel/dma/coherent.c
 +++ b/kernel/dma/coherent.c
 @@ -129,6 +129,7 @@ int dma_declare_coherent_memory(struct device *dev, phys_addr_t phys_addr,
@@ -447757,7 +447757,7 @@ index ff5683a57f77..e51697ee439e 100644
  void dma_release_coherent_memory(struct device *dev)
  {
 diff --git a/kernel/printk/printk.c b/kernel/printk/printk.c
-index 51c43e0f9b29..c10dc4bc3e65 100644
+index 51c43e0f9b29b..c10dc4bc3e65a 100644
 --- a/kernel/printk/printk.c
 +++ b/kernel/printk/printk.c
 @@ -55,11 +55,42 @@
@@ -447986,7 +447986,7 @@ index 51c43e0f9b29..c10dc4bc3e65 100644
  
  /*
 diff --git a/lib/Kconfig.debug b/lib/Kconfig.debug
-index 1aae81c57b2c..7ee564282545 100644
+index e56f9e1b18fdf..5e28f053393ec 100644
 --- a/lib/Kconfig.debug
 +++ b/lib/Kconfig.debug
 @@ -35,6 +35,20 @@ config PRINTK_CALLER
@@ -448011,7 +448011,7 @@ index 1aae81c57b2c..7ee564282545 100644
  	bool "Show build ID information in stacktraces"
  	depends on PRINTK
 diff --git a/sound/soc/codecs/eswin/Kconfig b/sound/soc/codecs/eswin/Kconfig
-index d3c7039aa8e9..b84c9c15065b 100755
+index d3c7039aa8e93..b84c9c15065b2 100755
 --- a/sound/soc/codecs/eswin/Kconfig
 +++ b/sound/soc/codecs/eswin/Kconfig
 @@ -17,4 +17,13 @@ config ESWIN_SND_ES8388_CODEC
@@ -448029,7 +448029,7 @@ index d3c7039aa8e9..b84c9c15065b 100755
 +
  #endif #ESWIN_SND_SOC_CODECS
 diff --git a/sound/soc/codecs/eswin/Makefile b/sound/soc/codecs/eswin/Makefile
-index ee696d62096c..cedfbe27621f 100755
+index ee696d62096cd..cedfbe27621f1 100755
 --- a/sound/soc/codecs/eswin/Makefile
 +++ b/sound/soc/codecs/eswin/Makefile
 @@ -1,3 +1,7 @@
@@ -448043,7 +448043,7 @@ index ee696d62096c..cedfbe27621f 100755
 +
 +obj-$(CONFIG_ESWIN_SND_TLV320AIC3106_CODEC) += esw_tlv320aic3106_codec.o
 diff --git a/sound/soc/codecs/eswin/es8328.c b/sound/soc/codecs/eswin/es8328.c
-index 924190fcacfa..3e937b7e64a4 100644
+index 924190fcacfa9..3e937b7e64a46 100644
 --- a/sound/soc/codecs/eswin/es8328.c
 +++ b/sound/soc/codecs/eswin/es8328.c
 @@ -240,16 +240,16 @@ int esw_codec_dump_put(struct snd_kcontrol *kcontrol,
@@ -448081,7 +448081,7 @@ index 924190fcacfa..3e937b7e64a4 100644
  	}
 diff --git a/sound/soc/codecs/eswin/tlv320aic3x-i2c.c b/sound/soc/codecs/eswin/tlv320aic3x-i2c.c
 new file mode 100644
-index 000000000000..b3a76634bea2
+index 0000000000000..b3a76634bea2c
 --- /dev/null
 +++ b/sound/soc/codecs/eswin/tlv320aic3x-i2c.c
 @@ -0,0 +1,94 @@
@@ -448181,7 +448181,7 @@ index 000000000000..b3a76634bea2
 +MODULE_LICENSE("GPL");
 diff --git a/sound/soc/codecs/eswin/tlv320aic3x.c b/sound/soc/codecs/eswin/tlv320aic3x.c
 new file mode 100644
-index 000000000000..18329fc835d7
+index 0000000000000..18329fc835d7d
 --- /dev/null
 +++ b/sound/soc/codecs/eswin/tlv320aic3x.c
 @@ -0,0 +1,1839 @@
@@ -450026,7 +450026,7 @@ index 000000000000..18329fc835d7
 +MODULE_LICENSE("GPL");
 diff --git a/sound/soc/codecs/eswin/tlv320aic3x.h b/sound/soc/codecs/eswin/tlv320aic3x.h
 new file mode 100644
-index 000000000000..4cd5da8dfc82
+index 0000000000000..4cd5da8dfc828
 --- /dev/null
 +++ b/sound/soc/codecs/eswin/tlv320aic3x.h
 @@ -0,0 +1,365 @@
@@ -450397,7 +450397,7 @@ index 000000000000..4cd5da8dfc82
 +#endif /* _AIC3X_H */
 diff --git a/tools/testing/selftests/arm64/tags/Makefile b/tools/testing/selftests/arm64/tags/Makefile
 deleted file mode 100644
-index 6d29cfde43a2..000000000000
+index 6d29cfde43a21..0000000000000
 --- a/tools/testing/selftests/arm64/tags/Makefile
 +++ /dev/null
 @@ -1,7 +0,0 @@
@@ -450410,7 +450410,7 @@ index 6d29cfde43a2..000000000000
 -include ../../lib.mk
 diff --git a/tools/testing/selftests/arm64/tags/run_tags_test.sh b/tools/testing/selftests/arm64/tags/run_tags_test.sh
 deleted file mode 100755
-index 745f11379930..000000000000
+index 745f113799303..0000000000000
 --- a/tools/testing/selftests/arm64/tags/run_tags_test.sh
 +++ /dev/null
 @@ -1,12 +0,0 @@
@@ -450428,7 +450428,7 @@ index 745f11379930..000000000000
 -fi
 diff --git a/tools/testing/selftests/arm64/tags/tags_test.c b/tools/testing/selftests/arm64/tags/tags_test.c
 deleted file mode 100644
-index 955f87c1170d..000000000000
+index 955f87c1170d7..0000000000000
 --- a/tools/testing/selftests/arm64/tags/tags_test.c
 +++ /dev/null
 @@ -1,35 +0,0 @@
@@ -450469,7 +450469,7 @@ index 955f87c1170d..000000000000
 -}
 diff --git a/tools/testing/selftests/kvm/Makefile b/tools/testing/selftests/kvm/Makefile
 deleted file mode 100644
-index a3bb36fb3cfc..000000000000
+index a3bb36fb3cfc5..0000000000000
 --- a/tools/testing/selftests/kvm/Makefile
 +++ /dev/null
 @@ -1,285 +0,0 @@
@@ -450760,7 +450760,7 @@ index a3bb36fb3cfc..000000000000
 -	cscope -b
 diff --git a/tools/testing/selftests/kvm/config b/tools/testing/selftests/kvm/config
 deleted file mode 100644
-index 8835fed09e9f..000000000000
+index 8835fed09e9f0..0000000000000
 --- a/tools/testing/selftests/kvm/config
 +++ /dev/null
 @@ -1,5 +0,0 @@
@@ -450771,7 +450771,7 @@ index 8835fed09e9f..000000000000
 -CONFIG_IDLE_PAGE_TRACKING=y
 diff --git a/tools/testing/selftests/kvm/settings b/tools/testing/selftests/kvm/settings
 deleted file mode 100644
-index 6091b45d226b..000000000000
+index 6091b45d226ba..0000000000000
 --- a/tools/testing/selftests/kvm/settings
 +++ /dev/null
 @@ -1 +0,0 @@

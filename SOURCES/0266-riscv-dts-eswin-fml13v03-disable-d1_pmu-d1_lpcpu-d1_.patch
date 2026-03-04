@@ -1,4 +1,4 @@
-From 15d385bd75d59b19b0b381d2f80e605962c81824 Mon Sep 17 00:00:00 2001
+From d976b8354ecb610e0b2cf1f763a063bb716c540b Mon Sep 17 00:00:00 2001
 From: Sandie Cao <sandie.cao@deepcomputing.io>
 Date: Mon, 31 Mar 2025 10:12:58 +0800
 Subject: [PATCH 266/534] riscv: dts: eswin: fml13v03: disable d1_pmu,
@@ -10,7 +10,7 @@ Signed-off-by: Sandie Cao <sandie.cao@deepcomputing.io>
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
-index 1ced9cfcd2af..4b5f5ea51330 100644
+index 1ced9cfcd2afd..4b5f5ea51330b 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 @@ -299,7 +299,7 @@ &d0_pmu {

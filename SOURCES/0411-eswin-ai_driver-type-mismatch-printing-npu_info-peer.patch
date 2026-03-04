@@ -1,4 +1,4 @@
-From e8e881938eab92b474f13f33112e14a54493c5f1 Mon Sep 17 00:00:00 2001
+From b876edbda66f0be83b3aa89fee75bb618da2363b Mon Sep 17 00:00:00 2001
 From: Heinrich Schuchardt <heinrich.schuchardt@canonical.com>
 Date: Fri, 4 Jul 2025 09:05:35 +0200
 Subject: [PATCH 411/534] eswin/ai_driver: type mismatch printing
@@ -13,7 +13,7 @@ Signed-off-by: Heinrich Schuchardt <heinrich.schuchardt@canonical.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/soc/eswin/ai_driver/npu/parse_dep.c b/drivers/soc/eswin/ai_driver/npu/parse_dep.c
-index 5a09746e08dc..c097ef2af355 100644
+index 5a09746e08dc6..c097ef2af3555 100644
 --- a/drivers/soc/eswin/ai_driver/npu/parse_dep.c
 +++ b/drivers/soc/eswin/ai_driver/npu/parse_dep.c
 @@ -230,7 +230,7 @@ static void dependency_consumer2producer(struct win_executor *executor,

@@ -1,4 +1,4 @@
-From 76bf3f6cebb843edac9a7b629c98bb0806077d06 Mon Sep 17 00:00:00 2001
+From c2054e6ee7be425d7b790c86eb97190bc997daec Mon Sep 17 00:00:00 2001
 From: denglei <denglei@eswincomputing.com>
 Date: Mon, 18 Aug 2025 17:04:03 +0800
 Subject: [PATCH 462/534] fix:Resolve the issue of NPU frame statistics.
@@ -16,7 +16,7 @@ Signed-off-by: denglei <denglei@eswincomputing.com>
  4 files changed, 29 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/soc/eswin/ai_driver/npu/npu_frame.c b/drivers/soc/eswin/ai_driver/npu/npu_frame.c
-index 2a526f5eb81f..ddf2513e5e16 100644
+index 2a526f5eb81f6..ddf2513e5e16c 100644
 --- a/drivers/soc/eswin/ai_driver/npu/npu_frame.c
 +++ b/drivers/soc/eswin/ai_driver/npu/npu_frame.c
 @@ -344,10 +344,8 @@ void npu_drop_all_frame(struct nvdla_device *ndev, bool dump)
@@ -31,7 +31,7 @@ index 2a526f5eb81f..ddf2513e5e16 100644
  	spin_lock_irqsave(&engine->executor_lock, flags);
  	engine->engine_is_alive = false;
 diff --git a/drivers/soc/eswin/ai_driver/npu/nvdla_hw.c b/drivers/soc/eswin/ai_driver/npu/nvdla_hw.c
-index b6d8889bd2e3..1a11a498258d 100644
+index b6d8889bd2e33..1a11a498258db 100644
 --- a/drivers/soc/eswin/ai_driver/npu/nvdla_hw.c
 +++ b/drivers/soc/eswin/ai_driver/npu/nvdla_hw.c
 @@ -526,6 +526,12 @@ static ssize_t store_reset_hand(struct device *d, struct device_attribute *attr,
@@ -118,7 +118,7 @@ index b6d8889bd2e3..1a11a498258d 100644
  }
  
 diff --git a/drivers/soc/eswin/ai_driver/npu/scheduler.c b/drivers/soc/eswin/ai_driver/npu/scheduler.c
-index 6e14b3d978cc..436b20387ee1 100644
+index 6e14b3d978ccb..436b20387ee17 100644
 --- a/drivers/soc/eswin/ai_driver/npu/scheduler.c
 +++ b/drivers/soc/eswin/ai_driver/npu/scheduler.c
 @@ -62,7 +62,7 @@ static int send_frame_to_hw(struct win_engine *engine, u8 tiktok,
@@ -139,7 +139,7 @@ index 6e14b3d978cc..436b20387ee1 100644
  	struct nvdla_device *ndev = (struct nvdla_device *)engine->nvdla_dev;
  
 diff --git a/drivers/soc/eswin/ai_driver/npu/user_context.c b/drivers/soc/eswin/ai_driver/npu/user_context.c
-index 15f59c4a400d..dc4a2a6de0c8 100644
+index 15f59c4a400dd..dc4a2a6de0c81 100644
 --- a/drivers/soc/eswin/ai_driver/npu/user_context.c
 +++ b/drivers/soc/eswin/ai_driver/npu/user_context.c
 @@ -529,7 +529,6 @@ static int commit_new_io_tensor(struct user_context *uctx, void *arg)

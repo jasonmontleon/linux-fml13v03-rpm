@@ -1,4 +1,4 @@
-From b12c47b22dce5bc29e425d8a0d44b30e4ad6b4ef Mon Sep 17 00:00:00 2001
+From cea8cffa1f9694700381725ccdbea9591279cccc Mon Sep 17 00:00:00 2001
 From: Sandie Cao <sandie.cao@deepcomputing.io>
 Date: Mon, 17 Mar 2025 18:32:27 +0800
 Subject: [PATCH 234/534] riscv: eswin: fml13v03: support grub
@@ -10,7 +10,7 @@ Signed-off-by: Sandie Cao <sandie.cao@deepcomputing.io>
  2 files changed, 28 insertions(+), 2 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
-index 7be25ad21838..a76e9203d17d 100644
+index 7be25ad218387..a76e9203d17d3 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 @@ -125,7 +125,7 @@ g2d_12GB_boundary_reserved_4k {
@@ -32,7 +32,7 @@ index 7be25ad21838..a76e9203d17d 100644
  		};
  	};
 diff --git a/arch/riscv/configs/fml13v03_defconfig b/arch/riscv/configs/fml13v03_defconfig
-index 323ba31752ba..2e69a9e8adc3 100755
+index 323ba31752ba6..2e69a9e8adc33 100755
 --- a/arch/riscv/configs/fml13v03_defconfig
 +++ b/arch/riscv/configs/fml13v03_defconfig
 @@ -311,6 +311,18 @@ CONFIG_PCIE_PTM=y

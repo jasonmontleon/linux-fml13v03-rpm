@@ -1,4 +1,4 @@
-From c32964481616dcf2f9d92d18d2b347ff4241523e Mon Sep 17 00:00:00 2001
+From c7bdc21e220942f4d8594942b2f29c07815ac9e4 Mon Sep 17 00:00:00 2001
 From: ouyanghui <ouyanghui@eswincomputing.com>
 Date: Wed, 15 Oct 2025 17:52:57 +0800
 Subject: [PATCH 522/534] Merge branch 'win2030-dev' into pm_merge
@@ -83,7 +83,7 @@ Subject: [PATCH 522/534] Merge branch 'win2030-dev' into pm_merge
  drivers/media/i2c/lt6911uxe.h                 |   31 +
  drivers/media/i2c/lt6911uxe_upgrade.c         |  850 +++++++
  drivers/media/i2c/lt6911uxe_upgrade.h         |   93 +
- drivers/media/i2c/ov5647.c                    | 1093 ++++-----
+ drivers/media/i2c/ov5647.c                    | 1095 ++++-----
  drivers/media/i2c/ov9282.c                    |   27 +-
  drivers/media/platform/Makefile               |    4 +-
  drivers/media/platform/eswin/Kconfig          |    4 -
@@ -191,7 +191,7 @@ Subject: [PATCH 522/534] Merge branch 'win2030-dev' into pm_merge
  scripts/Makefile.dtbinst                      |    3 +-
  scripts/Makefile.lib                          |   21 +-
  sound/soc/eswin/esw-i2s.c                     |    2 +-
- 187 files changed, 17574 insertions(+), 19434 deletions(-)
+ 187 files changed, 17576 insertions(+), 19434 deletions(-)
  create mode 100644 arch/riscv/boot/dts/eswin/ebc7702-p01-d560.dts
  rename arch/riscv/boot/dts/eswin/{d560-ep-evb.dts => ebc7702-p01-pcie.dts} (87%)
  delete mode 100644 arch/riscv/boot/dts/eswin/eic7700-evb-fccsp-camera-imx258.dtsi
@@ -293,7 +293,7 @@ Subject: [PATCH 522/534] Merge branch 'win2030-dev' into pm_merge
 
 diff --git a/arch/riscv/boot/dts/eswin/ebc7702-p01-d560.dts b/arch/riscv/boot/dts/eswin/ebc7702-p01-d560.dts
 new file mode 100644
-index 000000000000..efdbcda0a0ac
+index 0000000000000..efdbcda0a0ac2
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/ebc7702-p01-d560.dts
 @@ -0,0 +1,736 @@
@@ -1037,7 +1037,7 @@ diff --git a/arch/riscv/boot/dts/eswin/d560-ep-evb.dts b/arch/riscv/boot/dts/esw
 similarity index 87%
 rename from arch/riscv/boot/dts/eswin/d560-ep-evb.dts
 rename to arch/riscv/boot/dts/eswin/ebc7702-p01-pcie.dts
-index e03847daf4d3..253d790b22f5 100644
+index e03847daf4d39..253d790b22f57 100644
 --- a/arch/riscv/boot/dts/eswin/d560-ep-evb.dts
 +++ b/arch/riscv/boot/dts/eswin/ebc7702-p01-pcie.dts
 @@ -42,7 +42,7 @@
@@ -1907,7 +1907,7 @@ index e03847daf4d3..253d790b22f5 100644
  
  &dev_llc_d0{
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-ce1.dtsi b/arch/riscv/boot/dts/eswin/eic7700-ce1.dtsi
-index 68477151be26..877c58e34307 100644
+index 68477151be269..877c58e34307c 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-ce1.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7700-ce1.dtsi
 @@ -30,7 +30,7 @@
@@ -2014,7 +2014,7 @@ index 68477151be26..877c58e34307 100644
  	status = "okay";
  	pinctrl-names = "default";
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-d314.dts b/arch/riscv/boot/dts/eswin/eic7700-d314.dts
-index 07331a6867cb..ca6931118e7b 100644
+index 07331a6867cb1..ca6931118e7b6 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-d314.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7700-d314.dts
 @@ -85,14 +85,22 @@ &d0_graphcard2 {
@@ -2065,7 +2065,7 @@ index 07331a6867cb..ca6931118e7b 100644
  		regulators{
  			npu_vcc1:npu_svcc{
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-evb-camera-imx327.dtsi b/arch/riscv/boot/dts/eswin/eic7700-evb-camera-imx327.dtsi
-index b1676235008e..8960c9053215 100644
+index b1676235008e8..8960c9053215c 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-evb-camera-imx327.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7700-evb-camera-imx327.dtsi
 @@ -4,7 +4,9 @@
@@ -2177,7 +2177,7 @@ index b1676235008e..8960c9053215 100644
  	ports{
  		#address-cells = <1>;
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-evb-fccsp-camera-imx219.dtsi b/arch/riscv/boot/dts/eswin/eic7700-evb-fccsp-camera-imx219.dtsi
-index e12a7aeb6200..419da695a5f1 100644
+index e12a7aeb62006..419da695a5f1a 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-evb-fccsp-camera-imx219.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7700-evb-fccsp-camera-imx219.dtsi
 @@ -1,3 +1,4 @@
@@ -2296,7 +2296,7 @@ index e12a7aeb6200..419da695a5f1 100644
  		#address-cells = <1>;
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-evb-fccsp-camera-imx258.dtsi b/arch/riscv/boot/dts/eswin/eic7700-evb-fccsp-camera-imx258.dtsi
 deleted file mode 100644
-index 53e287462626..000000000000
+index 53e2874626264..0000000000000
 --- a/arch/riscv/boot/dts/eswin/eic7700-evb-fccsp-camera-imx258.dtsi
 +++ /dev/null
 @@ -1,473 +0,0 @@
@@ -2775,7 +2775,7 @@ index 53e287462626..000000000000
 -
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-evb-fccsp-camera-imx415.dtsi b/arch/riscv/boot/dts/eswin/eic7700-evb-fccsp-camera-imx415.dtsi
 deleted file mode 100644
-index e434585b2417..000000000000
+index e434585b2417f..0000000000000
 --- a/arch/riscv/boot/dts/eswin/eic7700-evb-fccsp-camera-imx415.dtsi
 +++ /dev/null
 @@ -1,472 +0,0 @@
@@ -3253,7 +3253,7 @@ index e434585b2417..000000000000
 -
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-evb-fccsp-camera-imx586.dtsi b/arch/riscv/boot/dts/eswin/eic7700-evb-fccsp-camera-imx586.dtsi
 deleted file mode 100644
-index 2f341156dc9b..000000000000
+index 2f341156dc9bd..0000000000000
 --- a/arch/riscv/boot/dts/eswin/eic7700-evb-fccsp-camera-imx586.dtsi
 +++ /dev/null
 @@ -1,473 +0,0 @@
@@ -3731,7 +3731,7 @@ index 2f341156dc9b..000000000000
 -
 -
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-hifive-premier-p550-camera.dtsi b/arch/riscv/boot/dts/eswin/eic7700-hifive-premier-p550-camera.dtsi
-index f5d3205ad511..a71af536c33d 100644
+index f5d3205ad5115..a71af536c33d3 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-hifive-premier-p550-camera.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7700-hifive-premier-p550-camera.dtsi
 @@ -8,7 +8,7 @@ vvcam_isp_0: vvcam_isp@0 {
@@ -3848,7 +3848,7 @@ index f5d3205ad511..a71af536c33d 100644
  	port@0 {
  		axi2dvp_mipi2_in0: endpoint@0 {
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-osm-camera.dtsi b/arch/riscv/boot/dts/eswin/eic7700-osm-camera.dtsi
-index 44049e1ebbe7..6f4330c42038 100644
+index 44049e1ebbe74..6f4330c42038a 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-osm-camera.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7700-osm-camera.dtsi
 @@ -108,8 +108,8 @@ &dvp2axi {
@@ -3896,7 +3896,7 @@ index 44049e1ebbe7..6f4330c42038 100644
  		port {
  			imx219_out2: endpoint {
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-sbc-a1-camera-imx219.dtsi b/arch/riscv/boot/dts/eswin/eic7700-sbc-a1-camera-imx219.dtsi
-index 0a43a7ffdeb0..154571a5326b 100644
+index 0a43a7ffdeb07..154571a5326b3 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-sbc-a1-camera-imx219.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7700-sbc-a1-camera-imx219.dtsi
 @@ -173,12 +173,13 @@ mipi_csi2_2_output0: endpoint@1 {
@@ -4061,7 +4061,7 @@ index 0a43a7ffdeb0..154571a5326b 100644
  &isp_0 {
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-sbc-a1-camera-imx258.dtsi b/arch/riscv/boot/dts/eswin/eic7700-sbc-a1-camera-imx258.dtsi
 deleted file mode 100644
-index 9e5078fd10b7..000000000000
+index 9e5078fd10b75..0000000000000
 --- a/arch/riscv/boot/dts/eswin/eic7700-sbc-a1-camera-imx258.dtsi
 +++ /dev/null
 @@ -1,336 +0,0 @@
@@ -4403,7 +4403,7 @@ index 9e5078fd10b7..000000000000
 -};
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-sbc-a1-camera-imx415.dtsi b/arch/riscv/boot/dts/eswin/eic7700-sbc-a1-camera-imx415.dtsi
 deleted file mode 100644
-index 288a248d89f9..000000000000
+index 288a248d89f92..0000000000000
 --- a/arch/riscv/boot/dts/eswin/eic7700-sbc-a1-camera-imx415.dtsi
 +++ /dev/null
 @@ -1,335 +0,0 @@
@@ -4744,7 +4744,7 @@ index 288a248d89f9..000000000000
 -};
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-sbc-a1-camera-imx586.dtsi b/arch/riscv/boot/dts/eswin/eic7700-sbc-a1-camera-imx586.dtsi
 deleted file mode 100644
-index 3eb76e25288c..000000000000
+index 3eb76e25288c5..0000000000000
 --- a/arch/riscv/boot/dts/eswin/eic7700-sbc-a1-camera-imx586.dtsi
 +++ /dev/null
 @@ -1,337 +0,0 @@
@@ -5086,7 +5086,7 @@ index 3eb76e25288c..000000000000
 -	status = "disabled";
 -};
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-vela-camera-imx219.dtsi b/arch/riscv/boot/dts/eswin/eic7700-vela-camera-imx219.dtsi
-index 2d71b341f200..a28c08b5a34d 100644
+index 2d71b341f200e..a28c08b5a34d9 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-vela-camera-imx219.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7700-vela-camera-imx219.dtsi
 @@ -176,7 +176,7 @@ &dvp2axi {
@@ -5108,7 +5108,7 @@ index 2d71b341f200..a28c08b5a34d 100644
  	lanes-dp-dn = <0 0 0 0>; 	// 4lanes: positive on dp/ negative on dn to hs and lp mode
  	status = "okay";
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-vela-mipi.dts b/arch/riscv/boot/dts/eswin/eic7700-vela-mipi.dts
-index e9d77f32cb4d..e4eb138d9fee 100644
+index e9d77f32cb4d7..e4eb138d9fee9 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-vela-mipi.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7700-vela-mipi.dts
 @@ -38,6 +38,7 @@ &d0_gmac0 {
@@ -5129,7 +5129,7 @@ index e9d77f32cb4d..e4eb138d9fee 100644
  	dly-param-10m = <0 0 0>;
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-d560-d0hdmi-d1mipi.dts b/arch/riscv/boot/dts/eswin/eic7702-d560-d0hdmi-d1mipi.dts
 new file mode 100644
-index 000000000000..55372e5836ed
+index 0000000000000..55372e5836ed9
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/eic7702-d560-d0hdmi-d1mipi.dts
 @@ -0,0 +1,610 @@
@@ -5745,7 +5745,7 @@ index 000000000000..55372e5836ed
 +*/
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-d560-d0mipi-d1hdmi.dts b/arch/riscv/boot/dts/eswin/eic7702-d560-d0mipi-d1hdmi.dts
 new file mode 100644
-index 000000000000..d279e8ee67c3
+index 0000000000000..d279e8ee67c38
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/eic7702-d560-d0mipi-d1hdmi.dts
 @@ -0,0 +1,610 @@
@@ -6360,7 +6360,7 @@ index 000000000000..d279e8ee67c3
 +	gpio43  : usb1 pwren(O)
 +*/
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-d560-die0-camera.dtsi b/arch/riscv/boot/dts/eswin/eic7702-d560-die0-camera.dtsi
-index 5ff50928c1e9..6eec5e4dcadc 100644
+index 5ff50928c1e98..6eec5e4dcadc9 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-d560-die0-camera.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7702-d560-die0-camera.dtsi
 @@ -56,6 +56,7 @@ vvcam_vb: vvcam-vb@0 {
@@ -6409,7 +6409,7 @@ index 5ff50928c1e9..6eec5e4dcadc 100644
  		power-level-gpios = <&d1_porta 21 GPIO_ACTIVE_HIGH>;
  		mclk-gpios = <&portc 14 GPIO_ACTIVE_HIGH>;
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-d560-die1-camera.dtsi b/arch/riscv/boot/dts/eswin/eic7702-d560-die1-camera.dtsi
-index b6ccada08212..f682785cebfb 100644
+index b6ccada082129..f682785cebfba 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-d560-die1-camera.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7702-d560-die1-camera.dtsi
 @@ -56,6 +56,7 @@ d1_vvcam_vb: d1-vvcam-vb@0 {
@@ -6475,7 +6475,7 @@ index b6ccada08212..f682785cebfb 100644
  		power-level-gpios = <&d1_porta 21 GPIO_ACTIVE_HIGH>;
  		mclk-en-gpios = <&portc 14 GPIO_ACTIVE_HIGH>;
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-d560-interleave.dts b/arch/riscv/boot/dts/eswin/eic7702-d560-interleave.dts
-index 9e161d76d36a..b0c3f6f6ec96 100644
+index 9e161d76d36a3..b0c3f6f6ec96a 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-d560-interleave.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-d560-interleave.dts
 @@ -295,13 +295,6 @@ &d1_wdt3 {
@@ -6494,7 +6494,7 @@ index 9e161d76d36a..b0c3f6f6ec96 100644
  	pinctrl-names = "default";
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-d560-mipi.dts b/arch/riscv/boot/dts/eswin/eic7702-d560-mipi.dts
 new file mode 100644
-index 000000000000..955a8e8dc2ff
+index 0000000000000..955a8e8dc2ffd
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/eic7702-d560-mipi.dts
 @@ -0,0 +1,684 @@
@@ -7183,7 +7183,7 @@ index 000000000000..955a8e8dc2ff
 +	gpio43  : usb1 pwren(O)
 +*/
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-d560.dts b/arch/riscv/boot/dts/eswin/eic7702-d560.dts
-index a58f5817d75d..a27c110d2f8d 100644
+index a58f5817d75d7..a27c110d2f8d6 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-d560.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-d560.dts
 @@ -21,6 +21,8 @@
@@ -7354,7 +7354,7 @@ index a58f5817d75d..a27c110d2f8d 100644
  };
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-d560a-d0hdmi-d1mipi.dts b/arch/riscv/boot/dts/eswin/eic7702-d560a-d0hdmi-d1mipi.dts
 new file mode 100644
-index 000000000000..6a4201724770
+index 0000000000000..6a4201724770c
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/eic7702-d560a-d0hdmi-d1mipi.dts
 @@ -0,0 +1,83 @@
@@ -7444,7 +7444,7 @@ index 000000000000..6a4201724770
 \ No newline at end of file
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-d560a-d0mipi-d1hdmi.dts b/arch/riscv/boot/dts/eswin/eic7702-d560a-d0mipi-d1hdmi.dts
 new file mode 100644
-index 000000000000..b44326d66952
+index 0000000000000..b44326d669529
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/eic7702-d560a-d0mipi-d1hdmi.dts
 @@ -0,0 +1,83 @@
@@ -7534,7 +7534,7 @@ index 000000000000..b44326d66952
 \ No newline at end of file
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-d560a-mipi.dts b/arch/riscv/boot/dts/eswin/eic7702-d560a-mipi.dts
 new file mode 100644
-index 000000000000..c73a04e0896c
+index 0000000000000..c73a04e0896cf
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/eic7702-d560a-mipi.dts
 @@ -0,0 +1,83 @@
@@ -7623,7 +7623,7 @@ index 000000000000..c73a04e0896c
 +};
 \ No newline at end of file
 diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030.dts b/arch/riscv/boot/dts/eswin/eswin-win2030.dts
-index 992d64f85dc6..1ec2b59ebc6a 100644
+index 992d64f85dc6e..1ec2b59ebc6a3 100644
 --- a/arch/riscv/boot/dts/eswin/eswin-win2030.dts
 +++ b/arch/riscv/boot/dts/eswin/eswin-win2030.dts
 @@ -446,10 +446,12 @@ &d0_aon_dmac {
@@ -7737,7 +7737,7 @@ index 992d64f85dc6..1ec2b59ebc6a 100644
  	status = "disabled";
  };
 diff --git a/arch/riscv/boot/dts/eswin/m2-evb.dts b/arch/riscv/boot/dts/eswin/m2-evb.dts
-index c0303cf4cb3f..74d085c533ae 100644
+index c0303cf4cb3fc..74d085c533ae9 100644
 --- a/arch/riscv/boot/dts/eswin/m2-evb.dts
 +++ b/arch/riscv/boot/dts/eswin/m2-evb.dts
 @@ -197,7 +197,7 @@ d0_ipcm:ipcm@0 {
@@ -7869,7 +7869,7 @@ index c0303cf4cb3f..74d085c533ae 100644
  };
 diff --git a/arch/riscv/boot/dts/eswin/overlays/Makefile b/arch/riscv/boot/dts/eswin/overlays/Makefile
 new file mode 100644
-index 000000000000..a092816795cd
+index 0000000000000..a092816795cdd
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/overlays/Makefile
 @@ -0,0 +1,26 @@
@@ -7902,7 +7902,7 @@ index 000000000000..a092816795cd
 \ No newline at end of file
 diff --git a/arch/riscv/boot/dts/eswin/overlays/eic7700-ce1-camera-imx415-hdr-x2-overlay.dts b/arch/riscv/boot/dts/eswin/overlays/eic7700-ce1-camera-imx415-hdr-x2-overlay.dts
 new file mode 100644
-index 000000000000..c319bb33ba6e
+index 0000000000000..c319bb33ba6e5
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/overlays/eic7700-ce1-camera-imx415-hdr-x2-overlay.dts
 @@ -0,0 +1,218 @@
@@ -8126,7 +8126,7 @@ index 000000000000..c319bb33ba6e
 +
 diff --git a/arch/riscv/boot/dts/eswin/overlays/eic7700-ce1-camera-imx415-hdr-x3-overlay.dts b/arch/riscv/boot/dts/eswin/overlays/eic7700-ce1-camera-imx415-hdr-x3-overlay.dts
 new file mode 100644
-index 000000000000..70128a7f075a
+index 0000000000000..70128a7f075a3
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/overlays/eic7700-ce1-camera-imx415-hdr-x3-overlay.dts
 @@ -0,0 +1,218 @@
@@ -8350,7 +8350,7 @@ index 000000000000..70128a7f075a
 +
 diff --git a/arch/riscv/boot/dts/eswin/overlays/eic7700-ce1-camera-imx415-no-hdr-overlay.dts b/arch/riscv/boot/dts/eswin/overlays/eic7700-ce1-camera-imx415-no-hdr-overlay.dts
 new file mode 100644
-index 000000000000..3be3b6fc5234
+index 0000000000000..3be3b6fc52348
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/overlays/eic7700-ce1-camera-imx415-no-hdr-overlay.dts
 @@ -0,0 +1,218 @@
@@ -8574,7 +8574,7 @@ index 000000000000..3be3b6fc5234
 +
 diff --git a/arch/riscv/boot/dts/eswin/overlays/eic7700-ce1-camera-imx415-overlay.dts b/arch/riscv/boot/dts/eswin/overlays/eic7700-ce1-camera-imx415-overlay.dts
 new file mode 100644
-index 000000000000..cb1e22313c17
+index 0000000000000..cb1e22313c171
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/overlays/eic7700-ce1-camera-imx415-overlay.dts
 @@ -0,0 +1,152 @@
@@ -8732,7 +8732,7 @@ index 000000000000..cb1e22313c17
 +
 diff --git a/arch/riscv/boot/dts/eswin/overlays/eic7700-ce1-camera-imx586-overlay.dts b/arch/riscv/boot/dts/eswin/overlays/eic7700-ce1-camera-imx586-overlay.dts
 new file mode 100644
-index 000000000000..8be0c4dd8e0e
+index 0000000000000..8be0c4dd8e0e9
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/overlays/eic7700-ce1-camera-imx586-overlay.dts
 @@ -0,0 +1,152 @@
@@ -8890,7 +8890,7 @@ index 000000000000..8be0c4dd8e0e
 +
 diff --git a/arch/riscv/boot/dts/eswin/overlays/eic7700-ce1-camera-imx708-overlay.dts b/arch/riscv/boot/dts/eswin/overlays/eic7700-ce1-camera-imx708-overlay.dts
 new file mode 100644
-index 000000000000..6d9d2ca2e73e
+index 0000000000000..6d9d2ca2e73e2
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/overlays/eic7700-ce1-camera-imx708-overlay.dts
 @@ -0,0 +1,212 @@
@@ -9109,7 +9109,7 @@ index 000000000000..6d9d2ca2e73e
 \ No newline at end of file
 diff --git a/arch/riscv/boot/dts/eswin/overlays/eic7700-ce1-camera-ov5647-overlay.dts b/arch/riscv/boot/dts/eswin/overlays/eic7700-ce1-camera-ov5647-overlay.dts
 new file mode 100644
-index 000000000000..4068a9ae2741
+index 0000000000000..4068a9ae2741f
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/overlays/eic7700-ce1-camera-ov5647-overlay.dts
 @@ -0,0 +1,206 @@
@@ -9322,7 +9322,7 @@ index 000000000000..4068a9ae2741
 \ No newline at end of file
 diff --git a/arch/riscv/boot/dts/eswin/overlays/eic7700-ce1-camera-ov9281-overlay.dts b/arch/riscv/boot/dts/eswin/overlays/eic7700-ce1-camera-ov9281-overlay.dts
 new file mode 100644
-index 000000000000..1aed8000bd64
+index 0000000000000..1aed8000bd648
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/overlays/eic7700-ce1-camera-ov9281-overlay.dts
 @@ -0,0 +1,215 @@
@@ -9544,7 +9544,7 @@ index 000000000000..1aed8000bd64
 \ No newline at end of file
 diff --git a/arch/riscv/boot/dts/eswin/overlays/eic7700-hifive-premier-p550-ov5647-overlay.dts b/arch/riscv/boot/dts/eswin/overlays/eic7700-hifive-premier-p550-ov5647-overlay.dts
 new file mode 100644
-index 000000000000..08700e7d6e0a
+index 0000000000000..08700e7d6e0a1
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/overlays/eic7700-hifive-premier-p550-ov5647-overlay.dts
 @@ -0,0 +1,223 @@
@@ -9774,7 +9774,7 @@ index 000000000000..08700e7d6e0a
 \ No newline at end of file
 diff --git a/arch/riscv/boot/dts/eswin/overlays/eic7700-hifive-premier-p550-ov9281-overlay.dts b/arch/riscv/boot/dts/eswin/overlays/eic7700-hifive-premier-p550-ov9281-overlay.dts
 new file mode 100644
-index 000000000000..c011f164fa09
+index 0000000000000..c011f164fa091
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/overlays/eic7700-hifive-premier-p550-ov9281-overlay.dts
 @@ -0,0 +1,223 @@
@@ -10004,7 +10004,7 @@ index 000000000000..c011f164fa09
 \ No newline at end of file
 diff --git a/arch/riscv/boot/dts/eswin/overlays/eic7700-sbc-a1-camera-imx219-2lanes-overlay.dts b/arch/riscv/boot/dts/eswin/overlays/eic7700-sbc-a1-camera-imx219-2lanes-overlay.dts
 new file mode 100644
-index 000000000000..b025f12d0e3a
+index 0000000000000..b025f12d0e3a5
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/overlays/eic7700-sbc-a1-camera-imx219-2lanes-overlay.dts
 @@ -0,0 +1,57 @@
@@ -10068,7 +10068,7 @@ index 000000000000..b025f12d0e3a
 \ No newline at end of file
 diff --git a/arch/riscv/boot/dts/eswin/overlays/eic7700-sbc-a1-camera-imx258-overlay.dts b/arch/riscv/boot/dts/eswin/overlays/eic7700-sbc-a1-camera-imx258-overlay.dts
 new file mode 100644
-index 000000000000..c0ae1137a2ab
+index 0000000000000..c0ae1137a2ab5
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/overlays/eic7700-sbc-a1-camera-imx258-overlay.dts
 @@ -0,0 +1,102 @@
@@ -10177,7 +10177,7 @@ index 000000000000..c0ae1137a2ab
 \ No newline at end of file
 diff --git a/arch/riscv/boot/dts/eswin/overlays/eic7700-sbc-a1-camera-imx415-hdr-x2-overlay.dts b/arch/riscv/boot/dts/eswin/overlays/eic7700-sbc-a1-camera-imx415-hdr-x2-overlay.dts
 new file mode 100644
-index 000000000000..7382176a34ec
+index 0000000000000..7382176a34ec5
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/overlays/eic7700-sbc-a1-camera-imx415-hdr-x2-overlay.dts
 @@ -0,0 +1,146 @@
@@ -10330,7 +10330,7 @@ index 000000000000..7382176a34ec
 \ No newline at end of file
 diff --git a/arch/riscv/boot/dts/eswin/overlays/eic7700-sbc-a1-camera-imx415-hdr-x3-overlay.dts b/arch/riscv/boot/dts/eswin/overlays/eic7700-sbc-a1-camera-imx415-hdr-x3-overlay.dts
 new file mode 100644
-index 000000000000..6d88fa8b96c2
+index 0000000000000..6d88fa8b96c2d
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/overlays/eic7700-sbc-a1-camera-imx415-hdr-x3-overlay.dts
 @@ -0,0 +1,146 @@
@@ -10483,7 +10483,7 @@ index 000000000000..6d88fa8b96c2
 \ No newline at end of file
 diff --git a/arch/riscv/boot/dts/eswin/overlays/eic7700-sbc-a1-camera-imx415-no-hdr-overlay.dts b/arch/riscv/boot/dts/eswin/overlays/eic7700-sbc-a1-camera-imx415-no-hdr-overlay.dts
 new file mode 100644
-index 000000000000..dfab63cc7aa7
+index 0000000000000..dfab63cc7aa71
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/overlays/eic7700-sbc-a1-camera-imx415-no-hdr-overlay.dts
 @@ -0,0 +1,146 @@
@@ -10636,7 +10636,7 @@ index 000000000000..dfab63cc7aa7
 \ No newline at end of file
 diff --git a/arch/riscv/boot/dts/eswin/overlays/eic7700-sbc-a1-camera-imx415-overlay.dts b/arch/riscv/boot/dts/eswin/overlays/eic7700-sbc-a1-camera-imx415-overlay.dts
 new file mode 100644
-index 000000000000..9482115f87ba
+index 0000000000000..9482115f87ba7
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/overlays/eic7700-sbc-a1-camera-imx415-overlay.dts
 @@ -0,0 +1,102 @@
@@ -10745,7 +10745,7 @@ index 000000000000..9482115f87ba
 \ No newline at end of file
 diff --git a/arch/riscv/boot/dts/eswin/overlays/eic7700-sbc-a1-camera-imx586-overlay.dts b/arch/riscv/boot/dts/eswin/overlays/eic7700-sbc-a1-camera-imx586-overlay.dts
 new file mode 100644
-index 000000000000..6144cf2482f5
+index 0000000000000..6144cf2482f50
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/overlays/eic7700-sbc-a1-camera-imx586-overlay.dts
 @@ -0,0 +1,102 @@
@@ -10854,7 +10854,7 @@ index 000000000000..6144cf2482f5
 \ No newline at end of file
 diff --git a/arch/riscv/boot/dts/eswin/overlays/eic7700-sbc-a1-camera-imx708-overlay.dts b/arch/riscv/boot/dts/eswin/overlays/eic7700-sbc-a1-camera-imx708-overlay.dts
 new file mode 100644
-index 000000000000..8a9b27d9de3d
+index 0000000000000..8a9b27d9de3d7
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/overlays/eic7700-sbc-a1-camera-imx708-overlay.dts
 @@ -0,0 +1,127 @@
@@ -10988,7 +10988,7 @@ index 000000000000..8a9b27d9de3d
 \ No newline at end of file
 diff --git a/arch/riscv/boot/dts/eswin/overlays/eic7700-sbc-a1-camera-ov5647-overlay.dts b/arch/riscv/boot/dts/eswin/overlays/eic7700-sbc-a1-camera-ov5647-overlay.dts
 new file mode 100644
-index 000000000000..45b837c3cea0
+index 0000000000000..45b837c3cea06
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/overlays/eic7700-sbc-a1-camera-ov5647-overlay.dts
 @@ -0,0 +1,127 @@
@@ -11122,7 +11122,7 @@ index 000000000000..45b837c3cea0
 \ No newline at end of file
 diff --git a/arch/riscv/boot/dts/eswin/overlays/eic7700-sbc-a1-camera-ov9281-overlay.dts b/arch/riscv/boot/dts/eswin/overlays/eic7700-sbc-a1-camera-ov9281-overlay.dts
 new file mode 100644
-index 000000000000..299c56984408
+index 0000000000000..299c56984408b
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/overlays/eic7700-sbc-a1-camera-ov9281-overlay.dts
 @@ -0,0 +1,133 @@
@@ -11262,13 +11262,13 @@ index 000000000000..299c56984408
 \ No newline at end of file
 diff --git a/arch/riscv/boot/dts/eswin/smmu_cfg_die1.dtsi b/arch/riscv/boot/dts/eswin/smmu_cfg_die1.dtsi
 new file mode 100644
-index 000000000000..c65ab818eeaa
+index 0000000000000..c65ab818eeaab
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/smmu_cfg_die1.dtsi
 @@ -0,0 +1 @@
 +smmu_cfg_1: smmu_cfg1@1 {};
 diff --git a/arch/riscv/boot/dts/eswin/u2-evb.dts b/arch/riscv/boot/dts/eswin/u2-evb.dts
-index e2d3d6ed5fd6..313bb8c782e4 100644
+index e2d3d6ed5fd6e..313bb8c782e41 100644
 --- a/arch/riscv/boot/dts/eswin/u2-evb.dts
 +++ b/arch/riscv/boot/dts/eswin/u2-evb.dts
 @@ -235,7 +235,7 @@ d0_ipcm:ipcm@0 {
@@ -11472,7 +11472,7 @@ index e2d3d6ed5fd6..313bb8c782e4 100644
  	status = "okay";
  };
 diff --git a/arch/riscv/boot/dts/eswin/vpu7702-evb.dts b/arch/riscv/boot/dts/eswin/vpu7702-evb.dts
-index 0857faf7e36a..c23ada0e6d81 100644
+index 0857faf7e36ac..c23ada0e6d81f 100644
 --- a/arch/riscv/boot/dts/eswin/vpu7702-evb.dts
 +++ b/arch/riscv/boot/dts/eswin/vpu7702-evb.dts
 @@ -175,14 +175,19 @@ bd_table:bd_table@104414000 {
@@ -11627,7 +11627,7 @@ index 0857faf7e36a..c23ada0e6d81 100644
  	status = "okay";
  };
 diff --git a/arch/riscv/boot/dts/eswin/vpu7702-pcie-a2.dts b/arch/riscv/boot/dts/eswin/vpu7702-pcie-a2.dts
-index 96e4f92f283f..3a234540d841 100644
+index 96e4f92f283f3..3a234540d8416 100644
 --- a/arch/riscv/boot/dts/eswin/vpu7702-pcie-a2.dts
 +++ b/arch/riscv/boot/dts/eswin/vpu7702-pcie-a2.dts
 @@ -186,14 +186,19 @@ bd_table:bd_table@104414000 {
@@ -11778,7 +11778,7 @@ index 96e4f92f283f..3a234540d841 100644
  	status = "okay";
  
 diff --git a/arch/riscv/boot/dts/eswin/vpu7702-pcie.dts b/arch/riscv/boot/dts/eswin/vpu7702-pcie.dts
-index 74f92a0fa51c..b22542e9d424 100644
+index 74f92a0fa51c9..b22542e9d4243 100644
 --- a/arch/riscv/boot/dts/eswin/vpu7702-pcie.dts
 +++ b/arch/riscv/boot/dts/eswin/vpu7702-pcie.dts
 @@ -195,7 +195,7 @@ d0_ipcm:ipcm@0 {
@@ -11905,7 +11905,7 @@ index 74f92a0fa51c..b22542e9d424 100644
  	status = "okay";
  
 diff --git a/arch/riscv/boot/dts/eswin/vpu7702_pcie_factory.dts b/arch/riscv/boot/dts/eswin/vpu7702_pcie_factory.dts
-index 28e305db08c7..06cb62cda788 100644
+index 28e305db08c75..06cb62cda788c 100644
 --- a/arch/riscv/boot/dts/eswin/vpu7702_pcie_factory.dts
 +++ b/arch/riscv/boot/dts/eswin/vpu7702_pcie_factory.dts
 @@ -195,7 +195,7 @@ d0_ipcm:ipcm@0 {
@@ -12039,7 +12039,7 @@ diff --git a/arch/riscv/configs/d560_ep_evb_defconfig b/arch/riscv/configs/ebc77
 similarity index 97%
 rename from arch/riscv/configs/d560_ep_evb_defconfig
 rename to arch/riscv/configs/ebc7702_p01_d560_defconfig
-index 72631f7411a4..9ced955a2e65 100644
+index 72631f7411a44..9ced955a2e65a 100644
 --- a/arch/riscv/configs/d560_ep_evb_defconfig
 +++ b/arch/riscv/configs/ebc7702_p01_d560_defconfig
 @@ -43,8 +43,6 @@ CONFIG_RISCV_SBI_V01=y
@@ -12144,7 +12144,7 @@ index 72631f7411a4..9ced955a2e65 100644
 +CONFIG_VIDEO_ESWIN_ISP=m
 diff --git a/arch/riscv/configs/ebc7702_p01_pcie_defconfig b/arch/riscv/configs/ebc7702_p01_pcie_defconfig
 new file mode 100644
-index 000000000000..afd4b803e806
+index 0000000000000..afd4b803e8060
 --- /dev/null
 +++ b/arch/riscv/configs/ebc7702_p01_pcie_defconfig
 @@ -0,0 +1,863 @@
@@ -13012,7 +13012,7 @@ index 000000000000..afd4b803e806
 +CONFIG_VIDEO_ESWIN_VI_TOP=y
 +CONFIG_VIDEO_ESWIN_DVP2AXI=y
 diff --git a/arch/riscv/include/asm/pgtable-32.h b/arch/riscv/include/asm/pgtable-32.h
-index 59ba1fbaf784..5d8b05bd9642 100644
+index 59ba1fbaf7849..5d8b05bd9642d 100644
 --- a/arch/riscv/include/asm/pgtable-32.h
 +++ b/arch/riscv/include/asm/pgtable-32.h
 @@ -33,4 +33,7 @@
@@ -13024,7 +13024,7 @@ index 59ba1fbaf784..5d8b05bd9642 100644
 +
  #endif /* _ASM_RISCV_PGTABLE_32_H */
 diff --git a/arch/riscv/include/asm/pgtable-64.h b/arch/riscv/include/asm/pgtable-64.h
-index 3272ca7a5270..f4018fba6c63 100644
+index 3272ca7a5270b..f4018fba6c638 100644
 --- a/arch/riscv/include/asm/pgtable-64.h
 +++ b/arch/riscv/include/asm/pgtable-64.h
 @@ -136,6 +136,203 @@ enum napot_cont_order {
@@ -13259,7 +13259,7 @@ index 3272ca7a5270..f4018fba6c63 100644
  }
  
 diff --git a/arch/riscv/include/asm/pgtable.h b/arch/riscv/include/asm/pgtable.h
-index 9a4fc6be113c..8e1fc296499a 100644
+index 9a4fc6be113c2..8e1fc296499ae 100644
 --- a/arch/riscv/include/asm/pgtable.h
 +++ b/arch/riscv/include/asm/pgtable.h
 @@ -212,187 +212,6 @@ extern struct pt_alloc_ops pt_ops __initdata;
@@ -13534,7 +13534,7 @@ index 9a4fc6be113c..8e1fc296499a 100644
  
  #define pgd_ERROR(e) \
 diff --git a/arch/riscv/mm/ptdump.c b/arch/riscv/mm/ptdump.c
-index 52cc3d9380c0..4dae02b0a2ed 100644
+index 52cc3d9380c08..4dae02b0a2ed6 100644
 --- a/arch/riscv/mm/ptdump.c
 +++ b/arch/riscv/mm/ptdump.c
 @@ -265,9 +265,12 @@ static void note_page(struct ptdump_state *pt_st, unsigned long addr,
@@ -13552,7 +13552,7 @@ index 52cc3d9380c0..4dae02b0a2ed 100644
  		prot = val & pg_level[level].mask;
  
 diff --git a/drivers/clocksource/timer-eswin.c b/drivers/clocksource/timer-eswin.c
-index 70de370e4ebd..5b97aa8b72ef 100644
+index 70de370e4ebd4..5b97aa8b72efd 100644
 --- a/drivers/clocksource/timer-eswin.c
 +++ b/drivers/clocksource/timer-eswin.c
 @@ -294,14 +294,15 @@ static int eswin_timer_probe(struct platform_device *pdev)
@@ -13580,7 +13580,7 @@ index 70de370e4ebd..5b97aa8b72ef 100644
  
      ret = timer_init(time, np);
 diff --git a/drivers/edac/Kconfig b/drivers/edac/Kconfig
-index 95e8f7b8e909..32f97ee2da44 100644
+index 95e8f7b8e9091..32f97ee2da447 100644
 --- a/drivers/edac/Kconfig
 +++ b/drivers/edac/Kconfig
 @@ -563,7 +563,7 @@ config EDAC_NPCM
@@ -13593,7 +13593,7 @@ index 95e8f7b8e909..32f97ee2da44 100644
  	  Support for error detection and correction on the Synopsys DDR
  	  memory controller.
 diff --git a/drivers/edac/eswin_edac.c b/drivers/edac/eswin_edac.c
-index ebf42694d3c0..d9a316498623 100644
+index ebf42694d3c03..d9a316498623c 100644
 --- a/drivers/edac/eswin_edac.c
 +++ b/drivers/edac/eswin_edac.c
 @@ -26,9 +26,10 @@
@@ -13842,7 +13842,7 @@ index ebf42694d3c0..d9a316498623 100644
  	if (priv->p_data->quirks & DDR_ECC_INTR_SUPPORT)
  	{
 diff --git a/drivers/gpu/drm/eswin/es_drv.c b/drivers/gpu/drm/eswin/es_drv.c
-index 0071da8d33c7..83998a9495c0 100644
+index 0071da8d33c79..83998a9495c03 100644
 --- a/drivers/gpu/drm/eswin/es_drv.c
 +++ b/drivers/gpu/drm/eswin/es_drv.c
 @@ -416,7 +416,7 @@ static int es_drm_of_component_probe(struct device *dev,
@@ -13855,7 +13855,7 @@ index 0071da8d33c7..83998a9495c0 100644
  
  	/*
 diff --git a/drivers/hwmon/pac193x.c b/drivers/hwmon/pac193x.c
-index f8edcc4bfb2f..fac82ff057a0 100644
+index f8edcc4bfb2f3..fac82ff057a06 100644
 --- a/drivers/hwmon/pac193x.c
 +++ b/drivers/hwmon/pac193x.c
 @@ -34,7 +34,7 @@
@@ -13963,7 +13963,7 @@ index f8edcc4bfb2f..fac82ff057a0 100644
  	mutex_init(&data->config_lock);
  	data->client = client;
 diff --git a/drivers/hwmon/tmp102.c b/drivers/hwmon/tmp102.c
-index 2506c78590af..489a0a29b642 100644
+index 2506c78590afe..489a0a29b6428 100644
 --- a/drivers/hwmon/tmp102.c
 +++ b/drivers/hwmon/tmp102.c
 @@ -55,6 +55,7 @@ struct tmp102 {
@@ -14024,7 +14024,7 @@ index 2506c78590af..489a0a29b642 100644
  	/*
  	 * Mark that we are not ready with data until the first
 diff --git a/drivers/media/i2c/Kconfig b/drivers/media/i2c/Kconfig
-index c752d65e0b36..9cdc7c2d78f9 100644
+index c752d65e0b364..9cdc7c2d78f97 100644
 --- a/drivers/media/i2c/Kconfig
 +++ b/drivers/media/i2c/Kconfig
 @@ -233,6 +233,25 @@ config VIDEO_IMX586
@@ -14070,7 +14070,7 @@ index c752d65e0b36..9cdc7c2d78f9 100644
  source "drivers/media/i2c/et8ek8/Kconfig"
  
 diff --git a/drivers/media/i2c/Makefile b/drivers/media/i2c/Makefile
-index 87bf4679eaef..64624c43150a 100644
+index 87bf4679eaef4..64624c43150a9 100644
 --- a/drivers/media/i2c/Makefile
 +++ b/drivers/media/i2c/Makefile
 @@ -1,5 +1,6 @@
@@ -14095,7 +14095,7 @@ index 87bf4679eaef..64624c43150a 100644
  obj-$(CONFIG_VIDEO_MAX9271_LIB) += max9271.o
  obj-$(CONFIG_VIDEO_MAX9286) += max9286.o
 diff --git a/drivers/media/i2c/imx258.c b/drivers/media/i2c/imx258.c
-index 6a0ea99267a9..1bd0c59fbc2f 100644
+index 6a0ea99267a96..1bd0c59fbc2f2 100644
 --- a/drivers/media/i2c/imx258.c
 +++ b/drivers/media/i2c/imx258.c
 @@ -907,7 +907,7 @@ struct imx258 {
@@ -14228,7 +14228,7 @@ index 6a0ea99267a9..1bd0c59fbc2f 100644
  
  	imx258->clk = devm_clk_get_optional(&client->dev, NULL);
 diff --git a/drivers/media/i2c/imx290.c b/drivers/media/i2c/imx290.c
-index f8ada6c1ef65..a58c9b15dd03 100644
+index f8ada6c1ef65b..a58c9b15dd03a 100644
 --- a/drivers/media/i2c/imx290.c
 +++ b/drivers/media/i2c/imx290.c
 @@ -13,6 +13,7 @@
@@ -15508,7 +15508,7 @@ index f8ada6c1ef65..a58c9b15dd03 100644
 +MODULE_LICENSE("GPL v2");
 \ No newline at end of file
 diff --git a/drivers/media/i2c/imx415.c b/drivers/media/i2c/imx415.c
-index c7215a7e744a..add197ef2691 100644
+index c7215a7e744a0..add197ef2691b 100644
 --- a/drivers/media/i2c/imx415.c
 +++ b/drivers/media/i2c/imx415.c
 @@ -20,6 +20,8 @@
@@ -16054,7 +16054,7 @@ index c7215a7e744a..add197ef2691 100644
  	if (ret)
  		return ret;
 diff --git a/drivers/media/i2c/imx586.c b/drivers/media/i2c/imx586.c
-index e0577a8e0027..a5c63e56fb72 100644
+index e0577a8e00275..a5c63e56fb727 100644
 --- a/drivers/media/i2c/imx586.c
 +++ b/drivers/media/i2c/imx586.c
 @@ -117,6 +117,11 @@ MODULE_PARM_DESC(debug, "manual config camera parameters, 0: disable, 1: enable"
@@ -16200,7 +16200,7 @@ index e0577a8e0027..a5c63e56fb72 100644
  	ret = of_property_read_u32(node, OF_CAMERA_HDR_MODE, &hdr_mode);
 diff --git a/drivers/media/i2c/imx708.c b/drivers/media/i2c/imx708.c
 new file mode 100644
-index 000000000000..14660b3c40d0
+index 0000000000000..14660b3c40d0a
 --- /dev/null
 +++ b/drivers/media/i2c/imx708.c
 @@ -0,0 +1,2118 @@
@@ -18325,7 +18325,7 @@ index 000000000000..14660b3c40d0
 \ No newline at end of file
 diff --git a/drivers/media/i2c/lt6911uxe.c b/drivers/media/i2c/lt6911uxe.c
 new file mode 100644
-index 000000000000..a4d6b10afd0a
+index 0000000000000..a4d6b10afd0a3
 --- /dev/null
 +++ b/drivers/media/i2c/lt6911uxe.c
 @@ -0,0 +1,2185 @@
@@ -20516,7 +20516,7 @@ index 000000000000..a4d6b10afd0a
 +MODULE_LICENSE("GPL");
 diff --git a/drivers/media/i2c/lt6911uxe.h b/drivers/media/i2c/lt6911uxe.h
 new file mode 100644
-index 000000000000..ebbab5edb759
+index 0000000000000..ebbab5edb759d
 --- /dev/null
 +++ b/drivers/media/i2c/lt6911uxe.h
 @@ -0,0 +1,31 @@
@@ -20554,7 +20554,7 @@ index 000000000000..ebbab5edb759
 \ No newline at end of file
 diff --git a/drivers/media/i2c/lt6911uxe_upgrade.c b/drivers/media/i2c/lt6911uxe_upgrade.c
 new file mode 100644
-index 000000000000..836ee26a8b95
+index 0000000000000..836ee26a8b95d
 --- /dev/null
 +++ b/drivers/media/i2c/lt6911uxe_upgrade.c
 @@ -0,0 +1,850 @@
@@ -21410,7 +21410,7 @@ index 000000000000..836ee26a8b95
 +}
 diff --git a/drivers/media/i2c/lt6911uxe_upgrade.h b/drivers/media/i2c/lt6911uxe_upgrade.h
 new file mode 100644
-index 000000000000..159ff5a7714c
+index 0000000000000..159ff5a7714cd
 --- /dev/null
 +++ b/drivers/media/i2c/lt6911uxe_upgrade.h
 @@ -0,0 +1,93 @@
@@ -21508,7 +21508,7 @@ index 000000000000..159ff5a7714c
 +
 +#endif /* __LT6911_I2C_H__ */
 diff --git a/drivers/media/i2c/ov5647.c b/drivers/media/i2c/ov5647.c
-index 8de398423b7c..194a173d5228 100644
+index b8033fb7aa30e..6ab92b7a25a5f 100644
 --- a/drivers/media/i2c/ov5647.c
 +++ b/drivers/media/i2c/ov5647.c
 @@ -20,6 +20,7 @@
@@ -21607,36 +21607,36 @@ index 8de398423b7c..194a173d5228 100644
 +#define OV5647_PIXEL_ARRAY_TOP 6U
 +#define OV5647_PIXEL_ARRAY_WIDTH 2592U
 +#define OV5647_PIXEL_ARRAY_HEIGHT 1944U
-+
-+#define OV5647_VBLANK_MIN 24
-+#define OV5647_VTS_MAX 32767
-+
-+#define OV5647_HTS_MAX 0x1fff
  
 -#define OV5647_PIXEL_ARRAY_LEFT		16U
--#define OV5647_PIXEL_ARRAY_TOP		16U
+-#define OV5647_PIXEL_ARRAY_TOP		6U
 -#define OV5647_PIXEL_ARRAY_WIDTH	2592U
 -#define OV5647_PIXEL_ARRAY_HEIGHT	1944U
++#define OV5647_VBLANK_MIN 24
++#define OV5647_VTS_MAX 32767
+ 
+-#define OV5647_VBLANK_MIN		24
+-#define OV5647_VTS_MAX			32767
++#define OV5647_HTS_MAX 0x1fff
++
 +#define OV5647_EXPOSURE_MIN 4
 +#define OV5647_EXPOSURE_STEP 1
 +#define OV5647_EXPOSURE_DEFAULT 1000
 +#define OV5647_EXPOSURE_MAX 65535
- 
--#define OV5647_VBLANK_MIN		4
--#define OV5647_VTS_MAX			32767
++
 +/* regulator supplies */
 +static const char *const ov5647_supply_names[] = {
 +	"avdd", /* Analog power */
 +	"dovdd", /* Digital I/O power */
 +	"dvdd", /* Digital core power */
 +};
-+
-+#define OV5647_NUM_SUPPLIES ARRAY_SIZE(ov5647_supply_names)
  
 -#define OV5647_EXPOSURE_MIN		4
 -#define OV5647_EXPOSURE_STEP		1
 -#define OV5647_EXPOSURE_DEFAULT		1000
 -#define OV5647_EXPOSURE_MAX		65535
++#define OV5647_NUM_SUPPLIES ARRAY_SIZE(ov5647_supply_names)
++
 +#define FREQ_INDEX_FULL 0
 +#define FREQ_INDEX_VGA 1
 +static const s64 ov5647_link_freqs[] = {
@@ -22160,7 +22160,7 @@ index 8de398423b7c..194a173d5228 100644
 -	{
 -		.format = {
 -			.code		= MEDIA_BUS_FMT_SBGGR10_1X10,
--			.colorspace	= V4L2_COLORSPACE_SRGB,
+-			.colorspace	= V4L2_COLORSPACE_RAW,
 -			.field		= V4L2_FIELD_NONE,
 -			.width		= 2592,
 -			.height		= 1944
@@ -22181,7 +22181,7 @@ index 8de398423b7c..194a173d5228 100644
 -	{
 -		.format = {
 -			.code		= MEDIA_BUS_FMT_SBGGR10_1X10,
--			.colorspace	= V4L2_COLORSPACE_SRGB,
+-			.colorspace	= V4L2_COLORSPACE_RAW,
 -			.field		= V4L2_FIELD_NONE,
 -			.width		= 1920,
 -			.height		= 1080
@@ -22202,7 +22202,7 @@ index 8de398423b7c..194a173d5228 100644
 -	{
 -		.format = {
 -			.code		= MEDIA_BUS_FMT_SBGGR10_1X10,
--			.colorspace	= V4L2_COLORSPACE_SRGB,
+-			.colorspace	= V4L2_COLORSPACE_RAW,
 -			.field		= V4L2_FIELD_NONE,
 -			.width		= 1296,
 -			.height		= 972
@@ -22223,7 +22223,7 @@ index 8de398423b7c..194a173d5228 100644
 -	{
 -		.format = {
 -			.code		= MEDIA_BUS_FMT_SBGGR10_1X10,
--			.colorspace	= V4L2_COLORSPACE_SRGB,
+-			.colorspace	= V4L2_COLORSPACE_RAW,
 -			.field		= V4L2_FIELD_NONE,
 -			.width		= 640,
 -			.height		= 480
@@ -22234,7 +22234,7 @@ index 8de398423b7c..194a173d5228 100644
 -			.width		= 2560,
 -			.height		= 1920,
 -		},
--		.pixel_rate	= 55000000,
+-		.pixel_rate	= 58333000,
 -		.hts		= 1852,
 -		.vts		= 0x1f8,
 -		.reg_list	= ov5647_640x480_10bpp,
@@ -22782,7 +22782,7 @@ index 8de398423b7c..194a173d5228 100644
  	default:
  		dev_info(&client->dev,
  			 "Control (id:0x%x, val:0x%x) not supported\n",
-@@ -1290,29 +1128,42 @@ static const struct v4l2_ctrl_ops ov5647_ctrl_ops = {
+@@ -1290,31 +1128,42 @@ static const struct v4l2_ctrl_ops ov5647_ctrl_ops = {
  	.s_ctrl = ov5647_s_ctrl,
  };
  
@@ -22808,6 +22808,8 @@ index 8de398423b7c..194a173d5228 100644
 -	v4l2_ctrl_handler_init(&sensor->ctrls, 9);
 +	v4l2_ctrl_handler_init(&sensor->ctrls, 10);
  
+-	sensor->ctrls.lock = &sensor->lock;
+-
 -	v4l2_ctrl_new_std(&sensor->ctrls, &ov5647_ctrl_ops,
 -			  V4L2_CID_AUTOGAIN, 0, 1, 1, 0);
 +	v4l2_ctrl_new_std(&sensor->ctrls, &ov5647_ctrl_ops, V4L2_CID_AUTOGAIN,
@@ -22833,7 +22835,7 @@ index 8de398423b7c..194a173d5228 100644
  					     exposure_def);
  
  	/* min: 16 = 1.0x; max (10 bits); default: 32 = 2.0x. */
-@@ -1326,29 +1177,46 @@ static int ov5647_init_controls(struct ov5647 *sensor)
+@@ -1328,29 +1177,46 @@ static int ov5647_init_controls(struct ov5647 *sensor)
  					       sensor->mode->pixel_rate, 1,
  					       sensor->mode->pixel_rate);
  
@@ -22891,7 +22893,7 @@ index 8de398423b7c..194a173d5228 100644
  	sensor->sd.ctrl_handler = &sensor->ctrls;
  
  	return 0;
-@@ -1415,22 +1283,30 @@ static int ov5647_probe(struct i2c_client *client)
+@@ -1417,21 +1283,33 @@ static int ov5647_probe(struct i2c_client *client)
  
  	xclk_freq = clk_get_rate(sensor->xclk);
  	if (xclk_freq != 25000000) {
@@ -22923,12 +22925,14 @@ index 8de398423b7c..194a173d5228 100644
  
  	sensor->mode = OV5647_DEFAULT_MODE;
  
--	ret = ov5647_init_controls(sensor);
 +	ret = ov5647_init_controls(sensor, dev);
- 	if (ret)
- 		goto mutex_destroy;
- 
-@@ -1453,7 +1329,7 @@ static int ov5647_probe(struct i2c_client *client)
++	if (ret)
++		goto mutex_destroy;
++
+ 	sd = &sensor->sd;
+ 	v4l2_i2c_subdev_init(sd, client, &ov5647_subdev_ops);
+ 	sd->internal_ops = &ov5647_subdev_internal_ops;
+@@ -1455,7 +1333,7 @@ static int ov5647_probe(struct i2c_client *client)
  	if (ret < 0)
  		goto power_off;
  
@@ -22937,7 +22941,7 @@ index 8de398423b7c..194a173d5228 100644
  	if (ret < 0)
  		goto power_off;
  
-@@ -1491,14 +1367,11 @@ static void ov5647_remove(struct i2c_client *client)
+@@ -1493,14 +1371,11 @@ static void ov5647_remove(struct i2c_client *client)
  	mutex_destroy(&sensor->lock);
  }
  
@@ -22956,7 +22960,7 @@ index 8de398423b7c..194a173d5228 100644
  MODULE_DEVICE_TABLE(i2c, ov5647_id);
  
  #if IS_ENABLED(CONFIG_OF)
-@@ -1510,18 +1383,18 @@ MODULE_DEVICE_TABLE(of, ov5647_of_match);
+@@ -1512,15 +1387,15 @@ MODULE_DEVICE_TABLE(of, ov5647_of_match);
  #endif
  
  static struct i2c_driver ov5647_driver = {
@@ -22981,13 +22985,8 @@ index 8de398423b7c..194a173d5228 100644
  
  module_i2c_driver(ov5647_driver);
  
- MODULE_AUTHOR("Ramiro Oliveira <roliveir@synopsys.com>");
- MODULE_DESCRIPTION("A low-level driver for OmniVision ov5647 sensors");
--MODULE_LICENSE("GPL v2");
-+MODULE_LICENSE("GPL v2");
-\ No newline at end of file
 diff --git a/drivers/media/i2c/ov9282.c b/drivers/media/i2c/ov9282.c
-index 7498f55b3ef2..005cb5b663ee 100644
+index 7498f55b3ef2b..005cb5b663ee1 100644
 --- a/drivers/media/i2c/ov9282.c
 +++ b/drivers/media/i2c/ov9282.c
 @@ -18,6 +18,10 @@
@@ -23062,7 +23061,7 @@ index 7498f55b3ef2..005cb5b663ee 100644
 +MODULE_LICENSE("GPL");
 \ No newline at end of file
 diff --git a/drivers/media/platform/Makefile b/drivers/media/platform/Makefile
-index 02d06ce4d6cd..3a43126079d7 100644
+index 02d06ce4d6cdd..3a43126079d79 100644
 --- a/drivers/media/platform/Makefile
 +++ b/drivers/media/platform/Makefile
 @@ -35,6 +35,6 @@ obj-y += xilinx/
@@ -23075,7 +23074,7 @@ index 02d06ce4d6cd..3a43126079d7 100644
 +obj-$(CONFIG_VIDEO_ESWIN_VI_TOP) += eswin/vi_top/
  obj-$(CONFIG_VIDEO_ESWIN_ISP) += eswin/isp/
 diff --git a/drivers/media/platform/eswin/Kconfig b/drivers/media/platform/eswin/Kconfig
-index 5287b8176a23..d702a9356161 100644
+index 5287b8176a235..d702a9356161c 100644
 --- a/drivers/media/platform/eswin/Kconfig
 +++ b/drivers/media/platform/eswin/Kconfig
 @@ -3,7 +3,3 @@ source "drivers/media/platform/eswin/dvp2axi/Kconfig"
@@ -23087,7 +23086,7 @@ index 5287b8176a23..d702a9356161 100644
 -    bool "ESWIN EVB Board Support"
 -    default n
 diff --git a/drivers/media/platform/eswin/dvp2axi/capture.c b/drivers/media/platform/eswin/dvp2axi/capture.c
-index cbf6620444b8..c66029de223c 100644
+index cbf6620444b8d..c66029de223c6 100644
 --- a/drivers/media/platform/eswin/dvp2axi/capture.c
 +++ b/drivers/media/platform/eswin/dvp2axi/capture.c
 @@ -40,11 +40,14 @@
@@ -24001,7 +24000,7 @@ index cbf6620444b8..c66029de223c 100644
  }
  
 diff --git a/drivers/media/platform/eswin/dvp2axi/common.c b/drivers/media/platform/eswin/dvp2axi/common.c
-index 3428af67b4dd..51d463a00d4d 100644
+index 3428af67b4ddd..51d463a00d4dc 100644
 --- a/drivers/media/platform/eswin/dvp2axi/common.c
 +++ b/drivers/media/platform/eswin/dvp2axi/common.c
 @@ -44,7 +44,7 @@ static void es_dvp2axi_init_dummy_vb2(struct es_dvp2axi_device *dev,
@@ -24050,7 +24049,7 @@ index 3428af67b4dd..51d463a00d4d 100644
  	if (buf && buf->mem_priv) {
  		v4l2_dbg(1, es_dvp2axi_debug, &dev->v4l2_dev,
 diff --git a/drivers/media/platform/eswin/dvp2axi/dev.c b/drivers/media/platform/eswin/dvp2axi/dev.c
-index 3b623212e733..ec1142fefa98 100644
+index 3b623212e7334..ec1142fefa984 100644
 --- a/drivers/media/platform/eswin/dvp2axi/dev.c
 +++ b/drivers/media/platform/eswin/dvp2axi/dev.c
 @@ -34,6 +34,7 @@
@@ -24243,7 +24242,7 @@ index 3b623212e733..ec1142fefa98 100644
  }
  
 diff --git a/drivers/media/platform/eswin/dvp2axi/dev.h b/drivers/media/platform/eswin/dvp2axi/dev.h
-index 02d4ed16544e..3cd56d9d0733 100644
+index 02d4ed16544e1..3cd56d9d07335 100644
 --- a/drivers/media/platform/eswin/dvp2axi/dev.h
 +++ b/drivers/media/platform/eswin/dvp2axi/dev.h
 @@ -32,10 +32,8 @@
@@ -24338,7 +24337,7 @@ index 02d4ed16544e..3cd56d9d0733 100644
  int es_dvp2axi_stream_resume(struct es_dvp2axi_device *dvp2axi_dev, int mode);
  
 diff --git a/drivers/media/platform/eswin/dvp2axi/hw.c b/drivers/media/platform/eswin/dvp2axi/hw.c
-index f1b886e8e0a8..a7b66257269a 100644
+index f1b886e8e0a8a..a7b66257269ab 100644
 --- a/drivers/media/platform/eswin/dvp2axi/hw.c
 +++ b/drivers/media/platform/eswin/dvp2axi/hw.c
 @@ -21,6 +21,7 @@
@@ -24569,7 +24568,7 @@ index f1b886e8e0a8..a7b66257269a 100644
  }
  
 diff --git a/drivers/media/platform/eswin/dvp2axi/hw.h b/drivers/media/platform/eswin/dvp2axi/hw.h
-index 51a294264399..2cc18dd6b985 100644
+index 51a2942643998..2cc18dd6b9853 100644
 --- a/drivers/media/platform/eswin/dvp2axi/hw.h
 +++ b/drivers/media/platform/eswin/dvp2axi/hw.h
 @@ -30,7 +30,7 @@
@@ -24592,7 +24591,7 @@ index 51a294264399..2cc18dd6b985 100644
  void es_dvp2axi_disable_sys_clk(struct es_dvp2axi_hw *dvp2axi_hw);
 diff --git a/drivers/media/platform/eswin/isp/vvcam/dwc/Makefile b/drivers/media/platform/eswin/isp/vvcam/dwc/Makefile
 deleted file mode 100644
-index d59dadfd11f1..000000000000
+index d59dadfd11f10..0000000000000
 --- a/drivers/media/platform/eswin/isp/vvcam/dwc/Makefile
 +++ /dev/null
 @@ -1,35 +0,0 @@
@@ -24633,7 +24632,7 @@ index d59dadfd11f1..000000000000
 -
 diff --git a/drivers/media/platform/eswin/isp/vvcam/dwc/dw-csi-plat.c b/drivers/media/platform/eswin/isp/vvcam/dwc/dw-csi-plat.c
 deleted file mode 100644
-index 66873f7b1188..000000000000
+index 66873f7b11880..0000000000000
 --- a/drivers/media/platform/eswin/isp/vvcam/dwc/dw-csi-plat.c
 +++ /dev/null
 @@ -1,817 +0,0 @@
@@ -25456,7 +25455,7 @@ index 66873f7b1188..000000000000
 -MODULE_DESCRIPTION("Synopsys DesignWare MIPI CSI-2 Host Platform driver");
 diff --git a/drivers/media/platform/eswin/isp/vvcam/dwc/dw-csi-plat.h b/drivers/media/platform/eswin/isp/vvcam/dwc/dw-csi-plat.h
 deleted file mode 100644
-index a4649383d73f..000000000000
+index a4649383d73ff..0000000000000
 --- a/drivers/media/platform/eswin/isp/vvcam/dwc/dw-csi-plat.h
 +++ /dev/null
 @@ -1,147 +0,0 @@
@@ -25609,7 +25608,7 @@ index a4649383d73f..000000000000
 -#endif /* _DW_CSI_PLAT_H__ */
 diff --git a/drivers/media/platform/eswin/isp/vvcam/dwc/dw-csi-sysfs.c b/drivers/media/platform/eswin/isp/vvcam/dwc/dw-csi-sysfs.c
 deleted file mode 100644
-index e8d2bb9d0eab..000000000000
+index e8d2bb9d0eab2..0000000000000
 --- a/drivers/media/platform/eswin/isp/vvcam/dwc/dw-csi-sysfs.c
 +++ /dev/null
 @@ -1,624 +0,0 @@
@@ -26239,7 +26238,7 @@ index e8d2bb9d0eab..000000000000
 -}
 diff --git a/drivers/media/platform/eswin/isp/vvcam/dwc/dw-dphy-data.h b/drivers/media/platform/eswin/isp/vvcam/dwc/dw-dphy-data.h
 deleted file mode 100644
-index 0b489b17fbda..000000000000
+index 0b489b17fbda9..0000000000000
 --- a/drivers/media/platform/eswin/isp/vvcam/dwc/dw-dphy-data.h
 +++ /dev/null
 @@ -1,32 +0,0 @@
@@ -26277,7 +26276,7 @@ index 0b489b17fbda..000000000000
 -};
 diff --git a/drivers/media/platform/eswin/isp/vvcam/dwc/dw-dphy-plat.c b/drivers/media/platform/eswin/isp/vvcam/dwc/dw-dphy-plat.c
 deleted file mode 100644
-index 538e34f3d1e2..000000000000
+index 538e34f3d1e23..0000000000000
 --- a/drivers/media/platform/eswin/isp/vvcam/dwc/dw-dphy-plat.c
 +++ /dev/null
 @@ -1,238 +0,0 @@
@@ -26521,7 +26520,7 @@ index 538e34f3d1e2..000000000000
 -MODULE_LICENSE("GPL v2");
 diff --git a/drivers/media/platform/eswin/isp/vvcam/dwc/dw-dphy-rx.c b/drivers/media/platform/eswin/isp/vvcam/dwc/dw-dphy-rx.c
 deleted file mode 100644
-index 970d2b572c02..000000000000
+index 970d2b572c02a..0000000000000
 --- a/drivers/media/platform/eswin/isp/vvcam/dwc/dw-dphy-rx.c
 +++ /dev/null
 @@ -1,613 +0,0 @@
@@ -27140,7 +27139,7 @@ index 970d2b572c02..000000000000
 -}
 diff --git a/drivers/media/platform/eswin/isp/vvcam/dwc/dw-dphy-rx.h b/drivers/media/platform/eswin/isp/vvcam/dwc/dw-dphy-rx.h
 deleted file mode 100644
-index 2e8d68c914c1..000000000000
+index 2e8d68c914c13..0000000000000
 --- a/drivers/media/platform/eswin/isp/vvcam/dwc/dw-dphy-rx.h
 +++ /dev/null
 @@ -1,212 +0,0 @@
@@ -27358,7 +27357,7 @@ index 2e8d68c914c1..000000000000
 -#endif /*__PHY_SNPS_DPHY_RX_H__*/
 diff --git a/drivers/media/platform/eswin/isp/vvcam/dwc/dw-dphy-sysfs.c b/drivers/media/platform/eswin/isp/vvcam/dwc/dw-dphy-sysfs.c
 deleted file mode 100644
-index d893e29f7adb..000000000000
+index d893e29f7adb2..0000000000000
 --- a/drivers/media/platform/eswin/isp/vvcam/dwc/dw-dphy-sysfs.c
 +++ /dev/null
 @@ -1,232 +0,0 @@
@@ -27596,7 +27595,7 @@ index d893e29f7adb..000000000000
 -}
 diff --git a/drivers/media/platform/eswin/isp/vvcam/dwc/dw-mipi-csi.c b/drivers/media/platform/eswin/isp/vvcam/dwc/dw-mipi-csi.c
 deleted file mode 100644
-index 50274446c816..000000000000
+index 50274446c816e..0000000000000
 --- a/drivers/media/platform/eswin/isp/vvcam/dwc/dw-mipi-csi.c
 +++ /dev/null
 @@ -1,691 +0,0 @@
@@ -28293,7 +28292,7 @@ index 50274446c816..000000000000
 -}
 diff --git a/drivers/media/platform/eswin/isp/vvcam/dwc/dw-mipi-csi.h b/drivers/media/platform/eswin/isp/vvcam/dwc/dw-mipi-csi.h
 deleted file mode 100644
-index 698853802f82..000000000000
+index 698853802f82e..0000000000000
 --- a/drivers/media/platform/eswin/isp/vvcam/dwc/dw-mipi-csi.h
 +++ /dev/null
 @@ -1,336 +0,0 @@
@@ -28635,7 +28634,7 @@ index 698853802f82..000000000000
 -#endif /*_DW_MIPI_CSI_H__ */
 diff --git a/drivers/media/platform/eswin/isp/vvcam/dwc/eswin-mipi-dma.c b/drivers/media/platform/eswin/isp/vvcam/dwc/eswin-mipi-dma.c
 deleted file mode 100644
-index 8c2598bbde3f..000000000000
+index 8c2598bbde3f8..0000000000000
 --- a/drivers/media/platform/eswin/isp/vvcam/dwc/eswin-mipi-dma.c
 +++ /dev/null
 @@ -1,298 +0,0 @@
@@ -28939,7 +28938,7 @@ index 8c2598bbde3f..000000000000
 -MODULE_LICENSE("GPL v2");
 diff --git a/drivers/media/platform/eswin/isp/vvcam/dwc/include/dw-csi-data.h b/drivers/media/platform/eswin/isp/vvcam/dwc/include/dw-csi-data.h
 deleted file mode 100644
-index 08e7bacbae30..000000000000
+index 08e7bacbae302..0000000000000
 --- a/drivers/media/platform/eswin/isp/vvcam/dwc/include/dw-csi-data.h
 +++ /dev/null
 @@ -1,26 +0,0 @@
@@ -28971,7 +28970,7 @@ index 08e7bacbae30..000000000000
 -};
 diff --git a/drivers/media/platform/eswin/isp/vvcam/dwc/include/dw-dphy-data.h b/drivers/media/platform/eswin/isp/vvcam/dwc/include/dw-dphy-data.h
 deleted file mode 100644
-index afd27e64601b..000000000000
+index afd27e64601bb..0000000000000
 --- a/drivers/media/platform/eswin/isp/vvcam/dwc/include/dw-dphy-data.h
 +++ /dev/null
 @@ -1,32 +0,0 @@
@@ -29009,7 +29008,7 @@ index afd27e64601b..000000000000
 -};
 diff --git a/drivers/media/platform/eswin/isp/vvcam/dwc/include/dw-mipi-csi-pltfrm.h b/drivers/media/platform/eswin/isp/vvcam/dwc/include/dw-mipi-csi-pltfrm.h
 deleted file mode 100644
-index 948db4e5397e..000000000000
+index 948db4e5397ed..0000000000000
 --- a/drivers/media/platform/eswin/isp/vvcam/dwc/include/dw-mipi-csi-pltfrm.h
 +++ /dev/null
 @@ -1,104 +0,0 @@
@@ -29119,7 +29118,7 @@ index 948db4e5397e..000000000000
 -#endif /* __DW_MIPI_CSI_PLTFRM_INCLUDES_H_ */
 diff --git a/drivers/media/platform/eswin/isp/vvcam/i2c/Makefile b/drivers/media/platform/eswin/isp/vvcam/i2c/Makefile
 deleted file mode 100644
-index 2d9e1b9c19d3..000000000000
+index 2d9e1b9c19d3a..0000000000000
 --- a/drivers/media/platform/eswin/isp/vvcam/i2c/Makefile
 +++ /dev/null
 @@ -1,85 +0,0 @@
@@ -29210,7 +29209,7 @@ index 2d9e1b9c19d3..000000000000
 -
 diff --git a/drivers/media/platform/eswin/isp/vvcam/i2c/soc_i2c_driver.c b/drivers/media/platform/eswin/isp/vvcam/i2c/soc_i2c_driver.c
 deleted file mode 100644
-index c16a26f1d0e0..000000000000
+index c16a26f1d0e01..0000000000000
 --- a/drivers/media/platform/eswin/isp/vvcam/i2c/soc_i2c_driver.c
 +++ /dev/null
 @@ -1,399 +0,0 @@
@@ -29615,7 +29614,7 @@ index c16a26f1d0e0..000000000000
 -MODULE_LICENSE("GPL");
 diff --git a/drivers/media/platform/eswin/isp/vvcam/i2c/soc_i2c_platform.c b/drivers/media/platform/eswin/isp/vvcam/i2c/soc_i2c_platform.c
 deleted file mode 100644
-index 4d5073010e0a..000000000000
+index 4d5073010e0af..0000000000000
 --- a/drivers/media/platform/eswin/isp/vvcam/i2c/soc_i2c_platform.c
 +++ /dev/null
 @@ -1,201 +0,0 @@
@@ -29822,7 +29821,7 @@ index 4d5073010e0a..000000000000
 -module_param(devices_mask, int, 0644);
 diff --git a/drivers/media/platform/eswin/isp/vvcam/i2c/soc_i2c_platform.h b/drivers/media/platform/eswin/isp/vvcam/i2c/soc_i2c_platform.h
 deleted file mode 100644
-index 32a9a55e4b7f..000000000000
+index 32a9a55e4b7f6..0000000000000
 --- a/drivers/media/platform/eswin/isp/vvcam/i2c/soc_i2c_platform.h
 +++ /dev/null
 @@ -1,62 +0,0 @@
@@ -29890,7 +29889,7 @@ index 32a9a55e4b7f..000000000000
 -#endif
 diff --git a/drivers/media/platform/eswin/isp/vvcam/i2c/soc_i2c_procfs.c b/drivers/media/platform/eswin/isp/vvcam/i2c/soc_i2c_procfs.c
 deleted file mode 100644
-index 8959295c53d8..000000000000
+index 8959295c53d8d..0000000000000
 --- a/drivers/media/platform/eswin/isp/vvcam/i2c/soc_i2c_procfs.c
 +++ /dev/null
 @@ -1,546 +0,0 @@
@@ -30442,7 +30441,7 @@ index 8959295c53d8..000000000000
 -}
 diff --git a/drivers/media/platform/eswin/isp/vvcam/i2c/soc_i2c_procfs.h b/drivers/media/platform/eswin/isp/vvcam/i2c/soc_i2c_procfs.h
 deleted file mode 100644
-index 14cab7a7e82c..000000000000
+index 14cab7a7e82c6..0000000000000
 --- a/drivers/media/platform/eswin/isp/vvcam/i2c/soc_i2c_procfs.h
 +++ /dev/null
 @@ -1,66 +0,0 @@
@@ -30514,7 +30513,7 @@ index 14cab7a7e82c..000000000000
 -#endif
 diff --git a/drivers/media/platform/eswin/isp/vvcam/mipi/Makefile b/drivers/media/platform/eswin/isp/vvcam/mipi/Makefile
 deleted file mode 100644
-index 1aaced94db87..000000000000
+index 1aaced94db877..0000000000000
 --- a/drivers/media/platform/eswin/isp/vvcam/mipi/Makefile
 +++ /dev/null
 @@ -1,87 +0,0 @@
@@ -30607,7 +30606,7 @@ index 1aaced94db87..000000000000
 -
 diff --git a/drivers/media/platform/eswin/isp/vvcam/mipi/vvcam_mipi.h b/drivers/media/platform/eswin/isp/vvcam/mipi/vvcam_mipi.h
 deleted file mode 100644
-index 35299120efec..000000000000
+index 35299120efec0..0000000000000
 --- a/drivers/media/platform/eswin/isp/vvcam/mipi/vvcam_mipi.h
 +++ /dev/null
 @@ -1,178 +0,0 @@
@@ -30791,7 +30790,7 @@ index 35299120efec..000000000000
 -#endif
 diff --git a/drivers/media/platform/eswin/isp/vvcam/mipi/vvcam_mipi_driver.c b/drivers/media/platform/eswin/isp/vvcam/mipi/vvcam_mipi_driver.c
 deleted file mode 100644
-index 9d1aff02c652..000000000000
+index 9d1aff02c6529..0000000000000
 --- a/drivers/media/platform/eswin/isp/vvcam/mipi/vvcam_mipi_driver.c
 +++ /dev/null
 @@ -1,329 +0,0 @@
@@ -31126,7 +31125,7 @@ index 9d1aff02c652..000000000000
 -MODULE_LICENSE("GPL");
 diff --git a/drivers/media/platform/eswin/isp/vvcam/mipi/vvcam_mipi_driver.h b/drivers/media/platform/eswin/isp/vvcam/mipi/vvcam_mipi_driver.h
 deleted file mode 100644
-index 06ecfd83f757..000000000000
+index 06ecfd83f757f..0000000000000
 --- a/drivers/media/platform/eswin/isp/vvcam/mipi/vvcam_mipi_driver.h
 +++ /dev/null
 @@ -1,83 +0,0 @@
@@ -31215,7 +31214,7 @@ index 06ecfd83f757..000000000000
 -#endif
 diff --git a/drivers/media/platform/eswin/isp/vvcam/mipi/vvcam_mipi_dwc_hal.c b/drivers/media/platform/eswin/isp/vvcam/mipi/vvcam_mipi_dwc_hal.c
 deleted file mode 100644
-index 6d0455950672..000000000000
+index 6d04559506727..0000000000000
 --- a/drivers/media/platform/eswin/isp/vvcam/mipi/vvcam_mipi_dwc_hal.c
 +++ /dev/null
 @@ -1,863 +0,0 @@
@@ -32084,7 +32083,7 @@ index 6d0455950672..000000000000
 -}
 diff --git a/drivers/media/platform/eswin/isp/vvcam/mipi/vvcam_mipi_hal.c b/drivers/media/platform/eswin/isp/vvcam/mipi/vvcam_mipi_hal.c
 deleted file mode 100644
-index 72f0e7fab74b..000000000000
+index 72f0e7fab74ba..0000000000000
 --- a/drivers/media/platform/eswin/isp/vvcam/mipi/vvcam_mipi_hal.c
 +++ /dev/null
 @@ -1,495 +0,0 @@
@@ -32585,7 +32584,7 @@ index 72f0e7fab74b..000000000000
 -}
 diff --git a/drivers/media/platform/eswin/isp/vvcam/mipi/vvcam_mipi_platform.c b/drivers/media/platform/eswin/isp/vvcam/mipi/vvcam_mipi_platform.c
 deleted file mode 100644
-index 59c7e5cbf6ef..000000000000
+index 59c7e5cbf6ef7..0000000000000
 --- a/drivers/media/platform/eswin/isp/vvcam/mipi/vvcam_mipi_platform.c
 +++ /dev/null
 @@ -1,281 +0,0 @@
@@ -32872,7 +32871,7 @@ index 59c7e5cbf6ef..000000000000
 -module_param(devices_mask, int, 0644);
 diff --git a/drivers/media/platform/eswin/isp/vvcam/mipi/vvcam_mipi_platform.h b/drivers/media/platform/eswin/isp/vvcam/mipi/vvcam_mipi_platform.h
 deleted file mode 100644
-index fff239a5fd5c..000000000000
+index fff239a5fd5cc..0000000000000
 --- a/drivers/media/platform/eswin/isp/vvcam/mipi/vvcam_mipi_platform.h
 +++ /dev/null
 @@ -1,62 +0,0 @@
@@ -32940,7 +32939,7 @@ index fff239a5fd5c..000000000000
 -#endif
 diff --git a/drivers/media/platform/eswin/isp/vvcam/soc/Makefile b/drivers/media/platform/eswin/isp/vvcam/soc/Makefile
 deleted file mode 100644
-index 2a96e7d42173..000000000000
+index 2a96e7d42173f..0000000000000
 --- a/drivers/media/platform/eswin/isp/vvcam/soc/Makefile
 +++ /dev/null
 @@ -1,29 +0,0 @@
@@ -32975,7 +32974,7 @@ index 2a96e7d42173..000000000000
 -
 diff --git a/drivers/media/platform/eswin/isp/vvcam/soc/soc_ioctl.c b/drivers/media/platform/eswin/isp/vvcam/soc/soc_ioctl.c
 deleted file mode 100644
-index 8417b6ea185a..000000000000
+index 8417b6ea185ac..0000000000000
 --- a/drivers/media/platform/eswin/isp/vvcam/soc/soc_ioctl.c
 +++ /dev/null
 @@ -1,389 +0,0 @@
@@ -33370,7 +33369,7 @@ index 8417b6ea185a..000000000000
 -}
 diff --git a/drivers/media/platform/eswin/isp/vvcam/soc/soc_ioctl.h b/drivers/media/platform/eswin/isp/vvcam/soc/soc_ioctl.h
 deleted file mode 100644
-index f9d4bd066d9e..000000000000
+index f9d4bd066d9ea..0000000000000
 --- a/drivers/media/platform/eswin/isp/vvcam/soc/soc_ioctl.h
 +++ /dev/null
 @@ -1,360 +0,0 @@
@@ -33736,7 +33735,7 @@ index f9d4bd066d9e..000000000000
 -#endif // _SOC_IOC_H_
 diff --git a/drivers/media/platform/eswin/isp/vvcam/soc/vivsoc_dvp2axi.c b/drivers/media/platform/eswin/isp/vvcam/soc/vivsoc_dvp2axi.c
 deleted file mode 100644
-index 8f0921fde35e..000000000000
+index 8f0921fde35e7..0000000000000
 --- a/drivers/media/platform/eswin/isp/vvcam/soc/vivsoc_dvp2axi.c
 +++ /dev/null
 @@ -1,203 +0,0 @@
@@ -33945,7 +33944,7 @@ index 8f0921fde35e..000000000000
 -}
 diff --git a/drivers/media/platform/eswin/isp/vvcam/soc/vivsoc_dvp2axi.h b/drivers/media/platform/eswin/isp/vvcam/soc/vivsoc_dvp2axi.h
 deleted file mode 100644
-index 3915256f7149..000000000000
+index 3915256f71498..0000000000000
 --- a/drivers/media/platform/eswin/isp/vvcam/soc/vivsoc_dvp2axi.h
 +++ /dev/null
 @@ -1,150 +0,0 @@
@@ -34101,7 +34100,7 @@ index 3915256f7149..000000000000
 -#endif /* __VIVSOC_DVP2AXI_H__ */
 diff --git a/drivers/media/platform/eswin/isp/vvcam/soc/vivsoc_hub.c b/drivers/media/platform/eswin/isp/vvcam/soc/vivsoc_hub.c
 deleted file mode 100644
-index 77a321a48685..000000000000
+index 77a321a48685e..0000000000000
 --- a/drivers/media/platform/eswin/isp/vvcam/soc/vivsoc_hub.c
 +++ /dev/null
 @@ -1,1041 +0,0 @@
@@ -35148,7 +35147,7 @@ index 77a321a48685..000000000000
 -}
 diff --git a/drivers/media/platform/eswin/isp/vvcam/soc/vivsoc_hub.h b/drivers/media/platform/eswin/isp/vvcam/soc/vivsoc_hub.h
 deleted file mode 100644
-index eecd969ec093..000000000000
+index eecd969ec093e..0000000000000
 --- a/drivers/media/platform/eswin/isp/vvcam/soc/vivsoc_hub.h
 +++ /dev/null
 @@ -1,144 +0,0 @@
@@ -35298,7 +35297,7 @@ index eecd969ec093..000000000000
 -#endif /* _VIVSOC_HUB_H_ */
 diff --git a/drivers/media/platform/eswin/isp/vvcam/soc/vsi_core_gen6.c b/drivers/media/platform/eswin/isp/vvcam/soc/vsi_core_gen6.c
 deleted file mode 100644
-index 1876cb1fff19..000000000000
+index 1876cb1fff198..0000000000000
 --- a/drivers/media/platform/eswin/isp/vvcam/soc/vsi_core_gen6.c
 +++ /dev/null
 @@ -1,250 +0,0 @@
@@ -35554,7 +35553,7 @@ index 1876cb1fff19..000000000000
 -};
 diff --git a/drivers/media/platform/eswin/isp/vvcam/soc/vsi_core_gen6.h b/drivers/media/platform/eswin/isp/vvcam/soc/vsi_core_gen6.h
 deleted file mode 100644
-index 8b1fd21231cc..000000000000
+index 8b1fd21231cc0..0000000000000
 --- a/drivers/media/platform/eswin/isp/vvcam/soc/vsi_core_gen6.h
 +++ /dev/null
 @@ -1,68 +0,0 @@
@@ -35628,7 +35627,7 @@ index 8b1fd21231cc..000000000000
 -#endif
 diff --git a/drivers/media/platform/eswin/isp/vvcam/soc/vvcam_soc_driver.c b/drivers/media/platform/eswin/isp/vvcam/soc/vvcam_soc_driver.c
 deleted file mode 100644
-index a771a3ee58f1..000000000000
+index a771a3ee58f15..0000000000000
 --- a/drivers/media/platform/eswin/isp/vvcam/soc/vvcam_soc_driver.c
 +++ /dev/null
 @@ -1,855 +0,0 @@
@@ -36488,7 +36487,7 @@ index a771a3ee58f1..000000000000
 -MODULE_DESCRIPTION("ISP");
 -MODULE_LICENSE("GPL");
 diff --git a/drivers/media/platform/eswin/isp/vvcam/v4l2/isp/vvcam_isp_driver.c b/drivers/media/platform/eswin/isp/vvcam/v4l2/isp/vvcam_isp_driver.c
-index 107cf344a61d..933cf03cbd2f 100644
+index 107cf344a61d8..933cf03cbd2f7 100644
 --- a/drivers/media/platform/eswin/isp/vvcam/v4l2/isp/vvcam_isp_driver.c
 +++ b/drivers/media/platform/eswin/isp/vvcam/v4l2/isp/vvcam_isp_driver.c
 @@ -1325,7 +1325,7 @@ static int vvcam_isp_notifier_bound(struct v4l2_async_notifier *notifier,
@@ -36509,7 +36508,7 @@ index 107cf344a61d..933cf03cbd2f 100644
  
      fwnode_handle_put(ep);
 diff --git a/drivers/media/platform/eswin/isp/vvcam/v4l2/isp/vvcam_isp_event.c b/drivers/media/platform/eswin/isp/vvcam/v4l2/isp/vvcam_isp_event.c
-index 9aa488f42add..871345cd301a 100644
+index 9aa488f42add5..871345cd301a9 100644
 --- a/drivers/media/platform/eswin/isp/vvcam/v4l2/isp/vvcam_isp_event.c
 +++ b/drivers/media/platform/eswin/isp/vvcam/v4l2/isp/vvcam_isp_event.c
 @@ -95,7 +95,7 @@ int vvcam_isp_post_event(struct v4l2_subdev *sd, struct vvcam_isp_event_pkg *eve
@@ -36522,7 +36521,7 @@ index 9aa488f42add..871345cd301a 100644
  
      event.type   = VVCAM_ISP_DEAMON_EVENT;
 diff --git a/drivers/media/platform/eswin/isp/vvcam/v4l2/video/vvcam_video_register.c b/drivers/media/platform/eswin/isp/vvcam/v4l2/video/vvcam_video_register.c
-index d926dc00e8a4..cbcd937110fd 100644
+index d926dc00e8a4a..cbcd937110fdd 100644
 --- a/drivers/media/platform/eswin/isp/vvcam/v4l2/video/vvcam_video_register.c
 +++ b/drivers/media/platform/eswin/isp/vvcam/v4l2/video/vvcam_video_register.c
 @@ -1881,22 +1881,22 @@ static int vvcam_videoc_subscribe_event(struct v4l2_fh *fh,
@@ -36622,7 +36621,7 @@ index d926dc00e8a4..cbcd937110fd 100644
      memset(vvcam_vdev->event_shm.virt_addr, 0, vvcam_vdev->event_shm.size);
 diff --git a/drivers/media/platform/eswin/isp/vvcam/videoin/Makefile b/drivers/media/platform/eswin/isp/vvcam/videoin/Makefile
 deleted file mode 100644
-index d9a4be8324a3..000000000000
+index d9a4be8324a3a..0000000000000
 --- a/drivers/media/platform/eswin/isp/vvcam/videoin/Makefile
 +++ /dev/null
 @@ -1,82 +0,0 @@
@@ -36710,7 +36709,7 @@ index d9a4be8324a3..000000000000
 -
 diff --git a/drivers/media/platform/eswin/isp/vvcam/videoin/vvcam_vi.h b/drivers/media/platform/eswin/isp/vvcam/videoin/vvcam_vi.h
 deleted file mode 100644
-index 2836d2758acc..000000000000
+index 2836d2758acc0..0000000000000
 --- a/drivers/media/platform/eswin/isp/vvcam/videoin/vvcam_vi.h
 +++ /dev/null
 @@ -1,113 +0,0 @@
@@ -36829,7 +36828,7 @@ index 2836d2758acc..000000000000
 -#endif
 diff --git a/drivers/media/platform/eswin/isp/vvcam/videoin/vvcam_vi_driver.c b/drivers/media/platform/eswin/isp/vvcam/videoin/vvcam_vi_driver.c
 deleted file mode 100644
-index ca001ca7f5ab..000000000000
+index ca001ca7f5ab0..0000000000000
 --- a/drivers/media/platform/eswin/isp/vvcam/videoin/vvcam_vi_driver.c
 +++ /dev/null
 @@ -1,438 +0,0 @@
@@ -37273,7 +37272,7 @@ index ca001ca7f5ab..000000000000
 -MODULE_LICENSE("GPL");
 diff --git a/drivers/media/platform/eswin/isp/vvcam/videoin/vvcam_vi_driver.h b/drivers/media/platform/eswin/isp/vvcam/videoin/vvcam_vi_driver.h
 deleted file mode 100644
-index abf590d8a7ae..000000000000
+index abf590d8a7ae0..0000000000000
 --- a/drivers/media/platform/eswin/isp/vvcam/videoin/vvcam_vi_driver.h
 +++ /dev/null
 @@ -1,100 +0,0 @@
@@ -37379,7 +37378,7 @@ index abf590d8a7ae..000000000000
 -#endif
 diff --git a/drivers/media/platform/eswin/isp/vvcam/videoin/vvcam_vi_hal.c b/drivers/media/platform/eswin/isp/vvcam/videoin/vvcam_vi_hal.c
 deleted file mode 100644
-index 4fc483e5cc8b..000000000000
+index 4fc483e5cc8b6..0000000000000
 --- a/drivers/media/platform/eswin/isp/vvcam/videoin/vvcam_vi_hal.c
 +++ /dev/null
 @@ -1,304 +0,0 @@
@@ -37689,7 +37688,7 @@ index 4fc483e5cc8b..000000000000
 -
 diff --git a/drivers/media/platform/eswin/isp/vvcam/videoin/vvcam_vi_hal.h b/drivers/media/platform/eswin/isp/vvcam/videoin/vvcam_vi_hal.h
 deleted file mode 100644
-index 7d33c79c6ddf..000000000000
+index 7d33c79c6ddfe..0000000000000
 --- a/drivers/media/platform/eswin/isp/vvcam/videoin/vvcam_vi_hal.h
 +++ /dev/null
 @@ -1,115 +0,0 @@
@@ -37810,7 +37809,7 @@ index 7d33c79c6ddf..000000000000
 -#endif
 diff --git a/drivers/media/platform/eswin/isp/vvcam/videoin/vvcam_vi_platform.c b/drivers/media/platform/eswin/isp/vvcam/videoin/vvcam_vi_platform.c
 deleted file mode 100644
-index 8617d3976014..000000000000
+index 8617d3976014e..0000000000000
 --- a/drivers/media/platform/eswin/isp/vvcam/videoin/vvcam_vi_platform.c
 +++ /dev/null
 @@ -1,151 +0,0 @@
@@ -37967,7 +37966,7 @@ index 8617d3976014..000000000000
 -module_param(devices_mask, int, 0644);
 diff --git a/drivers/media/platform/eswin/isp/vvcam/videoin/vvcam_vi_platform.h b/drivers/media/platform/eswin/isp/vvcam/videoin/vvcam_vi_platform.h
 deleted file mode 100644
-index 3281c4f4c403..000000000000
+index 3281c4f4c403e..0000000000000
 --- a/drivers/media/platform/eswin/isp/vvcam/videoin/vvcam_vi_platform.h
 +++ /dev/null
 @@ -1,62 +0,0 @@
@@ -38035,7 +38034,7 @@ index 3281c4f4c403..000000000000
 -#endif
 diff --git a/drivers/media/platform/eswin/isp/vvcam/videoin/vvcam_vi_procfs.c b/drivers/media/platform/eswin/isp/vvcam/videoin/vvcam_vi_procfs.c
 deleted file mode 100644
-index 89ce352d71e9..000000000000
+index 89ce352d71e9c..0000000000000
 --- a/drivers/media/platform/eswin/isp/vvcam/videoin/vvcam_vi_procfs.c
 +++ /dev/null
 @@ -1,645 +0,0 @@
@@ -38686,7 +38685,7 @@ index 89ce352d71e9..000000000000
 -}
 diff --git a/drivers/media/platform/eswin/isp/vvcam/videoin/vvcam_vi_procfs.h b/drivers/media/platform/eswin/isp/vvcam/videoin/vvcam_vi_procfs.h
 deleted file mode 100644
-index d1112a4e7a2e..000000000000
+index d1112a4e7a2ea..0000000000000
 --- a/drivers/media/platform/eswin/isp/vvcam/videoin/vvcam_vi_procfs.h
 +++ /dev/null
 @@ -1,63 +0,0 @@
@@ -38754,7 +38753,7 @@ index d1112a4e7a2e..000000000000
 -
 -#endif
 diff --git a/drivers/media/platform/eswin/mipi-csi2/dw-csi-plat.c b/drivers/media/platform/eswin/mipi-csi2/dw-csi-plat.c
-index 3910a4098026..c1ebe3e13fbc 100755
+index 3910a40980262..c1ebe3e13fbce 100755
 --- a/drivers/media/platform/eswin/mipi-csi2/dw-csi-plat.c
 +++ b/drivers/media/platform/eswin/mipi-csi2/dw-csi-plat.c
 @@ -12,6 +12,7 @@
@@ -39074,7 +39073,7 @@ index 3910a4098026..c1ebe3e13fbc 100755
  	return 0;
  }
 diff --git a/drivers/media/platform/eswin/mipi-csi2/dw-csi-plat.h b/drivers/media/platform/eswin/mipi-csi2/dw-csi-plat.h
-index a308f9b0a409..2df2b452f140 100755
+index a308f9b0a4094..2df2b452f1403 100755
 --- a/drivers/media/platform/eswin/mipi-csi2/dw-csi-plat.h
 +++ b/drivers/media/platform/eswin/mipi-csi2/dw-csi-plat.h
 @@ -59,7 +59,7 @@ struct mipi_fmt dw_mipi_csi_formats[] = {
@@ -39087,7 +39086,7 @@ index a308f9b0a409..2df2b452f140 100755
  		.mbus_code = MEDIA_BUS_FMT_SGBRG10_1X10,
  		.depth = 10,
 diff --git a/drivers/media/platform/eswin/mipi-csi2/dw-mipi-csi.c b/drivers/media/platform/eswin/mipi-csi2/dw-mipi-csi.c
-index a7b4a829e603..26af3a3f6108 100755
+index a7b4a829e6031..26af3a3f61084 100755
 --- a/drivers/media/platform/eswin/mipi-csi2/dw-mipi-csi.c
 +++ b/drivers/media/platform/eswin/mipi-csi2/dw-mipi-csi.c
 @@ -179,10 +179,10 @@ int dw_mipi_csi_hw_stdby(struct dw_csi *csi_dev)
@@ -39175,7 +39174,7 @@ index a7b4a829e603..26af3a3f6108 100755
  	return 0;
  }
 diff --git a/drivers/media/platform/eswin/mipi-csi2/dw-mipi-csi.h b/drivers/media/platform/eswin/mipi-csi2/dw-mipi-csi.h
-index d5b9683356d1..eb369b4d6c9a 100755
+index d5b9683356d17..eb369b4d6c9aa 100755
 --- a/drivers/media/platform/eswin/mipi-csi2/dw-mipi-csi.h
 +++ b/drivers/media/platform/eswin/mipi-csi2/dw-mipi-csi.h
 @@ -234,6 +234,7 @@ struct csi_data {
@@ -39205,7 +39204,7 @@ index d5b9683356d1..eb369b4d6c9a 100755
  
  static inline struct dw_csi *sd_to_mipi_csi_dev(struct v4l2_subdev *sdev)
 diff --git a/drivers/media/platform/eswin/vi_top/Kconfig b/drivers/media/platform/eswin/vi_top/Kconfig
-index 092b8515bfee..a328c672de63 100644
+index 092b8515bfeee..a328c672de634 100644
 --- a/drivers/media/platform/eswin/vi_top/Kconfig
 +++ b/drivers/media/platform/eswin/vi_top/Kconfig
 @@ -6,8 +6,6 @@
@@ -39220,7 +39219,7 @@ index 092b8515bfee..a328c672de63 100644
 \ No newline at end of file
 diff --git a/drivers/media/platform/eswin/vi_top/vi_cmn_register.h b/drivers/media/platform/eswin/vi_top/vi_cmn_register.h
 new file mode 100644
-index 000000000000..30ccf1ff2e3c
+index 0000000000000..30ccf1ff2e3c2
 --- /dev/null
 +++ b/drivers/media/platform/eswin/vi_top/vi_cmn_register.h
 @@ -0,0 +1,230 @@
@@ -39455,7 +39454,7 @@ index 000000000000..30ccf1ff2e3c
 +
 +#endif
 diff --git a/drivers/memory/eswin/es_buddy/es_buddy.c b/drivers/memory/eswin/es_buddy/es_buddy.c
-index bc05cf473af6..d8426b9c078e 100644
+index bc05cf473af63..d8426b9c078e6 100644
 --- a/drivers/memory/eswin/es_buddy/es_buddy.c
 +++ b/drivers/memory/eswin/es_buddy/es_buddy.c
 @@ -131,6 +131,15 @@ static int do_rsvmem_buddy_init(struct mem_block *memblock, void *data)
@@ -39475,7 +39474,7 @@ index bc05cf473af6..d8426b9c078e 100644
  	/* alloc esPage_s for all the pages to manage the pages*/
  	pages_size = memblock->page_num * sizeof(struct esPage_s);
 diff --git a/drivers/memory/eswin/es_rsvmem_heap/Kconfig b/drivers/memory/eswin/es_rsvmem_heap/Kconfig
-index 3b425da42e2f..9282df24dd5e 100644
+index 3b425da42e2f0..9282df24dd5ed 100644
 --- a/drivers/memory/eswin/es_rsvmem_heap/Kconfig
 +++ b/drivers/memory/eswin/es_rsvmem_heap/Kconfig
 @@ -4,3 +4,12 @@ config ESWIN_RSVMEM_HEAP
@@ -39493,7 +39492,7 @@ index 3b425da42e2f..9282df24dd5e 100644
 +	  This is useful for debugging memory leaks or excessive usage.
 \ No newline at end of file
 diff --git a/drivers/memory/eswin/es_rsvmem_heap/dmabuf-heap-import-helper.c b/drivers/memory/eswin/es_rsvmem_heap/dmabuf-heap-import-helper.c
-index c634da8df58e..932e4a62e2d8 100644
+index c634da8df58eb..932e4a62e2d80 100644
 --- a/drivers/memory/eswin/es_rsvmem_heap/dmabuf-heap-import-helper.c
 +++ b/drivers/memory/eswin/es_rsvmem_heap/dmabuf-heap-import-helper.c
 @@ -58,7 +58,7 @@ struct dma_heap_attachment_cma {
@@ -40426,7 +40425,7 @@ index c634da8df58e..932e4a62e2d8 100644
  			/* put page back */
  			put_page(pages[i]);
 diff --git a/drivers/memory/eswin/es_rsvmem_heap/eswin_rsvmem_heap.c b/drivers/memory/eswin/es_rsvmem_heap/eswin_rsvmem_heap.c
-index 804258f5ec74..c2b7694759d4 100644
+index 804258f5ec740..c2b7694759d47 100644
 --- a/drivers/memory/eswin/es_rsvmem_heap/eswin_rsvmem_heap.c
 +++ b/drivers/memory/eswin/es_rsvmem_heap/eswin_rsvmem_heap.c
 @@ -10,7 +10,11 @@
@@ -41131,7 +41130,7 @@ index 804258f5ec74..c2b7694759d4 100644
  #define NUM_ESWIN_RSVMEM_HEAPS ARRAY_SIZE(es_heap_name_prefix)
  
 diff --git a/drivers/memory/eswin/eswin_memblock.h b/drivers/memory/eswin/eswin_memblock.h
-index 6c18444599de..23e7b0831b8f 100644
+index 6c18444599de8..23e7b0831b8fe 100644
 --- a/drivers/memory/eswin/eswin_memblock.h
 +++ b/drivers/memory/eswin/eswin_memblock.h
 @@ -15,4 +15,6 @@ struct mem_block *eswin_rsvmem_get_memblock(const char *memBlkName);
@@ -41142,7 +41141,7 @@ index 6c18444599de..23e7b0831b8f 100644
 +
  #endif
 diff --git a/drivers/mmc/host/sdhci-eswin.h b/drivers/mmc/host/sdhci-eswin.h
-index 78d24a6088f0..5bba9bd92665 100644
+index 78d24a6088f0a..5bba9bd92665c 100644
 --- a/drivers/mmc/host/sdhci-eswin.h
 +++ b/drivers/mmc/host/sdhci-eswin.h
 @@ -26,6 +26,8 @@
@@ -41179,7 +41178,7 @@ index 78d24a6088f0..5bba9bd92665 100644
  
  /**
 diff --git a/drivers/mmc/host/sdhci-of-eswin-sdio.c b/drivers/mmc/host/sdhci-of-eswin-sdio.c
-index b50a5fd7f0ae..2081d5d1b01c 100644
+index b50a5fd7f0ae2..2081d5d1b01c7 100644
 --- a/drivers/mmc/host/sdhci-of-eswin-sdio.c
 +++ b/drivers/mmc/host/sdhci-of-eswin-sdio.c
 @@ -37,7 +37,6 @@
@@ -41191,7 +41190,7 @@ index b50a5fd7f0ae..2081d5d1b01c 100644
  static inline void *sdhci_sdio_priv(struct eswin_sdhci_data *sdio)
  {
 diff --git a/drivers/mmc/host/sdhci-of-eswin.c b/drivers/mmc/host/sdhci-of-eswin.c
-index 4e722c068c24..096b1e384927 100644
+index 4e722c068c249..096b1e3849271 100644
 --- a/drivers/mmc/host/sdhci-of-eswin.c
 +++ b/drivers/mmc/host/sdhci-of-eswin.c
 @@ -38,7 +38,6 @@
@@ -41312,7 +41311,7 @@ index 4e722c068c24..096b1e384927 100644
  
  	pltfm_host->clk = clk_xin;
 diff --git a/drivers/mtd/spi-nor/Makefile b/drivers/mtd/spi-nor/Makefile
-index e347b435a038..c4c2dfd95b4c 100644
+index e347b435a038e..c4c2dfd95b4c1 100644
 --- a/drivers/mtd/spi-nor/Makefile
 +++ b/drivers/mtd/spi-nor/Makefile
 @@ -15,6 +15,7 @@ spi-nor-objs			+= micron-st.o
@@ -41324,7 +41323,7 @@ index e347b435a038..c4c2dfd95b4c 100644
  spi-nor-objs			+= xmc.o
  spi-nor-$(CONFIG_DEBUG_FS)	+= debugfs.o
 diff --git a/drivers/mtd/spi-nor/core.c b/drivers/mtd/spi-nor/core.c
-index 9c160e873d63..e4a90015ba22 100644
+index 9c160e873d638..e4a90015ba227 100644
 --- a/drivers/mtd/spi-nor/core.c
 +++ b/drivers/mtd/spi-nor/core.c
 @@ -2015,6 +2015,7 @@ static const struct spi_nor_manufacturer *manufacturers[] = {
@@ -41336,7 +41335,7 @@ index 9c160e873d63..e4a90015ba22 100644
  
  static const struct flash_info spi_nor_generic_flash = {
 diff --git a/drivers/mtd/spi-nor/core.h b/drivers/mtd/spi-nor/core.h
-index 4f2e3cb9d139..1cc34c623030 100644
+index 4f2e3cb9d139f..1cc34c6230302 100644
 --- a/drivers/mtd/spi-nor/core.h
 +++ b/drivers/mtd/spi-nor/core.h
 @@ -659,6 +659,7 @@ extern const struct spi_nor_manufacturer spi_nor_sst;
@@ -41349,7 +41348,7 @@ index 4f2e3cb9d139..1cc34c623030 100644
  
 diff --git a/drivers/mtd/spi-nor/puya.c b/drivers/mtd/spi-nor/puya.c
 new file mode 100644
-index 000000000000..3046145da9ec
+index 0000000000000..3046145da9ec0
 --- /dev/null
 +++ b/drivers/mtd/spi-nor/puya.c
 @@ -0,0 +1,39 @@
@@ -41393,7 +41392,7 @@ index 000000000000..3046145da9ec
 +	.nparts = ARRAY_SIZE(puya_nor_parts),
 +};
 diff --git a/drivers/net/phy/motorcomm.c b/drivers/net/phy/motorcomm.c
-index 7a11fdb687cc..d942bb0d1bd1 100644
+index 7a11fdb687cc4..d942bb0d1bd16 100644
 --- a/drivers/net/phy/motorcomm.c
 +++ b/drivers/net/phy/motorcomm.c
 @@ -554,6 +554,7 @@ static int yt8531_set_wol(struct phy_device *phydev,
@@ -41413,7 +41412,7 @@ index 7a11fdb687cc..d942bb0d1bd1 100644
  		ret = ytphy_modify_ext_with_lock(phydev, YTPHY_WOL_CONFIG_REG,
  						 mask, 0);
 diff --git a/drivers/of/Kconfig b/drivers/of/Kconfig
-index da9826accb1b..52ffe3e8930f 100644
+index da9826accb1b5..52ffe3e8930ff 100644
 --- a/drivers/of/Kconfig
 +++ b/drivers/of/Kconfig
 @@ -102,4 +102,11 @@ config OF_OVERLAY
@@ -41429,7 +41428,7 @@ index da9826accb1b..52ffe3e8930f 100644
 +
  endif # OF
 diff --git a/drivers/of/Makefile b/drivers/of/Makefile
-index 640b282c115a..817b6b630b26 100644
+index 640b282c115ae..817b6b630b264 100644
 --- a/drivers/of/Makefile
 +++ b/drivers/of/Makefile
 @@ -12,6 +12,7 @@ obj-$(CONFIG_OF_RESERVED_MEM) += of_reserved_mem.o
@@ -41442,7 +41441,7 @@ index 640b282c115a..817b6b630b26 100644
  ifdef CONFIG_OF_FLATTREE
 diff --git a/drivers/of/configfs.c b/drivers/of/configfs.c
 new file mode 100644
-index 000000000000..5d85c00bd230
+index 0000000000000..5d85c00bd230f
 --- /dev/null
 +++ b/drivers/of/configfs.c
 @@ -0,0 +1,277 @@
@@ -41725,7 +41724,7 @@ index 000000000000..5d85c00bd230
 +late_initcall(of_cfs_init);
 \ No newline at end of file
 diff --git a/drivers/phy/eswin/phy-eswin-csi2-dphy-common.h b/drivers/phy/eswin/phy-eswin-csi2-dphy-common.h
-index b82146adce26..ba4b79da8d41 100644
+index b82146adce26d..ba4b79da8d416 100644
 --- a/drivers/phy/eswin/phy-eswin-csi2-dphy-common.h
 +++ b/drivers/phy/eswin/phy-eswin-csi2-dphy-common.h
 @@ -2,8 +2,8 @@
@@ -41802,7 +41801,7 @@ index b82146adce26..ba4b79da8d41 100644
 +#endif
 \ No newline at end of file
 diff --git a/drivers/phy/eswin/phy-eswin-csi2-dphy.c b/drivers/phy/eswin/phy-eswin-csi2-dphy.c
-index 467fdf8e72ad..67c984f69cd6 100644
+index 467fdf8e72ad5..67c984f69cd63 100644
 --- a/drivers/phy/eswin/phy-eswin-csi2-dphy.c
 +++ b/drivers/phy/eswin/phy-eswin-csi2-dphy.c
 @@ -67,35 +67,31 @@ static int csi2_dphy_get_sensor_data_rate(struct v4l2_subdev *sd)
@@ -42231,7 +42230,7 @@ index 467fdf8e72ad..67c984f69cd6 100644
  MODULE_AUTHOR("luyulin@eswincomputing.com");
  MODULE_DESCRIPTION("Eswin dphy platform driver");
 diff --git a/drivers/soc/eswin/ai_driver/common/dla_interface.h b/drivers/soc/eswin/ai_driver/common/dla_interface.h
-index e9baef36ed1e..5f2b78e5d58e 100644
+index e9baef36ed1eb..5f2b78e5d58e2 100644
 --- a/drivers/soc/eswin/ai_driver/common/dla_interface.h
 +++ b/drivers/soc/eswin/ai_driver/common/dla_interface.h
 @@ -688,10 +688,12 @@ struct dsp_op_desc {
@@ -42251,7 +42250,7 @@ index e9baef36ed1e..5f2b78e5d58e 100644
  
  struct hae_op_desc {
 diff --git a/drivers/soc/eswin/ai_driver/common/hetero_common.h b/drivers/soc/eswin/ai_driver/common/hetero_common.h
-index 40beda94b751..5d320d2a5088 100644
+index 40beda94b751d..5d320d2a50885 100644
 --- a/drivers/soc/eswin/ai_driver/common/hetero_common.h
 +++ b/drivers/soc/eswin/ai_driver/common/hetero_common.h
 @@ -245,8 +245,8 @@ typedef struct _op_current {
@@ -42266,7 +42265,7 @@ index 40beda94b751..5d320d2a5088 100644
  
  /**
 diff --git a/drivers/soc/eswin/ai_driver/common/hetero_ioctl.h b/drivers/soc/eswin/ai_driver/common/hetero_ioctl.h
-index 840ac01c759e..3343372b70ba 100644
+index 840ac01c759e4..3343372b70ba6 100644
 --- a/drivers/soc/eswin/ai_driver/common/hetero_ioctl.h
 +++ b/drivers/soc/eswin/ai_driver/common/hetero_ioctl.h
 @@ -117,6 +117,11 @@ enum WIN_IOCTL_CMD {
@@ -42282,7 +42281,7 @@ index 840ac01c759e..3343372b70ba 100644
  
  enum task_result_status {
 diff --git a/drivers/soc/eswin/ai_driver/dsp/dsp_proc.c b/drivers/soc/eswin/ai_driver/dsp/dsp_proc.c
-index bb38678c17b2..6c3c84cf030e 100644
+index bb38678c17b28..6c3c84cf030e3 100644
 --- a/drivers/soc/eswin/ai_driver/dsp/dsp_proc.c
 +++ b/drivers/soc/eswin/ai_driver/dsp/dsp_proc.c
 @@ -252,12 +252,9 @@ static int info_show(struct seq_file *m, void *p)
@@ -42311,7 +42310,7 @@ index bb38678c17b2..6c3c84cf030e 100644
  					perf_info.invalid_cmd_cnt,
  					perf_info.send_prepare_to_npu,
 diff --git a/drivers/soc/eswin/ai_driver/dsp/mloader/dsp_load_operator.c b/drivers/soc/eswin/ai_driver/dsp/mloader/dsp_load_operator.c
-index 34ce44f0aeae..9c0ba9579689 100644
+index 34ce44f0aeae7..9c0ba95796893 100644
 --- a/drivers/soc/eswin/ai_driver/dsp/mloader/dsp_load_operator.c
 +++ b/drivers/soc/eswin/ai_driver/dsp/mloader/dsp_load_operator.c
 @@ -41,6 +41,7 @@ static int get_file_size(const char *file_path)
@@ -42323,7 +42322,7 @@ index 34ce44f0aeae..9c0ba9579689 100644
  	return 0;
  }
 diff --git a/drivers/soc/eswin/ai_driver/npu/debug.c b/drivers/soc/eswin/ai_driver/npu/debug.c
-index c55a8188843b..7a91d82f6a91 100644
+index c55a8188843b9..7a91d82f6a917 100644
 --- a/drivers/soc/eswin/ai_driver/npu/debug.c
 +++ b/drivers/soc/eswin/ai_driver/npu/debug.c
 @@ -1140,7 +1140,7 @@ void dump_data_to_file(struct work_struct *work)
@@ -42336,7 +42335,7 @@ index c55a8188843b..7a91d82f6a91 100644
  	kfree(buffer);
  
 diff --git a/drivers/soc/eswin/ai_driver/npu/internal_interface.h b/drivers/soc/eswin/ai_driver/npu/internal_interface.h
-index 5a7cb578ac07..2793a375d71d 100644
+index 5a7cb578ac076..2793a375d71d8 100644
 --- a/drivers/soc/eswin/ai_driver/npu/internal_interface.h
 +++ b/drivers/soc/eswin/ai_driver/npu/internal_interface.h
 @@ -29,6 +29,7 @@
@@ -42437,7 +42436,7 @@ index 5a7cb578ac07..2793a375d71d 100644
  /**************** frame_scheduler.c ****************/
  int edma_tensor_unfold(struct win_executor *executor, int op_idx,
 diff --git a/drivers/soc/eswin/ai_driver/npu/npu_frame.c b/drivers/soc/eswin/ai_driver/npu/npu_frame.c
-index 0a6beef319c5..edb08b016d97 100644
+index 0a6beef319c57..edb08b016d971 100644
 --- a/drivers/soc/eswin/ai_driver/npu/npu_frame.c
 +++ b/drivers/soc/eswin/ai_driver/npu/npu_frame.c
 @@ -437,7 +437,7 @@ void npu_frame_timeout_tik(struct timer_list *t)
@@ -42462,7 +42461,7 @@ index 0a6beef319c5..edb08b016d97 100644
  	INIT_LIST_HEAD(&(*f)->complete_entry);
  	return executor->io_mem_handle_size;
 diff --git a/drivers/soc/eswin/ai_driver/npu/nvdla_sim.c b/drivers/soc/eswin/ai_driver/npu/nvdla_sim.c
-index e856f71778c9..5afec5b0c53c 100644
+index e856f71778c94..5afec5b0c53ca 100644
 --- a/drivers/soc/eswin/ai_driver/npu/nvdla_sim.c
 +++ b/drivers/soc/eswin/ai_driver/npu/nvdla_sim.c
 @@ -74,7 +74,7 @@ struct npu_op_done_info {
@@ -42493,7 +42492,7 @@ index e856f71778c9..5afec5b0c53c 100644
  	return 0;
  }
 diff --git a/drivers/soc/eswin/ai_driver/npu/sdp.c b/drivers/soc/eswin/ai_driver/npu/sdp.c
-index dbef535052b8..3f4d86e73072 100644
+index dbef535052b8d..3f4d86e730727 100644
 --- a/drivers/soc/eswin/ai_driver/npu/sdp.c
 +++ b/drivers/soc/eswin/ai_driver/npu/sdp.c
 @@ -333,10 +333,147 @@ static void sdp_post_drp_set_dst_addr(sdp_program_t *data, u64 addr)
@@ -42777,7 +42776,7 @@ index dbef535052b8..3f4d86e73072 100644
  		goto exit;
  
 diff --git a/drivers/soc/eswin/ai_driver/npu/user_context.c b/drivers/soc/eswin/ai_driver/npu/user_context.c
-index 2cb30760bd42..44aaaa16c5ff 100644
+index 2cb30760bd424..44aaaa16c5ff4 100644
 --- a/drivers/soc/eswin/ai_driver/npu/user_context.c
 +++ b/drivers/soc/eswin/ai_driver/npu/user_context.c
 @@ -303,13 +303,15 @@ int get_event_idx(struct win_executor *executor, int op_index)
@@ -42901,7 +42900,7 @@ index 2cb30760bd42..44aaaa16c5ff 100644
  
  clean_out:
 diff --git a/drivers/soc/sifive/sifive_ccache.c b/drivers/soc/sifive/sifive_ccache.c
-index f6ff949eb98d..7bd9cdf137c9 100644
+index f6ff949eb98d2..7bd9cdf137c9c 100644
 --- a/drivers/soc/sifive/sifive_ccache.c
 +++ b/drivers/soc/sifive/sifive_ccache.c
 @@ -270,7 +270,7 @@ static int zero_device_init(struct device_node *root, int nid)
@@ -42914,7 +42913,7 @@ index f6ff949eb98d..7bd9cdf137c9 100644
  					pr_err("failed to ioremap zero device\n");
  					of_node_put(child);
 diff --git a/drivers/staging/media/eswin/vdec/hantro_vcmd.c b/drivers/staging/media/eswin/vdec/hantro_vcmd.c
-index e0b8755f8f9f..c92373ca1942 100644
+index e0b8755f8f9ff..c92373ca1942c 100644
 --- a/drivers/staging/media/eswin/vdec/hantro_vcmd.c
 +++ b/drivers/staging/media/eswin/vdec/hantro_vcmd.c
 @@ -591,7 +591,7 @@ struct vcmd_config vcmd_core_array[MAX_SUBSYS_NUM] = {
@@ -42947,7 +42946,7 @@ index e0b8755f8f9f..c92373ca1942 100644
  				return -ERESTARTSYS;
  
 diff --git a/drivers/staging/media/eswin/venc/vc8000_vcmd_driver.c b/drivers/staging/media/eswin/venc/vc8000_vcmd_driver.c
-index 9aaa99c9c2d7..8754ff5aefeb 100644
+index 9aaa99c9c2d72..8754ff5aefeb7 100644
 --- a/drivers/staging/media/eswin/venc/vc8000_vcmd_driver.c
 +++ b/drivers/staging/media/eswin/venc/vc8000_vcmd_driver.c
 @@ -150,7 +150,7 @@
@@ -43046,7 +43045,7 @@ index 9aaa99c9c2d7..8754ff5aefeb 100644
  		unsigned int dmabuf_fd;
  		struct filp_priv *fp_priv = (struct filp_priv *)filp->private_data;
 diff --git a/include/linux/dmabuf-heap-import-helper.h b/include/linux/dmabuf-heap-import-helper.h
-index 913134b88cc8..74b208bdddec 100644
+index 913134b88cc8c..74b208bdddece 100644
 --- a/include/linux/dmabuf-heap-import-helper.h
 +++ b/include/linux/dmabuf-heap-import-helper.h
 @@ -139,7 +139,7 @@ void common_dmabuf_heap_umap_vaddr(struct heap_mem *heap_obj);
@@ -43059,7 +43058,7 @@ index 913134b88cc8..74b208bdddec 100644
  /* map a virtual address to visit the heap obj, return address Or NULL */
  struct heap_mem *common_dmabuf_heap_rsv_iova_map(struct heap_root *root, int fd, dma_addr_t iova, size_t size);
 diff --git a/include/media/eswin/eswin_vi.h b/include/media/eswin/eswin_vi.h
-index 97c9a58d3af0..f0ecd496d84e 100644
+index 97c9a58d3af01..f0ecd496d84e0 100644
 --- a/include/media/eswin/eswin_vi.h
 +++ b/include/media/eswin/eswin_vi.h
 @@ -38,22 +38,24 @@ struct eswin_vi_clk_rst {
@@ -43106,7 +43105,7 @@ index 97c9a58d3af0..f0ecd496d84e 100644
 \ No newline at end of file
 diff --git a/include/uapi/linux/es-camera-module.h b/include/uapi/linux/es-camera-module.h
 new file mode 100644
-index 000000000000..a6b70b66cbd1
+index 0000000000000..a6b70b66cbd1f
 --- /dev/null
 +++ b/include/uapi/linux/es-camera-module.h
 @@ -0,0 +1,819 @@
@@ -43931,7 +43930,7 @@ index 000000000000..a6b70b66cbd1
 +#endif /* _UAPI_ESMODULE_CAMERA_H */
 diff --git a/include/uapi/linux/es-dvp2axi-config.h b/include/uapi/linux/es-dvp2axi-config.h
 new file mode 100644
-index 000000000000..5f51c5b1fe9b
+index 0000000000000..5f51c5b1fe9b6
 --- /dev/null
 +++ b/include/uapi/linux/es-dvp2axi-config.h
 @@ -0,0 +1,94 @@
@@ -44031,7 +44030,7 @@ index 000000000000..5f51c5b1fe9b
 +#endif
 diff --git a/include/uapi/linux/es-video-format.h b/include/uapi/linux/es-video-format.h
 new file mode 100644
-index 000000000000..0366e9c95431
+index 0000000000000..0366e9c95431a
 --- /dev/null
 +++ b/include/uapi/linux/es-video-format.h
 @@ -0,0 +1,42 @@
@@ -44078,7 +44077,7 @@ index 000000000000..0366e9c95431
 +
 +#endif /* _UAPI_ES_VIDEO_FORMAT_H */
 diff --git a/scripts/Makefile.dtbinst b/scripts/Makefile.dtbinst
-index fa3ad33a19df..412c3209ce38 100644
+index fa3ad33a19df8..412c3209ce38e 100644
 --- a/scripts/Makefile.dtbinst
 +++ b/scripts/Makefile.dtbinst
 @@ -18,9 +18,10 @@ include $(srctree)/scripts/Kbuild.include
@@ -44094,7 +44093,7 @@ index fa3ad33a19df..412c3209ce38 100644
  
  quiet_cmd_dtb_install = INSTALL $@
 diff --git a/scripts/Makefile.lib b/scripts/Makefile.lib
-index 4aecfb0a0ef6..1da8d567e333 100644
+index 4aecfb0a0ef6a..1da8d567e333d 100644
 --- a/scripts/Makefile.lib
 +++ b/scripts/Makefile.lib
 @@ -390,7 +390,7 @@ $(obj)/%.dtbo.S: $(obj)/%.dtbo FORCE
@@ -44139,7 +44138,7 @@ index 4aecfb0a0ef6..1da8d567e333 100644
  
  # Bzip2
 diff --git a/sound/soc/eswin/esw-i2s.c b/sound/soc/eswin/esw-i2s.c
-index 1f44ff61d1fd..9f56fd7a9223 100755
+index 1f44ff61d1fd9..9f56fd7a92230 100755
 --- a/sound/soc/eswin/esw-i2s.c
 +++ b/sound/soc/eswin/esw-i2s.c
 @@ -1187,7 +1187,7 @@ static struct platform_driver i2s_driver = {

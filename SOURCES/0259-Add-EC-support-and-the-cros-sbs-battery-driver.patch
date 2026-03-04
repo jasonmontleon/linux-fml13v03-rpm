@@ -1,4 +1,4 @@
-From 55607dfde826063888c725544239741717f0b2bc Mon Sep 17 00:00:00 2001
+From 1d2f697501142bc70b28f5fd60ec97208c8309d8 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Wed, 26 Mar 2025 14:05:27 +0800
 Subject: [PATCH 259/534] Add EC support and the cros-sbs-battery driver.
@@ -19,7 +19,7 @@ Signed-off-by: yang.wang <yang.wang@deepcomputing.io>
  create mode 100644 include/linux/power/cros-sbs-battery.h
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
-index eed7c1addd49..4417b24df432 100644
+index eed7c1addd49c..4417b24df4320 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 @@ -1115,27 +1115,14 @@ conf3 {
@@ -62,7 +62,7 @@ index eed7c1addd49..4417b24df432 100644
  		rx-sample-delay-ns = <10>;				// Receive sample delay in nanoseconds
  		google,cros-ec-spi-pre-delay = <10>;
 diff --git a/arch/riscv/configs/fml13v03_defconfig b/arch/riscv/configs/fml13v03_defconfig
-index 0fbd77c040e2..8275d6cab804 100755
+index 0fbd77c040e21..8275d6cab804e 100755
 --- a/arch/riscv/configs/fml13v03_defconfig
 +++ b/arch/riscv/configs/fml13v03_defconfig
 @@ -483,6 +483,7 @@ CONFIG_PINCTRL_EIC7X=y
@@ -82,7 +82,7 @@ index 0fbd77c040e2..8275d6cab804 100755
  CONFIG_REGULATOR_FIXED_VOLTAGE=y
  CONFIG_REGULATOR_TPS549D22=y
 diff --git a/drivers/mfd/cros_ec_dev.c b/drivers/mfd/cros_ec_dev.c
-index 79d393b602bf..98cbdd025690 100644
+index 79d393b602bf3..98cbdd0256906 100644
 --- a/drivers/mfd/cros_ec_dev.c
 +++ b/drivers/mfd/cros_ec_dev.c
 @@ -113,6 +113,7 @@ static const struct mfd_cell cros_ec_platform_cells[] = {
@@ -130,7 +130,7 @@ index 79d393b602bf..98cbdd025690 100644
  
  	/*
 diff --git a/drivers/platform/chrome/cros_ec.c b/drivers/platform/chrome/cros_ec.c
-index e82f433e542e..3a34edc4794d 100644
+index e82f433e542ef..3a34edc4794dc 100644
 --- a/drivers/platform/chrome/cros_ec.c
 +++ b/drivers/platform/chrome/cros_ec.c
 @@ -206,8 +206,12 @@ int cros_ec_register(struct cros_ec_device *ec_dev)
@@ -149,7 +149,7 @@ index e82f433e542e..3a34edc4794d 100644
  
  	if (ec_dev->irq > 0) {
 diff --git a/drivers/platform/chrome/cros_ec_spi.c b/drivers/platform/chrome/cros_ec_spi.c
-index 3e88cc92e819..305bef05c331 100644
+index 3e88cc92e8192..305bef05c3317 100644
 --- a/drivers/platform/chrome/cros_ec_spi.c
 +++ b/drivers/platform/chrome/cros_ec_spi.c
 @@ -58,7 +58,7 @@
@@ -162,7 +162,7 @@ index 3e88cc92e819..305bef05c331 100644
  /**
   * struct cros_ec_spi - information about a SPI-connected EC
 diff --git a/drivers/power/supply/Kconfig b/drivers/power/supply/Kconfig
-index a61bb1283e19..6c21f8c1a0ad 100644
+index a61bb1283e197..6c21f8c1a0ad2 100644
 --- a/drivers/power/supply/Kconfig
 +++ b/drivers/power/supply/Kconfig
 @@ -233,6 +233,13 @@ config BATTERY_SBS
@@ -180,7 +180,7 @@ index a61bb1283e19..6c21f8c1a0ad 100644
  	tristate "SBS Compliant charger"
  	depends on I2C
 diff --git a/drivers/power/supply/Makefile b/drivers/power/supply/Makefile
-index a8a9fa6de1e9..8a74b7fbe916 100644
+index a8a9fa6de1e9a..8a74b7fbe916c 100644
 --- a/drivers/power/supply/Makefile
 +++ b/drivers/power/supply/Makefile
 @@ -41,6 +41,7 @@ obj-$(CONFIG_BATTERY_INGENIC)	+= ingenic-battery.o
@@ -193,7 +193,7 @@ index a8a9fa6de1e9..8a74b7fbe916 100644
  obj-$(CONFIG_BATTERY_BQ27XXX)	+= bq27xxx_battery.o
 diff --git a/drivers/power/supply/cros-sbs-battery.c b/drivers/power/supply/cros-sbs-battery.c
 new file mode 100644
-index 000000000000..edabfab5a6d0
+index 0000000000000..edabfab5a6d03
 --- /dev/null
 +++ b/drivers/power/supply/cros-sbs-battery.c
 @@ -0,0 +1,1211 @@
@@ -1410,7 +1410,7 @@ index 000000000000..edabfab5a6d0
 +		 "Attempt to load the driver even if no battery is connected");
 diff --git a/include/linux/power/cros-sbs-battery.h b/include/linux/power/cros-sbs-battery.h
 new file mode 100644
-index 000000000000..13e221b5f764
+index 0000000000000..13e221b5f7640
 --- /dev/null
 +++ b/include/linux/power/cros-sbs-battery.h
 @@ -0,0 +1,25 @@

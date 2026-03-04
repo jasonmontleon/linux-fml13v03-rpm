@@ -1,4 +1,4 @@
-From aafd7e92462eaf653735db0e104bd66454c3b177 Mon Sep 17 00:00:00 2001
+From fc146f57b7b23052387823424d2194e20bfc12d1 Mon Sep 17 00:00:00 2001
 From: zhouliang1 <zhouliang1@eswincomputing.com>
 Date: Fri, 22 Aug 2025 18:47:34 +0800
 Subject: [PATCH 482/534] feat:create files for d560 EP
@@ -16,7 +16,7 @@ Signed-off-by: zhouliang1 <zhouliang1@eswincomputing.com>
 
 diff --git a/arch/riscv/boot/dts/eswin/d560-ep-evb.dts b/arch/riscv/boot/dts/eswin/d560-ep-evb.dts
 new file mode 100644
-index 000000000000..5828b9f175f6
+index 0000000000000..5828b9f175f6d
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/d560-ep-evb.dts
 @@ -0,0 +1,1744 @@
@@ -1766,7 +1766,7 @@ index 000000000000..5828b9f175f6
 +*/
 diff --git a/arch/riscv/configs/d560_ep_evb_defconfig b/arch/riscv/configs/d560_ep_evb_defconfig
 new file mode 100644
-index 000000000000..43d6b8c66a4d
+index 0000000000000..43d6b8c66a4d4
 --- /dev/null
 +++ b/arch/riscv/configs/d560_ep_evb_defconfig
 @@ -0,0 +1,907 @@

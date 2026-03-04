@@ -1,4 +1,4 @@
-From 59dd4bd7287c72f728cd0960685ef99b5f5aedbe Mon Sep 17 00:00:00 2001
+From 420edf856180c03d180053ef8fdee7c4fde91e43 Mon Sep 17 00:00:00 2001
 From: yufangxian <yufangxian@eswincomputing.com>
 Date: Thu, 7 Aug 2025 13:31:09 +0800
 Subject: [PATCH 450/534] fix: switch dvp2axi and isp
@@ -24,7 +24,7 @@ Signed-off-by: yufangxian <yufangxian@eswincomputing.com>
  12 files changed, 184 insertions(+), 494 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-evb-camera-imx327.dtsi b/arch/riscv/boot/dts/eswin/eic7700-evb-camera-imx327.dtsi
-index 23863b71e5f1..b1676235008e 100644
+index 23863b71e5f10..b1676235008e8 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-evb-camera-imx327.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7700-evb-camera-imx327.dtsi
 @@ -155,10 +155,10 @@ imx327_out0: endpoint {
@@ -180,7 +180,7 @@ index 23863b71e5f1..b1676235008e 100644
  
  &isp_0 {
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-osm-camera.dtsi b/arch/riscv/boot/dts/eswin/eic7700-osm-camera.dtsi
-index 43e70252da36..44049e1ebbe7 100644
+index 43e70252da364..44049e1ebbe74 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-osm-camera.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7700-osm-camera.dtsi
 @@ -288,7 +288,10 @@ imx219_0: imx219@10 {
@@ -208,7 +208,7 @@ index 43e70252da36..44049e1ebbe7 100644
  		pinctrl-0 = <&pinctrl_gpio78_default>;
  		mclk-gpios = <&portc 14 GPIO_ACTIVE_HIGH>;
 diff --git a/drivers/media/platform/eswin/dvp2axi/capture.c b/drivers/media/platform/eswin/dvp2axi/capture.c
-index 08182c8daad3..cbf6620444b8 100644
+index 08182c8daad3a..cbf6620444b8d 100644
 --- a/drivers/media/platform/eswin/dvp2axi/capture.c
 +++ b/drivers/media/platform/eswin/dvp2axi/capture.c
 @@ -76,11 +76,6 @@
@@ -663,7 +663,7 @@ index 08182c8daad3..cbf6620444b8 100644
  {
  	return 0;
 diff --git a/drivers/media/platform/eswin/dvp2axi/dev.c b/drivers/media/platform/eswin/dvp2axi/dev.c
-index 80e221be1996..3b623212e733 100644
+index 80e221be1996a..3b623212e7334 100644
 --- a/drivers/media/platform/eswin/dvp2axi/dev.c
 +++ b/drivers/media/platform/eswin/dvp2axi/dev.c
 @@ -52,10 +52,6 @@ int es_dvp2axi_debug = 0;
@@ -813,7 +813,7 @@ index 80e221be1996..3b623212e733 100644
  }
  
 diff --git a/drivers/media/platform/eswin/dvp2axi/dev.h b/drivers/media/platform/eswin/dvp2axi/dev.h
-index c1590db40769..02d4ed16544e 100644
+index c1590db407695..02d4ed16544e1 100644
 --- a/drivers/media/platform/eswin/dvp2axi/dev.h
 +++ b/drivers/media/platform/eswin/dvp2axi/dev.h
 @@ -948,8 +948,8 @@ struct es_dvp2axi_device {
@@ -828,7 +828,7 @@ index c1590db40769..02d4ed16544e 100644
  extern struct platform_driver es_dvp2axi_plat_drv;
  #ifdef CONFIG_NUMA
 diff --git a/drivers/media/platform/eswin/dvp2axi/hw.c b/drivers/media/platform/eswin/dvp2axi/hw.c
-index 3dcbaa94289a..f1b886e8e0a8 100644
+index 3dcbaa94289a5..f1b886e8e0a8a 100644
 --- a/drivers/media/platform/eswin/dvp2axi/hw.c
 +++ b/drivers/media/platform/eswin/dvp2axi/hw.c
 @@ -56,150 +56,20 @@
@@ -1070,7 +1070,7 @@ index 3dcbaa94289a..f1b886e8e0a8 100644
 +MODULE_IMPORT_NS(DMA_BUF);
 \ No newline at end of file
 diff --git a/drivers/media/platform/eswin/mipi-csi2/dw-csi-plat.c b/drivers/media/platform/eswin/mipi-csi2/dw-csi-plat.c
-index 5b6c9ea71376..3910a4098026 100755
+index 5b6c9ea713761..3910a40980262 100755
 --- a/drivers/media/platform/eswin/mipi-csi2/dw-csi-plat.c
 +++ b/drivers/media/platform/eswin/mipi-csi2/dw-csi-plat.c
 @@ -138,6 +138,7 @@ dw_mipi_csi_set_fmt(struct v4l2_subdev *sd,
@@ -1136,7 +1136,7 @@ index 5b6c9ea71376..3910a4098026 100755
  	csi = devm_kzalloc(dev, sizeof(*csi), GFP_KERNEL);
  	if (!csi)
 diff --git a/drivers/media/platform/eswin/mipi-csi2/dw-csi-plat.h b/drivers/media/platform/eswin/mipi-csi2/dw-csi-plat.h
-index 257cbfbd044b..a308f9b0a409 100755
+index 257cbfbd044ba..a308f9b0a4094 100755
 --- a/drivers/media/platform/eswin/mipi-csi2/dw-csi-plat.h
 +++ b/drivers/media/platform/eswin/mipi-csi2/dw-csi-plat.h
 @@ -59,14 +59,34 @@ struct mipi_fmt dw_mipi_csi_formats[] = {
@@ -1178,7 +1178,7 @@ index 257cbfbd044b..a308f9b0a409 100755
  		/* RAW 14 */
  		.mbus_code = MEDIA_BUS_FMT_SBGGR14_1X14,
 diff --git a/drivers/media/platform/eswin/mipi-csi2/dw-mipi-csi.c b/drivers/media/platform/eswin/mipi-csi2/dw-mipi-csi.c
-index eb5144e50432..a7b4a829e603 100755
+index eb5144e504321..a7b4a829e6031 100755
 --- a/drivers/media/platform/eswin/mipi-csi2/dw-mipi-csi.c
 +++ b/drivers/media/platform/eswin/mipi-csi2/dw-mipi-csi.c
 @@ -221,11 +221,17 @@ void dw_mipi_csi_set_ipi_fmt(struct dw_csi *csi_dev)
@@ -1200,7 +1200,7 @@ index eb5144e50432..a7b4a829e603 100755
  		break;
  
 diff --git a/drivers/media/v4l2-core/v4l2-subdev.c b/drivers/media/v4l2-core/v4l2-subdev.c
-index eb905c565fe1..f80d9f9d51ca 100644
+index eb905c565fe10..f80d9f9d51cab 100644
 --- a/drivers/media/v4l2-core/v4l2-subdev.c
 +++ b/drivers/media/v4l2-core/v4l2-subdev.c
 @@ -662,10 +662,8 @@ static long subdev_do_ioctl(struct file *file, unsigned int cmd, void *arg,
@@ -1215,7 +1215,7 @@ index eb905c565fe1..f80d9f9d51ca 100644
  	}
  
 diff --git a/drivers/phy/eswin/phy-eswin-csi2-dphy-hw.c b/drivers/phy/eswin/phy-eswin-csi2-dphy-hw.c
-index ba7686dc092b..8bb690c43599 100644
+index ba7686dc092be..8bb690c43599d 100644
 --- a/drivers/phy/eswin/phy-eswin-csi2-dphy-hw.c
 +++ b/drivers/phy/eswin/phy-eswin-csi2-dphy-hw.c
 @@ -110,8 +110,7 @@ struct hsfreq_range {
@@ -1262,7 +1262,7 @@ index ba7686dc092b..8bb690c43599 100644
  }
  
 diff --git a/drivers/phy/eswin/phy-eswin-csi2-dphy.c b/drivers/phy/eswin/phy-eswin-csi2-dphy.c
-index 661e78dbb5d8..467fdf8e72ad 100644
+index 661e78dbb5d86..467fdf8e72ad5 100644
 --- a/drivers/phy/eswin/phy-eswin-csi2-dphy.c
 +++ b/drivers/phy/eswin/phy-eswin-csi2-dphy.c
 @@ -94,12 +94,8 @@ static int csi2_dphy_get_sensor_data_rate(struct v4l2_subdev *sd)

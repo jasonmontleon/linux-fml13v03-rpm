@@ -1,4 +1,4 @@
-From 8da59e4a1fb993b8e982bd8b8ee957c31989454a Mon Sep 17 00:00:00 2001
+From d9bc8065134d085e3c6150d861b7c13603045536 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Tue, 18 Mar 2025 15:07:53 +0800
 Subject: [PATCH 236/534] PWM: Add support for setting the polarity parameter
@@ -13,7 +13,7 @@ Signed-off-by: yang.wang <yang.wang@deepcomputing.io>
  4 files changed, 48 insertions(+), 42 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
-index a76e9203d17d..cb60d6d97362 100644
+index a76e9203d17d3..cb60d6d973629 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 @@ -36,6 +36,7 @@
@@ -109,7 +109,7 @@ index a76e9203d17d..cb60d6d97362 100644
  
  &pvt0 {
 diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi b/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
-index e4663a6e1be6..14174d0d8cf5 100644
+index e4663a6e1be6b..14174d0d8cf5f 100644
 --- a/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
 @@ -1324,7 +1324,7 @@ fan_control: fan_control@50b50000 {
@@ -131,7 +131,7 @@ index e4663a6e1be6..14174d0d8cf5 100644
  			clock-names = "pclk";
  			clocks = <&d0_clock WIN2030_CLK_LSP_TIMER_PCLK>;
 diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi b/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi
-index cedb2490af55..0d8a85901411 100644
+index cedb2490af55b..0d8a85901411e 100644
 --- a/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi
 @@ -720,7 +720,7 @@ d1_fan_control: fan_control@70b50000 {
@@ -153,7 +153,7 @@ index cedb2490af55..0d8a85901411 100644
  			pinctrl-0 = <&d1_pinctrl_pwm0_default &d1_pinctrl_pwm1_default &d1_pinctrl_pwm2_default>;
  			status = "disabled";
 diff --git a/drivers/pwm/pwm-dwc-eswin.c b/drivers/pwm/pwm-dwc-eswin.c
-index 71841d8a012a..39fa3fb81661 100644
+index 71841d8a012ad..39fa3fb816618 100644
 --- a/drivers/pwm/pwm-dwc-eswin.c
 +++ b/drivers/pwm/pwm-dwc-eswin.c
 @@ -109,23 +109,32 @@ static int __dwc_pwm_configure_timer(struct dwc_pwm *dwc,

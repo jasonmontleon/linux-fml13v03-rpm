@@ -1,4 +1,4 @@
-From e5eb18922905adda562d6a4bc9046b5cfe236abd Mon Sep 17 00:00:00 2001
+From db39339dbf9d99d5bcd8e475616ebddf6d3d65e4 Mon Sep 17 00:00:00 2001
 From: luoshanggui <luoshanggui@eswincomputing.com>
 Date: Mon, 30 Dec 2024 11:09:41 +0800
 Subject: [PATCH 311/534] feat: add npu usage Changelogs:
@@ -10,7 +10,7 @@ Signed-off-by: luoshanggui <luoshanggui@eswincomputing.com>
  2 files changed, 85 insertions(+), 18 deletions(-)
 
 diff --git a/drivers/soc/eswin/ai_driver/npu/dla_driver.h b/drivers/soc/eswin/ai_driver/npu/dla_driver.h
-index aad6bb6100b6..4e52af5d9fe1 100644
+index aad6bb6100b6f..4e52af5d9fe1b 100644
 --- a/drivers/soc/eswin/ai_driver/npu/dla_driver.h
 +++ b/drivers/soc/eswin/ai_driver/npu/dla_driver.h
 @@ -35,6 +35,15 @@
@@ -63,7 +63,7 @@ index aad6bb6100b6..4e52af5d9fe1 100644
  
  void dla_reg_write(struct nvdla_device *dev, uint32_t addr, uint32_t value);
 diff --git a/drivers/soc/eswin/ai_driver/npu/nvdla_proc.c b/drivers/soc/eswin/ai_driver/npu/nvdla_proc.c
-index 4bbbb3942e1b..5ae2aea36b84 100644
+index 4bbbb3942e1b7..5ae2aea36b84a 100644
 --- a/drivers/soc/eswin/ai_driver/npu/nvdla_proc.c
 +++ b/drivers/soc/eswin/ai_driver/npu/nvdla_proc.c
 @@ -27,6 +27,7 @@

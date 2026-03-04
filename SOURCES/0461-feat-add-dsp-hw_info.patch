@@ -1,4 +1,4 @@
-From 0329d0fac3803861a75837f0bdebd48891b66db0 Mon Sep 17 00:00:00 2001
+From 0466280a40659d7bc96ecc031a4e8f6baed9ef4e Mon Sep 17 00:00:00 2001
 From: zhuxuefei <zhuxuefei@eswincomputing.com>
 Date: Mon, 18 Aug 2025 15:15:20 +0800
 Subject: [PATCH 461/534] feat:add dsp hw_info.
@@ -13,7 +13,7 @@ Signed-off-by: zhuxuefei <zhuxuefei@eswincomputing.com>
  2 files changed, 70 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/soc/eswin/ai_driver/dsp/dsp_platform.h b/drivers/soc/eswin/ai_driver/dsp/dsp_platform.h
-index 40740cdfe21e..03abfbe83c35 100644
+index 40740cdfe21e9..03abfbe83c357 100644
 --- a/drivers/soc/eswin/ai_driver/dsp/dsp_platform.h
 +++ b/drivers/soc/eswin/ai_driver/dsp/dsp_platform.h
 @@ -36,7 +36,7 @@ void es_dsp_halt(struct es_dsp_hw *);
@@ -26,7 +26,7 @@ index 40740cdfe21e..03abfbe83c35 100644
  int es_dsp_platform_uninit(void);
  int es_dsp_hw_init(struct es_dsp *dsp);
 diff --git a/drivers/soc/eswin/ai_driver/dsp/dsp_proc.c b/drivers/soc/eswin/ai_driver/dsp/dsp_proc.c
-index 6797e819176f..bb38678c17b2 100644
+index 6797e819176f4..bb38678c17b28 100644
 --- a/drivers/soc/eswin/ai_driver/dsp/dsp_proc.c
 +++ b/drivers/soc/eswin/ai_driver/dsp/dsp_proc.c
 @@ -26,6 +26,7 @@

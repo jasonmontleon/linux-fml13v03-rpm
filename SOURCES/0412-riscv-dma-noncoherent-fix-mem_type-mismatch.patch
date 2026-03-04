@@ -1,4 +1,4 @@
-From 3be58feb756e4b5a9e2d55b73fcfb0a332683541 Mon Sep 17 00:00:00 2001
+From 96994dc4f9bbbe905b104f73cf87c141578077fc Mon Sep 17 00:00:00 2001
 From: Sandie Cao <sandie.cao@deepcomputing.io>
 Date: Fri, 4 Jul 2025 16:07:22 +0800
 Subject: [PATCH 412/534] riscv: dma-noncoherent: fix mem_type mismatch
@@ -9,7 +9,7 @@ Signed-off-by: Sandie Cao <sandie.cao@deepcomputing.io>
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/arch/riscv/mm/dma-noncoherent.c b/arch/riscv/mm/dma-noncoherent.c
-index 5ecf95370a69..88e672ade14f 100644
+index 5ecf95370a690..88e672ade14fc 100644
 --- a/arch/riscv/mm/dma-noncoherent.c
 +++ b/arch/riscv/mm/dma-noncoherent.c
 @@ -305,11 +305,11 @@ void arch_sync_cache_all(phys_addr_t phys, size_t size)

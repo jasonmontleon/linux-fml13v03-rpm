@@ -1,4 +1,4 @@
-From 9c63cd5276f7d3c7128a66ac51c18c1bc188f5af Mon Sep 17 00:00:00 2001
+From 5652ccfb60ecf0de024ea88a1a19cdff9e733502 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Mon, 14 Jul 2025 18:05:02 +0800
 Subject: [PATCH 418/534] Use GPIO94 from D0 to control CPU voltage for D1.
@@ -8,7 +8,7 @@ Subject: [PATCH 418/534] Use GPIO94 from D0 to control CPU voltage for D1.
  1 file changed, 1 insertion(+), 3 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
-index ba0a9cea46bd..13d48a90815e 100644
+index ba0a9cea46bd7..13d48a90815ed 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 @@ -312,9 +312,7 @@ &d0_clock {

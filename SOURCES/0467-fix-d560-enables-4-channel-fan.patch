@@ -1,4 +1,4 @@
-From 3b26367318e67d743c9479837cd3a60742b5ef5f Mon Sep 17 00:00:00 2001
+From ec51f42f9b9e4985f5b4e384c848bcb5cdbec400 Mon Sep 17 00:00:00 2001
 From: wangguosheng <wangguosheng@eswincomputing.com>
 Date: Fri, 15 Aug 2025 18:36:01 +0800
 Subject: [PATCH 467/534] fix: d560 enables 4-channel fan
@@ -14,7 +14,7 @@ Signed-off-by: wangguosheng <wangguosheng@eswincomputing.com>
  3 files changed, 47 insertions(+), 1 deletion(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-d560-interleave.dts b/arch/riscv/boot/dts/eswin/eic7702-d560-interleave.dts
-index 8677088b4728..663f157a57ae 100644
+index 8677088b47281..663f157a57ae3 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-d560-interleave.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-d560-interleave.dts
 @@ -174,6 +174,31 @@ aon_eeprom@50 {
@@ -50,7 +50,7 @@ index 8677088b4728..663f157a57ae 100644
  	/* pin header */
  	status = "okay";
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-d560.dts b/arch/riscv/boot/dts/eswin/eic7702-d560.dts
-index 32af941861d6..2025ce58d4f1 100644
+index 32af941861d60..2025ce58d4f18 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-d560.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-d560.dts
 @@ -178,6 +178,27 @@ &fan_control {
@@ -82,7 +82,7 @@ index 32af941861d6..2025ce58d4f1 100644
  	/* pin header */
  	status = "okay";
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi b/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
-index 20926a20be8b..783745d195ad 100644
+index 20926a20be8bb..783745d195ad4 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
 @@ -1232,7 +1232,7 @@ &pwm0 {

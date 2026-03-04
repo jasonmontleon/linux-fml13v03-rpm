@@ -1,4 +1,4 @@
-From cc18df926a7b12e356c7588abb8c71438fc7d4f0 Mon Sep 17 00:00:00 2001
+From f54fd7ec8d7732cc468a51d78f136dfd303f87a5 Mon Sep 17 00:00:00 2001
 From: fanxiaping <fanxiaping@eswincomputing.com>
 Date: Mon, 8 Sep 2025 09:25:01 +0800
 Subject: [PATCH 497/534] fix: hdmi suspend kernel panic
@@ -12,7 +12,7 @@ Signed-off-by: fanxiaping <fanxiaping@eswincomputing.com>
  2 files changed, 79 insertions(+), 39 deletions(-)
 
 diff --git a/drivers/gpu/drm/eswin/dw-hdmi.c b/drivers/gpu/drm/eswin/dw-hdmi.c
-index 926bfffe5335..5ccc666d9bef 100644
+index 926bfffe53350..5ccc666d9bef8 100644
 --- a/drivers/gpu/drm/eswin/dw-hdmi.c
 +++ b/drivers/gpu/drm/eswin/dw-hdmi.c
 @@ -4624,6 +4624,10 @@ EXPORT_SYMBOL_GPL(dw_hdmi_suspend);
@@ -38,7 +38,7 @@ index 926bfffe5335..5ccc666d9bef 100644
  	clk_enable(hdmi->iahb_clk);
  	clk_enable(hdmi->isfr_clk);
 diff --git a/drivers/gpu/drm/eswin/es_dw_hdmi.c b/drivers/gpu/drm/eswin/es_dw_hdmi.c
-index dafb70b022ee..598692cd7ddc 100644
+index dafb70b022ee0..598692cd7ddc9 100644
 --- a/drivers/gpu/drm/eswin/es_dw_hdmi.c
 +++ b/drivers/gpu/drm/eswin/es_dw_hdmi.c
 @@ -568,6 +568,10 @@ static void dw_hdmi_eswin_attatch_properties(struct drm_connector *connector,

@@ -1,4 +1,4 @@
-From b993438c6298ead9bb63c4f4edf0ee2c0da23138 Mon Sep 17 00:00:00 2001
+From 30f10d3498ea5ff1019a7cdde2937a8a418ff655 Mon Sep 17 00:00:00 2001
 From: denglei <denglei@eswincomputing.com>
 Date: Mon, 7 Apr 2025 19:31:32 +0800
 Subject: [PATCH 327/534] fix:Resolve the DC scaling issue.
@@ -12,7 +12,7 @@ Signed-off-by: denglei <denglei@eswincomputing.com>
  1 file changed, 7 insertions(+)
 
 diff --git a/drivers/gpu/drm/eswin/es_plane.c b/drivers/gpu/drm/eswin/es_plane.c
-index 93b97db5cb73..13718c3f4493 100644
+index 93b97db5cb736..13718c3f44932 100644
 --- a/drivers/gpu/drm/eswin/es_plane.c
 +++ b/drivers/gpu/drm/eswin/es_plane.c
 @@ -252,10 +252,17 @@ static int es_plane_atomic_check(struct drm_plane *plane,

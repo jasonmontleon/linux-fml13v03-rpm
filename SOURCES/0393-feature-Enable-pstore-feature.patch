@@ -1,4 +1,4 @@
-From 22dc1a52840d8f8e8d30597e80fdf42f4efdb00d Mon Sep 17 00:00:00 2001
+From 365b41761e7b49fb9421eb8d3a1c4c40646f089f Mon Sep 17 00:00:00 2001
 From: chenzhanzhan <chenzhanzhan@eswincomputing.com>
 Date: Tue, 10 Jun 2025 16:02:54 +0800
 Subject: [PATCH 393/534] feature: Enable pstore feature
@@ -14,7 +14,7 @@ Signed-off-by: chenzhanzhan <chenzhanzhan@eswincomputing.com>
  3 files changed, 21 insertions(+), 6 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-evb-a2.dts b/arch/riscv/boot/dts/eswin/eic7700-evb-a2.dts
-index 5606df9f9db0..86a72f4f4021 100644
+index 5606df9f9db09..86a72f4f40213 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-evb-a2.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7700-evb-a2.dts
 @@ -97,9 +97,14 @@ npu0_reserved: sprammemory@59000000 {
@@ -35,7 +35,7 @@ index 5606df9f9db0..86a72f4f4021 100644
  
  		g2d_8GB_boundary_reserved_4k {
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-evb.dts b/arch/riscv/boot/dts/eswin/eic7700-evb.dts
-index c4dd174eec1e..8b07c8de854a 100644
+index c4dd174eec1ed..8b07c8de854ac 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-evb.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7700-evb.dts
 @@ -93,9 +93,14 @@ npu0_reserved: sprammemory@59000000 {
@@ -56,7 +56,7 @@ index c4dd174eec1e..8b07c8de854a 100644
  
  		g2d_8GB_boundary_reserved_4k {
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-evb-a1.dts b/arch/riscv/boot/dts/eswin/eic7702-evb-a1.dts
-index fe05cc53ef2f..7ca4524ce672 100644
+index fe05cc53ef2f2..7ca4524ce672a 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-evb-a1.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-evb-a1.dts
 @@ -112,9 +112,14 @@ npu1_reserved: sprammemory@79000000 {

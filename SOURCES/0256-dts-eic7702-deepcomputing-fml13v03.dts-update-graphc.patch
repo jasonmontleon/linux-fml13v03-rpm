@@ -1,4 +1,4 @@
-From 790486126e97d2c1697e9ad51b26c942a88abf83 Mon Sep 17 00:00:00 2001
+From 4e48bfbef3d218d48cc657053237d669a2d3ff35 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Fri, 21 Mar 2025 11:08:32 +0800
 Subject: [PATCH 256/534] dts: eic7702-deepcomputing-fml13v03.dts: update
@@ -10,7 +10,7 @@ Signed-off-by: yang.wang <yang.wang@deepcomputing.io>
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
-index b5e470681536..89ea3cf635fd 100644
+index b5e4706815362..89ea3cf635fd3 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 @@ -750,7 +750,7 @@ &d1_i2s2 {

@@ -1,4 +1,4 @@
-From 2b8bdfcb56f7ed2cb8b4a92ab886bb41a90dc14a Mon Sep 17 00:00:00 2001
+From f2854a192487e7f19c339711e9490b40d66e71ec Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Wed, 6 Aug 2025 09:53:39 +0800
 Subject: [PATCH 426/534] Changelogs: 1. cpufreq control delete boost_1_6ghz
@@ -12,7 +12,7 @@ Subject: [PATCH 426/534] Changelogs: 1. cpufreq control delete boost_1_6ghz
  3 files changed, 51 insertions(+), 63 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic770x-opptable.dtsi b/arch/riscv/boot/dts/eswin/eic770x-opptable.dtsi
-index 6198424e38d5..5dd847e8bf93 100644
+index 6198424e38d5e..5dd847e8bf93a 100644
 --- a/arch/riscv/boot/dts/eswin/eic770x-opptable.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic770x-opptable.dtsi
 @@ -27,6 +27,7 @@
@@ -68,7 +68,7 @@ index 6198424e38d5..5dd847e8bf93 100644
  			opp-hz = /bits/ 64 <CLK_FREQ_1400M>;
  			opp-microvolt = <800000>;
 diff --git a/drivers/clk/eswin/clk.c b/drivers/clk/eswin/clk.c
-index 8e1fc15c4434..9355f48adafb 100644
+index 8e1fc15c44346..9355f48adafbc 100644
 --- a/drivers/clk/eswin/clk.c
 +++ b/drivers/clk/eswin/clk.c
 @@ -35,11 +35,9 @@
@@ -232,7 +232,7 @@ index 8e1fc15c4434..9355f48adafb 100644
  
  	for (i = 0; i < nums; i++) {
 diff --git a/drivers/clk/eswin/clk.h b/drivers/clk/eswin/clk.h
-index d80b13427f7e..2341d4013ab6 100644
+index d80b13427f7e6..2341d4013ab68 100644
 --- a/drivers/clk/eswin/clk.h
 +++ b/drivers/clk/eswin/clk.h
 @@ -19,6 +19,7 @@

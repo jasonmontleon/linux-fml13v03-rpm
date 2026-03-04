@@ -1,4 +1,4 @@
-From dfbe7e0fb9b51c7a1240c8edbd6ad6a3bfa3d8d4 Mon Sep 17 00:00:00 2001
+From 59bfacd92f438ee2ed50e3c35a7bd74d2a5a122d Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Thu, 13 Mar 2025 18:10:47 +0800
 Subject: [PATCH 232/534] Kconfig: fix compilation warnings.
@@ -10,7 +10,7 @@ Signed-off-by: yang.wang <yang.wang@deepcomputing.io>
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/soc/eswin/ai_driver/Kconfig b/drivers/soc/eswin/ai_driver/Kconfig
-index 0044a4be10e5..e2d60db9a5e2 100644
+index 0044a4be10e5e..e2d60db9a5e2a 100644
 --- a/drivers/soc/eswin/ai_driver/Kconfig
 +++ b/drivers/soc/eswin/ai_driver/Kconfig
 @@ -18,4 +18,5 @@ config ESWIN_NPU

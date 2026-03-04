@@ -1,4 +1,4 @@
-From bd6a4a75ef4a51bc1658e261cef9d2d3081744a5 Mon Sep 17 00:00:00 2001
+From e7aac906ede20a5cf48c90bccabc05b3d199d272 Mon Sep 17 00:00:00 2001
 From: Sandie Cao <sandie.cao@deepcomputing.io>
 Date: Mon, 16 Jun 2025 14:50:48 +0800
 Subject: [PATCH 309/534] riscv: eswin: fml13v03: using pvt0 as temperature
@@ -13,7 +13,7 @@ Signed-off-by: Sandie Cao <sandie.cao@deepcomputing.io>
  4 files changed, 9 insertions(+), 4 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
-index 8bac0f0c8f27..910a1505f414 100644
+index 8bac0f0c8f273..910a1505f414e 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 @@ -1588,11 +1588,15 @@ &fan_control {
@@ -35,7 +35,7 @@ index 8bac0f0c8f27..910a1505f414 100644
  
  &pvt1 {
 diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi b/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
-index 0a6e866db65c..9ef5cb260e41 100644
+index 0a6e866db65cf..9ef5cb260e413 100644
 --- a/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
 @@ -38,7 +38,7 @@ thermal0 {
@@ -48,7 +48,7 @@ index 0a6e866db65c..9ef5cb260e41 100644
  			trips {
  
 diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi b/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi
-index 21e045c91ee6..6927177ce2c8 100644
+index 21e045c91ee6b..6927177ce2c84 100644
 --- a/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi
 @@ -36,7 +36,7 @@ d1_thermal0 {
@@ -61,7 +61,7 @@ index 21e045c91ee6..6927177ce2c8 100644
  			trips {
  				d1_threshold: trip-point0 {
 diff --git a/arch/riscv/configs/fml13v03_defconfig b/arch/riscv/configs/fml13v03_defconfig
-index bc94f4ba64c9..f785a5367bbb 100755
+index bc94f4ba64c96..f785a5367bbb8 100755
 --- a/arch/riscv/configs/fml13v03_defconfig
 +++ b/arch/riscv/configs/fml13v03_defconfig
 @@ -2046,6 +2046,7 @@ CONFIG_SENSORS_DRIVETEMP=m

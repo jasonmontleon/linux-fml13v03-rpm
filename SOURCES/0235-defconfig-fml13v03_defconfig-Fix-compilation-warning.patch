@@ -1,4 +1,4 @@
-From d08bc5c418c28a97537e32711f957e8c3d369381 Mon Sep 17 00:00:00 2001
+From 965043029976de6e3b0abf89e3c755b181329622 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Tue, 18 Mar 2025 10:35:43 +0800
 Subject: [PATCH 235/534] defconfig: fml13v03_defconfig: Fix compilation
@@ -17,7 +17,7 @@ Signed-off-by: yang.wang <yang.wang@deepcomputing.io>
  1 file changed, 9 deletions(-)
 
 diff --git a/arch/riscv/configs/fml13v03_defconfig b/arch/riscv/configs/fml13v03_defconfig
-index 2e69a9e8adc3..87f975b2cdce 100755
+index 2e69a9e8adc33..87f975b2cdce2 100755
 --- a/arch/riscv/configs/fml13v03_defconfig
 +++ b/arch/riscv/configs/fml13v03_defconfig
 @@ -317,7 +317,6 @@ CONFIG_FW_LOADER_COMPRESS=y

@@ -1,4 +1,4 @@
-From 461b028dd6e23e19770f91b18c7bdb16e179a287 Mon Sep 17 00:00:00 2001
+From 8fd041bbbff72912b4d7cc23b7dc5c3a44aa5990 Mon Sep 17 00:00:00 2001
 From: Joey Zheng <zhengyu@eswincomputing.com>
 Date: Thu, 24 Apr 2025 16:53:28 +0800
 Subject: [PATCH 337/534] feat:adapt to vpu7702 smmu cfg drv
@@ -13,7 +13,7 @@ Signed-off-by: Joey Zheng <zhengyu@eswincomputing.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-vpu7702.dts b/arch/riscv/boot/dts/eswin/eic7700-vpu7702.dts
-index c7d0d3e9c1f4..0a7a169ebb26 100644
+index c7d0d3e9c1f4f..0a7a169ebb26e 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-vpu7702.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7700-vpu7702.dts
 @@ -188,7 +188,7 @@ d0_ipcm:ipcm@0 {

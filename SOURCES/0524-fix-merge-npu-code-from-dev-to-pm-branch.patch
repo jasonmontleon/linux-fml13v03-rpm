@@ -1,4 +1,4 @@
-From f3e5510ef200fc59bd2a6303b649d16f9514163e Mon Sep 17 00:00:00 2001
+From f58bbf2fc1ad46e0bea853252398e8f6192a3bd6 Mon Sep 17 00:00:00 2001
 From: denglei <denglei@eswincomputing.com>
 Date: Tue, 21 Oct 2025 16:34:45 +0800
 Subject: [PATCH 524/534] fix:merge npu code from dev to pm branch.
@@ -17,7 +17,7 @@ Signed-off-by: denglei <denglei@eswincomputing.com>
  6 files changed, 27 insertions(+), 50 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-d560a.dts b/arch/riscv/boot/dts/eswin/eic7702-d560a.dts
-index 3adfef6dabb1..faf23835ece5 100644
+index 3adfef6dabb17..faf23835ece5e 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-d560a.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-d560a.dts
 @@ -86,6 +86,12 @@ d1_npu_vcc:npu_svcc{
@@ -34,7 +34,7 @@ index 3adfef6dabb1..faf23835ece5 100644
  	opp@1500000000 {
  		opp-hz = /bits/ 64 <1500000000>;
 diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi b/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
-index 02f5ded734f4..26857746de42 100644
+index 02f5ded734f4c..26857746de42b 100644
 --- a/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
 @@ -622,7 +622,6 @@ dev_llc_d0: llc@51c00000 {
@@ -46,7 +46,7 @@ index 02f5ded734f4..26857746de42 100644
  		};
  
 diff --git a/drivers/soc/eswin/ai_driver/common/hetero_arch.h b/drivers/soc/eswin/ai_driver/common/hetero_arch.h
-index deb46ac3d38f..974f2aa580da 100644
+index deb46ac3d38ff..974f2aa580dac 100644
 --- a/drivers/soc/eswin/ai_driver/common/hetero_arch.h
 +++ b/drivers/soc/eswin/ai_driver/common/hetero_arch.h
 @@ -126,13 +126,13 @@ static inline u32 _ffs(u32 r0)
@@ -68,7 +68,7 @@ index deb46ac3d38f..974f2aa580da 100644
  static inline u32 es_sys_getcurcnt(void) { return (PTS_END_CYCLE - PTS_START_CYCLE); }
  
 diff --git a/drivers/soc/eswin/ai_driver/dsp/dsp_proc.c b/drivers/soc/eswin/ai_driver/dsp/dsp_proc.c
-index 6c3c84cf030e..70974b49897c 100644
+index 6c3c84cf030e3..70974b49897c9 100644
 --- a/drivers/soc/eswin/ai_driver/dsp/dsp_proc.c
 +++ b/drivers/soc/eswin/ai_driver/dsp/dsp_proc.c
 @@ -73,7 +73,7 @@ static int stats_show(struct seq_file *m, void *p)
@@ -81,7 +81,7 @@ index 6c3c84cf030e..70974b49897c 100644
  	}
  	return 0;
 diff --git a/drivers/soc/eswin/ai_driver/npu/npu_e31.c b/drivers/soc/eswin/ai_driver/npu/npu_e31.c
-index a0c01295970b..0437662d7fb5 100644
+index a0c01295970ba..0437662d7fb5d 100644
 --- a/drivers/soc/eswin/ai_driver/npu/npu_e31.c
 +++ b/drivers/soc/eswin/ai_driver/npu/npu_e31.c
 @@ -39,23 +39,8 @@
@@ -194,7 +194,7 @@ index a0c01295970b..0437662d7fb5 100644
  	load_firmware_to_conv_cpus(fw_virt_base, boot_dma_addr, e31_mmio_base);
  
 diff --git a/drivers/soc/eswin/ai_driver/npu/user_context.c b/drivers/soc/eswin/ai_driver/npu/user_context.c
-index 44aaaa16c5ff..e1963b3bda59 100644
+index 44aaaa16c5ff4..e1963b3bda59d 100644
 --- a/drivers/soc/eswin/ai_driver/npu/user_context.c
 +++ b/drivers/soc/eswin/ai_driver/npu/user_context.c
 @@ -995,7 +995,6 @@ int npu_dev_open(struct inode *inode, struct file *file)

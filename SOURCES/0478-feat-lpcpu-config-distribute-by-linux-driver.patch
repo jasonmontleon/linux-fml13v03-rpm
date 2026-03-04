@@ -1,4 +1,4 @@
-From e19547a40872a191a66ef38736abd2a34bfff86d Mon Sep 17 00:00:00 2001
+From 0a167c7df02443b856310ae592e1c0f40241ee59 Mon Sep 17 00:00:00 2001
 From: Wu Zhangben <wuzhangben@eswincomputing.com>
 Date: Wed, 13 Aug 2025 14:46:30 +0800
 Subject: [PATCH 478/534] feat:lpcpu config distribute by linux driver
@@ -17,7 +17,7 @@ Signed-off-by: Wu Zhangben <wuzhangben@eswincomputing.com>
  2 files changed, 26 insertions(+), 18 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03-evt.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03-evt.dts
-index fce5c14cea74..ea18664d8de9 100755
+index fce5c14cea746..ea18664d8de99 100755
 --- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03-evt.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03-evt.dts
 @@ -119,7 +119,7 @@ ramoops@fff00000 {
@@ -62,7 +62,7 @@ index fce5c14cea74..ea18664d8de9 100755
  
  &pinctrl_die0_gpio25_default {
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi b/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
-index cf97e2daabab..893401ea8268 100644
+index cf97e2daababb..893401ea82687 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
 @@ -168,10 +168,10 @@ d1_dc_reserved: d1_dc_reserved@2260000000 {

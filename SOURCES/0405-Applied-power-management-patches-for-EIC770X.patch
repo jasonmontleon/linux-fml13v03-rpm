@@ -1,4 +1,4 @@
-From ee0d68a48210d66052a438a747bb467b557d2436 Mon Sep 17 00:00:00 2001
+From 0e115ec99bd0ad8f4fa99221a3e4dd8ae1d79028 Mon Sep 17 00:00:00 2001
 From: Min Lin <linmin@eswincomputing.com>
 Date: Tue, 17 Jun 2025 13:51:06 +0800
 Subject: [PATCH 405/534] Applied power management patches for EIC770X
@@ -129,7 +129,7 @@ Signed-off-by: Min Lin <linmin@eswincomputing.com>
  26 files changed, 577 insertions(+), 2191 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-evb-a2.dts b/arch/riscv/boot/dts/eswin/eic7700-evb-a2.dts
-index 86a72f4f4021..e0977ef2def0 100644
+index 86a72f4f40213..e0977ef2def08 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-evb-a2.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7700-evb-a2.dts
 @@ -20,420 +20,26 @@
@@ -1133,7 +1133,7 @@ index 86a72f4f4021..e0977ef2def0 100644
 +};
 \ No newline at end of file
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-evb-camera.dtsi b/arch/riscv/boot/dts/eswin/eic7700-evb-camera.dtsi
-index 1aac57abe47a..6ee06032c50a 100644
+index 1aac57abe47aa..6ee06032c50a4 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-evb-camera.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7700-evb-camera.dtsi
 @@ -6,7 +6,7 @@ &vi_subsys {
@@ -1225,7 +1225,7 @@ index 1aac57abe47a..6ee06032c50a 100644
  		#address-cells = <1>;
          #size-cells = <0>;
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-evb.dts b/arch/riscv/boot/dts/eswin/eic7700-evb.dts
-index 8b07c8de854a..1860264b38b7 100644
+index 8b07c8de854ac..1860264b38b70 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-evb.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7700-evb.dts
 @@ -39,8 +39,7 @@ / {
@@ -1455,7 +1455,7 @@ index 8b07c8de854a..1860264b38b7 100644
 +	/delete-node/ opp-1800000000;
 +};
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-hifive-premier-p550-camera.dtsi b/arch/riscv/boot/dts/eswin/eic7700-hifive-premier-p550-camera.dtsi
-index 876f3652b8b3..4f3c4aac2c38 100644
+index 876f3652b8b38..4f3c4aac2c382 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-hifive-premier-p550-camera.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7700-hifive-premier-p550-camera.dtsi
 @@ -2,7 +2,7 @@ &vi_subsys {
@@ -1541,7 +1541,7 @@ index 876f3652b8b3..4f3c4aac2c38 100644
  
  &isp_1 {
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-hifive-premier-p550.dts b/arch/riscv/boot/dts/eswin/eic7700-hifive-premier-p550.dts
-index 88a298727574..c5e6c7cb2da3 100644
+index 88a2987275745..c5e6c7cb2da37 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-hifive-premier-p550.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7700-hifive-premier-p550.dts
 @@ -33,6 +33,7 @@
@@ -1781,7 +1781,7 @@ index 88a298727574..c5e6c7cb2da3 100644
 -
 -#include "eic7700-hifive-premier-p550-camera.dtsi"
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-som260-a1.dtsi b/arch/riscv/boot/dts/eswin/eic7700-som260-a1.dtsi
-index 254ac14f107d..3d22af00fe4c 100644
+index 254ac14f107da..3d22af00fe4c6 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-som260-a1.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7700-som260-a1.dtsi
 @@ -41,8 +41,7 @@ / {
@@ -2031,7 +2031,7 @@ index 254ac14f107d..3d22af00fe4c 100644
 +};
 \ No newline at end of file
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-som314.dtsi b/arch/riscv/boot/dts/eswin/eic7700-som314.dtsi
-index 8074d90da084..01cbc2976af8 100644
+index 8074d90da084b..01cbc2976af82 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-som314.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7700-som314.dtsi
 @@ -32,7 +32,7 @@
@@ -2241,7 +2241,7 @@ index 8074d90da084..01cbc2976af8 100644
 -};
 \ No newline at end of file
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-d560-interleave.dts b/arch/riscv/boot/dts/eswin/eic7702-d560-interleave.dts
-index f60641e6664c..8677088b4728 100644
+index f60641e6664c6..8677088b47281 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-d560-interleave.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-d560-interleave.dts
 @@ -218,7 +218,8 @@ fusb303b@21 {
@@ -2291,7 +2291,7 @@ index f60641e6664c..8677088b4728 100644
  
  &d1_pinctrl {
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-d560.dts b/arch/riscv/boot/dts/eswin/eic7702-d560.dts
-index a31f359283ed..603c289c9223 100644
+index a31f359283ed7..603c289c9223b 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-d560.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-d560.dts
 @@ -230,7 +230,8 @@ fusb303b@21 {
@@ -2340,7 +2340,7 @@ index a31f359283ed..603c289c9223 100644
  
  &d1_pinctrl {
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-evb-a1-d0.dts b/arch/riscv/boot/dts/eswin/eic7702-evb-a1-d0.dts
-index a5fd51c91151..fa37c442a875 100644
+index a5fd51c91151b..fa37c442a875a 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-evb-a1-d0.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-evb-a1-d0.dts
 @@ -40,8 +40,7 @@ / {
@@ -2559,7 +2559,7 @@ index a5fd51c91151..fa37c442a875 100644
  	status = "okay";
  };
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-evb-a1-d1.dts b/arch/riscv/boot/dts/eswin/eic7702-evb-a1-d1.dts
-index c13aa56d088f..914563bf4af4 100644
+index c13aa56d088f7..914563bf4af4e 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-evb-a1-d1.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-evb-a1-d1.dts
 @@ -40,8 +40,7 @@ / {
@@ -2777,7 +2777,7 @@ index c13aa56d088f..914563bf4af4 100644
  	status = "okay";
  };
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-evb-a1-interleave.dts b/arch/riscv/boot/dts/eswin/eic7702-evb-a1-interleave.dts
-index b535e6e6ca54..b44d14326e66 100644
+index b535e6e6ca544..b44d14326e66e 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-evb-a1-interleave.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-evb-a1-interleave.dts
 @@ -1,4 +1,3 @@
@@ -3209,7 +3209,7 @@ index b535e6e6ca54..b44d14326e66 100644
  
  /* die0 GPIO Function Description
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-evb-a1.dts b/arch/riscv/boot/dts/eswin/eic7702-evb-a1.dts
-index 7ca4524ce672..41614b80b3f9 100644
+index 7ca4524ce672a..41614b80b3f93 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-evb-a1.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-evb-a1.dts
 @@ -43,8 +43,7 @@ / {
@@ -3663,7 +3663,7 @@ index 7ca4524ce672..41614b80b3f9 100644
  
  /* die0 GPIO Function Description
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi b/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
-index c99a7f59c2e1..72c192ef0bcf 100644
+index c99a7f59c2e17..72c192ef0bcf4 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
 @@ -497,8 +497,13 @@ &d1_ipc_scpu {
@@ -3696,7 +3696,7 @@ index c99a7f59c2e1..72c192ef0bcf 100644
  
  &pvt1 {
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-som560.dtsi b/arch/riscv/boot/dts/eswin/eic7702-som560.dtsi
-index 5a2cc5c4ec25..c09e33c2180a 100644
+index 5a2cc5c4ec256..c09e33c2180a3 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-som560.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7702-som560.dtsi
 @@ -1161,11 +1161,11 @@ &d1_llc_dev{
@@ -3714,7 +3714,7 @@ index 5a2cc5c4ec25..c09e33c2180a 100644
  
  &SOC {
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-tb.dts b/arch/riscv/boot/dts/eswin/eic7702-tb.dts
-index 59357fbd94a9..1f7b648589e1 100644
+index 59357fbd94a9a..1f7b648589e10 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-tb.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-tb.dts
 @@ -43,8 +43,7 @@ / {
@@ -4154,7 +4154,7 @@ index 59357fbd94a9..1f7b648589e1 100644
  
  /* die0 GPIO Function Description
 diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi b/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi
-index eac116814375..1995499e7aab 100644
+index eac1168143750..1995499e7aab7 100644
 --- a/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi
 @@ -780,7 +780,7 @@ d1_pvt1: pvt@0x72360000 {
@@ -4167,7 +4167,7 @@ index eac116814375..1995499e7aab 100644
  			clock-names = "pclk";
  			resets = <&d1_reset FAN_RST_CTRL SW_FAN_RST_N>;
 diff --git a/drivers/gpu/drm/eswin/es_dc.c b/drivers/gpu/drm/eswin/es_dc.c
-index fae201342d8f..ee525fa5a0d9 100644
+index fae201342d8f0..ee525fa5a0d92 100644
 --- a/drivers/gpu/drm/eswin/es_dc.c
 +++ b/drivers/gpu/drm/eswin/es_dc.c
 @@ -32,6 +32,7 @@
@@ -4521,7 +4521,7 @@ index fae201342d8f..ee525fa5a0d9 100644
  }
  
 diff --git a/drivers/pmdomain/eswin/eic770x-pmu.c b/drivers/pmdomain/eswin/eic770x-pmu.c
-index e2a7d74bb46f..7e4db667f333 100644
+index e2a7d74bb46fb..7e4db667f333b 100644
 --- a/drivers/pmdomain/eswin/eic770x-pmu.c
 +++ b/drivers/pmdomain/eswin/eic770x-pmu.c
 @@ -97,6 +97,7 @@ struct eic770x_pmu {
@@ -4605,7 +4605,7 @@ index e2a7d74bb46f..7e4db667f333 100644
  	return 0;
  }
 diff --git a/drivers/soc/eswin/eswin-lpcpu.c b/drivers/soc/eswin/eswin-lpcpu.c
-index 62b6feba70f2..27c2d0d76cf0 100644
+index 62b6feba70f29..27c2d0d76cf09 100644
 --- a/drivers/soc/eswin/eswin-lpcpu.c
 +++ b/drivers/soc/eswin/eswin-lpcpu.c
 @@ -286,13 +286,16 @@ static const struct file_operations eswin_lpcpu_ops = {
@@ -4679,7 +4679,7 @@ index 62b6feba70f2..27c2d0d76cf0 100644
  		dev_err(dev, "Send message to lpcpu via mailbox failed!\n");
  		goto err_mmio;
 diff --git a/drivers/staging/media/eswin/hae/hal/kernel/arch/gc_hal_kernel_hardware.c b/drivers/staging/media/eswin/hae/hal/kernel/arch/gc_hal_kernel_hardware.c
-index 0cd8c0ab4dae..08df59d75d85 100644
+index 0cd8c0ab4daed..08df59d75d851 100644
 --- a/drivers/staging/media/eswin/hae/hal/kernel/arch/gc_hal_kernel_hardware.c
 +++ b/drivers/staging/media/eswin/hae/hal/kernel/arch/gc_hal_kernel_hardware.c
 @@ -5139,6 +5139,19 @@ gckHARDWARE_PowerControlClusters(gckHARDWARE Hardware,
@@ -4735,7 +4735,7 @@ index 0cd8c0ab4dae..08df59d75d85 100644
          (state == gcvPOWER_IDLE || state == gcvPOWER_SUSPEND)) {
          /* Delayed power off. */
 diff --git a/drivers/staging/media/eswin/hae/hal/kernel/arch/gc_hal_kernel_hardware_waitlink_fe.c b/drivers/staging/media/eswin/hae/hal/kernel/arch/gc_hal_kernel_hardware_waitlink_fe.c
-index 52907911bf20..377ac7d0acad 100644
+index 52907911bf206..377ac7d0acad1 100644
 --- a/drivers/staging/media/eswin/hae/hal/kernel/arch/gc_hal_kernel_hardware_waitlink_fe.c
 +++ b/drivers/staging/media/eswin/hae/hal/kernel/arch/gc_hal_kernel_hardware_waitlink_fe.c
 @@ -1125,12 +1125,23 @@ gckWLFE_Execute(gckHARDWARE Hardware, gctADDRESS Address, gctUINT32 Bytes)
@@ -4764,7 +4764,7 @@ index 52907911bf20..377ac7d0acad 100644
          } while (idle != 0x7FFFFFFF);
      }
 diff --git a/drivers/staging/media/eswin/hae/hal/kernel/inc/gc_hal_base.h b/drivers/staging/media/eswin/hae/hal/kernel/inc/gc_hal_base.h
-index 2af1f18c7754..986d2f046527 100644
+index 2af1f18c77543..986d2f0465274 100644
 --- a/drivers/staging/media/eswin/hae/hal/kernel/inc/gc_hal_base.h
 +++ b/drivers/staging/media/eswin/hae/hal/kernel/inc/gc_hal_base.h
 @@ -2906,6 +2906,9 @@ gcoOS_ProfileDB(IN gctCONST_STRING Function, IN OUT gctBOOL_PTR Initialized);
@@ -4778,7 +4778,7 @@ index 2af1f18c7754..986d2f046527 100644
  gckOS_Print(IN gctCONST_STRING Message, ...) CHECK_PRINTF_FORMAT(1, 2);
  
 diff --git a/drivers/staging/media/eswin/hae/hal/kernel/inc/gc_hal_options.h b/drivers/staging/media/eswin/hae/hal/kernel/inc/gc_hal_options.h
-index 7215038503f1..7f408288dd24 100644
+index 7215038503f18..7f408288dd24a 100644
 --- a/drivers/staging/media/eswin/hae/hal/kernel/inc/gc_hal_options.h
 +++ b/drivers/staging/media/eswin/hae/hal/kernel/inc/gc_hal_options.h
 @@ -695,7 +695,7 @@
@@ -4791,7 +4791,7 @@ index 7215038503f1..7f408288dd24 100644
  
  /*
 diff --git a/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_device.c b/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_device.c
-index 9699a7b40d14..263a558b5570 100644
+index 9699a7b40d148..263a558b5570a 100644
 --- a/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_device.c
 +++ b/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_device.c
 @@ -2268,7 +2268,8 @@ isrRoutine(int irq, void *ctxt)
@@ -4805,7 +4805,7 @@ index 9699a7b40d14..263a558b5570 100644
  
      return IRQ_NONE;
 diff --git a/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_parameter.h b/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_parameter.h
-index dcc6b0558a33..22f6ebe226a6 100644
+index dcc6b0558a338..22f6ebe226a67 100644
 --- a/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_parameter.h
 +++ b/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_parameter.h
 @@ -305,7 +305,7 @@ static int compression = -1;

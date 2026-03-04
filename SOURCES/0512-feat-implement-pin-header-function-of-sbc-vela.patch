@@ -1,4 +1,4 @@
-From cab5e879ce2533b38236a651f7f89a6337a9e0f0 Mon Sep 17 00:00:00 2001
+From a3d25c39dd39381fd0a1b5563d0aa58c8ef2f9be Mon Sep 17 00:00:00 2001
 From: Xiang Xu <xuxiang@eswincomputing.com>
 Date: Mon, 25 Aug 2025 10:11:09 +0800
 Subject: [PATCH 512/534] feat:implement pin header function of sbc/vela
@@ -12,7 +12,7 @@ Signed-off-by: Xiang Xu <xuxiang@eswincomputing.com>
  1 file changed, 8 insertions(+), 39 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dtsi b/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dtsi
-index b42aaeda5da3..7b72bbe2cc5d 100755
+index b42aaeda5da30..7b72bbe2cc5da 100755
 --- a/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dtsi
 @@ -33,7 +33,7 @@

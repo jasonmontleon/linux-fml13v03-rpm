@@ -1,4 +1,4 @@
-From 94c393ee7f2f8b8f44ccb401a85367526c263e64 Mon Sep 17 00:00:00 2001
+From effe9ad7e4c48eb97498459c1e53ece899e61489 Mon Sep 17 00:00:00 2001
 From: Han Gao <gaohan@iscas.ac.cn>
 Date: Mon, 22 Jul 2024 17:32:51 +0800
 Subject: [PATCH 095/534] config: enable some options for the distribution
@@ -10,7 +10,7 @@ Signed-off-by: Han Gao <rabenda.cn@gmail.com>
  1 file changed, 41 insertions(+), 1 deletion(-)
 
 diff --git a/arch/riscv/configs/win2030_defconfig b/arch/riscv/configs/win2030_defconfig
-index c30b74940c05..c9ffac16a286 100644
+index c30b74940c053..c9ffac16a2866 100644
 --- a/arch/riscv/configs/win2030_defconfig
 +++ b/arch/riscv/configs/win2030_defconfig
 @@ -2,7 +2,7 @@

@@ -1,4 +1,4 @@
-From 39a8f2cd1d2a638137a753e41f2e04ab164da8f1 Mon Sep 17 00:00:00 2001
+From 69092df6dfe4499325ed2e42fc9ee6365616ecda Mon Sep 17 00:00:00 2001
 From: chenzhanzhan <chenzhanzhan@eswincomputing.com>
 Date: Wed, 10 Sep 2025 10:26:21 +0800
 Subject: [PATCH 523/534] feature: Add eswin watchdog driver
@@ -18,7 +18,7 @@ Signed-off-by: chenzhanzhan <chenzhanzhan@eswincomputing.com>
  create mode 100644 drivers/watchdog/esw_wdt.c
 
 diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi b/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
-index d835fd640338..02f5ded734f4 100644
+index d835fd640338c..02f5ded734f4c 100644
 --- a/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
 @@ -1378,6 +1378,17 @@ d0_watchdog:watchdog@0 {
@@ -40,7 +40,7 @@ index d835fd640338..02f5ded734f4 100644
  			compatible = "eswin,eswin-pvt-cpu";
  			clocks = <&d0_clock EIC7700_CLK_PVT_CLK_0>;
 diff --git a/drivers/mailbox/eswin-mailbox.c b/drivers/mailbox/eswin-mailbox.c
-index ef6e5f36a11b..e929f4a0ba2d 100755
+index ef6e5f36a11ba..e929f4a0ba2dc 100755
 --- a/drivers/mailbox/eswin-mailbox.c
 +++ b/drivers/mailbox/eswin-mailbox.c
 @@ -438,7 +438,7 @@ static int eswin_mbox_probe(struct platform_device *pdev)
@@ -53,7 +53,7 @@ index ef6e5f36a11b..e929f4a0ba2d 100755
  		mb->wakeup_source = false;
  		mb->mbox.txdone_poll = true;
 diff --git a/drivers/watchdog/Kconfig b/drivers/watchdog/Kconfig
-index 751458959411..3ec0921eddbd 100644
+index 751458959411c..3ec0921eddbda 100644
 --- a/drivers/watchdog/Kconfig
 +++ b/drivers/watchdog/Kconfig
 @@ -872,6 +872,18 @@ config ARM_SMC_WATCHDOG
@@ -76,7 +76,7 @@ index 751458959411..3ec0921eddbd 100644
  	tristate "LPC18xx/43xx Watchdog"
  	depends on ARCH_LPC18XX || COMPILE_TEST
 diff --git a/drivers/watchdog/Makefile b/drivers/watchdog/Makefile
-index 7eab9de311cb..5988bd1c3514 100644
+index 7eab9de311cb9..5988bd1c3514a 100644
 --- a/drivers/watchdog/Makefile
 +++ b/drivers/watchdog/Makefile
 @@ -235,3 +235,5 @@ obj-$(CONFIG_MENZ069_WATCHDOG) += menz69_wdt.o
@@ -87,7 +87,7 @@ index 7eab9de311cb..5988bd1c3514 100644
 +obj-$(CONFIG_ESWIN_WATCHDOG) += esw_wdt.o
 diff --git a/drivers/watchdog/esw_wdt.c b/drivers/watchdog/esw_wdt.c
 new file mode 100644
-index 000000000000..4001b373c0be
+index 0000000000000..4001b373c0be2
 --- /dev/null
 +++ b/drivers/watchdog/esw_wdt.c
 @@ -0,0 +1,404 @@

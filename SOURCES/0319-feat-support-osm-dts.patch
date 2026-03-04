@@ -1,4 +1,4 @@
-From a4fd3d9ae13b938b4b6a29825f441ba4eef639d8 Mon Sep 17 00:00:00 2001
+From 42d1627fae7a3ed183268e97afcfa01e78ca50c0 Mon Sep 17 00:00:00 2001
 From: ningyu <ningyu@eswincomputing.com>
 Date: Fri, 21 Feb 2025 17:35:41 +0800
 Subject: [PATCH 319/534] feat:support osm dts
@@ -16,7 +16,7 @@ Signed-off-by: ningyu <ningyu@eswincomputing.com>
  2 files changed, 131 insertions(+), 128 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-osm.dts b/arch/riscv/boot/dts/eswin/eic7700-osm.dts
-index ab2bf385a71e..5e9d67c18185 100644
+index ab2bf385a71e6..5e9d67c181854 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-osm.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7700-osm.dts
 @@ -33,6 +33,7 @@
@@ -382,7 +382,7 @@ index ab2bf385a71e..5e9d67c18185 100644
  };
 +
 diff --git a/arch/riscv/configs/eic7700_defconfig b/arch/riscv/configs/eic7700_defconfig
-index f90fd076f227..964166f6fdee 100644
+index f90fd076f227d..964166f6fdeee 100644
 --- a/arch/riscv/configs/eic7700_defconfig
 +++ b/arch/riscv/configs/eic7700_defconfig
 @@ -29,6 +29,7 @@ CONFIG_BLK_DEV_INITRD=y

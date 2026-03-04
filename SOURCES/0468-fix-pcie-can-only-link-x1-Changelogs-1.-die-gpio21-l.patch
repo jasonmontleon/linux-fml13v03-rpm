@@ -1,4 +1,4 @@
-From 7d4695647e4b15b5a9d54ae5357437a39239552f Mon Sep 17 00:00:00 2001
+From 2d5457cad51ee1f3d73579a37c571034028bcfa9 Mon Sep 17 00:00:00 2001
 From: ouyanghui <ouyanghui@eswincomputing.com>
 Date: Fri, 1 Aug 2025 10:45:09 +0800
 Subject: [PATCH 468/534] fix:pcie can only link x1 Changelogs: 1. die gpio21
@@ -11,7 +11,7 @@ Signed-off-by: ouyanghui <ouyanghui@eswincomputing.com>
  2 files changed, 22 insertions(+)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-d560-interleave.dts b/arch/riscv/boot/dts/eswin/eic7702-d560-interleave.dts
-index 663f157a57ae..18897dc8d6c3 100644
+index 663f157a57ae3..18897dc8d6c36 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-d560-interleave.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-d560-interleave.dts
 @@ -306,6 +306,17 @@ &d1_timer1 {
@@ -33,7 +33,7 @@ index 663f157a57ae..18897dc8d6c3 100644
  	status = "okay";
  	pinctrl-names = "default";
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-d560.dts b/arch/riscv/boot/dts/eswin/eic7702-d560.dts
-index 2025ce58d4f1..5f06d6743016 100644
+index 2025ce58d4f18..5f06d6743016b 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-d560.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-d560.dts
 @@ -318,6 +318,17 @@ &pwm0 {

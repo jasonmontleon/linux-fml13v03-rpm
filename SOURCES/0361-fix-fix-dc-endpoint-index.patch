@@ -1,4 +1,4 @@
-From 107e5f8040055d7a367ddde57b631e8da6a89cd2 Mon Sep 17 00:00:00 2001
+From 37fbc7f6f8bb631bf962ec3f737737b67be41850 Mon Sep 17 00:00:00 2001
 From: yufangxian <yufangxian@eswincomputing.com>
 Date: Wed, 14 May 2025 18:21:01 +0800
 Subject: [PATCH 361/534] fix: fix dc endpoint index
@@ -12,7 +12,7 @@ Signed-off-by: yufangxian <yufangxian@eswincomputing.com>
  1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-hifive-premier-p550.dts b/arch/riscv/boot/dts/eswin/eic7700-hifive-premier-p550.dts
-index 8d2ad1b263c7..2b22b12ab389 100644
+index 8d2ad1b263c77..2b22b12ab3894 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-hifive-premier-p550.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7700-hifive-premier-p550.dts
 @@ -308,12 +308,12 @@ &dc {

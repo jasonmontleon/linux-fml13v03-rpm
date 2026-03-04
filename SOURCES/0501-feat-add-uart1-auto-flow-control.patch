@@ -1,4 +1,4 @@
-From 3f104a35e697e78e883eb80ff9fcfb7879045e55 Mon Sep 17 00:00:00 2001
+From 13c02b2f870b45d3912d824c77ca1ae54cd92509 Mon Sep 17 00:00:00 2001
 From: Xiang Xu <xuxiang@eswincomputing.com>
 Date: Tue, 26 Aug 2025 19:12:37 +0800
 Subject: [PATCH 501/534] feat:add uart1 auto-flow-control
@@ -12,10 +12,10 @@ Signed-off-by: Xiang Xu <xuxiang@eswincomputing.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/tty/serial/8250/8250_dw.c b/drivers/tty/serial/8250/8250_dw.c
-index b4735f208b33..3c9dcd8959c8 100644
+index b39f026080e8f..50c84104067aa 100644
 --- a/drivers/tty/serial/8250/8250_dw.c
 +++ b/drivers/tty/serial/8250/8250_dw.c
-@@ -838,7 +838,7 @@ MODULE_DEVICE_TABLE(acpi, dw8250_acpi_match);
+@@ -845,7 +845,7 @@ MODULE_DEVICE_TABLE(acpi, dw8250_acpi_match);
  static struct platform_driver dw8250_platform_driver = {
  	.driver = {
  		.name		= "dw-apb-uart",

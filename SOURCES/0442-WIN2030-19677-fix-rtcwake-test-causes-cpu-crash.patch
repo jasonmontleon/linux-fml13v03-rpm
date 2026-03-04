@@ -1,4 +1,4 @@
-From d31d2523e9b52588fe9e74efa822d4c49d801e78 Mon Sep 17 00:00:00 2001
+From 401a201c051b1feceed580aef9682d090cce1f2e Mon Sep 17 00:00:00 2001
 From: ouyanghui <ouyanghui@eswincomputing.com>
 Date: Tue, 30 Sep 2025 16:53:49 +0800
 Subject: [PATCH 442/534] WIN2030-19677:fix:rtcwake test causes cpu crash
@@ -15,7 +15,7 @@ Signed-off-by: ouyanghui <ouyanghui@eswincomputing.com>
  2 files changed, 64 insertions(+)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
-index 4312a22a8d9f..f507433be4cf 100644
+index 4312a22a8d9f7..f507433be4cfc 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 @@ -326,11 +326,13 @@ &d0_clock {
@@ -33,7 +33,7 @@ index 4312a22a8d9f..f507433be4cf 100644
  
  &d0_reset {
 diff --git a/drivers/clk/eswin/clk-eic7700.c b/drivers/clk/eswin/clk-eic7700.c
-index dc4e945f7fce..13ba2453401a 100644
+index dc4e945f7fce9..13ba2453401ae 100644
 --- a/drivers/clk/eswin/clk-eic7700.c
 +++ b/drivers/clk/eswin/clk-eic7700.c
 @@ -14,6 +14,7 @@

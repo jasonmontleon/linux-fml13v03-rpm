@@ -1,4 +1,4 @@
-From a2eed1a64e964bbfd0257920e46520bec227d6b6 Mon Sep 17 00:00:00 2001
+From 48f0214b0ceb0f2e12edd5990657f7986b222b5c Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Fri, 7 Mar 2025 14:05:14 +0800
 Subject: [PATCH 225/534] Changelogs: Add the configuration for the motherboard
@@ -13,7 +13,7 @@ Subject: [PATCH 225/534] Changelogs: Add the configuration for the motherboard
  create mode 100755 arch/riscv/configs/fml13v03_defconfig
 
 diff --git a/arch/riscv/boot/dts/eswin/Makefile b/arch/riscv/boot/dts/eswin/Makefile
-index 8aca61b40364..b5076a6744bf 100644
+index 8aca61b403646..b5076a6744bf2 100644
 --- a/arch/riscv/boot/dts/eswin/Makefile
 +++ b/arch/riscv/boot/dts/eswin/Makefile
 @@ -9,5 +9,6 @@ dtb-$(CONFIG_SOC_SIFIVE) += eswin-win2030.dtb \
@@ -26,7 +26,7 @@ index 8aca61b40364..b5076a6744bf 100644
  obj-$(CONFIG_BUILTIN_DTB) += $(addsuffix .o, $(dtb-y))
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 new file mode 100644
-index 000000000000..c3c55a67046e
+index 0000000000000..c3c55a67046e0
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 @@ -0,0 +1,1655 @@
@@ -1687,7 +1687,7 @@ index 000000000000..c3c55a67046e
 +*/
 diff --git a/arch/riscv/configs/fml13v03_defconfig b/arch/riscv/configs/fml13v03_defconfig
 new file mode 100755
-index 000000000000..4a8403715cd9
+index 0000000000000..4a8403715cd92
 --- /dev/null
 +++ b/arch/riscv/configs/fml13v03_defconfig
 @@ -0,0 +1,851 @@

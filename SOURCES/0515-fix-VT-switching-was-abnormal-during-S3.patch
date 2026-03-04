@@ -1,4 +1,4 @@
-From 96bf8ea682e5ede5e9be323840ee3de22c15dacb Mon Sep 17 00:00:00 2001
+From e1ca7f50dcb4657e08c22c289026bf49f5724960 Mon Sep 17 00:00:00 2001
 From: gengzonglin <gengzonglin@eswincomputing.com>
 Date: Thu, 18 Sep 2025 10:22:10 +0800
 Subject: [PATCH 515/534] fix:VT switching was abnormal during S3.
@@ -12,7 +12,7 @@ Signed-off-by: gengzonglin gengzonglin@eswincomputing.com
  1 file changed, 3 insertions(+)
 
 diff --git a/drivers/gpu/drm/eswin/es_drv.c b/drivers/gpu/drm/eswin/es_drv.c
-index 1ee7f00528c1..1809b0a5f2a0 100644
+index 1ee7f00528c1a..1809b0a5f2a0e 100644
 --- a/drivers/gpu/drm/eswin/es_drv.c
 +++ b/drivers/gpu/drm/eswin/es_drv.c
 @@ -334,6 +334,9 @@ static int es_drm_bind(struct device *dev)

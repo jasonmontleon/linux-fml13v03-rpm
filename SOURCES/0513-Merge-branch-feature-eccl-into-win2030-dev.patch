@@ -1,4 +1,4 @@
-From db833e8854f5c9ee7af516759d1bc13613dcd28d Mon Sep 17 00:00:00 2001
+From b64269e3aa5ee06dbb704473de696c80bf326e97 Mon Sep 17 00:00:00 2001
 From: denglei <denglei@eswincomputing.com>
 Date: Wed, 10 Sep 2025 14:15:40 +0800
 Subject: [PATCH 513/534] Merge branch 'feature-eccl' into win2030-dev
@@ -15,7 +15,7 @@ Subject: [PATCH 513/534] Merge branch 'feature-eccl' into win2030-dev
  8 files changed, 217 insertions(+), 24 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/vpu7702-pcie-a2.dts b/arch/riscv/boot/dts/eswin/vpu7702-pcie-a2.dts
-index 34b72d61219f..96e4f92f283f 100644
+index 34b72d61219fa..96e4f92f283f3 100644
 --- a/arch/riscv/boot/dts/eswin/vpu7702-pcie-a2.dts
 +++ b/arch/riscv/boot/dts/eswin/vpu7702-pcie-a2.dts
 @@ -73,6 +73,12 @@ memory@59000000 {
@@ -63,7 +63,7 @@ index 34b72d61219f..96e4f92f283f 100644
  
  	soc {
 diff --git a/drivers/soc/eswin/ai_driver/common/dla_interface.h b/drivers/soc/eswin/ai_driver/common/dla_interface.h
-index bd2d66b85d56..e9baef36ed1e 100644
+index bd2d66b85d56f..e9baef36ed1eb 100644
 --- a/drivers/soc/eswin/ai_driver/common/dla_interface.h
 +++ b/drivers/soc/eswin/ai_driver/common/dla_interface.h
 @@ -74,6 +74,7 @@
@@ -87,7 +87,7 @@ index bd2d66b85d56..e9baef36ed1e 100644
  
  #define EVENT_OP_TENSOR_NUM 8
 diff --git a/drivers/soc/eswin/ai_driver/common/hetero_common.h b/drivers/soc/eswin/ai_driver/common/hetero_common.h
-index 74e134ea2e4a..40beda94b751 100644
+index 74e134ea2e4a0..40beda94b751d 100644
 --- a/drivers/soc/eswin/ai_driver/common/hetero_common.h
 +++ b/drivers/soc/eswin/ai_driver/common/hetero_common.h
 @@ -358,7 +358,11 @@ typedef struct _npu_dep_info {
@@ -104,7 +104,7 @@ index 74e134ea2e4a..40beda94b751 100644
  } __attribute__((aligned(CDMA_SRC_BYTE_ALIGN))) npu_dep_info_t;
  
 diff --git a/drivers/soc/eswin/ai_driver/common/hetero_ioctl.h b/drivers/soc/eswin/ai_driver/common/hetero_ioctl.h
-index 89bfbef6a808..840ac01c759e 100644
+index 89bfbef6a8083..840ac01c759e4 100644
 --- a/drivers/soc/eswin/ai_driver/common/hetero_ioctl.h
 +++ b/drivers/soc/eswin/ai_driver/common/hetero_ioctl.h
 @@ -37,7 +37,8 @@ enum {
@@ -118,7 +118,7 @@ index 89bfbef6a808..840ac01c759e 100644
  
  /**
 diff --git a/drivers/soc/eswin/ai_driver/common/hetero_ipc.h b/drivers/soc/eswin/ai_driver/common/hetero_ipc.h
-index 8801adac3815..20564b36dcef 100644
+index 8801adac38153..20564b36dcefe 100644
 --- a/drivers/soc/eswin/ai_driver/common/hetero_ipc.h
 +++ b/drivers/soc/eswin/ai_driver/common/hetero_ipc.h
 @@ -283,7 +283,8 @@ typedef enum {
@@ -179,7 +179,7 @@ index 8801adac3815..20564b36dcef 100644
  
  /**
 diff --git a/drivers/soc/eswin/ai_driver/npu/event.c b/drivers/soc/eswin/ai_driver/npu/event.c
-index 67cacae5c475..7d3f936cae77 100644
+index 67cacae5c4756..7d3f936cae770 100644
 --- a/drivers/soc/eswin/ai_driver/npu/event.c
 +++ b/drivers/soc/eswin/ai_driver/npu/event.c
 @@ -27,6 +27,8 @@
@@ -293,7 +293,7 @@ index 67cacae5c475..7d3f936cae77 100644
  	dla_detail("op_idx:%d idx:%d\n", op_idx, idx);
  
 diff --git a/drivers/soc/eswin/ai_driver/npu/npu_frame.c b/drivers/soc/eswin/ai_driver/npu/npu_frame.c
-index ddf2513e5e16..0a6beef319c5 100644
+index ddf2513e5e16c..0a6beef319c57 100644
 --- a/drivers/soc/eswin/ai_driver/npu/npu_frame.c
 +++ b/drivers/soc/eswin/ai_driver/npu/npu_frame.c
 @@ -98,12 +98,72 @@ int io_tensor_to_io_addr(struct win_executor *executor,
@@ -401,7 +401,7 @@ index ddf2513e5e16..0a6beef319c5 100644
  					dla_error(
  						"%s, %d, import output fd = %d err.r\n",
 diff --git a/drivers/soc/eswin/ai_driver/npu/user_context.c b/drivers/soc/eswin/ai_driver/npu/user_context.c
-index dc4a2a6de0c8..2cb30760bd42 100644
+index dc4a2a6de0c81..2cb30760bd424 100644
 --- a/drivers/soc/eswin/ai_driver/npu/user_context.c
 +++ b/drivers/soc/eswin/ai_driver/npu/user_context.c
 @@ -106,8 +106,9 @@ static int npu_get_model_bobj(int shm_fd, struct user_model *model)

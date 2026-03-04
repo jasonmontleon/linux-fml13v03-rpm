@@ -1,4 +1,4 @@
-From 9b1cdffdd0cf44b26884b8fd49925d5ec49f24bf Mon Sep 17 00:00:00 2001
+From dfa24d93af101138767b1b89c0bb1a7822eff7d2 Mon Sep 17 00:00:00 2001
 From: donghuawei <donghuawei@eswincomputing.com>
 Date: Wed, 16 Apr 2025 19:48:47 +0800
 Subject: [PATCH 343/534] feat: vpu7702 smmu cfg modify
@@ -13,7 +13,7 @@ Signed-off-by: donghuawei <donghuawei@eswincomputing.com>
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-vpu7702.dts b/arch/riscv/boot/dts/eswin/eic7700-vpu7702.dts
-index eed4e31d0557..dc9c4b349683 100644
+index eed4e31d0557d..dc9c4b349683e 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-vpu7702.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7700-vpu7702.dts
 @@ -184,12 +184,13 @@ d0_ipcm:ipcm@0 {

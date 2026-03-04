@@ -1,4 +1,4 @@
-From f239e9712997f6cf299d05ab50d96cac0fccb561 Mon Sep 17 00:00:00 2001
+From c6c50761ce40c7a9fc91dc6eb6f8dbe311a078d3 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Tue, 1 Jul 2025 15:42:46 +0800
 Subject: [PATCH 407/534] Make PVR driver builtin to fix 20s CPU stall during
@@ -9,7 +9,7 @@ Subject: [PATCH 407/534] Make PVR driver builtin to fix 20s CPU stall during
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/arch/riscv/configs/fml13v03_defconfig b/arch/riscv/configs/fml13v03_defconfig
-index 01e5dd571fad..1c6fb350f565 100755
+index 01e5dd571fadf..1c6fb350f565a 100755
 --- a/arch/riscv/configs/fml13v03_defconfig
 +++ b/arch/riscv/configs/fml13v03_defconfig
 @@ -2792,7 +2792,7 @@ CONFIG_ESWIN_MMU=y

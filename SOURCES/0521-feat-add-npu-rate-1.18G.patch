@@ -1,4 +1,4 @@
-From 40dbfe921dda31e7f4299447d751f9338f30ed65 Mon Sep 17 00:00:00 2001
+From 65cb5b851be531d2cf5f18c28d75cb3b6a3da941 Mon Sep 17 00:00:00 2001
 From: zhuxuefei <zhuxuefei@eswincomputing.com>
 Date: Mon, 22 Sep 2025 14:50:48 +0800
 Subject: [PATCH 521/534] feat:add npu rate 1.18G.
@@ -12,7 +12,7 @@ Signed-off-by: zhuxuefei <zhuxuefei@eswincomputing.com>
  1 file changed, 4 insertions(+)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-opptable.dtsi b/arch/riscv/boot/dts/eswin/eic7700-opptable.dtsi
-index 86210ec8a2c9..d505e359e378 100644
+index 86210ec8a2c9a..d505e359e3786 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-opptable.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7700-opptable.dtsi
 @@ -146,6 +146,10 @@ opp@1040000000 {

@@ -1,4 +1,4 @@
-From f0edb24c918b566afacd46839f445c8a8b47c911 Mon Sep 17 00:00:00 2001
+From b56a369c5be454e67244ef588a0de440608852e8 Mon Sep 17 00:00:00 2001
 From: denglei <denglei@eswincomputing.com>
 Date: Thu, 20 Jun 2024 08:56:15 +0800
 Subject: [PATCH 058/534] fix:Solving HDMI driver compilation issue.
@@ -10,7 +10,7 @@ Changelogs:
  1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/eswin/Kconfig b/drivers/gpu/drm/eswin/Kconfig
-index de77dc0d9101..77733cd77352 100644
+index de77dc0d91013..77733cd77352a 100644
 --- a/drivers/gpu/drm/eswin/Kconfig
 +++ b/drivers/gpu/drm/eswin/Kconfig
 @@ -32,7 +32,9 @@ config ESWIN_DW_HDMI

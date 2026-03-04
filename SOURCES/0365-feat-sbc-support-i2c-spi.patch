@@ -1,4 +1,4 @@
-From c883c2c051703b1db17bbeb9fb229cda92ffb6e3 Mon Sep 17 00:00:00 2001
+From 9982c93d20cef18ec1d00c71ff2aaa1b95613ea9 Mon Sep 17 00:00:00 2001
 From: Xiang Xu <xuxiang@eswincomputing.com>
 Date: Tue, 20 May 2025 17:14:45 +0800
 Subject: [PATCH 365/534] feat:sbc support i2c, spi
@@ -14,7 +14,7 @@ Signed-off-by: Xiang Xu <xuxiang@eswincomputing.com>
  1 file changed, 32 insertions(+), 10 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dts b/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dts
-index 7fb5d86469fe..7c5bc77fd477 100644
+index 7fb5d86469fe6..7c5bc77fd4771 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dts
 @@ -561,7 +561,9 @@ &d0_uart2 {

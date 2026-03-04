@@ -1,4 +1,4 @@
-From 6b28994dc46e0cc1af74d7b0745855e7669a578b Mon Sep 17 00:00:00 2001
+From b5bf48ed6dfcb622dac6f824afe8fb828d6ec793 Mon Sep 17 00:00:00 2001
 From: sandiecao <sandie.cao@deepcomputing.io>
 Date: Mon, 29 Sep 2025 14:25:24 +0800
 Subject: [PATCH 439/534] WIN2030-18008:feat:npu frame schedule fix when npu
@@ -15,7 +15,7 @@ Signed-off-by: zhuxuefei <zhuxuefei@eswincomputing.com>
  2 files changed, 13 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/soc/eswin/ai_driver/npu/npu_main.c b/drivers/soc/eswin/ai_driver/npu/npu_main.c
-index cea167f9c138..84fb77bff04d 100644
+index cea167f9c1389..84fb77bff04d3 100644
 --- a/drivers/soc/eswin/ai_driver/npu/npu_main.c
 +++ b/drivers/soc/eswin/ai_driver/npu/npu_main.c
 @@ -934,6 +934,7 @@ int __maybe_unused npu_suspend(struct device *dev)
@@ -57,7 +57,7 @@ index cea167f9c138..84fb77bff04d 100644
  
  err_ipc:
 diff --git a/drivers/soc/eswin/ai_driver/npu/scheduler.c b/drivers/soc/eswin/ai_driver/npu/scheduler.c
-index bb4f0931fd06..e0b4d20db85f 100644
+index bb4f0931fd064..e0b4d20db85f2 100644
 --- a/drivers/soc/eswin/ai_driver/npu/scheduler.c
 +++ b/drivers/soc/eswin/ai_driver/npu/scheduler.c
 @@ -69,8 +69,7 @@ static int send_frame_to_hw(struct win_engine *engine, u8 tiktok,

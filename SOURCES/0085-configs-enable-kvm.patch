@@ -1,4 +1,4 @@
-From 03ccf56c66c2d7efe9329281f3e827e3424c5170 Mon Sep 17 00:00:00 2001
+From 739569924b5e65160ceb2a2c3205d2ff50d5f8c5 Mon Sep 17 00:00:00 2001
 From: Han Gao <gaohan@iscas.ac.cn>
 Date: Thu, 30 May 2024 20:44:53 +0800
 Subject: [PATCH 085/534] configs: enable kvm
@@ -9,7 +9,7 @@ Signed-off-by: Han Gao <gaohan@iscas.ac.cn>
  1 file changed, 2 insertions(+)
 
 diff --git a/arch/riscv/configs/win2030_defconfig b/arch/riscv/configs/win2030_defconfig
-index 60ae1c7268e6..2b7beb5b3495 100644
+index 60ae1c7268e6f..2b7beb5b34955 100644
 --- a/arch/riscv/configs/win2030_defconfig
 +++ b/arch/riscv/configs/win2030_defconfig
 @@ -33,6 +33,8 @@ CONFIG_CPU_FREQ_GOV_ONDEMAND=y

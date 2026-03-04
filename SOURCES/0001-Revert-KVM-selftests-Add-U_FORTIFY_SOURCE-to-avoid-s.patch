@@ -1,4 +1,4 @@
-From 95adb79ca5d472155a7934b083a46485157eed54 Mon Sep 17 00:00:00 2001
+From a8de3abf8bac23f27fb6fbb5ca0899fbe98a3ffd Mon Sep 17 00:00:00 2001
 From: Jason Montleon <jmontleo@redhat.com>
 Date: Wed, 11 Feb 2026 09:14:11 -0500
 Subject: [PATCH 001/534] Revert "KVM: selftests: Add -U_FORTIFY_SOURCE to
@@ -10,7 +10,7 @@ This reverts commit a8adf1ceee4e188b0521f0638c97bff278143924.
  1 file changed, 1 deletion(-)
 
 diff --git a/tools/testing/selftests/kvm/Makefile b/tools/testing/selftests/kvm/Makefile
-index d819994874df..a3bb36fb3cfc 100644
+index d819994874df1..a3bb36fb3cfc5 100644
 --- a/tools/testing/selftests/kvm/Makefile
 +++ b/tools/testing/selftests/kvm/Makefile
 @@ -212,7 +212,6 @@ LINUX_TOOL_ARCH_INCLUDE = $(top_srcdir)/tools/arch/$(ARCH)/include

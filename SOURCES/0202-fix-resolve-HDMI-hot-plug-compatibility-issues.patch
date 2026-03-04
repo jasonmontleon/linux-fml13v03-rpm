@@ -1,4 +1,4 @@
-From c0583db4d81c4916e586b340e18010e190778ef1 Mon Sep 17 00:00:00 2001
+From 0f484ae1c753bfa33a5adb128d7cd20cd957299f Mon Sep 17 00:00:00 2001
 From: denglei <denglei@eswincomputing.com>
 Date: Fri, 25 Oct 2024 10:36:46 +0800
 Subject: [PATCH 202/534] fix:resolve HDMI hot plug compatibility issues.
@@ -12,7 +12,7 @@ Signed-off-by: denglei <denglei@eswincomputing.com>
  1 file changed, 3 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/gpu/drm/eswin/dw-hdmi.c b/drivers/gpu/drm/eswin/dw-hdmi.c
-index ba5aae273162..669447d03681 100644
+index ba5aae2731621..669447d036812 100644
 --- a/drivers/gpu/drm/eswin/dw-hdmi.c
 +++ b/drivers/gpu/drm/eswin/dw-hdmi.c
 @@ -590,7 +590,7 @@ static int dw_hdmi_i2c_xfer(struct i2c_adapter *adap,

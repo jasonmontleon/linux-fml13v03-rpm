@@ -1,4 +1,4 @@
-From 289569569f461b6b1e3fc281b7d872de10936a11 Mon Sep 17 00:00:00 2001
+From 5cdb9227218ce6ab02e1eb112a8fa07ad466a287 Mon Sep 17 00:00:00 2001
 From: yangwei1 <yangwei1@eswincomputing.com>
 Date: Mon, 27 May 2024 14:44:34 +0800
 Subject: [PATCH 036/534] fix:add sysfs in pac1934 to set update interval
@@ -11,7 +11,7 @@ Changelogs:
  1 file changed, 48 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/hwmon/pac193x.c b/drivers/hwmon/pac193x.c
-index ebad3bde611e..ae2735139729 100644
+index ebad3bde611e1..ae2735139729c 100644
 --- a/drivers/hwmon/pac193x.c
 +++ b/drivers/hwmon/pac193x.c
 @@ -252,11 +252,11 @@ static ssize_t pac193x_refresh_store(struct device *dev,

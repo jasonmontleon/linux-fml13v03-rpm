@@ -1,4 +1,4 @@
-From ae449a8f62c433138bfb710ccde29e1a8fb25c1e Mon Sep 17 00:00:00 2001
+From 87532f0758f6f72d5cc65d47bd908e75f267b820 Mon Sep 17 00:00:00 2001
 From: wangguosheng <wangguosheng@eswincomputing.com>
 Date: Wed, 11 Jun 2025 13:31:47 +0800
 Subject: [PATCH 403/534] fix:using algorithms to filter
@@ -12,7 +12,7 @@ Signed-off-by: wangguosheng <wangguosheng@eswincomputing.com>
  1 file changed, 462 insertions(+), 312 deletions(-)
 
 diff --git a/drivers/hwmon/eswin-fan-control.c b/drivers/hwmon/eswin-fan-control.c
-index b678e2d0d4d9..581159b7ec80 100644
+index b678e2d0d4d91..581159b7ec80a 100644
 --- a/drivers/hwmon/eswin-fan-control.c
 +++ b/drivers/hwmon/eswin-fan-control.c
 @@ -35,36 +35,28 @@

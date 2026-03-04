@@ -1,4 +1,4 @@
-From 52df6c358074f3c008521d343fc90cac5a142bf9 Mon Sep 17 00:00:00 2001
+From 8c113801a69397e3c4d13a023aa09a1f85732014 Mon Sep 17 00:00:00 2001
 From: chenzhanzhan <chenzhanzhan@eswincomputing.com>
 Date: Tue, 21 Oct 2025 20:08:57 +0800
 Subject: [PATCH 525/534] fix:esw-wdt suspend crash issue
@@ -13,7 +13,7 @@ Signed-off-by: chenzhanzhan <chenzhanzhan@eswincomputing.com>
  2 files changed, 11 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/mailbox/eswin-mailbox.c b/drivers/mailbox/eswin-mailbox.c
-index e929f4a0ba2d..ef6e5f36a11b 100755
+index e929f4a0ba2dc..ef6e5f36a11ba 100755
 --- a/drivers/mailbox/eswin-mailbox.c
 +++ b/drivers/mailbox/eswin-mailbox.c
 @@ -438,7 +438,7 @@ static int eswin_mbox_probe(struct platform_device *pdev)
@@ -26,7 +26,7 @@ index e929f4a0ba2d..ef6e5f36a11b 100755
  		mb->wakeup_source = false;
  		mb->mbox.txdone_poll = true;
 diff --git a/drivers/watchdog/esw_wdt.c b/drivers/watchdog/esw_wdt.c
-index 4001b373c0be..f24afabba401 100644
+index 4001b373c0be2..f24afabba401f 100644
 --- a/drivers/watchdog/esw_wdt.c
 +++ b/drivers/watchdog/esw_wdt.c
 @@ -309,6 +309,7 @@ static int esw_wdt_probe(struct platform_device *pdev) {

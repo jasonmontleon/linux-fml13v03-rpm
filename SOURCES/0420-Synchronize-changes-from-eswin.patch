@@ -1,4 +1,4 @@
-From e8a9c884e01db6bef8358789683edb4bf89164e3 Mon Sep 17 00:00:00 2001
+From 619b26e3acab1bbc45728f9aae4518996ff80193 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Mon, 21 Jul 2025 10:52:52 +0800
 Subject: [PATCH 420/534] Synchronize changes from eswin
@@ -8,7 +8,7 @@ Subject: [PATCH 420/534] Synchronize changes from eswin
  1 file changed, 2 insertions(+), 41 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
-index 13d48a90815e..e90c0f3cbfcc 100644
+index 13d48a90815ed..e90c0f3cbfcc5 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 @@ -1494,6 +1494,7 @@ &d1_i2c9 {

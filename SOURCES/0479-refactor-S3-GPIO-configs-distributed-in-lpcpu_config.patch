@@ -1,4 +1,4 @@
-From a546f3f5ee583b45f7278b2d15590092282fbf5a Mon Sep 17 00:00:00 2001
+From 8d3012aae3ab4486439e52774ed21d8ad8d2ab8c Mon Sep 17 00:00:00 2001
 From: Wu Zhangben <wuzhangben@eswincomputing.com>
 Date: Wed, 20 Aug 2025 12:59:34 +0800
 Subject: [PATCH 479/534] refactor:S3 GPIO configs distributed in lpcpu_config
@@ -25,7 +25,7 @@ Signed-off-by: Wu Zhangben <wuzhangben@eswincomputing.com>
  2 files changed, 4 insertions(+), 2 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03-evt.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03-evt.dts
-index ea18664d8de9..6a52df025d21 100755
+index ea18664d8de99..6a52df025d219 100755
 --- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03-evt.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03-evt.dts
 @@ -508,7 +508,6 @@ &d0_lpcpu {
@@ -46,7 +46,7 @@ index ea18664d8de9..6a52df025d21 100755
  
  &pinctrl_die0_gpio25_default {
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi b/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
-index 893401ea8268..e19d0ad973a6 100644
+index 893401ea82687..e19d0ad973a6a 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
 @@ -450,7 +450,8 @@ &d0_lpcpu {

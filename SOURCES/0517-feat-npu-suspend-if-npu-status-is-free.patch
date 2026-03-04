@@ -1,4 +1,4 @@
-From fb5823141c24c83a96867d23bd103192e4b37884 Mon Sep 17 00:00:00 2001
+From 8012d81f449a5e2da32d508f6bdb970b19bf09db Mon Sep 17 00:00:00 2001
 From: zhuxuefei <zhuxuefei@eswincomputing.com>
 Date: Mon, 22 Sep 2025 13:48:26 +0800
 Subject: [PATCH 517/534] feat:npu suspend if npu status is free.
@@ -12,7 +12,7 @@ Signed-off-by: zhuxuefei <zhuxuefei@eswincomputing.com>
  1 file changed, 1 insertion(+)
 
 diff --git a/sound/soc/eswin/esw-dai.h b/sound/soc/eswin/esw-dai.h
-index dfe49c950de0..0da35d8fc79f 100644
+index dfe49c950de0a..0da35d8fc79f9 100644
 --- a/sound/soc/eswin/esw-dai.h
 +++ b/sound/soc/eswin/esw-dai.h
 @@ -58,5 +58,6 @@ int esw_sof_dma_close(struct snd_soc_component *component,

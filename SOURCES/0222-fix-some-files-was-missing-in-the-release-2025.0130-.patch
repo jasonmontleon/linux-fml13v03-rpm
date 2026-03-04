@@ -1,4 +1,4 @@
-From 3c14227e7f066811f32e01eec3cc315f543fb58b Mon Sep 17 00:00:00 2001
+From 7d01d4f9e4ed41aa60b85481ebd5f605a7ad71f7 Mon Sep 17 00:00:00 2001
 From: linmin <linmin@eswincomputing.com>
 Date: Thu, 13 Feb 2025 17:11:15 +0800
 Subject: [PATCH 222/534] fix:some files was missing in the release-2025.0130
@@ -22,7 +22,7 @@ Signed-off-by: linmin <linmin@eswincomputing.com>
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-dvb-dsi-panel.dtsi b/arch/riscv/boot/dts/eswin/eic7700-dvb-dsi-panel.dtsi
 new file mode 100644
-index 000000000000..61514cfcce99
+index 0000000000000..61514cfcce99d
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/eic7700-dvb-dsi-panel.dtsi
 @@ -0,0 +1,130 @@
@@ -158,7 +158,7 @@ index 000000000000..61514cfcce99
 +};
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dts b/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dts
 new file mode 100644
-index 000000000000..2d8f548f198f
+index 0000000000000..2d8f548f198f1
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dts
 @@ -0,0 +1,805 @@
@@ -969,7 +969,7 @@ index 000000000000..2d8f548f198f
 +};
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-z530-dsi-panel.dtsi b/arch/riscv/boot/dts/eswin/eic7700-z530-dsi-panel.dtsi
 new file mode 100644
-index 000000000000..2875ce48c1a8
+index 0000000000000..2875ce48c1a88
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/eic7700-z530-dsi-panel.dtsi
 @@ -0,0 +1,111 @@
@@ -1086,7 +1086,7 @@ index 000000000000..2875ce48c1a8
 +};
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-tb.dts b/arch/riscv/boot/dts/eswin/eic7702-tb.dts
 new file mode 100644
-index 000000000000..e4b6eca92483
+index 0000000000000..e4b6eca924830
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/eic7702-tb.dts
 @@ -0,0 +1,1675 @@
@@ -2767,7 +2767,7 @@ index 000000000000..e4b6eca92483
 +*/
 diff --git a/arch/riscv/boot/dts/eswin/eic770x-opptable.dtsi b/arch/riscv/boot/dts/eswin/eic770x-opptable.dtsi
 new file mode 100644
-index 000000000000..2f4deaf21d95
+index 0000000000000..2f4deaf21d958
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/eic770x-opptable.dtsi
 @@ -0,0 +1,256 @@
@@ -3029,7 +3029,7 @@ index 000000000000..2f4deaf21d95
 +};
 diff --git a/drivers/regulator/tps549d22-regulator.c b/drivers/regulator/tps549d22-regulator.c
 new file mode 100644
-index 000000000000..1f247c14a50b
+index 0000000000000..1f247c14a50b2
 --- /dev/null
 +++ b/drivers/regulator/tps549d22-regulator.c
 @@ -0,0 +1,580 @@

@@ -1,4 +1,4 @@
-From 0be12c9f17a540316b4841d7e83ceaa9a11444d2 Mon Sep 17 00:00:00 2001
+From fb01b5daa424dcae01c3aa187a12a9177aa6dca1 Mon Sep 17 00:00:00 2001
 From: luoshanggui <luoshanggui@eswincomputing.com>
 Date: Fri, 22 Aug 2025 09:04:24 +0800
 Subject: [PATCH 474/534] fix : fix relocate error for dsp operator Changelogs:
@@ -9,7 +9,7 @@ Signed-off-by: luoshanggui <luoshanggui@eswincomputing.com>
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/soc/eswin/ai_driver/dsp/mloader/xt_mld_relocate.c b/drivers/soc/eswin/ai_driver/dsp/mloader/xt_mld_relocate.c
-index 75e18557c879..4861af639471 100644
+index 75e18557c879b..4861af639471f 100644
 --- a/drivers/soc/eswin/ai_driver/dsp/mloader/xt_mld_relocate.c
 +++ b/drivers/soc/eswin/ai_driver/dsp/mloader/xt_mld_relocate.c
 @@ -344,7 +344,7 @@ static xtmld_result_code_t relocate_relative(xtmld_state_t *lib_info,

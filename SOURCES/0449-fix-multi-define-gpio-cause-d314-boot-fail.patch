@@ -1,4 +1,4 @@
-From a72447ce8e6f49ff42d920ac27e72c4ae8509818 Mon Sep 17 00:00:00 2001
+From 548a2dcc513fd188e3a5d0d3d89e808dc22199a2 Mon Sep 17 00:00:00 2001
 From: ningyu <ningyu@eswincomputing.com>
 Date: Thu, 7 Aug 2025 14:56:04 +0800
 Subject: [PATCH 449/534] fix:multi define gpio cause d314 boot fail
@@ -12,7 +12,7 @@ Signed-off-by: ningyu <ningyu@eswincomputing.com>
  1 file changed, 1 insertion(+), 2 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-d314.dts b/arch/riscv/boot/dts/eswin/eic7700-d314.dts
-index 0c05768360f4..07331a6867cb 100644
+index 0c05768360f48..07331a6867cb1 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-d314.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7700-d314.dts
 @@ -319,8 +319,7 @@ &pinctrl_gpio37_default &pinctrl_gpio38_default &pinctrl_gpio39_default &pinctrl

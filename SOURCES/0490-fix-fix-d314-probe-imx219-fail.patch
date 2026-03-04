@@ -1,4 +1,4 @@
-From 4e9d2f04b2568aa1f77477d02823bd4281ac2b6b Mon Sep 17 00:00:00 2001
+From 91a30d31ccbfe903a3a2b9e9763f611b42304229 Mon Sep 17 00:00:00 2001
 From: yufangxian <yufangxian@eswincomputing.com>
 Date: Mon, 1 Sep 2025 13:42:37 +0800
 Subject: [PATCH 490/534] fix: fix d314 probe imx219 fail
@@ -13,7 +13,7 @@ Signed-off-by: yufangxian <yufangxian@eswincomputing.com>
  2 files changed, 22 insertions(+), 14 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-d314-camera.dtsi b/arch/riscv/boot/dts/eswin/eic7700-d314-camera.dtsi
-index 728bdb9436f3..0c8ba0f47cfc 100644
+index 728bdb9436f3b..0c8ba0f47cfce 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-d314-camera.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7700-d314-camera.dtsi
 @@ -127,12 +127,10 @@ camera_imx219: camera-imx219@10 {
@@ -109,7 +109,7 @@ index 728bdb9436f3..0c8ba0f47cfc 100644
  };
  &csi2_dphy3 {
 diff --git a/drivers/phy/eswin/phy-eswin-csi2-dphy-hw.c b/drivers/phy/eswin/phy-eswin-csi2-dphy-hw.c
-index 8bb690c43599..038eb3a8d466 100644
+index 8bb690c43599d..038eb3a8d4661 100644
 --- a/drivers/phy/eswin/phy-eswin-csi2-dphy-hw.c
 +++ b/drivers/phy/eswin/phy-eswin-csi2-dphy-hw.c
 @@ -842,7 +842,7 @@ static int eswin_csi2_dphy_hw_probe(struct platform_device *pdev)

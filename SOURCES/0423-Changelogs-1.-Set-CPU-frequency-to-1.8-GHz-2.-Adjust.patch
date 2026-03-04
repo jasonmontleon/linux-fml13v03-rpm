@@ -1,4 +1,4 @@
-From caf52fdd5eb0e00a748a67e35f4d95bdf2b3f543 Mon Sep 17 00:00:00 2001
+From 50c63446d972d9818bd119e0a4cb9072f5587e59 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Fri, 25 Jul 2025 18:01:58 +0800
 Subject: [PATCH 423/534] =?UTF-8?q?Changelogs:=201.=20Set=20CPU=20frequenc?=
@@ -17,7 +17,7 @@ Content-Transfer-Encoding: 8bit
  2 files changed, 116 insertions(+), 99 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
-index 1a138844cf92..a438e2101874 100644
+index 1a138844cf924..a438e21018745 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 @@ -217,19 +217,6 @@ camera_light_power: regulator-gpio69 {
@@ -162,7 +162,7 @@ index 1a138844cf92..a438e2101874 100644
  
  &d1_lpcpu {
 diff --git a/drivers/soc/eswin/eswin-lpcpu.c b/drivers/soc/eswin/eswin-lpcpu.c
-index b56b859b1dcd..2769087ca8e9 100644
+index b56b859b1dcd2..2769087ca8e91 100644
 --- a/drivers/soc/eswin/eswin-lpcpu.c
 +++ b/drivers/soc/eswin/eswin-lpcpu.c
 @@ -286,7 +286,8 @@ static const struct file_operations eswin_lpcpu_ops = {

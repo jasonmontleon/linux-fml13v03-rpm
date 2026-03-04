@@ -1,4 +1,4 @@
-From 5ea0a526cd1e5dfcf0fc1914b6795bbf374e66ed Mon Sep 17 00:00:00 2001
+From c63c5c56b71aa648f19c1a18badfaea559843b4c Mon Sep 17 00:00:00 2001
 From: zhouliang2 <zhouliang2@eswincomputing.com>
 Date: Wed, 2 Apr 2025 14:47:04 +0800
 Subject: [PATCH 326/534] feat:support 22.01/11.025kHz
@@ -12,7 +12,7 @@ Signed-off-by: zhouliang2 <zhouliang2@eswincomputing.com>
  1 file changed, 22 insertions(+), 16 deletions(-)
 
 diff --git a/sound/soc/eswin/esw-i2s.c b/sound/soc/eswin/esw-i2s.c
-index 3c1a7a6aa08c..1f44ff61d1fd 100755
+index 3c1a7a6aa08c0..1f44ff61d1fd9 100755
 --- a/sound/soc/eswin/esw-i2s.c
 +++ b/sound/soc/eswin/esw-i2s.c
 @@ -693,8 +693,8 @@ static int i2s_suspend(struct snd_soc_component *component)

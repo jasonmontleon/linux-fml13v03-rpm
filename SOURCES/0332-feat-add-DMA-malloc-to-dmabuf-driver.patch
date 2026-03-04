@@ -1,4 +1,4 @@
-From 7095a7eedd3834a3393889c794146fd61be6f1c1 Mon Sep 17 00:00:00 2001
+From 61f167e523bf930d69b608d127e76204bcbd2811 Mon Sep 17 00:00:00 2001
 From: congyuyang <congyuyang@eswincomputing.com>
 Date: Thu, 23 Jan 2025 17:16:48 +0800
 Subject: [PATCH 332/534] feat:add DMA malloc to dmabuf driver.
@@ -24,7 +24,7 @@ Signed-off-by: hujiamiao <hujiamiao@eswincomputing.com>
  create mode 100644 include/uapi/linux/malloc_dmabuf.h
 
 diff --git a/arch/riscv/configs/eic7702_defconfig b/arch/riscv/configs/eic7702_defconfig
-index 0ccfae084f73..9fe848700e93 100644
+index 0ccfae084f737..9fe848700e93d 100644
 --- a/arch/riscv/configs/eic7702_defconfig
 +++ b/arch/riscv/configs/eic7702_defconfig
 @@ -31,6 +31,7 @@ CONFIG_BLK_DEV_INITRD=y
@@ -300,7 +300,7 @@ index 0ccfae084f73..9fe848700e93 100644
 +CONFIG_I2C_MUX_PCA954x=y
 +CONFIG_VIDEO_ESWIN_ISP=m
 diff --git a/arch/riscv/configs/win2030_defconfig b/arch/riscv/configs/win2030_defconfig
-index c00bea148348..3086290618c2 100644
+index c00bea148348b..3086290618c2c 100644
 --- a/arch/riscv/configs/win2030_defconfig
 +++ b/arch/riscv/configs/win2030_defconfig
 @@ -750,6 +750,7 @@ CONFIG_ESWIN_MMZ_VB=y
@@ -312,7 +312,7 @@ index c00bea148348..3086290618c2 100644
  CONFIG_PWM_ESWIN=y
  CONFIG_RESET_ESWIN=y
 diff --git a/drivers/memory/eswin/Kconfig b/drivers/memory/eswin/Kconfig
-index c187f1c0ac0a..81477c0c29b5 100644
+index c187f1c0ac0a3..81477c0c29b51 100644
 --- a/drivers/memory/eswin/Kconfig
 +++ b/drivers/memory/eswin/Kconfig
 @@ -32,5 +32,6 @@ source "drivers/memory/eswin/es_mmz_vb/Kconfig"
@@ -323,7 +323,7 @@ index c187f1c0ac0a..81477c0c29b5 100644
  
  endif
 diff --git a/drivers/memory/eswin/Makefile b/drivers/memory/eswin/Makefile
-index e6e57575ccb8..9f256dc64dad 100644
+index e6e57575ccb88..9f256dc64dada 100644
 --- a/drivers/memory/eswin/Makefile
 +++ b/drivers/memory/eswin/Makefile
 @@ -9,6 +9,7 @@ obj-$(CONFIG_ESWIN_RSVMEM_HEAP)			+= es_mmz_vb/
@@ -336,7 +336,7 @@ index e6e57575ccb8..9f256dc64dad 100644
  
 diff --git a/drivers/memory/eswin/es_malloc_dmabuf/Kconfig b/drivers/memory/eswin/es_malloc_dmabuf/Kconfig
 new file mode 100644
-index 000000000000..a3f7d1ca0da6
+index 0000000000000..a3f7d1ca0da6f
 --- /dev/null
 +++ b/drivers/memory/eswin/es_malloc_dmabuf/Kconfig
 @@ -0,0 +1,6 @@
@@ -348,7 +348,7 @@ index 000000000000..a3f7d1ca0da6
 +	  ESWIN Malloc to DMA-BUF.
 diff --git a/drivers/memory/eswin/es_malloc_dmabuf/Makefile b/drivers/memory/eswin/es_malloc_dmabuf/Makefile
 new file mode 100644
-index 000000000000..6a8e2cecc2cc
+index 0000000000000..6a8e2cecc2cc8
 --- /dev/null
 +++ b/drivers/memory/eswin/es_malloc_dmabuf/Makefile
 @@ -0,0 +1 @@
@@ -356,7 +356,7 @@ index 000000000000..6a8e2cecc2cc
 \ No newline at end of file
 diff --git a/drivers/memory/eswin/es_malloc_dmabuf/es_malloc_dmabuf.c b/drivers/memory/eswin/es_malloc_dmabuf/es_malloc_dmabuf.c
 new file mode 100644
-index 000000000000..f573f7f9891f
+index 0000000000000..f573f7f9891f9
 --- /dev/null
 +++ b/drivers/memory/eswin/es_malloc_dmabuf/es_malloc_dmabuf.c
 @@ -0,0 +1,616 @@
@@ -979,7 +979,7 @@ index 000000000000..f573f7f9891f
 \ No newline at end of file
 diff --git a/include/uapi/linux/malloc_dmabuf.h b/include/uapi/linux/malloc_dmabuf.h
 new file mode 100644
-index 000000000000..bf66ff0230ea
+index 0000000000000..bf66ff0230ea3
 --- /dev/null
 +++ b/include/uapi/linux/malloc_dmabuf.h
 @@ -0,0 +1,53 @@

@@ -1,4 +1,4 @@
-From 25fe133078c8ef8ce27c2e9ab50ee83db054a0e7 Mon Sep 17 00:00:00 2001
+From f67ac6249f207022274aceeff8b0e40e0b1cf85b Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Tue, 22 Jul 2025 16:26:51 +0800
 Subject: [PATCH 421/534] Changelogs: 1. Limited the maximum CPU frequency to
@@ -12,7 +12,7 @@ Subject: [PATCH 421/534] Changelogs: 1. Limited the maximum CPU frequency to
  3 files changed, 78 insertions(+), 49 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
-index e90c0f3cbfcc..8bc250425a1f 100644
+index e90c0f3cbfcc5..8bc250425a1f2 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 @@ -307,13 +307,13 @@ &d0_clock {
@@ -59,7 +59,7 @@ index e90c0f3cbfcc..8bc250425a1f 100644
  
  &pinctrl_die1_gpio69_default {
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi b/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
-index 72c192ef0bcf..f96e10be2be2 100644
+index 72c192ef0bcf4..f96e10be2be29 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
 @@ -501,7 +501,7 @@ &d0_lpcpu {
@@ -72,7 +72,7 @@ index 72c192ef0bcf..f96e10be2be2 100644
  
  &d1_lpcpu {
 diff --git a/drivers/soc/eswin/eswin-lpcpu.c b/drivers/soc/eswin/eswin-lpcpu.c
-index 27c2d0d76cf0..b56b859b1dcd 100644
+index 27c2d0d76cf09..b56b859b1dcd2 100644
 --- a/drivers/soc/eswin/eswin-lpcpu.c
 +++ b/drivers/soc/eswin/eswin-lpcpu.c
 @@ -52,7 +52,7 @@ struct lowpower_info {

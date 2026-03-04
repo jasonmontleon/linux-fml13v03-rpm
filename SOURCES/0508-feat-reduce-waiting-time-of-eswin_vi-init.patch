@@ -1,4 +1,4 @@
-From dfb61d8d8b6774bda7641d1d0510e07fef4181b7 Mon Sep 17 00:00:00 2001
+From fc1e8fa2deae0ef2067226a6a2a6d121de964c26 Mon Sep 17 00:00:00 2001
 From: yufangxian <yufangxian@eswincomputing.com>
 Date: Fri, 29 Aug 2025 12:24:33 +0800
 Subject: [PATCH 508/534] feat: reduce waiting time of eswin_vi init
@@ -13,7 +13,7 @@ Signed-off-by: yufangxian <yufangxian@eswincomputing.com>
  2 files changed, 315 insertions(+), 272 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-vela-camera-imx415.dtsi b/arch/riscv/boot/dts/eswin/eic7700-vela-camera-imx415.dtsi
-index 9a0f6e7b69e3..41d6cc3eb86c 100644
+index 9a0f6e7b69e38..41d6cc3eb86cd 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-vela-camera-imx415.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7700-vela-camera-imx415.dtsi
 @@ -2,6 +2,7 @@ &vi_subsys {
@@ -44,7 +44,7 @@ index 9a0f6e7b69e3..41d6cc3eb86c 100644
  	lanes-dp-dn = <0 0 0 0>; 	// 4lanes: positive on dp/ negative on dn to hs and lp mode
  	status = "okay";
 diff --git a/drivers/media/platform/eswin/vi_top/eswin_vi.c b/drivers/media/platform/eswin/vi_top/eswin_vi.c
-index 52b474759f38..5f78bb276d50 100644
+index 52b474759f38b..5f78bb276d505 100644
 --- a/drivers/media/platform/eswin/vi_top/eswin_vi.c
 +++ b/drivers/media/platform/eswin/vi_top/eswin_vi.c
 @@ -37,7 +37,7 @@

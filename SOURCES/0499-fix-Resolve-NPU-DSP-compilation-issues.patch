@@ -1,4 +1,4 @@
-From bcc37578158a16bb9b79e6348566fce3bd96afb2 Mon Sep 17 00:00:00 2001
+From 44a4c4bba9ea5bfa48f8be43cbd863178823e1f5 Mon Sep 17 00:00:00 2001
 From: denglei <denglei@eswincomputing.com>
 Date: Mon, 25 Aug 2025 16:02:05 +0800
 Subject: [PATCH 499/534] fix:Resolve NPU/DSP compilation issues.
@@ -13,7 +13,7 @@ Signed-off-by: denglei <denglei@eswincomputing.com>
  2 files changed, 2 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/soc/eswin/ai_driver/dsp/dsp_main.c b/drivers/soc/eswin/ai_driver/dsp/dsp_main.c
-index 71229ec3fab0..e93d4b14ee5f 100644
+index 71229ec3fab0f..e93d4b14ee5f9 100644
 --- a/drivers/soc/eswin/ai_driver/dsp/dsp_main.c
 +++ b/drivers/soc/eswin/ai_driver/dsp/dsp_main.c
 @@ -767,7 +767,6 @@ int __maybe_unused dsp_resume(struct device *dev)
@@ -34,7 +34,7 @@ index 71229ec3fab0..e93d4b14ee5f 100644
  static struct platform_driver es_dsp_hw_driver = {
  	.probe   = es_dsp_hw_probe,
 diff --git a/drivers/soc/eswin/ai_driver/dsp/dsp_platform.c b/drivers/soc/eswin/ai_driver/dsp/dsp_platform.c
-index 38ef05eda2f6..f5dac966ab67 100644
+index 38ef05eda2f60..f5dac966ab671 100644
 --- a/drivers/soc/eswin/ai_driver/dsp/dsp_platform.c
 +++ b/drivers/soc/eswin/ai_driver/dsp/dsp_platform.c
 @@ -1261,7 +1261,7 @@ int es_dsp_hw_init(struct es_dsp *dsp)

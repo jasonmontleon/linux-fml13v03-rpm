@@ -1,4 +1,4 @@
-From 6f5987123013f1fd00acf19e25f735fa37da4dcd Mon Sep 17 00:00:00 2001
+From 697372672a2a3bd1793bebbf179a8d8b4a799dfa Mon Sep 17 00:00:00 2001
 From: chenzhanzhan <chenzhanzhan@eswincomputing.com>
 Date: Tue, 13 May 2025 15:17:59 +0800
 Subject: [PATCH 356/534] feature: Add kernel eic7702 d560 interleave dts
@@ -16,7 +16,7 @@ Signed-off-by: chenzhanzhan <chenzhanzhan@eswincomputing.com>
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-d560-interleave.dts b/arch/riscv/boot/dts/eswin/eic7702-d560-interleave.dts
 new file mode 100644
-index 000000000000..4a1a51635a98
+index 0000000000000..4a1a51635a983
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/eic7702-d560-interleave.dts
 @@ -0,0 +1,331 @@
@@ -353,7 +353,7 @@ index 000000000000..4a1a51635a98
 +*/
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi b/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
 new file mode 100644
-index 000000000000..41ea1b44401b
+index 0000000000000..41ea1b44401b2
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
 @@ -0,0 +1,1478 @@

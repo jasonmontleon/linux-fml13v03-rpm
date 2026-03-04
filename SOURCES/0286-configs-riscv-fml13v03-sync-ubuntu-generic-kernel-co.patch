@@ -1,4 +1,4 @@
-From a5542633c9318054bb5344b5b2c26376df3ffccb Mon Sep 17 00:00:00 2001
+From 0d0cb6f77e405192dc3e7b1c65327f3ae946c797 Mon Sep 17 00:00:00 2001
 From: Sandie Cao <sandie.cao@deepcomputing.io>
 Date: Tue, 6 May 2025 13:40:24 +0800
 Subject: [PATCH 286/534] configs: riscv: fml13v03: sync ubuntu generic kernel
@@ -10,7 +10,7 @@ Signed-off-by: Sandie Cao <sandie.cao@deepcomputing.io>
  1 file changed, 3583 insertions(+), 69 deletions(-)
 
 diff --git a/arch/riscv/configs/fml13v03_defconfig b/arch/riscv/configs/fml13v03_defconfig
-index 86b9e6931cec..bc94f4ba64c9 100755
+index 86b9e6931cec0..bc94f4ba64c96 100755
 --- a/arch/riscv/configs/fml13v03_defconfig
 +++ b/arch/riscv/configs/fml13v03_defconfig
 @@ -1,10 +1,21 @@
