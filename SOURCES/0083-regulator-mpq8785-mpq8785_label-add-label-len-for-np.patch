@@ -1,4 +1,4 @@
-From d09a271ca78879abd4f0f1b16373f995b90c1958 Mon Sep 17 00:00:00 2001
+From c7a7e65c8070789edf28f0238f68ea6eb18910f9 Mon Sep 17 00:00:00 2001
 From: Han Gao <gaohan@iscas.ac.cn>
 Date: Sun, 7 Jul 2024 00:45:36 +0800
 Subject: [PATCH 083/540] regulator: mpq8785: mpq8785_label: add label len for

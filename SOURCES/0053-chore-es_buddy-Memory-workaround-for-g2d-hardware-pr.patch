@@ -1,4 +1,4 @@
-From f9e4bf79cdc0836480652e92864498a5d4b88d9f Mon Sep 17 00:00:00 2001
+From ab7324369b98837ca09719297607222c8b96e01c Mon Sep 17 00:00:00 2001
 From: linmin <linmin@eswincomputing.com>
 Date: Tue, 4 Jun 2024 14:23:32 +0800
 Subject: [PATCH 053/540] chore(es_buddy):Memory workaround for g2d hardware

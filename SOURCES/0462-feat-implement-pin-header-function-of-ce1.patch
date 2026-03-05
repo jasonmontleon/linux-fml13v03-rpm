@@ -1,4 +1,4 @@
-From 3aff0916e30a45b77eed1ff4c8aef24cebaa07d4 Mon Sep 17 00:00:00 2001
+From d736f8f6aaaf672ed2fb17d55fac98cd83194c03 Mon Sep 17 00:00:00 2001
 From: Xiang Xu <xuxiang@eswincomputing.com>
 Date: Tue, 12 Aug 2025 16:09:28 +0800
 Subject: [PATCH 462/540] feat:implement pin header function of ce1

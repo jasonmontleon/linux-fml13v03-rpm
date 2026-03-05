@@ -1,4 +1,4 @@
-From a82f8ca0f399bb3e5e50cad12ec11f4e89092d30 Mon Sep 17 00:00:00 2001
+From eadd6b9762c2aa37bb1aaab38cea8a18104c6bfc Mon Sep 17 00:00:00 2001
 From: zhuxuefei <zhuxuefei@eswincomputing.com>
 Date: Thu, 10 Apr 2025 17:41:02 +0800
 Subject: [PATCH 394/540] feat:add new perf interface

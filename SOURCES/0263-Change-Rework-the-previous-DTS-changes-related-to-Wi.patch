@@ -1,4 +1,4 @@
-From c3868a64a9d15a6d9a06f31becfd3f6ede12fe78 Mon Sep 17 00:00:00 2001
+From 59b4e19d0fe669d5d89ad331d41e49f064713289 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Thu, 20 Mar 2025 14:22:25 +0800
 Subject: [PATCH 263/540] Change: Rework the previous DTS changes related to

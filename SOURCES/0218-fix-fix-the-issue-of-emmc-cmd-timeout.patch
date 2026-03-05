@@ -1,4 +1,4 @@
-From e664d511ddcbb7ff8aad13009281f79140bdd589 Mon Sep 17 00:00:00 2001
+From e16f7ca0004155ee364bc66192fcd243c922d700 Mon Sep 17 00:00:00 2001
 From: liangshuang <liangshuang@eswincomputing.com>
 Date: Thu, 7 Nov 2024 17:53:24 +0800
 Subject: [PATCH 218/540] fix:fix the issue of emmc cmd timeout.

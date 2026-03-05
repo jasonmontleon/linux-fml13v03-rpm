@@ -1,4 +1,4 @@
-From c99acc81eb57a8b894e5c0203a96a99c533de7fa Mon Sep 17 00:00:00 2001
+From b434d58a30ce080b4d1299338be29ff05311d897 Mon Sep 17 00:00:00 2001
 From: ningyu <ningyu@eswincomputing.com>
 Date: Tue, 12 Aug 2025 21:03:20 +0800
 Subject: [PATCH 464/540] fix:unified description of compatible

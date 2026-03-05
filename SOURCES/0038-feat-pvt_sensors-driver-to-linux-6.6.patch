@@ -1,4 +1,4 @@
-From d5d4f7d6d3fffd10a709296d8629ba02260b5b96 Mon Sep 17 00:00:00 2001
+From b14f45699015e4f7ec0a8811f6c8d60ed198607d Mon Sep 17 00:00:00 2001
 From: luyulin <luyulin@eswincomputing.com>
 Date: Fri, 24 May 2024 16:51:46 +0800
 Subject: [PATCH 038/540] feat:pvt_sensors driver to linux 6.6.

@@ -1,4 +1,4 @@
-From 321dae90718aa3285c06adf9ad33bda5cdc01ee6 Mon Sep 17 00:00:00 2001
+From 21a29bc3d4a4b46e98960807cb834c5a6ed453c7 Mon Sep 17 00:00:00 2001
 From: huangyifeng <huangyifeng@eswincomputing.com>
 Date: Wed, 28 May 2025 15:09:52 +0800
 Subject: [PATCH 391/540] feat:disable d2d driver && uart noc err log

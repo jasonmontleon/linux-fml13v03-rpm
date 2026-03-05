@@ -1,4 +1,4 @@
-From f41ecc05c94289b9be536414d34ddb94b755909e Mon Sep 17 00:00:00 2001
+From 3af6c8a65e055dae9a1de8bf69118bf16a2027b0 Mon Sep 17 00:00:00 2001
 From: yangwei1 <yangwei1@eswincomputing.com>
 Date: Fri, 24 May 2024 19:55:33 +0800
 Subject: [PATCH 040/540] fix:modify fan control and read fan speed

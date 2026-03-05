@@ -1,4 +1,4 @@
-From 3aed8fd7dca8ceb6dbbd9143962ccf52b520805d Mon Sep 17 00:00:00 2001
+From 0b7cb970d4ad604c570b0a61eb007a020b197c72 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Thu, 13 Mar 2025 14:00:38 +0800
 Subject: [PATCH 234/540] Fix: touchpad recognition issue by changing interrupt

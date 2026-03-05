@@ -1,4 +1,4 @@
-From ea993efc226a53029162ae9766ca2a840ff6f452 Mon Sep 17 00:00:00 2001
+From 0e41a13e00707d5fcfcc0a21a2dbaf83a13cc523 Mon Sep 17 00:00:00 2001
 From: yufangxian <yufangxian@eswincomputing.com>
 Date: Fri, 8 Aug 2025 17:45:30 +0800
 Subject: [PATCH 457/540] fix: cannot recogonize the third imx586 sensor

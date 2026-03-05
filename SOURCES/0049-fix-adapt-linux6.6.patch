@@ -1,4 +1,4 @@
-From f7c17add8bff62063348249dccbef69469612b20 Mon Sep 17 00:00:00 2001
+From 320e8dd83d6c66d498f74cfcdc33977a92ee73bc Mon Sep 17 00:00:00 2001
 From: yiguo <yiguo@eswincomputing.com>
 Date: Fri, 31 May 2024 17:23:52 +0800
 Subject: [PATCH 049/540] fix:adapt linux6.6

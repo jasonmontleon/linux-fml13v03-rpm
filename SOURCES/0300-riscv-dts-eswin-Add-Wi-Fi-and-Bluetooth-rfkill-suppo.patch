@@ -1,4 +1,4 @@
-From 39eeac114e5caff03221a023d44a9c0c185f4de1 Mon Sep 17 00:00:00 2001
+From a9975534a1768ea596378418a0e4119b53546292 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Tue, 20 May 2025 16:02:05 +0800
 Subject: [PATCH 300/540] riscv: dts: eswin: Add Wi-Fi and Bluetooth rfkill

@@ -1,4 +1,4 @@
-From 6f1cca963e642e3220fe6fb353d3debb450ef06b Mon Sep 17 00:00:00 2001
+From ea63f08517559d5d99d70a563fba88318b029bdc Mon Sep 17 00:00:00 2001
 From: xuxiang <xuxiang@eswincomputing.com>
 Date: Fri, 12 Jul 2024 16:12:45 +0800
 Subject: [PATCH 102/540] perf:dw-axi-dmac print
