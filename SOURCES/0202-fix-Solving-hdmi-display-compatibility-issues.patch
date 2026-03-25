@@ -1,4 +1,4 @@
-From c824257eb4af6385d1281a2b45127916ecec1f4f Mon Sep 17 00:00:00 2001
+From 5e46e9582b9446092c830d81b87a78d4b3172de1 Mon Sep 17 00:00:00 2001
 From: denglei <denglei@eswincomputing.com>
 Date: Tue, 22 Oct 2024 09:53:00 +0800
 Subject: [PATCH 202/540] fix:Solving hdmi display compatibility issues.

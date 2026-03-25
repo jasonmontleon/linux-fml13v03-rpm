@@ -1,4 +1,4 @@
-From e7224c25660eb027f598d53a4e1aa5f05d7cbedd Mon Sep 17 00:00:00 2001
+From 88e7996635e30dd76bcc41d01422bb9c8479333f Mon Sep 17 00:00:00 2001
 From: ouyanghui <ouyanghui@eswincomputing.com>
 Date: Tue, 30 Sep 2025 16:53:49 +0800
 Subject: [PATCH 448/540] WIN2030-19677:fix:rtcwake test causes cpu crash

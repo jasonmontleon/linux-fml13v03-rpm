@@ -1,4 +1,4 @@
-From b14f45699015e4f7ec0a8811f6c8d60ed198607d Mon Sep 17 00:00:00 2001
+From 549ed3ab333158f04bbc16560fec415f31d94589 Mon Sep 17 00:00:00 2001
 From: luyulin <luyulin@eswincomputing.com>
 Date: Fri, 24 May 2024 16:51:46 +0800
 Subject: [PATCH 038/540] feat:pvt_sensors driver to linux 6.6.
@@ -28,7 +28,7 @@ index d0362cdd1b1ef..8d5ad3f193064 100644
  CONFIG_RESET_ESWIN_WIN2030=y
  CONFIG_INTERCONNECT=y
 diff --git a/drivers/hwmon/Kconfig b/drivers/hwmon/Kconfig
-index 39185cb8e3df6..655ce83483869 100644
+index 58e4442dea883..ae20edaaf84e5 100644
 --- a/drivers/hwmon/Kconfig
 +++ b/drivers/hwmon/Kconfig
 @@ -568,6 +568,12 @@ config SENSORS_DA9055

@@ -1,4 +1,4 @@
-From 7448a60635d4b7e86fa10df72bd7f9aea9dec866 Mon Sep 17 00:00:00 2001
+From bc97932834c85a43f4d416fa038c73d668099f0c Mon Sep 17 00:00:00 2001
 From: yangwei1 <yangwei1@eswincomputing.com>
 Date: Wed, 16 Oct 2024 16:46:21 +0800
 Subject: [PATCH 199/540] feat:support IPA thermal control

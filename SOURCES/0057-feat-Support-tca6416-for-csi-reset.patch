@@ -1,4 +1,4 @@
-From 857dede459f44166a3c44a27747825d4a31eab3c Mon Sep 17 00:00:00 2001
+From 8b2e517ad2d0343944f9795ec7835aefb2641443 Mon Sep 17 00:00:00 2001
 From: lilijun <lilijun@eswincomputing.com>
 Date: Thu, 13 Jun 2024 14:17:37 +0800
 Subject: [PATCH 057/540] feat:Support tca6416 for csi reset

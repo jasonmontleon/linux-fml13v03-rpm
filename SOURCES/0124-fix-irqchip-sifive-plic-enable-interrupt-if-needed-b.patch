@@ -1,4 +1,4 @@
-From e174e2a8540e9728d05eeb6c40953fff8f2a1e5f Mon Sep 17 00:00:00 2001
+From 44b633865fea28b19b93dc372165cc4db7a90887 Mon Sep 17 00:00:00 2001
 From: huangyifeng <huangyifeng@eswincomputing.com>
 Date: Wed, 24 Jul 2024 15:10:18 +0800
 Subject: [PATCH 124/540] fix(irqchip/sifive-plic): enable interrupt if needed
@@ -15,11 +15,11 @@ Make sure that interrupt is really enabled before EOI
 
 Signed-off-by: huangyifeng <huangyifeng@eswincomputing.com>
 ---
- drivers/irqchip/irq-sifive-plic.c | 10 ++++++++--
- 1 file changed, 8 insertions(+), 2 deletions(-)
+ drivers/irqchip/irq-sifive-plic.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/irqchip/irq-sifive-plic.c b/drivers/irqchip/irq-sifive-plic.c
-index a8f5cfad16f7d..a0ee67cb06b1c 100644
+index 794bdb6d4d1e3..e54fda7f812d4 100644
 --- a/drivers/irqchip/irq-sifive-plic.c
 +++ b/drivers/irqchip/irq-sifive-plic.c
 @@ -136,6 +136,10 @@ static void plic_irq_mask(struct irq_data *d)
@@ -33,16 +33,7 @@ index a8f5cfad16f7d..a0ee67cb06b1c 100644
  	plic_irq_toggle(irq_data_get_effective_affinity_mask(d), d, 1);
  	plic_irq_unmask(d);
  }
-@@ -149,7 +153,7 @@ static void plic_irq_eoi(struct irq_data *d)
- {
- 	struct plic_handler *handler = this_cpu_ptr(&plic_handlers);
- 
--	if (unlikely(irqd_irq_disabled(d))) {
-+	if (irqd_irq_disabled(d)) {
- 		plic_toggle(handler, d->hwirq, 1);
- 		writel(d->hwirq, handler->hart_base + CONTEXT_CLAIM);
- 		plic_toggle(handler, d->hwirq, 0);
-@@ -165,6 +169,7 @@ static int plic_set_affinity(struct irq_data *d,
+@@ -170,6 +174,7 @@ static int plic_set_affinity(struct irq_data *d,
  	unsigned int cpu;
  	struct cpumask amask;
  	struct plic_priv *priv = irq_data_get_irq_chip_data(d);
@@ -50,7 +41,7 @@ index a8f5cfad16f7d..a0ee67cb06b1c 100644
  
  	cpumask_and(&amask, &priv->lmask, mask_val);
  
-@@ -173,8 +178,9 @@ static int plic_set_affinity(struct irq_data *d,
+@@ -178,8 +183,9 @@ static int plic_set_affinity(struct irq_data *d,
  	else
  		cpu = cpumask_any_and(&amask, cpu_online_mask);
  

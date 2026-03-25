@@ -1,4 +1,4 @@
-From 7e70c72679c66a47678375d3da6af2294a4e6294 Mon Sep 17 00:00:00 2001
+From 3f32f9b5fa8ece87b691a74a031f7ec7008c8ebe Mon Sep 17 00:00:00 2001
 From: ningyu <ningyu@eswincomputing.com>
 Date: Thu, 21 Aug 2025 20:28:35 +0800
 Subject: [PATCH 437/540] WIN2030-19163:fix:combine temp and voltage in

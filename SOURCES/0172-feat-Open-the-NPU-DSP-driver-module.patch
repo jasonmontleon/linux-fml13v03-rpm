@@ -1,4 +1,4 @@
-From fdb40b442e67ad0e02cb96fad754bff00f005c04 Mon Sep 17 00:00:00 2001
+From e14da0f85d36a372946835bf28d4b028cd388804 Mon Sep 17 00:00:00 2001
 From: denglei <denglei@eswincomputing.com>
 Date: Tue, 3 Sep 2024 13:40:45 +0800
 Subject: [PATCH 172/540] feat:Open the NPU & DSP driver module.

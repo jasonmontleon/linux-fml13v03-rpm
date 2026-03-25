@@ -1,4 +1,4 @@
-From e6ef7aa66ea1545d8e48985d44f5645dfebf8c50 Mon Sep 17 00:00:00 2001
+From cc86d224843e9362c7c4425442ac8fccc5efe334 Mon Sep 17 00:00:00 2001
 From: huangyifeng <huangyifeng@eswincomputing.com>
 Date: Wed, 25 Sep 2024 16:04:43 +0800
 Subject: [PATCH 186/540] feat:fix clock&pmic&noc init initialization order

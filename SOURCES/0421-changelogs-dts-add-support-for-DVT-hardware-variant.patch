@@ -1,4 +1,4 @@
-From 4888cba5033158a8ddd5f5a21b93d3487c171be2 Mon Sep 17 00:00:00 2001
+From bff5bec7c78478f3f9bd5670444ca0dad2adfd4d Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Fri, 11 Jul 2025 18:40:15 +0800
 Subject: [PATCH 421/540] changelogs: dts: add support for DVT hardware variant

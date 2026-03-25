@@ -1,4 +1,4 @@
-From 74055cb8e88430b0b9654fa9c85eb9fe2b18bbdf Mon Sep 17 00:00:00 2001
+From c8d3c99f5412769e4f84f72e7feda8dcffc1effc Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Thu, 27 Mar 2025 14:34:40 +0800
 Subject: [PATCH 270/540] cros: add support for reading temperature sensor.
@@ -15,7 +15,7 @@ Signed-off-by: yang.wang <yang.wang@deepcomputing.io>
  create mode 100644 drivers/hwmon/cros_ec_hwmon.c
 
 diff --git a/drivers/hwmon/Kconfig b/drivers/hwmon/Kconfig
-index 655ce83483869..f5aedfc8cd78b 100644
+index ae20edaaf84e5..a03c79acc4e4c 100644
 --- a/drivers/hwmon/Kconfig
 +++ b/drivers/hwmon/Kconfig
 @@ -486,6 +486,17 @@ config SENSORS_CORSAIR_PSU

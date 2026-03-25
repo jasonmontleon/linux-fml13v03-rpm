@@ -1,4 +1,4 @@
-From acd141990e50236b1a642cce62cd46944fdf525c Mon Sep 17 00:00:00 2001
+From 98c8a63a1404f7850f99518469a3e30311f9a69a Mon Sep 17 00:00:00 2001
 From: tangdaoyong <tangdaoyong@eswincomputing.com>
 Date: Thu, 18 Jul 2024 13:54:33 +0800
 Subject: [PATCH 133/540] feat:vdec support power managemnt
