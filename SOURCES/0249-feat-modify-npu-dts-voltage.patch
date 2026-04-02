@@ -1,4 +1,4 @@
-From a5c7f3895cbfd24b593ecc2b3093df2d83be2ddd Mon Sep 17 00:00:00 2001
+From 89c016275c0f6e21fc7fe74c51c9e6139d490c2f Mon Sep 17 00:00:00 2001
 From: donghuawei <donghuawei@eswincomputing.com>
 Date: Tue, 18 Feb 2025 16:40:28 +0800
 Subject: [PATCH 249/540] feat: modify npu dts voltage

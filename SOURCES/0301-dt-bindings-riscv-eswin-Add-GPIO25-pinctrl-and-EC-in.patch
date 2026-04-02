@@ -1,4 +1,4 @@
-From 8ee40e683f2123cf7d9acbdc3709a3fc9a8dd7c2 Mon Sep 17 00:00:00 2001
+From 501d5132b271dcfeb0558bc2bb2a42afc7e21093 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Wed, 21 May 2025 10:30:40 +0800
 Subject: [PATCH 301/540] dt-bindings: riscv: eswin: Add GPIO25 pinctrl and EC

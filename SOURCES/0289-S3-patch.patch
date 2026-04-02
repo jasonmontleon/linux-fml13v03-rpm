@@ -1,4 +1,4 @@
-From e9bbc914ca0b14d609d3051d6185484d43eaf5cf Mon Sep 17 00:00:00 2001
+From 0f00c7bdd33cf733c62d8e3a970597a27cb6579c Mon Sep 17 00:00:00 2001
 From: Sandie Cao <sandie.cao@deepcomputing.io>
 Date: Wed, 23 Apr 2025 11:53:19 +0800
 Subject: [PATCH 289/540] S3 patch
@@ -10437,10 +10437,10 @@ index b9881798fc4e8..04989a386f707 100644
  	sdhci_pltfm_free(pdev);
  	return ret;
 diff --git a/drivers/mtd/spi-nor/core.c b/drivers/mtd/spi-nor/core.c
-index 1b0c6770c14e4..9c160e873d638 100644
+index 6e135581ec62a..9f00f746320ab 100644
 --- a/drivers/mtd/spi-nor/core.c
 +++ b/drivers/mtd/spi-nor/core.c
-@@ -3280,6 +3280,9 @@ static int spi_nor_suspend(struct mtd_info *mtd)
+@@ -3421,6 +3421,9 @@ static int spi_nor_suspend(struct mtd_info *mtd)
  	struct spi_nor *nor = mtd_to_spi_nor(mtd);
  	int ret;
  
@@ -10450,7 +10450,7 @@ index 1b0c6770c14e4..9c160e873d638 100644
  	/* Disable octal DTR mode if we enabled it. */
  	ret = spi_nor_set_octal_dtr(nor, false);
  	if (ret)
-@@ -3299,6 +3302,9 @@ static void spi_nor_resume(struct mtd_info *mtd)
+@@ -3440,6 +3443,9 @@ static void spi_nor_resume(struct mtd_info *mtd)
  	ret = spi_nor_init(nor);
  	if (ret)
  		dev_err(dev, "resume() failed\n");

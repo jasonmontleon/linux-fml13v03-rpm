@@ -1,4 +1,4 @@
-From ed7ae52481190a01cd86edd294e7f5c5501149bf Mon Sep 17 00:00:00 2001
+From 79ca16bb1e52d5584c36aa0bbbb6dcb5ffec68ae Mon Sep 17 00:00:00 2001
 From: denglei <denglei@eswincomputing.com>
 Date: Mon, 18 Aug 2025 17:04:03 +0800
 Subject: [PATCH 468/540] fix:Resolve the issue of NPU frame statistics.

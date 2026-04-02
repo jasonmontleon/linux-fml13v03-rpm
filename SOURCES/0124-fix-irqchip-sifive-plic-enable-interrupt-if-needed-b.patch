@@ -1,4 +1,4 @@
-From 44b633865fea28b19b93dc372165cc4db7a90887 Mon Sep 17 00:00:00 2001
+From 7c3140b43cace68990aa118ddcc3953028cac701 Mon Sep 17 00:00:00 2001
 From: huangyifeng <huangyifeng@eswincomputing.com>
 Date: Wed, 24 Jul 2024 15:10:18 +0800
 Subject: [PATCH 124/540] fix(irqchip/sifive-plic): enable interrupt if needed

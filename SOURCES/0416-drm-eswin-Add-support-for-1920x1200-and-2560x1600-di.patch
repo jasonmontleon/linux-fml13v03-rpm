@@ -1,4 +1,4 @@
-From 02b98ee182a332c328f45b776de3f83444f7d94f Mon Sep 17 00:00:00 2001
+From 35a725e1021847baee294f1b4e51eb384a90aa4f Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Thu, 3 Jul 2025 16:32:58 +0800
 Subject: [PATCH 416/540] drm/eswin: Add support for 1920x1200 and 2560x1600

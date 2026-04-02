@@ -1,4 +1,4 @@
-From 0804fb48a6ca85595e1f298a22a7600ffc23140c Mon Sep 17 00:00:00 2001
+From d881b9c32c6da51f478d7ca0ab9a9233e7afabc4 Mon Sep 17 00:00:00 2001
 From: ouyanghui <ouyanghui@eswincomputing.com>
 Date: Wed, 15 Oct 2025 17:52:57 +0800
 Subject: [PATCH 528/540] Merge branch 'win2030-dev' into pm_merge
@@ -41324,7 +41324,7 @@ index e347b435a038e..c4c2dfd95b4c1 100644
  spi-nor-objs			+= xmc.o
  spi-nor-$(CONFIG_DEBUG_FS)	+= debugfs.o
 diff --git a/drivers/mtd/spi-nor/core.c b/drivers/mtd/spi-nor/core.c
-index 9c160e873d638..e4a90015ba227 100644
+index 9f00f746320ab..0ae203ddcd04c 100644
 --- a/drivers/mtd/spi-nor/core.c
 +++ b/drivers/mtd/spi-nor/core.c
 @@ -2015,6 +2015,7 @@ static const struct spi_nor_manufacturer *manufacturers[] = {

@@ -1,4 +1,4 @@
-From cc869679e58e78cac0e04791f58c028ac6d1a195 Mon Sep 17 00:00:00 2001
+From addb94021040b15a7631d1cdc3fd0405ef6ab67f Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Tue, 22 Jul 2025 16:26:51 +0800
 Subject: [PATCH 427/540] Changelogs: 1. Limited the maximum CPU frequency to

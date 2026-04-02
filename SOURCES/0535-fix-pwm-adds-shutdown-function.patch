@@ -1,4 +1,4 @@
-From d564580d00db9d1e76335dd4fe82f77ff341b8f8 Mon Sep 17 00:00:00 2001
+From 2489a107c64f7df8dad62a396c5a9ba8e63b1757 Mon Sep 17 00:00:00 2001
 From: wangguosheng <wangguosheng@eswincomputing.com>
 Date: Tue, 28 Oct 2025 15:49:43 +0800
 Subject: [PATCH 535/540] fix: pwm adds shutdown function

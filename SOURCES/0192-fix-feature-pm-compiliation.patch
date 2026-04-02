@@ -1,4 +1,4 @@
-From bfec8d3f92ddb7fe1e9b2e81fb9d1cf4b162e63f Mon Sep 17 00:00:00 2001
+From 50b1ae8f8af7481dd5f5faa4584a3205f7b8182d Mon Sep 17 00:00:00 2001
 From: tangdaoyong <tangdaoyong@eswincomputing.com>
 Date: Wed, 9 Oct 2024 10:13:45 +0800
 Subject: [PATCH 192/540] fix:feature-pm compiliation

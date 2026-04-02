@@ -1,4 +1,4 @@
-From 0d6798cfa2f321ea2c8b47cbd15746432a2b769e Mon Sep 17 00:00:00 2001
+From 72514352892ac5e1dc50e7b45803a78ea986a9e3 Mon Sep 17 00:00:00 2001
 From: hehuan1 <hehuan1@eswincomputing.com>
 Date: Thu, 10 Jul 2025 11:21:50 +0800
 Subject: [PATCH 469/540] perf: optimize pvt display info

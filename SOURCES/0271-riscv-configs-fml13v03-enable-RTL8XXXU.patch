@@ -1,4 +1,4 @@
-From bfcbcc9a272ce59efa68d4cd19b8cd697a0be819 Mon Sep 17 00:00:00 2001
+From 48db93bdaf3408087d5c3037c0d561bb38a8843e Mon Sep 17 00:00:00 2001
 From: Sandie Cao <sandie.cao@deepcomputing.io>
 Date: Fri, 28 Mar 2025 16:53:32 +0800
 Subject: [PATCH 271/540] riscv: configs: fml13v03: enable RTL8XXXU
