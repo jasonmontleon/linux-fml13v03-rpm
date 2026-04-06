@@ -1,4 +1,4 @@
-From b5a781d1ecfc640f5fe3722bedb64eb25bd75846 Mon Sep 17 00:00:00 2001
+From 4a9a813fc5740f1d2e28cfe589527094c9c1654a Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Wed, 16 Apr 2025 11:06:18 +0800
 Subject: [PATCH 283/540] Enhance ES8326 audio support for Eswin EIC7702

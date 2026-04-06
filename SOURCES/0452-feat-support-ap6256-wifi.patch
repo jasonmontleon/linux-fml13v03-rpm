@@ -1,4 +1,4 @@
-From cacc5fe1ad4b7664689fa7ca35c82c18c43cd18c Mon Sep 17 00:00:00 2001
+From 20c0164dd0bb433cd067dfddb7f3d4abf578f25e Mon Sep 17 00:00:00 2001
 From: wangjinlong <wangjinlong@eswincomputing.com>
 Date: Thu, 31 Jul 2025 15:19:35 +0800
 Subject: [PATCH 452/540] feat:support ap6256 wifi

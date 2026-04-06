@@ -1,4 +1,4 @@
-From 04bf920ea22d881bbfc5fcf4c3e4bd3f0ba4ac43 Mon Sep 17 00:00:00 2001
+From 80a2c62cfac9170f78ae044889e173a96e7466f4 Mon Sep 17 00:00:00 2001
 From: yangwei1 <yangwei1@eswincomputing.com>
 Date: Thu, 23 May 2024 16:16:05 +0800
 Subject: [PATCH 032/540] feat:add support pac1934 to get som voltage info

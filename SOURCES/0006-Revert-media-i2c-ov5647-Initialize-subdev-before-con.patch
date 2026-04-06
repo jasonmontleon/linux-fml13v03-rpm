@@ -1,4 +1,4 @@
-From 02a3db9ddc09ccd9e72e338c3c3a022d2aa71030 Mon Sep 17 00:00:00 2001
+From b6dd6190c6d74e94a45b2b37020becd660c65e10 Mon Sep 17 00:00:00 2001
 From: Jason Montleon <jmontleo@redhat.com>
 Date: Wed, 4 Mar 2026 12:39:24 -0500
 Subject: [PATCH 006/540] Revert "media: i2c: ov5647: Initialize subdev before

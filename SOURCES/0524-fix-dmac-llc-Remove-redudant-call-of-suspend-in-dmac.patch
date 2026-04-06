@@ -1,4 +1,4 @@
-From 196e0f982e4213e42bdb1719625536da68ba147a Mon Sep 17 00:00:00 2001
+From f19653d74d836d4680db808bb792ca5a540be1e6 Mon Sep 17 00:00:00 2001
 From: Min Lin <linmin@eswincomputing.com>
 Date: Tue, 30 Sep 2025 14:08:15 +0800
 Subject: [PATCH 524/540] fix(dmac,llc):Remove redudant call of suspend in dmac

@@ -1,4 +1,4 @@
-From dbf293f7145052ccd9aa97b975a88d4286518c35 Mon Sep 17 00:00:00 2001
+From dbe63ccbd4d426ea57f2d4ca8b9b1aa3f3562fc6 Mon Sep 17 00:00:00 2001
 From: sandiecao <sandie.cao@deepcomputing.io>
 Date: Mon, 29 Sep 2025 14:25:24 +0800
 Subject: [PATCH 445/540] WIN2030-18008:feat:npu frame schedule fix when npu

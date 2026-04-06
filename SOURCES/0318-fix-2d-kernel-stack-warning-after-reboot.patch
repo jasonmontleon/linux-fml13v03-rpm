@@ -1,4 +1,4 @@
-From 35b6246c07f214ce70b34ccc343023580a6619bb Mon Sep 17 00:00:00 2001
+From a89e7f430c59cbf5c7bbcd4e4e8ac0794f6b5a52 Mon Sep 17 00:00:00 2001
 From: lei zhilin <leizhilin@eswincomputing.com>
 Date: Thu, 13 Feb 2025 11:10:23 +0800
 Subject: [PATCH 318/540] fix(2d):kernel stack warning after reboot

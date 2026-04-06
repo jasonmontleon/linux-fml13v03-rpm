@@ -1,4 +1,4 @@
-From 958520ec114f82fcac0843caa993e1973533e354 Mon Sep 17 00:00:00 2001
+From c50ea37b00517d1c86e033920ff0af620d171674 Mon Sep 17 00:00:00 2001
 From: tanshanshan <tanshanshan@eswincomputing.com>
 Date: Sat, 12 Apr 2025 19:36:18 +0800
 Subject: [PATCH 344/540] feat:update dts for eic7702_vpu

@@ -1,4 +1,4 @@
-From 72fa1de2dd8672a60d69852187035dd0d00d7f95 Mon Sep 17 00:00:00 2001
+From 670f786b2598a383cf5cbd87ff193e632dc46304 Mon Sep 17 00:00:00 2001
 From: denglei <denglei@eswincomputing.com>
 Date: Wed, 18 Sep 2024 16:34:12 +0800
 Subject: [PATCH 180/540] feat:merge DSP DSP & NPU SDK driver to linux.

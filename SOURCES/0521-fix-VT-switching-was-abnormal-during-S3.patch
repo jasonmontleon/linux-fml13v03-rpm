@@ -1,4 +1,4 @@
-From eb9b1f8811ee49870ab7e84f14385b00c4b81e63 Mon Sep 17 00:00:00 2001
+From cdb8a75fe522c484bee28c7ffb3a46e83930283c Mon Sep 17 00:00:00 2001
 From: gengzonglin <gengzonglin@eswincomputing.com>
 Date: Thu, 18 Sep 2025 10:22:10 +0800
 Subject: [PATCH 521/540] fix:VT switching was abnormal during S3.

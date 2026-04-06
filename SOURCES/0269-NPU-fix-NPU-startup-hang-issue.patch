@@ -1,4 +1,4 @@
-From 3f8341d523e05299745904fd6cddd9b5e4e1a243 Mon Sep 17 00:00:00 2001
+From a917ea413426e4ad0fdd4400493e294b46f343d5 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Thu, 27 Mar 2025 14:16:16 +0800
 Subject: [PATCH 269/540] NPU: fix NPU startup hang issue.

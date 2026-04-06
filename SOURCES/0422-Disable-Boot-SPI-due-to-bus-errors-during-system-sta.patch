@@ -1,4 +1,4 @@
-From 12a716402cd85aee539e4e76eb86b0a586d103e3 Mon Sep 17 00:00:00 2001
+From c2323e0d126542903ec82c1613a6d6ef3863560b Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Mon, 14 Jul 2025 16:52:33 +0800
 Subject: [PATCH 422/540] Disable Boot SPI due to bus errors during system
