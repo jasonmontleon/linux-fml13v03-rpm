@@ -1,4 +1,4 @@
-From aa417d158873b9a34ab0914991df7a889cb85a9e Mon Sep 17 00:00:00 2001
+From 39d4963ece26b934655569698273fcee1feef30b Mon Sep 17 00:00:00 2001
 From: Jason Montleon <jmontleo@redhat.com>
 Date: Wed, 4 Mar 2026 12:39:08 -0500
 Subject: [PATCH 005/540] Revert "media: i2c: ov5647: Correct pixel array

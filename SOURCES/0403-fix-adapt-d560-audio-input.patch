@@ -1,4 +1,4 @@
-From e04a90388a4fdcc3c89fd3f8841ad3b0aaef719e Mon Sep 17 00:00:00 2001
+From 264d681d909cae0dd62535cc9bb1936f03c23cbd Mon Sep 17 00:00:00 2001
 From: yiguo <yiguo@eswincomputing.com>
 Date: Mon, 12 May 2025 11:27:02 +0800
 Subject: [PATCH 403/540] fix:adapt d560 audio input

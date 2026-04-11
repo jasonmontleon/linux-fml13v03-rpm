@@ -1,4 +1,4 @@
-From 0d4ffc559cd19d3626821cd78e739ac66de0bbbc Mon Sep 17 00:00:00 2001
+From 69eaecf9c48291931e7abfed2690d6c08fa9bc83 Mon Sep 17 00:00:00 2001
 From: Sakura286 <sakura286@outlook.com>
 Date: Wed, 10 Jul 2024 17:24:52 +0800
 Subject: [PATCH 080/540] img gpu kmd: update kernel api - register_shrinker

@@ -1,4 +1,4 @@
-From 161c4ee5e2396d740a759266fbac483150340aba Mon Sep 17 00:00:00 2001
+From de67c427ee7e7e3257a222742992f585490f4f89 Mon Sep 17 00:00:00 2001
 From: zhouliang2 <zhouliang2@eswincomputing.com>
 Date: Tue, 8 Apr 2025 15:14:28 +0800
 Subject: [PATCH 335/540] fix:fix dma buffersize

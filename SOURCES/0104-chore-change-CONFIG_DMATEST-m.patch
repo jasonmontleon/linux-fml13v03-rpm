@@ -1,4 +1,4 @@
-From aa32c7baaa890107015dfad5564c4f85cec44491 Mon Sep 17 00:00:00 2001
+From c2e0243612c20b49bbe4e7ca7ab1d6fefa86700e Mon Sep 17 00:00:00 2001
 From: xuxiang <xuxiang@eswincomputing.com>
 Date: Mon, 15 Jul 2024 11:12:23 +0800
 Subject: [PATCH 104/540] chore:change CONFIG_DMATEST=m

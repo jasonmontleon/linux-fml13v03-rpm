@@ -1,4 +1,4 @@
-From 180aacc2878dfb0384e9c81653e8266015bb2203 Mon Sep 17 00:00:00 2001
+From cf1747d89802fcb1f0d96027f4eac76ed884b977 Mon Sep 17 00:00:00 2001
 From: gengzonglin <gengzonglin@eswincomputing.com>
 Date: Tue, 21 Oct 2025 16:29:40 +0800
 Subject: [PATCH 532/540] fix:DC can't be resume during S3.

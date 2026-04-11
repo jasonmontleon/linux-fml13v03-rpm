@@ -1,4 +1,4 @@
-From b091fb54676b11df584de5c82b6f6336218e99e6 Mon Sep 17 00:00:00 2001
+From adcd4a313c1dd221bdd8d747eba00135a3fde89c Mon Sep 17 00:00:00 2001
 From: wangguosheng <wangguosheng@eswincomputing.com>
 Date: Fri, 15 Aug 2025 18:36:01 +0800
 Subject: [PATCH 473/540] fix: d560 enables 4-channel fan

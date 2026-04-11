@@ -1,4 +1,4 @@
-From 28514d1852260d4f5d4985f4a4f6f21ff8decb87 Mon Sep 17 00:00:00 2001
+From c1a15f7e448960d0fae85d46e9095a61ae80cc2a Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Tue, 6 May 2025 10:55:08 +0800
 Subject: [PATCH 294/540] sound/soc/codecs/es8326: Optimize speaker control to
