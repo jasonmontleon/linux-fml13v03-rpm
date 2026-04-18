@@ -1,4 +1,4 @@
-From 573e17c55fc20afd1125a5f7fd5586e4d196a4a6 Mon Sep 17 00:00:00 2001
+From 80b7538e5df5afa990bfbe55b3946687bb5a03ea Mon Sep 17 00:00:00 2001
 From: Sandie Cao <sandie.cao@deepcomputing.io>
 Date: Thu, 15 May 2025 14:17:17 +0800
 Subject: [PATCH 296/540] dts: riscv: eswin: fml13v03: add gpu_opp_table for

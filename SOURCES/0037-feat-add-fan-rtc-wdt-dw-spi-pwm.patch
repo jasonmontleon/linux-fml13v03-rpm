@@ -1,4 +1,4 @@
-From 840f493735693a95580fc24ee2f7cd5907071ccc Mon Sep 17 00:00:00 2001
+From f877940415b0548b6656238af7fcf6fa43b50cc2 Mon Sep 17 00:00:00 2001
 From: xuxiang <xuxiang@eswincomputing.com>
 Date: Fri, 24 May 2024 13:24:28 +0800
 Subject: [PATCH 037/540] feat:add fan,rtc,wdt,dw-spi,pwm

@@ -1,4 +1,4 @@
-From e31dfe96b94ae6874629161f03899eb8236e7877 Mon Sep 17 00:00:00 2001
+From 85c88b2d1954585d61639e75172b463fe1f5cec2 Mon Sep 17 00:00:00 2001
 From: huangyifeng <huangyifeng@eswincomputing.com>
 Date: Mon, 9 Sep 2024 10:29:47 +0800
 Subject: [PATCH 175/540] fix:Synchronize configuration from eic7700_defconfig

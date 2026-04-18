@@ -1,4 +1,4 @@
-From be5987e825c8f84a4ed0950c32f5e34711cd5692 Mon Sep 17 00:00:00 2001
+From 3a06972c861b456949fab77d5f94afb041968fac Mon Sep 17 00:00:00 2001
 From: hehuan1 <hehuan1@eswincomputing.com>
 Date: Wed, 20 Aug 2025 16:07:48 +0800
 Subject: [PATCH 478/540] fix: resolve abnormal prints

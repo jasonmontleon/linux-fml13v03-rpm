@@ -1,4 +1,4 @@
-From 446d5672f28ed42504ba1e457b755f469b687f23 Mon Sep 17 00:00:00 2001
+From 08141bd631ab9331bf568e5f23dbb5e2a3fb40b8 Mon Sep 17 00:00:00 2001
 From: Wu Zhangben <wuzhangben@eswincomputing.com>
 Date: Tue, 26 Aug 2025 12:48:47 +0800
 Subject: [PATCH 490/540] fix:power off USB in s3

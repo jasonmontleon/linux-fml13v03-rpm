@@ -1,4 +1,4 @@
-From d287c2bac85dfd07df3a0a6e782e787d8b797df5 Mon Sep 17 00:00:00 2001
+From ee6c5639448ae8f80335098930a26b380d0c442d Mon Sep 17 00:00:00 2001
 From: huangyifeng <huangyifeng@eswincomputing.com>
 Date: Tue, 18 Mar 2025 15:17:45 +0800
 Subject: [PATCH 327/540] fix:Fix cnoc npu timeout problem.

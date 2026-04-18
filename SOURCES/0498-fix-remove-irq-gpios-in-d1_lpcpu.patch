@@ -1,4 +1,4 @@
-From b2838b050e301996e78de7ac2b0aafc4f1b51766 Mon Sep 17 00:00:00 2001
+From f6a0029abd990b332dd8a73aebc94e8c722e9746 Mon Sep 17 00:00:00 2001
 From: Wu Zhangben <wuzhangben@eswincomputing.com>
 Date: Wed, 3 Sep 2025 17:25:38 +0800
 Subject: [PATCH 498/540] fix:remove irq-gpios in d1_lpcpu

@@ -1,4 +1,4 @@
-From 82926df5da8846c39da548a0552e72531fe88138 Mon Sep 17 00:00:00 2001
+From 3b1ba11f0ba66063a31ce04b4a3f15ae467ec1e2 Mon Sep 17 00:00:00 2001
 From: denglei <denglei@eswincomputing.com>
 Date: Fri, 29 Aug 2025 09:00:39 +0800
 Subject: [PATCH 511/540] fix:Resolve NPU driver bugs.

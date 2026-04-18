@@ -1,4 +1,4 @@
-From 66749cad9279d4fb66025bc53bf9f5ec40c6202b Mon Sep 17 00:00:00 2001
+From 56706e03bcb4a5aaf99b88e4e12b402a5e543f72 Mon Sep 17 00:00:00 2001
 From: Sandie Cao <sandie.cao@deepcomputing.io>
 Date: Wed, 30 Apr 2025 17:41:13 +0800
 Subject: [PATCH 291/540] dts: riscv: eswin: fml13v03: disabled pvt0 & timer0

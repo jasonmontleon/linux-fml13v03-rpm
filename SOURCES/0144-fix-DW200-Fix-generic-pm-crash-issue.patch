@@ -1,4 +1,4 @@
-From f7801c884f78f9e80bd2192214d91b0c102bafb3 Mon Sep 17 00:00:00 2001
+From 49785ebbb4241e4930f14306f534d4d1ef52afe4 Mon Sep 17 00:00:00 2001
 From: lilijun <lilijun@eswincomputing.com>
 Date: Tue, 30 Jul 2024 10:24:25 +0800
 Subject: [PATCH 144/540] fix(DW200): Fix generic pm crash issue

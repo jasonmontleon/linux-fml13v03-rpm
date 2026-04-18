@@ -1,4 +1,4 @@
-From 191c72628ca0dadf1f59d497ceb12ba24a511e0a Mon Sep 17 00:00:00 2001
+From 4a6fec7ab6eb5ab04b796871531a0b67c0bcec3e Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Wed, 26 Mar 2025 17:36:14 +0800
 Subject: [PATCH 268/540] EC: add support for special function keys: KEY_MEDIA

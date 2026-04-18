@@ -1,4 +1,4 @@
-From db93a6d59b7d2fe9ec52f259fe7d2406ad33c708 Mon Sep 17 00:00:00 2001
+From 1f4a303e61315cc68cc4dfec14ffcdef72bb7726 Mon Sep 17 00:00:00 2001
 From: Min Lin <linmin@eswincomputing.com>
 Date: Tue, 17 Jun 2025 13:51:06 +0800
 Subject: [PATCH 411/540] Applied power management patches for EIC770X

@@ -1,4 +1,4 @@
-From 412a7d13ec6a2226fb5047b2f51048b54c581e62 Mon Sep 17 00:00:00 2001
+From 0b43d7aedb0347bd4732a2b4aefcb18fed28f1fc Mon Sep 17 00:00:00 2001
 From: tanshanshan <tanshanshan@eswincomputing.com>
 Date: Thu, 5 Jun 2025 15:54:35 +0800
 Subject: [PATCH 395/540] feat:update dts for eic7702_pcie

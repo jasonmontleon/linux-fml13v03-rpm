@@ -1,4 +1,4 @@
-From ecc0d54b260a8024c058a69341a6e61b2aa7b585 Mon Sep 17 00:00:00 2001
+From 10eac0748fc1868670eaa8ff6df8c5a1a9ce9130 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Wed, 9 Apr 2025 15:18:16 +0800
 Subject: [PATCH 279/540] riscv: Update fml13v03_defconfig for USB audio

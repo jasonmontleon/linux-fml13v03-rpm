@@ -1,4 +1,4 @@
-From c7d20041c71f12bc962bf477ac44710ae2548648 Mon Sep 17 00:00:00 2001
+From 8241958b34ee152d3ed9168e81d2d321b3cd90df Mon Sep 17 00:00:00 2001
 From: liusheng <liusheng@eswincomputing.com>
 Date: Wed, 24 Jul 2024 16:08:13 +0800
 Subject: [PATCH 126/540] fix:put power on if the interrupt came

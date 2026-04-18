@@ -1,4 +1,4 @@
-From 846a29e6f277607316ba1c7ffd1f883f28dc5979 Mon Sep 17 00:00:00 2001
+From 07c4d95dde0fef500eece7b3d07cdfd449fb1e5c Mon Sep 17 00:00:00 2001
 From: ningyu <ningyu@eswincomputing.com>
 Date: Thu, 22 May 2025 20:04:39 +0800
 Subject: [PATCH 305/540] add thermal zone

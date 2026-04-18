@@ -1,4 +1,4 @@
-From 362f64fde7b46bd36a39753418423e1e642a72d3 Mon Sep 17 00:00:00 2001
+From 09e390ba3a2afe406b4bfb7fd7ead94df6f7061f Mon Sep 17 00:00:00 2001
 From: zhaodonghui <zhaodonghui@eswincomputing.com>
 Date: Mon, 12 May 2025 17:42:25 +0800
 Subject: [PATCH 364/540] fix:VPU model reading erro
