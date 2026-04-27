@@ -1,4 +1,4 @@
-From 03fc7c8af27407165e33f1abdea73e1f4d19a192 Mon Sep 17 00:00:00 2001
+From 15786f5cc505dbbd9ec0fa6c0fc4ed32b1441107 Mon Sep 17 00:00:00 2001
 From: yufangxian <yufangxian@eswincomputing.com>
 Date: Wed, 28 May 2025 15:34:42 +0800
 Subject: [PATCH 384/540] feat: remove v4l2_pm in video open/close
@@ -12,7 +12,7 @@ Signed-off-by: yufangxian <yufangxian@eswincomputing.com>
  1 file changed, 6 insertions(+), 19 deletions(-)
 
 diff --git a/drivers/media/platform/eswin/dvp2axi/capture.c b/drivers/media/platform/eswin/dvp2axi/capture.c
-index 298f9cd381937..c697cbc975cc8 100644
+index 298f9cd38193..c697cbc975cc 100644
 --- a/drivers/media/platform/eswin/dvp2axi/capture.c
 +++ b/drivers/media/platform/eswin/dvp2axi/capture.c
 @@ -854,7 +854,7 @@ static struct v4l2_subdev *get_remote_sensor(struct es_dvp2axi_stream *stream,
@@ -62,5 +62,5 @@ index 298f9cd381937..c697cbc975cc8 100644
  	if (dvp2axidev->sditf_cnt > 1) {
  		for (i = 0; i < dvp2axidev->sditf_cnt; i++) {
 -- 
-2.53.0
+2.54.0
 

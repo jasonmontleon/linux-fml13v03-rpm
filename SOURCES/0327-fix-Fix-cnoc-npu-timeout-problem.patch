@@ -1,4 +1,4 @@
-From ee6c5639448ae8f80335098930a26b380d0c442d Mon Sep 17 00:00:00 2001
+From b0534f58c69eec547f3d68c428367f4300a29bd4 Mon Sep 17 00:00:00 2001
 From: huangyifeng <huangyifeng@eswincomputing.com>
 Date: Tue, 18 Mar 2025 15:17:45 +0800
 Subject: [PATCH 327/540] fix:Fix cnoc npu timeout problem.
@@ -16,7 +16,7 @@ Signed-off-by: huangyifeng <huangyifeng@eswincomputing.com>
  1 file changed, 2 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/regulator/mpq8785.c b/drivers/regulator/mpq8785.c
-index a2bfd04af41b3..01c9b3ac79a9f 100644
+index a2bfd04af41b..01c9b3ac79a9 100644
 --- a/drivers/regulator/mpq8785.c
 +++ b/drivers/regulator/mpq8785.c
 @@ -773,7 +773,7 @@ static int mpq8785_write(struct device *dev, enum hwmon_sensor_types type,
@@ -49,5 +49,5 @@ index a2bfd04af41b3..01c9b3ac79a9f 100644
  	dev_dbg(&rdev->dev, "%s.%d\n", __FUNCTION__, __LINE__);
  	return mpq8785_enable(&rdev->dev,data,  MPQ8785_MASK_OPERATION_ENABLE);
 -- 
-2.53.0
+2.54.0
 

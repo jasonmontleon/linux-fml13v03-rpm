@@ -1,4 +1,4 @@
-From d01522512e18a5d3c2ddfe0c6e5e18cad73eb17b Mon Sep 17 00:00:00 2001
+From 26daefb20e43ce7a2fdcb0a68284c3db68e682d3 Mon Sep 17 00:00:00 2001
 From: Jason Montleon <jmontleo@redhat.com>
 Date: Wed, 4 Mar 2026 12:38:40 -0500
 Subject: [PATCH 003/540] Revert "media: i2c: ov5647: Sensor should report RAW
@@ -10,7 +10,7 @@ This reverts commit c146483bad46e4abb7ab9c706adc51cd54f1a81e.
  1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/media/i2c/ov5647.c b/drivers/media/i2c/ov5647.c
-index 4327e6331e847..c2df51240241c 100644
+index 4327e6331e84..c2df51240241 100644
 --- a/drivers/media/i2c/ov5647.c
 +++ b/drivers/media/i2c/ov5647.c
 @@ -509,7 +509,7 @@ static const struct ov5647_mode ov5647_modes[] = {
@@ -50,5 +50,5 @@ index 4327e6331e847..c2df51240241c 100644
  			.width		= 640,
  			.height		= 480
 -- 
-2.53.0
+2.54.0
 

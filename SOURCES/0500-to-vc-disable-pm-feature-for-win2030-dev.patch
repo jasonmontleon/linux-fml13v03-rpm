@@ -1,4 +1,4 @@
-From ec1674eff04983e283d0576f4e14fa2aec30d88e Mon Sep 17 00:00:00 2001
+From f6940ccfa549e77aa8b5c27e6a2d8c4232e05998 Mon Sep 17 00:00:00 2001
 From: zouxiaojun <zouxiaojun@eswincomputing.com>
 Date: Wed, 10 Sep 2025 14:44:03 +0800
 Subject: [PATCH 500/540] to(vc):disable pm feature for win2030-dev
@@ -12,7 +12,7 @@ Signed-off-by: zouxiaojun <zouxiaojun@eswincomputing.com>
  1 file changed, 22 insertions(+)
 
 diff --git a/drivers/staging/media/eswin/vdec/hantro_dec.c b/drivers/staging/media/eswin/vdec/hantro_dec.c
-index 1bbe898ce947d..038e7c576eb2f 100644
+index 1bbe898ce947..038e7c576eb2 100644
 --- a/drivers/staging/media/eswin/vdec/hantro_dec.c
 +++ b/drivers/staging/media/eswin/vdec/hantro_dec.c
 @@ -298,6 +298,7 @@ static unsigned int reg_access_opt;
@@ -80,5 +80,5 @@ index 1bbe898ce947d..038e7c576eb2f 100644
  
  	LOG_DBG("system resume enter\n");
 -- 
-2.53.0
+2.54.0
 

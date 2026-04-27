@@ -1,4 +1,4 @@
-From ca7cb196ca5c9c18b136ce1cbe55277a12603484 Mon Sep 17 00:00:00 2001
+From a53618f49738c06e1a46b454ce3f10eb04e5fd66 Mon Sep 17 00:00:00 2001
 From: lei zhilin <leizhilin@eswincomputing.com>
 Date: Tue, 13 May 2025 14:37:57 +0800
 Subject: [PATCH 359/540] Revert "<fix>(2d):hae power off delay by timeout"
@@ -14,7 +14,7 @@ Reason for revert: <INSERT REASONING HERE> smoke failed
  4 files changed, 11 insertions(+), 28 deletions(-)
 
 diff --git a/drivers/staging/media/eswin/hae/hal/kernel/arch/gc_hal_kernel_hardware.c b/drivers/staging/media/eswin/hae/hal/kernel/arch/gc_hal_kernel_hardware.c
-index 1eaf7e4ebdf3b..0cd8c0ab4daed 100644
+index 1eaf7e4ebdf3..0cd8c0ab4dae 100644
 --- a/drivers/staging/media/eswin/hae/hal/kernel/arch/gc_hal_kernel_hardware.c
 +++ b/drivers/staging/media/eswin/hae/hal/kernel/arch/gc_hal_kernel_hardware.c
 @@ -5139,19 +5139,6 @@ gckHARDWARE_PowerControlClusters(gckHARDWARE Hardware,
@@ -70,7 +70,7 @@ index 1eaf7e4ebdf3b..0cd8c0ab4daed 100644
          (state == gcvPOWER_IDLE || state == gcvPOWER_SUSPEND)) {
          /* Delayed power off. */
 diff --git a/drivers/staging/media/eswin/hae/hal/kernel/inc/gc_hal_base.h b/drivers/staging/media/eswin/hae/hal/kernel/inc/gc_hal_base.h
-index 986d2f0465274..2af1f18c77543 100644
+index 986d2f046527..2af1f18c7754 100644
 --- a/drivers/staging/media/eswin/hae/hal/kernel/inc/gc_hal_base.h
 +++ b/drivers/staging/media/eswin/hae/hal/kernel/inc/gc_hal_base.h
 @@ -2906,9 +2906,6 @@ gcoOS_ProfileDB(IN gctCONST_STRING Function, IN OUT gctBOOL_PTR Initialized);
@@ -84,7 +84,7 @@ index 986d2f0465274..2af1f18c77543 100644
  gckOS_Print(IN gctCONST_STRING Message, ...) CHECK_PRINTF_FORMAT(1, 2);
  
 diff --git a/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_device.c b/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_device.c
-index af46c7629dc85..9699a7b40d148 100644
+index af46c7629dc8..9699a7b40d14 100644
 --- a/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_device.c
 +++ b/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_device.c
 @@ -2268,8 +2268,7 @@ isrRoutine(int irq, void *ctxt)
@@ -98,7 +98,7 @@ index af46c7629dc85..9699a7b40d148 100644
  
      return IRQ_NONE;
 diff --git a/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_parameter.h b/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_parameter.h
-index 22f6ebe226a67..dcc6b0558a338 100644
+index 22f6ebe226a6..dcc6b0558a33 100644
 --- a/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_parameter.h
 +++ b/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_parameter.h
 @@ -305,7 +305,7 @@ static int compression = -1;
@@ -111,5 +111,5 @@ index 22f6ebe226a67..dcc6b0558a338 100644
  MODULE_PARM_DESC(powerManagement, "Disable auto power saving if set it to 0, enabled by default");
  
 -- 
-2.53.0
+2.54.0
 

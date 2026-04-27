@@ -1,4 +1,4 @@
-From 017d4a13433c94c3300b3752aca9bbfe94056628 Mon Sep 17 00:00:00 2001
+From 041d9ebb1afc66eca86fc92da852886bdbe0798d Mon Sep 17 00:00:00 2001
 From: ouyanghui <ouyanghui@eswincomputing.com>
 Date: Fri, 29 Aug 2025 11:16:06 +0800
 Subject: [PATCH 501/540] fix:cpu frequency switching cause d2d protocol error
@@ -26,7 +26,7 @@ diff --git a/arch/riscv/boot/dts/eswin/eic770x-opptable.dtsi b/arch/riscv/boot/d
 similarity index 71%
 rename from arch/riscv/boot/dts/eswin/eic770x-opptable.dtsi
 rename to arch/riscv/boot/dts/eswin/eic7700-opptable.dtsi
-index e5a9b4a5ad5ba..86210ec8a2c9a 100644
+index e5a9b4a5ad5b..86210ec8a2c9 100644
 --- a/arch/riscv/boot/dts/eswin/eic770x-opptable.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7700-opptable.dtsi
 @@ -44,117 +44,6 @@ d0_cpu_opp_table: opp-table-d0@cpu {
@@ -148,7 +148,7 @@ index e5a9b4a5ad5ba..86210ec8a2c9a 100644
  			opp-hz = /bits/ 64 <CLK_FREQ_400M>;
  			opp-microvolt = <800000>;
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-evb-a1-interleave.dts b/arch/riscv/boot/dts/eswin/eic7702-evb-a1-interleave.dts
-index 66cd39b4b0861..b44d14326e66e 100644
+index 66cd39b4b086..b44d14326e66 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-evb-a1-interleave.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-evb-a1-interleave.dts
 @@ -220,16 +220,6 @@ reg_vcc1v8: vcc1v8 {
@@ -170,7 +170,7 @@ index 66cd39b4b0861..b44d14326e66e 100644
  	d1_zero_device: zero-device@3a000000 {
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-opptable.dtsi b/arch/riscv/boot/dts/eswin/eic7702-opptable.dtsi
 new file mode 100644
-index 0000000000000..015c743e3df0f
+index 000000000000..015c743e3df0
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/eic7702-opptable.dtsi
 @@ -0,0 +1,80 @@
@@ -255,7 +255,7 @@ index 0000000000000..015c743e3df0f
 +	};
 +};
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi b/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
-index 26df2a59cca8c..7b7b129bd0f5e 100644
+index 26df2a59cca8..7b7b129bd0f5 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
 @@ -217,16 +217,6 @@ vdd_soc: regulator-0 {
@@ -276,7 +276,7 @@ index 26df2a59cca8c..7b7b129bd0f5e 100644
  	status = "okay";
  	pinctrl-names = "default";
 diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030-arch.dtsi b/arch/riscv/boot/dts/eswin/eswin-win2030-arch.dtsi
-index 99d52b32f4c0a..7c3e6c5ca1197 100644
+index 99d52b32f4c0..7c3e6c5ca119 100644
 --- a/arch/riscv/boot/dts/eswin/eswin-win2030-arch.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eswin-win2030-arch.dtsi
 @@ -19,7 +19,7 @@
@@ -289,7 +289,7 @@ index 99d52b32f4c0a..7c3e6c5ca1197 100644
  #define UART0_INT	100
  #define UART1_INT	101
 diff --git a/drivers/clk/eswin/clk-eic7700.c b/drivers/clk/eswin/clk-eic7700.c
-index 13ba2453401ae..b1b57b584136b 100644
+index 13ba2453401a..b1b57b584136 100644
 --- a/drivers/clk/eswin/clk-eic7700.c
 +++ b/drivers/clk/eswin/clk-eic7700.c
 @@ -30,6 +30,8 @@ static const char *const mux_u_cpu_aclk_2mux1_gfree_p[] = {
@@ -319,5 +319,5 @@ index 13ba2453401ae..b1b57b584136b 100644
  
  	{
 -- 
-2.53.0
+2.54.0
 

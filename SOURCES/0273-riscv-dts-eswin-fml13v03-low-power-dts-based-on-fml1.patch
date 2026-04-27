@@ -1,4 +1,4 @@
-From 17ec8ade239e2c82f22862fe94414b897a2d9273 Mon Sep 17 00:00:00 2001
+From 80c47419939cc8751929c92faf4e90e0036c15cc Mon Sep 17 00:00:00 2001
 From: Sandie Cao <sandie.cao@deepcomputing.io>
 Date: Fri, 28 Mar 2025 09:36:37 +0800
 Subject: [PATCH 273/540] riscv: dts: eswin: fml13v03: low power dts based on
@@ -10,7 +10,7 @@ Signed-off-by: Sandie Cao <sandie.cao@deepcomputing.io>
  1 file changed, 32 insertions(+), 1558 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03-low-power.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03-low-power.dts
-index 1a84eb01d4a74..bb25d24dd2f1d 100644
+index 1a84eb01d4a7..bb25d24dd2f1 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03-low-power.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03-low-power.dts
 @@ -20,1234 +20,72 @@
@@ -1659,5 +1659,5 @@ index 1a84eb01d4a74..bb25d24dd2f1d 100644
 -	gpio111 : lcd touch resetn(O)
 -*/
 -- 
-2.53.0
+2.54.0
 

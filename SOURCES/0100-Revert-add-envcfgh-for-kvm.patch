@@ -1,4 +1,4 @@
-From ac183eb263fcf14d66bff68f9c6dc2ef1b872baa Mon Sep 17 00:00:00 2001
+From be45b7eaa8732428bfa8a69ecbd39f268f849474 Mon Sep 17 00:00:00 2001
 From: Han Gao <gaohan@iscas.ac.cn>
 Date: Tue, 16 Jul 2024 11:58:36 +0800
 Subject: [PATCH 100/540] Revert: add envcfgh for kvm
@@ -14,7 +14,7 @@ Signed-off-by: Han Gao <rabenda.cn@gmail.com>
  1 file changed, 24 deletions(-)
 
 diff --git a/arch/riscv/kvm/vcpu.c b/arch/riscv/kvm/vcpu.c
-index 9584d62c96ee7..7f6c072f3e2f3 100644
+index 9584d62c96ee..7f6c072f3e2f 100644
 --- a/arch/riscv/kvm/vcpu.c
 +++ b/arch/riscv/kvm/vcpu.c
 @@ -493,28 +493,6 @@ int kvm_arch_vcpu_ioctl_set_guest_debug(struct kvm_vcpu *vcpu,
@@ -56,5 +56,5 @@ index 9584d62c96ee7..7f6c072f3e2f3 100644
  
  	kvm_riscv_vcpu_timer_restore(vcpu);
 -- 
-2.53.0
+2.54.0
 

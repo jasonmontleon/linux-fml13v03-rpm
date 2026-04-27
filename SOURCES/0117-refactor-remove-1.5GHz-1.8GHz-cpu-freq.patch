@@ -1,4 +1,4 @@
-From 5ba44f22c2e232c7668e0f5e889320d0ebbca0ca Mon Sep 17 00:00:00 2001
+From c05f1d08d10ff8724b93320b4c3700a0ccb78bb4 Mon Sep 17 00:00:00 2001
 From: chenshuo <chenshuo@eswincomputing.com>
 Date: Tue, 23 Jul 2024 14:38:55 +0800
 Subject: [PATCH 117/540] refactor:remove 1.5GHz~1.8GHz cpu freq
@@ -12,7 +12,7 @@ Signed-off-by: chenshuo <chenshuo@eswincomputing.com>
  1 file changed, 20 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi b/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
-index fea1f577fddcd..3b2961f29389a 100644
+index fea1f577fddc..3b2961f29389 100644
 --- a/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
 @@ -103,26 +103,6 @@ opp-1400000000 {
@@ -43,5 +43,5 @@ index fea1f577fddcd..3b2961f29389a 100644
  };
  
 -- 
-2.53.0
+2.54.0
 

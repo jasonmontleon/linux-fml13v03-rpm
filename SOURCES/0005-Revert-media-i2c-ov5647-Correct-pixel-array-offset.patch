@@ -1,4 +1,4 @@
-From 0d3ebdee7783c0ea900fd0c25086394d3289a0de Mon Sep 17 00:00:00 2001
+From 6c981d8504611c17f001aa8c61256c02fa16b1b7 Mon Sep 17 00:00:00 2001
 From: Jason Montleon <jmontleo@redhat.com>
 Date: Wed, 4 Mar 2026 12:39:08 -0500
 Subject: [PATCH 005/540] Revert "media: i2c: ov5647: Correct pixel array
@@ -10,7 +10,7 @@ This reverts commit 1f413dac763a8caed44d8591aa064e4ab8061f52.
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/media/i2c/ov5647.c b/drivers/media/i2c/ov5647.c
-index 7854d72e83492..6d39d47d6cc63 100644
+index 7854d72e8349..6d39d47d6cc6 100644
 --- a/drivers/media/i2c/ov5647.c
 +++ b/drivers/media/i2c/ov5647.c
 @@ -69,7 +69,7 @@
@@ -23,5 +23,5 @@ index 7854d72e83492..6d39d47d6cc63 100644
  #define OV5647_PIXEL_ARRAY_HEIGHT	1944U
  
 -- 
-2.53.0
+2.54.0
 

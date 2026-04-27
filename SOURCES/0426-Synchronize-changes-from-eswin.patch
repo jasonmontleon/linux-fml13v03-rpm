@@ -1,4 +1,4 @@
-From 124e53b903f9e12e2571198c19f1dd7c790bd710 Mon Sep 17 00:00:00 2001
+From c92ed5301e117aaf0d0c5eff927ab6a326ea5b1c Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Mon, 21 Jul 2025 10:52:52 +0800
 Subject: [PATCH 426/540] Synchronize changes from eswin
@@ -8,7 +8,7 @@ Subject: [PATCH 426/540] Synchronize changes from eswin
  1 file changed, 2 insertions(+), 41 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
-index 13d48a90815ed..e90c0f3cbfcc5 100644
+index 13d48a90815e..e90c0f3cbfcc 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 @@ -1494,6 +1494,7 @@ &d1_i2c9 {
@@ -73,5 +73,5 @@ index 13d48a90815ed..e90c0f3cbfcc5 100644
 -	gpio111 : lcd touch resetn(O)
 -*/
 -- 
-2.53.0
+2.54.0
 

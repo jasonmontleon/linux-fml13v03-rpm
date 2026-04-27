@@ -1,4 +1,4 @@
-From 0dd1294c8d95386c684398dea4eb09cf781564b7 Mon Sep 17 00:00:00 2001
+From 0e3d6e30fcee23a84d14887ec3839817f25404c2 Mon Sep 17 00:00:00 2001
 From: Min Lin <linmin@eswincomputing.com>
 Date: Fri, 31 Oct 2025 13:48:29 +0800
 Subject: [PATCH 537/540] fix: sync missing changes from original PM branch
@@ -15,7 +15,7 @@ Signed-off-by: Min Lin <linmin@eswincomputing.com>
  4 files changed, 20 insertions(+), 76 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-z530-camera-lt6911uxe.dtsi b/arch/riscv/boot/dts/eswin/eic7700-z530-camera-lt6911uxe.dtsi
-index c3cd7b902f233..448cf72702a8c 100644
+index c3cd7b902f23..448cf72702a8 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-z530-camera-lt6911uxe.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7700-z530-camera-lt6911uxe.dtsi
 @@ -2,46 +2,12 @@
@@ -197,7 +197,7 @@ index c3cd7b902f233..448cf72702a8c 100644
 -	status = "disabled";
 -};
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-d560a.dts b/arch/riscv/boot/dts/eswin/eic7702-d560a.dts
-index faf23835ece5e..3adfef6dabb17 100644
+index faf23835ece5..3adfef6dabb1 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-d560a.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-d560a.dts
 @@ -86,12 +86,6 @@ d1_npu_vcc:npu_svcc{
@@ -214,7 +214,7 @@ index faf23835ece5e..3adfef6dabb17 100644
  	opp@1500000000 {
  		opp-hz = /bits/ 64 <1500000000>;
 diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi b/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
-index 02f5ded734f4c..d835fd640338c 100644
+index 02f5ded734f4..d835fd640338 100644
 --- a/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
 @@ -1378,17 +1378,6 @@ d0_watchdog:watchdog@0 {
@@ -236,7 +236,7 @@ index 02f5ded734f4c..d835fd640338c 100644
  			compatible = "eswin,eswin-pvt-cpu";
  			clocks = <&d0_clock EIC7700_CLK_PVT_CLK_0>;
 diff --git a/drivers/usb/dwc3/dwc3-eswin.c b/drivers/usb/dwc3/dwc3-eswin.c
-index f2a6f3b51e132..16276b2f0f1cb 100755
+index f2a6f3b51e13..16276b2f0f1c 100755
 --- a/drivers/usb/dwc3/dwc3-eswin.c
 +++ b/drivers/usb/dwc3/dwc3-eswin.c
 @@ -550,6 +550,7 @@ static int dwc3_eswin_probe(struct platform_device *pdev)
@@ -248,5 +248,5 @@ index f2a6f3b51e132..16276b2f0f1cb 100755
  	pm_runtime_enable(dev);
  	ret = pm_runtime_get_sync(dev);
 -- 
-2.53.0
+2.54.0
 

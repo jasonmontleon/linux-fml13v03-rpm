@@ -1,4 +1,4 @@
-From 6071fa6c5e0ec628b91aa9286331aa819902b4e2 Mon Sep 17 00:00:00 2001
+From 38e9369cc00e4a8259c7378fd3b95a2026758313 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Thu, 3 Jul 2025 16:32:58 +0800
 Subject: [PATCH 416/540] drm/eswin: Add support for 1920x1200 and 2560x1600
@@ -11,7 +11,7 @@ Signed-off-by: yang.wang <yang.wang@deepcomputing.io>
  2 files changed, 16 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/eswin/dw-hdmi.c b/drivers/gpu/drm/eswin/dw-hdmi.c
-index 66378eabf5ddd..05e8495d6c5e2 100644
+index 66378eabf5dd..05e8495d6c5e 100644
 --- a/drivers/gpu/drm/eswin/dw-hdmi.c
 +++ b/drivers/gpu/drm/eswin/dw-hdmi.c
 @@ -3372,7 +3372,10 @@ dw_hdmi_bridge_mode_valid(struct drm_bridge *bridge,
@@ -27,7 +27,7 @@ index 66378eabf5ddd..05e8495d6c5e2 100644
  	}
  
 diff --git a/drivers/gpu/drm/eswin/es_dw_hdmi.c b/drivers/gpu/drm/eswin/es_dw_hdmi.c
-index a58a0094bc865..aa8b7ed373fc6 100644
+index a58a0094bc86..aa8b7ed373fc 100644
 --- a/drivers/gpu/drm/eswin/es_dw_hdmi.c
 +++ b/drivers/gpu/drm/eswin/es_dw_hdmi.c
 @@ -151,6 +151,14 @@ static const struct dw_hdmi_mpll_config eswin_mpll_cfg[] = {
@@ -57,5 +57,5 @@ index a58a0094bc865..aa8b7ed373fc6 100644
  		297000000,
  		{ 0x3041, 0x3182, 0x3100 },
 -- 
-2.53.0
+2.54.0
 

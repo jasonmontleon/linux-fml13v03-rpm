@@ -1,4 +1,4 @@
-From ef9a3a36f507fea10e94b26884769108f3fac817 Mon Sep 17 00:00:00 2001
+From 1e51321252dc09d8fbce2298fdbbe25e5b0126b1 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Wed, 21 May 2025 10:30:40 +0800
 Subject: [PATCH 301/540] dt-bindings: riscv: eswin: Add GPIO25 pinctrl and EC
@@ -10,7 +10,7 @@ Signed-off-by: yang.wang <yang.wang@deepcomputing.io>
  1 file changed, 15 insertions(+)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
-index a93bdb2b01dca..39cb7f66eb2fa 100644
+index a93bdb2b01dc..39cb7f66eb2f 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 @@ -526,6 +526,20 @@ &d1_lpcpu {
@@ -43,5 +43,5 @@ index a93bdb2b01dca..39cb7f66eb2fa 100644
  	gpio28  : head phone plug/unplug detection1(I)
  	gpio68  : fan pwm(O)
 -- 
-2.53.0
+2.54.0
 

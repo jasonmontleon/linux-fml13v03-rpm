@@ -1,4 +1,4 @@
-From afa87ddab67c8257ce60725d66a0ae763f5c4dc7 Mon Sep 17 00:00:00 2001
+From 361696da676a58a4bd7a2a0614fa0f631196dc6c Mon Sep 17 00:00:00 2001
 From: hehuan1 <hehuan1@eswincomputing.com>
 Date: Thu, 10 Jul 2025 11:21:50 +0800
 Subject: [PATCH 469/540] perf: optimize pvt display info
@@ -14,7 +14,7 @@ Signed-off-by: hehuan1 <hehuan1@eswincomputing.com>
  3 files changed, 141 insertions(+), 37 deletions(-)
 
 diff --git a/drivers/hwmon/eswin_dummy_pvt.c b/drivers/hwmon/eswin_dummy_pvt.c
-index d4d9c46de910d..8e548b273a61f 100644
+index d4d9c46de910..8e548b273a61 100644
 --- a/drivers/hwmon/eswin_dummy_pvt.c
 +++ b/drivers/hwmon/eswin_dummy_pvt.c
 @@ -46,26 +46,29 @@
@@ -163,7 +163,7 @@ index d4d9c46de910d..8e548b273a61f 100644
  };
  MODULE_DEVICE_TABLE(of, pvt_of_match);
 diff --git a/drivers/hwmon/eswin_pvt.c b/drivers/hwmon/eswin_pvt.c
-index d706a12808a54..19ad0c2a548c0 100644
+index d706a12808a5..19ad0c2a548c 100644
 --- a/drivers/hwmon/eswin_pvt.c
 +++ b/drivers/hwmon/eswin_pvt.c
 @@ -50,6 +50,24 @@
@@ -327,7 +327,7 @@ index d706a12808a54..19ad0c2a548c0 100644
  };
  MODULE_DEVICE_TABLE(of, pvt_of_match);
 diff --git a/drivers/hwmon/eswin_pvt.h b/drivers/hwmon/eswin_pvt.h
-index c0baaf92ab6d2..45314085a08ed 100644
+index c0baaf92ab6d..45314085a08e 100644
 --- a/drivers/hwmon/eswin_pvt.h
 +++ b/drivers/hwmon/eswin_pvt.h
 @@ -213,6 +213,8 @@ struct pvt_hwmon {
@@ -340,5 +340,5 @@ index c0baaf92ab6d2..45314085a08ed 100644
  
  /*
 -- 
-2.53.0
+2.54.0
 

@@ -1,4 +1,4 @@
-From 9ecfcb294775f6d7704022587275d963eb51ef32 Mon Sep 17 00:00:00 2001
+From 92076d33e35476be54c022eb193fc6d9f940c575 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Wed, 12 Mar 2025 11:23:29 +0800
 Subject: [PATCH 233/540] defconfig: fml13v03_defconfig: Add support for Intel
@@ -10,7 +10,7 @@ Signed-off-by: yang.wang <yang.wang@deepcomputing.io>
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/arch/riscv/configs/fml13v03_defconfig b/arch/riscv/configs/fml13v03_defconfig
-index 420935eaa6c61..c1d5d90c241d2 100755
+index 420935eaa6c6..c1d5d90c241d 100755
 --- a/arch/riscv/configs/fml13v03_defconfig
 +++ b/arch/riscv/configs/fml13v03_defconfig
 @@ -412,7 +412,8 @@ CONFIG_USB_RTL8152=m
@@ -24,5 +24,5 @@ index 420935eaa6c61..c1d5d90c241d2 100755
  # CONFIG_WLAN_VENDOR_MARVELL is not set
  CONFIG_MT7921E=m
 -- 
-2.53.0
+2.54.0
 

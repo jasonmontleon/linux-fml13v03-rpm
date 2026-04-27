@@ -1,4 +1,4 @@
-From 692816b52b1e2d9446e986d91c02c2aa23080dbb Mon Sep 17 00:00:00 2001
+From 51b0bd0c4971bff109ae0ac5d4d14e1772bb0c67 Mon Sep 17 00:00:00 2001
 From: lei zhilin <leizhilin@eswincomputing.com>
 Date: Thu, 13 Feb 2025 11:10:23 +0800
 Subject: [PATCH 318/540] fix(2d):kernel stack warning after reboot
@@ -22,7 +22,7 @@ Signed-off-by: lei zhilin <leizhilin@eswincomputing.com>
  2 files changed, 122 insertions(+), 26 deletions(-)
 
 diff --git a/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_driver.c b/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_driver.c
-index eabfbfb1b2dee..6c7ad73ea6f0c 100644
+index eabfbfb1b2de..6c7ad73ea6f0 100644
 --- a/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_driver.c
 +++ b/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_driver.c
 @@ -1556,6 +1556,7 @@ static int viv_dev_suspend(struct platform_device *dev, pm_message_t state)
@@ -42,7 +42,7 @@ index eabfbfb1b2dee..6c7ad73ea6f0c 100644
                  status = gckHARDWARE_SetPowerState(device->kernels[i]->hardware, statesStored);
                  if (gcmIS_ERROR(status)) {
 diff --git a/drivers/staging/media/eswin/hae/hal/os/linux/kernel/platform/eswin/gc_hal_kernel_platform_win2030.c b/drivers/staging/media/eswin/hae/hal/os/linux/kernel/platform/eswin/gc_hal_kernel_platform_win2030.c
-index d0bdc1a449e75..103fa3eceae05 100644
+index d0bdc1a449e7..103fa3eceae0 100644
 --- a/drivers/staging/media/eswin/hae/hal/os/linux/kernel/platform/eswin/gc_hal_kernel_platform_win2030.c
 +++ b/drivers/staging/media/eswin/hae/hal/os/linux/kernel/platform/eswin/gc_hal_kernel_platform_win2030.c
 @@ -115,7 +115,9 @@
@@ -250,5 +250,5 @@ index d0bdc1a449e75..103fa3eceae05 100644
      ret = gpu_parse_dt(Platform->device, Args);
      if(gcmIS_SUCCESS(ret)){
 -- 
-2.53.0
+2.54.0
 

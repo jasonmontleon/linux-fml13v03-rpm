@@ -1,4 +1,4 @@
-From 55106eb7bc5b893810223a66eeebccd8b25c34f0 Mon Sep 17 00:00:00 2001
+From 64fc1e3b2add68d099097cb8e98c9896c5162839 Mon Sep 17 00:00:00 2001
 From: linmin <linmin@eswincomputing.com>
 Date: Mon, 28 Oct 2024 16:44:02 +0800
 Subject: [PATCH 209/540] perf:change smmu print level,optimize ccache flush
@@ -15,7 +15,7 @@ Signed-off-by: linmin <linmin@eswincomputing.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/soc/sifive/sifive_ccache.c b/drivers/soc/sifive/sifive_ccache.c
-index a88123c81ace6..2010ccd64f867 100644
+index a88123c81ace..2010ccd64f86 100644
 --- a/drivers/soc/sifive/sifive_ccache.c
 +++ b/drivers/soc/sifive/sifive_ccache.c
 @@ -130,8 +130,8 @@ static void ccache_flush64_range(phys_addr_t paddr, size_t size)
@@ -29,5 +29,5 @@ index a88123c81ace6..2010ccd64f867 100644
  
  static const struct riscv_nonstd_cache_ops ccache_cmo_ops __initdata = {
 -- 
-2.53.0
+2.54.0
 

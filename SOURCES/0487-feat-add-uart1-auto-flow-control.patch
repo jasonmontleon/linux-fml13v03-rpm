@@ -1,4 +1,4 @@
-From ee8ee94a5a3d93e1b3400ceb4c6b968ff3c97dd6 Mon Sep 17 00:00:00 2001
+From a250eb80dcab32338e249f45fc2c628d9103f1c1 Mon Sep 17 00:00:00 2001
 From: Xiang Xu <xuxiang@eswincomputing.com>
 Date: Tue, 26 Aug 2025 19:12:37 +0800
 Subject: [PATCH 487/540] feat:add uart1 auto-flow-control
@@ -12,7 +12,7 @@ Signed-off-by: Xiang Xu <xuxiang@eswincomputing.com>
  1 file changed, 8 insertions(+)
 
 diff --git a/drivers/tty/serial/8250/8250_dw.c b/drivers/tty/serial/8250/8250_dw.c
-index 091267b50f172..b39f026080e8f 100644
+index 091267b50f17..b39f026080e8 100644
 --- a/drivers/tty/serial/8250/8250_dw.c
 +++ b/drivers/tty/serial/8250/8250_dw.c
 @@ -800,6 +800,13 @@ static const struct dw8250_platform_data dw8250_skip_set_rate_data = {
@@ -38,5 +38,5 @@ index 091267b50f172..b39f026080e8f 100644
  };
  MODULE_DEVICE_TABLE(of, dw8250_of_match);
 -- 
-2.53.0
+2.54.0
 

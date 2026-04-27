@@ -1,4 +1,4 @@
-From f23d4c9015bc7b062a7991259e0f8a251507cc93 Mon Sep 17 00:00:00 2001
+From 1046e808225e75f61dd3a6dfc7d1b8e65c9d9e82 Mon Sep 17 00:00:00 2001
 From: yufangxian <yufangxian@eswincomputing.com>
 Date: Fri, 29 Aug 2025 12:24:33 +0800
 Subject: [PATCH 497/540] feat: reduce waiting time of eswin_vi init
@@ -13,7 +13,7 @@ Signed-off-by: yufangxian <yufangxian@eswincomputing.com>
  2 files changed, 8 insertions(+), 22 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-vela-camera-imx415.dtsi b/arch/riscv/boot/dts/eswin/eic7700-vela-camera-imx415.dtsi
-index a53342ed816a5..9a0f6e7b69e38 100644
+index a53342ed816a..9a0f6e7b69e3 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-vela-camera-imx415.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7700-vela-camera-imx415.dtsi
 @@ -304,7 +304,7 @@ imx415_out1: endpoint {
@@ -26,7 +26,7 @@ index a53342ed816a5..9a0f6e7b69e38 100644
  			status = "okay";
  			address-cells = <1>;
 diff --git a/drivers/media/platform/eswin/vi_top/eswin_vi.c b/drivers/media/platform/eswin/vi_top/eswin_vi.c
-index 846788dff748a..52b474759f38b 100644
+index 846788dff748..52b474759f38 100644
 --- a/drivers/media/platform/eswin/vi_top/eswin_vi.c
 +++ b/drivers/media/platform/eswin/vi_top/eswin_vi.c
 @@ -71,14 +71,10 @@ static int major_number;
@@ -104,5 +104,5 @@ index 846788dff748a..52b474759f38b 100644
      { }
  };
 -- 
-2.53.0
+2.54.0
 

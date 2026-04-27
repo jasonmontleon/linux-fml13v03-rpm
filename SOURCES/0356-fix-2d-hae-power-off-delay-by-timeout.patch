@@ -1,4 +1,4 @@
-From 3e087abcb13bf7149cdc0ffb4cda55b4f3916da6 Mon Sep 17 00:00:00 2001
+From f9c7097c087298a4d83b5dff7f132afc2df3deb4 Mon Sep 17 00:00:00 2001
 From: lei zhilin <leizhilin@eswincomputing.com>
 Date: Thu, 3 Apr 2025 00:18:27 +0800
 Subject: [PATCH 356/540] <fix>(2d):hae power off delay by timeout
@@ -19,7 +19,7 @@ Signed-off-by: lei zhilin <leizhilin@eswincomputing.com>
  3 files changed, 25 insertions(+), 11 deletions(-)
 
 diff --git a/drivers/staging/media/eswin/hae/hal/kernel/arch/gc_hal_kernel_hardware.c b/drivers/staging/media/eswin/hae/hal/kernel/arch/gc_hal_kernel_hardware.c
-index 0cd8c0ab4daed..1eaf7e4ebdf3b 100644
+index 0cd8c0ab4dae..1eaf7e4ebdf3 100644
 --- a/drivers/staging/media/eswin/hae/hal/kernel/arch/gc_hal_kernel_hardware.c
 +++ b/drivers/staging/media/eswin/hae/hal/kernel/arch/gc_hal_kernel_hardware.c
 @@ -5139,6 +5139,19 @@ gckHARDWARE_PowerControlClusters(gckHARDWARE Hardware,
@@ -75,7 +75,7 @@ index 0cd8c0ab4daed..1eaf7e4ebdf3b 100644
          (state == gcvPOWER_IDLE || state == gcvPOWER_SUSPEND)) {
          /* Delayed power off. */
 diff --git a/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_device.c b/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_device.c
-index 9699a7b40d148..af46c7629dc85 100644
+index 9699a7b40d14..af46c7629dc8 100644
 --- a/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_device.c
 +++ b/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_device.c
 @@ -2268,7 +2268,8 @@ isrRoutine(int irq, void *ctxt)
@@ -89,7 +89,7 @@ index 9699a7b40d148..af46c7629dc85 100644
  
      return IRQ_NONE;
 diff --git a/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_parameter.h b/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_parameter.h
-index dcc6b0558a338..22f6ebe226a67 100644
+index dcc6b0558a33..22f6ebe226a6 100644
 --- a/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_parameter.h
 +++ b/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_parameter.h
 @@ -305,7 +305,7 @@ static int compression = -1;
@@ -102,5 +102,5 @@ index dcc6b0558a338..22f6ebe226a67 100644
  MODULE_PARM_DESC(powerManagement, "Disable auto power saving if set it to 0, enabled by default");
  
 -- 
-2.53.0
+2.54.0
 

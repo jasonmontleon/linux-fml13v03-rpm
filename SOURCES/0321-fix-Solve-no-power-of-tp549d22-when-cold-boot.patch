@@ -1,4 +1,4 @@
-From c70085429319ae36ef77a723df3886d73ad8c6bd Mon Sep 17 00:00:00 2001
+From d84de69c3c3823e47f59badde85162d6b304f448 Mon Sep 17 00:00:00 2001
 From: yangwei1 <yangwei1@eswincomputing.com>
 Date: Mon, 24 Feb 2025 19:33:47 +0800
 Subject: [PATCH 321/540] fix:Solve no power of tp549d22 when cold boot
@@ -12,7 +12,7 @@ Signed-off-by: yangwei1 <yangwei1@eswincomputing.com>
  2 files changed, 248 insertions(+), 125 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-tb.dts b/arch/riscv/boot/dts/eswin/eic7702-tb.dts
-index 055ca07da6858..e5f4d9647c386 100644
+index 055ca07da685..e5f4d9647c38 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-tb.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-tb.dts
 @@ -465,7 +465,6 @@ &d0_npu{
@@ -24,7 +24,7 @@ index 055ca07da6858..e5f4d9647c386 100644
  
  &d0_dsp_subsys {
 diff --git a/drivers/regulator/tps549d22-regulator.c b/drivers/regulator/tps549d22-regulator.c
-index 42de6234b2891..fd4f62bec9002 100644
+index 42de6234b289..fd4f62bec900 100644
 --- a/drivers/regulator/tps549d22-regulator.c
 +++ b/drivers/regulator/tps549d22-regulator.c
 @@ -60,11 +60,11 @@
@@ -672,5 +672,5 @@ index 42de6234b2891..fd4f62bec9002 100644
  static struct i2c_driver tps549d22_driver = {
  	.class = I2C_CLASS_HWMON,
 -- 
-2.53.0
+2.54.0
 

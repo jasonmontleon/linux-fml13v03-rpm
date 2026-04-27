@@ -1,4 +1,4 @@
-From ddd7c2eca6a9304b12f3652d1d141ed2e89eced5 Mon Sep 17 00:00:00 2001
+From f63f5ded6c1b26ce0406588b3d8ef06b343a3fae Mon Sep 17 00:00:00 2001
 From: Jason Montleon <jmontleo@redhat.com>
 Date: Wed, 4 Mar 2026 12:38:52 -0500
 Subject: [PATCH 004/540] Revert "media: i2c: ov5647: Correct minimum VBLANK
@@ -10,7 +10,7 @@ This reverts commit e5f4aad2627dd9e5da46ad1325795ec12046facb.
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/media/i2c/ov5647.c b/drivers/media/i2c/ov5647.c
-index c2df51240241c..7854d72e83492 100644
+index c2df51240241..7854d72e8349 100644
 --- a/drivers/media/i2c/ov5647.c
 +++ b/drivers/media/i2c/ov5647.c
 @@ -73,7 +73,7 @@
@@ -23,5 +23,5 @@ index c2df51240241c..7854d72e83492 100644
  
  #define OV5647_EXPOSURE_MIN		4
 -- 
-2.53.0
+2.54.0
 

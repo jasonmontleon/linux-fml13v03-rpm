@@ -1,4 +1,4 @@
-From 08141bd631ab9331bf568e5f23dbb5e2a3fb40b8 Mon Sep 17 00:00:00 2001
+From c25913bc5bb391f7c662fbc017ee4a30b6ecef6a Mon Sep 17 00:00:00 2001
 From: Wu Zhangben <wuzhangben@eswincomputing.com>
 Date: Tue, 26 Aug 2025 12:48:47 +0800
 Subject: [PATCH 490/540] fix:power off USB in s3
@@ -15,7 +15,7 @@ Signed-off-by: Wu Zhangben <wuzhangben@eswincomputing.com>
  3 files changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-d560-interleave.dts b/arch/riscv/boot/dts/eswin/eic7702-d560-interleave.dts
-index e6bf44c316489..9e161d76d36a3 100644
+index e6bf44c31648..9e161d76d36a 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-d560-interleave.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-d560-interleave.dts
 @@ -102,9 +102,7 @@ mdhd_wlan {
@@ -30,7 +30,7 @@ index e6bf44c316489..9e161d76d36a3 100644
  };
  
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03-evt.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03-evt.dts
-index 6a52df025d219..e7558437cc9eb 100755
+index 6a52df025d21..e7558437cc9e 100755
 --- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03-evt.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03-evt.dts
 @@ -975,6 +975,7 @@ &d1_sata {
@@ -42,7 +42,7 @@ index 6a52df025d219..e7558437cc9eb 100755
  	status = "okay";
  };
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi b/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
-index e19d0ad973a6a..26df2a59cca8c 100644
+index e19d0ad973a6..26df2a59cca8 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
 @@ -879,6 +879,7 @@ &d0_usbdrd3_0 {
@@ -54,5 +54,5 @@ index e19d0ad973a6a..26df2a59cca8c 100644
  	status = "okay";
  	rt_equalization;
 -- 
-2.53.0
+2.54.0
 

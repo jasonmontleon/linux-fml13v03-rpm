@@ -1,4 +1,4 @@
-From 3b47f656314c77a9c6f3ac8f3092eb2496e77d10 Mon Sep 17 00:00:00 2001
+From d98fb2158c319bbd97da5e6b1ead39f7d4a0d879 Mon Sep 17 00:00:00 2001
 From: luoshanggui <luoshanggui@eswincomputing.com>
 Date: Fri, 22 Aug 2025 09:04:24 +0800
 Subject: [PATCH 480/540] fix : fix relocate error for dsp operator Changelogs:
@@ -9,7 +9,7 @@ Signed-off-by: luoshanggui <luoshanggui@eswincomputing.com>
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/soc/eswin/ai_driver/dsp/mloader/xt_mld_relocate.c b/drivers/soc/eswin/ai_driver/dsp/mloader/xt_mld_relocate.c
-index 75e18557c879b..4861af639471f 100644
+index 75e18557c879..4861af639471 100644
 --- a/drivers/soc/eswin/ai_driver/dsp/mloader/xt_mld_relocate.c
 +++ b/drivers/soc/eswin/ai_driver/dsp/mloader/xt_mld_relocate.c
 @@ -344,7 +344,7 @@ static xtmld_result_code_t relocate_relative(xtmld_state_t *lib_info,
@@ -40,5 +40,5 @@ index 75e18557c879b..4861af639471f 100644
  		return status;
  	// check if it's 4 byte aligned, C++ exception tables may have
 -- 
-2.53.0
+2.54.0
 

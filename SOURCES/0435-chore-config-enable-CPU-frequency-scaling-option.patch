@@ -1,4 +1,4 @@
-From d30dd96dc03162f5254d1b2d51a10f34d3f9950c Mon Sep 17 00:00:00 2001
+From 7dd0883fe7374c2d7a26c07643d4fbf137d1d4a7 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Tue, 26 Aug 2025 11:42:51 +0800
 Subject: [PATCH 435/540] chore(config): enable CPU frequency scaling option
@@ -8,7 +8,7 @@ Subject: [PATCH 435/540] chore(config): enable CPU frequency scaling option
  1 file changed, 24 insertions(+), 13 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
-index 8f88220860ee4..a735c67f7515e 100644
+index 8f88220860ee..a735c67f7515 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 @@ -268,25 +268,36 @@ d1_zero_device: zero-device@3a000000 {
@@ -62,5 +62,5 @@ index 8f88220860ee4..a735c67f7515e 100644
  	/delete-node/ opp-1300000000;
  };
 -- 
-2.53.0
+2.54.0
 

@@ -1,4 +1,4 @@
-From 224dc49ef9bb61a91f8d79cdc08b8ec407a44089 Mon Sep 17 00:00:00 2001
+From ab4e2dc180ac4ed66015a0b8d9a25433adb27baf Mon Sep 17 00:00:00 2001
 From: Xiang Xu <xuxiang@eswincomputing.com>
 Date: Fri, 12 Sep 2025 17:04:41 +0800
 Subject: [PATCH 520/540] refactor:refactor bootspi driver
@@ -14,7 +14,7 @@ Signed-off-by: Xiang Xu <xuxiang@eswincomputing.com>
  2 files changed, 6 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/d560-ep-evb.dts b/arch/riscv/boot/dts/eswin/d560-ep-evb.dts
-index 5828b9f175f6d..e03847daf4d39 100644
+index 5828b9f175f6..e03847daf4d3 100644
 --- a/arch/riscv/boot/dts/eswin/d560-ep-evb.dts
 +++ b/arch/riscv/boot/dts/eswin/d560-ep-evb.dts
 @@ -1241,8 +1241,6 @@ &bootspi {
@@ -36,7 +36,7 @@ index 5828b9f175f6d..e03847daf4d39 100644
  		compatible = "winbond,w25q128jw",
  					"jedec,spi-nor";
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-ce1.dtsi b/arch/riscv/boot/dts/eswin/eic7700-ce1.dtsi
-index d025773aa21d1..68477151be269 100644
+index d025773aa21d..68477151be26 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-ce1.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7700-ce1.dtsi
 @@ -599,8 +599,6 @@ &bootspi {
@@ -49,5 +49,5 @@ index d025773aa21d1..68477151be269 100644
  		compatible = "winbond,w25q64jw",
  					"jedec,spi-nor";
 -- 
-2.53.0
+2.54.0
 

@@ -1,4 +1,4 @@
-From 3cdab3e637c93ad003102d40796908187cffb68d Mon Sep 17 00:00:00 2001
+From 4d41aa9530e6ec3c46052d5243cf19e91d9e9bb3 Mon Sep 17 00:00:00 2001
 From: congyuyang <congyuyang@eswincomputing.com>
 Date: Thu, 29 May 2025 10:30:27 +0800
 Subject: [PATCH 380/540] feat:support dewarp in 7702
@@ -12,7 +12,7 @@ Signed-off-by: congyuyang <congyuyang@eswincomputing.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi b/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
-index e74479b920295..d835fd640338c 100644
+index e74479b92029..d835fd640338 100644
 --- a/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
 @@ -1413,7 +1413,7 @@ pvt1: pvt@0x52360000 {
@@ -25,5 +25,5 @@ index e74479b920295..d835fd640338c 100644
  			clock-names = "pclk";
  			resets = <&d0_reset FAN_RST_CTRL SW_FAN_RST_N>;
 -- 
-2.53.0
+2.54.0
 

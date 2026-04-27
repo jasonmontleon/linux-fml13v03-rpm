@@ -1,4 +1,4 @@
-From aa8eb22f016594a86dd62126289fb7845de20c2b Mon Sep 17 00:00:00 2001
+From 0da03c50175f3465fb5b07af13cd6454a9c588ba Mon Sep 17 00:00:00 2001
 From: fanglifei <fanglifei@eswincomputing.com>
 Date: Mon, 22 Jul 2024 17:31:42 +0800
 Subject: [PATCH 123/540] fix(vo): clk off after dc initialized
@@ -14,7 +14,7 @@ Signed-off-by: fanglifei <fanglifei@eswincomputing.com>
  1 file changed, 2 insertions(+)
 
 diff --git a/drivers/gpu/drm/eswin/es_dc.c b/drivers/gpu/drm/eswin/es_dc.c
-index 4d5eaec87f5de..2eddebbd2ddb6 100644
+index 4d5eaec87f5d..2eddebbd2ddb 100644
 --- a/drivers/gpu/drm/eswin/es_dc.c
 +++ b/drivers/gpu/drm/eswin/es_dc.c
 @@ -945,6 +945,8 @@ static int dc_bind(struct device *dev, struct device *master, void *data)
@@ -27,5 +27,5 @@ index 4d5eaec87f5de..2eddebbd2ddb6 100644
  
  err_cleanup_planes:
 -- 
-2.53.0
+2.54.0
 

@@ -1,4 +1,4 @@
-From b0658a9ed3ffec8c219b72e56944eb6c4102e0d0 Mon Sep 17 00:00:00 2001
+From bf0bea6e88e9ba8a2610c51bb54648e753aba997 Mon Sep 17 00:00:00 2001
 From: ningyu <ningyu@eswincomputing.com>
 Date: Thu, 21 Aug 2025 20:28:35 +0800
 Subject: [PATCH 437/540] WIN2030-19163:fix:combine temp and voltage in
@@ -15,7 +15,7 @@ Signed-off-by: ningyu <ningyu@eswincomputing.com>
  2 files changed, 9 insertions(+), 15 deletions(-)
 
 diff --git a/drivers/hwmon/eswin_dummy_pvt.c b/drivers/hwmon/eswin_dummy_pvt.c
-index 711f284814274..d4d9c46de910d 100644
+index 711f28481427..d4d9c46de910 100644
 --- a/drivers/hwmon/eswin_dummy_pvt.c
 +++ b/drivers/hwmon/eswin_dummy_pvt.c
 @@ -227,24 +227,20 @@ static int eswin_pvt_read_data(struct pvt_hwmon *pvt, enum pvt_sensor_type type,
@@ -52,7 +52,7 @@ index 711f284814274..d4d9c46de910d 100644
  		*val = data;
  
 diff --git a/drivers/hwmon/eswin_pvt.h b/drivers/hwmon/eswin_pvt.h
-index fe30569f48973..c0baaf92ab6d2 100644
+index fe30569f4897..c0baaf92ab6d 100644
 --- a/drivers/hwmon/eswin_pvt.h
 +++ b/drivers/hwmon/eswin_pvt.h
 @@ -110,9 +110,7 @@
@@ -67,5 +67,5 @@ index fe30569f48973..c0baaf92ab6d2 100644
  /*
   * enum pvt_sensor_type - ESWIN PVT sensor types (correspond to each PVT
 -- 
-2.53.0
+2.54.0
 

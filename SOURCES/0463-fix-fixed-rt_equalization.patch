@@ -1,4 +1,4 @@
-From 6d2b864b1b73b9148daae789565bea53984e8ed2 Mon Sep 17 00:00:00 2001
+From d023e8d5c4b1bdfc32a2984ddcc82cfac698c152 Mon Sep 17 00:00:00 2001
 From: Senchuan Zhang <zhangsenchuan@eswincomputing.com>
 Date: Mon, 4 Aug 2025 13:44:03 +0800
 Subject: [PATCH 463/540] fix:fixed rt_equalization
@@ -15,7 +15,7 @@ Signed-off-by: Senchuan Zhang <zhangsenchuan@eswincomputing.com>
  4 files changed, 59 insertions(+)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-ce1.dtsi b/arch/riscv/boot/dts/eswin/eic7700-ce1.dtsi
-index 79900c55804f9..44c162469dd02 100644
+index 79900c55804f..44c162469dd0 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-ce1.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7700-ce1.dtsi
 @@ -542,6 +542,7 @@ &d0_sata {
@@ -35,7 +35,7 @@ index 79900c55804f9..44c162469dd02 100644
  
  &d0_usbdrd_dwc3_1 {
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dtsi b/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dtsi
-index 8b95d02deda86..3fd5e460e67c5 100755
+index 8b95d02deda8..3fd5e460e67c 100755
 --- a/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dtsi
 @@ -471,6 +471,7 @@ &d0_sata {
@@ -55,7 +55,7 @@ index 8b95d02deda86..3fd5e460e67c5 100755
  
  &d0_usbdrd_dwc3_1 {
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi b/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
-index bb340db8ea509..4d4ab2c6b7501 100644
+index bb340db8ea50..4d4ab2c6b750 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
 @@ -874,9 +874,11 @@ &d1_sata {
@@ -84,7 +84,7 @@ index bb340db8ea509..4d4ab2c6b7501 100644
  
  &d0_usbdrd_dwc3_1 {
 diff --git a/drivers/usb/dwc3/dwc3-eswin.c b/drivers/usb/dwc3/dwc3-eswin.c
-index d5870860c3178..58e5bdb66ed76 100755
+index d5870860c317..58e5bdb66ed7 100755
 --- a/drivers/usb/dwc3/dwc3-eswin.c
 +++ b/drivers/usb/dwc3/dwc3-eswin.c
 @@ -68,6 +68,12 @@
@@ -161,5 +161,5 @@ index d5870860c3178..58e5bdb66ed76 100755
  	pm_runtime_enable(dev);
  	ret = pm_runtime_get_sync(dev);
 -- 
-2.53.0
+2.54.0
 

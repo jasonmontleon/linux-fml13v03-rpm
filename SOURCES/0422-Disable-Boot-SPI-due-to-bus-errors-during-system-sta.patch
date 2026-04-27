@@ -1,4 +1,4 @@
-From 841726ff3e752ea80edafe6104e9143d8ae719a2 Mon Sep 17 00:00:00 2001
+From b160917919d46e045335341baab37f582aac1020 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Mon, 14 Jul 2025 16:52:33 +0800
 Subject: [PATCH 422/540] Disable Boot SPI due to bus errors during system
@@ -9,7 +9,7 @@ Subject: [PATCH 422/540] Disable Boot SPI due to bus errors during system
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
-index a5af0129bc7f1..ba0a9cea46bd7 100644
+index a5af0129bc7f..ba0a9cea46bd 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 @@ -1216,7 +1216,7 @@ &d1_ssi1 {
@@ -22,5 +22,5 @@ index a5af0129bc7f1..ba0a9cea46bd7 100644
  	cs-gpios = <&portd 0 GPIO_ACTIVE_LOW>;
  	wp-gpios = <&portd 4 GPIO_ACTIVE_LOW>;
 -- 
-2.53.0
+2.54.0
 

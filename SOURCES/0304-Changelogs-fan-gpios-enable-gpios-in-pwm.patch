@@ -1,4 +1,4 @@
-From a4c73170a781e39315b95e85161ed85c73250874 Mon Sep 17 00:00:00 2001
+From 41dab960ca4377de053b1ac9aa2aae851d23226c Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Wed, 21 May 2025 16:02:27 +0800
 Subject: [PATCH 304/540] Changelogs: fan-gpios -> enable-gpios in pwm
@@ -22,7 +22,7 @@ Subject: [PATCH 304/540] Changelogs: fan-gpios -> enable-gpios in pwm
  15 files changed, 29 insertions(+), 25 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-evb-a2.dts b/arch/riscv/boot/dts/eswin/eic7700-evb-a2.dts
-index 5c9f192c0e0d8..6f9534cfa3a26 100644
+index 5c9f192c0e0d..6f9534cfa3a2 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-evb-a2.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7700-evb-a2.dts
 @@ -920,7 +920,7 @@ &pwm0 {
@@ -35,7 +35,7 @@ index 5c9f192c0e0d8..6f9534cfa3a26 100644
  
  &pvt0 {
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-evb.dts b/arch/riscv/boot/dts/eswin/eic7700-evb.dts
-index 5ecaef256fcaa..fa82513629ba6 100644
+index 5ecaef256fca..fa82513629ba 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-evb.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7700-evb.dts
 @@ -877,7 +877,7 @@ &pwm0 {
@@ -48,7 +48,7 @@ index 5ecaef256fcaa..fa82513629ba6 100644
  
  &pvt0 {
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-hifive-premier-p550.dts b/arch/riscv/boot/dts/eswin/eic7700-hifive-premier-p550.dts
-index 686388faa6ad2..7df6a40a66723 100644
+index 686388faa6ad..7df6a40a6672 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-hifive-premier-p550.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7700-hifive-premier-p550.dts
 @@ -767,7 +767,7 @@ &pwm0 {
@@ -61,7 +61,7 @@ index 686388faa6ad2..7df6a40a66723 100644
  
  &pvt0 {
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-osm.dts b/arch/riscv/boot/dts/eswin/eic7700-osm.dts
-index 682c7265399e7..28939e0f728ae 100644
+index 682c7265399e..28939e0f728a 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-osm.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7700-osm.dts
 @@ -809,7 +809,7 @@ &pwm0 {
@@ -74,7 +74,7 @@ index 682c7265399e7..28939e0f728ae 100644
  
  &pvt0 {
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dts b/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dts
-index 9222d744069db..1b97290f83a9d 100644
+index 9222d744069d..1b97290f83a9 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dts
 @@ -712,7 +712,7 @@ &pwm0 {
@@ -87,7 +87,7 @@ index 9222d744069db..1b97290f83a9d 100644
  
  &pvt0 {
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-som260-a1.dtsi b/arch/riscv/boot/dts/eswin/eic7700-som260-a1.dtsi
-index 1df8388613065..867d0b1e89924 100644
+index 1df838861306..867d0b1e8992 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-som260-a1.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7700-som260-a1.dtsi
 @@ -686,7 +686,7 @@ &pwm0 {
@@ -100,7 +100,7 @@ index 1df8388613065..867d0b1e89924 100644
  
  &pvt0 {
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-som314.dtsi b/arch/riscv/boot/dts/eswin/eic7700-som314.dtsi
-index 65058b6c40e47..16d1f8c189cd7 100644
+index 65058b6c40e4..16d1f8c189cd 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-som314.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7700-som314.dtsi
 @@ -618,7 +618,7 @@ &pwm0 {
@@ -113,7 +113,7 @@ index 65058b6c40e47..16d1f8c189cd7 100644
  
  &pvt0 {
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-vpu7702.dts b/arch/riscv/boot/dts/eswin/eic7700-vpu7702.dts
-index c89dc7af63465..c7d0d3e9c1f4f 100644
+index c89dc7af6346..c7d0d3e9c1f4 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-vpu7702.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7700-vpu7702.dts
 @@ -1005,7 +1005,7 @@ &pwm0 {
@@ -126,7 +126,7 @@ index c89dc7af63465..c7d0d3e9c1f4f 100644
  
  &pvt0 {
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
-index 39cb7f66eb2fa..6a6296ce58249 100644
+index 39cb7f66eb2f..6a6296ce5824 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 @@ -1552,7 +1552,7 @@ &pwm0 {
@@ -151,7 +151,7 @@ index 39cb7f66eb2fa..6a6296ce58249 100644
  
  &fan_control {
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-evb-a1-d0.dts b/arch/riscv/boot/dts/eswin/eic7702-evb-a1-d0.dts
-index bb334434e2dbc..108e908ad22c4 100644
+index bb334434e2db..108e908ad22c 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-evb-a1-d0.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-evb-a1-d0.dts
 @@ -801,7 +801,7 @@ &pwm0 {
@@ -164,7 +164,7 @@ index bb334434e2dbc..108e908ad22c4 100644
  
  &pvt0 {
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-evb-a1-d1.dts b/arch/riscv/boot/dts/eswin/eic7702-evb-a1-d1.dts
-index 5ecd25fd39156..0bbb034724187 100644
+index 5ecd25fd3915..0bbb03472418 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-evb-a1-d1.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-evb-a1-d1.dts
 @@ -816,7 +816,7 @@ &pwm0 {
@@ -177,7 +177,7 @@ index 5ecd25fd39156..0bbb034724187 100644
  
  &pvt0 {
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-evb-a1-interleave.dts b/arch/riscv/boot/dts/eswin/eic7702-evb-a1-interleave.dts
-index 74b4fa87bcb14..3d136a7b9d2ec 100644
+index 74b4fa87bcb1..3d136a7b9d2e 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-evb-a1-interleave.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-evb-a1-interleave.dts
 @@ -1538,7 +1538,7 @@ &pwm0 {
@@ -190,7 +190,7 @@ index 74b4fa87bcb14..3d136a7b9d2ec 100644
  &d1_pwm0 {
  	status = "disabled";
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-evb-a1.dts b/arch/riscv/boot/dts/eswin/eic7702-evb-a1.dts
-index 445beb0d45f36..9d547781806aa 100644
+index 445beb0d45f3..9d547781806a 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-evb-a1.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-evb-a1.dts
 @@ -394,7 +394,11 @@ &d1_ipc_scpu {
@@ -215,7 +215,7 @@ index 445beb0d45f36..9d547781806aa 100644
  &d1_pwm0 {
  	status = "disabled";
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-tb.dts b/arch/riscv/boot/dts/eswin/eic7702-tb.dts
-index 5ebb68adfc08a..e5f4d9647c386 100644
+index 5ebb68adfc08..e5f4d9647c38 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-tb.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-tb.dts
 @@ -1522,7 +1522,7 @@ &pwm0 {
@@ -228,7 +228,7 @@ index 5ebb68adfc08a..e5f4d9647c386 100644
  &d1_pwm0 {
  	status = "disabled";
 diff --git a/drivers/pwm/pwm-dwc-eswin.c b/drivers/pwm/pwm-dwc-eswin.c
-index 3cf2dabe257fa..eea93e48e5b7f 100644
+index 3cf2dabe257f..eea93e48e5b7 100644
 --- a/drivers/pwm/pwm-dwc-eswin.c
 +++ b/drivers/pwm/pwm-dwc-eswin.c
 @@ -65,7 +65,7 @@ struct dwc_pwm {
@@ -292,5 +292,5 @@ index 3cf2dabe257fa..eea93e48e5b7f 100644
  	if (ret) {
  		dev_err(dev, "failed to select default state: %d\n", ret);
 -- 
-2.53.0
+2.54.0
 

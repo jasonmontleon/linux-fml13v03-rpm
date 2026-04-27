@@ -1,4 +1,4 @@
-From 54349a5f33d82684c1ab77a0a87ca895c238c99b Mon Sep 17 00:00:00 2001
+From 1d858e6a2484c3b68e1bce867d1b3e43df1159d4 Mon Sep 17 00:00:00 2001
 From: zhouliang2 <zhouliang2@eswincomputing.com>
 Date: Tue, 8 Apr 2025 15:14:28 +0800
 Subject: [PATCH 335/540] fix:fix dma buffersize
@@ -12,7 +12,7 @@ Signed-off-by: zhouliang2 <zhouliang2@eswincomputing.com>
  1 file changed, 19 insertions(+), 6 deletions(-)
 
 diff --git a/sound/soc/eswin/esw-dma.c b/sound/soc/eswin/esw-dma.c
-index d2f0c79e0fe2d..53708f8dae1b4 100644
+index d2f0c79e0fe2..53708f8dae1b 100644
 --- a/sound/soc/eswin/esw-dma.c
 +++ b/sound/soc/eswin/esw-dma.c
 @@ -26,8 +26,8 @@
@@ -68,5 +68,5 @@ index d2f0c79e0fe2d..53708f8dae1b4 100644
  }
 \ No newline at end of file
 -- 
-2.53.0
+2.54.0
 

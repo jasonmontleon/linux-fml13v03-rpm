@@ -1,4 +1,4 @@
-From 81e087c2645fd0779666101ff7308d261c6bb04f Mon Sep 17 00:00:00 2001
+From 6159e381b17f18d95dacc42cce6979b4ed9d3544 Mon Sep 17 00:00:00 2001
 From: Sandie Cao <sandie.cao@deepcomputing.io>
 Date: Wed, 19 Mar 2025 17:01:19 +0800
 Subject: [PATCH 260/540] riscv: eswin: fml13v03: Fix no power of tp549d22 when
@@ -11,7 +11,7 @@ Signed-off-by: Sandie Cao <sandie.cao@deepcomputing.io>
  2 files changed, 342 insertions(+), 292 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03-low-power.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03-low-power.dts
-index 348a9f8af2d32..1a84eb01d4a74 100644
+index 348a9f8af2d3..1a84eb01d4a7 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03-low-power.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03-low-power.dts
 @@ -160,47 +160,60 @@ distance-map {
@@ -402,7 +402,7 @@ index 348a9f8af2d32..1a84eb01d4a74 100644
  
  	gpio0   : pcie prstn(I)
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
-index 3299476557c4c..2161add2de9be 100644
+index 3299476557c4..2161add2de9b 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 @@ -160,61 +160,61 @@ distance-map {
@@ -960,5 +960,5 @@ index 3299476557c4c..2161add2de9be 100644
  
  /* die0 GPIO Function Description
 -- 
-2.53.0
+2.54.0
 

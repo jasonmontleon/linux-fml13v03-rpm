@@ -1,4 +1,4 @@
-From f67a8da4659a4093ca42ffe7f0f328a2d80a42ad Mon Sep 17 00:00:00 2001
+From 6137ed0ec78f3c495af543a080364c75b37e5827 Mon Sep 17 00:00:00 2001
 From: huangyifeng <huangyifeng@eswincomputing.com>
 Date: Wed, 28 May 2025 15:09:52 +0800
 Subject: [PATCH 391/540] feat:disable d2d driver && uart noc err log
@@ -17,7 +17,7 @@ Signed-off-by: huangyifeng <huangyifeng@eswincomputing.com>
  5 files changed, 58 insertions(+), 14 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-evb-a1-interleave.dts b/arch/riscv/boot/dts/eswin/eic7702-evb-a1-interleave.dts
-index b535e6e6ca544..6d128b2504455 100644
+index b535e6e6ca54..6d128b250445 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-evb-a1-interleave.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-evb-a1-interleave.dts
 @@ -1641,11 +1641,11 @@ &d1_llc_dev{
@@ -35,7 +35,7 @@ index b535e6e6ca544..6d128b2504455 100644
  
  /* die0 GPIO Function Description
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-evb-a1.dts b/arch/riscv/boot/dts/eswin/eic7702-evb-a1.dts
-index fe05cc53ef2f2..665b89606a835 100644
+index fe05cc53ef2f..665b89606a83 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-evb-a1.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-evb-a1.dts
 @@ -1607,11 +1607,11 @@ &d1_llc_dev{
@@ -53,7 +53,7 @@ index fe05cc53ef2f2..665b89606a835 100644
  
  /* die0 GPIO Function Description
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi b/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
-index 2e55ba76ad50d..65eddea2d49f1 100644
+index 2e55ba76ad50..65eddea2d49f 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
 @@ -1470,9 +1470,9 @@ &d1_llc_dev{
@@ -69,7 +69,7 @@ index 2e55ba76ad50d..65eddea2d49f1 100644
 +	status = "disabled";
  };
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-tb.dts b/arch/riscv/boot/dts/eswin/eic7702-tb.dts
-index 59357fbd94a9a..148b3240c7a18 100644
+index 59357fbd94a9..148b3240c7a1 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-tb.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-tb.dts
 @@ -1625,11 +1625,11 @@ &d1_llc_dev{
@@ -87,7 +87,7 @@ index 59357fbd94a9a..148b3240c7a18 100644
  
  /* die0 GPIO Function Description
 diff --git a/drivers/interconnect/eswin/noc.c b/drivers/interconnect/eswin/noc.c
-index cc232396f842e..c6d44719db367 100644
+index cc232396f842..c6d44719db36 100644
 --- a/drivers/interconnect/eswin/noc.c
 +++ b/drivers/interconnect/eswin/noc.c
 @@ -509,6 +509,24 @@ void stack_dump(void)
@@ -181,5 +181,5 @@ index cc232396f842e..c6d44719db367 100644
  {
  	struct win2030_noc_device *noc_device = dev;
 -- 
-2.53.0
+2.54.0
 

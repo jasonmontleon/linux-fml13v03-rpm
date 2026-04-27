@@ -1,4 +1,4 @@
-From 36f3a8a27962d9ec94a15cfab58d319d57fe7fc4 Mon Sep 17 00:00:00 2001
+From 33fdace5c1fdef4a72538f426ef599d4773a88e1 Mon Sep 17 00:00:00 2001
 From: wangjinlong <wangjinlong@eswincomputing.com>
 Date: Thu, 31 Jul 2025 10:30:40 +0800
 Subject: [PATCH 454/540] fix: Fix BT enable fail
@@ -15,7 +15,7 @@ Signed-off-by: wangjinlong <wangjinlong@eswincomputing.com>
  4 files changed, 15 insertions(+), 8 deletions(-)
 
 diff --git a/drivers/net/wireless/ap12275/Makefile b/drivers/net/wireless/ap12275/Makefile
-index c75fa95148046..cb41a87bc81e2 100644
+index c75fa9514804..cb41a87bc81e 100644
 --- a/drivers/net/wireless/ap12275/Makefile
 +++ b/drivers/net/wireless/ap12275/Makefile
 @@ -63,8 +63,8 @@ DHDCFLAGS = -Wall -Wstrict-prototypes -Wno-date-time                      \
@@ -30,7 +30,7 @@ index c75fa95148046..cb41a87bc81e2 100644
  DHDOFILES = aiutils.o siutils.o sbutils.o                                 \
  	bcmutils.o bcmwifi_channels.o bcmxtlv.o bcm_app_utils.o bcmstdlib_s.o \
 diff --git a/drivers/net/wireless/ap12275/dhd_ip.c b/drivers/net/wireless/ap12275/dhd_ip.c
-index 32788cccf560e..972012e9f7574 100644
+index 32788cccf560..972012e9f757 100644
 --- a/drivers/net/wireless/ap12275/dhd_ip.c
 +++ b/drivers/net/wireless/ap12275/dhd_ip.c
 @@ -375,7 +375,7 @@ int dhd_tcpack_suppress_set(dhd_pub_t *dhdp, uint8 mode)
@@ -43,7 +43,7 @@ index 32788cccf560e..972012e9f7574 100644
  	}
  
 diff --git a/drivers/net/wireless/ap12275/dhd_linux.c b/drivers/net/wireless/ap12275/dhd_linux.c
-index 37c3bd9c6b2b8..777308ca4e172 100644
+index 37c3bd9c6b2b..777308ca4e17 100644
 --- a/drivers/net/wireless/ap12275/dhd_linux.c
 +++ b/drivers/net/wireless/ap12275/dhd_linux.c
 @@ -617,7 +617,9 @@ module_param(dhd_console_ms, uint, 0644);
@@ -86,7 +86,7 @@ index 37c3bd9c6b2b8..777308ca4e172 100644
  #endif /* DHD_DEBUG && BCMSDIO */
  
 diff --git a/drivers/net/wireless/ap12275/dhd_linux_rx.c b/drivers/net/wireless/ap12275/dhd_linux_rx.c
-index ae2044be6a42b..3131e050c5681 100644
+index ae2044be6a42..3131e050c568 100644
 --- a/drivers/net/wireless/ap12275/dhd_linux_rx.c
 +++ b/drivers/net/wireless/ap12275/dhd_linux_rx.c
 @@ -458,7 +458,7 @@ dhd_rx_frame(dhd_pub_t *dhdp, int ifidx, void *pktbuf, int numpkt, uint8 chan)
@@ -108,5 +108,5 @@ index ae2044be6a42b..3131e050c5681 100644
  				PKTFREE_CTRLBUF(dhdp->osh, pktbuf, FALSE);
  				continue;
 -- 
-2.53.0
+2.54.0
 

@@ -1,4 +1,4 @@
-From 9af8cce10594cf4ca99516e6607c93d1c7abf463 Mon Sep 17 00:00:00 2001
+From a5d9eafcbf42c0a270038ba19b1db6b0de946c31 Mon Sep 17 00:00:00 2001
 From: guozeyang <guozeyang@eswincomputing.com>
 Date: Tue, 26 Aug 2025 15:41:35 +0800
 Subject: [PATCH 506/540] fix:add mipi device node for vela
@@ -13,7 +13,7 @@ Signed-off-by: guozeyang <guozeyang@eswincomputing.com>
  2 files changed, 6 insertions(+), 1 deletion(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-vela.dts b/arch/riscv/boot/dts/eswin/eic7700-vela.dts
-index f6d399c8a87f2..809400c9e436f 100644
+index f6d399c8a87f..809400c9e436 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-vela.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7700-vela.dts
 @@ -19,7 +19,7 @@
@@ -42,7 +42,7 @@ index f6d399c8a87f2..809400c9e436f 100644
  	dly-param-100m = <0x48484848 0x80588048 0x58585858>;
  	dly-param-10m = <0 0 0>;
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-z530.dts b/arch/riscv/boot/dts/eswin/eic7700-z530.dts
-index 5d022417d45f1..25642bd8dd88d 100644
+index 5d022417d45f..25642bd8dd88 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-z530.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7700-z530.dts
 @@ -19,6 +19,7 @@
@@ -69,5 +69,5 @@ index 5d022417d45f1..25642bd8dd88d 100644
  	dly-param-100m = <0x10101010 0x3C102810 0x10101010>;
  	dly-param-10m = <0 0 0>;
 -- 
-2.53.0
+2.54.0
 

@@ -1,4 +1,4 @@
-From d33cb29bb903ad6f79efdc5095ecaf7e5d3cee2d Mon Sep 17 00:00:00 2001
+From a1540cedef67219f8223f6bf9a83d774e5b0aec4 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Wed, 26 Mar 2025 12:50:44 +0800
 Subject: [PATCH 264/540] Fixed Touchpad Freeze Issue: Increased I2C clock
@@ -9,7 +9,7 @@ Subject: [PATCH 264/540] Fixed Touchpad Freeze Issue: Increased I2C clock
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
-index 1ebbfeff875bc..eed7c1addd49c 100644
+index 1ebbfeff875b..eed7c1addd49 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 @@ -1344,6 +1344,7 @@ d1_npu_vcc: npu_svcc {
@@ -29,5 +29,5 @@ index 1ebbfeff875bc..eed7c1addd49c 100644
  	};
  
 -- 
-2.53.0
+2.54.0
 

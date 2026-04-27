@@ -1,4 +1,4 @@
-From 2427811ebae0b552fc8f3815316837bd0c991fb3 Mon Sep 17 00:00:00 2001
+From 0d8f2f865c33df2ef3f5b7fc4ca8f262a387591d Mon Sep 17 00:00:00 2001
 From: Sandie Cao <sandie.cao@deepcomputing.io>
 Date: Wed, 28 May 2025 14:00:46 +0800
 Subject: [PATCH 308/540] dts: riscv: eswin: fml13v03: change max NPU power to
@@ -10,7 +10,7 @@ Signed-off-by: Sandie Cao <sandie.cao@deepcomputing.io>
  1 file changed, 1 deletion(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
-index 552eab01284e9..708658ae5fdb1 100644
+index 552eab01284e..708658ae5fdb 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 @@ -601,7 +601,6 @@ &d1_pcie {
@@ -22,5 +22,5 @@ index 552eab01284e9..708658ae5fdb1 100644
  &d1_npu {
  	status = "okay";
 -- 
-2.53.0
+2.54.0
 

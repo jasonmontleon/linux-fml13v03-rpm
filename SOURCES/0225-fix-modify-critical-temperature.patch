@@ -1,4 +1,4 @@
-From ab521d89a6efe3352d561a4ab1f58eb4c4cf4533 Mon Sep 17 00:00:00 2001
+From 4824f79cebeb1952929da57481ec57d8004bd3de Mon Sep 17 00:00:00 2001
 From: ningyu <ningyu@eswincomputing.com>
 Date: Wed, 22 Jan 2025 11:12:59 +0800
 Subject: [PATCH 225/540] fix: modify critical temperature
@@ -13,7 +13,7 @@ Signed-off-by: ningyu <ningyu@eswincomputing.com>
  2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi b/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
-index 8858283c1e68b..b6d4e88e747ca 100644
+index 8858283c1e68..b6d4e88e747c 100644
 --- a/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
 @@ -53,7 +53,7 @@ target: trip-point1 {
@@ -26,7 +26,7 @@ index 8858283c1e68b..b6d4e88e747ca 100644
  					type            = "critical";
  				};
 diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi b/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi
-index 725e811f08259..371be4330cf3e 100644
+index 725e811f0825..371be4330cf3 100644
 --- a/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi
 @@ -52,7 +52,7 @@ d1_target: trip-point1 {
@@ -39,5 +39,5 @@ index 725e811f08259..371be4330cf3e 100644
  					type            = "critical";
  				};
 -- 
-2.53.0
+2.54.0
 

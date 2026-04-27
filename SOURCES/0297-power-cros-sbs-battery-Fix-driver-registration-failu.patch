@@ -1,4 +1,4 @@
-From 3bd88f07f2e24be9c2cd8955f543d07f5ae06326 Mon Sep 17 00:00:00 2001
+From f6a185f58d38529ead86deeaef7e787d7648ed4b Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Fri, 16 May 2025 14:02:04 +0800
 Subject: [PATCH 297/540] power: cros-sbs-battery: Fix driver registration
@@ -10,7 +10,7 @@ Signed-off-by: yang.wang <yang.wang@deepcomputing.io>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/power/supply/cros-sbs-battery.c b/drivers/power/supply/cros-sbs-battery.c
-index 5189abddf99a8..c4dbd60ece8bd 100644
+index 5189abddf99a..c4dbd60ece8b 100644
 --- a/drivers/power/supply/cros-sbs-battery.c
 +++ b/drivers/power/supply/cros-sbs-battery.c
 @@ -1138,7 +1138,7 @@ static int cros_sbs_probe(struct platform_device *pdev)
@@ -23,5 +23,5 @@ index 5189abddf99a8..c4dbd60ece8bd 100644
  	if (IS_ERR(chip->power_supply))
  		return dev_err_probe(dev, PTR_ERR(chip->power_supply),
 -- 
-2.53.0
+2.54.0
 

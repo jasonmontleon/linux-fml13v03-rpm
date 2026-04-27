@@ -1,4 +1,4 @@
-From ae3dd778ffbbf93e39c7ce5e13dc668bf40e0a00 Mon Sep 17 00:00:00 2001
+From 011ce6f346809f8812bd839353743077f6080e6c Mon Sep 17 00:00:00 2001
 From: denglei <denglei@eswincomputing.com>
 Date: Thu, 20 Jun 2024 08:56:15 +0800
 Subject: [PATCH 064/540] fix:Solving HDMI driver compilation issue.
@@ -10,7 +10,7 @@ Changelogs:
  1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/eswin/Kconfig b/drivers/gpu/drm/eswin/Kconfig
-index de77dc0d91013..77733cd77352a 100644
+index de77dc0d9101..77733cd77352 100644
 --- a/drivers/gpu/drm/eswin/Kconfig
 +++ b/drivers/gpu/drm/eswin/Kconfig
 @@ -32,7 +32,9 @@ config ESWIN_DW_HDMI
@@ -25,5 +25,5 @@ index de77dc0d91013..77733cd77352a 100644
        This selects support for ESWIN SoC specific extensions
        for the Synopsys DesignWare HDMI driver. If you want to
 -- 
-2.53.0
+2.54.0
 

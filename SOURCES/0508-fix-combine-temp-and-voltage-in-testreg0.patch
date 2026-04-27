@@ -1,4 +1,4 @@
-From 8533bf863a2aa456a514f0203efa359e64411910 Mon Sep 17 00:00:00 2001
+From 8eea1f80d0303b836adff401de978390c318ff3b Mon Sep 17 00:00:00 2001
 From: ningyu <ningyu@eswincomputing.com>
 Date: Thu, 21 Aug 2025 20:28:35 +0800
 Subject: [PATCH 508/540] fix:combine temp and voltage in testreg0
@@ -13,7 +13,7 @@ Signed-off-by: ningyu <ningyu@eswincomputing.com>
  2 files changed, 22 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/hwmon/eswin_dummy_pvt.c b/drivers/hwmon/eswin_dummy_pvt.c
-index bfc725adb498b..34f5f79d35545 100644
+index bfc725adb498..34f5f79d3554 100644
 --- a/drivers/hwmon/eswin_dummy_pvt.c
 +++ b/drivers/hwmon/eswin_dummy_pvt.c
 @@ -46,6 +46,7 @@
@@ -76,7 +76,7 @@ index bfc725adb498b..34f5f79d35545 100644
  }
  
 diff --git a/drivers/hwmon/eswin_pvt.h b/drivers/hwmon/eswin_pvt.h
-index 45314085a08ed..79343ea5ce9a4 100644
+index 45314085a08e..79343ea5ce9a 100644
 --- a/drivers/hwmon/eswin_pvt.h
 +++ b/drivers/hwmon/eswin_pvt.h
 @@ -201,7 +201,7 @@ struct pvt_cache {
@@ -97,5 +97,5 @@ index 45314085a08ed..79343ea5ce9a4 100644
  #endif /* __HWMON_ESWIN_PVT_H__ */
  
 -- 
-2.53.0
+2.54.0
 

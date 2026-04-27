@@ -1,4 +1,4 @@
-From 7da97d1c00b0d87ff77720ad9d9d072697bef354 Mon Sep 17 00:00:00 2001
+From cf3cb804eb64a007e4b76cb5344c4fab7bf68910 Mon Sep 17 00:00:00 2001
 From: lei zhilin <leizhilin@eswincomputing.com>
 Date: Thu, 13 Feb 2025 11:10:23 +0800
 Subject: [PATCH 247/540] fix(2d):kernel stack warning after reboot
@@ -22,7 +22,7 @@ Signed-off-by: lei zhilin <leizhilin@eswincomputing.com>
  2 files changed, 81 insertions(+), 30 deletions(-)
 
 diff --git a/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_driver.c b/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_driver.c
-index 91d7c78566d53..b373ca81a3dbd 100644
+index 91d7c78566d5..b373ca81a3db 100644
 --- a/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_driver.c
 +++ b/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_driver.c
 @@ -1,3 +1,26 @@
@@ -97,7 +97,7 @@ index 91d7c78566d53..b373ca81a3dbd 100644
  }
  
 diff --git a/drivers/staging/media/eswin/hae/hal/os/linux/kernel/platform/eswin/gc_hal_kernel_platform_win2030.c b/drivers/staging/media/eswin/hae/hal/os/linux/kernel/platform/eswin/gc_hal_kernel_platform_win2030.c
-index f2cebd459f416..25f1c2e3b5f94 100644
+index f2cebd459f41..25f1c2e3b5f9 100644
 --- a/drivers/staging/media/eswin/hae/hal/os/linux/kernel/platform/eswin/gc_hal_kernel_platform_win2030.c
 +++ b/drivers/staging/media/eswin/hae/hal/os/linux/kernel/platform/eswin/gc_hal_kernel_platform_win2030.c
 @@ -1,3 +1,26 @@
@@ -234,5 +234,5 @@ index f2cebd459f416..25f1c2e3b5f94 100644
      }
      return gcvSTATUS_OK;
 -- 
-2.53.0
+2.54.0
 

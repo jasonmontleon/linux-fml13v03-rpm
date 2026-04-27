@@ -1,4 +1,4 @@
-From 636599c510e598c65e4e5ae28be8feb7f912da8f Mon Sep 17 00:00:00 2001
+From fee4c2691269877f5de32abb1a7124f7166222fb Mon Sep 17 00:00:00 2001
 From: Jason Montleon <jmontleo@redhat.com>
 Date: Wed, 4 Mar 2026 12:38:10 -0500
 Subject: [PATCH 001/540] Revert "media: i2c: ov5647: use our own mutex for the
@@ -10,7 +10,7 @@ This reverts commit d03a29cb36d6c8824ba568fed2c494daa977b42b.
  1 file changed, 2 deletions(-)
 
 diff --git a/drivers/media/i2c/ov5647.c b/drivers/media/i2c/ov5647.c
-index b8033fb7aa30e..6c7a1f2c1ed2c 100644
+index b8033fb7aa30..6c7a1f2c1ed2 100644
 --- a/drivers/media/i2c/ov5647.c
 +++ b/drivers/media/i2c/ov5647.c
 @@ -1297,8 +1297,6 @@ static int ov5647_init_controls(struct ov5647 *sensor)
@@ -23,5 +23,5 @@ index b8033fb7aa30e..6c7a1f2c1ed2c 100644
  			  V4L2_CID_AUTOGAIN, 0, 1, 1, 0);
  
 -- 
-2.53.0
+2.54.0
 

@@ -1,4 +1,4 @@
-From 2eeb7a581124ab9d079b2bdf3385a453b65ffff6 Mon Sep 17 00:00:00 2001
+From 7500c5fb299550051ec87310d77af801ea4cebca Mon Sep 17 00:00:00 2001
 From: ningyu <ningyu@eswincomputing.com>
 Date: Thu, 28 Aug 2025 19:08:22 +0800
 Subject: [PATCH 489/540] fix:modify pmic's label name of die1
@@ -12,7 +12,7 @@ Signed-off-by: ningyu <ningyu@eswincomputing.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-d560a.dts b/arch/riscv/boot/dts/eswin/eic7702-d560a.dts
-index b5af295df905e..d189592c2771c 100644
+index b5af295df905..d189592c2771 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-d560a.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-d560a.dts
 @@ -68,7 +68,7 @@ es5340@f {
@@ -25,5 +25,5 @@ index b5af295df905e..d189592c2771c 100644
  			d1_npu_vcc:npu_svcc{
  				regulator-name="NPU_SVCC_D1";
 -- 
-2.53.0
+2.54.0
 

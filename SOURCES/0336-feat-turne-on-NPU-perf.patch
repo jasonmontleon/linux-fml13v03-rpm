@@ -1,4 +1,4 @@
-From 64d1e31e751fc88a1aa5a9f09b7341662d1bb570 Mon Sep 17 00:00:00 2001
+From 16134f7e65cc7a42a92183ff76993b4ba36bd861 Mon Sep 17 00:00:00 2001
 From: chenyangxi <chenyangxi@eswincomputing.com>
 Date: Tue, 8 Apr 2025 19:04:09 +0800
 Subject: [PATCH 336/540] feat:turne on NPU perf
@@ -12,7 +12,7 @@ Signed-off-by: chenyangxi <chenyangxi@eswincomputing.com>
  1 file changed, 1 deletion(-)
 
 diff --git a/drivers/soc/eswin/ai_driver/Kconfig b/drivers/soc/eswin/ai_driver/Kconfig
-index 8dcf4e6b23a0c..745e9491be08d 100644
+index 8dcf4e6b23a0..745e9491be08 100644
 --- a/drivers/soc/eswin/ai_driver/Kconfig
 +++ b/drivers/soc/eswin/ai_driver/Kconfig
 @@ -14,4 +14,3 @@ config ESWIN_NPU
@@ -21,5 +21,5 @@ index 8dcf4e6b23a0c..745e9491be08d 100644
      select ESWIN_RSVMEM_HEAP
 -
 -- 
-2.53.0
+2.54.0
 

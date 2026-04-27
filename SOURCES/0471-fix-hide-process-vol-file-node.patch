@@ -1,4 +1,4 @@
-From 6ed525cafa6b2508498f70e6e9556e5027065ac9 Mon Sep 17 00:00:00 2001
+From 1a930c405b3e08f1d625a109afcf710b8fb4ca51 Mon Sep 17 00:00:00 2001
 From: hehuan1 <hehuan1@eswincomputing.com>
 Date: Wed, 20 Aug 2025 13:45:11 +0800
 Subject: [PATCH 471/540] fix: hide process vol file node
@@ -12,7 +12,7 @@ Signed-off-by: hehuan1 <hehuan1@eswincomputing.com>
  1 file changed, 16 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/hwmon/eswin_dummy_pvt.c b/drivers/hwmon/eswin_dummy_pvt.c
-index 8e548b273a61f..bfc725adb498b 100644
+index 8e548b273a61..bfc725adb498 100644
 --- a/drivers/hwmon/eswin_dummy_pvt.c
 +++ b/drivers/hwmon/eswin_dummy_pvt.c
 @@ -274,9 +274,6 @@ static const struct hwmon_channel_info *pvt_channel_info[] = {
@@ -78,5 +78,5 @@ index 8e548b273a61f..bfc725adb498b 100644
  		case hwmon_in_min:
  			return eswin_pvt_write_limit(pvt, PVT_VOLT + ch, true, val);
 -- 
-2.53.0
+2.54.0
 

@@ -1,4 +1,4 @@
-From c091843e1369abb4620ab2c679baa06b595b60d0 Mon Sep 17 00:00:00 2001
+From 7dded11e7bd72438c212ee28792d617302f7d8fd Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Mon, 31 Mar 2025 14:27:42 +0800
 Subject: [PATCH 274/540] PWM: initialize the fan speed to 50%.
@@ -9,7 +9,7 @@ Signed-off-by: yang.wang <yang.wang@deepcomputing.io>
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/hwmon/eswin-fan-control.c b/drivers/hwmon/eswin-fan-control.c
-index cc931a8611591..b921b72b95466 100644
+index cc931a861159..b921b72b9546 100644
 --- a/drivers/hwmon/eswin-fan-control.c
 +++ b/drivers/hwmon/eswin-fan-control.c
 @@ -512,12 +512,12 @@ static int eswin_fan_control_probe(struct platform_device *pdev)
@@ -28,5 +28,5 @@ index cc931a8611591..b921b72b95466 100644
  		{
  			state.duty_cycle = 1;
 -- 
-2.53.0
+2.54.0
 

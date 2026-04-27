@@ -1,4 +1,4 @@
-From 8722c7ca90d41f398de31967c890c8ec720ec09b Mon Sep 17 00:00:00 2001
+From 653bf149c3dea9996388bbf66a148bfdc6d47739 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Thu, 4 Sep 2025 14:37:03 +0800
 Subject: [PATCH 440/540] Add safeguards for variables
@@ -8,7 +8,7 @@ Subject: [PATCH 440/540] Add safeguards for variables
  1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/gpu/drm/eswin/es_dw_hdmi.c b/drivers/gpu/drm/eswin/es_dw_hdmi.c
-index de19e1156454e..bfe63f0432745 100644
+index de19e1156454..bfe63f043274 100644
 --- a/drivers/gpu/drm/eswin/es_dw_hdmi.c
 +++ b/drivers/gpu/drm/eswin/es_dw_hdmi.c
 @@ -964,7 +964,7 @@ static void dw_hdmi_eswin_unbind(struct device *dev, struct device *master,
@@ -48,5 +48,5 @@ index de19e1156454e..bfe63f0432745 100644
  		return -ENODEV;
  	}
 -- 
-2.53.0
+2.54.0
 

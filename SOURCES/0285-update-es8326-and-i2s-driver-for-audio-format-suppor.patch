@@ -1,4 +1,4 @@
-From 09ce78719b9d3353aa9545b00f75a4ab72653ef3 Mon Sep 17 00:00:00 2001
+From a98e3dd843ee44f5359fe0186efe21441f01c585 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Thu, 17 Apr 2025 11:31:33 +0800
 Subject: [PATCH 285/540] update es8326 and i2s driver for audio format support
@@ -15,7 +15,7 @@ Signed-off-by: yang.wang <yang.wang@deepcomputing.io>
  2 files changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/sound/soc/codecs/es8326.c b/sound/soc/codecs/es8326.c
-index 55aa264d81653..1e252abaa6cb7 100644
+index 55aa264d8165..1e252abaa6cb 100644
 --- a/sound/soc/codecs/es8326.c
 +++ b/sound/soc/codecs/es8326.c
 @@ -501,8 +501,8 @@ static int es8326_set_bias_level(struct snd_soc_component *codec,
@@ -30,7 +30,7 @@ index 55aa264d81653..1e252abaa6cb7 100644
  static const struct snd_soc_dai_ops es8326_ops = {
  	.hw_params = es8326_pcm_hw_params,
 diff --git a/sound/soc/eswin/esw-i2s.c b/sound/soc/eswin/esw-i2s.c
-index c71bc41f11f20..3c1a7a6aa08c0 100755
+index c71bc41f11f2..3c1a7a6aa08c 100755
 --- a/sound/soc/eswin/esw-i2s.c
 +++ b/sound/soc/eswin/esw-i2s.c
 @@ -461,7 +461,7 @@ static int i2s_hw_params(struct snd_pcm_substream *substream,
@@ -43,5 +43,5 @@ index c71bc41f11f20..3c1a7a6aa08c0 100755
  		i2s_drvdata->xfer_resolution = RESOLUTION_24_BIT;
  		break;
 -- 
-2.53.0
+2.54.0
 

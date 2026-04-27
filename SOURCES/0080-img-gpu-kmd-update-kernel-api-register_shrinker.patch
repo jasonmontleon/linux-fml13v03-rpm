@@ -1,4 +1,4 @@
-From d2d7059e377be244a629919e6a640a91ab87b4bf Mon Sep 17 00:00:00 2001
+From 1bbace5341d7e17bb93bd8b69fcdff5c13f5467c Mon Sep 17 00:00:00 2001
 From: Sakura286 <sakura286@outlook.com>
 Date: Wed, 10 Jul 2024 17:24:52 +0800
 Subject: [PATCH 080/540] img gpu kmd: update kernel api - register_shrinker
@@ -9,7 +9,7 @@ ref: https://github.com/torvalds/linux/commit/e33c267a
  1 file changed, 10 insertions(+)
 
 diff --git a/drivers/gpu/drm/img/img-volcanic/services/server/env/linux/physmem_osmem_linux.c b/drivers/gpu/drm/img/img-volcanic/services/server/env/linux/physmem_osmem_linux.c
-index a36b769bc6d67..3a664506de4fd 100644
+index a36b769bc6d6..3a664506de4f 100644
 --- a/drivers/gpu/drm/img/img-volcanic/services/server/env/linux/physmem_osmem_linux.c
 +++ b/drivers/gpu/drm/img/img-volcanic/services/server/env/linux/physmem_osmem_linux.c
 @@ -512,7 +512,13 @@ void LinuxInitPhysmem(void)
@@ -39,5 +39,5 @@ index a36b769bc6d67..3a664506de4fd 100644
  
  	kmem_cache_destroy(g_psLinuxPageArray);
 -- 
-2.53.0
+2.54.0
 

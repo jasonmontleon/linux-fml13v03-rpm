@@ -1,4 +1,4 @@
-From 332fbf637ccdd5275b340b5fe2f6875a443650ee Mon Sep 17 00:00:00 2001
+From 1e492e87f9172a697319b65d71a77f58111f5f22 Mon Sep 17 00:00:00 2001
 From: Xiang Xu <xuxiang@eswincomputing.com>
 Date: Mon, 30 Jun 2025 19:20:30 +0800
 Subject: [PATCH 414/540] perf: Optimize CPU voltage and cpufreq control
@@ -12,7 +12,7 @@ Signed-off-by: Xiang Xu <xuxiang@eswincomputing.com>
  1 file changed, 54 insertions(+), 42 deletions(-)
 
 diff --git a/drivers/clk/eswin/clk.c b/drivers/clk/eswin/clk.c
-index 6394a71d813fb..8e1fc15c44346 100644
+index 6394a71d813f..8e1fc15c4434 100644
 --- a/drivers/clk/eswin/clk.c
 +++ b/drivers/clk/eswin/clk.c
 @@ -1,6 +1,19 @@
@@ -169,5 +169,5 @@ index 6394a71d813fb..8e1fc15c44346 100644
  		char *name = kzalloc(strlen(clks[i].name) + 2 * sizeof(char) +
  					     sizeof(int),
 -- 
-2.53.0
+2.54.0
 

@@ -1,4 +1,4 @@
-From e9faf91b996aae2131f614f83056b7a1732cb50b Mon Sep 17 00:00:00 2001
+From 556675389c6272f23a2f9d3864c04f9c83163cfd Mon Sep 17 00:00:00 2001
 From: Sandie Cao <sandie.cao@deepcomputing.io>
 Date: Fri, 4 Jul 2025 18:30:34 +0800
 Subject: [PATCH 419/540] driver: eswin: remove warnning
@@ -19,7 +19,7 @@ Signed-off-by: Sandie Cao <sandie.cao@deepcomputing.io>
  11 files changed, 19 insertions(+), 19 deletions(-)
 
 diff --git a/drivers/gpu/drm/img/img-volcanic/services/system/eswin_cpu/sysconfig.c b/drivers/gpu/drm/img/img-volcanic/services/system/eswin_cpu/sysconfig.c
-index 6dd85240ea67c..91fb2c7fc9578 100644
+index 6dd85240ea67..91fb2c7fc957 100644
 --- a/drivers/gpu/drm/img/img-volcanic/services/system/eswin_cpu/sysconfig.c
 +++ b/drivers/gpu/drm/img/img-volcanic/services/system/eswin_cpu/sysconfig.c
 @@ -351,9 +351,8 @@ void riscv_flush_cache_range(IMG_HANDLE hSysData,
@@ -52,7 +52,7 @@ index 6dd85240ea67c..91fb2c7fc9578 100644
  
  	if (of_address_to_resource(np, 0, &res))
 diff --git a/drivers/soc/eswin/ai_driver/dsp/dsp_ioctl.c b/drivers/soc/eswin/ai_driver/dsp/dsp_ioctl.c
-index 11e592b54da04..7b665cb502b2f 100644
+index 11e592b54da0..7b665cb502b2 100644
 --- a/drivers/soc/eswin/ai_driver/dsp/dsp_ioctl.c
 +++ b/drivers/soc/eswin/ai_driver/dsp/dsp_ioctl.c
 @@ -509,8 +509,8 @@ static struct dsp_user_req_async *dsp_set_task_info(struct dsp_file *dsp_file,
@@ -85,7 +85,7 @@ index 11e592b54da04..7b665cb502b2f 100644
  	}
  	INIT_LIST_HEAD(&dsp_file->async_ll_complete);
 diff --git a/drivers/soc/eswin/ai_driver/dsp/dsp_main.c b/drivers/soc/eswin/ai_driver/dsp/dsp_main.c
-index e93d4b14ee5f9..d731ecac52106 100644
+index e93d4b14ee5f..d731ecac5210 100644
 --- a/drivers/soc/eswin/ai_driver/dsp/dsp_main.c
 +++ b/drivers/soc/eswin/ai_driver/dsp/dsp_main.c
 @@ -60,6 +60,7 @@
@@ -97,7 +97,7 @@ index e93d4b14ee5f9..d731ecac52106 100644
  #include "eswin-khandle.h"
  
 diff --git a/drivers/soc/eswin/ai_driver/dsp/dsp_platform.c b/drivers/soc/eswin/ai_driver/dsp/dsp_platform.c
-index 79f65176471b2..61009112362c5 100644
+index 79f65176471b..61009112362c 100644
 --- a/drivers/soc/eswin/ai_driver/dsp/dsp_platform.c
 +++ b/drivers/soc/eswin/ai_driver/dsp/dsp_platform.c
 @@ -19,6 +19,7 @@
@@ -109,7 +109,7 @@ index 79f65176471b2..61009112362c5 100644
  #include <linux/io.h>
  #include <linux/module.h>
 diff --git a/drivers/soc/eswin/ai_driver/dsp/dsp_platform.h b/drivers/soc/eswin/ai_driver/dsp/dsp_platform.h
-index 40740cdfe21e9..6f7a13705ef7b 100644
+index 40740cdfe21e..6f7a13705ef7 100644
 --- a/drivers/soc/eswin/ai_driver/dsp/dsp_platform.h
 +++ b/drivers/soc/eswin/ai_driver/dsp/dsp_platform.h
 @@ -30,6 +30,7 @@ int es_dsp_send_irq(struct es_dsp_hw *, dsp_request_t *);
@@ -132,7 +132,7 @@ index 40740cdfe21e9..6f7a13705ef7b 100644
  void dsp_free_hw(struct es_dsp *dsp);
  int dsp_alloc_hw(struct platform_device *pdev, struct es_dsp *dsp);
 diff --git a/drivers/soc/eswin/ai_driver/dsp/dsp_proc.c b/drivers/soc/eswin/ai_driver/dsp/dsp_proc.c
-index 6797e819176f4..68796939f0e9d 100644
+index 6797e819176f..68796939f0e9 100644
 --- a/drivers/soc/eswin/ai_driver/dsp/dsp_proc.c
 +++ b/drivers/soc/eswin/ai_driver/dsp/dsp_proc.c
 @@ -26,6 +26,7 @@
@@ -144,7 +144,7 @@ index 6797e819176f4..68796939f0e9d 100644
  static struct proc_dir_entry *proc_es_dsp;
  extern int dsp_log_level;
 diff --git a/drivers/soc/eswin/ai_driver/dsp/mloader/xt_mld_loader.c b/drivers/soc/eswin/ai_driver/dsp/mloader/xt_mld_loader.c
-index e5967e94da47a..f77995d442a22 100644
+index e5967e94da47..f77995d442a2 100644
 --- a/drivers/soc/eswin/ai_driver/dsp/mloader/xt_mld_loader.c
 +++ b/drivers/soc/eswin/ai_driver/dsp/mloader/xt_mld_loader.c
 @@ -212,9 +212,9 @@ static xtmld_ptr align_ptr(xtmld_ptr ptr, uint32_t t_align, uint32_t t_paddr)
@@ -160,7 +160,7 @@ index e5967e94da47a..f77995d442a22 100644
  #endif
  	return ret;
 diff --git a/drivers/soc/eswin/d2d.c b/drivers/soc/eswin/d2d.c
-index b9a58bd146da7..d182826b88c71 100644
+index b9a58bd146da..d182826b88c7 100644
 --- a/drivers/soc/eswin/d2d.c
 +++ b/drivers/soc/eswin/d2d.c
 @@ -121,6 +121,7 @@ static irqreturn_t d2d_irqhandle(int irq, void *dev_id)
@@ -180,7 +180,7 @@ index b9a58bd146da7..d182826b88c71 100644
  static const struct of_device_id eic7x_d2d_error_of_match[] = {
  	{.compatible = "eswin,eic7x-d2d", },
 diff --git a/drivers/spi/spi-dw-mmio.c b/drivers/spi/spi-dw-mmio.c
-index 8877c1234188b..4ffde137c2b00 100644
+index 8877c1234188..4ffde137c2b0 100644
 --- a/drivers/spi/spi-dw-mmio.c
 +++ b/drivers/spi/spi-dw-mmio.c
 @@ -525,7 +525,7 @@ static const struct of_device_id dw_spi_mmio_of_match[] = {
@@ -193,7 +193,7 @@ index 8877c1234188b..4ffde137c2b00 100644
  };
  MODULE_DEVICE_TABLE(of, dw_spi_mmio_of_match);
 diff --git a/drivers/staging/media/eswin/vdec/hantro_dec.c b/drivers/staging/media/eswin/vdec/hantro_dec.c
-index 8c3c98de4ed48..30825672b7ef5 100644
+index 8c3c98de4ed4..30825672b7ef 100644
 --- a/drivers/staging/media/eswin/vdec/hantro_dec.c
 +++ b/drivers/staging/media/eswin/vdec/hantro_dec.c
 @@ -2437,7 +2437,6 @@ static long hantrodec_ioctl(struct file *filp, unsigned int cmd,
@@ -218,7 +218,7 @@ index 8c3c98de4ed48..30825672b7ef5 100644
  	LOG_DBG("closing ...\n");
  
 diff --git a/drivers/staging/media/eswin/venc/vc8000_vcmd_driver.c b/drivers/staging/media/eswin/venc/vc8000_vcmd_driver.c
-index 71aca911ea490..0d2f769c89ddc 100644
+index 71aca911ea49..0d2f769c89dd 100644
 --- a/drivers/staging/media/eswin/venc/vc8000_vcmd_driver.c
 +++ b/drivers/staging/media/eswin/venc/vc8000_vcmd_driver.c
 @@ -2147,7 +2147,6 @@ static long hantrovcmd_ioctl(struct file *filp, unsigned int cmd,
@@ -230,5 +230,5 @@ index 71aca911ea490..0d2f769c89ddc 100644
  		unsigned int dmabuf_fd;
  		struct filp_priv *fp_priv = (struct filp_priv *)filp->private_data;
 -- 
-2.53.0
+2.54.0
 

@@ -1,4 +1,4 @@
-From e8bb03610e03da81bc40b64e5b3ddbf3db70fc29 Mon Sep 17 00:00:00 2001
+From 3cdee7d29836a319aac451b1b38ebd2aa60cdd19 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Wed, 23 Jul 2025 16:04:58 +0800
 Subject: [PATCH 428/540] fix: cpu: Set maximum frequency to 1.4GHz (missed in
@@ -9,7 +9,7 @@ Subject: [PATCH 428/540] fix: cpu: Set maximum frequency to 1.4GHz (missed in
  1 file changed, 45 insertions(+), 45 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
-index 8bc250425a1f2..1a138844cf924 100644
+index 8bc250425a1f..1a138844cf92 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 @@ -256,51 +256,51 @@ d1_zero_device: zero-device@3a000000 {
@@ -110,5 +110,5 @@ index 8bc250425a1f2..1a138844cf924 100644
  &d0_clock {
  	status = "okay";
 -- 
-2.53.0
+2.54.0
 

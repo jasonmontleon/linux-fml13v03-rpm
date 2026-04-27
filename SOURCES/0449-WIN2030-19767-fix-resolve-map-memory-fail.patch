@@ -1,4 +1,4 @@
-From bd7acc9c0aa768457af06c351a10218907773312 Mon Sep 17 00:00:00 2001
+From 7c535addcb558338233912070e792a9f67968595 Mon Sep 17 00:00:00 2001
 From: fanxiaping <fanxiaping@eswincomputing.com>
 Date: Sat, 11 Oct 2025 15:28:58 +0800
 Subject: [PATCH 449/540] WIN2030-19767:fix:resolve map memory fail
@@ -30,7 +30,7 @@ Signed-off-by: fanxiaping <fanxiaping@eswincomputing.com>
  18 files changed, 17 insertions(+), 94 deletions(-)
 
 diff --git a/arch/riscv/configs/eic7700_dbg_defconfig b/arch/riscv/configs/eic7700_dbg_defconfig
-index d59931be34336..7081d3e8fe1d6 100644
+index d59931be3433..7081d3e8fe1d 100644
 --- a/arch/riscv/configs/eic7700_dbg_defconfig
 +++ b/arch/riscv/configs/eic7700_dbg_defconfig
 @@ -657,7 +657,6 @@ CONFIG_DRM_TOSHIBA_TC358762=y
@@ -42,7 +42,7 @@ index d59931be34336..7081d3e8fe1d6 100644
  CONFIG_ESWIN_VIRTUAL_DISPLAY=y
  CONFIG_DW_HDMI_I2S_AUDIO=y
 diff --git a/arch/riscv/configs/eic7702_dbg_defconfig b/arch/riscv/configs/eic7702_dbg_defconfig
-index e0fe69d5a7843..47715ce2803e4 100644
+index e0fe69d5a784..47715ce2803e 100644
 --- a/arch/riscv/configs/eic7702_dbg_defconfig
 +++ b/arch/riscv/configs/eic7702_dbg_defconfig
 @@ -661,7 +661,6 @@ CONFIG_DRM_TOSHIBA_TC358768=m
@@ -54,7 +54,7 @@ index e0fe69d5a7843..47715ce2803e4 100644
  CONFIG_DW_HDMI_I2S_AUDIO=y
  CONFIG_DW_HDMI_CEC=y
 diff --git a/arch/riscv/configs/eswin_aicard_defconfig b/arch/riscv/configs/eswin_aicard_defconfig
-index 920d04bd4f03b..916aa1b6c4968 100644
+index 920d04bd4f03..916aa1b6c496 100644
 --- a/arch/riscv/configs/eswin_aicard_defconfig
 +++ b/arch/riscv/configs/eswin_aicard_defconfig
 @@ -633,7 +633,6 @@ CONFIG_DRM_SIMPLE_BRIDGE=y
@@ -66,7 +66,7 @@ index 920d04bd4f03b..916aa1b6c4968 100644
  CONFIG_ESWIN_VIRTUAL_DISPLAY=y
  CONFIG_DW_HDMI_I2S_AUDIO=y
 diff --git a/arch/riscv/configs/m2_evb_defconfig b/arch/riscv/configs/m2_evb_defconfig
-index 40d622575f0a4..dae9c481aa199 100644
+index 40d622575f0a..dae9c481aa19 100644
 --- a/arch/riscv/configs/m2_evb_defconfig
 +++ b/arch/riscv/configs/m2_evb_defconfig
 @@ -646,7 +646,6 @@ CONFIG_DRM_SIMPLE_BRIDGE=y
@@ -78,7 +78,7 @@ index 40d622575f0a4..dae9c481aa199 100644
  CONFIG_ESWIN_VIRTUAL_DISPLAY=y
  CONFIG_DW_HDMI_I2S_AUDIO=y
 diff --git a/arch/riscv/configs/u2_evb_defconfig b/arch/riscv/configs/u2_evb_defconfig
-index 43d6b8c66a4d4..abccc570760a8 100644
+index 43d6b8c66a4d..abccc570760a 100644
 --- a/arch/riscv/configs/u2_evb_defconfig
 +++ b/arch/riscv/configs/u2_evb_defconfig
 @@ -659,7 +659,6 @@ CONFIG_DRM_TOSHIBA_TC358768=m
@@ -90,7 +90,7 @@ index 43d6b8c66a4d4..abccc570760a8 100644
  CONFIG_DW_HDMI_I2S_AUDIO=y
  CONFIG_DW_HDMI_CEC=y
 diff --git a/arch/riscv/configs/vpu7702_evb_defconfig b/arch/riscv/configs/vpu7702_evb_defconfig
-index 5930d3e13b97b..ad621ac0c6992 100644
+index 5930d3e13b97..ad621ac0c699 100644
 --- a/arch/riscv/configs/vpu7702_evb_defconfig
 +++ b/arch/riscv/configs/vpu7702_evb_defconfig
 @@ -646,7 +646,6 @@ CONFIG_DRM_SIMPLE_BRIDGE=y
@@ -102,7 +102,7 @@ index 5930d3e13b97b..ad621ac0c6992 100644
  CONFIG_ESWIN_VIRTUAL_DISPLAY=y
  CONFIG_DW_HDMI_I2S_AUDIO=y
 diff --git a/arch/riscv/configs/vpu7702_pcie_a2_defconfig b/arch/riscv/configs/vpu7702_pcie_a2_defconfig
-index bf187b0c06b6e..fba11e1a70635 100644
+index bf187b0c06b6..fba11e1a7063 100644
 --- a/arch/riscv/configs/vpu7702_pcie_a2_defconfig
 +++ b/arch/riscv/configs/vpu7702_pcie_a2_defconfig
 @@ -645,7 +645,6 @@ CONFIG_DRM_SIMPLE_BRIDGE=y
@@ -114,7 +114,7 @@ index bf187b0c06b6e..fba11e1a70635 100644
  CONFIG_ESWIN_VIRTUAL_DISPLAY=y
  CONFIG_DW_HDMI_I2S_AUDIO=y
 diff --git a/arch/riscv/configs/vpu7702_pcie_defconfig b/arch/riscv/configs/vpu7702_pcie_defconfig
-index a2dac26c3b119..cb25229901d5c 100644
+index a2dac26c3b11..cb25229901d5 100644
 --- a/arch/riscv/configs/vpu7702_pcie_defconfig
 +++ b/arch/riscv/configs/vpu7702_pcie_defconfig
 @@ -645,7 +645,6 @@ CONFIG_DRM_SIMPLE_BRIDGE=y
@@ -126,7 +126,7 @@ index a2dac26c3b119..cb25229901d5c 100644
  CONFIG_ESWIN_VIRTUAL_DISPLAY=y
  CONFIG_DW_HDMI_I2S_AUDIO=y
 diff --git a/arch/riscv/configs/win2030_defconfig b/arch/riscv/configs/win2030_defconfig
-index 3086290618c2c..78601701cd892 100644
+index 3086290618c2..78601701cd89 100644
 --- a/arch/riscv/configs/win2030_defconfig
 +++ b/arch/riscv/configs/win2030_defconfig
 @@ -634,7 +634,6 @@ CONFIG_DRM_SIMPLE_BRIDGE=y
@@ -138,7 +138,7 @@ index 3086290618c2c..78601701cd892 100644
  CONFIG_ESWIN_VIRTUAL_DISPLAY=y
  CONFIG_DW_HDMI_I2S_AUDIO=y
 diff --git a/drivers/gpu/drm/eswin/Makefile b/drivers/gpu/drm/eswin/Makefile
-index 1f7a44346d8de..b350d3e727185 100644
+index 1f7a44346d8d..b350d3e72718 100644
 --- a/drivers/gpu/drm/eswin/Makefile
 +++ b/drivers/gpu/drm/eswin/Makefile
 @@ -9,10 +9,10 @@ es_drm-objs := es_dc_hw.o \
@@ -155,7 +155,7 @@ index 1f7a44346d8de..b350d3e727185 100644
  
  es_drm-$(CONFIG_DW_HDMI_I2S_AUDIO) += dw_hdmi_i2s_audio.o
 diff --git a/drivers/gpu/drm/eswin/es_crtc.c b/drivers/gpu/drm/eswin/es_crtc.c
-index 54b74b6380698..c997fba42c112 100644
+index 54b74b638069..c997fba42c11 100644
 --- a/drivers/gpu/drm/eswin/es_crtc.c
 +++ b/drivers/gpu/drm/eswin/es_crtc.c
 @@ -59,9 +59,7 @@ static void es_crtc_reset(struct drm_crtc *crtc)
@@ -208,7 +208,7 @@ index 54b74b6380698..c997fba42c112 100644
  	crtc->max_bpc = info->max_bpc;
  	crtc->color_formats = info->color_formats;
 diff --git a/drivers/gpu/drm/eswin/es_dc.h b/drivers/gpu/drm/eswin/es_dc.h
-index 8c7c014c7d063..dd99c5fdff6fc 100644
+index 8c7c014c7d06..dd99c5fdff6f 100644
 --- a/drivers/gpu/drm/eswin/es_dc.h
 +++ b/drivers/gpu/drm/eswin/es_dc.h
 @@ -28,9 +28,7 @@
@@ -222,7 +222,7 @@ index 8c7c014c7d063..dd99c5fdff6fc 100644
  struct es_dc_funcs {
  	void (*dump_enable)(struct device *dev, dma_addr_t addr,
 diff --git a/drivers/gpu/drm/eswin/es_dc_hw.c b/drivers/gpu/drm/eswin/es_dc_hw.c
-index 24f95570d56f3..46b36128e91b7 100644
+index 24f95570d56f..46b36128e91b 100644
 --- a/drivers/gpu/drm/eswin/es_dc_hw.c
 +++ b/drivers/gpu/drm/eswin/es_dc_hw.c
 @@ -1511,7 +1511,6 @@ void dc_hw_commit(struct dc_hw *hw)
@@ -242,7 +242,7 @@ index 24f95570d56f3..46b36128e91b7 100644
  void dc_hw_update_roi(struct dc_hw *hw, enum dc_hw_plane_id id,
  		      struct dc_hw_roi *roi)
 diff --git a/drivers/gpu/drm/eswin/es_dc_hw.h b/drivers/gpu/drm/eswin/es_dc_hw.h
-index 8999e0c382b4b..dfe8fafc50e91 100644
+index 8999e0c382b4..dfe8fafc50e9 100644
 --- a/drivers/gpu/drm/eswin/es_dc_hw.h
 +++ b/drivers/gpu/drm/eswin/es_dc_hw.h
 @@ -22,9 +22,7 @@
@@ -297,7 +297,7 @@ index 8999e0c382b4b..dfe8fafc50e91 100644
  		      struct dc_hw_roi *roi);
  void dc_hw_update_colorkey(struct dc_hw *hw, enum dc_hw_plane_id id,
 diff --git a/drivers/gpu/drm/eswin/es_drv.c b/drivers/gpu/drm/eswin/es_drv.c
-index ac940763ef805..1ee7f00528c1a 100644
+index ac940763ef80..1ee7f00528c1 100644
 --- a/drivers/gpu/drm/eswin/es_drv.c
 +++ b/drivers/gpu/drm/eswin/es_drv.c
 @@ -342,9 +342,7 @@ static int es_drm_bind(struct device *dev)
@@ -311,7 +311,7 @@ index ac940763ef805..1ee7f00528c1a 100644
  	if (drm_dev->unique) {
  		sprintf(drm_dev->unique, "%d", id);
 diff --git a/drivers/gpu/drm/eswin/es_drv.h b/drivers/gpu/drm/eswin/es_drv.h
-index 856866f933ac2..591405c8bc7e1 100644
+index 856866f933ac..591405c8bc7e 100644
 --- a/drivers/gpu/drm/eswin/es_drv.h
 +++ b/drivers/gpu/drm/eswin/es_drv.h
 @@ -29,9 +29,7 @@
@@ -337,7 +337,7 @@ index 856866f933ac2..591405c8bc7e1 100644
  
  	unsigned int pitch_alignment;
 diff --git a/drivers/gpu/drm/eswin/es_gem.c b/drivers/gpu/drm/eswin/es_gem.c
-index e44cfa325527e..e10d2c784714e 100644
+index e44cfa325527..e10d2c784714 100644
 --- a/drivers/gpu/drm/eswin/es_gem.c
 +++ b/drivers/gpu/drm/eswin/es_gem.c
 @@ -39,7 +39,6 @@ static void nonseq_free(struct page **pages, unsigned int nr_page)
@@ -537,7 +537,7 @@ index e44cfa325527e..e10d2c784714e 100644
  	kvfree(es_obj->pages);
  err_gemalloc:
 diff --git a/drivers/gpu/drm/eswin/es_gem.h b/drivers/gpu/drm/eswin/es_gem.h
-index 4dc902406052c..4534d2a3f2870 100644
+index 4dc902406052..4534d2a3f287 100644
 --- a/drivers/gpu/drm/eswin/es_gem.h
 +++ b/drivers/gpu/drm/eswin/es_gem.h
 @@ -28,12 +28,10 @@
@@ -565,5 +565,5 @@ index 4dc902406052c..4534d2a3f2870 100644
  
  static inline struct es_gem_object *to_es_gem_object(struct drm_gem_object *obj)
 -- 
-2.53.0
+2.54.0
 

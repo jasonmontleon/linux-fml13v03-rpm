@@ -1,4 +1,4 @@
-From 355d3cfabdedec490e2b6ac37db900fc57814125 Mon Sep 17 00:00:00 2001
+From 74ef5b16eb7377791193924639554db6efe7c29c Mon Sep 17 00:00:00 2001
 From: linmin <linmin@eswincomputing.com>
 Date: Thu, 27 Feb 2025 14:14:58 +0800
 Subject: [PATCH 322/540] fix(dambuf helper):get the mutex while operating on
@@ -14,7 +14,7 @@ Signed-off-by: linmin <linmin@eswincomputing.com>
  1 file changed, 16 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/memory/eswin/es_rsvmem_heap/dmabuf-heap-import-helper.c b/drivers/memory/eswin/es_rsvmem_heap/dmabuf-heap-import-helper.c
-index f0d67b27ae4ba..fa0297c4e606b 100644
+index f0d67b27ae4b..fa0297c4e606 100644
 --- a/drivers/memory/eswin/es_rsvmem_heap/dmabuf-heap-import-helper.c
 +++ b/drivers/memory/eswin/es_rsvmem_heap/dmabuf-heap-import-helper.c
 @@ -412,9 +412,14 @@ void common_dmabuf_heap_release(struct heap_mem *heap_obj)
@@ -54,5 +54,5 @@ index f0d67b27ae4ba..fa0297c4e606b 100644
  EXPORT_SYMBOL(common_dmabuf_heap_rsv_iova_unmap);
  
 -- 
-2.53.0
+2.54.0
 

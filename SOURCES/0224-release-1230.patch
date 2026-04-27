@@ -1,4 +1,4 @@
-From 47d9aca5def02be582ff44e6d99cc51dcadf394a Mon Sep 17 00:00:00 2001
+From 934223cf377ac7340c196eaa6943aa3d5869aafe Mon Sep 17 00:00:00 2001
 From: linmin <linmin@eswincomputing.com>
 Date: Fri, 27 Dec 2024 16:54:16 +0800
 Subject: [PATCH 224/540] release-1230
@@ -147,7 +147,7 @@ Signed-off-by: linmin <linmin@eswincomputing.com>
  create mode 100644 sound/soc/sof/eswin/es-sof-dsp.c
 
 diff --git a/arch/riscv/boot/dts/eswin/Makefile b/arch/riscv/boot/dts/eswin/Makefile
-index b3925240449f1..4f8d4275c0211 100644
+index b3925240449f..4f8d4275c021 100644
 --- a/arch/riscv/boot/dts/eswin/Makefile
 +++ b/arch/riscv/boot/dts/eswin/Makefile
 @@ -4,5 +4,8 @@ dtb-$(CONFIG_SOC_SIFIVE) += eswin-win2030.dtb \
@@ -162,7 +162,7 @@ index b3925240449f1..4f8d4275c0211 100644
  obj-$(CONFIG_BUILTIN_DTB) += $(addsuffix .o, $(dtb-y))
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-d314.dts b/arch/riscv/boot/dts/eswin/eic7700-d314.dts
 new file mode 100644
-index 0000000000000..f8bfb293fcfa5
+index 000000000000..f8bfb293fcfa
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/eic7700-d314.dts
 @@ -0,0 +1,335 @@
@@ -502,7 +502,7 @@ index 0000000000000..f8bfb293fcfa5
 +	gpio84  : GPIO LED CTRL(O), active high
 +*/
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-evb-a2.dts b/arch/riscv/boot/dts/eswin/eic7700-evb-a2.dts
-index 1ea82a170c60a..42a2eb700568b 100644
+index 1ea82a170c60..42a2eb700568 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-evb-a2.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7700-evb-a2.dts
 @@ -285,6 +285,7 @@ &pcie {
@@ -544,7 +544,7 @@ index 1ea82a170c60a..42a2eb700568b 100644
  		};
  	};
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-evb-a3.dts b/arch/riscv/boot/dts/eswin/eic7700-evb-a3.dts
-index 47b490f8c6c1b..bfc99f1055564 100644
+index 47b490f8c6c1..bfc99f105556 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-evb-a3.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7700-evb-a3.dts
 @@ -29,9 +29,10 @@ &d0_clock {
@@ -560,7 +560,7 @@ index 47b490f8c6c1b..bfc99f1055564 100644
  		opp-hz = /bits/ 64 <CLK_FREQ_1500M>;
  		opp-microvolt = <900000>;
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-evb.dts b/arch/riscv/boot/dts/eswin/eic7700-evb.dts
-index fe56de5b16994..a6226cc932b6b 100644
+index fe56de5b1699..a6226cc932b6 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-evb.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7700-evb.dts
 @@ -246,6 +246,7 @@ &pcie {
@@ -602,7 +602,7 @@ index fe56de5b16994..a6226cc932b6b 100644
  		};
  	};
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-hifive-premier-p550.dts b/arch/riscv/boot/dts/eswin/eic7700-hifive-premier-p550.dts
-index d4225cf45d5b5..ca2edb1eb7e5f 100644
+index d4225cf45d5b..ca2edb1eb7e5 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-hifive-premier-p550.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7700-hifive-premier-p550.dts
 @@ -240,6 +240,7 @@ &pcie {
@@ -652,7 +652,7 @@ index d4225cf45d5b5..ca2edb1eb7e5f 100644
  		opp-microvolt = <900000>;
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-som260-a1.dtsi b/arch/riscv/boot/dts/eswin/eic7700-som260-a1.dtsi
 new file mode 100644
-index 0000000000000..8975632b0325c
+index 000000000000..8975632b0325
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/eic7700-som260-a1.dtsi
 @@ -0,0 +1,724 @@
@@ -1382,7 +1382,7 @@ index 0000000000000..8975632b0325c
 +};
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-som314.dtsi b/arch/riscv/boot/dts/eswin/eic7700-som314.dtsi
 new file mode 100644
-index 0000000000000..79a885bb2c62c
+index 000000000000..79a885bb2c62
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/eic7700-som314.dtsi
 @@ -0,0 +1,688 @@
@@ -2076,7 +2076,7 @@ index 0000000000000..79a885bb2c62c
 +};
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-z530.dts b/arch/riscv/boot/dts/eswin/eic7700-z530.dts
 new file mode 100644
-index 0000000000000..d9dc8a8afd6a1
+index 000000000000..d9dc8a8afd6a
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/eic7700-z530.dts
 @@ -0,0 +1,198 @@
@@ -2280,7 +2280,7 @@ index 0000000000000..d9dc8a8afd6a1
 +*/
 \ No newline at end of file
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-evb-a1-d0.dts b/arch/riscv/boot/dts/eswin/eic7702-evb-a1-d0.dts
-index 1bacf33dd7c07..cbfeadae5c8ec 100644
+index 1bacf33dd7c0..cbfeadae5c8e 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-evb-a1-d0.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-evb-a1-d0.dts
 @@ -228,6 +228,7 @@ &pcie {
@@ -2322,7 +2322,7 @@ index 1bacf33dd7c07..cbfeadae5c8ec 100644
  		};
  	};
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-evb-a1-d1.dts b/arch/riscv/boot/dts/eswin/eic7702-evb-a1-d1.dts
-index 4154b2da9d220..0b2d07df055c2 100644
+index 4154b2da9d22..0b2d07df055c 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-evb-a1-d1.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-evb-a1-d1.dts
 @@ -240,6 +240,7 @@ &pcie {
@@ -2365,7 +2365,7 @@ index 4154b2da9d220..0b2d07df055c2 100644
  	};
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-evb-a1-interleave.dts b/arch/riscv/boot/dts/eswin/eic7702-evb-a1-interleave.dts
 new file mode 100644
-index 0000000000000..8e38dc5e7f590
+index 000000000000..8e38dc5e7f59
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/eic7702-evb-a1-interleave.dts
 @@ -0,0 +1,1560 @@
@@ -3930,7 +3930,7 @@ index 0000000000000..8e38dc5e7f590
 +	gpio111 : lcd touch resetn(O)
 +*/
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-evb-a1.dts b/arch/riscv/boot/dts/eswin/eic7702-evb-a1.dts
-index dfb0f03463bc4..2fa3f5441fbbd 100644
+index dfb0f03463bc..2fa3f5441fbb 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-evb-a1.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-evb-a1.dts
 @@ -373,7 +373,7 @@ &d0_ipc_scpu {
@@ -3988,7 +3988,7 @@ index dfb0f03463bc4..2fa3f5441fbbd 100644
  
 diff --git a/arch/riscv/boot/dts/eswin/eic770x-ooptable.dtsi b/arch/riscv/boot/dts/eswin/eic770x-ooptable.dtsi
 new file mode 100644
-index 0000000000000..471984153c447
+index 000000000000..471984153c44
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/eic770x-ooptable.dtsi
 @@ -0,0 +1,185 @@
@@ -4178,7 +4178,7 @@ index 0000000000000..471984153c447
 +	};
 +};
 diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030-arch-d2d.dtsi b/arch/riscv/boot/dts/eswin/eswin-win2030-arch-d2d.dtsi
-index c9afd60d24344..5847de53a516d 100644
+index c9afd60d2434..5847de53a516 100644
 --- a/arch/riscv/boot/dts/eswin/eswin-win2030-arch-d2d.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eswin-win2030-arch-d2d.dtsi
 @@ -20,6 +20,7 @@
@@ -4298,7 +4298,7 @@ index c9afd60d24344..5847de53a516d 100644
  };
  
 diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030-arch.dtsi b/arch/riscv/boot/dts/eswin/eswin-win2030-arch.dtsi
-index 64671ff693e3e..1bcfba13d1a39 100644
+index 64671ff693e3..1bcfba13d1a3 100644
 --- a/arch/riscv/boot/dts/eswin/eswin-win2030-arch.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eswin-win2030-arch.dtsi
 @@ -19,6 +19,7 @@
@@ -4441,7 +4441,7 @@ index 64671ff693e3e..1bcfba13d1a39 100644
  		L10: rom@1a000000 {
  			compatible = "ucbbar,cacheable-zero0";
 diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030-die0-noc.dtsi b/arch/riscv/boot/dts/eswin/eswin-win2030-die0-noc.dtsi
-index fe81f8e622e65..77243ae1b93f7 100644
+index fe81f8e622e6..77243ae1b93f 100644
 --- a/arch/riscv/boot/dts/eswin/eswin-win2030-die0-noc.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eswin-win2030-die0-noc.dtsi
 @@ -24,6 +24,7 @@ d0_cfg_noc:d0_cfg_noc{
@@ -4485,7 +4485,7 @@ index fe81f8e622e65..77243ae1b93f7 100644
  	interrupts = <448>;
  	interrupt-names = "error";
 diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi b/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
-index 7df6029a94510..8858283c1e68b 100644
+index 7df6029a9451..8858283c1e68 100644
 --- a/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
 @@ -32,77 +32,6 @@
@@ -5233,7 +5233,7 @@ index 7df6029a94510..8858283c1e68b 100644
  
  		d0_numa_sample:numa_sample@0 {
 diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030-die1-noc.dtsi b/arch/riscv/boot/dts/eswin/eswin-win2030-die1-noc.dtsi
-index e1f621d9889e1..1f4a1a693b45e 100644
+index e1f621d9889e..1f4a1a693b45 100644
 --- a/arch/riscv/boot/dts/eswin/eswin-win2030-die1-noc.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eswin-win2030-die1-noc.dtsi
 @@ -29,7 +29,7 @@ d1_cfg_noc:d1_cfg_noc{
@@ -5278,7 +5278,7 @@ index e1f621d9889e1..1f4a1a693b45e 100644
  	interrupts = <448>;
  	interrupt-names = "error";
 diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi b/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi
-index 7ef1be2f7a36e..725e811f08259 100644
+index 7ef1be2f7a36..725e811f0825 100644
 --- a/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi
 @@ -31,77 +31,6 @@
@@ -5937,7 +5937,7 @@ index 7ef1be2f7a36e..725e811f08259 100644
  
  		d1_numa_sample:numa_sample@1 {
 diff --git a/arch/riscv/configs/eic7700_defconfig b/arch/riscv/configs/eic7700_defconfig
-index cb9f99ea41b60..e85ffec6ac9f5 100644
+index cb9f99ea41b6..e85ffec6ac9f 100644
 --- a/arch/riscv/configs/eic7700_defconfig
 +++ b/arch/riscv/configs/eic7700_defconfig
 @@ -476,6 +476,7 @@ CONFIG_THERMAL_EMULATION=y
@@ -5967,7 +5967,7 @@ index cb9f99ea41b60..e85ffec6ac9f5 100644
  CONFIG_PWM_ESWIN=y
  CONFIG_RESET_ESWIN_WIN2030=y
 diff --git a/arch/riscv/configs/eic7702_defconfig b/arch/riscv/configs/eic7702_defconfig
-index 830481fffc7ec..3cecf50b55036 100644
+index 830481fffc7e..3cecf50b5503 100644
 --- a/arch/riscv/configs/eic7702_defconfig
 +++ b/arch/riscv/configs/eic7702_defconfig
 @@ -10,6 +10,7 @@ CONFIG_PREEMPT_VOLUNTARY=y
@@ -6006,7 +6006,7 @@ index 830481fffc7ec..3cecf50b55036 100644
  CONFIG_SCHED_STACK_END_CHECK=y
  CONFIG_DEBUG_VM=y
 diff --git a/arch/riscv/configs/win2030_defconfig b/arch/riscv/configs/win2030_defconfig
-index c2c4f5a620b79..25cac9c13b624 100644
+index c2c4f5a620b7..25cac9c13b62 100644
 --- a/arch/riscv/configs/win2030_defconfig
 +++ b/arch/riscv/configs/win2030_defconfig
 @@ -748,6 +748,7 @@ CONFIG_ESWIN_RSVMEM_HEAP=y
@@ -6018,7 +6018,7 @@ index c2c4f5a620b79..25cac9c13b624 100644
  CONFIG_PWM_ESWIN=y
  CONFIG_RESET_ESWIN_WIN2030=y
 diff --git a/drivers/clk/eswin/clk-win2030.c b/drivers/clk/eswin/clk-win2030.c
-index ccb7dade5475a..93cb6c6c85076 100755
+index ccb7dade5475..93cb6c6c8507 100755
 --- a/drivers/clk/eswin/clk-win2030.c
 +++ b/drivers/clk/eswin/clk-win2030.c
 @@ -24,7 +24,7 @@
@@ -6084,7 +6084,7 @@ index ccb7dade5475a..93cb6c6c85076 100755
  }
  
 diff --git a/drivers/clocksource/timer-eswin.c b/drivers/clocksource/timer-eswin.c
-index a00a686bc0ec9..f7003459da049 100644
+index a00a686bc0ec..f7003459da04 100644
 --- a/drivers/clocksource/timer-eswin.c
 +++ b/drivers/clocksource/timer-eswin.c
 @@ -1,8 +1,22 @@
@@ -6257,7 +6257,7 @@ index a00a686bc0ec9..f7003459da049 100644
  }
  
 diff --git a/drivers/dma-buf/dma-heap.c b/drivers/dma-buf/dma-heap.c
-index 84ae708fafe75..c5634708c9a49 100644
+index 84ae708fafe7..c5634708c9a4 100644
 --- a/drivers/dma-buf/dma-heap.c
 +++ b/drivers/dma-buf/dma-heap.c
 @@ -300,6 +300,7 @@ struct dma_heap *dma_heap_add(const struct dma_heap_export_info *exp_info)
@@ -6269,7 +6269,7 @@ index 84ae708fafe75..c5634708c9a49 100644
  static char *dma_heap_devnode(const struct device *dev, umode_t *mode)
  {
 diff --git a/drivers/gpu/drm/eswin/Makefile b/drivers/gpu/drm/eswin/Makefile
-index 09cb7092e2e5b..b96f169eedfe1 100644
+index 09cb7092e2e5..b96f169eedfe 100644
 --- a/drivers/gpu/drm/eswin/Makefile
 +++ b/drivers/gpu/drm/eswin/Makefile
 @@ -13,7 +13,7 @@ es_drm-objs := es_dc_hw.o \
@@ -6282,7 +6282,7 @@ index 09cb7092e2e5b..b96f169eedfe1 100644
  es_drm-$(CONFIG_DW_HDMI_I2S_AUDIO) += dw_hdmi_i2s_audio.o
  es_drm-$(CONFIG_DW_HDMI_CEC) += dw_hdmi_cec.o
 diff --git a/drivers/gpu/drm/eswin/dw-hdmi.c b/drivers/gpu/drm/eswin/dw-hdmi.c
-index c301d589a5087..82a3cc3f69aab 100644
+index c301d589a508..82a3cc3f69aa 100644
 --- a/drivers/gpu/drm/eswin/dw-hdmi.c
 +++ b/drivers/gpu/drm/eswin/dw-hdmi.c
 @@ -22,7 +22,7 @@
@@ -6314,7 +6314,7 @@ index c301d589a5087..82a3cc3f69aab 100644
  	}
  
 diff --git a/drivers/gpu/drm/eswin/dw-hdmi.h b/drivers/gpu/drm/eswin/dw-hdmi.h
-index dcfeaada7f1df..9304c5865aeeb 100644
+index dcfeaada7f1d..9304c5865aee 100644
 --- a/drivers/gpu/drm/eswin/dw-hdmi.h
 +++ b/drivers/gpu/drm/eswin/dw-hdmi.h
 @@ -18,7 +18,7 @@
@@ -6327,7 +6327,7 @@ index dcfeaada7f1df..9304c5865aeeb 100644
  #ifndef __DW_HDMI_H__
  #define __DW_HDMI_H__
 diff --git a/drivers/gpu/drm/eswin/dw_hdmi_audio.h b/drivers/gpu/drm/eswin/dw_hdmi_audio.h
-index 97e0d9f024908..105f5e71babd1 100644
+index 97e0d9f02490..105f5e71babd 100644
 --- a/drivers/gpu/drm/eswin/dw_hdmi_audio.h
 +++ b/drivers/gpu/drm/eswin/dw_hdmi_audio.h
 @@ -16,7 +16,7 @@
@@ -6340,7 +6340,7 @@ index 97e0d9f024908..105f5e71babd1 100644
  
  #ifndef DW_HDMI_AUDIO_H
 diff --git a/drivers/gpu/drm/eswin/dw_hdmi_cec.c b/drivers/gpu/drm/eswin/dw_hdmi_cec.c
-index 56553d1d4abdc..90e8c973ef068 100644
+index 56553d1d4abd..90e8c973ef06 100644
 --- a/drivers/gpu/drm/eswin/dw_hdmi_cec.c
 +++ b/drivers/gpu/drm/eswin/dw_hdmi_cec.c
 @@ -20,7 +20,7 @@
@@ -6353,7 +6353,7 @@ index 56553d1d4abdc..90e8c973ef068 100644
  
  #include <linux/interrupt.h>
 diff --git a/drivers/gpu/drm/eswin/dw_hdmi_cec.h b/drivers/gpu/drm/eswin/dw_hdmi_cec.h
-index 3ea45a7af6447..a43854725d88b 100644
+index 3ea45a7af644..a43854725d88 100644
 --- a/drivers/gpu/drm/eswin/dw_hdmi_cec.h
 +++ b/drivers/gpu/drm/eswin/dw_hdmi_cec.h
 @@ -16,7 +16,7 @@
@@ -6366,7 +6366,7 @@ index 3ea45a7af6447..a43854725d88b 100644
  
  #ifndef DW_HDMI_CEC_H
 diff --git a/drivers/gpu/drm/eswin/dw_hdmi_hdcp.c b/drivers/gpu/drm/eswin/dw_hdmi_hdcp.c
-index 12933da6568bf..8147044d12c96 100644
+index 12933da6568b..8147044d12c9 100644
 --- a/drivers/gpu/drm/eswin/dw_hdmi_hdcp.c
 +++ b/drivers/gpu/drm/eswin/dw_hdmi_hdcp.c
 @@ -16,7 +16,7 @@
@@ -6379,7 +6379,7 @@ index 12933da6568bf..8147044d12c96 100644
  #include <linux/clk.h>
  #include <linux/delay.h>
 diff --git a/drivers/gpu/drm/eswin/dw_hdmi_hdcp.h b/drivers/gpu/drm/eswin/dw_hdmi_hdcp.h
-index 20fd169b387ca..8d8c386515f42 100644
+index 20fd169b387c..8d8c386515f4 100644
 --- a/drivers/gpu/drm/eswin/dw_hdmi_hdcp.h
 +++ b/drivers/gpu/drm/eswin/dw_hdmi_hdcp.h
 @@ -16,7 +16,7 @@
@@ -6392,7 +6392,7 @@ index 20fd169b387ca..8d8c386515f42 100644
  
  #ifndef DW_HDMI_HDCP_H
 diff --git a/drivers/gpu/drm/eswin/dw_hdmi_hdcp2.c b/drivers/gpu/drm/eswin/dw_hdmi_hdcp2.c
-index 6c3b0af804f84..aa71bc7cce8ef 100644
+index 6c3b0af804f8..aa71bc7cce8e 100644
 --- a/drivers/gpu/drm/eswin/dw_hdmi_hdcp2.c
 +++ b/drivers/gpu/drm/eswin/dw_hdmi_hdcp2.c
 @@ -16,7 +16,7 @@
@@ -6405,7 +6405,7 @@ index 6c3b0af804f84..aa71bc7cce8ef 100644
  #include <linux/kernel.h>
  #include <linux/module.h>
 diff --git a/drivers/gpu/drm/eswin/dw_hdmi_i2s_audio.c b/drivers/gpu/drm/eswin/dw_hdmi_i2s_audio.c
-index 80229c128eebe..33af4db6fa4c3 100644
+index 80229c128eeb..33af4db6fa4c 100644
 --- a/drivers/gpu/drm/eswin/dw_hdmi_i2s_audio.c
 +++ b/drivers/gpu/drm/eswin/dw_hdmi_i2s_audio.c
 @@ -21,7 +21,7 @@
@@ -6418,7 +6418,7 @@ index 80229c128eebe..33af4db6fa4c3 100644
  
  #include <linux/dma-mapping.h>
 diff --git a/drivers/gpu/drm/eswin/es_dc.c b/drivers/gpu/drm/eswin/es_dc.c
-index daf98bda21056..80538ae9aa9ec 100644
+index daf98bda2105..80538ae9aa9e 100644
 --- a/drivers/gpu/drm/eswin/es_dc.c
 +++ b/drivers/gpu/drm/eswin/es_dc.c
 @@ -345,6 +345,7 @@ static void es_dc_enable(struct device *dev, struct drm_crtc *crtc)
@@ -6488,7 +6488,7 @@ index daf98bda21056..80538ae9aa9ec 100644
  	if (IS_ERR_OR_NULL(dc->vo_arst)) {
  		dev_err(dev, "Failed to vo_arst handle\n");
 diff --git a/drivers/gpu/drm/eswin/es_dc.h b/drivers/gpu/drm/eswin/es_dc.h
-index 89b203eebc980..63c5c8d79aa46 100644
+index 89b203eebc98..63c5c8d79aa4 100644
 --- a/drivers/gpu/drm/eswin/es_dc.h
 +++ b/drivers/gpu/drm/eswin/es_dc.h
 @@ -47,6 +47,9 @@ struct es_dc {
@@ -6502,7 +6502,7 @@ index 89b203eebc980..63c5c8d79aa46 100644
  
  	struct reset_control *vo_arst;
 diff --git a/drivers/gpu/drm/eswin/es_drv.c b/drivers/gpu/drm/eswin/es_drv.c
-index 1c588106e39ce..d29c3572857c2 100644
+index 1c588106e39c..d29c3572857c 100644
 --- a/drivers/gpu/drm/eswin/es_drv.c
 +++ b/drivers/gpu/drm/eswin/es_drv.c
 @@ -25,6 +25,9 @@
@@ -6545,7 +6545,7 @@ diff --git a/drivers/gpu/drm/eswin/eswin_dw_hdmi.c b/drivers/gpu/drm/eswin/es_dw
 similarity index 99%
 rename from drivers/gpu/drm/eswin/eswin_dw_hdmi.c
 rename to drivers/gpu/drm/eswin/es_dw_hdmi.c
-index 19f7cccdca333..84f75833aa622 100644
+index 19f7cccdca33..84f75833aa62 100644
 --- a/drivers/gpu/drm/eswin/eswin_dw_hdmi.c
 +++ b/drivers/gpu/drm/eswin/es_dw_hdmi.c
 @@ -16,7 +16,7 @@
@@ -6593,7 +6593,7 @@ index 19f7cccdca333..84f75833aa622 100644
  };
  
 diff --git a/drivers/interconnect/eswin/noc.c b/drivers/interconnect/eswin/noc.c
-index 2bcbe3f48f598..cc232396f842e 100644
+index 2bcbe3f48f59..cc232396f842 100644
 --- a/drivers/interconnect/eswin/noc.c
 +++ b/drivers/interconnect/eswin/noc.c
 @@ -515,7 +515,7 @@ static int win2030_noc_get_error(struct win2030_noc_device *noc_device)
@@ -6606,7 +6606,7 @@ index 2bcbe3f48f598..cc232396f842e 100644
  	struct device *mydev = noc_device->dev;
  
 diff --git a/drivers/memory/eswin/Kconfig b/drivers/memory/eswin/Kconfig
-index 3078936326e4f..c187f1c0ac0a3 100644
+index 3078936326e4..c187f1c0ac0a 100644
 --- a/drivers/memory/eswin/Kconfig
 +++ b/drivers/memory/eswin/Kconfig
 @@ -31,5 +31,6 @@ source "drivers/memory/eswin/es_rsvmem_heap/Kconfig"
@@ -6617,7 +6617,7 @@ index 3078936326e4f..c187f1c0ac0a3 100644
  
  endif
 diff --git a/drivers/memory/eswin/Makefile b/drivers/memory/eswin/Makefile
-index c07fadc64d443..e6e57575ccb88 100644
+index c07fadc64d44..e6e57575ccb8 100644
 --- a/drivers/memory/eswin/Makefile
 +++ b/drivers/memory/eswin/Makefile
 @@ -8,6 +8,7 @@ obj-$(CONFIG_ESWIN_RSVMEM_HEAP)			+= es_rsvmem_heap/
@@ -6629,7 +6629,7 @@ index c07fadc64d443..e6e57575ccb88 100644
  ES_MEM_HEADER := drivers/memory/eswin/
  
 diff --git a/drivers/memory/eswin/codacache/llc_spram.c b/drivers/memory/eswin/codacache/llc_spram.c
-index ed71d83c30604..8ef878c0abef0 100644
+index ed71d83c3060..8ef878c0abef 100644
 --- a/drivers/memory/eswin/codacache/llc_spram.c
 +++ b/drivers/memory/eswin/codacache/llc_spram.c
 @@ -42,6 +42,7 @@
@@ -7059,7 +7059,7 @@ index ed71d83c30604..8ef878c0abef0 100644
 +
 diff --git a/drivers/memory/eswin/es_dma_memcp/Kconfig b/drivers/memory/eswin/es_dma_memcp/Kconfig
 new file mode 100644
-index 0000000000000..deff4abf37deb
+index 000000000000..deff4abf37de
 --- /dev/null
 +++ b/drivers/memory/eswin/es_dma_memcp/Kconfig
 @@ -0,0 +1,6 @@
@@ -7071,14 +7071,14 @@ index 0000000000000..deff4abf37deb
 +	  ESWIN DMA memory copy device.
 diff --git a/drivers/memory/eswin/es_dma_memcp/Makefile b/drivers/memory/eswin/es_dma_memcp/Makefile
 new file mode 100644
-index 0000000000000..615375e6b4767
+index 000000000000..615375e6b476
 --- /dev/null
 +++ b/drivers/memory/eswin/es_dma_memcp/Makefile
 @@ -0,0 +1 @@
 +obj-$(CONFIG_ESWIN_DMA_MEMCP) += es_dma_memcp.o
 diff --git a/drivers/memory/eswin/es_dma_memcp/es_dma_memcp.c b/drivers/memory/eswin/es_dma_memcp/es_dma_memcp.c
 new file mode 100644
-index 0000000000000..7d0772bf03cdf
+index 000000000000..7d0772bf03cd
 --- /dev/null
 +++ b/drivers/memory/eswin/es_dma_memcp/es_dma_memcp.c
 @@ -0,0 +1,604 @@
@@ -7688,7 +7688,7 @@ index 0000000000000..7d0772bf03cdf
 +MODULE_LICENSE("GPL v2");
 \ No newline at end of file
 diff --git a/drivers/memory/eswin/es_rsvmem_heap/dmabuf-heap-import-helper.c b/drivers/memory/eswin/es_rsvmem_heap/dmabuf-heap-import-helper.c
-index d9ba68d918ef0..283fbdfb1c071 100644
+index d9ba68d918ef..283fbdfb1c07 100644
 --- a/drivers/memory/eswin/es_rsvmem_heap/dmabuf-heap-import-helper.c
 +++ b/drivers/memory/eswin/es_rsvmem_heap/dmabuf-heap-import-helper.c
 @@ -1169,3 +1169,190 @@ static void __exit split_dmabuf_exit(void)
@@ -7884,7 +7884,7 @@ index d9ba68d918ef0..283fbdfb1c071 100644
 +EXPORT_SYMBOL_GPL(remap_malloc_buf);
 \ No newline at end of file
 diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-win2030.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-win2030.c
-index e3b6c28394b6f..6ae7b0ecfb86a 100644
+index e3b6c28394b6..6ae7b0ecfb86 100644
 --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-win2030.c
 +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-win2030.c
 @@ -1,6 +1,22 @@
@@ -8038,7 +8038,7 @@ index e3b6c28394b6f..6ae7b0ecfb86a 100644
  	return 0;
  }
 diff --git a/drivers/regulator/es5340.c b/drivers/regulator/es5340.c
-index 30696296b2101..e077fa2658bf2 100644
+index 30696296b210..e077fa2658bf 100644
 --- a/drivers/regulator/es5340.c
 +++ b/drivers/regulator/es5340.c
 @@ -712,9 +712,7 @@ static struct regulator_desc es5340_regulator_desc = {
@@ -8052,7 +8052,7 @@ index 30696296b2101..e077fa2658bf2 100644
  
  	dev_info(dev,
 diff --git a/drivers/soc/eswin/ai_driver/Kconfig b/drivers/soc/eswin/ai_driver/Kconfig
-index 84a135ee3d690..0044a4be10e5e 100644
+index 84a135ee3d69..0044a4be10e5 100644
 --- a/drivers/soc/eswin/ai_driver/Kconfig
 +++ b/drivers/soc/eswin/ai_driver/Kconfig
 @@ -2,6 +2,11 @@ config ESWIN_DSP
@@ -8078,7 +8078,7 @@ index 84a135ee3d690..0044a4be10e5e 100644
 +    depends on ESWIN_NPU
 \ No newline at end of file
 diff --git a/drivers/soc/eswin/ai_driver/dsp/Makefile b/drivers/soc/eswin/ai_driver/dsp/Makefile
-index e433e1af883b9..d9fb51b3c14d2 100755
+index e433e1af883b..d9fb51b3c14d 100755
 --- a/drivers/soc/eswin/ai_driver/dsp/Makefile
 +++ b/drivers/soc/eswin/ai_driver/dsp/Makefile
 @@ -50,4 +50,8 @@ eic7700_dsp-y += dsp_platform.o dsp_sram.o dsp_firmware.o dsp_pool.o \
@@ -8091,7 +8091,7 @@ index e433e1af883b9..d9fb51b3c14d2 100755
 +
  ccflags-y += -DDSP_ENV_SIM=${DSP_ENV_SIM} -DBUILD_RELEASE=${BUILD_RELEASE} -DDEBUG_LEVEL=${DEBUG_LEVEL} -w
 diff --git a/drivers/soc/eswin/ai_driver/dsp/dsp_main.c b/drivers/soc/eswin/ai_driver/dsp/dsp_main.c
-index b32ffba9dcc86..5a2f3e97d9d8b 100644
+index b32ffba9dcc8..5a2f3e97d9d8 100644
 --- a/drivers/soc/eswin/ai_driver/dsp/dsp_main.c
 +++ b/drivers/soc/eswin/ai_driver/dsp/dsp_main.c
 @@ -58,6 +58,9 @@
@@ -8312,7 +8312,7 @@ index b32ffba9dcc86..5a2f3e97d9d8b 100644
  err_mbox_clk:
  	es_dsp_unmap_resource(dsp);
 diff --git a/drivers/soc/eswin/ai_driver/dsp/dsp_platform.c b/drivers/soc/eswin/ai_driver/dsp/dsp_platform.c
-index 45c8bda644cc8..342bdb20baae7 100644
+index 45c8bda644cc..342bdb20baae 100644
 --- a/drivers/soc/eswin/ai_driver/dsp/dsp_platform.c
 +++ b/drivers/soc/eswin/ai_driver/dsp/dsp_platform.c
 @@ -318,7 +318,7 @@ int es_dsp_clk_enable(struct es_dsp *dsp)
@@ -8362,7 +8362,7 @@ index 45c8bda644cc8..342bdb20baae7 100644
  	return 0;
  err:
 diff --git a/drivers/soc/eswin/ai_driver/dsp/dsp_platform.h b/drivers/soc/eswin/ai_driver/dsp/dsp_platform.h
-index d538a9727242a..40740cdfe21e9 100644
+index d538a9727242..40740cdfe21e 100644
 --- a/drivers/soc/eswin/ai_driver/dsp/dsp_platform.h
 +++ b/drivers/soc/eswin/ai_driver/dsp/dsp_platform.h
 @@ -30,7 +30,7 @@ int es_dsp_send_irq(struct es_dsp_hw *, dsp_request_t *);
@@ -8375,7 +8375,7 @@ index d538a9727242a..40740cdfe21e9 100644
  void es_dsp_halt(struct es_dsp_hw *);
  void es_dsp_release(struct es_dsp_hw *);
 diff --git a/drivers/soc/eswin/ai_driver/dsp/dsp_platform_sim.c b/drivers/soc/eswin/ai_driver/dsp/dsp_platform_sim.c
-index ea9471381e02a..2a7ba4077a99e 100644
+index ea9471381e02..2a7ba4077a99 100644
 --- a/drivers/soc/eswin/ai_driver/dsp/dsp_platform_sim.c
 +++ b/drivers/soc/eswin/ai_driver/dsp/dsp_platform_sim.c
 @@ -262,7 +262,7 @@ void es_dsp_halt(struct es_dsp_hw *hw)
@@ -8388,7 +8388,7 @@ index ea9471381e02a..2a7ba4077a99e 100644
  	return 0;
  }
 diff --git a/drivers/soc/eswin/ai_driver/npu/Makefile b/drivers/soc/eswin/ai_driver/npu/Makefile
-index 29cbe78dd0267..630aa94bc05f3 100644
+index 29cbe78dd026..630aa94bc05f 100644
 --- a/drivers/soc/eswin/ai_driver/npu/Makefile
 +++ b/drivers/soc/eswin/ai_driver/npu/Makefile
 @@ -3,6 +3,9 @@ LOG_LEVEL ?= 0
@@ -8411,7 +8411,7 @@ index 29cbe78dd0267..630aa94bc05f3 100644
  
  obj-$(CONFIG_ESWIN_NPU) += eic7700_npu.o
 diff --git a/drivers/soc/eswin/ai_driver/npu/dla_driver.h b/drivers/soc/eswin/ai_driver/npu/dla_driver.h
-index 2101ccd1766e5..11f22de8920bf 100644
+index 2101ccd1766e..11f22de8920b 100644
 --- a/drivers/soc/eswin/ai_driver/npu/dla_driver.h
 +++ b/drivers/soc/eswin/ai_driver/npu/dla_driver.h
 @@ -31,7 +31,7 @@
@@ -8448,7 +8448,7 @@ index 2101ccd1766e5..11f22de8920bf 100644
  
  void dla_reg_write(struct nvdla_device *dev, uint32_t addr, uint32_t value);
 diff --git a/drivers/soc/eswin/ai_driver/npu/npu_main.c b/drivers/soc/eswin/ai_driver/npu/npu_main.c
-index a742cbc584527..f6970d5606050 100644
+index a742cbc58452..f6970d560605 100644
 --- a/drivers/soc/eswin/ai_driver/npu/npu_main.c
 +++ b/drivers/soc/eswin/ai_driver/npu/npu_main.c
 @@ -73,9 +73,17 @@
@@ -8781,7 +8781,7 @@ index a742cbc584527..f6970d5606050 100644
  }
  
 diff --git a/drivers/soc/eswin/ai_driver/npu/nvdla_hw.c b/drivers/soc/eswin/ai_driver/npu/nvdla_hw.c
-index 096bcde3bcad2..923b8e36175ed 100644
+index 096bcde3bcad..923b8e36175e 100644
 --- a/drivers/soc/eswin/ai_driver/npu/nvdla_hw.c
 +++ b/drivers/soc/eswin/ai_driver/npu/nvdla_hw.c
 @@ -260,6 +260,35 @@ int npu_dev_reset(struct nvdla_device *nvdla_dev)
@@ -8911,7 +8911,7 @@ index 096bcde3bcad2..923b8e36175ed 100644
  }
  
 diff --git a/drivers/soc/eswin/ai_driver/npu/nvdla_lowlevel.h b/drivers/soc/eswin/ai_driver/npu/nvdla_lowlevel.h
-index 6d26b94701521..a5d3ab9b088e4 100644
+index 6d26b9470152..a5d3ab9b088e 100644
 --- a/drivers/soc/eswin/ai_driver/npu/nvdla_lowlevel.h
 +++ b/drivers/soc/eswin/ai_driver/npu/nvdla_lowlevel.h
 @@ -42,6 +42,7 @@ int npu_create_sysfs(struct platform_device *pdev);
@@ -8923,7 +8923,7 @@ index 6d26b94701521..a5d3ab9b088e4 100644
  void npu_dma_sid_cfg(void __iomem *npu_subsys_base, u32 sid);
  
 diff --git a/drivers/soc/eswin/ai_driver/npu/user_context.c b/drivers/soc/eswin/ai_driver/npu/user_context.c
-index 47dadc142fedd..6679f371b06b4 100644
+index 47dadc142fed..6679f371b06b 100644
 --- a/drivers/soc/eswin/ai_driver/npu/user_context.c
 +++ b/drivers/soc/eswin/ai_driver/npu/user_context.c
 @@ -600,6 +600,20 @@ static int commit_new_io_tensor(struct user_context *uctx, void *arg)
@@ -8978,7 +8978,7 @@ index 47dadc142fedd..6679f371b06b4 100644
  		break;
  	case ES_NPU_IOCTL_HETERO_CMD:
 diff --git a/drivers/staging/media/eswin/dewarp/vvcam_dwe_driver.c b/drivers/staging/media/eswin/dewarp/vvcam_dwe_driver.c
-index f1ab8835ceac8..d462277fecc6b 100644
+index f1ab8835ceac..d462277fecc6 100644
 --- a/drivers/staging/media/eswin/dewarp/vvcam_dwe_driver.c
 +++ b/drivers/staging/media/eswin/dewarp/vvcam_dwe_driver.c
 @@ -74,6 +74,8 @@
@@ -9102,7 +9102,7 @@ index f1ab8835ceac8..d462277fecc6b 100644
  static const struct dev_pm_ops dewarp_pm_ops = {
  	SET_RUNTIME_PM_OPS(dewarp_runtime_suspend, dewarp_runtime_resume, NULL)
 diff --git a/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_driver.c b/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_driver.c
-index a428dcd84af58..91d7c78566d53 100644
+index a428dcd84af5..91d7c78566d5 100644
 --- a/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_driver.c
 +++ b/drivers/staging/media/eswin/hae/hal/os/linux/kernel/gc_hal_kernel_driver.c
 @@ -1393,11 +1393,16 @@ static int __devinit viv_dev_probe(struct platform_device *pdev)
@@ -9124,7 +9124,7 @@ index a428dcd84af58..91d7c78566d53 100644
      }
  
 diff --git a/drivers/staging/media/eswin/hae/hal/os/linux/kernel/platform/eswin/gc_hal_kernel_platform_win2030.c b/drivers/staging/media/eswin/hae/hal/os/linux/kernel/platform/eswin/gc_hal_kernel_platform_win2030.c
-index 5802677709927..f2cebd459f416 100644
+index 580267770992..f2cebd459f41 100644
 --- a/drivers/staging/media/eswin/hae/hal/os/linux/kernel/platform/eswin/gc_hal_kernel_platform_win2030.c
 +++ b/drivers/staging/media/eswin/hae/hal/os/linux/kernel/platform/eswin/gc_hal_kernel_platform_win2030.c
 @@ -90,6 +90,9 @@
@@ -9268,7 +9268,7 @@ index 5802677709927..f2cebd459f416 100644
      }
      return gcvSTATUS_OK;
 diff --git a/drivers/staging/media/eswin/vdec/hantro_dec.c b/drivers/staging/media/eswin/vdec/hantro_dec.c
-index 7c4de300d6e6b..780b2561ab200 100644
+index 7c4de300d6e6..780b2561ab20 100644
 --- a/drivers/staging/media/eswin/vdec/hantro_dec.c
 +++ b/drivers/staging/media/eswin/vdec/hantro_dec.c
 @@ -106,6 +106,11 @@
@@ -9374,7 +9374,7 @@ index 7c4de300d6e6b..780b2561ab200 100644
  	if (ret < 0) {
  		LOG_ERR("vdec: reset initialization failed");
 diff --git a/drivers/staging/media/eswin/venc/vc8000e_driver.c b/drivers/staging/media/eswin/venc/vc8000e_driver.c
-index 97743c8172cd6..0244069626c18 100644
+index 97743c8172cd..0244069626c1 100644
 --- a/drivers/staging/media/eswin/venc/vc8000e_driver.c
 +++ b/drivers/staging/media/eswin/venc/vc8000e_driver.c
 @@ -15,6 +15,11 @@
@@ -9484,7 +9484,7 @@ index 97743c8172cd6..0244069626c18 100644
  		ret = venc_sys_reset_init(pdev, vcrt);
  		if (ret < 0) {
 diff --git a/include/linux/dmabuf-heap-import-helper.h b/include/linux/dmabuf-heap-import-helper.h
-index 9a474f6594e71..d4acd7c5177c3 100644
+index 9a474f6594e7..d4acd7c5177c 100644
 --- a/include/linux/dmabuf-heap-import-helper.h
 +++ b/include/linux/dmabuf-heap-import-helper.h
 @@ -132,4 +132,6 @@ struct heap_mem *common_dmabuf_heap_rsv_iova_map(struct heap_root *root, int fd,
@@ -9496,7 +9496,7 @@ index 9a474f6594e71..d4acd7c5177c3 100644
  #endif
 diff --git a/include/uapi/linux/dma_memcp.h b/include/uapi/linux/dma_memcp.h
 new file mode 100644
-index 0000000000000..3cb75a348ba8d
+index 000000000000..3cb75a348ba8
 --- /dev/null
 +++ b/include/uapi/linux/dma_memcp.h
 @@ -0,0 +1,62 @@
@@ -9563,7 +9563,7 @@ index 0000000000000..3cb75a348ba8d
 +
 +#endif
 diff --git a/sound/soc/codecs/eswin/es8328.c b/sound/soc/codecs/eswin/es8328.c
-index 29d7c5f0c6126..26aedb86a7c90 100644
+index 29d7c5f0c612..26aedb86a7c9 100644
 --- a/sound/soc/codecs/eswin/es8328.c
 +++ b/sound/soc/codecs/eswin/es8328.c
 @@ -6,20 +6,24 @@
@@ -9712,7 +9712,7 @@ index 29d7c5f0c6126..26aedb86a7c90 100644
  		ret = IS_ERR(es8328->front_jack_gpio);
  		if(ret) {
 diff --git a/sound/soc/codecs/eswin/es8328.h b/sound/soc/codecs/eswin/es8328.h
-index 70515466a4b2a..fb7068f8f7940 100644
+index 70515466a4b2..fb7068f8f794 100644
 --- a/sound/soc/codecs/eswin/es8328.h
 +++ b/sound/soc/codecs/eswin/es8328.h
 @@ -2,20 +2,24 @@
@@ -9751,7 +9751,7 @@ index 70515466a4b2a..fb7068f8f7940 100644
  
  #ifndef _ES8328_H
 diff --git a/sound/soc/eswin/Kconfig b/sound/soc/eswin/Kconfig
-index 7c930a329daab..0b25aa84a586b 100644
+index 7c930a329daa..0b25aa84a586 100644
 --- a/sound/soc/eswin/Kconfig
 +++ b/sound/soc/eswin/Kconfig
 @@ -1,11 +1,8 @@
@@ -9770,7 +9770,7 @@ index 7c930a329daab..0b25aa84a586b 100644
 +	 a maximum of 8 channels each for play and record.
 \ No newline at end of file
 diff --git a/sound/soc/eswin/Makefile b/sound/soc/eswin/Makefile
-index 2c133c695dbed..469d77a9732d3 100644
+index 2c133c695dbe..469d77a9732d 100644
 --- a/sound/soc/eswin/Makefile
 +++ b/sound/soc/eswin/Makefile
 @@ -1,5 +1,5 @@
@@ -9782,7 +9782,7 @@ index 2c133c695dbed..469d77a9732d3 100644
  obj-$(CONFIG_SND_ESWIN_DW_I2S) += snd-soc-i2s.o
 \ No newline at end of file
 diff --git a/sound/soc/eswin/esw-audio-proc.c b/sound/soc/eswin/esw-audio-proc.c
-index 17b7c21f7b69a..f21e269af6578 100644
+index 17b7c21f7b69..f21e269af657 100644
 --- a/sound/soc/eswin/esw-audio-proc.c
 +++ b/sound/soc/eswin/esw-audio-proc.c
 @@ -46,9 +46,7 @@ typedef enum
@@ -9840,7 +9840,7 @@ index 17b7c21f7b69a..f21e269af6578 100644
  				"-----------------------------------------------------\n");
 diff --git a/sound/soc/eswin/esw-dai.h b/sound/soc/eswin/esw-dai.h
 new file mode 100644
-index 0000000000000..dfe49c950de0a
+index 000000000000..dfe49c950de0
 --- /dev/null
 +++ b/sound/soc/eswin/esw-dai.h
 @@ -0,0 +1,62 @@
@@ -9909,7 +9909,7 @@ index 0000000000000..dfe49c950de0a
 \ No newline at end of file
 diff --git a/sound/soc/eswin/esw-dma.c b/sound/soc/eswin/esw-dma.c
 new file mode 100644
-index 0000000000000..387974d162706
+index 000000000000..387974d16270
 --- /dev/null
 +++ b/sound/soc/eswin/esw-dma.c
 @@ -0,0 +1,485 @@
@@ -10400,7 +10400,7 @@ index 0000000000000..387974d162706
 +}
 \ No newline at end of file
 diff --git a/sound/soc/eswin/esw-i2s.c b/sound/soc/eswin/esw-i2s.c
-index efae45ee2f31e..0d40aee31f871 100755
+index efae45ee2f31..0d40aee31f87 100755
 --- a/sound/soc/eswin/esw-i2s.c
 +++ b/sound/soc/eswin/esw-i2s.c
 @@ -1,3 +1,4 @@
@@ -11178,7 +11178,7 @@ index efae45ee2f31e..0d40aee31f871 100755
  		.pm = &i2s_pm_ops,
  	},
 diff --git a/sound/soc/eswin/esw-i2s.h b/sound/soc/eswin/esw-i2s.h
-index 6c1a243223a42..63f12992236fa 100644
+index 6c1a243223a4..63f12992236f 100644
 --- a/sound/soc/eswin/esw-i2s.h
 +++ b/sound/soc/eswin/esw-i2s.h
 @@ -1,3 +1,4 @@
@@ -11282,7 +11282,7 @@ index 6c1a243223a42..63f12992236fa 100644
  #endif /* __I2S_H */
 diff --git a/sound/soc/eswin/esw-sof-dai.c b/sound/soc/eswin/esw-sof-dai.c
 new file mode 100644
-index 0000000000000..214487ec1d444
+index 000000000000..214487ec1d44
 --- /dev/null
 +++ b/sound/soc/eswin/esw-sof-dai.c
 @@ -0,0 +1,299 @@
@@ -11587,7 +11587,7 @@ index 0000000000000..214487ec1d444
 +}
 \ No newline at end of file
 diff --git a/sound/soc/sof/Kconfig b/sound/soc/sof/Kconfig
-index 80361139a49ad..92e66354e1177 100644
+index 80361139a49a..92e66354e117 100644
 --- a/sound/soc/sof/Kconfig
 +++ b/sound/soc/sof/Kconfig
 @@ -291,5 +291,6 @@ source "sound/soc/sof/imx/Kconfig"
@@ -11598,7 +11598,7 @@ index 80361139a49ad..92e66354e1177 100644
  
  endif
 diff --git a/sound/soc/sof/Makefile b/sound/soc/sof/Makefile
-index 744d40bd8c8ba..df2cbbd9dbb04 100644
+index 744d40bd8c8b..df2cbbd9dbb0 100644
 --- a/sound/soc/sof/Makefile
 +++ b/sound/soc/sof/Makefile
 @@ -58,3 +58,4 @@ obj-$(CONFIG_SND_SOC_SOF_IMX_TOPLEVEL) += imx/
@@ -11609,7 +11609,7 @@ index 744d40bd8c8ba..df2cbbd9dbb04 100644
 \ No newline at end of file
 diff --git a/sound/soc/sof/eswin/Kconfig b/sound/soc/sof/eswin/Kconfig
 new file mode 100644
-index 0000000000000..273e28dcb67b1
+index 000000000000..273e28dcb67b
 --- /dev/null
 +++ b/sound/soc/sof/eswin/Kconfig
 @@ -0,0 +1,34 @@
@@ -11649,7 +11649,7 @@ index 0000000000000..273e28dcb67b1
 +endif ## SND_SOC_SOF_ESWIN_TOPLEVEL
 diff --git a/sound/soc/sof/eswin/Makefile b/sound/soc/sof/eswin/Makefile
 new file mode 100644
-index 0000000000000..dcb9c540b37b6
+index 000000000000..dcb9c540b37b
 --- /dev/null
 +++ b/sound/soc/sof/eswin/Makefile
 @@ -0,0 +1,6 @@
@@ -11661,7 +11661,7 @@ index 0000000000000..dcb9c540b37b6
 +obj-$(CONFIG_SND_SOC_SOF_ESWIN) += snd-sof-eswin-dsp.o
 diff --git a/sound/soc/sof/eswin/es-common.c b/sound/soc/sof/eswin/es-common.c
 new file mode 100644
-index 0000000000000..22228f4b840e9
+index 000000000000..22228f4b840e
 --- /dev/null
 +++ b/sound/soc/sof/eswin/es-common.c
 @@ -0,0 +1,591 @@
@@ -12259,7 +12259,7 @@ index 0000000000000..22228f4b840e9
 \ No newline at end of file
 diff --git a/sound/soc/sof/eswin/es-common.h b/sound/soc/sof/eswin/es-common.h
 new file mode 100644
-index 0000000000000..415ccb866d74a
+index 000000000000..415ccb866d74
 --- /dev/null
 +++ b/sound/soc/sof/eswin/es-common.h
 @@ -0,0 +1,137 @@
@@ -12402,7 +12402,7 @@ index 0000000000000..415ccb866d74a
 +#endif
 diff --git a/sound/soc/sof/eswin/es-sof-dsp.c b/sound/soc/sof/eswin/es-sof-dsp.c
 new file mode 100644
-index 0000000000000..41cb55ba8d71c
+index 000000000000..41cb55ba8d71
 --- /dev/null
 +++ b/sound/soc/sof/eswin/es-sof-dsp.c
 @@ -0,0 +1,614 @@
@@ -13021,5 +13021,5 @@ index 0000000000000..41cb55ba8d71c
 +MODULE_LICENSE("GPL");
 +MODULE_ALIAS("platform:eswin dsp driver");
 -- 
-2.53.0
+2.54.0
 

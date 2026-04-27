@@ -1,4 +1,4 @@
-From b9e02bf4d7b84d347fdae01f7218ab7f9b618584 Mon Sep 17 00:00:00 2001
+From ab6ac2a3d1aa13355cb842a6127eea26f122a7f2 Mon Sep 17 00:00:00 2001
 From: Jason Montleon <jmontleo@redhat.com>
 Date: Wed, 4 Mar 2026 12:39:24 -0500
 Subject: [PATCH 006/540] Revert "media: i2c: ov5647: Initialize subdev before
@@ -10,7 +10,7 @@ This reverts commit cabd025182cfed4a19b3aab57493e312d681e398.
  1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/media/i2c/ov5647.c b/drivers/media/i2c/ov5647.c
-index 6d39d47d6cc63..8de398423b7cb 100644
+index 6d39d47d6cc6..8de398423b7c 100644
 --- a/drivers/media/i2c/ov5647.c
 +++ b/drivers/media/i2c/ov5647.c
 @@ -1430,15 +1430,15 @@ static int ov5647_probe(struct i2c_client *client)
@@ -34,5 +34,5 @@ index 6d39d47d6cc63..8de398423b7cb 100644
  	sd->entity.function = MEDIA_ENT_F_CAM_SENSOR;
  	ret = media_entity_pads_init(&sd->entity, 1, &sensor->pad);
 -- 
-2.53.0
+2.54.0
 

@@ -1,4 +1,4 @@
-From db51b3deec1e6cbaadc8a3d03b2bc8e3e4793947 Mon Sep 17 00:00:00 2001
+From 25c472c385e4bc7a6224183c9bfed18cfbfc3dc4 Mon Sep 17 00:00:00 2001
 From: Jason Montleon <jmontleo@redhat.com>
 Date: Wed, 11 Feb 2026 09:14:11 -0500
 Subject: [PATCH 007/540] Revert "KVM: selftests: Add -U_FORTIFY_SOURCE to
@@ -10,7 +10,7 @@ This reverts commit a8adf1ceee4e188b0521f0638c97bff278143924.
  1 file changed, 1 deletion(-)
 
 diff --git a/tools/testing/selftests/kvm/Makefile b/tools/testing/selftests/kvm/Makefile
-index d819994874df1..a3bb36fb3cfc5 100644
+index d819994874df..a3bb36fb3cfc 100644
 --- a/tools/testing/selftests/kvm/Makefile
 +++ b/tools/testing/selftests/kvm/Makefile
 @@ -212,7 +212,6 @@ LINUX_TOOL_ARCH_INCLUDE = $(top_srcdir)/tools/arch/$(ARCH)/include
@@ -22,5 +22,5 @@ index d819994874df1..a3bb36fb3cfc5 100644
  	-fno-builtin-strnlen \
  	-fno-stack-protector -fno-PIE -I$(LINUX_TOOL_INCLUDE) \
 -- 
-2.53.0
+2.54.0
 

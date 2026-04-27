@@ -1,4 +1,4 @@
-From dea558660a915b442607cc5fa786acbd61a0fa94 Mon Sep 17 00:00:00 2001
+From 43091b93173ffc6366bfc17b2ff0870ac81b76c7 Mon Sep 17 00:00:00 2001
 From: denglei <denglei@eswincomputing.com>
 Date: Fri, 9 Aug 2024 17:43:51 +0800
 Subject: [PATCH 158/540] fix:AO case failed.
@@ -12,7 +12,7 @@ Signed-off-by: denglei <denglei@eswincomputing.com>
  1 file changed, 21 insertions(+), 68 deletions(-)
 
 diff --git a/sound/soc/eswin/esw-i2s.c b/sound/soc/eswin/esw-i2s.c
-index acf2329968154..02c05b85dfab8 100755
+index acf232996815..02c05b85dfab 100755
 --- a/sound/soc/eswin/esw-i2s.c
 +++ b/sound/soc/eswin/esw-i2s.c
 @@ -287,65 +287,8 @@ static void i2s_stop(struct i2s_dev *i2s_drvdata,
@@ -165,5 +165,5 @@ index acf2329968154..02c05b85dfab8 100755
  err_probe:
  	clk_disable_unprepare(i2s_drvdata->clk);
 -- 
-2.53.0
+2.54.0
 

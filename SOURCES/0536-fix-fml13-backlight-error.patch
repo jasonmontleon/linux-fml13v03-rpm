@@ -1,4 +1,4 @@
-From 5ead10cc8939c2637ed9cd6f759b78de3dc93a3e Mon Sep 17 00:00:00 2001
+From 91a8c5f6010ecd6f5e7947994dfb4321b8221769 Mon Sep 17 00:00:00 2001
 From: Xiang Xu <xuxiang@eswincomputing.com>
 Date: Wed, 29 Oct 2025 20:41:39 +0800
 Subject: [PATCH 536/540] fix:fml13 backlight error
@@ -12,7 +12,7 @@ Signed-off-by: Xiang Xu <xuxiang@eswincomputing.com>
  1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/scripts/Makefile.lib b/scripts/Makefile.lib
-index 1da8d567e333d..c3c5ac113c6ac 100644
+index 1da8d567e333..c3c5ac113c6a 100644
 --- a/scripts/Makefile.lib
 +++ b/scripts/Makefile.lib
 @@ -388,9 +388,11 @@ $(obj)/%.dtb.S: $(obj)/%.dtb FORCE
@@ -29,5 +29,5 @@ index 1da8d567e333d..c3c5ac113c6ac 100644
  		-d $(depfile).dtc.tmp $(dtc-tmp) ; \
  	cat $(depfile).pre.tmp $(depfile).dtc.tmp > $(depfile)
 -- 
-2.53.0
+2.54.0
 

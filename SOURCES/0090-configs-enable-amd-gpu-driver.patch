@@ -1,4 +1,4 @@
-From d4fde1470607366bd498fe69878936b3e766d7b7 Mon Sep 17 00:00:00 2001
+From 7c010daea77dc4cae05f2cd3896aa14a3872d7e1 Mon Sep 17 00:00:00 2001
 From: Han Gao <gaohan@iscas.ac.cn>
 Date: Thu, 30 May 2024 20:43:13 +0800
 Subject: [PATCH 090/540] configs: enable amd gpu driver
@@ -9,7 +9,7 @@ Signed-off-by: Han Gao <gaohan@iscas.ac.cn>
  1 file changed, 7 insertions(+)
 
 diff --git a/arch/riscv/configs/win2030_defconfig b/arch/riscv/configs/win2030_defconfig
-index d32dd5f080215..60ae1c7268e6f 100644
+index d32dd5f08021..60ae1c7268e6 100644
 --- a/arch/riscv/configs/win2030_defconfig
 +++ b/arch/riscv/configs/win2030_defconfig
 @@ -194,9 +194,12 @@ CONFIG_DRM_AMDGPU_CIK=y
@@ -37,5 +37,5 @@ index d32dd5f080215..60ae1c7268e6f 100644
  CONFIG_SND=y
  CONFIG_SND_SOC=y
 -- 
-2.53.0
+2.54.0
 

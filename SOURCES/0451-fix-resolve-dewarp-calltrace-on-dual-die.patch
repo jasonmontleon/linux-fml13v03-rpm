@@ -1,4 +1,4 @@
-From 64eea0fd64596441af459bb676e944ff7301a36d Mon Sep 17 00:00:00 2001
+From 6eecca18fd164d9d6dd3f04436d8cc75cc1736ae Mon Sep 17 00:00:00 2001
 From: Yulin Lu <luyulin@eswincomputing.com>
 Date: Thu, 31 Jul 2025 17:49:10 +0800
 Subject: [PATCH 451/540] fix:resolve dewarp calltrace on dual die
@@ -13,7 +13,7 @@ Signed-off-by: Yulin Lu <luyulin@eswincomputing.com>
  2 files changed, 37 insertions(+), 30 deletions(-)
 
 diff --git a/drivers/staging/media/eswin/dewarp/dw200_subdev.h b/drivers/staging/media/eswin/dewarp/dw200_subdev.h
-index c91e9270748e7..67c2e3d341fe8 100644
+index c91e9270748e..67c2e3d341fe 100644
 --- a/drivers/staging/media/eswin/dewarp/dw200_subdev.h
 +++ b/drivers/staging/media/eswin/dewarp/dw200_subdev.h
 @@ -355,10 +355,6 @@ struct dw200_subdev {
@@ -28,7 +28,7 @@ index c91e9270748e7..67c2e3d341fe8 100644
  };
  
 diff --git a/drivers/staging/media/eswin/dewarp/vvcam_dwe_driver.c b/drivers/staging/media/eswin/dewarp/vvcam_dwe_driver.c
-index d494b262bfd78..ffc124a2f632e 100644
+index d494b262bfd7..ffc124a2f632 100644
 --- a/drivers/staging/media/eswin/dewarp/vvcam_dwe_driver.c
 +++ b/drivers/staging/media/eswin/dewarp/vvcam_dwe_driver.c
 @@ -102,6 +102,7 @@
@@ -206,5 +206,5 @@ index d494b262bfd78..ffc124a2f632e 100644
  	es_remove_proc_entry(PROC_ENTRY_DEWARP, NULL);
  
 -- 
-2.53.0
+2.54.0
 

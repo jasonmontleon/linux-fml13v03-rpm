@@ -1,4 +1,4 @@
-From 4f2bcf54eb2141d6789769125cb7f0e63682e9b1 Mon Sep 17 00:00:00 2001
+From c805abf69c0a965d476a9447e8b148e7555d3cf8 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Wed, 14 May 2025 09:29:50 +0800
 Subject: [PATCH 295/540] Resolve GRUB's failure to locate the DTB after
@@ -9,7 +9,7 @@ Subject: [PATCH 295/540] Resolve GRUB's failure to locate the DTB after
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/scripts/package/builddeb b/scripts/package/builddeb
-index cbcf14820fb9b..d7dd0d04c70c9 100755
+index cbcf14820fb9..d7dd0d04c70c 100755
 --- a/scripts/package/builddeb
 +++ b/scripts/package/builddeb
 @@ -59,7 +59,7 @@ install_linux_image () {
@@ -22,5 +22,5 @@ index cbcf14820fb9b..d7dd0d04c70c9 100755
  
  	${MAKE} -f ${srctree}/Makefile INSTALL_MOD_PATH="${pdir}" modules_install
 -- 
-2.53.0
+2.54.0
 

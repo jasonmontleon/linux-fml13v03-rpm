@@ -1,4 +1,4 @@
-From 3a06972c861b456949fab77d5f94afb041968fac Mon Sep 17 00:00:00 2001
+From af0e3652d89bcd75d7d1de88a9647306e38e2ca8 Mon Sep 17 00:00:00 2001
 From: hehuan1 <hehuan1@eswincomputing.com>
 Date: Wed, 20 Aug 2025 16:07:48 +0800
 Subject: [PATCH 478/540] fix: resolve abnormal prints
@@ -12,7 +12,7 @@ Signed-off-by: hehuan1 <hehuan1@eswincomputing.com>
  1 file changed, 3 insertions(+), 14 deletions(-)
 
 diff --git a/drivers/hwmon/eswin_pvt.c b/drivers/hwmon/eswin_pvt.c
-index 19ad0c2a548c0..c1f39c940df54 100644
+index 19ad0c2a548c..c1f39c940df5 100644
 --- a/drivers/hwmon/eswin_pvt.c
 +++ b/drivers/hwmon/eswin_pvt.c
 @@ -255,7 +255,6 @@ static int eswin_pvt_read_data(struct pvt_hwmon *pvt, enum pvt_sensor_type type,
@@ -54,5 +54,5 @@ index 19ad0c2a548c0..c1f39c940df54 100644
  	if (type == PVT_TEMP)
  		*val = eswin_pvt_calc_poly(&poly_N_to_temp, data);
 -- 
-2.53.0
+2.54.0
 

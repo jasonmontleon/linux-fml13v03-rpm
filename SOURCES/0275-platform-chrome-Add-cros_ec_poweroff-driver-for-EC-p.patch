@@ -1,4 +1,4 @@
-From 5e073a1c04fce2cd6f9460045176ec1ce87d10c4 Mon Sep 17 00:00:00 2001
+From 6515ffd05a5312da7a1009ab20e4e042987de5ee Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Tue, 1 Apr 2025 17:24:40 +0800
 Subject: [PATCH 275/540] platform/chrome: Add cros_ec_poweroff driver for EC
@@ -15,7 +15,7 @@ Signed-off-by: yang.wang <yang.wang@deepcomputing.io>
  create mode 100644 drivers/platform/chrome/cros_ec_poweroff.c
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
-index 4b5f5ea51330b..249f961e360d7 100644
+index 4b5f5ea51330..249f961e360d 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 @@ -1663,6 +1663,11 @@ keyboard-controller {
@@ -31,7 +31,7 @@ index 4b5f5ea51330b..249f961e360d7 100644
  
  /* die0 GPIO Function Description
 diff --git a/arch/riscv/configs/fml13v03_defconfig b/arch/riscv/configs/fml13v03_defconfig
-index 3f9f65576b524..98b2e2871be46 100755
+index 3f9f65576b52..98b2e2871be4 100755
 --- a/arch/riscv/configs/fml13v03_defconfig
 +++ b/arch/riscv/configs/fml13v03_defconfig
 @@ -768,6 +768,7 @@ CONFIG_CROS_EC_SPI=m
@@ -43,7 +43,7 @@ index 3f9f65576b524..98b2e2871be46 100755
  CONFIG_TIMER_ESWIN=y
  CONFIG_MAILBOX=y
 diff --git a/drivers/platform/chrome/Kconfig b/drivers/platform/chrome/Kconfig
-index d53ef21c1ba74..8ac1483584f94 100644
+index d53ef21c1ba7..8ac1483584f9 100644
 --- a/drivers/platform/chrome/Kconfig
 +++ b/drivers/platform/chrome/Kconfig
 @@ -296,6 +296,14 @@ config CROS_TYPEC_SWITCH
@@ -62,7 +62,7 @@ index d53ef21c1ba74..8ac1483584f94 100644
  
  # Kunit test cases
 diff --git a/drivers/platform/chrome/Makefile b/drivers/platform/chrome/Makefile
-index 9e26e45c4a375..7599441f09a92 100644
+index 9e26e45c4a37..7599441f09a9 100644
 --- a/drivers/platform/chrome/Makefile
 +++ b/drivers/platform/chrome/Makefile
 @@ -32,6 +32,7 @@ obj-$(CONFIG_CROS_EC_SYSFS)		+= cros_ec_sysfs.o
@@ -75,7 +75,7 @@ index 9e26e45c4a375..7599441f09a92 100644
  
 diff --git a/drivers/platform/chrome/cros_ec_poweroff.c b/drivers/platform/chrome/cros_ec_poweroff.c
 new file mode 100644
-index 0000000000000..31f25f805f3a8
+index 000000000000..31f25f805f3a
 --- /dev/null
 +++ b/drivers/platform/chrome/cros_ec_poweroff.c
 @@ -0,0 +1,179 @@
@@ -259,5 +259,5 @@ index 0000000000000..31f25f805f3a8
 +MODULE_LICENSE("GPL");
 +MODULE_ALIAS("platform:" DRV_NAME);
 -- 
-2.53.0
+2.54.0
 

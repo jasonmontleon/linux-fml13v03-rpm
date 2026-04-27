@@ -1,4 +1,4 @@
-From 407f5daa6186349bb4a0018b3f3b69c819a8ad6c Mon Sep 17 00:00:00 2001
+From 3df0ab807ae16a1338de820757c44a3ba61609c7 Mon Sep 17 00:00:00 2001
 From: denglei <denglei@eswincomputing.com>
 Date: Fri, 29 Aug 2025 09:00:39 +0800
 Subject: [PATCH 492/540] fix:Resolve NPU driver bugs.
@@ -15,7 +15,7 @@ Signed-off-by: denglei <denglei@eswincomputing.com>
  2 files changed, 77 insertions(+), 88 deletions(-)
 
 diff --git a/drivers/soc/eswin/ai_driver/npu/nvdla_hw.c b/drivers/soc/eswin/ai_driver/npu/nvdla_hw.c
-index 1a11a498258db..132cf3ab3583c 100644
+index 1a11a498258d..132cf3ab3583 100644
 --- a/drivers/soc/eswin/ai_driver/npu/nvdla_hw.c
 +++ b/drivers/soc/eswin/ai_driver/npu/nvdla_hw.c
 @@ -507,7 +507,6 @@ static ssize_t store_reset_hand(struct device *d, struct device_attribute *attr,
@@ -207,7 +207,7 @@ index 1a11a498258db..132cf3ab3583c 100644
  }
  
 diff --git a/drivers/soc/eswin/ai_driver/npu/parse_dep.c b/drivers/soc/eswin/ai_driver/npu/parse_dep.c
-index c097ef2af3555..e21c41146346a 100644
+index c097ef2af355..e21c41146346 100644
 --- a/drivers/soc/eswin/ai_driver/npu/parse_dep.c
 +++ b/drivers/soc/eswin/ai_driver/npu/parse_dep.c
 @@ -98,6 +98,10 @@ static int config_sequence_setup(struct win_executor *executor, int op_num,
@@ -233,5 +233,5 @@ index c097ef2af3555..e21c41146346a 100644
  	}
  
 -- 
-2.53.0
+2.54.0
 

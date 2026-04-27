@@ -1,4 +1,4 @@
-From 950691552680b663e26d42a13bd5728eba2b0647 Mon Sep 17 00:00:00 2001
+From 487bf3761634ee154542b34fff2a438a03d7aa49 Mon Sep 17 00:00:00 2001
 From: wangguosheng <wangguosheng@eswincomputing.com>
 Date: Wed, 28 May 2025 11:00:35 +0800
 Subject: [PATCH 379/540] style:fix the warning in DTS
@@ -12,7 +12,7 @@ Signed-off-by: wangguosheng <wangguosheng@eswincomputing.com>
  1 file changed, 5 insertions(+), 1 deletion(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030-arch-d2d.dtsi b/arch/riscv/boot/dts/eswin/eswin-win2030-arch-d2d.dtsi
-index a9194e19204a4..c4b5facdedfc1 100644
+index a9194e19204a..c4b5facdedfc 100644
 --- a/arch/riscv/boot/dts/eswin/eswin-win2030-arch-d2d.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eswin-win2030-arch-d2d.dtsi
 @@ -20,7 +20,7 @@
@@ -57,5 +57,5 @@ index a9194e19204a4..c4b5facdedfc1 100644
  
  	D1CACHE: cache-controller@22010000 {
 -- 
-2.53.0
+2.54.0
 

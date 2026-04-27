@@ -1,4 +1,4 @@
-From 8e7459b904c294ae68062fcb4e3cf5e61781fd55 Mon Sep 17 00:00:00 2001
+From f134adbb07a9559d5999fa6d8c572ab38c66c2e1 Mon Sep 17 00:00:00 2001
 From: ouyanghui <ouyanghui@eswincomputing.com>
 Date: Wed, 17 Sep 2025 14:19:02 +0800
 Subject: [PATCH 443/540] WIN2030-19444:fix:cpu core voltage boost causes
@@ -19,7 +19,7 @@ Signed-off-by: ouyanghui <ouyanghui@eswincomputing.com>
  5 files changed, 72 insertions(+), 27 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03-evt.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03-evt.dts
-index 405386d0866d2..6cc7838a2619c 100755
+index 405386d0866d..6cc7838a2619 100755
 --- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03-evt.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03-evt.dts
 @@ -261,13 +261,33 @@ d1_zero_device: zero-device@3a000000 {
@@ -61,7 +61,7 @@ index 405386d0866d2..6cc7838a2619c 100755
  
  &d0_clock {
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
-index dbba03791ad36..75001119d7cdc 100644
+index dbba03791ad3..75001119d7cd 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 @@ -277,13 +277,22 @@ &d0_cpu_opp_table {
@@ -117,7 +117,7 @@ index dbba03791ad36..75001119d7cdc 100644
  
  &d0_clock {
 diff --git a/drivers/clk/eswin/clk-eic7700.c b/drivers/clk/eswin/clk-eic7700.c
-index ee01dd2d18905..dc4e945f7fce9 100644
+index ee01dd2d1890..dc4e945f7fce 100644
 --- a/drivers/clk/eswin/clk-eic7700.c
 +++ b/drivers/clk/eswin/clk-eic7700.c
 @@ -12,6 +12,8 @@
@@ -144,7 +144,7 @@ index ee01dd2d18905..dc4e945f7fce9 100644
  	if (ret) {
  		dev_info(dev, "cpu-default-frequency not set\n");
 diff --git a/drivers/clk/eswin/clk.c b/drivers/clk/eswin/clk.c
-index c78c147cf3cf2..e33d3405305fd 100644
+index c78c147cf3cf..e33d3405305f 100644
 --- a/drivers/clk/eswin/clk.c
 +++ b/drivers/clk/eswin/clk.c
 @@ -29,6 +29,8 @@
@@ -205,7 +205,7 @@ index c78c147cf3cf2..e33d3405305fd 100644
  		p_clk->numa_id = data->numa_id;
  		p_clk->ctrl_reg0 = base + clks[i].ctrl_reg0;
 diff --git a/drivers/clk/eswin/clk.h b/drivers/clk/eswin/clk.h
-index 48c793ed9c381..9fbe327eb56ef 100644
+index 48c793ed9c38..9fbe327eb56e 100644
 --- a/drivers/clk/eswin/clk.h
 +++ b/drivers/clk/eswin/clk.h
 @@ -133,12 +133,13 @@ struct eswin_pll_clock {
@@ -225,5 +225,5 @@ index 48c793ed9c381..9fbe327eb56ef 100644
  	int numa_id;
  	void __iomem *ctrl_reg0;
 -- 
-2.53.0
+2.54.0
 

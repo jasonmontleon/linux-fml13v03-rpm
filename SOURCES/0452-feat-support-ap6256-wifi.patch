@@ -1,4 +1,4 @@
-From 68f1abf196182890ac02f4e979110644c6033785 Mon Sep 17 00:00:00 2001
+From 73776eac4915d1ca90dc1cbb0ae59ef818e0d208 Mon Sep 17 00:00:00 2001
 From: wangjinlong <wangjinlong@eswincomputing.com>
 Date: Thu, 31 Jul 2025 15:19:35 +0800
 Subject: [PATCH 452/540] feat:support ap6256 wifi
@@ -12,7 +12,7 @@ Signed-off-by: wangjinlong <wangjinlong@eswincomputing.com>
  1 file changed, 13 insertions(+)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-ce1.dts b/arch/riscv/boot/dts/eswin/eic7700-ce1.dts
-index a4249273f201a..9e89b4ecdaeb7 100644
+index a4249273f201..9e89b4ecdaeb 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-ce1.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7700-ce1.dts
 @@ -175,6 +175,12 @@ vdd_soc: regulator-0 {
@@ -50,5 +50,5 @@ index a4249273f201a..9e89b4ecdaeb7 100644
  
  &d0_gmac0 {
 -- 
-2.53.0
+2.54.0
 

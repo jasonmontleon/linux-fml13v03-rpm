@@ -1,4 +1,4 @@
-From 92f95abecc1869553a505446a188e2a3ea86e1e6 Mon Sep 17 00:00:00 2001
+From 0e57505e3adbaca38ce22c158dd41d8d9444f307 Mon Sep 17 00:00:00 2001
 From: guozeyang <guozeyang@eswincomputing.com>
 Date: Mon, 11 Aug 2025 15:20:26 +0800
 Subject: [PATCH 461/540] fix:add mipi device node for fccsp
@@ -18,7 +18,7 @@ Signed-off-by: guozeyang <guozeyang@eswincomputing.com>
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-ce1-mipi.dts b/arch/riscv/boot/dts/eswin/eic7700-ce1-mipi.dts
 new file mode 100644
-index 0000000000000..d703ad02bd9c7
+index 000000000000..d703ad02bd9c
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/eic7700-ce1-mipi.dts
 @@ -0,0 +1,153 @@
@@ -176,7 +176,7 @@ index 0000000000000..d703ad02bd9c7
 +	};
 +};
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-ce1.dts b/arch/riscv/boot/dts/eswin/eic7700-ce1.dts
-index 9e89b4ecdaeb7..9d0da879a94c9 100644
+index 9e89b4ecdaeb..9d0da879a94c 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-ce1.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7700-ce1.dts
 @@ -19,337 +19,7 @@
@@ -1032,7 +1032,7 @@ index 9e89b4ecdaeb7..9d0da879a94c9 100644
 -
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-ce1.dtsi b/arch/riscv/boot/dts/eswin/eic7700-ce1.dtsi
 new file mode 100644
-index 0000000000000..1d8bff47aa8fe
+index 000000000000..1d8bff47aa8f
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/eic7700-ce1.dtsi
 @@ -0,0 +1,879 @@
@@ -1916,7 +1916,7 @@ index 0000000000000..1d8bff47aa8fe
 +	status = "okay";
 +};
 diff --git a/drivers/gpu/drm/eswin/es_mipi_dsi.c b/drivers/gpu/drm/eswin/es_mipi_dsi.c
-index cf3b74eb04796..74c5c68420020 100644
+index cf3b74eb0479..74c5c6842002 100644
 --- a/drivers/gpu/drm/eswin/es_mipi_dsi.c
 +++ b/drivers/gpu/drm/eswin/es_mipi_dsi.c
 @@ -152,6 +152,8 @@ struct mipi_dsi_priv {
@@ -1960,5 +1960,5 @@ index cf3b74eb04796..74c5c68420020 100644
  	dsi_priv->plat_data.base = dsi_priv->dphy_base;
  
 -- 
-2.53.0
+2.54.0
 

@@ -1,4 +1,4 @@
-From 152d400cd621b63ae4ef02cec99cb74b37f5cc3d Mon Sep 17 00:00:00 2001
+From daac02e27fb40c47a004c80f2d8305cec4796d83 Mon Sep 17 00:00:00 2001
 From: ningyu <ningyu@eswincomputing.com>
 Date: Mon, 24 Feb 2025 10:54:31 +0800
 Subject: [PATCH 250/540] fix:modify localversion for deb update
@@ -11,7 +11,7 @@ Signed-off-by: ningyu <ningyu@eswincomputing.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/arch/riscv/configs/eic7702_defconfig b/arch/riscv/configs/eic7702_defconfig
-index da2ab70a25667..9dc573c2c5c24 100644
+index da2ab70a2566..9dc573c2c5c2 100644
 --- a/arch/riscv/configs/eic7702_defconfig
 +++ b/arch/riscv/configs/eic7702_defconfig
 @@ -1,4 +1,4 @@
@@ -21,5 +21,5 @@ index da2ab70a25667..9dc573c2c5c24 100644
  CONFIG_SYSVIPC=y
  CONFIG_POSIX_MQUEUE=y
 -- 
-2.53.0
+2.54.0
 

@@ -1,4 +1,4 @@
-From a8d41baf020edae4eef6a141e9311ae66aed17ba Mon Sep 17 00:00:00 2001
+From 8b404fa9ea00f125e3136f3568b06aa1d09e1007 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Wed, 2 Apr 2025 17:37:28 +0800
 Subject: [PATCH 277/540] riscv: fml13v03_defconfig: Enable USB PD charger
@@ -9,7 +9,7 @@ Signed-off-by: yang.wang <yang.wang@deepcomputing.io>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/arch/riscv/configs/fml13v03_defconfig b/arch/riscv/configs/fml13v03_defconfig
-index 98b2e2871be46..38396e7abdbfa 100755
+index 98b2e2871be4..38396e7abdbf 100755
 --- a/arch/riscv/configs/fml13v03_defconfig
 +++ b/arch/riscv/configs/fml13v03_defconfig
 @@ -477,6 +477,7 @@ CONFIG_GPIOLIB=y
@@ -29,5 +29,5 @@ index 98b2e2871be46..38396e7abdbfa 100755
  CONFIG_COMMON_CLK_EIC7700=y
  CONFIG_TIMER_ESWIN=y
 -- 
-2.53.0
+2.54.0
 

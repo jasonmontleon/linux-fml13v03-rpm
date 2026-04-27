@@ -1,4 +1,4 @@
-From d157b53a26a659bbb5416acf7bfc4e4c29634dc2 Mon Sep 17 00:00:00 2001
+From 0a450d0366362d82db8364486e7eb19d1da00141 Mon Sep 17 00:00:00 2001
 From: ningyu <ningyu@eswincomputing.com>
 Date: Fri, 21 Feb 2025 17:35:41 +0800
 Subject: [PATCH 325/540] feat:support osm dts
@@ -16,7 +16,7 @@ Signed-off-by: ningyu <ningyu@eswincomputing.com>
  2 files changed, 131 insertions(+), 128 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-osm.dts b/arch/riscv/boot/dts/eswin/eic7700-osm.dts
-index ab2bf385a71e6..5e9d67c181854 100644
+index ab2bf385a71e..5e9d67c18185 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-osm.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7700-osm.dts
 @@ -33,6 +33,7 @@
@@ -382,7 +382,7 @@ index ab2bf385a71e6..5e9d67c181854 100644
  };
 +
 diff --git a/arch/riscv/configs/eic7700_defconfig b/arch/riscv/configs/eic7700_defconfig
-index f90fd076f227d..964166f6fdeee 100644
+index f90fd076f227..964166f6fdee 100644
 --- a/arch/riscv/configs/eic7700_defconfig
 +++ b/arch/riscv/configs/eic7700_defconfig
 @@ -29,6 +29,7 @@ CONFIG_BLK_DEV_INITRD=y
@@ -570,5 +570,5 @@ index f90fd076f227d..964166f6fdeee 100644
 +CONFIG_BCMDHD_NVRAM_PATH="/lib/firmware/nvram_ap6256.txt"
 +CONFIG_BCMDHD_CLM_PATH="/lib/firmware/clm_bcm43752a2_ag.blob"
 -- 
-2.53.0
+2.54.0
 

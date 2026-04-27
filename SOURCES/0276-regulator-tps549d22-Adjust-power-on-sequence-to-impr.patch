@@ -1,4 +1,4 @@
-From 8aade3a4750459a7ba59cfb4969bf9d1c3b0ea75 Mon Sep 17 00:00:00 2001
+From 4e8d78804f754756d5af355b537cddfb366d5a04 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Wed, 2 Apr 2025 14:38:04 +0800
 Subject: [PATCH 276/540] regulator: tps549d22: Adjust power-on sequence to
@@ -10,7 +10,7 @@ Signed-off-by: yang.wang <yang.wang@deepcomputing.io>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/regulator/tps549d22-regulator.c b/drivers/regulator/tps549d22-regulator.c
-index 93684d917863f..42de6234b2891 100644
+index 93684d917863..42de6234b289 100644
 --- a/drivers/regulator/tps549d22-regulator.c
 +++ b/drivers/regulator/tps549d22-regulator.c
 @@ -462,10 +462,10 @@ static s32 tps549d22_init_data(struct TPS549D22_DRIVER_DATA *data,
@@ -26,5 +26,5 @@ index 93684d917863f..42de6234b2891 100644
  	return ret;
  }
 -- 
-2.53.0
+2.54.0
 

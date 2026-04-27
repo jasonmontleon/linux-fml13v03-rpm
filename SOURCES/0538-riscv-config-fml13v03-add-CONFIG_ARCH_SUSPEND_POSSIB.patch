@@ -1,4 +1,4 @@
-From c09e805fb3006337e8565c1822b2886e010cfead Mon Sep 17 00:00:00 2001
+From e475d6c2b3d984bef762cc7c0d4996923db97b38 Mon Sep 17 00:00:00 2001
 From: sandiecao <sandie.cao@deepcomputing.io>
 Date: Tue, 4 Nov 2025 16:11:59 +0800
 Subject: [PATCH 538/540] riscv: config: fml13v03: add
@@ -10,7 +10,7 @@ Signed-off-by: sandiecao <sandie.cao@deepcomputing.io>
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/arch/riscv/configs/fml13v03_defconfig b/arch/riscv/configs/fml13v03_defconfig
-index f0428afebddd7..8d98e892bbfb9 100755
+index f0428afebddd..8d98e892bbfb 100755
 --- a/arch/riscv/configs/fml13v03_defconfig
 +++ b/arch/riscv/configs/fml13v03_defconfig
 @@ -4393,8 +4393,8 @@ CONFIG_PRINTK_TIME=y
@@ -25,5 +25,5 @@ index f0428afebddd7..8d98e892bbfb9 100755
  CONFIG_MAGIC_SYSRQ=y
  CONFIG_DEBUG_FS=y
 -- 
-2.53.0
+2.54.0
 

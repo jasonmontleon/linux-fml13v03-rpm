@@ -1,4 +1,4 @@
-From 2bc7308b797a1c84d2a4bc3979424bb5e0bbc70a Mon Sep 17 00:00:00 2001
+From cde79ee313948bad05493078aec31212eddaf7d3 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Fri, 29 Aug 2025 14:37:17 +0800
 Subject: [PATCH 442/540] drm/dw-hdmi: Remove hardcoded clock whitelist to
@@ -11,7 +11,7 @@ Signed-off-by: yang.wang <yang.wang@deepcomputing.io>
  2 files changed, 2 insertions(+), 10 deletions(-)
 
 diff --git a/drivers/gpu/drm/eswin/dw-hdmi.c b/drivers/gpu/drm/eswin/dw-hdmi.c
-index 05e8495d6c5e2..58bb53434f7b3 100644
+index 05e8495d6c5e..58bb53434f7b 100644
 --- a/drivers/gpu/drm/eswin/dw-hdmi.c
 +++ b/drivers/gpu/drm/eswin/dw-hdmi.c
 @@ -3371,14 +3371,6 @@ dw_hdmi_bridge_mode_valid(struct drm_bridge *bridge,
@@ -30,7 +30,7 @@ index 05e8495d6c5e2..58bb53434f7b3 100644
  		mode_status = pdata->mode_valid(hdmi, pdata->priv_data, info,
  						mode);
 diff --git a/drivers/gpu/drm/eswin/es_dw_hdmi.c b/drivers/gpu/drm/eswin/es_dw_hdmi.c
-index bfe63f0432745..dafb70b022ee0 100644
+index bfe63f043274..dafb70b022ee 100644
 --- a/drivers/gpu/drm/eswin/es_dw_hdmi.c
 +++ b/drivers/gpu/drm/eswin/es_dw_hdmi.c
 @@ -152,7 +152,7 @@ static const struct dw_hdmi_mpll_config eswin_mpll_cfg[] = {
@@ -52,5 +52,5 @@ index bfe63f0432745..dafb70b022ee0 100644
  	},
  	{
 -- 
-2.53.0
+2.54.0
 

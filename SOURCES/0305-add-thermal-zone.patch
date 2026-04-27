@@ -1,4 +1,4 @@
-From 07c4d95dde0fef500eece7b3d07cdfd449fb1e5c Mon Sep 17 00:00:00 2001
+From 657863904f706a20e4586306d8542acd0a7f6f64 Mon Sep 17 00:00:00 2001
 From: ningyu <ningyu@eswincomputing.com>
 Date: Thu, 22 May 2025 20:04:39 +0800
 Subject: [PATCH 305/540] add thermal zone
@@ -9,7 +9,7 @@ Subject: [PATCH 305/540] add thermal zone
  2 files changed, 16 insertions(+), 16 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi b/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
-index c7058a8cfe2e9..f8c7f0ac5b92e 100644
+index c7058a8cfe2e..f8c7f0ac5b92 100644
 --- a/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eswin-win2030-die0-soc.dtsi
 @@ -38,23 +38,23 @@ thermal0 {
@@ -49,7 +49,7 @@ index c7058a8cfe2e9..f8c7f0ac5b92e 100644
  			label = "pvt1";
  			numa-node-id = <0>;
 diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi b/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi
-index 71868819a4017..9196d44fe899f 100644
+index 71868819a401..9196d44fe899 100644
 --- a/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi
 @@ -33,13 +33,12 @@
@@ -116,5 +116,5 @@ index 71868819a4017..9196d44fe899f 100644
  			label = "d1_pvt1";
  			numa-node-id = <1>;
 -- 
-2.53.0
+2.54.0
 

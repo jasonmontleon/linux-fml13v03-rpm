@@ -1,4 +1,4 @@
-From 885dedfcdcad17e779165b7e497e41651acce496 Mon Sep 17 00:00:00 2001
+From a8f74b9ec5f0948a15f15cafa81863c565733d19 Mon Sep 17 00:00:00 2001
 From: zhang yizhong <zhangyizhong@eswincomputing.com>
 Date: Wed, 25 Jun 2025 13:30:30 +0800
 Subject: [PATCH 423/540] WIN2030-18343:fix:remove DRIVER_MODSET flag from img.
@@ -17,7 +17,7 @@ Signed-off-by: zhangyizhong <zhangyizhong@eswincomputing.com>
  2 files changed, 2 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/gpu/drm/img/img-volcanic/services/server/env/linux/pvr_drm.c b/drivers/gpu/drm/img/img-volcanic/services/server/env/linux/pvr_drm.c
-index dc00e74d589a6..a24ea9a6f29ac 100644
+index dc00e74d589a..a24ea9a6f29a 100644
 --- a/drivers/gpu/drm/img/img-volcanic/services/server/env/linux/pvr_drm.c
 +++ b/drivers/gpu/drm/img/img-volcanic/services/server/env/linux/pvr_drm.c
 @@ -521,7 +521,7 @@ const struct file_operations pvr_drm_fops = {
@@ -30,7 +30,7 @@ index dc00e74d589a6..a24ea9a6f29ac 100644
  
  	.load			= NULL,
 diff --git a/drivers/gpu/drm/img/img-volcanic/services/system/eswin_cpu/sysconfig.c b/drivers/gpu/drm/img/img-volcanic/services/system/eswin_cpu/sysconfig.c
-index 91fb2c7fc9578..ceed6f137583a 100644
+index 91fb2c7fc957..ceed6f137583 100644
 --- a/drivers/gpu/drm/img/img-volcanic/services/system/eswin_cpu/sysconfig.c
 +++ b/drivers/gpu/drm/img/img-volcanic/services/system/eswin_cpu/sysconfig.c
 @@ -262,7 +262,6 @@ void SysDevDeInit(PVRSRV_DEVICE_CONFIG *psDevConfig)
@@ -59,5 +59,5 @@ index 91fb2c7fc9578..ceed6f137583a 100644
  	clk_disable_unprepare(psDevConfig->cfg_clk);
  	clk_disable_unprepare(psDevConfig->gray_clk);
 -- 
-2.53.0
+2.54.0
 

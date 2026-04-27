@@ -1,4 +1,4 @@
-From 3f1a4ac6fdb7d6068e42c66f599199657a3bf19d Mon Sep 17 00:00:00 2001
+From a7338757a1fe01cbbeeecef2511c01b7bbccdd41 Mon Sep 17 00:00:00 2001
 From: Sandie Cao <sandie.cao@deepcomputing.io>
 Date: Fri, 28 Mar 2025 16:53:32 +0800
 Subject: [PATCH 271/540] riscv: configs: fml13v03: enable RTL8XXXU
@@ -9,7 +9,7 @@ Signed-off-by: Sandie Cao <sandie.cao@deepcomputing.io>
  1 file changed, 1 insertion(+)
 
 diff --git a/arch/riscv/configs/fml13v03_defconfig b/arch/riscv/configs/fml13v03_defconfig
-index cd4d8cee38bfd..3f9f65576b524 100755
+index cd4d8cee38bf..3f9f65576b52 100755
 --- a/arch/riscv/configs/fml13v03_defconfig
 +++ b/arch/riscv/configs/fml13v03_defconfig
 @@ -435,6 +435,7 @@ CONFIG_MT7921E=m
@@ -21,5 +21,5 @@ index cd4d8cee38bfd..3f9f65576b524 100755
  # CONFIG_WLAN_VENDOR_SILABS is not set
  # CONFIG_WLAN_VENDOR_ST is not set
 -- 
-2.53.0
+2.54.0
 

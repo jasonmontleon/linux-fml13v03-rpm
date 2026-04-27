@@ -1,4 +1,4 @@
-From 4f8a94cf1b7bcc4671d954600bd4a1c520635119 Mon Sep 17 00:00:00 2001
+From 8ac9917fdc879415b3f1d638551af38ae52bf7b8 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Wed, 16 Apr 2025 11:06:18 +0800
 Subject: [PATCH 283/540] Enhance ES8326 audio support for Eswin EIC7702
@@ -19,7 +19,7 @@ Signed-off-by: yang.wang <yang.wang@deepcomputing.io>
  4 files changed, 100 insertions(+), 78 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
-index 91d810cac7620..101212973b2ae 100644
+index 91d810cac762..101212973b2a 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 @@ -803,7 +803,6 @@ &d0_graphcard0 {
@@ -39,7 +39,7 @@ index 91d810cac7620..101212973b2ae 100644
  			};
  		};
 diff --git a/sound/soc/codecs/es8326.c b/sound/soc/codecs/es8326.c
-index 3c810e03a57de..55aa264d81653 100644
+index 3c810e03a57d..55aa264d8165 100644
 --- a/sound/soc/codecs/es8326.c
 +++ b/sound/soc/codecs/es8326.c
 @@ -247,6 +247,10 @@ static const struct _coeff_div coeff_div[] = {
@@ -102,7 +102,7 @@ index 3c810e03a57de..55aa264d81653 100644
  				    GFP_KERNEL);
  	if (!es8326->jack)
 diff --git a/sound/soc/eswin/esw-dma.c b/sound/soc/eswin/esw-dma.c
-index 14a365e84718e..d2f0c79e0fe2d 100644
+index 14a365e84718..d2f0c79e0fe2 100644
 --- a/sound/soc/eswin/esw-dma.c
 +++ b/sound/soc/eswin/esw-dma.c
 @@ -28,7 +28,7 @@
@@ -115,7 +115,7 @@ index 14a365e84718e..d2f0c79e0fe2d 100644
  
  static void esw_pcm_dma_complete(void *arg)
 diff --git a/sound/soc/eswin/esw-i2s.c b/sound/soc/eswin/esw-i2s.c
-index eed2859387b11..c71bc41f11f20 100755
+index eed2859387b1..c71bc41f11f2 100755
 --- a/sound/soc/eswin/esw-i2s.c
 +++ b/sound/soc/eswin/esw-i2s.c
 @@ -65,6 +65,9 @@
@@ -318,5 +318,5 @@ index eed2859387b11..c71bc41f11f20 100755
  
  	return 0;
 -- 
-2.53.0
+2.54.0
 

@@ -1,4 +1,4 @@
-From f34e4f49c45caddd9e97165e9f4ae94317f12127 Mon Sep 17 00:00:00 2001
+From 21ba26ea4d0e2a0c24577c458152a8c0f13538e8 Mon Sep 17 00:00:00 2001
 From: Sandie Cao <sandie.cao@deepcomputing.io>
 Date: Wed, 19 Mar 2025 11:53:03 +0800
 Subject: [PATCH 258/540] riscv: eswin: fml13v03: add lower power dts (disabled
@@ -13,7 +13,7 @@ Signed-off-by: Sandie Cao <sandie.cao@deepcomputing.io>
  create mode 100644 arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03-low-power.dts
 
 diff --git a/arch/riscv/boot/dts/eswin/Makefile b/arch/riscv/boot/dts/eswin/Makefile
-index 2e9fff80bc335..8a491266562a7 100644
+index 2e9fff80bc33..8a491266562a 100644
 --- a/arch/riscv/boot/dts/eswin/Makefile
 +++ b/arch/riscv/boot/dts/eswin/Makefile
 @@ -10,5 +10,6 @@ dtb-$(CONFIG_SOC_ESWIN) += eswin-win2030.dtb \
@@ -26,7 +26,7 @@ index 2e9fff80bc335..8a491266562a7 100644
  obj-$(CONFIG_BUILTIN_DTB) += $(addsuffix .o, $(dtb-y))
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03-low-power.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03-low-power.dts
 new file mode 100644
-index 0000000000000..348a9f8af2d32
+index 000000000000..348a9f8af2d3
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03-low-power.dts
 @@ -0,0 +1,1632 @@
@@ -1663,7 +1663,7 @@ index 0000000000000..348a9f8af2d32
 +	gpio111 : lcd touch resetn(O)
 +*/
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
-index a4f30151ca9bd..d1bf7a0ce1ac0 100644
+index a4f30151ca9b..d1bf7a0ce1ac 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 @@ -43,8 +43,8 @@
@@ -1719,5 +1719,5 @@ index a4f30151ca9bd..d1bf7a0ce1ac0 100644
  	status = "disabled";
  };
 -- 
-2.53.0
+2.54.0
 

@@ -1,4 +1,4 @@
-From 92c71a898ddb063d608660b157b52652c011e17a Mon Sep 17 00:00:00 2001
+From e2167e980e184c9fcb1a70b92ca63f7bb8d43679 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Wed, 9 Apr 2025 16:51:03 +0800
 Subject: [PATCH 280/540] riscv: Enable CONFIG_CROS_EC_CHARDEV in
@@ -10,7 +10,7 @@ Signed-off-by: yang.wang <yang.wang@deepcomputing.io>
  1 file changed, 1 deletion(-)
 
 diff --git a/arch/riscv/configs/fml13v03_defconfig b/arch/riscv/configs/fml13v03_defconfig
-index 67f46496fbb98..a0311d75cad2a 100755
+index 67f46496fbb9..a0311d75cad2 100755
 --- a/arch/riscv/configs/fml13v03_defconfig
 +++ b/arch/riscv/configs/fml13v03_defconfig
 @@ -766,7 +766,6 @@ CONFIG_VIDEO_ESWIN_MEDIA_EXT_DRIVER=y
@@ -22,5 +22,5 @@ index 67f46496fbb98..a0311d75cad2a 100755
  # CONFIG_CROS_EC_VBC is not set
  # CONFIG_CROS_EC_DEBUGFS is not set
 -- 
-2.53.0
+2.54.0
 

@@ -1,4 +1,4 @@
-From 3bff691771da0d9351b0c5eb5f68212bd54c6e56 Mon Sep 17 00:00:00 2001
+From 0756a15d5919bbfc37b9351dd202b1b953c2cd8f Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Thu, 13 Mar 2025 18:07:23 +0800
 Subject: [PATCH 237/540] Add ES8326 driver support.
@@ -12,7 +12,7 @@ Signed-off-by: yang.wang <yang.wang@deepcomputing.io>
  4 files changed, 147 insertions(+), 61 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
-index a25ba793e2d76..9588c5c64b4a5 100644
+index a25ba793e2d7..9588c5c64b4a 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 @@ -675,14 +675,19 @@ d1_i2s0_endpoint: endpoint {
@@ -152,7 +152,7 @@ index a25ba793e2d76..9588c5c64b4a5 100644
  
  &d0_i2c1 {
 diff --git a/arch/riscv/configs/fml13v03_defconfig b/arch/riscv/configs/fml13v03_defconfig
-index 30b90ea7e508d..97e92b1a81a0c 100755
+index 30b90ea7e508..97e92b1a81a0 100755
 --- a/arch/riscv/configs/fml13v03_defconfig
 +++ b/arch/riscv/configs/fml13v03_defconfig
 @@ -656,6 +656,7 @@ CONFIG_SND_SOC=y
@@ -164,7 +164,7 @@ index 30b90ea7e508d..97e92b1a81a0c 100755
  CONFIG_ESWIN_SND_ES8388_CODEC=y
  CONFIG_SND_SIMPLE_CARD=y
 diff --git a/sound/soc/codecs/es8326.c b/sound/soc/codecs/es8326.c
-index 32a9b26ee2c89..3c810e03a57de 100644
+index 32a9b26ee2c8..3c810e03a57d 100644
 --- a/sound/soc/codecs/es8326.c
 +++ b/sound/soc/codecs/es8326.c
 @@ -16,6 +16,8 @@
@@ -356,7 +356,7 @@ index 32a9b26ee2c89..3c810e03a57de 100644
  	if (IS_ERR(es8326->mclk)) {
  		dev_err(&i2c->dev, "unable to get mclk\n");
 diff --git a/sound/soc/codecs/es8326.h b/sound/soc/codecs/es8326.h
-index 90a08351d6acd..1c661374a0213 100644
+index 90a08351d6ac..1c661374a021 100644
 --- a/sound/soc/codecs/es8326.h
 +++ b/sound/soc/codecs/es8326.h
 @@ -193,4 +193,8 @@
@@ -369,5 +369,5 @@ index 90a08351d6acd..1c661374a0213 100644
 +
  #endif
 -- 
-2.53.0
+2.54.0
 

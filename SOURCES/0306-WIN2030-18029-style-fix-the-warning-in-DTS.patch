@@ -1,4 +1,4 @@
-From c2c96b052cf9e235b07017093b0298a3bf30357e Mon Sep 17 00:00:00 2001
+From b5830738c56e7ee5b3755ef635a56886cb917939 Mon Sep 17 00:00:00 2001
 From: wangguosheng <wangguosheng@eswincomputing.com>
 Date: Tue, 27 May 2025 16:07:07 +0800
 Subject: [PATCH 306/540] WIN2030-18029:style:fix the warning in DTS
@@ -19,7 +19,7 @@ Change-Id: I87e492d04dafc019c8fd38c36efb215ed77b347c
  7 files changed, 12 insertions(+), 13 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-osm.dts b/arch/riscv/boot/dts/eswin/eic7700-osm.dts
-index 28939e0f728ae..ab2bf385a71e6 100644
+index 28939e0f728a..ab2bf385a71e 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-osm.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7700-osm.dts
 @@ -696,19 +696,7 @@ &fan_control {
@@ -43,7 +43,7 @@ index 28939e0f728ae..ab2bf385a71e6 100644
  
  &d0_i2c1 {
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dts b/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dts
-index 1b97290f83a9d..6fa9d4a34ee81 100644
+index 1b97290f83a9..6fa9d4a34ee8 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dts
 @@ -648,6 +648,7 @@ npu_vcc1:npu_svcc{
@@ -55,7 +55,7 @@ index 1b97290f83a9d..6fa9d4a34ee81 100644
  };
  
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-som260-a1.dtsi b/arch/riscv/boot/dts/eswin/eic7700-som260-a1.dtsi
-index 867d0b1e89924..254ac14f107da 100644
+index 867d0b1e8992..254ac14f107d 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-som260-a1.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7700-som260-a1.dtsi
 @@ -380,6 +380,8 @@ &dsi_controller {
@@ -68,7 +68,7 @@ index 867d0b1e89924..254ac14f107da 100644
  			reg = <0>;
  			hdmi_in_dc: endpoint@0 {
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-som314.dtsi b/arch/riscv/boot/dts/eswin/eic7700-som314.dtsi
-index 16d1f8c189cd7..1a17bcafdc9bb 100644
+index 16d1f8c189cd..1a17bcafdc9b 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-som314.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7700-som314.dtsi
 @@ -328,6 +328,8 @@ &dsi_panel {
@@ -81,7 +81,7 @@ index 16d1f8c189cd7..1a17bcafdc9bb 100644
  			reg = <0>;
  			hdmi_in_dc: endpoint@0 {
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
-index 6a6296ce58249..552eab01284e9 100644
+index 6a6296ce5824..552eab01284e 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 @@ -1172,7 +1172,7 @@ &ssi1 {
@@ -94,7 +94,7 @@ index 6a6296ce58249..552eab01284e9 100644
  		reg = <0>;
  		status = "okay";
 diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030-arch-d2d.dtsi b/arch/riscv/boot/dts/eswin/eswin-win2030-arch-d2d.dtsi
-index 8051667cf6aae..b1f5b1aeb3a30 100644
+index 8051667cf6aa..b1f5b1aeb3a3 100644
 --- a/arch/riscv/boot/dts/eswin/eswin-win2030-arch-d2d.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eswin-win2030-arch-d2d.dtsi
 @@ -109,6 +109,7 @@ cpu_4: cpu@4 {
@@ -130,7 +130,7 @@ index 8051667cf6aae..b1f5b1aeb3a30 100644
  		cpu7_intc: interrupt-controller {
  			#interrupt-cells = <1>;
 diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030.dts b/arch/riscv/boot/dts/eswin/eswin-win2030.dts
-index 8d9e0e76c3506..165d68f6334c5 100644
+index 8d9e0e76c350..165d68f6334c 100644
 --- a/arch/riscv/boot/dts/eswin/eswin-win2030.dts
 +++ b/arch/riscv/boot/dts/eswin/eswin-win2030.dts
 @@ -853,6 +853,8 @@ &dw_hdmi {
@@ -143,5 +143,5 @@ index 8d9e0e76c3506..165d68f6334c5 100644
  			reg = <2>;
  			hdmi_in_i2s: endpoint@1 {
 -- 
-2.53.0
+2.54.0
 

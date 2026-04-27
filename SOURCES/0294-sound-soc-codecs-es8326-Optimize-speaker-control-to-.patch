@@ -1,4 +1,4 @@
-From 7cd10bbad1797c74f00796c99b20671739b1c724 Mon Sep 17 00:00:00 2001
+From 649631918e35d8d43f43783146fc6b549b458cf6 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Tue, 6 May 2025 10:55:08 +0800
 Subject: [PATCH 294/540] sound/soc/codecs/es8326: Optimize speaker control to
@@ -10,7 +10,7 @@ Signed-off-by: yang.wang <yang.wang@deepcomputing.io>
  1 file changed, 18 insertions(+), 17 deletions(-)
 
 diff --git a/sound/soc/codecs/es8326.c b/sound/soc/codecs/es8326.c
-index 2a751e266ad6e..a2f649d778a72 100644
+index 2a751e266ad6..a2f649d778a7 100644
 --- a/sound/soc/codecs/es8326.c
 +++ b/sound/soc/codecs/es8326.c
 @@ -47,7 +47,7 @@ struct es8326_priv {
@@ -91,5 +91,5 @@ index 2a751e266ad6e..a2f649d778a72 100644
  	if (es8326->spk_ctl_gpio < 0) {
  		dev_info(&i2c->dev, "Can not read property spk_ctl_gpio\n");
 -- 
-2.53.0
+2.54.0
 

@@ -1,4 +1,4 @@
-From 1b7db106f73420bd10dd50054ffedca66b24026c Mon Sep 17 00:00:00 2001
+From 55c77067fd334ec39db7b6496a4b99f8035e46fe Mon Sep 17 00:00:00 2001
 From: zouxiaojun <zouxiaojun@eswincomputing.com>
 Date: Mon, 1 Sep 2025 15:58:44 +0800
 Subject: [PATCH 494/540] to(vdec):vdec log opt
@@ -13,7 +13,7 @@ Signed-off-by: zouxiaojun <zouxiaojun@eswincomputing.com>
  1 file changed, 1 insertion(+), 5 deletions(-)
 
 diff --git a/drivers/staging/media/eswin/vdec/hantro_vcmd.c b/drivers/staging/media/eswin/vdec/hantro_vcmd.c
-index 908010e2b6f76..32ffc7ff33ede 100644
+index 908010e2b6f7..32ffc7ff33ed 100644
 --- a/drivers/staging/media/eswin/vdec/hantro_vcmd.c
 +++ b/drivers/staging/media/eswin/vdec/hantro_vcmd.c
 @@ -1677,11 +1677,7 @@ static long release_cmdbuf(struct file *filp, u16 cmdbuf_id)
@@ -30,5 +30,5 @@ index 908010e2b6f76..32ffc7ff33ede 100644
  
  	return 0;
 -- 
-2.53.0
+2.54.0
 

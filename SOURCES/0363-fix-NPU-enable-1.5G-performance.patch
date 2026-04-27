@@ -1,4 +1,4 @@
-From 1e191b8e6bbfd17d49bebf5e6c2b42df0b4163bf Mon Sep 17 00:00:00 2001
+From e1e1333408acfe3bd4db50b62142ee867719ff18 Mon Sep 17 00:00:00 2001
 From: chenyangxi <chenyangxi@eswincomputing.com>
 Date: Mon, 12 May 2025 14:38:20 +0800
 Subject: [PATCH 363/540] fix:NPU enable 1.5G performance
@@ -12,7 +12,7 @@ Signed-off-by: chenyangxi <chenyangxi@eswincomputing.com>
  1 file changed, 1 deletion(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dts b/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dts
-index eb1b97b49076a..7fb5d86469fe6 100644
+index eb1b97b49076..7fb5d86469fe 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dts
 @@ -272,7 +272,6 @@ &pcie {
@@ -24,5 +24,5 @@ index eb1b97b49076a..7fb5d86469fe6 100644
  
  &d0_dsp_subsys {
 -- 
-2.53.0
+2.54.0
 

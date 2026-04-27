@@ -1,4 +1,4 @@
-From 5df48764e20c6274a5dc668423ffda5b7668e4f5 Mon Sep 17 00:00:00 2001
+From 925107052ee3ab55744eefdf49e5d485906662cf Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Tue, 26 Aug 2025 19:18:52 +0800
 Subject: [PATCH 436/540] Apply patch 13706-WIN2030-18873-fix-modify-gamma-fun
@@ -10,7 +10,7 @@ Subject: [PATCH 436/540] Apply patch 13706-WIN2030-18873-fix-modify-gamma-fun
 
 diff --git a/drivers/gpu/drm/eswin/es_dc_gamma.h b/drivers/gpu/drm/eswin/es_dc_gamma.h
 new file mode 100644
-index 0000000000000..3d758402b9518
+index 000000000000..3d758402b951
 --- /dev/null
 +++ b/drivers/gpu/drm/eswin/es_dc_gamma.h
 @@ -0,0 +1,593 @@
@@ -609,5 +609,5 @@ index 0000000000000..3d758402b9518
 +#endif
 \ No newline at end of file
 -- 
-2.53.0
+2.54.0
 

@@ -1,4 +1,4 @@
-From 2f6b2f725939daed4dac42a38f3aa4aa9d300a3d Mon Sep 17 00:00:00 2001
+From ab08ce532b40ad72b88ec98dddfc92ea687e0d03 Mon Sep 17 00:00:00 2001
 From: Xiang Xu <xuxiang@eswincomputing.com>
 Date: Tue, 26 Aug 2025 19:12:37 +0800
 Subject: [PATCH 507/540] feat:add uart1 auto-flow-control
@@ -12,7 +12,7 @@ Signed-off-by: Xiang Xu <xuxiang@eswincomputing.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/tty/serial/8250/8250_dw.c b/drivers/tty/serial/8250/8250_dw.c
-index b39f026080e8f..50c84104067aa 100644
+index b39f026080e8..50c84104067a 100644
 --- a/drivers/tty/serial/8250/8250_dw.c
 +++ b/drivers/tty/serial/8250/8250_dw.c
 @@ -845,7 +845,7 @@ MODULE_DEVICE_TABLE(acpi, dw8250_acpi_match);
@@ -25,5 +25,5 @@ index b39f026080e8f..50c84104067aa 100644
  		.acpi_match_table = dw8250_acpi_match,
  	},
 -- 
-2.53.0
+2.54.0
 

@@ -1,4 +1,4 @@
-From 02b4440f464fb4e194b464a4a7f1521772b5af60 Mon Sep 17 00:00:00 2001
+From 85ea9e0735bf0029eb424dba2ace367c6781824f Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Thu, 5 Jun 2025 10:05:55 +0800
 Subject: [PATCH 311/540] riscv: dts: eswin: eic7702-fml13v03: Configure DIE0
@@ -10,7 +10,7 @@ Signed-off-by: yang.wang <yang.wang@deepcomputing.io>
  1 file changed, 19 insertions(+), 1 deletion(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
-index 708658ae5fdb1..8bac0f0c8f273 100644
+index 708658ae5fdb..8bac0f0c8f27 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 @@ -555,6 +555,21 @@ conf {
@@ -49,5 +49,5 @@ index 708658ae5fdb1..8bac0f0c8f273 100644
  };
  
 -- 
-2.53.0
+2.54.0
 

@@ -1,4 +1,4 @@
-From 4c3deebf9b7eda59378d4d5a82a4c1b8047e0c91 Mon Sep 17 00:00:00 2001
+From 66ab25ecd9cd415d605b954ff092538d0b542a46 Mon Sep 17 00:00:00 2001
 From: gengzonglin <gengzonglin@eswincomputing.com>
 Date: Tue, 21 Oct 2025 16:29:40 +0800
 Subject: [PATCH 532/540] fix:DC can't be resume during S3.
@@ -13,7 +13,7 @@ Signed-off-by: gengzonglin gengzonglin@eswincomputing.com
  1 file changed, 1 insertion(+)
 
 diff --git a/drivers/gpu/drm/eswin/es_drv.c b/drivers/gpu/drm/eswin/es_drv.c
-index 83998a9495c03..222792da9e68c 100644
+index 83998a9495c0..222792da9e68 100644
 --- a/drivers/gpu/drm/eswin/es_drv.c
 +++ b/drivers/gpu/drm/eswin/es_drv.c
 @@ -345,6 +345,7 @@ static int es_drm_bind(struct device *dev)
@@ -25,5 +25,5 @@ index 83998a9495c03..222792da9e68c 100644
  
  	if (drm_dev->unique) {
 -- 
-2.53.0
+2.54.0
 

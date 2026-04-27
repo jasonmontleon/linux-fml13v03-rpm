@@ -1,4 +1,4 @@
-From 6185dd3905bdd38c0332c315d72aed25c0200230 Mon Sep 17 00:00:00 2001
+From a679d279db983f96955d45845b7f9796e53dc13b Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Tue, 13 May 2025 15:16:42 +0800
 Subject: [PATCH 293/540] =?UTF-8?q?dts:=20riscv:=20eswin:=20fml13v03:=20Fi?=
@@ -13,7 +13,7 @@ Content-Transfer-Encoding: 8bit
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
-index 785dfbec0287f..b2fc8303abdae 100644
+index 785dfbec0287..b2fc8303abda 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 @@ -1337,10 +1337,10 @@ d0_touchpad: hid@2c {
@@ -31,5 +31,5 @@ index 785dfbec0287f..b2fc8303abdae 100644
  	};
  
 -- 
-2.53.0
+2.54.0
 

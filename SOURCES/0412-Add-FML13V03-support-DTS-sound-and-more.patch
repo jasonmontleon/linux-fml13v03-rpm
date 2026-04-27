@@ -1,4 +1,4 @@
-From cab1d5a89fc75b600512f80241c356071229e7c9 Mon Sep 17 00:00:00 2001
+From 184d0347e1f4e057659a4c412e1dd12ebeabffb4 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Tue, 1 Jul 2025 15:26:22 +0800
 Subject: [PATCH 412/540] Add FML13V03 support: DTS, sound, and more
@@ -9,7 +9,7 @@ Subject: [PATCH 412/540] Add FML13V03 support: DTS, sound, and more
  2 files changed, 10 insertions(+), 1 deletion(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
-index 910a1505f414e..98d2a3769173d 100644
+index 910a1505f414..98d2a3769173 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 @@ -1569,7 +1569,7 @@ &pwm0 {
@@ -22,7 +22,7 @@ index 910a1505f414e..98d2a3769173d 100644
  
  &d1_pwm0 {
 diff --git a/arch/riscv/configs/fml13v03_defconfig b/arch/riscv/configs/fml13v03_defconfig
-index f785a5367bbb8..01e5dd571fadf 100755
+index f785a5367bbb..01e5dd571fad 100755
 --- a/arch/riscv/configs/fml13v03_defconfig
 +++ b/arch/riscv/configs/fml13v03_defconfig
 @@ -3735,6 +3735,7 @@ CONFIG_TIMER_ESWIN=y
@@ -46,5 +46,5 @@ index f785a5367bbb8..01e5dd571fadf 100755
 +CONFIG_VIDEO_ESWIN_DVP2AXI=y
 +
 -- 
-2.53.0
+2.54.0
 

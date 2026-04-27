@@ -1,4 +1,4 @@
-From 3b1ba11f0ba66063a31ce04b4a3f15ae467ec1e2 Mon Sep 17 00:00:00 2001
+From 11eef4642f60cd4b0bae48cc0b1067d68b5a64ae Mon Sep 17 00:00:00 2001
 From: denglei <denglei@eswincomputing.com>
 Date: Fri, 29 Aug 2025 09:00:39 +0800
 Subject: [PATCH 511/540] fix:Resolve NPU driver bugs.
@@ -14,7 +14,7 @@ Signed-off-by: denglei <denglei@eswincomputing.com>
  1 file changed, 10 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/soc/eswin/ai_driver/npu/parse_dep.c b/drivers/soc/eswin/ai_driver/npu/parse_dep.c
-index 8604acd5e545e..9a709fd9df483 100644
+index 8604acd5e545..9a709fd9df48 100644
 --- a/drivers/soc/eswin/ai_driver/npu/parse_dep.c
 +++ b/drivers/soc/eswin/ai_driver/npu/parse_dep.c
 @@ -228,12 +228,16 @@ static void dependency_consumer2producer(struct win_executor *executor,
@@ -41,5 +41,5 @@ index 8604acd5e545e..9a709fd9df483 100644
  
  		consumer = task->common_desc[i].fused_parent.index;
 -- 
-2.53.0
+2.54.0
 

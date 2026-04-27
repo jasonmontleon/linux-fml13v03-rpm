@@ -1,4 +1,4 @@
-From de21ed816817c61236b9012a0436f1deb3a90956 Mon Sep 17 00:00:00 2001
+From ebd3040892667b189c0741479a0e2b398a1f0e60 Mon Sep 17 00:00:00 2001
 From: ningyu <ningyu@eswincomputing.com>
 Date: Thu, 7 Aug 2025 21:20:20 +0800
 Subject: [PATCH 476/540] feat:implement pin header function of D560
@@ -12,7 +12,7 @@ Signed-off-by: ningyu <ningyu@eswincomputing.com>
  1 file changed, 92 insertions(+), 41 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-d560.dts b/arch/riscv/boot/dts/eswin/eic7702-d560.dts
-index 5f06d6743016b..a58f5817d75d7 100644
+index 5f06d6743016..a58f5817d75d 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-d560.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-d560.dts
 @@ -85,17 +85,6 @@ &d1_sdio0 {
@@ -236,5 +236,5 @@ index 5f06d6743016b..a58f5817d75d7 100644
  /* die0 GPIO Function Description
  
 -- 
-2.53.0
+2.54.0
 

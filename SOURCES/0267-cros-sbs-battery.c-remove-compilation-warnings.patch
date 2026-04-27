@@ -1,4 +1,4 @@
-From 192eff3e43034b219acafcf6d4056c2167137df0 Mon Sep 17 00:00:00 2001
+From 406116c045fd69d161b387765016f8290c2124a2 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Wed, 26 Mar 2025 15:04:00 +0800
 Subject: [PATCH 267/540] cros-sbs-battery.c: remove compilation warnings.
@@ -9,7 +9,7 @@ Signed-off-by: yang.wang <yang.wang@deepcomputing.io>
  1 file changed, 1 insertion(+), 2 deletions(-)
 
 diff --git a/drivers/power/supply/cros-sbs-battery.c b/drivers/power/supply/cros-sbs-battery.c
-index edabfab5a6d03..5189abddf99a8 100644
+index edabfab5a6d0..5189abddf99a 100644
 --- a/drivers/power/supply/cros-sbs-battery.c
 +++ b/drivers/power/supply/cros-sbs-battery.c
 @@ -984,8 +984,7 @@ static int cros_sbs_get_property(struct power_supply *psy,
@@ -23,5 +23,5 @@ index edabfab5a6d03..5189abddf99a8 100644
  }
  
 -- 
-2.53.0
+2.54.0
 

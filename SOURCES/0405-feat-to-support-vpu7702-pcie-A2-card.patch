@@ -1,4 +1,4 @@
-From b77cb1a2227713b74bf413e9c8f4ca1b1de259c9 Mon Sep 17 00:00:00 2001
+From f02e9e819f1d25b9b9d26c06d47bf46de4ff972d Mon Sep 17 00:00:00 2001
 From: zhouliang1 <zhouliang1@eswincomputing.com>
 Date: Fri, 13 Jun 2025 10:19:29 +0800
 Subject: [PATCH 405/540] feat:to support vpu7702 pcie A2 card
@@ -20,7 +20,7 @@ Reviewed-by: Joey Zheng <zhengyu@eswincomputing.com>
 
 diff --git a/arch/riscv/boot/dts/eswin/vpu7702-pcie-a2.dts b/arch/riscv/boot/dts/eswin/vpu7702-pcie-a2.dts
 new file mode 100644
-index 0000000000000..9dba60840c6a8
+index 000000000000..9dba60840c6a
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/vpu7702-pcie-a2.dts
 @@ -0,0 +1,1115 @@
@@ -1141,7 +1141,7 @@ index 0000000000000..9dba60840c6a8
 +};
 diff --git a/arch/riscv/configs/vpu7702_pcie_a2_defconfig b/arch/riscv/configs/vpu7702_pcie_a2_defconfig
 new file mode 100644
-index 0000000000000..c151e2f411bbe
+index 000000000000..c151e2f411bb
 --- /dev/null
 +++ b/arch/riscv/configs/vpu7702_pcie_a2_defconfig
 @@ -0,0 +1,855 @@
@@ -2001,5 +2001,5 @@ index 0000000000000..c151e2f411bbe
 +CONFIG_TI_ADS1015=y
 +CONFIG_ESWIN_MALLOC_DMABUF=y
 -- 
-2.53.0
+2.54.0
 

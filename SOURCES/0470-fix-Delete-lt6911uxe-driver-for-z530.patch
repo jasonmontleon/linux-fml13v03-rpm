@@ -1,4 +1,4 @@
-From 8f68d0bd1e852fde61bc0f002add6297603fd81e Mon Sep 17 00:00:00 2001
+From 15bfddc973791b7f52ddc325118e8a70f1aae9f9 Mon Sep 17 00:00:00 2001
 From: Yulin Lu <luyulin@eswincomputing.com>
 Date: Mon, 18 Aug 2025 15:05:26 +0800
 Subject: [PATCH 470/540] fix:Delete lt6911uxe driver for z530
@@ -18,7 +18,7 @@ Signed-off-by: Yulin Lu <luyulin@eswincomputing.com>
  delete mode 100644 drivers/media/i2c/lt6911uxe.h
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-z530.dts b/arch/riscv/boot/dts/eswin/eic7700-z530.dts
-index 5a57a6dac46e4..a790850fda0e2 100644
+index 5a57a6dac46e..a790850fda0e 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-z530.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7700-z530.dts
 @@ -19,7 +19,6 @@
@@ -30,7 +30,7 @@ index 5a57a6dac46e4..a790850fda0e2 100644
  / {
  	#address-cells = <2>;
 diff --git a/drivers/media/i2c/Kconfig b/drivers/media/i2c/Kconfig
-index 4f2da9fc8b113..c752d65e0b364 100644
+index 4f2da9fc8b11..c752d65e0b36 100644
 --- a/drivers/media/i2c/Kconfig
 +++ b/drivers/media/i2c/Kconfig
 @@ -645,15 +645,6 @@ config VIDEO_ST_VGXY61
@@ -50,7 +50,7 @@ index 4f2da9fc8b113..c752d65e0b364 100644
  source "drivers/media/i2c/et8ek8/Kconfig"
  
 diff --git a/drivers/media/i2c/Makefile b/drivers/media/i2c/Makefile
-index 1981f94d89831..87bf4679eaef4 100644
+index 1981f94d8983..87bf4679eaef 100644
 --- a/drivers/media/i2c/Makefile
 +++ b/drivers/media/i2c/Makefile
 @@ -149,4 +149,3 @@ obj-$(CONFIG_VIDEO_VPX3220) += vpx3220.o
@@ -61,7 +61,7 @@ index 1981f94d89831..87bf4679eaef4 100644
 \ No newline at end of file
 diff --git a/drivers/media/i2c/lt6911uxe.c b/drivers/media/i2c/lt6911uxe.c
 deleted file mode 100644
-index d3ca98931854b..0000000000000
+index d3ca98931854..000000000000
 --- a/drivers/media/i2c/lt6911uxe.c
 +++ /dev/null
 @@ -1,1715 +0,0 @@
@@ -1783,7 +1783,7 @@ index d3ca98931854b..0000000000000
 \ No newline at end of file
 diff --git a/drivers/media/i2c/lt6911uxe.h b/drivers/media/i2c/lt6911uxe.h
 deleted file mode 100644
-index 84888eebd297f..0000000000000
+index 84888eebd297..000000000000
 --- a/drivers/media/i2c/lt6911uxe.h
 +++ /dev/null
 @@ -1,24 +0,0 @@
@@ -1813,5 +1813,5 @@ index 84888eebd297f..0000000000000
 -#endif /* __LT6911UXE_H  */
 \ No newline at end of file
 -- 
-2.53.0
+2.54.0
 

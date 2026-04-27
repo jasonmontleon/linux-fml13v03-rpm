@@ -1,4 +1,4 @@
-From 315abd0ca121cf86e0389518c3a4c1d63dc0a06c Mon Sep 17 00:00:00 2001
+From 418acf3d5ab37bf05478c37fd4da1a5ad9fddd92 Mon Sep 17 00:00:00 2001
 From: Sandie Cao <sandie.cao@deepcomputing.io>
 Date: Thu, 22 May 2025 10:42:53 +0800
 Subject: [PATCH 302/540] riscv: module: Optimize PLT/GOT entry counting perf
@@ -25,7 +25,7 @@ Signed-off-by: zhangyizhong <zhangyizhong@eswincomputing.com>
  1 file changed, 59 insertions(+), 9 deletions(-)
 
 diff --git a/arch/riscv/kernel/module-sections.c b/arch/riscv/kernel/module-sections.c
-index e264e59e596e8..12ef6ef3773b9 100644
+index e264e59e596e..12ef6ef3773b 100644
 --- a/arch/riscv/kernel/module-sections.c
 +++ b/arch/riscv/kernel/module-sections.c
 @@ -9,6 +9,7 @@
@@ -137,5 +137,5 @@ index e264e59e596e8..12ef6ef3773b9 100644
  	mod->arch.plt.shdr->sh_flags = SHF_EXECINSTR | SHF_ALLOC;
  	mod->arch.plt.shdr->sh_addralign = L1_CACHE_BYTES;
 -- 
-2.53.0
+2.54.0
 

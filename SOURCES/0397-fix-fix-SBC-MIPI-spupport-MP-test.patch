@@ -1,4 +1,4 @@
-From eb906b25c20db8595a08a256b9caef38c1dc169c Mon Sep 17 00:00:00 2001
+From dbbc455096e5be1481411f4eb326839fa0cdca59 Mon Sep 17 00:00:00 2001
 From: fanxiaping <fanxiaping@eswincomputing.com>
 Date: Thu, 29 May 2025 14:12:18 +0800
 Subject: [PATCH 397/540] fix:fix SBC MIPI spupport MP test
@@ -19,7 +19,7 @@ Signed-off-by: fanxiaping <fanxiaping@eswincomputing.com>
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-sbc-a1-mipi.dts b/arch/riscv/boot/dts/eswin/eic7700-sbc-a1-mipi.dts
 new file mode 100755
-index 0000000000000..d04f39408a679
+index 000000000000..d04f39408a67
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/eic7700-sbc-a1-mipi.dts
 @@ -0,0 +1,135 @@
@@ -159,7 +159,7 @@ index 0000000000000..d04f39408a679
 +};
 +
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dts b/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dts
-index 8bd6467565027..618f8625ddf66 100644
+index 8bd646756502..618f8625ddf6 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dts
 @@ -18,308 +18,8 @@
@@ -1027,7 +1027,7 @@ index 8bd6467565027..618f8625ddf66 100644
  };
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dtsi b/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dtsi
 new file mode 100755
-index 0000000000000..153998c57c1a2
+index 000000000000..153998c57c1a
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dtsi
 @@ -0,0 +1,798 @@
@@ -1830,7 +1830,7 @@ index 0000000000000..153998c57c1a2
 +};
 +
 diff --git a/drivers/gpu/drm/eswin/es_mipi_dsi.c b/drivers/gpu/drm/eswin/es_mipi_dsi.c
-index 0707ad4155c6e..cf3b74eb04796 100644
+index 0707ad4155c6..cf3b74eb0479 100644
 --- a/drivers/gpu/drm/eswin/es_mipi_dsi.c
 +++ b/drivers/gpu/drm/eswin/es_mipi_dsi.c
 @@ -30,6 +30,7 @@
@@ -1863,5 +1863,5 @@ index 0707ad4155c6e..cf3b74eb04796 100644
  	dsi_priv->plat_data.base = dsi_priv->dphy_base;
  
 -- 
-2.53.0
+2.54.0
 

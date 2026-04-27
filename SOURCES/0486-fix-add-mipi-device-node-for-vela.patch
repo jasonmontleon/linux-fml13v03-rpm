@@ -1,4 +1,4 @@
-From e7a90f3959b7f52d80a92c8e97839e0d95b41c04 Mon Sep 17 00:00:00 2001
+From f8a66fdbb0e9ba5b9ab252cc2343d657fae8b66b Mon Sep 17 00:00:00 2001
 From: guozeyang <guozeyang@eswincomputing.com>
 Date: Tue, 26 Aug 2025 15:41:35 +0800
 Subject: [PATCH 486/540] fix:add mipi device node for vela
@@ -17,7 +17,7 @@ Signed-off-by: guozeyang <guozeyang@eswincomputing.com>
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-vela-mipi.dts b/arch/riscv/boot/dts/eswin/eic7700-vela-mipi.dts
 new file mode 100644
-index 0000000000000..e9d77f32cb4d7
+index 000000000000..e9d77f32cb4d
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/eic7700-vela-mipi.dts
 @@ -0,0 +1,307 @@
@@ -330,7 +330,7 @@ index 0000000000000..e9d77f32cb4d7
 +*/
 \ No newline at end of file
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-vela.dts b/arch/riscv/boot/dts/eswin/eic7700-vela.dts
-index 5dbf7f6445b8a..bf612bdc2dde5 100644
+index 5dbf7f6445b8..bf612bdc2dde 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-vela.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7700-vela.dts
 @@ -122,6 +122,57 @@ &d0_graphcard2 {
@@ -392,7 +392,7 @@ index 5dbf7f6445b8a..bf612bdc2dde5 100644
  	status = "disabled";
  	d0_i2s1_port: port {
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-z530.dts b/arch/riscv/boot/dts/eswin/eic7700-z530.dts
-index 3db40fb3cecf9..5d022417d45f1 100644
+index 3db40fb3cecf..5d022417d45f 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-z530.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7700-z530.dts
 @@ -126,6 +126,57 @@ &d0_graphcard2 {
@@ -454,7 +454,7 @@ index 3db40fb3cecf9..5d022417d45f1 100644
  	status = "okay";
  	d0_i2s1_port: port {
 diff --git a/drivers/gpu/drm/eswin/es_mipi_dsi.c b/drivers/gpu/drm/eswin/es_mipi_dsi.c
-index 74c5c68420020..86b7c770c1f0d 100644
+index 74c5c6842002..86b7c770c1f0 100644
 --- a/drivers/gpu/drm/eswin/es_mipi_dsi.c
 +++ b/drivers/gpu/drm/eswin/es_mipi_dsi.c
 @@ -154,6 +154,8 @@ struct mipi_dsi_priv {
@@ -498,5 +498,5 @@ index 74c5c68420020..86b7c770c1f0d 100644
  
  	dsi_priv->plat_data.phy_ops = &dphy_ops;
 -- 
-2.53.0
+2.54.0
 

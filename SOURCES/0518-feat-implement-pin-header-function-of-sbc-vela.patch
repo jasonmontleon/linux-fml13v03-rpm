@@ -1,4 +1,4 @@
-From 8f38747d330dd3c6a460cd00455c8d04d2317beb Mon Sep 17 00:00:00 2001
+From 3d5359c4f07b4504ef35efb92ea23a9500877e5d Mon Sep 17 00:00:00 2001
 From: Xiang Xu <xuxiang@eswincomputing.com>
 Date: Mon, 25 Aug 2025 10:11:09 +0800
 Subject: [PATCH 518/540] feat:implement pin header function of sbc/vela
@@ -12,7 +12,7 @@ Signed-off-by: Xiang Xu <xuxiang@eswincomputing.com>
  1 file changed, 8 insertions(+), 39 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dtsi b/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dtsi
-index b42aaeda5da30..7b72bbe2cc5da 100755
+index b42aaeda5da3..7b72bbe2cc5d 100755
 --- a/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dtsi
 @@ -33,7 +33,7 @@
@@ -109,5 +109,5 @@ index b42aaeda5da30..7b72bbe2cc5da 100755
  	status = "okay";
  	pinctrl-names = "default";
 -- 
-2.53.0
+2.54.0
 

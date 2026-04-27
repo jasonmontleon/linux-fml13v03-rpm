@@ -1,4 +1,4 @@
-From b9e4b8be2464abbf8c81e2d6201234f13f4e1d1d Mon Sep 17 00:00:00 2001
+From 4572cc40623102a14adb9265ad8c6990efa6dcf7 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Fri, 11 Jul 2025 18:40:15 +0800
 Subject: [PATCH 421/540] changelogs: dts: add support for DVT hardware variant
@@ -11,7 +11,7 @@ Subject: [PATCH 421/540] changelogs: dts: add support for DVT hardware variant
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03-evt.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03-evt.dts
 new file mode 100755
-index 0000000000000..1d77fad613dac
+index 000000000000..1d77fad613da
 --- /dev/null
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03-evt.dts
 @@ -0,0 +1,1783 @@
@@ -1799,7 +1799,7 @@ index 0000000000000..1d77fad613dac
 +	gpio111 : lcd touch resetn(O)
 +*/
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
-index 1d77fad613dac..a5af0129bc7f1 100644
+index 1d77fad613da..a5af0129bc7f 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 +++ b/arch/riscv/boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts
 @@ -170,7 +170,8 @@ backlight_regulator: regulator-backlight {
@@ -1878,5 +1878,5 @@ index 1d77fad613dac..a5af0129bc7f1 100644
  };
  
 -- 
-2.53.0
+2.54.0
 

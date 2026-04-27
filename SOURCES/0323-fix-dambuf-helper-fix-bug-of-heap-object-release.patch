@@ -1,4 +1,4 @@
-From 318da85bf3e8572613277665d1698eb5c840296a Mon Sep 17 00:00:00 2001
+From 5de5b181fc9b6c097e6fc1e2001aa973503ec564 Mon Sep 17 00:00:00 2001
 From: linmin <linmin@eswincomputing.com>
 Date: Mon, 3 Mar 2025 16:06:13 +0800
 Subject: [PATCH 323/540] fix(dambuf helper):fix bug of heap object release
@@ -12,7 +12,7 @@ Signed-off-by: linmin <linmin@eswincomputing.com>
  1 file changed, 6 insertions(+), 16 deletions(-)
 
 diff --git a/drivers/memory/eswin/es_rsvmem_heap/dmabuf-heap-import-helper.c b/drivers/memory/eswin/es_rsvmem_heap/dmabuf-heap-import-helper.c
-index fa0297c4e606b..f0d67b27ae4ba 100644
+index fa0297c4e606..f0d67b27ae4b 100644
 --- a/drivers/memory/eswin/es_rsvmem_heap/dmabuf-heap-import-helper.c
 +++ b/drivers/memory/eswin/es_rsvmem_heap/dmabuf-heap-import-helper.c
 @@ -412,14 +412,9 @@ void common_dmabuf_heap_release(struct heap_mem *heap_obj)
@@ -52,5 +52,5 @@ index fa0297c4e606b..f0d67b27ae4ba 100644
  EXPORT_SYMBOL(common_dmabuf_heap_rsv_iova_unmap);
  
 -- 
-2.53.0
+2.54.0
 

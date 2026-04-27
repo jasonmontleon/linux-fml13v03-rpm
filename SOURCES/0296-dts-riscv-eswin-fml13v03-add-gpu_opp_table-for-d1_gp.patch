@@ -1,4 +1,4 @@
-From 80b7538e5df5afa990bfbe55b3946687bb5a03ea Mon Sep 17 00:00:00 2001
+From 4c2d0ca925266b0d5572162e4b1e5a15efc6da90 Mon Sep 17 00:00:00 2001
 From: Sandie Cao <sandie.cao@deepcomputing.io>
 Date: Thu, 15 May 2025 14:17:17 +0800
 Subject: [PATCH 296/540] dts: riscv: eswin: fml13v03: add gpu_opp_table for
@@ -10,7 +10,7 @@ Signed-off-by: Sandie Cao <sandie.cao@deepcomputing.io>
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi b/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi
-index 49f3179454ed6..71868819a4017 100644
+index 49f3179454ed..71868819a401 100644
 --- a/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eswin-win2030-die1-soc.dtsi
 @@ -1042,8 +1042,9 @@ d1_gpu: gpu@71400000 {
@@ -25,5 +25,5 @@ index 49f3179454ed6..71868819a4017 100644
  
  		d1_sata: sata@0x70420000 {
 -- 
-2.53.0
+2.54.0
 

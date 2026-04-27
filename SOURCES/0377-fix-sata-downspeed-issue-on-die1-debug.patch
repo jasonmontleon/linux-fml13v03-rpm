@@ -1,4 +1,4 @@
-From 45971c023c117a38ef7f9822fe776cd8bf3c2001 Mon Sep 17 00:00:00 2001
+From 9ce0dbee7346edd9048ce5054d85a020d59e1fca Mon Sep 17 00:00:00 2001
 From: ouyanghui <ouyanghui@eswincomputing.com>
 Date: Fri, 23 May 2025 10:53:12 +0800
 Subject: [PATCH 377/540] fix:sata downspeed issue on die1 debug
@@ -12,7 +12,7 @@ Signed-off-by: ouyanghui <ouyanghui@eswincomputing.com>
  1 file changed, 14 insertions(+), 106 deletions(-)
 
 diff --git a/drivers/ata/ahci_eswin.c b/drivers/ata/ahci_eswin.c
-index 76f803828053b..d07a2b1b99edf 100644
+index 76f803828053..d07a2b1b99ed 100644
 --- a/drivers/ata/ahci_eswin.c
 +++ b/drivers/ata/ahci_eswin.c
 @@ -59,13 +59,13 @@
@@ -217,5 +217,5 @@ index 76f803828053b..d07a2b1b99edf 100644
  };
  module_platform_driver(ahci_driver);
 -- 
-2.53.0
+2.54.0
 

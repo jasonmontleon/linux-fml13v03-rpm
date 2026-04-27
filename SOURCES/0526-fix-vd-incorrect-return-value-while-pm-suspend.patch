@@ -1,4 +1,4 @@
-From 0525a9249f539e0519b7c8606a5e4a44a5f22886 Mon Sep 17 00:00:00 2001
+From 1af43777b30d5d01a2d8e86e52ba8d7e3f3f39a1 Mon Sep 17 00:00:00 2001
 From: zouxiaojun <zouxiaojun@eswincomputing.com>
 Date: Fri, 10 Oct 2025 17:18:08 +0800
 Subject: [PATCH 526/540] fix(vd):incorrect return value while pm suspend
@@ -16,7 +16,7 @@ Signed-off-by: zouxiaojun <zouxiaojun@eswincomputing.com>
  2 files changed, 26 insertions(+), 32 deletions(-)
 
 diff --git a/drivers/staging/media/eswin/vdec/hantro_vcmd.c b/drivers/staging/media/eswin/vdec/hantro_vcmd.c
-index 32ffc7ff33ede..e0b8755f8f9ff 100644
+index 32ffc7ff33ed..e0b8755f8f9f 100644
 --- a/drivers/staging/media/eswin/vdec/hantro_vcmd.c
 +++ b/drivers/staging/media/eswin/vdec/hantro_vcmd.c
 @@ -2012,13 +2012,13 @@ void hantrovcmd_trigger_irq(struct timer_list *timer)
@@ -116,7 +116,7 @@ index 32ffc7ff33ede..e0b8755f8f9ff 100644
  	case HANTRO_VCMD_IOCH_RELEASE_CMDBUF: {
  		u16 cmdbuf_id;
 diff --git a/drivers/staging/media/eswin/venc/vc8000_vcmd_driver.c b/drivers/staging/media/eswin/venc/vc8000_vcmd_driver.c
-index db69a6a5f0040..9aaa99c9c2d72 100644
+index db69a6a5f004..9aaa99c9c2d7 100644
 --- a/drivers/staging/media/eswin/venc/vc8000_vcmd_driver.c
 +++ b/drivers/staging/media/eswin/venc/vc8000_vcmd_driver.c
 @@ -1816,7 +1816,7 @@ static void hantrovcmd_trigger_irq(struct timer_list *timer)
@@ -228,5 +228,5 @@ index db69a6a5f0040..9aaa99c9c2d72 100644
  #ifdef SUPPORT_DMA_HEAP
  	case HANTRO_IOCH_DMA_HEAP_GET_IOVA: {
 -- 
-2.53.0
+2.54.0
 

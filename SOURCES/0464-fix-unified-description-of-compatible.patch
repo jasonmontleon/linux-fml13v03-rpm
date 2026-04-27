@@ -1,4 +1,4 @@
-From 58c4977cd6c7e447b1fa776470cf9c934fb39162 Mon Sep 17 00:00:00 2001
+From 399345090c2c3e624628766974f004e1617597dc Mon Sep 17 00:00:00 2001
 From: ningyu <ningyu@eswincomputing.com>
 Date: Tue, 12 Aug 2025 21:03:20 +0800
 Subject: [PATCH 464/540] fix:unified description of compatible
@@ -22,7 +22,7 @@ Signed-off-by: ningyu <ningyu@eswincomputing.com>
  11 files changed, 11 insertions(+), 19 deletions(-)
 
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-ce1.dtsi b/arch/riscv/boot/dts/eswin/eic7700-ce1.dtsi
-index 44c162469dd02..91c9ca2f7145c 100644
+index 44c162469dd0..91c9ca2f7145 100644
 --- a/arch/riscv/boot/dts/eswin/eic7700-ce1.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7700-ce1.dtsi
 @@ -40,7 +40,7 @@ / {
@@ -35,7 +35,7 @@ index 44c162469dd02..91c9ca2f7145c 100644
  	aliases {
  		serial0 = &d0_uart0;
 diff --git a/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dtsi b/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dtsi
-index 3fd5e460e67c5..7d2943a199bb8 100755
+index 3fd5e460e67c..7d2943a199bb 100755
 --- a/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7700-sbc-a1.dtsi
 @@ -41,7 +41,7 @@ / {
@@ -48,7 +48,7 @@ index 3fd5e460e67c5..7d2943a199bb8 100755
  	aliases {
  		serial0 = &d0_uart0;
 diff --git a/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi b/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
-index 4d4ab2c6b7501..20926a20be8bb 100644
+index 4d4ab2c6b750..20926a20be8b 100644
 --- a/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eic7702-som560-interleave.dtsi
 @@ -43,8 +43,7 @@ / {
@@ -62,7 +62,7 @@ index 4d4ab2c6b7501..20926a20be8bb 100644
  	aliases {
  		serial0 = &d0_uart0;
 diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030-arch.dtsi b/arch/riscv/boot/dts/eswin/eswin-win2030-arch.dtsi
-index 523484ad2450b..99d52b32f4c0a 100644
+index 523484ad2450..99d52b32f4c0 100644
 --- a/arch/riscv/boot/dts/eswin/eswin-win2030-arch.dtsi
 +++ b/arch/riscv/boot/dts/eswin/eswin-win2030-arch.dtsi
 @@ -34,7 +34,7 @@
@@ -75,7 +75,7 @@ index 523484ad2450b..99d52b32f4c0a 100644
  	L64: cpus {
  		#address-cells = <1>;
 diff --git a/arch/riscv/boot/dts/eswin/eswin-win2030.dts b/arch/riscv/boot/dts/eswin/eswin-win2030.dts
-index 165d68f6334c5..992d64f85dc6e 100644
+index 165d68f6334c..992d64f85dc6 100644
 --- a/arch/riscv/boot/dts/eswin/eswin-win2030.dts
 +++ b/arch/riscv/boot/dts/eswin/eswin-win2030.dts
 @@ -41,8 +41,7 @@ / {
@@ -89,7 +89,7 @@ index 165d68f6334c5..992d64f85dc6e 100644
  #if ((CHIPLET_AND_DIE & 0x2) || (CHIPLET_AND_DIE == 0x0))
      aliases {
 diff --git a/arch/riscv/boot/dts/eswin/m2-evb.dts b/arch/riscv/boot/dts/eswin/m2-evb.dts
-index d1778d379babf..c0303cf4cb3fc 100644
+index d1778d379bab..c0303cf4cb3f 100644
 --- a/arch/riscv/boot/dts/eswin/m2-evb.dts
 +++ b/arch/riscv/boot/dts/eswin/m2-evb.dts
 @@ -40,8 +40,7 @@ / {
@@ -103,7 +103,7 @@ index d1778d379babf..c0303cf4cb3fc 100644
  	aliases {
  		serial0 = &d0_uart0;
 diff --git a/arch/riscv/boot/dts/eswin/u2-evb.dts b/arch/riscv/boot/dts/eswin/u2-evb.dts
-index 7309a3496b298..e2d3d6ed5fd6e 100644
+index 7309a3496b29..e2d3d6ed5fd6 100644
 --- a/arch/riscv/boot/dts/eswin/u2-evb.dts
 +++ b/arch/riscv/boot/dts/eswin/u2-evb.dts
 @@ -43,8 +43,7 @@ / {
@@ -117,7 +117,7 @@ index 7309a3496b298..e2d3d6ed5fd6e 100644
  	aliases {
  		serial0 = &d0_uart0;
 diff --git a/arch/riscv/boot/dts/eswin/vpu7702-evb.dts b/arch/riscv/boot/dts/eswin/vpu7702-evb.dts
-index 8294cefbb16df..0857faf7e36ac 100644
+index 8294cefbb16d..0857faf7e36a 100644
 --- a/arch/riscv/boot/dts/eswin/vpu7702-evb.dts
 +++ b/arch/riscv/boot/dts/eswin/vpu7702-evb.dts
 @@ -40,8 +40,7 @@ / {
@@ -131,7 +131,7 @@ index 8294cefbb16df..0857faf7e36ac 100644
  	aliases {
  		serial0 = &d0_uart0;
 diff --git a/arch/riscv/boot/dts/eswin/vpu7702-pcie-a2.dts b/arch/riscv/boot/dts/eswin/vpu7702-pcie-a2.dts
-index f0d8195a0463a..34b72d61219fa 100644
+index f0d8195a0463..34b72d61219f 100644
 --- a/arch/riscv/boot/dts/eswin/vpu7702-pcie-a2.dts
 +++ b/arch/riscv/boot/dts/eswin/vpu7702-pcie-a2.dts
 @@ -40,8 +40,7 @@ / {
@@ -145,7 +145,7 @@ index f0d8195a0463a..34b72d61219fa 100644
  	aliases {
  		serial0 = &d0_uart0;
 diff --git a/arch/riscv/boot/dts/eswin/vpu7702-pcie.dts b/arch/riscv/boot/dts/eswin/vpu7702-pcie.dts
-index fb6996b68a0d0..74f92a0fa51c9 100644
+index fb6996b68a0d..74f92a0fa51c 100644
 --- a/arch/riscv/boot/dts/eswin/vpu7702-pcie.dts
 +++ b/arch/riscv/boot/dts/eswin/vpu7702-pcie.dts
 @@ -40,8 +40,7 @@ / {
@@ -159,7 +159,7 @@ index fb6996b68a0d0..74f92a0fa51c9 100644
  	aliases {
  		serial0 = &d0_uart0;
 diff --git a/arch/riscv/boot/dts/eswin/vpu7702_pcie_factory.dts b/arch/riscv/boot/dts/eswin/vpu7702_pcie_factory.dts
-index 03a0fadb9cbec..28e305db08c75 100644
+index 03a0fadb9cbe..28e305db08c7 100644
 --- a/arch/riscv/boot/dts/eswin/vpu7702_pcie_factory.dts
 +++ b/arch/riscv/boot/dts/eswin/vpu7702_pcie_factory.dts
 @@ -40,8 +40,7 @@ / {
@@ -173,5 +173,5 @@ index 03a0fadb9cbec..28e305db08c75 100644
  	aliases {
  		serial0 = &d0_uart0;
 -- 
-2.53.0
+2.54.0
 

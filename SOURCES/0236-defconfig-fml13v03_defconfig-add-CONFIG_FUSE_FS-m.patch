@@ -1,4 +1,4 @@
-From 792b2758b6bd2a07075ade47eab98b25e8932b7c Mon Sep 17 00:00:00 2001
+From 0623ec83f1479865caacf2ad938bbb33b3e9c7d8 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Thu, 13 Mar 2025 17:38:51 +0800
 Subject: [PATCH 236/540] defconfig: fml13v03_defconfig: add CONFIG_FUSE_FS=m .
@@ -9,7 +9,7 @@ Signed-off-by: yang.wang <yang.wang@deepcomputing.io>
  1 file changed, 1 insertion(+)
 
 diff --git a/arch/riscv/configs/fml13v03_defconfig b/arch/riscv/configs/fml13v03_defconfig
-index c1d5d90c241d2..30b90ea7e508d 100755
+index c1d5d90c241d..30b90ea7e508 100755
 --- a/arch/riscv/configs/fml13v03_defconfig
 +++ b/arch/riscv/configs/fml13v03_defconfig
 @@ -781,6 +781,7 @@ CONFIG_BTRFS_FS=m
@@ -21,5 +21,5 @@ index c1d5d90c241d2..30b90ea7e508d 100755
  CONFIG_OVERLAY_FS_REDIRECT_DIR=y
  CONFIG_OVERLAY_FS_INDEX=y
 -- 
-2.53.0
+2.54.0
 

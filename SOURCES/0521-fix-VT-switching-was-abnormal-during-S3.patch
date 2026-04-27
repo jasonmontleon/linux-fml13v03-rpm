@@ -1,4 +1,4 @@
-From ad07c5c43017710df179f8d1d68062e17bce09b3 Mon Sep 17 00:00:00 2001
+From 79aa954d49e7f963f6b1309e1056ec87134da7d0 Mon Sep 17 00:00:00 2001
 From: gengzonglin <gengzonglin@eswincomputing.com>
 Date: Thu, 18 Sep 2025 10:22:10 +0800
 Subject: [PATCH 521/540] fix:VT switching was abnormal during S3.
@@ -12,7 +12,7 @@ Signed-off-by: gengzonglin gengzonglin@eswincomputing.com
  1 file changed, 3 insertions(+)
 
 diff --git a/drivers/gpu/drm/eswin/es_drv.c b/drivers/gpu/drm/eswin/es_drv.c
-index 1ee7f00528c1a..1809b0a5f2a0e 100644
+index 1ee7f00528c1..1809b0a5f2a0 100644
 --- a/drivers/gpu/drm/eswin/es_drv.c
 +++ b/drivers/gpu/drm/eswin/es_drv.c
 @@ -334,6 +334,9 @@ static int es_drm_bind(struct device *dev)
@@ -26,5 +26,5 @@ index 1ee7f00528c1a..1809b0a5f2a0e 100644
  	if (ret) {
  		DRM_DEV_ERROR(dev, "Failed to read index property, ret = %d\n",
 -- 
-2.53.0
+2.54.0
 
