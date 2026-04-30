@@ -1,4 +1,4 @@
-From 6159e381b17f18d95dacc42cce6979b4ed9d3544 Mon Sep 17 00:00:00 2001
+From 23512609f1f99198d1bcd9cb43abb6e8e281fedb Mon Sep 17 00:00:00 2001
 From: Sandie Cao <sandie.cao@deepcomputing.io>
 Date: Wed, 19 Mar 2025 17:01:19 +0800
 Subject: [PATCH 260/540] riscv: eswin: fml13v03: Fix no power of tp549d22 when

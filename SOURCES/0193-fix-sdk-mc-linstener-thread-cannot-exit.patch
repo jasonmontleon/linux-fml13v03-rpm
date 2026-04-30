@@ -1,4 +1,4 @@
-From 1eb30a66c2cef9fe26e9deadb7e9160a79102eaa Mon Sep 17 00:00:00 2001
+From 340e59dcaf78b9af64bc3fa706837b154eeb48c4 Mon Sep 17 00:00:00 2001
 From: tangdaoyong <tangdaoyong@eswincomputing.com>
 Date: Fri, 11 Oct 2024 09:37:19 +0800
 Subject: [PATCH 193/540] fix:sdk mc linstener thread cannot exit

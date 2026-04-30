@@ -1,4 +1,4 @@
-From 4d2c2fc8a44dd7c9673eb7b72264bb04d178c279 Mon Sep 17 00:00:00 2001
+From 002c4883b19256fcf35d49af517a18d61a817f06 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Tue, 18 Mar 2025 10:35:43 +0800
 Subject: [PATCH 241/540] defconfig: fml13v03_defconfig: Fix compilation

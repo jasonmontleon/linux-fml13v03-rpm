@@ -1,4 +1,4 @@
-From 0623ec83f1479865caacf2ad938bbb33b3e9c7d8 Mon Sep 17 00:00:00 2001
+From 562a2b13036fa92f6a7cd15ba6705c5c67a4d6cd Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Thu, 13 Mar 2025 17:38:51 +0800
 Subject: [PATCH 236/540] defconfig: fml13v03_defconfig: add CONFIG_FUSE_FS=m .

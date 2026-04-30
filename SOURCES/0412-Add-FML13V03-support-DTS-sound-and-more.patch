@@ -1,4 +1,4 @@
-From 184d0347e1f4e057659a4c412e1dd12ebeabffb4 Mon Sep 17 00:00:00 2001
+From 79521e324fc2fc9d721bf4b96dca0a621b0ab7f8 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Tue, 1 Jul 2025 15:26:22 +0800
 Subject: [PATCH 412/540] Add FML13V03 support: DTS, sound, and more

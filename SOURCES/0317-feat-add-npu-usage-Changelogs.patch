@@ -1,4 +1,4 @@
-From 26abd48fa3697c4588f7bfcc1b0bdbe9e38ccf9b Mon Sep 17 00:00:00 2001
+From afd275eca4d081997793dcbb430b7aa605bc63bb Mon Sep 17 00:00:00 2001
 From: luoshanggui <luoshanggui@eswincomputing.com>
 Date: Mon, 30 Dec 2024 11:09:41 +0800
 Subject: [PATCH 317/540] feat: add npu usage Changelogs:

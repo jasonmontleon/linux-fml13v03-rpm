@@ -1,4 +1,4 @@
-From b002ea8078dec888d024c1913b1e1daf7bd89b3f Mon Sep 17 00:00:00 2001
+From e49561c26292300ce25cdddbd02dd499e0a164c6 Mon Sep 17 00:00:00 2001
 From: donghuawei <donghuawei@eswincomputing.com>
 Date: Fri, 13 Jun 2025 18:12:58 +0800
 Subject: [PATCH 406/540] feat: vpu set npu freq to 1G

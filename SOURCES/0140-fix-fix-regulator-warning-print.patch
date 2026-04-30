@@ -1,4 +1,4 @@
-From c40ed3b4c91d862aa36317bcb0baadb715736116 Mon Sep 17 00:00:00 2001
+From 196b6a0817da88730fd5c28fde1189b5ed4216da Mon Sep 17 00:00:00 2001
 From: luyulin <luyulin@eswincomputing.com>
 Date: Tue, 30 Jul 2024 14:03:46 +0800
 Subject: [PATCH 140/540] fix:fix regulator warning print

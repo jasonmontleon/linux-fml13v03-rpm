@@ -1,4 +1,4 @@
-From 3cdee7d29836a319aac451b1b38ebd2aa60cdd19 Mon Sep 17 00:00:00 2001
+From a9cb38382d91fe78cf8b32f7ad61b1ebcafa713b Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Wed, 23 Jul 2025 16:04:58 +0800
 Subject: [PATCH 428/540] fix: cpu: Set maximum frequency to 1.4GHz (missed in

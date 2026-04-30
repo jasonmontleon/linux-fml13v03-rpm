@@ -1,4 +1,4 @@
-From 70fa547ffb70ba0081473bd670f9ed9072e9a0bc Mon Sep 17 00:00:00 2001
+From c026df8c167cc56fb71f4937ba5823e20c183ddb Mon Sep 17 00:00:00 2001
 From: linmin <linmin@eswincomputing.com>
 Date: Mon, 10 Feb 2025 18:26:41 +0800
 Subject: [PATCH 229/540] fix:power down all tbus at start up

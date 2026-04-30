@@ -1,4 +1,4 @@
-From ba272540ededed62d5c33ff46da3c3e74551c419 Mon Sep 17 00:00:00 2001
+From c508a8281cf69557a6454634817dbe43bc563627 Mon Sep 17 00:00:00 2001
 From: Dongdong Zhang <zhangdongdong@eswincomputing.com>
 Date: Fri, 13 Jun 2025 14:34:45 +0800
 Subject: [PATCH 404/540] feat:Reserve memory for bd info

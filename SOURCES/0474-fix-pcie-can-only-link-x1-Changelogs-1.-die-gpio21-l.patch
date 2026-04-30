@@ -1,4 +1,4 @@
-From bfdce00477dfc83bb2ea09f6b0625fad50750a2c Mon Sep 17 00:00:00 2001
+From f754b8a20515a9ced72c7474b49eafbeed6110dd Mon Sep 17 00:00:00 2001
 From: ouyanghui <ouyanghui@eswincomputing.com>
 Date: Fri, 1 Aug 2025 10:45:09 +0800
 Subject: [PATCH 474/540] fix:pcie can only link x1 Changelogs: 1. die gpio21

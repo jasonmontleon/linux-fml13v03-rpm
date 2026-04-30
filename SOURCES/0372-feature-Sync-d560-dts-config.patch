@@ -1,4 +1,4 @@
-From fecebbeda4fe9f5b2887b470517fcbd4e9016400 Mon Sep 17 00:00:00 2001
+From 8f30e7dc252d40cf268c4d3be58c3db4267d6e63 Mon Sep 17 00:00:00 2001
 From: chenzhanzhan <chenzhanzhan@eswincomputing.com>
 Date: Mon, 19 May 2025 17:12:58 +0800
 Subject: [PATCH 372/540] feature: Sync d560 dts config
