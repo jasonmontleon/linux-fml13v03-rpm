@@ -1,4 +1,4 @@
-From 99bd091fb672fa8f60fe82a0f89614648354d0c5 Mon Sep 17 00:00:00 2001
+From 32ae2e67ddd9f334a279351ba7011292829a7c88 Mon Sep 17 00:00:00 2001
 From: xuxiang <xuxiang@eswincomputing.com>
 Date: Mon, 27 May 2024 18:53:47 +0800
 Subject: [PATCH 045/540] perf:update dma, pwm, timer driver

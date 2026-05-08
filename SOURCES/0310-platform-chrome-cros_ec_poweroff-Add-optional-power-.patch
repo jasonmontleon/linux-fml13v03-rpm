@@ -1,4 +1,4 @@
-From 534181fb6323a9265bf53544989e81fef2459833 Mon Sep 17 00:00:00 2001
+From 2e38c5745a6696a1175685b1ea862ef8532636b5 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Thu, 5 Jun 2025 09:47:25 +0800
 Subject: [PATCH 310/540] platform/chrome: cros_ec_poweroff: Add optional power

@@ -1,4 +1,4 @@
-From 61671ab6c4f4a2be6ad7f16acfe3cd7107e14938 Mon Sep 17 00:00:00 2001
+From 3cbc11bec5ef051ac68bf6e61d306bd1bb432d4f Mon Sep 17 00:00:00 2001
 From: weishangjuan <weishangjuan@eswincomputing.com>
 Date: Fri, 23 May 2025 09:47:13 +0800
 Subject: [PATCH 388/540] fix: resolve the issue of slow fan speed

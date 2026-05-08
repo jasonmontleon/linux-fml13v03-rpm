@@ -1,4 +1,4 @@
-From 61c1b3b2f50183896b519823eb00a57b6bae5d08 Mon Sep 17 00:00:00 2001
+From d8dcf18ee9e6ad53850c14d20d35bec6ac9101b1 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Mon, 4 Aug 2025 15:09:42 +0800
 Subject: [PATCH 431/540] dts: Add EEPROM device node to enable SN retrieval

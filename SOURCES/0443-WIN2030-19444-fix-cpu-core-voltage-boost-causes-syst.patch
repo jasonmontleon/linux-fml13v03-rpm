@@ -1,4 +1,4 @@
-From eb7020f435dc01fa938466278eb99645aa033824 Mon Sep 17 00:00:00 2001
+From 4b6768166067a72a87a3fd00c5b91cf0ed960dd4 Mon Sep 17 00:00:00 2001
 From: ouyanghui <ouyanghui@eswincomputing.com>
 Date: Wed, 17 Sep 2025 14:19:02 +0800
 Subject: [PATCH 443/540] WIN2030-19444:fix:cpu core voltage boost causes
