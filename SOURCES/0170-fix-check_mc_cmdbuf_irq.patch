@@ -1,4 +1,4 @@
-From a5f98da2238c23324390283c678b78f4dc32176d Mon Sep 17 00:00:00 2001
+From 81c82525785fbb8d0c9968dec279df892f873e2c Mon Sep 17 00:00:00 2001
 From: tangdaoyong <tangdaoyong@eswincomputing.com>
 Date: Thu, 29 Aug 2024 17:26:10 +0800
 Subject: [PATCH 170/540] fix:check_mc_cmdbuf_irq

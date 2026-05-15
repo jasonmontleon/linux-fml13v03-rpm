@@ -1,4 +1,4 @@
-From 4bee29f9f70765a7399f57d0ab0738ebb215cc4d Mon Sep 17 00:00:00 2001
+From ef9757484b0bd8d2807bfd3363e2ece855f53145 Mon Sep 17 00:00:00 2001
 From: sandiecao <sandie.cao@deepcomputing.io>
 Date: Mon, 29 Sep 2025 14:29:22 +0800
 Subject: [PATCH 446/540] WIN2030-19417:feat:npu suspend if npu status is free.

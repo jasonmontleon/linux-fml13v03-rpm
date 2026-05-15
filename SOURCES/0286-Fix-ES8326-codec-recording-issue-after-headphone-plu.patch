@@ -1,4 +1,4 @@
-From 78a454b84c397d1d6899c78274e9da72be1b3871 Mon Sep 17 00:00:00 2001
+From c788b0a0fb24de72cc3fdc8f84e2acca088e3be2 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Mon, 21 Apr 2025 18:11:42 +0800
 Subject: [PATCH 286/540] Fix ES8326 codec recording issue after headphone

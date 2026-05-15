@@ -1,4 +1,4 @@
-From 5c43acf3f7abe9eef85a9eaa2088a44c92b6007b Mon Sep 17 00:00:00 2001
+From 6a02722d10a13c278cd44daf2bc20263a884e315 Mon Sep 17 00:00:00 2001
 From: Jason Montleon <jmontleo@redhat.com>
 Date: Wed, 4 Mar 2026 12:38:40 -0500
 Subject: [PATCH 003/540] Revert "media: i2c: ov5647: Sensor should report RAW

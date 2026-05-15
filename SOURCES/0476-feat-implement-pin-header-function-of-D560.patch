@@ -1,4 +1,4 @@
-From 22b5dca8c48cb6cc72e293506e438b5b0341132e Mon Sep 17 00:00:00 2001
+From 2777ed1743af5da0002840ce12f8c954c01a0296 Mon Sep 17 00:00:00 2001
 From: ningyu <ningyu@eswincomputing.com>
 Date: Thu, 7 Aug 2025 21:20:20 +0800
 Subject: [PATCH 476/540] feat:implement pin header function of D560

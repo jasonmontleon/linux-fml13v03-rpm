@@ -1,4 +1,4 @@
-From d38a48fd27284125e5dc7a954e1eac299ff62a35 Mon Sep 17 00:00:00 2001
+From a4dd968dc1cb13180fb58a54b8f940a5c3821cc1 Mon Sep 17 00:00:00 2001
 From: denglei <denglei@eswincomputing.com>
 Date: Fri, 25 Oct 2024 10:36:46 +0800
 Subject: [PATCH 208/540] fix:resolve HDMI hot plug compatibility issues.

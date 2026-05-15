@@ -1,4 +1,4 @@
-From c65365d9d4330cac98c4b4fbddc6882d8ee8db51 Mon Sep 17 00:00:00 2001
+From 7203b9bb8533fc5c89ed0f879e4b9c95b5b5ea84 Mon Sep 17 00:00:00 2001
 From: yufangxian <yufangxian@eswincomputing.com>
 Date: Fri, 16 May 2025 14:42:41 +0800
 Subject: [PATCH 369/540] fix: Revert some err dts changes for VI Merge

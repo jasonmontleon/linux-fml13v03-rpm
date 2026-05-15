@@ -1,4 +1,4 @@
-From 5402d26e353896042cba3a0b7b99637a3306a886 Mon Sep 17 00:00:00 2001
+From ffcdf64ffe253d6c114b8f054de943656c4c80ef Mon Sep 17 00:00:00 2001
 From: Shenlin Liang <liangshenlin@eswincomputing.com>
 Date: Thu, 12 Jun 2025 16:48:22 +0800
 Subject: [PATCH 401/540] feat:add vpu7702_pcie_factory.dts

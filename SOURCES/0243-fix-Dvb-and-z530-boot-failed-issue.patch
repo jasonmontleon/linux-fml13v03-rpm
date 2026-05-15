@@ -1,4 +1,4 @@
-From 5260ebf37347e7b11e2e17436a2fdc21d3cadea4 Mon Sep 17 00:00:00 2001
+From 21bed42ba58adfe3b260fff67799e9ea521a750f Mon Sep 17 00:00:00 2001
 From: lilijun <lilijun@eswincomputing.com>
 Date: Fri, 7 Feb 2025 17:46:07 +0800
 Subject: [PATCH 243/540] fix:Dvb and z530 boot failed issue
