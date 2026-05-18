@@ -1,4 +1,4 @@
-From f77eff637fdf0bdaa035be25f77efe9dce473689 Mon Sep 17 00:00:00 2001
+From a7327c0de2e0ba45a555f1114706f78fe4324e54 Mon Sep 17 00:00:00 2001
 From: liangshuang <liangshuang@eswincomputing.com>
 Date: Fri, 26 Jul 2024 13:54:16 +0800
 Subject: [PATCH 132/540] fix:fix the issue of sd resuming fail.

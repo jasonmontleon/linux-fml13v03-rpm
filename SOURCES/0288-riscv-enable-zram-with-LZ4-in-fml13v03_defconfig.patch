@@ -1,4 +1,4 @@
-From 765f15ac712a8d6f702c5e401915e0e68263954a Mon Sep 17 00:00:00 2001
+From 487b5edac459439e05d61dc1cd21a590207bc50b Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Thu, 24 Apr 2025 14:30:10 +0800
 Subject: [PATCH 288/540] riscv: enable zram with LZ4 in fml13v03_defconfig

@@ -1,4 +1,4 @@
-From beab75f45d36fba26221aacdf8a5efc8f1887b4e Mon Sep 17 00:00:00 2001
+From 65b296fc689a0a24d7138925320b7751bf5dc50b Mon Sep 17 00:00:00 2001
 From: fanglifei <fanglifei@eswincomputing.com>
 Date: Tue, 27 Aug 2024 17:29:07 +0800
 Subject: [PATCH 167/540] feat: A series patch applyed for mmu
@@ -342,7 +342,7 @@ index 461591503bf4..a1e6ef3b1352 100644
  	bool
  
 diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-index c4a9797e9eff..cd52a64a65ff 100644
+index d558e43aedcf..26ff9957bdc6 100644
 --- a/kernel/sched/core.c
 +++ b/kernel/sched/core.c
 @@ -6609,7 +6609,9 @@ static void __sched notrace __schedule(unsigned int sched_mode)

@@ -1,4 +1,4 @@
-From dfc5b52ba78aefa46ab77d5b0637561db246ccad Mon Sep 17 00:00:00 2001
+From 2c6667cf9d4a7e4a25baca941090399cc67f317a Mon Sep 17 00:00:00 2001
 From: wangguosheng <wangguosheng@eswincomputing.com>
 Date: Tue, 26 Aug 2025 18:37:00 +0800
 Subject: [PATCH 482/540] fix: fix gpio error for pm

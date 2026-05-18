@@ -1,4 +1,4 @@
-From bd590403a1782218feda27dc8afd6f5fd5a87ff3 Mon Sep 17 00:00:00 2001
+From e8880f955a6dc863dd43e18099d6674dfbec44fd Mon Sep 17 00:00:00 2001
 From: ningyu <ningyu@eswincomputing.com>
 Date: Sun, 26 Jan 2025 09:42:41 +0800
 Subject: [PATCH 226/540] fix: corrected critical temperature

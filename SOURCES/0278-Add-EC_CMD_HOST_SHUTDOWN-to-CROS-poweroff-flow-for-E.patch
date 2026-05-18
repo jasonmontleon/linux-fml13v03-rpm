@@ -1,4 +1,4 @@
-From e77eb76cd6c02f20545a27742613c9760127326c Mon Sep 17 00:00:00 2001
+From 80b7dd381827fb92b8718da592e6b42d7a17db1a Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Mon, 7 Apr 2025 16:38:25 +0800
 Subject: [PATCH 278/540] Add EC_CMD_HOST_SHUTDOWN to CROS poweroff flow for EC

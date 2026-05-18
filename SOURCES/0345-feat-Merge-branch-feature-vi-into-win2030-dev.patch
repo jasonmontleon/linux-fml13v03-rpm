@@ -1,4 +1,4 @@
-From c3a1df2bd7ad2afcedbaf89b4a9152c9ab6f3e5a Mon Sep 17 00:00:00 2001
+From 01950935af78b223626536e341e29845cb17bcd0 Mon Sep 17 00:00:00 2001
 From: congyuyang <congyuyang@eswincomputing.com>
 Date: Fri, 11 Apr 2025 21:29:00 +0800
 Subject: [PATCH 345/540] feat:Merge branch 'feature-vi' into win2030-dev
@@ -22,7 +22,7 @@ Signed-off-by: congyuyang <congyuyang@eswincomputing.com>
  arch/riscv/boot/dts/eswin/eic7702-tb.dts      |    21 -
  drivers/media/i2c/Kconfig                     |    24 +-
  drivers/media/i2c/Makefile                    |     3 +
- drivers/media/i2c/imx219.c                    |   550 +-
+ drivers/media/i2c/imx219.c                    |   546 +-
  drivers/media/i2c/imx327.c                    |  2255 +++
  drivers/media/platform/Kconfig                |     1 +
  drivers/media/platform/Makefile               |     4 +
@@ -351,7 +351,7 @@ Signed-off-by: congyuyang <congyuyang@eswincomputing.com>
  include/media/eswin/dw-dphy-data.h            |    32 +
  include/media/eswin/dw-mipi-csi-pltfrm.h      |   103 +
  include/media/eswin/eswin_vi.h                |    59 +
- 343 files changed, 127574 insertions(+), 340 deletions(-)
+ 343 files changed, 127574 insertions(+), 336 deletions(-)
  create mode 100644 arch/riscv/boot/dts/eswin/eic7700-evb-camera.dtsi
  create mode 100644 arch/riscv/boot/dts/eswin/eic7700-hifive-premier-p550-camera.dtsi
  create mode 100644 arch/riscv/boot/dts/eswin/eic7700-osm-camera.dtsi
@@ -2202,7 +2202,7 @@ index 80b00d39b48f..d0f8b180c1de 100644
 +obj-$(CONFIG_VIDEO_IMX327) += imx327.o
 \ No newline at end of file
 diff --git a/drivers/media/i2c/imx219.c b/drivers/media/i2c/imx219.c
-index a3d5a8a7c660..c29ae8ebb02b 100644
+index 03cbacd77a80..b1b51bed25e4 100644
 --- a/drivers/media/i2c/imx219.c
 +++ b/drivers/media/i2c/imx219.c
 @@ -29,6 +29,10 @@
@@ -2646,15 +2646,15 @@ index a3d5a8a7c660..c29ae8ebb02b 100644
 +	if (fse->pad == IMAGE_PAD) {
 +		if (fse->index >= ARRAY_SIZE(supported_modes))
 +			return -EINVAL;
++
++		code = imx219_get_format_code(imx219, fse->code);
++		if (fse->code != code)
++			return -EINVAL;
  
 -	fse->min_width = supported_modes[fse->index].width;
 -	fse->max_width = fse->min_width;
 -	fse->min_height = supported_modes[fse->index].height;
 -	fse->max_height = fse->min_height;
-+		code = imx219_get_format_code(imx219, fse->code);
-+		if (fse->code != code)
-+			return -EINVAL;
-+
 +		fse->min_width = supported_modes[fse->index].width;
 +		fse->max_width = fse->min_width;
 +		fse->min_height = supported_modes[fse->index].height;
@@ -3020,14 +3020,9 @@ index a3d5a8a7c660..c29ae8ebb02b 100644
  	}
  
  	ret = imx219_get_regulators(imx219);
-@@ -1271,14 +1555,10 @@ static int imx219_probe(struct i2c_client *client)
- 		return ret;
- 	}
+@@ -1279,9 +1563,9 @@ static int imx219_probe(struct i2c_client *client)
+ 				     "failed to get reset gpio\n");
  
--	/* Request optional enable pin */
--	imx219->reset_gpio = devm_gpiod_get_optional(dev, "reset",
--						     GPIOD_OUT_HIGH);
--
  	/*
 -	 * The sensor must be powered for imx219_identify_module()
 -	 * to be able to read the CHIP_ID register
@@ -3038,7 +3033,7 @@ index a3d5a8a7c660..c29ae8ebb02b 100644
  	ret = imx219_power_on(dev);
  	if (ret)
  		return ret;
-@@ -1319,9 +1599,10 @@ static int imx219_probe(struct i2c_client *client)
+@@ -1322,9 +1606,10 @@ static int imx219_probe(struct i2c_client *client)
  	imx219->sd.entity.function = MEDIA_ENT_F_CAM_SENSOR;
  
  	/* Initialize source pad */
@@ -3051,7 +3046,7 @@ index a3d5a8a7c660..c29ae8ebb02b 100644
  	if (ret) {
  		dev_err(dev, "failed to init entity pads: %d\n", ret);
  		goto error_handler_free;
-@@ -1334,23 +1615,21 @@ static int imx219_probe(struct i2c_client *client)
+@@ -1337,23 +1622,21 @@ static int imx219_probe(struct i2c_client *client)
  		goto error_media_entity;
  	}
  
@@ -3078,7 +3073,7 @@ index a3d5a8a7c660..c29ae8ebb02b 100644
  
  error_media_entity:
  	media_entity_cleanup(&imx219->sd.entity);
-@@ -1375,10 +1654,9 @@ static void imx219_remove(struct i2c_client *client)
+@@ -1378,10 +1661,9 @@ static void imx219_remove(struct i2c_client *client)
  	imx219_free_controls(imx219);
  
  	pm_runtime_disable(&client->dev);

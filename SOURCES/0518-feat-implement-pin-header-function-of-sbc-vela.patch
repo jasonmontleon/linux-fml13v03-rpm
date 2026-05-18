@@ -1,4 +1,4 @@
-From bdcde759c8bfe6f46830c9bd463a4e1aa311676c Mon Sep 17 00:00:00 2001
+From 93637548905792ba9cb72309e8fd10f0680063f6 Mon Sep 17 00:00:00 2001
 From: Xiang Xu <xuxiang@eswincomputing.com>
 Date: Mon, 25 Aug 2025 10:11:09 +0800
 Subject: [PATCH 518/540] feat:implement pin header function of sbc/vela

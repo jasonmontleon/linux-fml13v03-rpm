@@ -1,4 +1,4 @@
-From 09b63a8b3e8f120c40da8da0ec6f12550249c660 Mon Sep 17 00:00:00 2001
+From 8c9735e7249d2517563839c78928fda08a611f2b Mon Sep 17 00:00:00 2001
 From: linmin <linmin@eswincomputing.com>
 Date: Mon, 10 Feb 2025 17:05:23 +0800
 Subject: [PATCH 227/540] release-2025.0130
@@ -5461,10 +5461,10 @@ index 49ebac96f6e1..1bb76ebb5aa8 100644
  
  #endif
 diff --git a/init/main.c b/init/main.c
-index 20d2dd4d9b40..52f6494d4d07 100644
+index eac47a2beb7e..a30005570df9 100644
 --- a/init/main.c
 +++ b/init/main.c
-@@ -884,6 +884,19 @@ static void __init print_unknown_bootoptions(void)
+@@ -883,6 +883,19 @@ static void __init print_unknown_bootoptions(void)
  	memblock_free(unknown_options, len);
  }
  
@@ -5484,7 +5484,7 @@ index 20d2dd4d9b40..52f6494d4d07 100644
  asmlinkage __visible __init __no_sanitize_address __noreturn __no_stack_protector
  void start_kernel(void)
  {
-@@ -914,6 +927,7 @@ void start_kernel(void)
+@@ -913,6 +926,7 @@ void start_kernel(void)
  	setup_nr_cpu_ids();
  	setup_per_cpu_areas();
  	smp_prepare_boot_cpu();	/* arch-specific boot-cpu hooks */
@@ -5493,7 +5493,7 @@ index 20d2dd4d9b40..52f6494d4d07 100644
  
  	pr_notice("Kernel command line: %s\n", saved_command_line);
 diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-index cd52a64a65ff..f385097f2b6e 100644
+index 26ff9957bdc6..7a83e0d31187 100644
 --- a/kernel/sched/core.c
 +++ b/kernel/sched/core.c
 @@ -8431,6 +8431,7 @@ long sched_setaffinity(pid_t pid, const struct cpumask *in_mask)

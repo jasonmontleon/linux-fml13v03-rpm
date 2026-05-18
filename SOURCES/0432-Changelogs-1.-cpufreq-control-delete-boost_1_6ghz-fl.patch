@@ -1,4 +1,4 @@
-From b2ee05cb81631658a3f0fffc75772de4e7908098 Mon Sep 17 00:00:00 2001
+From fd3468f1494f7d106a863c3f73d0106ac7b5c5c7 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Wed, 6 Aug 2025 09:53:39 +0800
 Subject: [PATCH 432/540] Changelogs: 1. cpufreq control delete boost_1_6ghz

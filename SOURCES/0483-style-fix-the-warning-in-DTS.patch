@@ -1,4 +1,4 @@
-From 963fc749006a8923b5a7e469e24290e45bb63717 Mon Sep 17 00:00:00 2001
+From ac1ed44b6efc00bbf078126bbb7f1b2b4f7bfb6d Mon Sep 17 00:00:00 2001
 From: wangguosheng <wangguosheng@eswincomputing.com>
 Date: Wed, 27 Aug 2025 13:18:36 +0800
 Subject: [PATCH 483/540] style:fix the warning in DTS

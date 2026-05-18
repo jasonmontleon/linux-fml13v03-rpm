@@ -1,4 +1,4 @@
-From 0ef051b1bd17ae404248d837122ef4ffdf1a5fd5 Mon Sep 17 00:00:00 2001
+From 844d4e76205cc2f3e26ba72aad1beaffad4781bf Mon Sep 17 00:00:00 2001
 From: Yulin Lu <luyulin@eswincomputing.com>
 Date: Thu, 31 Jul 2025 17:49:10 +0800
 Subject: [PATCH 451/540] fix:resolve dewarp calltrace on dual die

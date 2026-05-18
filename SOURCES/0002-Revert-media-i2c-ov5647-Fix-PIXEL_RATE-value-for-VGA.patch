@@ -1,4 +1,4 @@
-From 8cb69d8b55b33755fe86918c909379da37d729cf Mon Sep 17 00:00:00 2001
+From 1d0ae8b121a64cd966ec4e477a9ae25e288b1dbe Mon Sep 17 00:00:00 2001
 From: Jason Montleon <jmontleo@redhat.com>
 Date: Wed, 4 Mar 2026 12:38:25 -0500
 Subject: [PATCH 002/540] Revert "media: i2c: ov5647: Fix PIXEL_RATE value for

@@ -1,4 +1,4 @@
-From 018ea479a993d894f4d022d75ed1c401425d1a96 Mon Sep 17 00:00:00 2001
+From fefdded6f2eb3d9f7ba931149398ac628553b034 Mon Sep 17 00:00:00 2001
 From: Xiang Xu <xuxiang@eswincomputing.com>
 Date: Fri, 16 May 2025 13:28:57 +0800
 Subject: [PATCH 368/540] feat: osm dts add gpio pinctrl script

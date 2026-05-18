@@ -1,4 +1,4 @@
-From 6a59705fdd083285c39b519a90db7f37e7f2b825 Mon Sep 17 00:00:00 2001
+From 8eb6343ef757968919d8d7d537d9274338d5ca0a Mon Sep 17 00:00:00 2001
 From: Sandie Cao <sandie.cao@deepcomputing.io>
 Date: Mon, 16 Jun 2025 14:50:48 +0800
 Subject: [PATCH 315/540] riscv: eswin: fml13v03: using pvt0 as temperature

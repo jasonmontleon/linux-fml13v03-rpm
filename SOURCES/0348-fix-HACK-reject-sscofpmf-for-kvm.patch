@@ -1,4 +1,4 @@
-From abbc44010a4cee75e1e0d0e72c881bfdbf69ed04 Mon Sep 17 00:00:00 2001
+From 101916f8fd7514f12d1352a17b06d3f0f71192a4 Mon Sep 17 00:00:00 2001
 From: Han Gao <gaohan@iscas.ac.cn>
 Date: Mon, 11 Nov 2024 23:30:40 +0800
 Subject: [PATCH 348/540] fix:HACK: reject sscofpmf for kvm
