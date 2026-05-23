@@ -1,4 +1,4 @@
-From 99f779c32682eaacfc82250e5c7d3ce004d879ca Mon Sep 17 00:00:00 2001
+From 961cbb59bc2bac6c59c046e2d1d248eb572ffc76 Mon Sep 17 00:00:00 2001
 From: liusheng <liusheng@eswincomputing.com>
 Date: Tue, 30 Jul 2024 19:16:18 +0800
 Subject: [PATCH 139/540] fix:use timer 500ms to try gpu idle

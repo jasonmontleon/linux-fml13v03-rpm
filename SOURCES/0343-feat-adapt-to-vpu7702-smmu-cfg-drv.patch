@@ -1,4 +1,4 @@
-From ee5811fe7c2925c0b39632c4ee7fcd621bcc1b02 Mon Sep 17 00:00:00 2001
+From 9691ec8fc4c8a2c8d4e8723cfb1c98272bdfe0ed Mon Sep 17 00:00:00 2001
 From: Joey Zheng <zhengyu@eswincomputing.com>
 Date: Thu, 24 Apr 2025 16:53:28 +0800
 Subject: [PATCH 343/540] feat:adapt to vpu7702 smmu cfg drv

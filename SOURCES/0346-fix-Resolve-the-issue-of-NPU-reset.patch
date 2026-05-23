@@ -1,4 +1,4 @@
-From 353aed952c14888deaf6a398db94827fb287f606 Mon Sep 17 00:00:00 2001
+From 06381bee7697e1d05557ebfa0baed541d9d3c872 Mon Sep 17 00:00:00 2001
 From: denglei <denglei@eswincomputing.com>
 Date: Thu, 24 Apr 2025 15:43:26 +0800
 Subject: [PATCH 346/540] fix:Resolve the issue of NPU reset.

@@ -1,4 +1,4 @@
-From 880cfb09cfa46575bae7d2847ef1ec8b44b177f3 Mon Sep 17 00:00:00 2001
+From 596057810413df704410ba100d8ff93d77416a17 Mon Sep 17 00:00:00 2001
 From: ouyanghui <ouyanghui@eswincomputing.com>
 Date: Wed, 15 Oct 2025 17:52:57 +0800
 Subject: [PATCH 528/540] Merge branch 'win2030-dev' into pm_merge
@@ -41324,7 +41324,7 @@ index e347b435a038..c4c2dfd95b4c 100644
  spi-nor-objs			+= xmc.o
  spi-nor-$(CONFIG_DEBUG_FS)	+= debugfs.o
 diff --git a/drivers/mtd/spi-nor/core.c b/drivers/mtd/spi-nor/core.c
-index 9f00f746320a..0ae203ddcd04 100644
+index c03ae7bed090..2bae486eed4b 100644
 --- a/drivers/mtd/spi-nor/core.c
 +++ b/drivers/mtd/spi-nor/core.c
 @@ -2015,6 +2015,7 @@ static const struct spi_nor_manufacturer *manufacturers[] = {
@@ -41336,10 +41336,10 @@ index 9f00f746320a..0ae203ddcd04 100644
  
  static const struct flash_info spi_nor_generic_flash = {
 diff --git a/drivers/mtd/spi-nor/core.h b/drivers/mtd/spi-nor/core.h
-index 4f2e3cb9d139..1cc34c623030 100644
+index 478778628fc1..981437aa54d5 100644
 --- a/drivers/mtd/spi-nor/core.h
 +++ b/drivers/mtd/spi-nor/core.h
-@@ -659,6 +659,7 @@ extern const struct spi_nor_manufacturer spi_nor_sst;
+@@ -665,6 +665,7 @@ extern const struct spi_nor_manufacturer spi_nor_sst;
  extern const struct spi_nor_manufacturer spi_nor_winbond;
  extern const struct spi_nor_manufacturer spi_nor_xilinx;
  extern const struct spi_nor_manufacturer spi_nor_xmc;

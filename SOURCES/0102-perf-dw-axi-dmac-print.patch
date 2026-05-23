@@ -1,4 +1,4 @@
-From edf7392cf1c93c3ded0729529f5fdfefa6aa6fa4 Mon Sep 17 00:00:00 2001
+From 8c7ea0d619646b8161da6a789174a228ca022277 Mon Sep 17 00:00:00 2001
 From: xuxiang <xuxiang@eswincomputing.com>
 Date: Fri, 12 Jul 2024 16:12:45 +0800
 Subject: [PATCH 102/540] perf:dw-axi-dmac print
@@ -12,7 +12,7 @@ Signed-off-by: xuxiang <xuxiang@eswincomputing.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/dma/dw-axi-dmac/dw-axi-dmac-platform.c b/drivers/dma/dw-axi-dmac/dw-axi-dmac-platform.c
-index 54c1396d974b..cddc9a612ee3 100644
+index 669395205f5c..952e3953b60f 100644
 --- a/drivers/dma/dw-axi-dmac/dw-axi-dmac-platform.c
 +++ b/drivers/dma/dw-axi-dmac/dw-axi-dmac-platform.c
 @@ -550,7 +550,7 @@ static void dw_axi_dma_set_hw_channel(struct axi_dma_chan *chan, bool set)

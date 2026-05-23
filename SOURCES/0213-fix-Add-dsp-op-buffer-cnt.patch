@@ -1,4 +1,4 @@
-From 1d43516995bfae1e6e5fe1ffd6a8280cc26b0c43 Mon Sep 17 00:00:00 2001
+From 7cdbe30d9ebf81e250f26980ed6042d947148bcc Mon Sep 17 00:00:00 2001
 From: denglei <denglei@eswincomputing.com>
 Date: Mon, 28 Oct 2024 19:37:10 +0800
 Subject: [PATCH 213/540] fix:Add dsp op buffer cnt.

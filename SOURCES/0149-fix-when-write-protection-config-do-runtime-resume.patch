@@ -1,4 +1,4 @@
-From 493490176aa0f988382e181245a9eea08e452000 Mon Sep 17 00:00:00 2001
+From fa88f76ae1e1202e28d60257ab2a29e9a8e1f2f1 Mon Sep 17 00:00:00 2001
 From: huangyifeng <huangyifeng@eswincomputing.com>
 Date: Wed, 7 Aug 2024 17:01:33 +0800
 Subject: [PATCH 149/540] fix:when write protection config, do runtime resume

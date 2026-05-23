@@ -1,4 +1,4 @@
-From ee60cd22116ef7418d7e01e1a304889f0a109c21 Mon Sep 17 00:00:00 2001
+From 3da3f8744266c424702eb5100908975d3ac64ff9 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Mon, 17 Mar 2025 17:54:27 +0800
 Subject: [PATCH 239/540] pwm: fan_control & backlight .

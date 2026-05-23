@@ -1,4 +1,4 @@
-From 48e36af137dcde0b984268e3203f9bf966c6ad45 Mon Sep 17 00:00:00 2001
+From 946048fa869d2a68a50ae5cd2ac553c6bfd5e2c7 Mon Sep 17 00:00:00 2001
 From: zhangyizhong <zhangyizhong@eswincomputing.com>
 Date: Tue, 4 Mar 2025 09:38:52 +0800
 Subject: [PATCH 254/540] feat:enable gpu1 by default on 7702.

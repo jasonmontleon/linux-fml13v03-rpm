@@ -1,4 +1,4 @@
-From d8897c6772cf447b3f9ace56a9576e7ae1c8e3ce Mon Sep 17 00:00:00 2001
+From d55346bb54094a138337293367b2ad4e8eb144a3 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Thu, 27 Mar 2025 14:34:40 +0800
 Subject: [PATCH 270/540] cros: add support for reading temperature sensor.

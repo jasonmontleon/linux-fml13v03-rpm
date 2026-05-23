@@ -1,4 +1,4 @@
-From 65b296fc689a0a24d7138925320b7751bf5dc50b Mon Sep 17 00:00:00 2001
+From 95a4ef43a9eba402078ab6343be86fbd7186ef3d Mon Sep 17 00:00:00 2001
 From: fanglifei <fanglifei@eswincomputing.com>
 Date: Tue, 27 Aug 2024 17:29:07 +0800
 Subject: [PATCH 167/540] feat: A series patch applyed for mmu
@@ -120,10 +120,10 @@ index 000000000000..2387804b1c63
 +The barrier matches a full barrier in the proximity of the membarrier system call
 +entry, cf. membarrier_{private,global}_expedited().
 diff --git a/MAINTAINERS b/MAINTAINERS
-index e700dca4974b..656373b207f4 100644
+index 8b1ee5b11eca..f3a34c892552 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
-@@ -13703,7 +13703,9 @@ M:	Mathieu Desnoyers <mathieu.desnoyers@efficios.com>
+@@ -13711,7 +13711,9 @@ M:	Mathieu Desnoyers <mathieu.desnoyers@efficios.com>
  M:	"Paul E. McKenney" <paulmck@kernel.org>
  L:	linux-kernel@vger.kernel.org
  S:	Supported

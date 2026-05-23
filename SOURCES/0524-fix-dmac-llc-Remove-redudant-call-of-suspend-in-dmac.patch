@@ -1,4 +1,4 @@
-From af8a110d757f270d65d918ded269d14c9c9392af Mon Sep 17 00:00:00 2001
+From e6b61f6988f5a91360b720ceefc98b8a5b3ae003 Mon Sep 17 00:00:00 2001
 From: Min Lin <linmin@eswincomputing.com>
 Date: Tue, 30 Sep 2025 14:08:15 +0800
 Subject: [PATCH 524/540] fix(dmac,llc):Remove redudant call of suspend in dmac
@@ -16,10 +16,10 @@ Signed-off-by: Min Lin <linmin@eswincomputing.com>
  1 file changed, 3 deletions(-)
 
 diff --git a/drivers/dma/dw-axi-dmac/dw-axi-dmac-platform.c b/drivers/dma/dw-axi-dmac/dw-axi-dmac-platform.c
-index 385373165764..0322ab4e76fc 100644
+index 1e1cd6acf233..0dbb26cd0afd 100644
 --- a/drivers/dma/dw-axi-dmac/dw-axi-dmac-platform.c
 +++ b/drivers/dma/dw-axi-dmac/dw-axi-dmac-platform.c
-@@ -1826,9 +1826,6 @@ static int dw_probe(struct platform_device *pdev)
+@@ -1824,9 +1824,6 @@ static int dw_probe(struct platform_device *pdev)
  
  	dev_info(chip->dev, "DesignWare AXI DMA Controller, %d channels\n",
  		 dw->hdata->nr_channels);

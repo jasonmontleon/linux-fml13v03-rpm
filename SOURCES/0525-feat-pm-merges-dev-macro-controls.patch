@@ -1,4 +1,4 @@
-From f5d46a416139275d456b3e127612d571ebef802e Mon Sep 17 00:00:00 2001
+From 0167ef8b0955111e780c7a0af8d5788e9247206a Mon Sep 17 00:00:00 2001
 From: hujiamiao <hujiamiao@eswincomputing.com>
 Date: Wed, 24 Sep 2025 14:03:50 +0800
 Subject: [PATCH 525/540] feat:pm merges dev macro controls
@@ -1944,10 +1944,10 @@ index 96ad1398bf1d..70de370e4ebd 100644
  };
  module_platform_driver(eswin_timer_driver);
 diff --git a/drivers/dma/dw-axi-dmac/dw-axi-dmac-platform.c b/drivers/dma/dw-axi-dmac/dw-axi-dmac-platform.c
-index 0322ab4e76fc..aa06b40f4127 100644
+index 0dbb26cd0afd..d6ab9a600f5a 100644
 --- a/drivers/dma/dw-axi-dmac/dw-axi-dmac-platform.c
 +++ b/drivers/dma/dw-axi-dmac/dw-axi-dmac-platform.c
-@@ -1920,7 +1920,7 @@ static struct platform_driver dw_driver = {
+@@ -1918,7 +1918,7 @@ static struct platform_driver dw_driver = {
  	.driver = {
  		.name	= KBUILD_MODNAME,
  		.of_match_table = dw_dma_of_id_table,

@@ -1,4 +1,4 @@
-From 7bcb0f49777f76ea83e4c32ca3dd0a85611ef12f Mon Sep 17 00:00:00 2001
+From 46cce218357a51e619a4b660fc7ab547ff39d733 Mon Sep 17 00:00:00 2001
 From: linmin <linmin@eswincomputing.com>
 Date: Mon, 2 Dec 2024 13:18:49 +0800
 Subject: [PATCH 223/540] release-1130
@@ -9322,7 +9322,7 @@ index c035da206e7b..3c3ba2be4bfa 100755
  				ret = eswin_clk_set_cpu_volatge(clk->cpu_voltage_gpio, cpu_target_volatge);
  				if (ret) {
 diff --git a/drivers/dma/dw-axi-dmac/dw-axi-dmac-platform.c b/drivers/dma/dw-axi-dmac/dw-axi-dmac-platform.c
-index 6700a9b44f0f..78fbfd5d8f8c 100644
+index cf4ebeed1137..51f4d2d90fc3 100644
 --- a/drivers/dma/dw-axi-dmac/dw-axi-dmac-platform.c
 +++ b/drivers/dma/dw-axi-dmac/dw-axi-dmac-platform.c
 @@ -6,6 +6,25 @@
@@ -9401,7 +9401,7 @@ index 6700a9b44f0f..78fbfd5d8f8c 100644
  }
  
  static inline void axi_chan_irq_disable(struct axi_dma_chan *chan, u32 irq_mask)
-@@ -1454,6 +1485,93 @@ static int parse_device_properties(struct axi_dma_chip *chip)
+@@ -1452,6 +1483,93 @@ static int parse_device_properties(struct axi_dma_chip *chip)
  	return 0;
  }
  
@@ -9495,7 +9495,7 @@ index 6700a9b44f0f..78fbfd5d8f8c 100644
  static int dw_probe(struct platform_device *pdev)
  {
  	struct axi_dma_chip *chip;
-@@ -1488,6 +1606,8 @@ static int dw_probe(struct platform_device *pdev)
+@@ -1486,6 +1604,8 @@ static int dw_probe(struct platform_device *pdev)
  	if (IS_ERR(chip->regs))
  		return PTR_ERR(chip->regs);
  
@@ -9504,7 +9504,7 @@ index 6700a9b44f0f..78fbfd5d8f8c 100644
  	flags = (uintptr_t)of_device_get_match_data(&pdev->dev);
  	if (flags & AXI_DMA_FLAG_HAS_APB_REGS) {
  		chip->apb_regs = devm_platform_ioremap_resource(pdev, 1);
-@@ -1631,6 +1751,8 @@ static int dw_probe(struct platform_device *pdev)
+@@ -1629,6 +1749,8 @@ static int dw_probe(struct platform_device *pdev)
  	dev_info(chip->dev, "DesignWare AXI DMA Controller, %d channels\n",
  		 dw->hdata->nr_channels);
  
@@ -9513,7 +9513,7 @@ index 6700a9b44f0f..78fbfd5d8f8c 100644
  	return 0;
  
  err_pm_disable:
-@@ -1675,6 +1797,8 @@ static int dw_remove(struct platform_device *pdev)
+@@ -1673,6 +1795,8 @@ static int dw_remove(struct platform_device *pdev)
  		win2030_tbu_power(chip->dev, false);
  	}
  

@@ -1,4 +1,4 @@
-From 223b59954770988a9b73a19dd552f75f8047eb0c Mon Sep 17 00:00:00 2001
+From 32698c06822e36eec932d21fd107dee97ddba255 Mon Sep 17 00:00:00 2001
 From: yangqiang <yangqiang1@eswincomputing.com>
 Date: Tue, 21 May 2024 09:32:04 +0800
 Subject: [PATCH 025/540] feat:Porting eswin audio to 6.6 kernel

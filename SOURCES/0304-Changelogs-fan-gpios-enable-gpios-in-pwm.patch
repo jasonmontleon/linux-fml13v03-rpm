@@ -1,4 +1,4 @@
-From 0ff0e1614b0419f4f31d6f9e2ded48355682c4ca Mon Sep 17 00:00:00 2001
+From d68108b14009146d632a57dbd03e8117a794a40b Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Wed, 21 May 2025 16:02:27 +0800
 Subject: [PATCH 304/540] Changelogs: fan-gpios -> enable-gpios in pwm

@@ -1,4 +1,4 @@
-From b664269a2a0f0b73c80d61e262f6adad713c199f Mon Sep 17 00:00:00 2001
+From e491afae534a88a1e211746a29c8eda66b629adb Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Wed, 19 Mar 2025 15:37:56 +0800
 Subject: [PATCH 259/540] Add support for the light sensor drivers CM32181 and

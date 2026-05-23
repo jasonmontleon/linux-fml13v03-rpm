@@ -1,4 +1,4 @@
-From 81d594e7d144ab36e4b810b64788d72c7ca89b58 Mon Sep 17 00:00:00 2001
+From dcc07629c9d4be1fc39206b105778990a6f4648b Mon Sep 17 00:00:00 2001
 From: Dongdong Zhang <zhangdongdong@eswincomputing.com>
 Date: Wed, 11 Jun 2025 17:24:27 +0800
 Subject: [PATCH 398/540] feat:Reserve memory for board info

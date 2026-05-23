@@ -1,4 +1,4 @@
-From 508088a406fd9fba31c45924741d52091e344aee Mon Sep 17 00:00:00 2001
+From 7b698de71ef15d6cec13091ad0dda301b059c79a Mon Sep 17 00:00:00 2001
 From: ningyu <ningyu@eswincomputing.com>
 Date: Fri, 21 Feb 2025 17:35:41 +0800
 Subject: [PATCH 325/540] feat:support osm dts
