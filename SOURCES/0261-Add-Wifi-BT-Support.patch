@@ -1,7 +1,7 @@
-From a2fb650cce40b242b6fbb8178fb00d5df470aadc Mon Sep 17 00:00:00 2001
+From 3c3f2cc7400a049cef9e432256f0b92c66b0b8cd Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Wed, 19 Mar 2025 18:07:48 +0800
-Subject: [PATCH 261/540] Add Wifi/BT Support.
+Subject: [PATCH 261/541] Add Wifi/BT Support.
 
 ---
  .../boot/dts/eswin/eic7702-deepcomputing-fml13v03.dts  |  5 +++++

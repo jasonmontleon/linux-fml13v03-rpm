@@ -1,7 +1,7 @@
-From bff958a950ded5bd766e98f73a1afad9db856af9 Mon Sep 17 00:00:00 2001
+From ddaf39e7c44d811b7517cbe9b20c1ee6aa8e3927 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Tue, 22 Jul 2025 16:26:51 +0800
-Subject: [PATCH 427/540] Changelogs: 1. Limited the maximum CPU frequency to
+Subject: [PATCH 427/541] Changelogs: 1. Limited the maximum CPU frequency to
  1.4GHz to avoid system crashes at 1.8GHz. 2. Updated the LPCPU module to
  improve overall power efficiency.
 

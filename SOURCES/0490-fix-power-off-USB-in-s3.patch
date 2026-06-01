@@ -1,7 +1,7 @@
-From a69cc396628b87d349beb9a2a58f026cc058e1bb Mon Sep 17 00:00:00 2001
+From 283e4f63668852bbb690fbfd04b8b9fdbfcd3c6d Mon Sep 17 00:00:00 2001
 From: Wu Zhangben <wuzhangben@eswincomputing.com>
 Date: Tue, 26 Aug 2025 12:48:47 +0800
-Subject: [PATCH 490/540] fix:power off USB in s3
+Subject: [PATCH 490/541] fix:power off USB in s3
 
 Changelogs:
 1. Power off USB(dwc3-eswin) in s3 state

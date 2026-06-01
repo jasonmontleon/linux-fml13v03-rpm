@@ -1,7 +1,7 @@
-From 343ffb996c9407750ba8088e27b4e19f5cc99059 Mon Sep 17 00:00:00 2001
+From e2baf7e93b8f498912db2f38320446fdb6ba6aa2 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Fri, 21 Mar 2025 11:08:32 +0800
-Subject: [PATCH 262/540] dts: eic7702-deepcomputing-fml13v03.dts: update
+Subject: [PATCH 262/541] dts: eic7702-deepcomputing-fml13v03.dts: update
  graphcard configuration
 
 Signed-off-by: yang.wang <yang.wang@deepcomputing.io>

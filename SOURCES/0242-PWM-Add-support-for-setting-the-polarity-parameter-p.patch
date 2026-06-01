@@ -1,7 +1,7 @@
-From 1003bf962abb08f5b24d81669b80c2ca78179315 Mon Sep 17 00:00:00 2001
+From 96bdddd9258c20c69442052228b1e046c7bab750 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Tue, 18 Mar 2025 15:07:53 +0800
-Subject: [PATCH 242/540] PWM: Add support for setting the polarity parameter
+Subject: [PATCH 242/541] PWM: Add support for setting the polarity parameter
  (parameter 3) in the device tree.
 
 Signed-off-by: yang.wang <yang.wang@deepcomputing.io>

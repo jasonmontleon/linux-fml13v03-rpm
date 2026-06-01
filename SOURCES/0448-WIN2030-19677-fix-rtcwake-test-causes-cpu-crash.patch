@@ -1,7 +1,7 @@
-From 0286492e9839e1b048a2307530edfa33cdb7ee7c Mon Sep 17 00:00:00 2001
+From f71e86a811368cb1fa33b7dca5e6243cc4880579 Mon Sep 17 00:00:00 2001
 From: ouyanghui <ouyanghui@eswincomputing.com>
 Date: Tue, 30 Sep 2025 16:53:49 +0800
-Subject: [PATCH 448/540] WIN2030-19677:fix:rtcwake test causes cpu crash
+Subject: [PATCH 448/541] WIN2030-19677:fix:rtcwake test causes cpu crash
 
 Changelogs:
 1.add suspend cpu freq register to cpu policy

@@ -1,7 +1,7 @@
-From 27428fd7bd3584e321e6763e86a7d3b800fc9023 Mon Sep 17 00:00:00 2001
+From 2f12c0a566e4e15168c83c06d9d829f433e9091a Mon Sep 17 00:00:00 2001
 From: Sandie Cao <sandie.cao@deepcomputing.io>
 Date: Tue, 29 Apr 2025 18:01:40 +0800
-Subject: [PATCH 290/540] Revert from S3 patch to fix issue: only display a
+Subject: [PATCH 290/541] Revert from S3 patch to fix issue: only display a
  line, no desktop
 
 Signed-off-by: Sandie Cao <sandie.cao@deepcomputing.io>

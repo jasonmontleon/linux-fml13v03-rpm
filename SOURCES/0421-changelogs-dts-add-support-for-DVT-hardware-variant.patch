@@ -1,7 +1,7 @@
-From 8f19e8c0684fed5ee9476ced19d566a2e659bb08 Mon Sep 17 00:00:00 2001
+From f9147d2b507f051b3d29cd430d424a9ce075cbfa Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Fri, 11 Jul 2025 18:40:15 +0800
-Subject: [PATCH 421/540] changelogs: dts: add support for DVT hardware variant
+Subject: [PATCH 421/541] changelogs: dts: add support for DVT hardware variant
 
 ---
  .../eic7702-deepcomputing-fml13v03-evt.dts    | 1783 +++++++++++++++++

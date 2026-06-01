@@ -1,7 +1,7 @@
-From da80a52612b273b67d0cdf62768a83961278954e Mon Sep 17 00:00:00 2001
+From bfca4403ecdbf2e60cbf9fc63dbb0e24fc22f708 Mon Sep 17 00:00:00 2001
 From: sandiecao <sandie.cao@deepcomputing.io>
 Date: Mon, 29 Sep 2025 15:50:45 +0800
-Subject: [PATCH 447/540] riscv: config: fml13v03: set eswin video modules to m
+Subject: [PATCH 447/541] riscv: config: fml13v03: set eswin video modules to m
  for saving boot time
 
 Signed-off-by: sandiecao <sandie.cao@deepcomputing.io>

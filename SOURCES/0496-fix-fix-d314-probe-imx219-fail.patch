@@ -1,7 +1,7 @@
-From 4c9b107e635f8889035173956fa9c301ee0abdd9 Mon Sep 17 00:00:00 2001
+From ce4e808113007624d19babb3d4190e9daf2d5ca8 Mon Sep 17 00:00:00 2001
 From: yufangxian <yufangxian@eswincomputing.com>
 Date: Mon, 1 Sep 2025 13:42:37 +0800
-Subject: [PATCH 496/540] fix: fix d314 probe imx219 fail
+Subject: [PATCH 496/541] fix: fix d314 probe imx219 fail
 
 Changelogs:
 1. change d314 camera dts to fix imx219 probe fail

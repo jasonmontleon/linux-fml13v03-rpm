@@ -1,7 +1,7 @@
-From 1a298a70f79d9a0f634ccff42ecee94b41735ca6 Mon Sep 17 00:00:00 2001
+From 8ea4f0713e2b582284d3b11f5fb5266e8a14cc91 Mon Sep 17 00:00:00 2001
 From: ningyu <ningyu@eswincomputing.com>
 Date: Thu, 7 Aug 2025 10:41:23 +0800
-Subject: [PATCH 475/540] feat:support S560A
+Subject: [PATCH 475/541] feat:support S560A
 
 Changelogs:
 Implement S560A, need adapt bootspi flash, emmc, pmic and temperature sensor

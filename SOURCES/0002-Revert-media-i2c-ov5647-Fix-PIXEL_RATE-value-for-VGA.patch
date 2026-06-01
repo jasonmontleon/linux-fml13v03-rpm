@@ -1,7 +1,7 @@
 From d8a44293c33b47200c009de7fe948e8112d453fb Mon Sep 17 00:00:00 2001
 From: Jason Montleon <jmontleo@redhat.com>
 Date: Wed, 4 Mar 2026 12:38:25 -0500
-Subject: [PATCH 002/540] Revert "media: i2c: ov5647: Fix PIXEL_RATE value for
+Subject: [PATCH 002/541] Revert "media: i2c: ov5647: Fix PIXEL_RATE value for
  VGA mode"
 
 This reverts commit 089625cccd7eb8d65a381e81f1e3e1db064334df.

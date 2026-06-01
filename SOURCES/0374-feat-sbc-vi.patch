@@ -1,7 +1,7 @@
-From 5b506b605f1bb2c5f238b1cc68dd0c6c55ff5741 Mon Sep 17 00:00:00 2001
+From 38ec58bf642f09c49c1cacdaaed4980420b6383c Mon Sep 17 00:00:00 2001
 From: yufangxian <yufangxian@eswincomputing.com>
 Date: Fri, 23 May 2025 13:32:19 +0800
-Subject: [PATCH 374/540] feat: sbc vi
+Subject: [PATCH 374/541] feat: sbc vi
 
 Changelogs:
 1. add sbc vi dts and change imx219 driver to recognize 4lanes sensor

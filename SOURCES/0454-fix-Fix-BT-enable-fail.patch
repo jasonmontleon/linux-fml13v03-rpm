@@ -1,7 +1,7 @@
-From f62bdd5a78c5131e53029a47bdbc3777a38dd399 Mon Sep 17 00:00:00 2001
+From 4fabaecfdf1e55834c10f86361ec9a6d395b0158 Mon Sep 17 00:00:00 2001
 From: wangjinlong <wangjinlong@eswincomputing.com>
 Date: Thu, 31 Jul 2025 10:30:40 +0800
-Subject: [PATCH 454/540] fix: Fix BT enable fail
+Subject: [PATCH 454/541] fix: Fix BT enable fail
 
 Changelogs:
 1. fix hci0 down after set wlan down

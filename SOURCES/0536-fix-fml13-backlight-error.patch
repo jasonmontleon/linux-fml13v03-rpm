@@ -1,7 +1,7 @@
-From 0168985ebb52965851178bcccf6eb0145dbcc2a3 Mon Sep 17 00:00:00 2001
+From f20215f04a2dd533e10eb4ee090cb715b90b0026 Mon Sep 17 00:00:00 2001
 From: Xiang Xu <xuxiang@eswincomputing.com>
 Date: Wed, 29 Oct 2025 20:41:39 +0800
-Subject: [PATCH 536/540] fix:fml13 backlight error
+Subject: [PATCH 536/541] fix:fml13 backlight error
 
 Changelogs:
 1. fix fml13 backlight configuration error

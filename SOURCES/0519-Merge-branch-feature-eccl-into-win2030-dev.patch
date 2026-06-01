@@ -1,7 +1,7 @@
-From aad1207208c8d240227ea0966cecec626c83862c Mon Sep 17 00:00:00 2001
+From 48a26f05e5d504f76fe6fc6a98df7443795f64c6 Mon Sep 17 00:00:00 2001
 From: denglei <denglei@eswincomputing.com>
 Date: Wed, 10 Sep 2025 14:15:40 +0800
-Subject: [PATCH 519/540] Merge branch 'feature-eccl' into win2030-dev
+Subject: [PATCH 519/541] Merge branch 'feature-eccl' into win2030-dev
 
 ---
  arch/riscv/boot/dts/eswin/vpu7702-pcie-a2.dts | 21 ++++-

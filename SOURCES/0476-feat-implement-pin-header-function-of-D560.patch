@@ -1,7 +1,7 @@
-From 5ee6c8f41b5bcc61fa36c883a27e047377228c7c Mon Sep 17 00:00:00 2001
+From 2bee8630f34ad8bc542b40d2b07bd8fca82c2f2d Mon Sep 17 00:00:00 2001
 From: ningyu <ningyu@eswincomputing.com>
 Date: Thu, 7 Aug 2025 21:20:20 +0800
-Subject: [PATCH 476/540] feat:implement pin header function of D560
+Subject: [PATCH 476/541] feat:implement pin header function of D560
 
 Changelogs:
 Modify dts in order to implement pin header functions of D560

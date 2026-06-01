@@ -1,7 +1,7 @@
-From ed6e106235aaaf6b871511e0a028cb6f260e755f Mon Sep 17 00:00:00 2001
+From 4b94cf38717d4b15f4a11ffab8cca16acfef707b Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Thu, 4 Sep 2025 14:37:03 +0800
-Subject: [PATCH 440/540] Add safeguards for variables
+Subject: [PATCH 440/541] Add safeguards for variables
 
 ---
  drivers/gpu/drm/eswin/es_dw_hdmi.c | 8 ++++----

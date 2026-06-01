@@ -1,7 +1,7 @@
-From 3420a11870c51936b7286288efb10bb3f6e7e8fc Mon Sep 17 00:00:00 2001
+From babfbce1535f9c8d14314887c8120fd564cc4d2b Mon Sep 17 00:00:00 2001
 From: huangyifeng <huangyifeng@eswincomputing.com>
 Date: Thu, 1 Aug 2024 16:47:31 +0800
-Subject: [PATCH 145/540] feat:Introduce system suspend support
+Subject: [PATCH 145/541] feat:Introduce system suspend support
 
 Changelogs: eic770x support suspend to mem.
 

@@ -1,7 +1,7 @@
-From d770c8322d66d17e80fddf8c2b4d3f4c131b2676 Mon Sep 17 00:00:00 2001
+From 6460e5f9afaf9e9515c1e95dcc33e20f864bedff Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Tue, 26 Aug 2025 19:18:52 +0800
-Subject: [PATCH 436/540] Apply patch 13706-WIN2030-18873-fix-modify-gamma-fun
+Subject: [PATCH 436/541] Apply patch 13706-WIN2030-18873-fix-modify-gamma-fun
 
 ---
  drivers/gpu/drm/eswin/es_dc_gamma.h | 593 ++++++++++++++++++++++++++++

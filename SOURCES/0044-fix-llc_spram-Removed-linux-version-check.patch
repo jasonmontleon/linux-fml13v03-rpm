@@ -1,7 +1,7 @@
-From 09ae7792b8064869b2d6c2c0aaec7b7dec8d3071 Mon Sep 17 00:00:00 2001
+From b57c897597ca8dbf707a2561edf192deb453e163 Mon Sep 17 00:00:00 2001
 From: linmin <linmin@eswincomputing.com>
 Date: Tue, 28 May 2024 13:14:44 +0800
-Subject: [PATCH 044/540] fix(llc_spram):Removed linux version check
+Subject: [PATCH 044/541] fix(llc_spram):Removed linux version check
 
 Changelogs:
 1.Remove the KERNEL_VERSION check from llc_spram.c since it is

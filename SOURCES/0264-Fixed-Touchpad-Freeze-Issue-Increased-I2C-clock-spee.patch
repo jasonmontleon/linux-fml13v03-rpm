@@ -1,7 +1,7 @@
-From 31a1fd452b7c388f363f13d1df807b29f4729459 Mon Sep 17 00:00:00 2001
+From cb2796130ba1b045bc559e21870d928c83ff7d1e Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Wed, 26 Mar 2025 12:50:44 +0800
-Subject: [PATCH 264/540] Fixed Touchpad Freeze Issue: Increased I2C clock
+Subject: [PATCH 264/541] Fixed Touchpad Freeze Issue: Increased I2C clock
  speed from 100KHz to 400KHz to resolve the problem.
 
 ---

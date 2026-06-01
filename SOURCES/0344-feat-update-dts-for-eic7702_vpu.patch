@@ -1,7 +1,7 @@
-From 52a52168ce89cb796d8604c1aa4376d0f0d0fcfa Mon Sep 17 00:00:00 2001
+From b361d5f55e839c24c69616b9ec8684c114a1980d Mon Sep 17 00:00:00 2001
 From: tanshanshan <tanshanshan@eswincomputing.com>
 Date: Sat, 12 Apr 2025 19:36:18 +0800
-Subject: [PATCH 344/540] feat:update dts for eic7702_vpu
+Subject: [PATCH 344/541] feat:update dts for eic7702_vpu
 
 Changelogs:
 1. enable i2c0 i2c1 i2c2 i2c5 i2c10 in dts

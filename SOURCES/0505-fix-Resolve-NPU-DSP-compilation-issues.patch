@@ -1,7 +1,7 @@
-From e898c05ccafb8b7a340cd78a76ab74e7ccb011e0 Mon Sep 17 00:00:00 2001
+From b19ede0d782907d3754729d14efe2b1d402e1335 Mon Sep 17 00:00:00 2001
 From: denglei <denglei@eswincomputing.com>
 Date: Mon, 25 Aug 2025 16:02:05 +0800
-Subject: [PATCH 505/540] fix:Resolve NPU/DSP compilation issues.
+Subject: [PATCH 505/541] fix:Resolve NPU/DSP compilation issues.
 
 Changelogs:
 	Upgrade gcc version to 14.2.0

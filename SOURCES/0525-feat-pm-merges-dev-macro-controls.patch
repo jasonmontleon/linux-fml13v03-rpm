@@ -1,7 +1,7 @@
-From f0c542e43484bb33523bf18bc0c1293f64f07fd4 Mon Sep 17 00:00:00 2001
+From aed3faef0f4ade61ddbfb9afc7adc73c11024cd8 Mon Sep 17 00:00:00 2001
 From: hujiamiao <hujiamiao@eswincomputing.com>
 Date: Wed, 24 Sep 2025 14:03:50 +0800
-Subject: [PATCH 525/540] feat:pm merges dev macro controls
+Subject: [PATCH 525/541] feat:pm merges dev macro controls
 
 Changelogs:
 1.  Enable power management functions via the ARCH_SUSPEND_POSSIBLE option;

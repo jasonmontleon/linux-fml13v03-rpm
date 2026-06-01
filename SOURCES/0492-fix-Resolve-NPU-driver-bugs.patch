@@ -1,7 +1,7 @@
-From 36735a3d4111adf281c59693545be1dc3101da55 Mon Sep 17 00:00:00 2001
+From 40c836713bbebed6d38e4fa07a0fefe2f5dfe639 Mon Sep 17 00:00:00 2001
 From: denglei <denglei@eswincomputing.com>
 Date: Fri, 29 Aug 2025 09:00:39 +0800
-Subject: [PATCH 492/540] fix:Resolve NPU driver bugs.
+Subject: [PATCH 492/541] fix:Resolve NPU driver bugs.
 
 Changelogs:
 	1.Resolve reset deadlock and PM counting errors.

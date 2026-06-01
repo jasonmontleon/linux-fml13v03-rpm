@@ -1,7 +1,7 @@
-From de6a1903bcadf27fd6194ca75f9937fb18b8d261 Mon Sep 17 00:00:00 2001
+From c718f1dc8e440b90b59e04e7e842f7d7e588ce40 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Thu, 17 Apr 2025 11:31:33 +0800
-Subject: [PATCH 285/540] update es8326 and i2s driver for audio format support
+Subject: [PATCH 285/541] update es8326 and i2s driver for audio format support
 
 - Modify es8326_FORMATS to support S16_LE, S24_LE, and S32_LE,
   removing S20_3LE to resolve distortion issues.

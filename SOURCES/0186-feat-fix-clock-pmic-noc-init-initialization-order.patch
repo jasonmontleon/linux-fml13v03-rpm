@@ -1,7 +1,7 @@
-From 3e329376dd3e34ef0d07ca4ca49db2db8063bdf0 Mon Sep 17 00:00:00 2001
+From fb27b9c86a6076669a383569e75d8da2c1dec544 Mon Sep 17 00:00:00 2001
 From: huangyifeng <huangyifeng@eswincomputing.com>
 Date: Wed, 25 Sep 2024 16:04:43 +0800
-Subject: [PATCH 186/540] feat:fix clock&pmic&noc init initialization order
+Subject: [PATCH 186/541] feat:fix clock&pmic&noc init initialization order
 
 Changelogs:
    1. when the device tree node of the clock controller references a

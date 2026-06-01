@@ -1,7 +1,7 @@
-From 28591908082c5167b53b8ef84d6eed648f992703 Mon Sep 17 00:00:00 2001
+From 46b29c4160c1463f2271bd4d197b24ccac10eeeb Mon Sep 17 00:00:00 2001
 From: sandiecao <sandie.cao@deepcomputing.io>
 Date: Tue, 4 Nov 2025 16:11:59 +0800
-Subject: [PATCH 538/540] riscv: config: fml13v03: add
+Subject: [PATCH 538/541] riscv: config: fml13v03: add
  CONFIG_ARCH_SUSPEND_POSSIBLE=y for s3
 
 Signed-off-by: sandiecao <sandie.cao@deepcomputing.io>

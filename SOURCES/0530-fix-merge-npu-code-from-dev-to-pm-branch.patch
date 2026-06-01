@@ -1,7 +1,7 @@
-From 6aa476702b24964d9164e9c4ef55d0ca409cde9d Mon Sep 17 00:00:00 2001
+From a6bfe3aba323b3abcb421d5eab186f6fb303f081 Mon Sep 17 00:00:00 2001
 From: denglei <denglei@eswincomputing.com>
 Date: Tue, 21 Oct 2025 16:34:45 +0800
-Subject: [PATCH 530/540] fix:merge npu code from dev to pm branch.
+Subject: [PATCH 530/541] fix:merge npu code from dev to pm branch.
 
 Changelogs:
 	merge npu code from dev to pm branch.

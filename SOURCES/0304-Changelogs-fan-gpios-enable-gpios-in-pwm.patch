@@ -1,7 +1,7 @@
-From 9c2ac29aab18172dfcc66d8cfc84955a454534da Mon Sep 17 00:00:00 2001
+From db98e8b049d968c509c85dfd4e9bcaf1543e7e63 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Wed, 21 May 2025 16:02:27 +0800
-Subject: [PATCH 304/540] Changelogs: fan-gpios -> enable-gpios in pwm
+Subject: [PATCH 304/541] Changelogs: fan-gpios -> enable-gpios in pwm
 
 ---
  arch/riscv/boot/dts/eswin/eic7700-evb-a2.dts   |  2 +-

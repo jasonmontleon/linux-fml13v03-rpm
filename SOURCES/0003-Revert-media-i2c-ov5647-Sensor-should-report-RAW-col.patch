@@ -1,7 +1,7 @@
 From e726bdcdc3f4e9172fbb991472beff945ed64636 Mon Sep 17 00:00:00 2001
 From: Jason Montleon <jmontleo@redhat.com>
 Date: Wed, 4 Mar 2026 12:38:40 -0500
-Subject: [PATCH 003/540] Revert "media: i2c: ov5647: Sensor should report RAW
+Subject: [PATCH 003/541] Revert "media: i2c: ov5647: Sensor should report RAW
  color space"
 
 This reverts commit c146483bad46e4abb7ab9c706adc51cd54f1a81e.

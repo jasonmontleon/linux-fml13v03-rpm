@@ -1,7 +1,7 @@
-From 9d6189e30f4321757d30cde44ea733821549f2be Mon Sep 17 00:00:00 2001
+From 5a1d1979e6bfa756b91f8591e11cf4f3194bd0f4 Mon Sep 17 00:00:00 2001
 From: ningyu <ningyu@eswincomputing.com>
 Date: Thu, 22 May 2025 20:04:39 +0800
-Subject: [PATCH 305/540] add thermal zone
+Subject: [PATCH 305/541] add thermal zone
 
 ---
  .../dts/eswin/eswin-win2030-die0-soc.dtsi     |  9 ++++----

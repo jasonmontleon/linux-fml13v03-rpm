@@ -1,7 +1,7 @@
-From 3d9e61eb77d1317fbf0f4221634f697157b332d4 Mon Sep 17 00:00:00 2001
+From 22e289929c9abce7473974e66d0abfadf97dc3f5 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Thu, 17 Apr 2025 10:00:04 +0800
-Subject: [PATCH 284/540] gpu: hdmi: Limit die0 to 2.2K and 2.8K resolutions to
+Subject: [PATCH 284/541] gpu: hdmi: Limit die0 to 2.2K and 2.8K resolutions to
  prevent black screen issues on the internal display when die0 and die1
  screens are set to mirror mode.
 

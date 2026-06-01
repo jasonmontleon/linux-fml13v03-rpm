@@ -1,7 +1,7 @@
-From 25e96a7181cb656879ce6f5669a6ff6e1c2bdb98 Mon Sep 17 00:00:00 2001
+From 61c3a084c9e66c4e49664eeddd896bcb0220ec08 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Fri, 13 Jun 2025 09:28:16 +0800
-Subject: [PATCH 313/540] Changelogs: 1. add dts thermal configuration for d1
+Subject: [PATCH 313/541] Changelogs: 1. add dts thermal configuration for d1
 
 ---
  .../dts/eswin/eswin-win2030-arch-d2d.dtsi     |  4 ++++

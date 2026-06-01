@@ -1,7 +1,7 @@
-From 923e867d7b2807bd83fa77369345c816571a9f92 Mon Sep 17 00:00:00 2001
+From 8e8eb8e47232dfd0b5e4358f8cfcd57f79ce8c1e Mon Sep 17 00:00:00 2001
 From: fanxiaping <fanxiaping@eswincomputing.com>
 Date: Fri, 25 Jul 2025 18:00:40 +0800
-Subject: [PATCH 466/540] fix:suspend err, hdmi resume fail
+Subject: [PATCH 466/541] fix:suspend err, hdmi resume fail
 
 Changelogs: add clk enable check
 Signed-off-by: fanxiaping <fanxiaping@eswincomputing.com>

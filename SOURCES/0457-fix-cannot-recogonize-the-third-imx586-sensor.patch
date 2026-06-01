@@ -1,7 +1,7 @@
-From b98e84cc7f32c23468fdbded911931893ff05d1b Mon Sep 17 00:00:00 2001
+From fbb50e515b872f490526ef444bf22cbb9871779a Mon Sep 17 00:00:00 2001
 From: yufangxian <yufangxian@eswincomputing.com>
 Date: Fri, 8 Aug 2025 17:45:30 +0800
-Subject: [PATCH 457/540] fix: cannot recogonize the third imx586 sensor
+Subject: [PATCH 457/541] fix: cannot recogonize the third imx586 sensor
 
 Changelogs:
 1. fix the clk name in imx586 dts

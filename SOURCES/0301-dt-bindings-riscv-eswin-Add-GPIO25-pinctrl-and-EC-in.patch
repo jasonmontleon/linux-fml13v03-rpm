@@ -1,7 +1,7 @@
-From b982f6e054fc8dd09a067b800009c0f3a13769d1 Mon Sep 17 00:00:00 2001
+From f1979ec98f5fd38cae525e6053ac3b25cae4a630 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Wed, 21 May 2025 10:30:40 +0800
-Subject: [PATCH 301/540] dt-bindings: riscv: eswin: Add GPIO25 pinctrl and EC
+Subject: [PATCH 301/541] dt-bindings: riscv: eswin: Add GPIO25 pinctrl and EC
  interrupt description for EIC7702
 
 Signed-off-by: yang.wang <yang.wang@deepcomputing.io>

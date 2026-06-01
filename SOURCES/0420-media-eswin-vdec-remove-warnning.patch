@@ -1,7 +1,7 @@
-From 0686691cb23266bc302fbcb32c9e8a5fed539334 Mon Sep 17 00:00:00 2001
+From b99bb1e3fa96ab895a20082cb1f43475b799d6fa Mon Sep 17 00:00:00 2001
 From: Sandie Cao <sandie.cao@deepcomputing.io>
 Date: Tue, 8 Jul 2025 09:24:06 +0800
-Subject: [PATCH 420/540] media: eswin: vdec: remove warnning
+Subject: [PATCH 420/541] media: eswin: vdec: remove warnning
 
 Signed-off-by: Sandie Cao <sandie.cao@deepcomputing.io>
 ---

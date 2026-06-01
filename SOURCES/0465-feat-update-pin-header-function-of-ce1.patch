@@ -1,7 +1,7 @@
-From a97e00274ae38260f7ef1c3106c4bfc5878c748b Mon Sep 17 00:00:00 2001
+From e5cfcc2da9a9e281588faabd90e2361e2d70b7d8 Mon Sep 17 00:00:00 2001
 From: Xiang Xu <xuxiang@eswincomputing.com>
 Date: Wed, 13 Aug 2025 14:11:23 +0800
-Subject: [PATCH 465/540] feat:update pin header function of ce1
+Subject: [PATCH 465/541] feat:update pin header function of ce1
 
 Changelogs:
 1. pinctrl  delete GPIO73 and GPIO87

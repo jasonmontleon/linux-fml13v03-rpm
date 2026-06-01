@@ -1,7 +1,7 @@
-From 9ec8aa7817765ac0a1be24be51d5354d86ef16af Mon Sep 17 00:00:00 2001
+From 6b1ac4f9685757e36a116e60b312837a97ec261b Mon Sep 17 00:00:00 2001
 From: zouxiaojun <zouxiaojun@eswincomputing.com>
 Date: Wed, 10 Sep 2025 14:44:03 +0800
-Subject: [PATCH 516/540] to(vc):disable pm feature for win2030-dev
+Subject: [PATCH 516/541] to(vc):disable pm feature for win2030-dev
 
 Changelogs:
 disable pm feature for win2030-dev

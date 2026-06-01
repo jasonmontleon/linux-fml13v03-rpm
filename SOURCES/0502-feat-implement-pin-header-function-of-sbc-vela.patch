@@ -1,7 +1,7 @@
-From 739eba4a0edf55caf8005dc27d0d10f0f1f76b5f Mon Sep 17 00:00:00 2001
+From 502a99ff2c383efc1ede7164cd3f4e34b15d4065 Mon Sep 17 00:00:00 2001
 From: Xiang Xu <xuxiang@eswincomputing.com>
 Date: Mon, 25 Aug 2025 10:11:09 +0800
-Subject: [PATCH 502/540] feat:implement pin header function of sbc/vela
+Subject: [PATCH 502/541] feat:implement pin header function of sbc/vela
 
 Changelogs:
 Modify dts in order to implement pin header functions of sbc/vela

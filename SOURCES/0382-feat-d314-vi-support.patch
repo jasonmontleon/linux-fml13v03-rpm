@@ -1,7 +1,7 @@
-From 5590e93783460efc5c7089e38cfb32686ab78705 Mon Sep 17 00:00:00 2001
+From ceb8fb9333f00ceb362c7078825cef0647b9582b Mon Sep 17 00:00:00 2001
 From: yufangxian <yufangxian@eswincomputing.com>
 Date: Tue, 27 May 2025 15:10:15 +0800
-Subject: [PATCH 382/540] feat: d314 vi support
+Subject: [PATCH 382/541] feat: d314 vi support
 
 Changelogs:
 1. add d314 vi dts

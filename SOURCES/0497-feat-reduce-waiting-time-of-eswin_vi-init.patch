@@ -1,7 +1,7 @@
-From ff00a4b8bb9a420f0d6c9d5b6e2a86dc12829fec Mon Sep 17 00:00:00 2001
+From 6267fbf89f3188e3582c2aff6176c2de31215365 Mon Sep 17 00:00:00 2001
 From: yufangxian <yufangxian@eswincomputing.com>
 Date: Fri, 29 Aug 2025 12:24:33 +0800
-Subject: [PATCH 497/540] feat: reduce waiting time of eswin_vi init
+Subject: [PATCH 497/541] feat: reduce waiting time of eswin_vi init
 
 Changelogs:
 1. reduce waiting time after release vi rst and clk en

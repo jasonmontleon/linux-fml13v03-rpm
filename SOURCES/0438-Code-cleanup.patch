@@ -1,7 +1,7 @@
-From f4c15f01bd7839d9f8d00db0636165de32fbb2ce Mon Sep 17 00:00:00 2001
+From d9fc3d057d55d4536ce934152dbb1a24c4e8e120 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Tue, 2 Sep 2025 19:03:12 +0800
-Subject: [PATCH 438/540] Code cleanup
+Subject: [PATCH 438/541] Code cleanup
 
 ---
  arch/riscv/boot/dts/eswin/eic7700-pinctrl.dtsi   | 16 ----------------

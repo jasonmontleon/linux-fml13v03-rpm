@@ -1,7 +1,7 @@
-From 606f46a753cc9c83c9f384e169681130ba732aa0 Mon Sep 17 00:00:00 2001
+From 3b982f0ce90ca276dffe79b807627365b5ced98f Mon Sep 17 00:00:00 2001
 From: zhangqianqian1 <zhangqianqian1@eswincomputing.com>
 Date: Wed, 24 Sep 2025 17:01:00 +0800
-Subject: [PATCH 522/540] feat:Remove usb_test and kernel dynamic log.
+Subject: [PATCH 522/541] feat:Remove usb_test and kernel dynamic log.
 
 Changelogs:
 	1.Remove usb test driver probe.

@@ -1,7 +1,7 @@
-From 7cd2861080163ef26da96fb8b754edcd1880b479 Mon Sep 17 00:00:00 2001
+From b5186a5b5b29322e4abd00e507ad24581aa2d715 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Wed, 12 Mar 2025 11:23:29 +0800
-Subject: [PATCH 233/540] defconfig: fml13v03_defconfig: Add support for Intel
+Subject: [PATCH 233/541] defconfig: fml13v03_defconfig: Add support for Intel
  AX210/AX1675 Wi-Fi 6E.
 
 Signed-off-by: yang.wang <yang.wang@deepcomputing.io>

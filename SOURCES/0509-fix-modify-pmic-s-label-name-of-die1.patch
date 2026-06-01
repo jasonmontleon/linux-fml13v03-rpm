@@ -1,7 +1,7 @@
-From 809738e6db6cb682e15fd932222bff89ac75c259 Mon Sep 17 00:00:00 2001
+From d116809ef8ca2bb56e8ab63277f02165c1b57550 Mon Sep 17 00:00:00 2001
 From: ningyu <ningyu@eswincomputing.com>
 Date: Thu, 28 Aug 2025 19:08:22 +0800
-Subject: [PATCH 509/540] fix:modify pmic's label name of die1
+Subject: [PATCH 509/541] fix:modify pmic's label name of die1
 
 Changelogs:
 Chnage pmic's label name of die1 to d1_npu_vdd

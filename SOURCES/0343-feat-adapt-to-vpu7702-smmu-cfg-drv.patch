@@ -1,7 +1,7 @@
-From 9d4aad2f2a9cdd2b9bc5a6d16c13070fb908d343 Mon Sep 17 00:00:00 2001
+From 8e559ef3ba0403c9be62fbeaf0a952df4698d0b1 Mon Sep 17 00:00:00 2001
 From: Joey Zheng <zhengyu@eswincomputing.com>
 Date: Thu, 24 Apr 2025 16:53:28 +0800
-Subject: [PATCH 343/540] feat:adapt to vpu7702 smmu cfg drv
+Subject: [PATCH 343/541] feat:adapt to vpu7702 smmu cfg drv
 
 Changelogs:
 Update compatible name to match vpu7702 smmu cfg driver which is

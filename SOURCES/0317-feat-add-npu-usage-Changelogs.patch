@@ -1,7 +1,7 @@
-From ccbfa224418d64e49dc5a8a65c0622a626ce90d0 Mon Sep 17 00:00:00 2001
+From 68798b1c678b0accc6d44ed87ffd260564fedc91 Mon Sep 17 00:00:00 2001
 From: luoshanggui <luoshanggui@eswincomputing.com>
 Date: Mon, 30 Dec 2024 11:09:41 +0800
-Subject: [PATCH 317/540] feat: add npu usage Changelogs:
+Subject: [PATCH 317/541] feat: add npu usage Changelogs:
 
 Signed-off-by: luoshanggui <luoshanggui@eswincomputing.com>
 ---

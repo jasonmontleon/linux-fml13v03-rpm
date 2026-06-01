@@ -1,7 +1,7 @@
-From 8edf683a4663bd98955a6fa3ed4791ca40170fbf Mon Sep 17 00:00:00 2001
+From 40c581d35bfe9adc29c9a2149ffaf4acf3c783e6 Mon Sep 17 00:00:00 2001
 From: fanglifei <fanglifei@eswincomputing.com>
 Date: Tue, 27 Aug 2024 17:29:07 +0800
-Subject: [PATCH 167/540] feat: A series patch applyed for mmu
+Subject: [PATCH 167/541] feat: A series patch applyed for mmu
 
 Changelogs:
 Patch sync from below link:

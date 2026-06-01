@@ -1,7 +1,7 @@
-From fbfdd6f230a9451f5d7893cabc82a24b63511698 Mon Sep 17 00:00:00 2001
+From f41dece70cbe78cb40748c8d74d5cdc0faa36258 Mon Sep 17 00:00:00 2001
 From: wangguosheng <wangguosheng@eswincomputing.com>
 Date: Tue, 13 May 2025 13:47:57 +0800
-Subject: [PATCH 361/540] fix:modify the reading method of rpm
+Subject: [PATCH 361/541] fix:modify the reading method of rpm
 
 Changelogs:
 1. when rpm value is abnormal, read it again
@@ -12,7 +12,7 @@ Signed-off-by: wangguosheng <wangguosheng@eswincomputing.com>
  1 file changed, 28 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/hwmon/eswin-fan-control.c b/drivers/hwmon/eswin-fan-control.c
-index f1a21a007e4e..0a5c080980f4 100644
+index baa20cf1520c..46b17e3a92f8 100644
 --- a/drivers/hwmon/eswin-fan-control.c
 +++ b/drivers/hwmon/eswin-fan-control.c
 @@ -33,12 +33,17 @@

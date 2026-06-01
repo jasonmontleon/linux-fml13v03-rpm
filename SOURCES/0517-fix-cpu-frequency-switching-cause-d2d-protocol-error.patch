@@ -1,7 +1,7 @@
-From f70d2a4dc255ced142efe1da4ab5f7122a29aeea Mon Sep 17 00:00:00 2001
+From 852477a3c5a8056a459e5fa0ae1058446c46febd Mon Sep 17 00:00:00 2001
 From: ouyanghui <ouyanghui@eswincomputing.com>
 Date: Fri, 29 Aug 2025 11:16:06 +0800
-Subject: [PATCH 517/540] fix:cpu frequency switching cause d2d protocol error
+Subject: [PATCH 517/541] fix:cpu frequency switching cause d2d protocol error
 
 Changelogs:
 1. add cpu aclk mux table, mux_u_cpu_aclk_2mux1_gfree.

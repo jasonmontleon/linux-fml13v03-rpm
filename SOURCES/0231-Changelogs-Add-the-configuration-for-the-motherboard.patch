@@ -1,7 +1,7 @@
-From 7d9448bd03bdac68759a1b6d04875d03219f3c65 Mon Sep 17 00:00:00 2001
+From f74eb5f79a346dfb8d1b4c7f58399b2745bd024a Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Fri, 7 Mar 2025 14:05:14 +0800
-Subject: [PATCH 231/540] Changelogs: Add the configuration for the motherboard
+Subject: [PATCH 231/541] Changelogs: Add the configuration for the motherboard
  FML13V03.
 
 ---

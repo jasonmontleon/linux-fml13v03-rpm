@@ -1,7 +1,7 @@
-From 6b2f30570a40661c9ee6d8421570135cfbfd5548 Mon Sep 17 00:00:00 2001
+From fc64c80050fba61aedaef8a1ff338fcbf1bb9939 Mon Sep 17 00:00:00 2001
 From: Jason Montleon <jason@montleon.com>
 Date: Wed, 19 Nov 2025 05:24:37 +0000
-Subject: [PATCH 540/540] fixes/workarounds to be parsed out later
+Subject: [PATCH 540/541] fixes/workarounds to be parsed out later
 
 ---
  arch/riscv/include/asm/pgtable.h         |   2 -

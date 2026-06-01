@@ -1,7 +1,7 @@
-From 9871bb0c28af3d8eac523543aecff7109359d7d2 Mon Sep 17 00:00:00 2001
+From bf79aaa1da8bafe7489218a17a979758dc4ad957 Mon Sep 17 00:00:00 2001
 From: yufangxian <yufangxian@eswincomputing.com>
 Date: Wed, 20 Aug 2025 16:33:00 +0800
-Subject: [PATCH 472/540] feat: vela csi support
+Subject: [PATCH 472/541] feat: vela csi support
 
 Changelogs:
 1. update vela imx219 camera dtsi

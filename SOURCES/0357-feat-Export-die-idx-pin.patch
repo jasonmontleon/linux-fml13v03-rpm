@@ -1,7 +1,7 @@
-From 28ae14d2a1d74f8c61678f0bee0bfb93330d7018 Mon Sep 17 00:00:00 2001
+From 31be0375f9031aab715df65e114c0c148a193d6d Mon Sep 17 00:00:00 2001
 From: Dongdong Zhang <zhangdongdong@eswincomputing.com>
 Date: Fri, 18 Apr 2025 09:28:00 +0800
-Subject: [PATCH 357/540] feat: Export die idx pin
+Subject: [PATCH 357/541] feat: Export die idx pin
 
 Changelogs:
 

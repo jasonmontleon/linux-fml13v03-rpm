@@ -1,7 +1,7 @@
-From 0891b66813746263a5e527b4fb269f3a1d227b3d Mon Sep 17 00:00:00 2001
+From a0ed20423793ce1a514718c587dea2dd7de475f5 Mon Sep 17 00:00:00 2001
 From: donghuawei <donghuawei@eswincomputing.com>
 Date: Wed, 16 Apr 2025 19:48:47 +0800
-Subject: [PATCH 349/540] feat: vpu7702 smmu cfg modify
+Subject: [PATCH 349/541] feat: vpu7702 smmu cfg modify
 
 Changelogs:
 	smmu cfg dts, dma-ranges modify iova size for support large

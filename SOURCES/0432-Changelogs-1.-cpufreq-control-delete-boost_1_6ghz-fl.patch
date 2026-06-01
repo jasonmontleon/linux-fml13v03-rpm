@@ -1,7 +1,7 @@
-From 6f06c8473ab2e37a96f4d97c0aca8dc739e2f3bb Mon Sep 17 00:00:00 2001
+From 1740f091e98aaace4742bd4613a1a3c8e9f3f24b Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Wed, 6 Aug 2025 09:53:39 +0800
-Subject: [PATCH 432/540] Changelogs: 1. cpufreq control delete boost_1_6ghz
+Subject: [PATCH 432/541] Changelogs: 1. cpufreq control delete boost_1_6ghz
  flag; 2. CLK_FREQ_1600M/CLK_FREQ_1500M voltage change to 0.9v default; 3.
  delete 1.2G and 1.3G frequency because impacting on the stablility of d2d
 

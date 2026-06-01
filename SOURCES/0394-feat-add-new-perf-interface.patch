@@ -1,7 +1,7 @@
-From aac88a3a3da5329ed90dedc7d9b11f7b007cd970 Mon Sep 17 00:00:00 2001
+From e898a0de314b3ff19c9a83fb642574cb4c36160b Mon Sep 17 00:00:00 2001
 From: zhuxuefei <zhuxuefei@eswincomputing.com>
 Date: Thu, 10 Apr 2025 17:41:02 +0800
-Subject: [PATCH 394/540] feat:add new perf interface
+Subject: [PATCH 394/541] feat:add new perf interface
 
     Changelogs:
     1. add perf data interface to current opertator

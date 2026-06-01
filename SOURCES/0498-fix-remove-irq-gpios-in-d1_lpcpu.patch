@@ -1,7 +1,7 @@
-From e9e9b8fba63916ce87482fa5b5471c6c321e8acb Mon Sep 17 00:00:00 2001
+From 485b66f9e884f09200504a70dd0864791cd8338b Mon Sep 17 00:00:00 2001
 From: Wu Zhangben <wuzhangben@eswincomputing.com>
 Date: Wed, 3 Sep 2025 17:25:38 +0800
-Subject: [PATCH 498/540] fix:remove irq-gpios in d1_lpcpu
+Subject: [PATCH 498/541] fix:remove irq-gpios in d1_lpcpu
 
 Changelogs:
 1. irq-gpios configs in d1_lpcpu cause "unexpected IRQ trap at vector cf" in wakeup

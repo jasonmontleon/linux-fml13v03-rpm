@@ -1,7 +1,7 @@
-From 18cb8579a32f65ed2647b185f5df55b47452042a Mon Sep 17 00:00:00 2001
+From cb8ad5244e8313d6e75510b27b9f9c4f10db098a Mon Sep 17 00:00:00 2001
 From: zouxiaojun <zouxiaojun@eswincomputing.com>
 Date: Fri, 10 Oct 2025 17:18:08 +0800
-Subject: [PATCH 526/540] fix(vd):incorrect return value while pm suspend
+Subject: [PATCH 526/541] fix(vd):incorrect return value while pm suspend
 
 Changelogs:
 pm system suspend, system will wakeup the thread that call

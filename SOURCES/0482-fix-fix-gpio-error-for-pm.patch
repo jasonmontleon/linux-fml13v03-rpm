@@ -1,7 +1,7 @@
-From fbab3874047a524c44f35441bb3eb700096f34cc Mon Sep 17 00:00:00 2001
+From caf1fb3c938d78b80cdf4b2a0e1d5c29700c1803 Mon Sep 17 00:00:00 2001
 From: wangguosheng <wangguosheng@eswincomputing.com>
 Date: Tue, 26 Aug 2025 18:37:00 +0800
-Subject: [PATCH 482/540] fix: fix gpio error for pm
+Subject: [PATCH 482/541] fix: fix gpio error for pm
 
 Changelogs:
 1. d560 test whether the function of the 4-channel fan is normal.

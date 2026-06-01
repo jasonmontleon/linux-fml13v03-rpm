@@ -1,7 +1,7 @@
-From 909c05fb49f7e817202856e8458060a2f177ed2d Mon Sep 17 00:00:00 2001
+From 5d21727e9d3307f258de5ef351a16159fd38a09f Mon Sep 17 00:00:00 2001
 From: ningyu <ningyu@eswincomputing.com>
 Date: Thu, 7 Aug 2025 14:56:04 +0800
-Subject: [PATCH 455/540] fix:multi define gpio cause d314 boot fail
+Subject: [PATCH 455/541] fix:multi define gpio cause d314 boot fail
 
 Changelogs:
 Add cpu voltage adjust gpio94, and delete gpio default define in pinctrl within d314

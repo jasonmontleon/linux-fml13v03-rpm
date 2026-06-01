@@ -1,7 +1,7 @@
-From 6c8d06db3c0dea29e3cbaea307e7af052cea7763 Mon Sep 17 00:00:00 2001
+From fde9a23bab8a5ada5245ac4b26ccc3a5860dc968 Mon Sep 17 00:00:00 2001
 From: hujiamiao <hujiamiao@eswincomputing.com>
 Date: Thu, 1 Aug 2024 13:42:23 +0800
-Subject: [PATCH 143/540] feat:add lpcpu eic7700 defconfig and dts
+Subject: [PATCH 143/541] feat:add lpcpu eic7700 defconfig and dts
 
 Changelogs:
 1. add lpcpu driver config

@@ -1,7 +1,7 @@
-From b28bfa20ad4c1904382dafe8784e249f8667a9e9 Mon Sep 17 00:00:00 2001
+From 77ee3162db883bb62b8e0f8c190478619399d6da Mon Sep 17 00:00:00 2001
 From: liangshuang <liangshuang@eswincomputing.com>
 Date: Thu, 18 Jul 2024 11:27:17 +0800
-Subject: [PATCH 122/540] feat:sd/wifi support power management.
+Subject: [PATCH 122/541] feat:sd/wifi support power management.
 
 Changelogs:
 1.sd/wifi support power management.

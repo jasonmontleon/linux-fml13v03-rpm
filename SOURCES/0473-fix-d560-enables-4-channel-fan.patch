@@ -1,7 +1,7 @@
-From f4fefef5fe4f111251df82977e6a6a2dbe53acd3 Mon Sep 17 00:00:00 2001
+From f964fcb24f20f17eeface49508930ced43b222a0 Mon Sep 17 00:00:00 2001
 From: wangguosheng <wangguosheng@eswincomputing.com>
 Date: Fri, 15 Aug 2025 18:36:01 +0800
-Subject: [PATCH 473/540] fix: d560 enables 4-channel fan
+Subject: [PATCH 473/541] fix: d560 enables 4-channel fan
 
 Changelogs:
 1. d560 test whether the function of the 4-channel fan is normal.

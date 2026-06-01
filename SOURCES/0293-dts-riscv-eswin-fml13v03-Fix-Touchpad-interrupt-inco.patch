@@ -1,7 +1,7 @@
-From 291b0fd69bff67ccdc86623d92af4199e1176ae9 Mon Sep 17 00:00:00 2001
+From 40a8be2336c1b10e2a592810e4367d22ac40fa7f Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Tue, 13 May 2025 15:16:42 +0800
-Subject: [PATCH 293/540] =?UTF-8?q?dts:=20riscv:=20eswin:=20fml13v03:=20Fi?=
+Subject: [PATCH 293/541] =?UTF-8?q?dts:=20riscv:=20eswin:=20fml13v03:=20Fi?=
  =?UTF-8?q?x:=20Touchpad=20interrupt=20incorrectly=20assigned=20=E2=80=94?=
  =?UTF-8?q?=20now=20correctly=20set=20to=20D1=5FGPIO0.?=
 MIME-Version: 1.0

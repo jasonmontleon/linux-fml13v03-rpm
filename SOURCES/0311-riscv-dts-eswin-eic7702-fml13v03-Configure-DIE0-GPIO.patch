@@ -1,7 +1,7 @@
-From 3211368b81c940de4d05ad2e0c2656d055c9894f Mon Sep 17 00:00:00 2001
+From 2465748cb5f12333a1010036f97fc64c388e0278 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Thu, 5 Jun 2025 10:05:55 +0800
-Subject: [PATCH 311/540] riscv: dts: eswin: eic7702-fml13v03: Configure DIE0
+Subject: [PATCH 311/541] riscv: dts: eswin: eic7702-fml13v03: Configure DIE0
  GPIO62 (PC30) as power-status-gpios for EC.
 
 Signed-off-by: yang.wang <yang.wang@deepcomputing.io>

@@ -1,7 +1,7 @@
-From 3868c2360b65a27631ba21b3dd8ff256c87d4c78 Mon Sep 17 00:00:00 2001
+From 075913abfbe9556d82850afe6f9388a3733c51b9 Mon Sep 17 00:00:00 2001
 From: wangguosheng <wangguosheng@eswincomputing.com>
 Date: Wed, 7 May 2025 11:17:25 +0800
-Subject: [PATCH 358/540] feat:add es-fand function
+Subject: [PATCH 358/541] feat:add es-fand function
 
 Changelogs:
 1. control temperature by adjusting fan speed
@@ -42,7 +42,7 @@ index 1995499e7aab..eac116814375 100644
  			clock-names = "pclk";
  			resets = <&d1_reset FAN_RST_CTRL SW_FAN_RST_N>;
 diff --git a/drivers/hwmon/eswin-fan-control.c b/drivers/hwmon/eswin-fan-control.c
-index 60357c800b1a..f1a21a007e4e 100644
+index 9609339309ef..baa20cf1520c 100644
 --- a/drivers/hwmon/eswin-fan-control.c
 +++ b/drivers/hwmon/eswin-fan-control.c
 @@ -34,13 +34,19 @@

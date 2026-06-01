@@ -1,7 +1,7 @@
-From 8660b07f888c10ee22444da06bbd9fadcb674d56 Mon Sep 17 00:00:00 2001
+From b6994b94c3e789cf5d3e42e6d178f6ff0defa95f Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Thu, 13 Mar 2025 14:00:38 +0800
-Subject: [PATCH 234/540] Fix: touchpad recognition issue by changing interrupt
+Subject: [PATCH 234/541] Fix: touchpad recognition issue by changing interrupt
  to low-level trigger.
 
 ---

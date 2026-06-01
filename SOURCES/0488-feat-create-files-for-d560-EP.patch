@@ -1,7 +1,7 @@
-From 7ded8a76d772227c52b67d0e2b0cb1ca461326c7 Mon Sep 17 00:00:00 2001
+From 6b572e9d6136df08fffa508883139a83f19f14c1 Mon Sep 17 00:00:00 2001
 From: zhouliang1 <zhouliang1@eswincomputing.com>
 Date: Fri, 22 Aug 2025 18:47:34 +0800
-Subject: [PATCH 488/540] feat:create files for d560 EP
+Subject: [PATCH 488/541] feat:create files for d560 EP
 
 Changelogs:
 1.create files for d560 EP evb

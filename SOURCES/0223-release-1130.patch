@@ -1,7 +1,7 @@
-From 93a65a60a5328419f289f16048df053414d7ba13 Mon Sep 17 00:00:00 2001
+From f08f708c99da595440856caad20fe62d76152ec5 Mon Sep 17 00:00:00 2001
 From: linmin <linmin@eswincomputing.com>
 Date: Mon, 2 Dec 2024 13:18:49 +0800
-Subject: [PATCH 223/540] release-1130
+Subject: [PATCH 223/541] release-1130
 
 Changelogs:
 1.feat:dump multi dsp input/output
@@ -268400,7 +268400,7 @@ index adbef2a038b4..4d17f6e55594 100644
  #define PVRVERSION_PACK(MAJOR,MINOR) (((IMG_UINT32)((IMG_UINT32)(MAJOR) & 0xFFFFU) << 16U) | (((MINOR) & 0xFFFFU) << 0U))
  #define PVRVERSION_UNPACK_MAJ(VERSION) (((VERSION) >> 16U) & 0xFFFFU)
 diff --git a/drivers/hwmon/eswin-fan-control.c b/drivers/hwmon/eswin-fan-control.c
-index aff50deb2740..cc931a861159 100644
+index fcbbd3dd86b8..8d34f520c241 100644
 --- a/drivers/hwmon/eswin-fan-control.c
 +++ b/drivers/hwmon/eswin-fan-control.c
 @@ -3,7 +3,6 @@

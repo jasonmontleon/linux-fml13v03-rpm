@@ -1,7 +1,7 @@
-From 0ceb1f97fe4cc6d59ac44e7f98aed112716b3ec9 Mon Sep 17 00:00:00 2001
+From 2d2c8d965d264aa75ce8381e51f9416e46647b54 Mon Sep 17 00:00:00 2001
 From: Heinrich Schuchardt <heinrich.schuchardt@canonical.com>
 Date: Fri, 4 Jul 2025 09:05:35 +0200
-Subject: [PATCH 417/540] eswin/ai_driver: type mismatch printing
+Subject: [PATCH 417/541] eswin/ai_driver: type mismatch printing
  npu_info->peer_type
 
 npu_info->peer_type is of type u64 (long long unsigned int). For printing

@@ -1,7 +1,7 @@
-From 3ef0b91b35487d55368a0585916eb2e21ee47472 Mon Sep 17 00:00:00 2001
+From c18a9a9adb9460a396846dae427f020d2b40125f Mon Sep 17 00:00:00 2001
 From: Senchuan Zhang <zhangsenchuan@eswincomputing.com>
 Date: Mon, 4 Aug 2025 13:44:03 +0800
-Subject: [PATCH 463/540] fix:fixed rt_equalization
+Subject: [PATCH 463/541] fix:fixed rt_equalization
 
 Changelogs:
 1.support rx equalization

@@ -1,7 +1,7 @@
-From ba2c5c07394fc2aa29c258a91ec61b859c303337 Mon Sep 17 00:00:00 2001
+From 8c3281471021ec7706178894da062795bb5d2b1a Mon Sep 17 00:00:00 2001
 From: Xiang Xu <xuxiang@eswincomputing.com>
 Date: Tue, 12 Aug 2025 16:09:28 +0800
-Subject: [PATCH 462/540] feat:implement pin header function of ce1
+Subject: [PATCH 462/541] feat:implement pin header function of ce1
 
 Changelogs:
 Modify dts in order to implement pin header functions of ce1

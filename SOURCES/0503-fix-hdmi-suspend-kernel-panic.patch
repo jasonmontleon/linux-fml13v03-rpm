@@ -1,7 +1,7 @@
-From 4b4ffa7ca4ac5fba190de864a9066adbf5d99da5 Mon Sep 17 00:00:00 2001
+From 0c75adc11f6891b3e1b523facdf0eca5a189769f Mon Sep 17 00:00:00 2001
 From: fanxiaping <fanxiaping@eswincomputing.com>
 Date: Mon, 8 Sep 2025 09:25:01 +0800
-Subject: [PATCH 503/540] fix: hdmi suspend kernel panic
+Subject: [PATCH 503/541] fix: hdmi suspend kernel panic
 
 Changelogs: add null pointer judge
 

@@ -1,7 +1,7 @@
-From 1f2320d1b6c8caafab915314b2394419d410a0ea Mon Sep 17 00:00:00 2001
+From 7efc41d873ead1eed817e56d16bd1039fcc9af54 Mon Sep 17 00:00:00 2001
 From: Sandie Cao <sandie.cao@deepcomputing.io>
 Date: Thu, 22 May 2025 10:42:53 +0800
-Subject: [PATCH 302/540] riscv: module: Optimize PLT/GOT entry counting perf
+Subject: [PATCH 302/541] riscv: module: Optimize PLT/GOT entry counting perf
  reports that 99.63% of the cycles from `modprobe amdgpu` are spent inside
  module_frob_arch_sections(). This is because amdgpu.ko contains about 300000
  relocations in its .rela.text section, and the algorithm in

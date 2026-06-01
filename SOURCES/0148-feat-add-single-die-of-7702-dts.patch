@@ -1,7 +1,7 @@
-From ad14fb5f0b8702bda04c775fed1d70c9f8993639 Mon Sep 17 00:00:00 2001
+From 8a4b1f3cb0c0720dae5d20d87813b1f25e7fdb28 Mon Sep 17 00:00:00 2001
 From: ningyu <ningyu@eswincomputing.com>
 Date: Sun, 4 Aug 2024 16:09:29 +0800
-Subject: [PATCH 148/540] feat:add single die of 7702 dts
+Subject: [PATCH 148/541] feat:add single die of 7702 dts
 
 Changelogs:
 1.Add dts of 7702 evb only activate die0

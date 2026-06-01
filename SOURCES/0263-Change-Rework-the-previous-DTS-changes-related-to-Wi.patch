@@ -1,7 +1,7 @@
-From c208a13ff767a31dedf919fd8eea3e2b2f0b8f0e Mon Sep 17 00:00:00 2001
+From 772f71e78b6ab286ec7b41a54b3ff9fc48cbd103 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Thu, 20 Mar 2025 14:22:25 +0800
-Subject: [PATCH 263/540] Change: Rework the previous DTS changes related to
+Subject: [PATCH 263/541] Change: Rework the previous DTS changes related to
  WiFi/BT by merging all relevant modifications into
  eic7702-deepcomputing-fml13v03.dts, while reverting the changes in
  eic7x-die0-pinctrl.dtsi and eic7x-die1-pinctrl.dtsi.

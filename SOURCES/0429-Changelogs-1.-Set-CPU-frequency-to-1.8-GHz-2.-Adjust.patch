@@ -1,7 +1,7 @@
-From 2355ef5b7a1919ff7b7997d6beee16c63d5ddc49 Mon Sep 17 00:00:00 2001
+From dc9da766e8f625ddce818459bbdfb22bcb48c5e2 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Fri, 25 Jul 2025 18:01:58 +0800
-Subject: [PATCH 429/540] =?UTF-8?q?Changelogs:=201.=20Set=20CPU=20frequenc?=
+Subject: [PATCH 429/541] =?UTF-8?q?Changelogs:=201.=20Set=20CPU=20frequenc?=
  =?UTF-8?q?y=20to=201.8=E2=80=AFGHz=202.=20Adjusted=20thermal=20zone=20thr?=
  =?UTF-8?q?esholds=20to=2065=C2=B0C,=2075=C2=B0C,=20and=20105=C2=B0C=203.?=
  =?UTF-8?q?=20These=20changes=20help=20prevent=20system=20crashes=20at=201?=

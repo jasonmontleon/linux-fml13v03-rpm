@@ -1,7 +1,7 @@
-From ae19683d148e796c2aee083901dc9edee77bf59b Mon Sep 17 00:00:00 2001
+From 71e93038d95148f656527dcf888ea53c4c843183 Mon Sep 17 00:00:00 2001
 From: ouyanghui <ouyanghui@eswincomputing.com>
 Date: Wed, 15 Oct 2025 17:52:57 +0800
-Subject: [PATCH 528/540] Merge branch 'win2030-dev' into pm_merge
+Subject: [PATCH 528/541] Merge branch 'win2030-dev' into pm_merge
 
 ---
  .../riscv/boot/dts/eswin/ebc7702-p01-d560.dts |  736 ++++++

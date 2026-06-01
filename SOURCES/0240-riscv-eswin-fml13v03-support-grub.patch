@@ -1,7 +1,7 @@
-From af1584b84da90e2dcc1998e2df62d3a67e89f9de Mon Sep 17 00:00:00 2001
+From 9856edb2b129e4a95380e5ea5d76e850f7d7066e Mon Sep 17 00:00:00 2001
 From: Sandie Cao <sandie.cao@deepcomputing.io>
 Date: Mon, 17 Mar 2025 18:32:27 +0800
-Subject: [PATCH 240/540] riscv: eswin: fml13v03: support grub
+Subject: [PATCH 240/541] riscv: eswin: fml13v03: support grub
 
 Signed-off-by: Sandie Cao <sandie.cao@deepcomputing.io>
 ---

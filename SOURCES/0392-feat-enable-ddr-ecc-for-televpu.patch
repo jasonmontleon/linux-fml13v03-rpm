@@ -1,7 +1,7 @@
-From a7130384703b03abb3763342e914c4dc7583a5c9 Mon Sep 17 00:00:00 2001
+From f14bc84a8da587a2dea0d84ba938143ef06caeb7 Mon Sep 17 00:00:00 2001
 From: zhouliang1 <zhouliang1@eswincomputing.com>
 Date: Thu, 15 May 2025 16:29:52 +0800
-Subject: [PATCH 392/540] feat:enable ddr ecc for televpu
+Subject: [PATCH 392/541] feat:enable ddr ecc for televpu
 
 Changelogs:
 1. enable ddr ecc for televpu pcie card and

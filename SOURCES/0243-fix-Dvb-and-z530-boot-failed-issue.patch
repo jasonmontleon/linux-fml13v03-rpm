@@ -1,7 +1,7 @@
-From 6fb5d4988d3947dd932e61a438b6e418c06b2066 Mon Sep 17 00:00:00 2001
+From d091b32a14ad53d386fead19444ab4563f10fa11 Mon Sep 17 00:00:00 2001
 From: lilijun <lilijun@eswincomputing.com>
 Date: Fri, 7 Feb 2025 17:46:07 +0800
-Subject: [PATCH 243/540] fix:Dvb and z530 boot failed issue
+Subject: [PATCH 243/541] fix:Dvb and z530 boot failed issue
 
 Changelogs:
 Do not include "eswin-win2030-die0-soc.dtsi" twice.

@@ -1,7 +1,7 @@
-From fab1fe06315c8d4a1ee4aef77ec17028ca9d43cd Mon Sep 17 00:00:00 2001
+From b7d0321b13aced473d9f44c286e28ce3d998220a Mon Sep 17 00:00:00 2001
 From: yangwei1 <yangwei1@eswincomputing.com>
 Date: Thu, 1 May 2025 18:33:11 +0800
-Subject: [PATCH 350/540] fix:clear ecc interrupt anytime
+Subject: [PATCH 350/541] fix:clear ecc interrupt anytime
 
 Changelogs:
 

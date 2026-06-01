@@ -1,7 +1,7 @@
-From d9d0c0108df0e6590f44bdb0ed522ef1a5056e87 Mon Sep 17 00:00:00 2001
+From 44a2bfb1d40d5d0c1836158ccd4d644a0a6764bb Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Fri, 16 May 2025 15:34:36 +0800
-Subject: [PATCH 299/540] riscv: dts: eswin: Adapt PWM driver changes for
+Subject: [PATCH 299/541] riscv: dts: eswin: Adapt PWM driver changes for
  eic7702 backlight fix
 
 Signed-off-by: yang.wang <yang.wang@deepcomputing.io>

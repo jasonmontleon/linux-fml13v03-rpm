@@ -1,7 +1,7 @@
-From cb9981ecdc4ba2d93e9452481391911e800dd5f4 Mon Sep 17 00:00:00 2001
+From 80c2422ebc63574a8f718beb8479b4f81fed7606 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Mon, 28 Jul 2025 11:44:02 +0800
-Subject: [PATCH 430/540] Sync ESWIN codebase; merge LCD power-off issue fix
+Subject: [PATCH 430/541] Sync ESWIN codebase; merge LCD power-off issue fix
 
 ---
  .../eswin/eic7702-deepcomputing-fml13v03.dts  | 53 ++++---------------

@@ -1,7 +1,7 @@
-From 6de909d66d1d28542aa369f0e8f5bf55c1a5e7bf Mon Sep 17 00:00:00 2001
+From 3594fae857904871ada9b605eea17025ac1e579c Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Mon, 14 Jul 2025 18:14:49 +0800
-Subject: [PATCH 425/540] add_dual_spi1_spi2
+Subject: [PATCH 425/541] add_dual_spi1_spi2
 
 ---
  .../riscv/boot/dts/eswin/eic7700-pinctrl.dtsi | 43 +++++++++++++++++++

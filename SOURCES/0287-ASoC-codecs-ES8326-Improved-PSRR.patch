@@ -1,7 +1,7 @@
-From 7ad43658ba02b1fdfd696807a1f9170b71b8e39b Mon Sep 17 00:00:00 2001
+From 69966d38043c7118d2c18647655072649a9f26d4 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Thu, 24 Apr 2025 10:40:35 +0800
-Subject: [PATCH 287/540] ASoC: codecs: ES8326: Improved PSRR
+Subject: [PATCH 287/541] ASoC: codecs: ES8326: Improved PSRR
 
 Synchronized to the latest upstream version to address AMIC noise issues.
 Modified configuration to improve PSRR when ES8326 is working.

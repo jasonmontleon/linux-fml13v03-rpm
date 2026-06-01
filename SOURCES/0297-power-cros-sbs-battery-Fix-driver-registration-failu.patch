@@ -1,7 +1,7 @@
-From 86eb60bbbf8366bad8d7bc05090cf19dae0325ac Mon Sep 17 00:00:00 2001
+From d0ee6fed9f9f68c639531fa7329dc2368c585f5c Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Fri, 16 May 2025 14:02:04 +0800
-Subject: [PATCH 297/540] power: cros-sbs-battery: Fix driver registration
+Subject: [PATCH 297/541] power: cros-sbs-battery: Fix driver registration
  failure with CONFIG_PM_SLEEP
 
 Signed-off-by: yang.wang <yang.wang@deepcomputing.io>

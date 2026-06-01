@@ -1,7 +1,7 @@
-From e319c7d2dcc6e4be0f25a0643afab93d313c6ae9 Mon Sep 17 00:00:00 2001
+From 133860e6969fd592c588f45fe558e3f85393cbef Mon Sep 17 00:00:00 2001
 From: Xiang Xu <xuxiang@eswincomputing.com>
 Date: Thu, 24 Apr 2025 19:06:56 +0800
-Subject: [PATCH 352/540] feat:adapt ap6256
+Subject: [PATCH 352/541] feat:adapt ap6256
 
 Changelogs:
 1.adapt ap6256

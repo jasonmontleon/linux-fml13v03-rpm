@@ -1,7 +1,7 @@
-From f81d6dbadf8304c9e89f6989581d1508698ca695 Mon Sep 17 00:00:00 2001
+From 767d7feb0388634b81ad2bbb25ccbdb3f537d9ef Mon Sep 17 00:00:00 2001
 From: zouxiaojun <zouxiaojun@eswincomputing.com>
 Date: Mon, 1 Sep 2025 15:58:44 +0800
-Subject: [PATCH 494/540] to(vdec):vdec log opt
+Subject: [PATCH 494/541] to(vdec):vdec log opt
 
 Changelogs:
 vdec log opt, pm_runtime_put_autosuspend might return EAGAIN, and this

@@ -1,7 +1,7 @@
-From 6861009c451f3ae24d32fbfc60ce39de33d4d2d8 Mon Sep 17 00:00:00 2001
+From 57850e92a42b980f1176a5778368fba2b5385e6c Mon Sep 17 00:00:00 2001
 From: wangguosheng <wangguosheng@eswincomputing.com>
 Date: Wed, 11 Jun 2025 13:31:47 +0800
-Subject: [PATCH 409/540] fix:using algorithms to filter
+Subject: [PATCH 409/541] fix:using algorithms to filter
 
 Changelogs:
 1. using algorithms to filter outlier
@@ -12,7 +12,7 @@ Signed-off-by: wangguosheng <wangguosheng@eswincomputing.com>
  1 file changed, 462 insertions(+), 312 deletions(-)
 
 diff --git a/drivers/hwmon/eswin-fan-control.c b/drivers/hwmon/eswin-fan-control.c
-index b678e2d0d4d9..581159b7ec80 100644
+index 9dc0f278b15e..febefe10e1f4 100644
 --- a/drivers/hwmon/eswin-fan-control.c
 +++ b/drivers/hwmon/eswin-fan-control.c
 @@ -35,36 +35,28 @@
@@ -835,7 +835,7 @@ index b678e2d0d4d9..581159b7ec80 100644
  	ret = devm_request_threaded_irq(&pdev->dev, ctl->irq,
  					eswin_fan_control_irq_handler, NULL,
  					IRQF_ONESHOT | IRQF_TRIGGER_HIGH,
- 					pdev->driver_override, ctl);
+ 					dev_name(&pdev->dev), ctl);
  	if (ret) {
 -		dev_err(&pdev->dev, "Failed to request an irq, %d", ret);
 -		return ret;

@@ -1,7 +1,7 @@
-From d9ae77e0eeb48ba8c8840469e7f430512d800e8e Mon Sep 17 00:00:00 2001
+From c844d1887eebc9f69d6e31a755ff921ee4e29d7f Mon Sep 17 00:00:00 2001
 From: Jiean He <hejiean@eswincomputing.com>
 Date: Mon, 1 Sep 2025 10:13:10 +0800
-Subject: [PATCH 493/540] fix: fix memory leak in eswin_heap
+Subject: [PATCH 493/541] fix: fix memory leak in eswin_heap
 
 Changelogs:
 file memory leak of  eswin_heap_kalloc return, both normal

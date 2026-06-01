@@ -1,7 +1,7 @@
-From 17a64ae479d5bf5691a14729f4406eed5bb2af87 Mon Sep 17 00:00:00 2001
+From 0a59feb5875660e2e0b3928786dc174ac84dbe54 Mon Sep 17 00:00:00 2001
 From: Sakura286 <sakura286@outlook.com>
 Date: Fri, 5 Jul 2024 12:11:41 +0800
-Subject: [PATCH 077/540] img gpu kmd: remove warning of flush_scheduled_work()
+Subject: [PATCH 077/541] img gpu kmd: remove warning of flush_scheduled_work()
  to enable volcanic gpu work
 
 ref: https://github.com/starfive-tech/linux/commit/d89c0fec5e542e859df5dc590caeaff99cae10db

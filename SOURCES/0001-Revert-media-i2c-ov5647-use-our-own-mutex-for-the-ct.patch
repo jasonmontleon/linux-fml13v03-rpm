@@ -1,7 +1,7 @@
 From 5afd88b91d56e37bea56102a42e5c4d6c6390f16 Mon Sep 17 00:00:00 2001
 From: Jason Montleon <jmontleo@redhat.com>
 Date: Wed, 4 Mar 2026 12:38:10 -0500
-Subject: [PATCH 001/540] Revert "media: i2c: ov5647: use our own mutex for the
+Subject: [PATCH 001/541] Revert "media: i2c: ov5647: use our own mutex for the
  ctrl lock"
 
 This reverts commit d03a29cb36d6c8824ba568fed2c494daa977b42b.

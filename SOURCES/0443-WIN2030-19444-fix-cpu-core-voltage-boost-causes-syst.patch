@@ -1,7 +1,7 @@
-From 3fbe9850b29b6cd17df0f7e9cbb4f4523547756d Mon Sep 17 00:00:00 2001
+From fddc733383453183a7882534155301f8185ecef6 Mon Sep 17 00:00:00 2001
 From: ouyanghui <ouyanghui@eswincomputing.com>
 Date: Wed, 17 Sep 2025 14:19:02 +0800
-Subject: [PATCH 443/540] WIN2030-19444:fix:cpu core voltage boost causes
+Subject: [PATCH 443/541] WIN2030-19444:fix:cpu core voltage boost causes
  system crashes.
 
 Changelogs:

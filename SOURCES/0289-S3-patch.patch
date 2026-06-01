@@ -1,7 +1,7 @@
-From 6ec3f70d7929a03137a831c738f4b7b944203952 Mon Sep 17 00:00:00 2001
+From 597aa23311c87680b49a1d2d3c50dba29cd659d4 Mon Sep 17 00:00:00 2001
 From: Sandie Cao <sandie.cao@deepcomputing.io>
 Date: Wed, 23 Apr 2025 11:53:19 +0800
-Subject: [PATCH 289/540] S3 patch
+Subject: [PATCH 289/541] S3 patch
 
 ---
  arch/riscv/boot/dts/eswin/Makefile            |     3 +
@@ -9265,7 +9265,7 @@ index ec76a48bb4bc..89c8663ab623 100644
  #endif	/* !defined(__SYSINFO_H__) */
  
 diff --git a/drivers/hwmon/eswin-fan-control.c b/drivers/hwmon/eswin-fan-control.c
-index b921b72b9546..60357c800b1a 100644
+index 1ce63da7ac70..9609339309ef 100644
 --- a/drivers/hwmon/eswin-fan-control.c
 +++ b/drivers/hwmon/eswin-fan-control.c
 @@ -88,7 +88,7 @@ static ssize_t eswin_fan_pwm_ctl_show(struct device *dev, struct device_attribut

@@ -1,7 +1,7 @@
-From 2a4cd7332ecf770e20dff93a7041907242f5df17 Mon Sep 17 00:00:00 2001
+From ecbaf5df9af9e9aae5a5e5f12e7bb104530ad98f Mon Sep 17 00:00:00 2001
 From: linmin <linmin@eswincomputing.com>
 Date: Mon, 10 Feb 2025 17:05:23 +0800
-Subject: [PATCH 227/540] release-2025.0130
+Subject: [PATCH 227/541] release-2025.0130
 
 Changelogs:
 1.feat: Optimize dma channel request

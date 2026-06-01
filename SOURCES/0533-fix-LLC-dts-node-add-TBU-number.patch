@@ -1,7 +1,7 @@
-From e481b1f8d17364e71357695fa13bc6982419ccb3 Mon Sep 17 00:00:00 2001
+From 388e375061d7a07e0ab218b6fa5eb0ba891a12cc Mon Sep 17 00:00:00 2001
 From: denglei <denglei@eswincomputing.com>
 Date: Fri, 24 Oct 2025 10:33:17 +0800
-Subject: [PATCH 533/540] fix:LLC dts node add TBU number.
+Subject: [PATCH 533/541] fix:LLC dts node add TBU number.
 
 Changelogs:
 	Resolve the error caused by the LLC driver during system resume.
