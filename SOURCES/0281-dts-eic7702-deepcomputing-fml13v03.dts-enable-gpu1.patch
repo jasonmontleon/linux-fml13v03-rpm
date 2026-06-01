@@ -1,4 +1,4 @@
-From c36a2b598312ab9c4a44884b1609940b199ef4ab Mon Sep 17 00:00:00 2001
+From f22d19cc0f6dc7b1f3703e02b0d9c43c89236daa Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Fri, 11 Apr 2025 18:27:06 +0800
 Subject: [PATCH 281/540] dts: eic7702-deepcomputing-fml13v03.dts: enable gpu1

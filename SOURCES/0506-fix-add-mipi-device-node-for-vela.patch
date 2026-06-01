@@ -1,4 +1,4 @@
-From 7dc70546f081786a8c00119ebfdc8b68a3c0719c Mon Sep 17 00:00:00 2001
+From 48b5e17246d953e552ba974aa2ce1edbe7b8283c Mon Sep 17 00:00:00 2001
 From: guozeyang <guozeyang@eswincomputing.com>
 Date: Tue, 26 Aug 2025 15:41:35 +0800
 Subject: [PATCH 506/540] fix:add mipi device node for vela

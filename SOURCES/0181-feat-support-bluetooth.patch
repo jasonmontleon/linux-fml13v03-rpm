@@ -1,4 +1,4 @@
-From ec897d76a2c79e89cf0218b76b6b7beecf0c2e89 Mon Sep 17 00:00:00 2001
+From ae49f2e348370798529d074d011d840d1213f67f Mon Sep 17 00:00:00 2001
 From: liangshuang <liangshuang@eswincomputing.com>
 Date: Wed, 18 Sep 2024 11:10:06 +0800
 Subject: [PATCH 181/540] feat:support bluetooth.

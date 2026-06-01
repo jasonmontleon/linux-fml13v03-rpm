@@ -1,4 +1,4 @@
-From a32fb77ebe429a85c1c726c1194ebc97eb6e316f Mon Sep 17 00:00:00 2001
+From 737ee5524ba21c35adc1cf798de8532b5c2b825d Mon Sep 17 00:00:00 2001
 From: liangshuang <liangshuang@eswincomputing.com>
 Date: Fri, 7 Jun 2024 11:10:10 +0800
 Subject: [PATCH 056/540] fix:optimize SDHCI driver.

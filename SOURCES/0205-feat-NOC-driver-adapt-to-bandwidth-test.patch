@@ -1,4 +1,4 @@
-From bd063f5521e8e1ddfbaf43cb0f0c3c5b6d74744c Mon Sep 17 00:00:00 2001
+From 33e8755a6d39c5f67560718340a69d3c82c68f77 Mon Sep 17 00:00:00 2001
 From: huangyifeng <huangyifeng@eswincomputing.com>
 Date: Thu, 24 Oct 2024 10:36:41 +0800
 Subject: [PATCH 205/540] feat:NOC driver adapt to bandwidth test.

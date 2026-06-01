@@ -1,4 +1,4 @@
-From c094959b558b100832de439a7afe7d625aa228b1 Mon Sep 17 00:00:00 2001
+From ee974e693c84db20fe7cd8bbd2efb28ab54603f2 Mon Sep 17 00:00:00 2001
 From: denglei <denglei@eswincomputing.com>
 Date: Tue, 2 Sep 2025 10:35:13 +0800
 Subject: [PATCH 499/540] fix:Optimize memory usage in npu drivers.

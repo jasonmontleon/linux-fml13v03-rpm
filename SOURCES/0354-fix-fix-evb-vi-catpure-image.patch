@@ -1,4 +1,4 @@
-From fec9f3746ac03dcdbfc518f78b24316d3260aa1d Mon Sep 17 00:00:00 2001
+From fdf211cc7c0bba5629b7d25e20e8557eb22364da Mon Sep 17 00:00:00 2001
 From: yufangxian <yufangxian@eswincomputing.com>
 Date: Wed, 7 May 2025 19:46:49 +0800
 Subject: [PATCH 354/540] fix: fix evb vi catpure image

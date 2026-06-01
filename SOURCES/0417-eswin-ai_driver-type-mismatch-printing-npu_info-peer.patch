@@ -1,4 +1,4 @@
-From b35dc60520ecd559becdf0096a41a6910fc61a65 Mon Sep 17 00:00:00 2001
+From 0ceb1f97fe4cc6d59ac44e7f98aed112716b3ec9 Mon Sep 17 00:00:00 2001
 From: Heinrich Schuchardt <heinrich.schuchardt@canonical.com>
 Date: Fri, 4 Jul 2025 09:05:35 +0200
 Subject: [PATCH 417/540] eswin/ai_driver: type mismatch printing

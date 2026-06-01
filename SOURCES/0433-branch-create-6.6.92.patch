@@ -1,4 +1,4 @@
-From f552d1d311dd44a67798abd6457f237a9c6ba692 Mon Sep 17 00:00:00 2001
+From e92101c69153de6c0bca53217d2fcdfdbe93ed8e Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Tue, 19 Aug 2025 17:25:40 +0800
 Subject: [PATCH 433/540] branch: create 6.6.92
@@ -376,7 +376,7 @@ index 7a3a08d81f11..974beccd671f 100644
  Low level entry and exit
  ========================
 diff --git a/Makefile b/Makefile
-index b9916e8715fe..76c4f066f540 100644
+index 4399fc78a62d..907b18c1e5da 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -980,6 +980,11 @@ KBUILD_CFLAGS	+= $(CC_FLAGS_CFI)

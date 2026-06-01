@@ -1,4 +1,4 @@
-From a53a923132336bb5dad3001912af9aa87f662063 Mon Sep 17 00:00:00 2001
+From 797bd3def69c9c7c62e5635ba46d5f5e4afd9ee2 Mon Sep 17 00:00:00 2001
 From: Jason Montleon <jmontleo@redhat.com>
 Date: Wed, 4 Mar 2026 12:38:52 -0500
 Subject: [PATCH 004/540] Revert "media: i2c: ov5647: Correct minimum VBLANK

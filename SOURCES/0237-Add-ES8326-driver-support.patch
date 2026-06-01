@@ -1,4 +1,4 @@
-From bccf8b060303600f3decf8cd8838dd841e85cd43 Mon Sep 17 00:00:00 2001
+From 63b72754d9019d5c66ddace93540e1db11503bd2 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Thu, 13 Mar 2025 18:07:23 +0800
 Subject: [PATCH 237/540] Add ES8326 driver support.

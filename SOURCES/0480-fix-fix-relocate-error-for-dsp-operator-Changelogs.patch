@@ -1,4 +1,4 @@
-From e0b09b5ccf8851f364613571c7c8489284f38b43 Mon Sep 17 00:00:00 2001
+From 4c580ea3eb4dd2b184ead150c3ab5e5e4b2064ef Mon Sep 17 00:00:00 2001
 From: luoshanggui <luoshanggui@eswincomputing.com>
 Date: Fri, 22 Aug 2025 09:04:24 +0800
 Subject: [PATCH 480/540] fix : fix relocate error for dsp operator Changelogs:

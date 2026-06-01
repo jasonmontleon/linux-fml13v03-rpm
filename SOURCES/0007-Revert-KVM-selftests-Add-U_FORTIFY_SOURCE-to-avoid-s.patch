@@ -1,4 +1,4 @@
-From efa79817c894976c8bcc2dbe41bc18fb5d5450da Mon Sep 17 00:00:00 2001
+From f275d7c88ab79f15a68df66a8036ae5f5ce856d3 Mon Sep 17 00:00:00 2001
 From: Jason Montleon <jmontleo@redhat.com>
 Date: Wed, 11 Feb 2026 09:14:11 -0500
 Subject: [PATCH 007/540] Revert "KVM: selftests: Add -U_FORTIFY_SOURCE to

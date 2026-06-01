@@ -1,4 +1,4 @@
-From 6177bbbec516eca996ac08d56939cae73acf867a Mon Sep 17 00:00:00 2001
+From e86b393f25559910c79dbecb825af5faf66d21a8 Mon Sep 17 00:00:00 2001
 From: huzhixuan <huzhixuan@eswincomputing.com>
 Date: Mon, 10 Mar 2025 17:08:42 +0800
 Subject: [PATCH 328/540] feature:add 7702vpu dts
