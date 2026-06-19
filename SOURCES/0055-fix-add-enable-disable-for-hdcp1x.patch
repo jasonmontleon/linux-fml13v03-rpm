@@ -1,4 +1,4 @@
-From 08c4f08b7d0d3defba48a13e57fb498166921c24 Mon Sep 17 00:00:00 2001
+From e712b9b53f329edfaebd800396b3aaf8119d6c97 Mon Sep 17 00:00:00 2001
 From: yiguo <yiguo@eswincomputing.com>
 Date: Thu, 6 Jun 2024 17:04:36 +0800
 Subject: [PATCH 055/541] fix:add enable/disable for hdcp1x

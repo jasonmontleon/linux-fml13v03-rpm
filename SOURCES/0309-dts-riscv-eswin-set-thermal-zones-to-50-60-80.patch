@@ -1,4 +1,4 @@
-From 565565a1682983cc60e20731dadb95cf117c69bf Mon Sep 17 00:00:00 2001
+From 97f7cf3b8c41b081f36439e73188a15c11ca390d Mon Sep 17 00:00:00 2001
 From: Sandie Cao <sandie.cao@deepcomputing.io>
 Date: Tue, 3 Jun 2025 14:04:44 +0800
 Subject: [PATCH 309/541] dts: riscv: eswin: set thermal-zones to 50/60/80

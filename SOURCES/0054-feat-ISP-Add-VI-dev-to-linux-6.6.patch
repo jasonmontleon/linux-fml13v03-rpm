@@ -1,4 +1,4 @@
-From 9f619335f473c87944f95c43d51b946038bb6f1e Mon Sep 17 00:00:00 2001
+From 4fb24b4f34bae376436350bbfae85516c5171346 Mon Sep 17 00:00:00 2001
 From: lilijun <lilijun@eswincomputing.com>
 Date: Mon, 27 May 2024 16:19:01 +0800
 Subject: [PATCH 054/541] feat(ISP): Add VI dev to linux 6.6

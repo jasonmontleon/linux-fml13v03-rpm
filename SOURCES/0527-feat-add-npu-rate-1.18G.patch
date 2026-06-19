@@ -1,4 +1,4 @@
-From 0a92548f69ddb92c93a21652d29b3c992b202fd2 Mon Sep 17 00:00:00 2001
+From f6d1a9b0b18ae195c895f4fbca70def9cd8f5ee8 Mon Sep 17 00:00:00 2001
 From: zhuxuefei <zhuxuefei@eswincomputing.com>
 Date: Mon, 22 Sep 2025 14:50:48 +0800
 Subject: [PATCH 527/541] feat:add npu rate 1.18G.

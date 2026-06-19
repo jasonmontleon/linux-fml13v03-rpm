@@ -1,4 +1,4 @@
-From 09314dff38a7e627590eb9ac1fed49a7ab7c4087 Mon Sep 17 00:00:00 2001
+From e42da50f1ba454e41e4a955a0eae2ae7e553011c Mon Sep 17 00:00:00 2001
 From: Wu Zhangben <wuzhangben@eswincomputing.com>
 Date: Wed, 20 Aug 2025 12:59:34 +0800
 Subject: [PATCH 485/541] refactor:S3 GPIO configs distributed in lpcpu_config

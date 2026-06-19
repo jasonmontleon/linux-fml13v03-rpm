@@ -1,4 +1,4 @@
-From 2465748cb5f12333a1010036f97fc64c388e0278 Mon Sep 17 00:00:00 2001
+From cb32f23b5c88a83cb4e77cfe8e1b65fb6e18e00f Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Thu, 5 Jun 2025 10:05:55 +0800
 Subject: [PATCH 311/541] riscv: dts: eswin: eic7702-fml13v03: Configure DIE0

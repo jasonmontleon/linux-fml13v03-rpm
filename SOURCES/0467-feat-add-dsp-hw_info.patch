@@ -1,4 +1,4 @@
-From 2cf0d9addbd3acdf24353beda642188edd40fbd2 Mon Sep 17 00:00:00 2001
+From 1c880ef38858861cd5ad13f68ca8209107338c16 Mon Sep 17 00:00:00 2001
 From: zhuxuefei <zhuxuefei@eswincomputing.com>
 Date: Mon, 18 Aug 2025 15:15:20 +0800
 Subject: [PATCH 467/541] feat:add dsp hw_info.

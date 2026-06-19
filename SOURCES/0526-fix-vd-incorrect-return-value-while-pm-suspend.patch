@@ -1,4 +1,4 @@
-From cb8ad5244e8313d6e75510b27b9f9c4f10db098a Mon Sep 17 00:00:00 2001
+From 30d2316b198b6e0a704af51f71b19020557870bc Mon Sep 17 00:00:00 2001
 From: zouxiaojun <zouxiaojun@eswincomputing.com>
 Date: Fri, 10 Oct 2025 17:18:08 +0800
 Subject: [PATCH 526/541] fix(vd):incorrect return value while pm suspend

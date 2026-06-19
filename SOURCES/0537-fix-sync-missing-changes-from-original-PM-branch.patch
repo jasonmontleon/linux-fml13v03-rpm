@@ -1,4 +1,4 @@
-From ce538936f14399118caa59bfb79b1a7cde50e996 Mon Sep 17 00:00:00 2001
+From fb8384ecdf3e318c0ef6ee9090fb2d03727c4edf Mon Sep 17 00:00:00 2001
 From: Min Lin <linmin@eswincomputing.com>
 Date: Fri, 31 Oct 2025 13:48:29 +0800
 Subject: [PATCH 537/541] fix: sync missing changes from original PM branch

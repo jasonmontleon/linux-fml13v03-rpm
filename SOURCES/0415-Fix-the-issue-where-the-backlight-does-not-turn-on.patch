@@ -1,4 +1,4 @@
-From 9eed1d975bb57d3e99c9d379dc70e23def191d85 Mon Sep 17 00:00:00 2001
+From e21ccb821b0401e4eda0c6af1c9fab2cabf0cd16 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Wed, 2 Jul 2025 10:43:05 +0800
 Subject: [PATCH 415/541] Fix the issue where the backlight does not turn on.

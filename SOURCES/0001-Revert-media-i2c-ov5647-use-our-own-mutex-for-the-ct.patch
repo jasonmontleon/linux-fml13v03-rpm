@@ -1,4 +1,4 @@
-From 5afd88b91d56e37bea56102a42e5c4d6c6390f16 Mon Sep 17 00:00:00 2001
+From eff55f463ff67db25e8ec4dea06c70cbfee131cc Mon Sep 17 00:00:00 2001
 From: Jason Montleon <jmontleo@redhat.com>
 Date: Wed, 4 Mar 2026 12:38:10 -0500
 Subject: [PATCH 001/541] Revert "media: i2c: ov5647: use our own mutex for the

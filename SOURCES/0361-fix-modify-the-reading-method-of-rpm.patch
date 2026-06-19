@@ -1,4 +1,4 @@
-From f41dece70cbe78cb40748c8d74d5cdc0faa36258 Mon Sep 17 00:00:00 2001
+From adebc376e075f8e404454e0916d445c5ebece8ef Mon Sep 17 00:00:00 2001
 From: wangguosheng <wangguosheng@eswincomputing.com>
 Date: Tue, 13 May 2025 13:47:57 +0800
 Subject: [PATCH 361/541] fix:modify the reading method of rpm

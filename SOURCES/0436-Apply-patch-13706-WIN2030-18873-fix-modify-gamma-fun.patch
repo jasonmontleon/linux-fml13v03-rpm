@@ -1,4 +1,4 @@
-From 6460e5f9afaf9e9515c1e95dcc33e20f864bedff Mon Sep 17 00:00:00 2001
+From 66da321648626874ef00488e3de24f39a642dc1a Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Tue, 26 Aug 2025 19:18:52 +0800
 Subject: [PATCH 436/541] Apply patch 13706-WIN2030-18873-fix-modify-gamma-fun

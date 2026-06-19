@@ -1,4 +1,4 @@
-From dfa96a01c67f55f07252cc080de95cedf1547277 Mon Sep 17 00:00:00 2001
+From 0fa14958f3033aa612d23f8ccd7f674f601fb762 Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Thu, 4 Sep 2025 13:38:50 +0800
 Subject: [PATCH 439/541] lpcpu: gpio usb lowpower

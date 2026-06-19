@@ -1,4 +1,4 @@
-From 7affd40caf310e50cb963861e3f52a9e5585f254 Mon Sep 17 00:00:00 2001
+From 9cbc4305116c95d781ffc59cb03fda55fc703496 Mon Sep 17 00:00:00 2001
 From: zhouliang2 <zhouliang2@eswincomputing.com>
 Date: Fri, 18 Oct 2024 18:05:32 +0800
 Subject: [PATCH 207/541] feat:recover volume to -6dB for debian

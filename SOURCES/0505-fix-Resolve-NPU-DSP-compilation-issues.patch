@@ -1,4 +1,4 @@
-From b19ede0d782907d3754729d14efe2b1d402e1335 Mon Sep 17 00:00:00 2001
+From b5aee863922faaa92b6eacdadf61fd9f0a513731 Mon Sep 17 00:00:00 2001
 From: denglei <denglei@eswincomputing.com>
 Date: Mon, 25 Aug 2025 16:02:05 +0800
 Subject: [PATCH 505/541] fix:Resolve NPU/DSP compilation issues.

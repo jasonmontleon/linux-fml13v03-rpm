@@ -1,4 +1,4 @@
-From 95c833ad4240ea34029ff38e25cfcb656bb654c7 Mon Sep 17 00:00:00 2001
+From 5ab9518a7d018d158edddc16cfc6b60e7d741cd0 Mon Sep 17 00:00:00 2001
 From: huangyifeng <huangyifeng@eswincomputing.com>
 Date: Wed, 28 Aug 2024 16:01:05 +0800
 Subject: [PATCH 168/541] feat:add eic7700_dbg_defconfig

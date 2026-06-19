@@ -1,4 +1,4 @@
-From 98ea8fc19fa1b93f40628c4bf7cab84cc414b882 Mon Sep 17 00:00:00 2001
+From 247a8b04979903d10b2f6638f7a323f98ab86261 Mon Sep 17 00:00:00 2001
 From: chenyangxi <chenyangxi@eswincomputing.com>
 Date: Mon, 12 May 2025 14:38:20 +0800
 Subject: [PATCH 363/541] fix:NPU enable 1.5G performance

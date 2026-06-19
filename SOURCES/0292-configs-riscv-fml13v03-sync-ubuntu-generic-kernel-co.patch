@@ -1,4 +1,4 @@
-From 98103926dfceab3df7d64a22afd517611751ecd3 Mon Sep 17 00:00:00 2001
+From 2cb4adc9fb2b961a6b4a07648a4d7ab01c8ae9ff Mon Sep 17 00:00:00 2001
 From: Sandie Cao <sandie.cao@deepcomputing.io>
 Date: Tue, 6 May 2025 13:40:24 +0800
 Subject: [PATCH 292/541] configs: riscv: fml13v03: sync ubuntu generic kernel

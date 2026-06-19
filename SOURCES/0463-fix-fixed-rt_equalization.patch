@@ -1,4 +1,4 @@
-From c18a9a9adb9460a396846dae427f020d2b40125f Mon Sep 17 00:00:00 2001
+From d88303d0ab7c4a4665d3bd1f4307320b21c91f7f Mon Sep 17 00:00:00 2001
 From: Senchuan Zhang <zhangsenchuan@eswincomputing.com>
 Date: Mon, 4 Aug 2025 13:44:03 +0800
 Subject: [PATCH 463/541] fix:fixed rt_equalization

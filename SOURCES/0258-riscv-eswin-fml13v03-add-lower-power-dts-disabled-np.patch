@@ -1,4 +1,4 @@
-From 7cba9febfb0fcf9103a5aa479a6982fd6c42e928 Mon Sep 17 00:00:00 2001
+From aa74b22c3d154658ecf9c8800f9ceabcaa682d0b Mon Sep 17 00:00:00 2001
 From: Sandie Cao <sandie.cao@deepcomputing.io>
 Date: Wed, 19 Mar 2025 11:53:03 +0800
 Subject: [PATCH 258/541] riscv: eswin: fml13v03: add lower power dts (disabled

@@ -1,4 +1,4 @@
-From 69966d38043c7118d2c18647655072649a9f26d4 Mon Sep 17 00:00:00 2001
+From 64f3e6fa8e31a9bd77c1227a8042d96a41aef3c0 Mon Sep 17 00:00:00 2001
 From: "yang.wang" <yang.wang@deepcomputing.io>
 Date: Thu, 24 Apr 2025 10:40:35 +0800
 Subject: [PATCH 287/541] ASoC: codecs: ES8326: Improved PSRR

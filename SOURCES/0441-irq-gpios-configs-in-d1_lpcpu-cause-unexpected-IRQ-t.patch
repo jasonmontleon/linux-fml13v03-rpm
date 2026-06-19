@@ -1,4 +1,4 @@
-From 468e6aeca9e95a1735f0e09280cd74e8a12beda4 Mon Sep 17 00:00:00 2001
+From 9a5492af88d27cddac473f2d769363ffccdcda2b Mon Sep 17 00:00:00 2001
 From: cheney <11722200@qq.com>
 Date: Tue, 9 Sep 2025 10:27:49 +0800
 Subject: [PATCH 441/541] irq-gpios configs in d1_lpcpu cause 'unexpected IRQ

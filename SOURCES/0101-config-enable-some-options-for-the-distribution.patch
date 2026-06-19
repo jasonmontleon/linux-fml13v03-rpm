@@ -1,4 +1,4 @@
-From 9e4a8f53eb6a2f01d0afe15de997137d3f767202 Mon Sep 17 00:00:00 2001
+From 2fddd8f0c4d79efb33eca2381780728e15387c49 Mon Sep 17 00:00:00 2001
 From: Han Gao <gaohan@iscas.ac.cn>
 Date: Mon, 22 Jul 2024 17:32:51 +0800
 Subject: [PATCH 101/541] config: enable some options for the distribution
